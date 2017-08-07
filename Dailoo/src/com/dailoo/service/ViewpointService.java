@@ -1,5 +1,12 @@
 package com.dailoo.service;
 
-public interface ViewpointService extends Service{
+import com.dailoo.domain.Viewpoint;
 
+public interface ViewpointService extends Service{
+	
+	/**
+	 * 新增景點
+	 * @param viewpoint 景點Bean
+	 */
+	void addViewpoint(Viewpoint viewpoint);
 }

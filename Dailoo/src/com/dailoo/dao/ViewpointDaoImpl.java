@@ -1,5 +1,29 @@
 package com.dailoo.dao;
 
+import java.sql.SQLException;
+
+import org.apache.commons.dbutils.QueryRunner;
+
+import com.dailoo.domain.Viewpoint;
+import com.dailoo.util.TransactionManager;
+
 public class ViewpointDaoImpl implements ViewpointDao{
+
+	@Override
+	public void addViewpoint(Viewpoint vp) {
+		
+		String sql = "insert into viewpoints (id, name, subtitle, theme, country, city, town, village,"
+				+ "address, longitude, latitude, navUrl, intro, speakerId) "
+				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, vp.getId(), vp.getName(), vp.getSubtitle(), vp.getTheme(), vp.getCountry(), 
+					vp.getCity(), vp.getTown(), vp.getVillage(), vp.getAddress(), vp.getLongtitude(),
+					vp.getLatitude(), vp.getNavUrl(), vp.getIntro(), null);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
