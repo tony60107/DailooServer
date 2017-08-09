@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>註冊講者</title>
+    <!-- 最新編譯和最佳化的 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!-- 選擇性佈景主題 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <!-- 最新編譯和最佳化的 JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/registspeaker.css">
+</head>
+<body>
+<div class="w">
+    <div class="title">註冊講者</div>
+    <form class="main-form" role="form" action="http://localhost:8080/Dailoo/SpeakerServlet?method=registSpeaker" method="post">
+        <div class="form-group">
+            <label>帳號</label>
+            <input type="text" name="username" class="form-control" placeholder="輸入帳號" value="tony60107">
+        </div>
+        <div class="form-group">
+            <label>密碼</label>
+            <input type="text" name="password" class="form-control" placeholder="輸入密碼" value="s89236001">
+        </div>
+        <button type="submit" class="btn btn-default">送出</button>
+    </form>
+</div>
+</body>
+</html>

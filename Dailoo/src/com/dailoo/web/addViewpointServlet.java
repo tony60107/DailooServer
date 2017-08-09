@@ -16,7 +16,7 @@ import com.dailoo.domain.Viewpoint;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.service.ViewpointService;
 
-public class addViewpointServlet extends HttpServlet {
+public class AddViewpointServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

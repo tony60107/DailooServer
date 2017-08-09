@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>腳部</title>
+    <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/footer.css"/>
+</head>
+<body onload="initIframeHeight(800);">
+<div class="w">
+    <!--贊助區塊-->
+    <div class="sup">
+        <div class="title">贊助支持</div>
+        <div class="companys">
+            <img src="images/footer/taitung_logo.png" alt="">
+            <img src="images/footer/TTMaker_Logo.png" alt="">
+        </div>
+    </div>
+    <!--帶路介紹-->
+    <div class="intro">
+        <div class="dailoo-logo">
+            <img class="" src="images/footer/dailoo_logo.png" alt="">
+        </div>
+        <div class="link clearfix">
+            <a href="http://pic.sopili.net/l/facebook/page/175672579574489" target="_blank">
+                <div class="fanpage">
+                    <img src="images/footer/faceboook_icon.png" alt="">
+                    <div class="desc">帶路粉絲頁</div>
+                </div>
+            </a>
+            <a href="http://dailoo.strikingly.com/" target="_blank">
+                <div class="offweb">
+                    <img src="images/footer/dailoo_icon.png" alt="">
+                    <div class="desc">帶路官網</div>
+                </div>
+            </a>
+        </div>
+        <div class="copyright">本服務由帶路文化提供</div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
+<script>
+    function initIframeHeight(height) {
+        var userAgent = navigator.userAgent;
+        var iframe = parent.document.getElementById("footerIframe");
+        var subdoc = iframe.contentDocument || iframe.contentWindow.document;
+        var subbody = subdoc.body;
+        var realHeight;
+        //谷歌瀏覽器特殊處理
+        if (userAgent.indexOf("Chrome") > -1) {
+            realHeight = subdoc.documentElement.scrollHeight;
+        }
+        else {
+            realHeight = subbody.scrollHeight;
+        }
+        if (realHeight < height) {
+            $(iframe).height(height);
+        }
+        else {
+            $(iframe).height(realHeight);
+        }
+    }
+
+</script>

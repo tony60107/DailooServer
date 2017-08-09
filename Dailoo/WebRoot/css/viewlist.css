@@ -1,0 +1,144 @@
+/*頁籤欄開始*/
+
+.nav {
+    background: url("../images/viewlist/nav_background.png");
+    width: 980px;
+    height: 166px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.nav .back {
+    margin-top: 66px;
+    margin-left: 52px;
+    margin-right: 44px;
+}
+
+.nav li {
+    position: relative;
+    margin-top: 56px;
+    margin-right: 30px;
+    float: left;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.nav li .cont {
+    font-size: 50px;
+    line-height: 70px;
+    text-align: center;
+    color: #bdbdbd;
+}
+
+.nav li .point {
+    position: absolute;
+    margin-top: 3px;
+    margin-bottom: 24px;
+    margin-left: 50%;
+    left: -8px;
+    display: none;
+}
+
+.nav li.cur .cont{
+    color: #FFFFFF;
+}
+
+.nav li.cur .point{
+    display: block;
+}
+
+/*頁籤欄結束*/
+.con {
+    display: none;
+    margin-top: 242px;
+    overflow: hidden;
+}
+
+/*景點列表開始*/
+.viewlist {
+    width: 900px;
+    margin-left: 56px;
+    margin-bottom: 32px;
+}
+
+.viewlist .view {
+    float: left;
+    width: 400px;
+    height: 508px;
+    margin-right: 48px;
+    margin-bottom: 48px;
+    position: relative;
+}
+
+.view img {
+    width: 400px;
+    height: 400px;
+}
+
+.viewlist .view .cover {
+    position: absolute;
+    width: 100%;
+    height: 132px;
+    background-color: rgba(0, 0, 0, 0.2);
+    bottom: 108px;
+    left: 0;
+}
+
+.viewlist .view .title {
+    width: 400px;
+    font-size: 46px;
+    line-height: 1.09;
+    letter-spacing: 1.2px;
+    text-align: left;
+    color: #ffffff;
+    position: absolute;
+    top: 285px;
+    left: 10px;
+}
+
+.viewlist .view .subtitle {
+    width: 500px;
+    overflow: hidden;
+    font-size: 34px;
+    line-height: 48px;
+    text-align: left;
+    color: #ffffff;
+    position: absolute;
+    bottom: 110px;
+    left: 8px;
+}
+
+.viewlist .view .speaker {
+    font-size: 36px;
+    line-height: 45px;
+    margin-top: 14px;
+    color: #000000;
+}
+
+.viewlist .view .time {
+    font-size: 32px;
+    line-height: 45px;
+    font-weight: 300;
+    color: #363636;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

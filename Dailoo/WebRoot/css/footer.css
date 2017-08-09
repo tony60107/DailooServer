@@ -1,0 +1,74 @@
+/*贊助開始*/
+.w {
+    width: 100%;
+}
+.sup {
+    margin-left: 50px;
+}
+
+.sup .title {
+    font-size: 36px;
+    line-height: 36px;
+    font-weight: 700;
+}
+
+.sup .companys {
+    margin-top: 52px;
+}
+
+.sup .companys img {
+    margin-right: 100px;
+}
+
+/*贊助結束*/
+
+/*帶路介紹開始*/
+.intro {
+    background-color: #595959;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 302px;
+
+}
+
+.intro .dailoo-logo {
+    width: 376px;
+    margin: 0 auto;
+    margin-top: 34px;
+}
+
+.link a{
+    margin: 0 auto;
+    margin-left: 300px;
+    margin-top: 46px;
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+    color: #ffffff;
+    display: block;
+}
+
+.link .fanpage, .link .offweb {
+    width: 160px;
+    float: left;
+}
+
+.link .fanpage {
+    margin-right: 66px;
+}
+
+.link .desc {
+    margin-top: 15px;
+}
+/*帶路介紹結束*/
+
+.copyright {
+    margin-top: 20px;
+    margin-bottom: 47px;
+    font-size: 38px;
+    line-height: 53px;
+    letter-spacing: 12px;
+    color: #ffffff;
+    text-align: center;
+}

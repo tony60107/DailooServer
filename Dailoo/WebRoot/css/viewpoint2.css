@@ -1,0 +1,529 @@
+@charset "UTF-8";
+
+body {
+}
+
+.header {
+    height: 120px;
+    background-color: #ffbf0f;
+}
+
+.header .backward {
+    position: relative;
+}
+
+.backward img {
+    position: absolute;
+    height: 90px;
+    top: 2px;
+    left: 22px;
+    display: inline-block;
+}
+
+.backward .title {
+    position: absolute;
+    font-size: 50px;
+    color: #E5E5E5;
+    width: 100px;
+    top: 16px;
+    left: 68px;
+}
+
+.header-l .descrip {
+    font-size: 50px;
+    position: absolute;
+    top: 52px;
+    left: 200px;
+}
+
+.header-r {
+    width: 210px;
+    height: 100%;
+}
+
+.header-r .searinp {
+    margin-top: 26px;
+    width: 370px;
+    height: 64px;
+    display: inline-block;
+    border-bottom: 4px solid #666;
+    background-color: #ffbf0f;
+    font-size: 34px;
+    line-height: 34px;
+    display: none;
+}
+
+.header-r .search {
+    background: url("../images/search.png") no-repeat top left;
+    width: 64px;
+    height: 64px;
+    display: inline-block;
+}
+
+.header-r .more {
+    background: url("../images/more.png") no-repeat top left;
+    width: 64px;
+    height: 64px;
+    margin-top: 26px;
+    margin-left: 34px;
+    display: inline-block;
+}
+
+.main {
+    margin-top: 20px;
+    position: relative;
+}
+
+.main .cover {
+    font-size: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+/*聲音撥放區開始*/
+/*拖動條開始*/
+.scroll {
+    width: 800px;
+    height: 20px;
+    background-color: #ccc;
+    margin: 100px;
+    position: relative;
+
+}
+
+.bar {
+    width: 20px;
+    height: 42px;
+    background-color: #369;
+    position: absolute;
+    top: -9px;
+    left: 0;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.tag {
+    width: 10px;
+    height: 20px;
+    background-color: #ffe631;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.mask {
+    width: 0;
+    height: 100%;
+    background-color: #369;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.demo {
+    font-size: 50px;
+}
+
+/*控制按鈕開始*/
+.controls {
+    width: 980px;
+}
+
+.controls .next, .controls .pre {
+    position: relative;
+    display: inline-block;
+    margin-top: 68px;
+}
+
+.controls .playpause {
+    position: relative;
+    margin-left: 120px;
+    display: inline-block;
+}
+
+.controls .pre {
+    margin-left: 110px;
+}
+
+.controls .next {
+    margin-right: 113px;
+}
+
+.controls .pre .pretxt, .controls .next .nexttxt {
+    position: absolute;
+    font-size: 32px;
+    display: block;
+    width: 160px;
+    line-height: 32px;
+    bottom: -41px;
+    left: -18px;
+}
+
+.controls .playpause .pausetxt {
+    position: absolute;
+    font-size: 32px;
+    display: block;
+    width: 180px;
+    line-height: 32px;
+    bottom: -48px;
+    left: 95px;
+}
+
+.controls .pre .prebtn {
+    width: 128px;
+    height: 128px;
+    background: url("../images/preTag.png") no-repeat top left;
+}
+
+.controls .next .nextbtn {
+    width: 128px;
+    height: 128px;
+    background: url("../images/nextTag.png") no-repeat top left;
+}
+
+.controls .playpause .pausebtn {
+    width: 256px;
+    height: 256px;
+    background: url("../images/play.png") no-repeat top left;
+}
+
+/*控制按鈕結束*/
+
+/*圖片展示欄開始*/
+.imgManager {
+    margin-top: 100px;;
+    position: relative;
+}
+
+.imgSlider {
+    width: 830px;
+    height: 325px;
+    margin-left: 86px;;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.imgSlider ul {
+    width: 10000px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    position: absolute;
+    left: 0;
+}
+
+.imgSlider li {
+    margin-right: 30px;
+    float: left;
+}
+
+.imgSlider li img {
+    border: 1px solid #666;
+    width: 250px;
+    height: 300px;
+}
+
+.imgManager .prev,
+.imgManager .next {
+    font: 400 60px/74px "微软雅黑";
+    position: absolute;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.imgManager .prev {
+    top: 118px;
+    left: 18px;
+}
+
+.imgManager .next {
+    top: 118px;
+    right: 16px;
+}
+
+/*圖片展示欄結束*/
+
+/*紀錄區塊開始*/
+.record {
+    width: 900px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.record .cont {
+    font-size: 34px;
+    line-height: 34px;
+    position: absolute;
+    bottom: -37px;
+    left: 31px;
+    width: 80px;
+}
+
+.record img {
+    width: 135px;
+    height: 135px;
+}
+
+.record .listen, .record .heart, .record .like, .record .share {
+    width: 100px;
+    height: 150px;
+    margin-right: 152px;
+    position: relative;
+}
+
+.record .listen {
+    margin-left: 125px;
+}
+
+/*紀錄區塊結束*/
+
+/*導覽簡介開始*/
+.summary {
+    position: relative;
+    width: 800px;
+    margin: 16px auto;
+    padding: 14px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.summary .cover {
+    font-size: 40px;
+    font-weight: 800;
+    text-align: left;
+    line-height: 48px;
+}
+
+.summary .cont {
+    margin-top: 10px;
+    font-size: 38px;
+    line-height: 50px;
+    text-indent: 2em;
+}
+
+.summary .cont button {
+    position: absolute;
+    font-size: 36px;
+    line-height: 47px;
+    right: 16px;
+    top: 176px;
+    border-bottom: 3px solid #286bcc;
+    background-color: #fff;
+    color: #286bcc;
+    padding-right: 15px;
+}
+
+/*導覽簡介結束*/
+
+/*導覽員開始*/
+.author {
+    margin-left: 87px;
+    margin-right: 50px;
+    margin-top: 48px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.author .ytplayer {
+    margin-right: 25px;
+}
+
+.author .playbtn {
+    position: absolute;
+    top: 155px;
+    left: 334px;
+}
+
+.author .playbtn img {
+    width: 75px;
+    height: 75px;
+    padding: 50px;
+}
+
+.author .authorexp .cover {
+    font-size: 50px;
+    line-height: 52px;
+    font-weight: 800;
+    text-align: left;
+}
+
+.author .authorexp {
+    font-size: 38px;
+    line-height: 76px;
+    color: #333;
+    margin-top: 15px;
+}
+
+.author .authordesc {
+    width: 845px;
+    font-size: 32px;
+    line-height: 50px;
+    margin-top: 30px;
+    font-weight: 700;
+}
+
+.author .authorcont {
+    width: 900px;
+    font-size: 32px;
+    line-height: 50px;
+    margin-top: 30px;
+}
+
+.author .authorcont a {
+    color: #286bcc;
+}
+
+/*導覽員結束*/
+
+/*意見回饋開始*/
+.option {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.option .cover {
+    font-size: 38px;
+    text-align: left;
+}
+
+.option input {
+    width: 800px;
+    height: 50px;
+    margin-top: 10px;
+    border-bottom: 3px solid #666;
+    font-size: 32px;
+}
+
+.option button {
+    font-size: 32px;
+    background-color: #FFF;
+    margin-top: 10px;
+    border-bottom: 2px solid #666;
+}
+
+/*意見回饋結束*/
+
+/*分享功能開始*/
+.sharemask {
+    position: fixed;
+    width: 100%;
+    height: 150%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+    display: none;
+}
+
+.sharebox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 560px;
+    height: 250px;
+    z-index: 1000;
+    margin: -125px 0 0 -280px;
+    display: none;
+}
+
+ul.share-buttons {
+    list-style: none;
+    padding: 0;
+}
+
+ul.share-buttons li {
+    display: inline;
+    margin-right: 9px;
+}
+
+ul.share-buttons .sr-only {
+    position: absolute;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+ul.share-buttons img {
+    width: 100px;
+}
+
+/*分享功能結束*/
+
+/*.audiolist {
+    margin: 0 auto;
+    width: 810px;
+    height: 730px;
+    position: relative;
+    overflow: hidden;
+}
+.audiolist .title {
+    font-size: 36px;
+    text-align: left;
+}
+
+.audiolist .audio {
+    width: 800px;
+    border-radius: 18px;
+    border: 2px solid #999;
+    font-size: 36px;
+    line-height: 36px;
+    height: 55px;
+    position: relative;
+    margin-bottom: 11px;
+}
+
+.audiolist .audio .play {
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    top: 5px;
+    left: 20px;
+}
+
+.audiolist .audio .cont {
+    position: absolute;
+    top: 11px;
+    left: 90px;
+}
+
+.audiolist .audio .time {
+    position: absolute;
+    top: 11px;
+    right: 34px;
+}
+
+.audiolist .line {
+    width: 800px;
+    height: 3px;
+    border-bottom: 3px solid #666;
+    margin: 60px auto;
+}
+
+.audiolist .readall {
+    position: absolute;
+    top: 413px;
+    right: 3px;
+    font-size: 32px;
+    line-height: 34px;
+    border-bottom: 2px solid #666;
+}
+
+.audiolist .info {
+    font-size: 32px;
+    line-height: 36px;
+    margin-top: -6px;
+    margin-bottom: 18px;
+}*/
+
+
+
+
+
