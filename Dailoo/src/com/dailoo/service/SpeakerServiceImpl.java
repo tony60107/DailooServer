@@ -21,4 +21,9 @@ public class SpeakerServiceImpl implements SpeakerService{
 		return dao.getSpeakerByUnAndPsw(username, password);
 	}
 
+	@Override
+	public void updateSpeakerInfo(Speaker speaker) {
+		dao.updateSpeakerInfo(speaker);
+	}
+
 }

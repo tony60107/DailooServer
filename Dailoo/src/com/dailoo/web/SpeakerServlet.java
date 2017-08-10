@@ -1,6 +1,7 @@
 package com.dailoo.web;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,47 +14,64 @@ import org.apache.commons.beanutils.BeanUtils;
 import com.dailoo.domain.Speaker;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.service.SpeakerService;
+import com.dailoo.util.PicUploadUtils;
+import com.google.gson.Gson;
+
+
 
 public class SpeakerServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		response.setHeader("Access-Control-Allow-Origin","http://localhost:12057");
-		
+
+		Gson gson = new Gson();
 		SpeakerService service = BasicFactory.getFactory().getService(SpeakerService.class);
 		Speaker speaker = new Speaker();
 		
-		//取得客戶端要求
+		// 取得客戶端要求
 		String method = request.getParameter("method");
-		
-		//如果是註冊講者
-		if("registSpeaker".equals(method)){
-			try {
+		try {
+			// 如果是註冊講者
+			if ("registSpeaker".equals(method)) {
+
 				BeanUtils.populate(speaker, request.getParameterMap());
 				service.addSpeaker(speaker);
-			} catch (Exception e) {
-				e.printStackTrace();
+
+			} 
+			// 如果是取得講者資料
+			else if ("getSpeakerInfo".equals(method)) {
+				HttpSession session = request.getSession();
+				speaker = (Speaker) request.getSession()
+						.getAttribute("speaker");
+				if (speaker == null) {
+					response.getWriter().write("您尚未登入");
+					throw new RuntimeException("該講者尚未登入");
+				}else {
+					speaker = service.getSpeakerByUnAndPsw(speaker.getUsername(),speaker.getPassword());
+					response.getWriter().write(gson.toJson(speaker));
+				}
+			}	
+			//如果是更新講者資訊 
+			else if ("updateSpeakerInfo".equals(method)) {
+				Map<String, String> paramMap = PicUploadUtils.getParamMap(request, response, this);
+				speaker = (Speaker) request.getSession().getAttribute("speaker");
+				if(speaker != null){
+					speaker = service.getSpeakerByUnAndPsw(speaker.getUsername(), speaker.getPassword());
+					BeanUtils.populate(speaker, paramMap);
+					service.updateSpeakerInfo(speaker);
+				} else {
+					response.getWriter().write("您尚未登入");
+					throw new RuntimeException("該講者尚未登入");
+				} 
 			}
-		}else if("getSpeakerInfo".equals(method)){
-			HttpSession session = request.getSession();
-			speaker = (Speaker) request.getSession().getAttribute("speaker");
-			if(speaker == null){
-				response.getWriter().write("您尚未登入");
-				return;
-			}
-			speaker = service.getSpeakerByUnAndPsw(speaker.getUsername(), speaker.getPassword());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		
-		
-		
-		response.getWriter().write("11111111");
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
-	}	
+	}
 
 }

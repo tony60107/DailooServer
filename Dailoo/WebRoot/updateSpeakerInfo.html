@@ -24,53 +24,60 @@
 <body>
 <div class="w">
     <div class="title">更新個人資訊</div>
-    <form class="main-form" role="form" action="http://localhost:8080/Dailoo/updateSpeakerInfoServlet" method="post">
+    <form class="main-form" role="form" action="http://localhost:8080/Dailoo/SpeakerServlet?method=updateSpeakerInfo"
+          method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label>姓名</label>
-            <input type="text" name="name" class="form-control" placeholder="輸入姓名" value="劉威廷">
+            <input id="name" type="text" name="name" class="form-control" placeholder="輸入姓名" value="">
         </div>
         <div class="form-group">
             <label>手機號碼</label>
-            <input type="text" name="phoneNumber" class="form-control" placeholder="輸入手機號碼" value="0908466666">
+            <input id="phoneNumber" type="text" name="phoneNumber" class="form-control" placeholder="輸入手機號碼" value="">
         </div>
         <div class="form-group">
             <label>家電號碼</label>
-            <input type="text" name="homeNumber" class="form-control" placeholder="輸入家電號碼" value="02-89236001">
+            <input id="homeNumber" type="text" name="homeNumber" class="form-control" placeholder="輸入家電號碼" value="">
         </div>
         <div class="form-group">
             <label>個人網址</label>
-            <input type="text" name="speakerUrl" class="form-control" placeholder="輸入個人網址"
-                   value="https://www.facebook.com/profile.php?id=100000102320632">
+            <input id="speakerUrl" type="text" name="speakerUrl" class="form-control" placeholder="輸入個人網址"
+                   value="">
         </div>
         <div class="form-group">
             <label>個人簡歷</label>
-            <input type="text" name="resume" class="form-control" placeholder="輸入個人簡歷" value="負責人、廠長">
+            <input id="resume" type="text" name="resume" class="form-control" placeholder="輸入個人簡歷" value="">
         </div>
         <div class="form-group">
             <label>自我介紹</label>
-            <textarea rows="4" cols="50" name="intro" class="form-control" placeholder="輸入自我介紹">各位朋友大家好！我是台東人文生態導遊韋立琦，大家稱呼我韋導就可以了，我從事導遊工作已經有10年的時間，專長是生態導覽、文化解說，談天說地。如果大家想對台東有更深入的瞭解，可以和我聯絡。來台東旅遊除了要看到很多美麗的景點之外，更重要的是要有深度、知性、感性的體驗！
+            <textarea id="intro" rows="4" cols="50" name="intro" class="form-control" placeholder="輸入自我介紹">
             </textarea>
         </div>
         <div class="form-group">
             <label>Youtube網址</label>
-            <input type="text" name="youtubeUrl" class="form-control" placeholder="輸入Youtube網址"
-                   value="https://www.youtube.com/embed/1zZ-SHC_Pao">
+            <input id="youtubeUrl" type="text" name="youtubeUrl" class="form-control" placeholder="輸入Youtube網址"
+                   value="">
         </div>
+        <input type="file" name="file1"/>
         <button type="submit" class="btn btn-default">送出</button>
     </form>
 </div>
 </body>
 </html>
+<script type="text/javascript" src="js/base.js"></script>
 <script>
     $.ajax({
         url: "http://localhost:8080/Dailoo/SpeakerServlet", context: document.body,
-        data:{"method":"getSpeakerInfo"},
+        data: {"method": "getSpeakerInfo"},
         success: function (data) {
-            alert(data);
+            var data = eval("(" + data + ")");
+            $$("name").value = data.name;
+            $$("phoneNumber").value = data.phoneNumber;
+            $$("homeNumber").value = data.homeNumber;
+            $$("speakerUrl").value = data.speakerUrl;
+            $$("resume").value = data.resume;
+            $$("intro").innerHTML = data.intro;
+            $$("youtubeUrl").value = data.youtubeUrl;
         },
-        error: function(a, b, c){
-            alert(b);
-        }
     });
 
 </script>

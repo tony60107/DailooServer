@@ -1,0 +1,32 @@
+﻿serverData = {
+"name": "",
+            "subtitle": "",
+            "location": "",
+            "intro": "",
+            "speaker": {
+                "name": "",
+                "photo": "",
+                "resume": ["", "", ""],
+                "intro": "",
+                "videoUrl": "",
+                "homeNumber": "",
+                "phoneNumber": "",
+                "FBUrl": ""
+            },
+            "audio": {
+                "src": "",
+                "tags": [
+                    {
+                        "time": 0,
+                        "photoSrc": ""
+                    }, 
+                ],
+            },
+            "moreAudio": ["", "", ""],
+            "neighView": [
+                {
+                    title: "",
+                    subtitle: ""
+                },
+            ],
+			};

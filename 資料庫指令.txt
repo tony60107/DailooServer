@@ -1,0 +1,55 @@
+create database dailoo;
+
+create user dailoo identified by 'dailoo';
+
+CREATE TABLE dailoo.viewpoints (
+  id varchar(255) NOT NULL DEFAULT '',
+  name varchar(255) DEFAULT NULL,
+  subtitle varchar(255) DEFAULT NULL,
+  theme varchar(255) DEFAULT NULL,
+  country varchar(255) DEFAULT NULL,
+  city varchar(255) DEFAULT NULL,
+  town varchar(255) DEFAULT NULL,
+  village varchar(255) DEFAULT NULL,
+  address varchar(255) DEFAULT NULL,
+  longitude double DEFAULT NULL,
+  latitude double DEFAULT NULL,
+  navUrl varchar(255) DEFAULT NULL,
+  intro varchar(1000) DEFAULT NULL,
+  speakerId varchar(255) DEFAULT NULL,
+  updatetime timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+)
+
+
+
+create table audios(
+	id varchar(100) primary key,
+	src varchar(200),
+	viewpoint_id varchar(100),
+	foreign key(viewpoint_id) references viewpoints(id)
+);
+
+
+create table tags(
+	id varchar(100) primary key,
+	time int,
+	photo_src varchar(200),
+	audio_id varchar(100),
+	foreign key(audio_id) references audios(id)
+);
+
+CREATE TABLE dailoo.speakers (
+  id varchar(255) NOT NULL DEFAULT '',
+  username varchar(255) DEFAULT NULL,
+  password varchar(255) DEFAULT NULL,
+  name varchar(255) DEFAULT NULL,
+  photo varchar(255) DEFAULT NULL,
+  phoneNumber varchar(255) DEFAULT NULL,
+  homeNumber varchar(255) DEFAULT NULL,
+  speakerUrl varchar(255) DEFAULT NULL,
+  resume varchar(255) DEFAULT NULL,
+  intro varchar(1000) DEFAULT NULL,
+  youtubeUrl varchar(255) DEFAULT NULL,
+  PRIMARY KEY (id)
+)

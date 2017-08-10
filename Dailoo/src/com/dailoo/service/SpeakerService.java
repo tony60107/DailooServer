@@ -18,4 +18,10 @@ public interface SpeakerService extends Service{
 	 */
 	Speaker getSpeakerByUnAndPsw(String username, String password);
 
+	/**
+	 * 更新講者資訊
+	 * @param speaker 講者Bean
+	 */
+	void updateSpeakerInfo(Speaker speaker);
+
 }
