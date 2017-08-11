@@ -24,5 +24,11 @@ public interface SpeakerDao extends Dao{
 	 */
 	void updateSpeakerInfo(Speaker speaker);
 
+	/**
+	 * 根據大頭貼地址找出講者
+	 * @param photoUrl	在伺服器中的圖片地址
+	 */
+	Speaker findSpeakerByPhotoUrl(String photoUrl);
+
 	
 }

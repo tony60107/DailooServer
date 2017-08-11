@@ -58,11 +58,12 @@ public class SpeakerServlet extends HttpServlet {
 				if(speaker != null){
 					speaker = service.getSpeakerByUnAndPsw(speaker.getUsername(), speaker.getPassword());
 					BeanUtils.populate(speaker, paramMap);
-					service.updateSpeakerInfo(speaker);
+					service.updateSpeakerInfo(speaker, paramMap.get("imgurls"));
 				} else {
 					response.getWriter().write("您尚未登入");
 					throw new RuntimeException("該講者尚未登入");
-				} 
+				}
+				response.sendRedirect("/Dailoo/updateSpeakerInfo.html");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

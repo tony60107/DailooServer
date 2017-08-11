@@ -1,5 +1,6 @@
 package com.dailoo.service;
 
+import java.io.File;
 import java.util.UUID;
 
 import com.dailoo.dao.SpeakerDao;
@@ -22,7 +23,20 @@ public class SpeakerServiceImpl implements SpeakerService{
 	}
 
 	@Override
-	public void updateSpeakerInfo(Speaker speaker) {
+	public void updateSpeakerInfo(Speaker speaker, String photoUrl) {
+		
+		//如果要更換大頭照,刪除舊照片
+		if(photoUrl != null && !"".equals(photoUrl)){ 
+			String fileURL = SpeakerService.class.getClassLoader().getResource("../../").getPath(); 
+			//舊照片檔案
+			File file = new File(fileURL.substring(0, fileURL.length() - 1) + speaker.getPhotoUrl()); 
+			if(file.exists()){
+				file.delete(); 
+			}
+			speaker.setPhotoUrl(photoUrl);
+		}
+		
+		//Speaker設置新的大頭照地址
 		dao.updateSpeakerInfo(speaker);
 	}
 

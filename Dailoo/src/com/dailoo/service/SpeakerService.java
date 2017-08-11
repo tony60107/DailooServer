@@ -21,7 +21,8 @@ public interface SpeakerService extends Service{
 	/**
 	 * 更新講者資訊
 	 * @param speaker 講者Bean
+	 * @param imgurls 講者大頭貼Url地址
 	 */
-	void updateSpeakerInfo(Speaker speaker);
+	void updateSpeakerInfo(Speaker speaker, String imgurls);
 
 }

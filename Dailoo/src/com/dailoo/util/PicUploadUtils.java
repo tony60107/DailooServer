@@ -57,6 +57,7 @@ public class PicUploadUtils {
 				} else {
 					// 文件上传项
 					String realname = item.getName();
+					if("".equals(realname) || realname == null) break;
 					String uuidname = UUID.randomUUID().toString() + "_"
 							+ realname;
 
@@ -69,7 +70,7 @@ public class PicUploadUtils {
 						imgurl += "/" + c;
 					}
 					imgurl += "/" + uuidname;
-					paramMap.put("imgurl", imgurl);
+					paramMap.put("imgurls", imgurl);
 
 					File uploadFile = new File(upload);
 					if (!uploadFile.exists())

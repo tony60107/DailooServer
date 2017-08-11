@@ -53,4 +53,18 @@ public class SpeakerDaoImpl implements SpeakerDao{
 		}
 	}
 
+	@Override
+	public Speaker findSpeakerByPhotoUrl(String photoUrl) {
+		String sql = "select * from speakers where photoUrl = ?";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanHandler<Speaker>(Speaker.class), photoUrl);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		
+	}
+
 }
