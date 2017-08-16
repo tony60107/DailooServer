@@ -36,8 +36,8 @@
       <file leaf-file-name="addviewpoint.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/addviewpoint.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.3145434">
-              <caret line="18" column="113" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="113" />
+            <state vertical-scroll-proportion="0.7271702">
+              <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -813,12 +813,12 @@
       <workItem from="1502259929341" duration="4477000" />
       <workItem from="1502348146949" duration="4435000" />
       <workItem from="1502437267755" duration="2173000" />
-      <workItem from="1502869629136" duration="357000" />
+      <workItem from="1502869629136" duration="1938000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="532382000" />
+    <option name="totallyTimeSpent" value="533963000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1194,8 +1194,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/addviewpoint.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.3145434">
-          <caret line="18" column="113" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="113" />
+        <state vertical-scroll-proportion="0.7271702">
+          <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
           <folding />
         </state>
       </provider>

@@ -13,23 +13,14 @@ public class Viewpoint {
 	private String town;		//鄉鎮
 	private String village;		//村里
 	private String address;		//詳細地址
-	private double longtitude;	//經度
+	private double longitude;	//經度
 	private double latitude;	//緯度
 	private String navUrl;		//Google導航網址
 	private String intro;		//景點介紹
+	private String speakerId;   //講者ID
 	private Timestamp updateTime;	//上傳時間
 	
 	
-	
-	@Override
-	public String toString() {
-		return "Viewpoint [id=" + id + ", name=" + name + ", subtitle="
-				+ subtitle + ", country=" + country + ", city=" + city
-				+ ", town=" + town + ", village=" + village + ", address="
-				+ address + ", longtitude=" + longtitude + ", latitude="
-				+ latitude + ", theme=" + theme + ", navUrl=" + navUrl
-				+ ", intro=" + intro + ", updateTime=" + updateTime + "]";
-	}
 	public String getId() {
 		return id;
 	}
@@ -47,6 +38,12 @@ public class Viewpoint {
 	}
 	public void setSubtitle(String subtitle) {
 		this.subtitle = subtitle;
+	}
+	public String getTheme() {
+		return theme;
+	}
+	public void setTheme(String theme) {
+		this.theme = theme;
 	}
 	public String getCountry() {
 		return country;
@@ -78,23 +75,17 @@ public class Viewpoint {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public double getLongtitude() {
-		return longtitude;
+	public double getLongitude() {
+		return longitude;
 	}
-	public void setLongtitude(double longtitude) {
-		this.longtitude = longtitude;
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
 	public double getLatitude() {
 		return latitude;
 	}
 	public void setLatitude(double latitude) {
 		this.latitude = latitude;
-	}
-	public String getTheme() {
-		return theme;
-	}
-	public void setTheme(String theme) {
-		this.theme = theme;
 	}
 	public String getNavUrl() {
 		return navUrl;
@@ -114,7 +105,21 @@ public class Viewpoint {
 	public void setUpdateTime(Timestamp updateTime) {
 		this.updateTime = updateTime;
 	}
-	
-	
-	
+	public String getSpeakerId() {
+		return speakerId;
+	}
+	public void setSpeakerId(String speakerId) {
+		this.speakerId = speakerId;
+	}
+	@Override
+	public String toString() {
+		return "Viewpoint [id=" + id + ", name=" + name + ", subtitle="
+				+ subtitle + ", theme=" + theme + ", country=" + country
+				+ ", city=" + city + ", town=" + town + ", village=" + village
+				+ ", address=" + address + ", longitude=" + longitude
+				+ ", latitude=" + latitude + ", navUrl=" + navUrl + ", intro="
+				+ intro + ", speakerId=" + speakerId + ", updateTime="
+				+ updateTime + "]";
+	}
+
 }

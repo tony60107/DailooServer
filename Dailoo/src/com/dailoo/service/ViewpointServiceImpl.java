@@ -14,16 +14,35 @@ public class ViewpointServiceImpl implements ViewpointService{
 	@Override
 	public void addViewpoint(Viewpoint viewpoint) {
 		viewpoint.setId(UUID.randomUUID().toString());
+		
 		//根據地址取得經緯度
 		double [] address = GoogleMapUtils.getAdressXY(viewpoint.getAddress());
 		viewpoint.setLatitude(address[0]);
-		viewpoint.setLongtitude(address[1]);
+		viewpoint.setLongitude(address[1]);
+		
 		dao.addViewpoint(viewpoint);
 	}
 
 	@Override
 	public Viewpoint findViewpointByNameAndSt(String name, String subtitle) {
 		return dao.findViewpointByNameAndSt(name, subtitle);
+	}
+
+	@Override
+	public Viewpoint findViewpointById(String id) {
+		return dao.findViewpointById(id);
+	}
+
+	@Override
+	public void updateViewpoint(Viewpoint viewpoint) {
+		
+		//更新景點經緯度
+		double [] address = GoogleMapUtils.getAdressXY(viewpoint.getAddress());
+		viewpoint.setLatitude(address[0]);
+		viewpoint.setLongitude(address[1]);
+		
+		dao.updateViewpoint(viewpoint);
+		
 	}
 
 }

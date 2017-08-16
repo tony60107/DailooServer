@@ -16,7 +16,7 @@
 <body>
 <div class="w">
     <div class="title">新增景點</div>
-    <form class="main-form" role="form" action="http://localhost:8080/Dailoo/ViewpointServlet?method=addViewpoint" method="post">
+    <form class="main-form" role="form" action="/ViewpointServlet?method=addViewpoint" method="post">
         <div class="area form-group clearfix">
             <select name="country" class="fl form-control">
                 <option  value="台灣">台灣</option>
@@ -38,6 +38,10 @@
             </select>
         </div>
         <div class="form-group">
+            <label>景點ID</label>
+            <input type="text" name="id" class="form-control" placeholder="輸入景點ID" value="e1c1555b-bf97-4a28-ab00-8419a5cbd162">
+        </div>
+        <div class="form-group">
             <label>景點名稱</label>
             <input type="text" name="name" class="form-control" placeholder="輸入景點名稱" value="鹿野高台">
         </div>
@@ -49,11 +53,6 @@
             <label>景點地址</label>
             <input type="text" name="address" class="form-control" placeholder="輸入景點地址" value="臺東縣鹿野鄉永安村高台路42巷">
         </div>
-        <!--<div class="form-group">-->
-            <!--<label>景點經緯度</label>-->
-            <!--<input type="text" name="longtitude" class="form-control" placeholder="輸入景點經度" value="121.5">-->
-            <!--<input type="text" name="latitude" class="form-control" placeholder="輸入景點緯度" value="23.5">-->
-        <!--</div>-->
         <div class="form-group">
             <label>景點導航網址</label>
             <input type="text" name="navUrl" class="form-control" placeholder="輸入景點導航網址" value="https://goo.gl/maps/Fg2KJB9VUmr">
@@ -62,7 +61,8 @@
             <label>景點介紹</label>
             <input type="text" name="intro" class="form-control" placeholder="輸入景點介紹" value="當我們站在鹿野高台向東邊望去，就可以看見一座山形美麗的山，位在海岸山脈當中，同時也是海岸山脈南段的最高峰，高度1,190公尺，這座山不是一座普通的山，它是守護台東千百年的一座聖山，叫做都蘭山。">
         </div>
-        <button type="submit" class="btn btn-default">送出</button>
+        <input type="button" class="btn btn-default" value="新增" onClick="this.form.action='/ViewpointServlet?method=addViewpoint';this.form.submit();">
+        <input type="button" class="btn btn-default" value="更新" onClick="this.form.action='/ViewpointServlet?method=updateViewpoint';this.form.submit();">
     </form>
 </div>
 </body>

@@ -18,4 +18,17 @@ public interface ViewpointDao extends Dao{
 	 */
 	Viewpoint findViewpointByNameAndSt(String name, String subtitle);
 
+	/**
+	 * 根據景點ID查找景點
+	 * @param id 景點ID
+	 * @return 景點Bean
+	 */
+	Viewpoint findViewpointById(String id);
+
+	/**
+	 * 更新景點資訊
+	 * @param viewpoint 景點資訊Bean
+	 */
+	void updateViewpoint(Viewpoint viewpoint);
+
 }

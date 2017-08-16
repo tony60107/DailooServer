@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import com.dailoo.domain.Speaker;
 import com.dailoo.domain.Viewpoint;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.service.ViewpointService;
@@ -39,8 +40,20 @@ public class ViewpointServlet extends HttpServlet {
 				}
 				response.sendRedirect("/addviewpoint.html");
 			}
-			else if("updateViewpointInfo".equals(method)){
-				
+			//如果是更新景點
+			else if("updateViewpoint".equals(method)){
+				BeanUtils.populate(vp, request.getParameterMap());
+				//取得目前登入者的資訊
+				Speaker speaker = (Speaker) request.getSession().getAttribute("speaker");
+				//根據景點ID查找該景點
+				Viewpoint temp = service.findViewpointById(vp.getId());
+				//如果要求更改景點資訊的不是該景點擁有者
+				if(!speaker.getId().equals(temp.getSpeakerId())){
+					throw new RuntimeException("你沒有權限更改該景點資訊");
+				} else {
+					//更新景點資訊
+					service.updateViewpoint(vp);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
