@@ -14,7 +14,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import com.dailoo.domain.Speaker;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.service.SpeakerService;
-import com.dailoo.util.PicUploadUtils;
+import com.dailoo.util.FileUploadUtils;
 import com.google.gson.Gson;
 
 
@@ -51,7 +51,7 @@ public class SpeakerServlet extends HttpServlet {
 			}	
 			//如果是更新講者資訊 
 			else if ("updateSpeakerInfo".equals(method)) {
-				Map<String, String> paramMap = PicUploadUtils.getParamMap(request, response, this);
+				Map<String, String> paramMap = FileUploadUtils.getParamMap(request, response, this);
 				speaker = (Speaker) request.getSession().getAttribute("speaker");
 				if(speaker != null){
 					speaker = service.getSpeakerByUnAndPsw(speaker.getUsername(), speaker.getPassword());

@@ -17,7 +17,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-public class PicUploadUtils {
+public class FileUploadUtils {
 
 	/**
 	 * 重新整理 multipart/form-data 類型表單的ParamMap
@@ -40,8 +40,8 @@ public class PicUploadUtils {
 
 			ServletFileUpload fileUpload = new ServletFileUpload(factory);
 			fileUpload.setHeaderEncoding(encode);
-			fileUpload.setFileSizeMax(1024 * 1024 * 1);
-			fileUpload.setSizeMax(1024 * 1024 * 10);
+			fileUpload.setFileSizeMax(10 * 1024 * 1024 * 1); //單個檔案大小10M
+			fileUpload.setSizeMax(10 * 1024 * 1024);
 
 			if (!fileUpload.isMultipartContent(request)) {
 				throw new RuntimeException("请使用正确的表单进行上传!");
@@ -64,13 +64,20 @@ public class PicUploadUtils {
 					String hash = Integer.toHexString(uuidname.hashCode());
 					String upload = servlet.getServletContext().getRealPath(
 							"WEB-INF/upload");
-					String imgurl = "/WEB-INF/upload";
+					String fileurl = "/WEB-INF/upload";
 					for (char c : hash.toCharArray()) {
 						upload += "/" + c;
-						imgurl += "/" + c;
+						fileurl += "/" + c;
 					}
-					imgurl += "/" + uuidname;
-					paramMap.put("imgurls", imgurl);
+					fileurl += "/" + uuidname;
+					
+					//取得檔案格式
+					String format = fileurl.substring(fileurl.lastIndexOf(".")+1).toLowerCase();
+					if("acc".equals(format) || "mp3".equals(format)){
+						paramMap.put("audiourls", fileurl);
+					}else{
+						paramMap.put("imgurls", fileurl);
+					}
 
 					File uploadFile = new File(upload);
 					if (!uploadFile.exists())
