@@ -5,6 +5,7 @@ import java.util.UUID;
 import com.dailoo.dao.ViewpointDao;
 import com.dailoo.domain.Viewpoint;
 import com.dailoo.factory.BasicFactory;
+import com.dailoo.util.GoogleMapUtils;
 
 public class ViewpointServiceImpl implements ViewpointService{
 	
@@ -13,7 +14,16 @@ public class ViewpointServiceImpl implements ViewpointService{
 	@Override
 	public void addViewpoint(Viewpoint viewpoint) {
 		viewpoint.setId(UUID.randomUUID().toString());
+		//根據地址取得經緯度
+		double [] address = GoogleMapUtils.getAdressXY(viewpoint.getAddress());
+		viewpoint.setLatitude(address[0]);
+		viewpoint.setLongtitude(address[1]);
 		dao.addViewpoint(viewpoint);
+	}
+
+	@Override
+	public Viewpoint findViewpointByNameAndSt(String name, String subtitle) {
+		return dao.findViewpointByNameAndSt(name, subtitle);
 	}
 
 }

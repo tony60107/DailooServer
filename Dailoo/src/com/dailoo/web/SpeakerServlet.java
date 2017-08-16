@@ -63,7 +63,7 @@ public class SpeakerServlet extends HttpServlet {
 					response.getWriter().write("您尚未登入");
 					throw new RuntimeException("該講者尚未登入");
 				}
-				response.sendRedirect("/Dailoo/updateSpeakerInfo.html");
+				response.sendRedirect("/updateSpeakerInfo.html");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

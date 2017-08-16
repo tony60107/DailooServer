@@ -16,7 +16,7 @@
 <body>
 <div class="w">
     <div class="title">新增景點</div>
-    <form class="main-form" role="form" action="http://localhost:8080/Dailoo/AddViewpointServlet" method="post">
+    <form class="main-form" role="form" action="http://localhost:8080/Dailoo/ViewpointServlet?method=addViewpoint" method="post">
         <div class="area form-group clearfix">
             <select name="country" class="fl form-control">
                 <option  value="台灣">台灣</option>
@@ -49,11 +49,11 @@
             <label>景點地址</label>
             <input type="text" name="address" class="form-control" placeholder="輸入景點地址" value="臺東縣鹿野鄉永安村高台路42巷">
         </div>
-        <div class="form-group">
-            <label>景點經緯度</label>
-            <input type="text" name="longtitude" class="form-control" placeholder="輸入景點經度" value="121.5">
-            <input type="text" name="latitude" class="form-control" placeholder="輸入景點緯度" value="23.5">
-        </div>
+        <!--<div class="form-group">-->
+            <!--<label>景點經緯度</label>-->
+            <!--<input type="text" name="longtitude" class="form-control" placeholder="輸入景點經度" value="121.5">-->
+            <!--<input type="text" name="latitude" class="form-control" placeholder="輸入景點緯度" value="23.5">-->
+        <!--</div>-->
         <div class="form-group">
             <label>景點導航網址</label>
             <input type="text" name="navUrl" class="form-control" placeholder="輸入景點導航網址" value="https://goo.gl/maps/Fg2KJB9VUmr">

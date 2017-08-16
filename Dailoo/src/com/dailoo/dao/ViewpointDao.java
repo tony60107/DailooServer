@@ -10,4 +10,12 @@ public interface ViewpointDao extends Dao{
 	 */
 	void addViewpoint(Viewpoint viewpoint);
 
+	/**
+	 * 根據景點名稱與副標題查找景點
+	 * @param name 景點名稱
+	 * @param subtitle 副標題
+	 * @return 查找到的景點Bean
+	 */
+	Viewpoint findViewpointByNameAndSt(String name, String subtitle);
+
 }

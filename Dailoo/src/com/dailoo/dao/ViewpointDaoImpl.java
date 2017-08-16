@@ -3,7 +3,9 @@ package com.dailoo.dao;
 import java.sql.SQLException;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 
+import com.dailoo.domain.Speaker;
 import com.dailoo.domain.Viewpoint;
 import com.dailoo.util.TransactionManager;
 
@@ -23,6 +25,19 @@ public class ViewpointDaoImpl implements ViewpointDao{
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public Viewpoint findViewpointByNameAndSt(String name, String subtitle) {
+		String sql = "select * from viewpoints where name = ? and subtitle = ?";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanHandler<Viewpoint>(Viewpoint.class), name, subtitle);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 	}
 
