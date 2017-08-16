@@ -13,6 +13,7 @@ public class Speaker {
 	private String resume;		//簡歷
 	private String intro;		//自我介紹
 	private String youtubeUrl;	//youtube嵌入碼網址
+	private String role;		//使用者分類
 	public String getId() {
 		return id;
 	}
@@ -80,13 +81,21 @@ public class Speaker {
 		this.youtubeUrl = youtubeUrl;
 	}
 	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	@Override
 	public String toString() {
 		return "Speaker [id=" + id + ", username=" + username + ", password="
 				+ password + ", name=" + name + ", photoUrl=" + photoUrl
 				+ ", phoneNumber=" + phoneNumber + ", homeNumber=" + homeNumber
 				+ ", speakerUrl=" + speakerUrl + ", resume=" + resume
-				+ ", intro=" + intro + ", youtubeUrl=" + youtubeUrl + "]";
+				+ ", intro=" + intro + ", youtubeUrl=" + youtubeUrl + ", role="
+				+ role + "]";
 	}
+
 	
 }

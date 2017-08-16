@@ -8,20 +8,21 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.dailoo.domain.Speaker;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.service.SpeakerService;
+import com.dailoo.util.MD5Utils;
 
 public class LoginServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		SpeakerService service = BasicFactory.getFactory().getService(SpeakerService.class);
 		//1.获取用户名密码
 		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		String password = MD5Utils.md5(request.getParameter("password"));
 		//2.调用Service中根据用户名密码查找用户的方法
 		Speaker speaker = service.getSpeakerByUnAndPsw(username,password);
 		if(speaker == null){
@@ -56,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 			response.addCookie(autologinC);
 		//}
 		
-		//response.sendRedirect("/Dailoo/updateSpeakerInfo.html");
+		response.sendRedirect("/updateSpeakerInfo.html");
 		
 	}
 

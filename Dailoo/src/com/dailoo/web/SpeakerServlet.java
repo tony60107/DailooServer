@@ -40,9 +40,7 @@ public class SpeakerServlet extends HttpServlet {
 			} 
 			// 如果是取得講者資料
 			else if ("getSpeakerInfo".equals(method)) {
-				HttpSession session = request.getSession();
-				speaker = (Speaker) request.getSession()
-						.getAttribute("speaker");
+				speaker = (Speaker) request.getSession().getAttribute("speaker");
 				if (speaker == null) {
 					response.getWriter().write("您尚未登入");
 					throw new RuntimeException("該講者尚未登入");

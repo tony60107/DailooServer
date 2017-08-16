@@ -47,12 +47,12 @@ public class ViewpointServlet extends HttpServlet {
 				Speaker speaker = (Speaker) request.getSession().getAttribute("speaker");
 				//根據景點ID查找該景點
 				Viewpoint temp = service.findViewpointById(vp.getId());
-				//如果要求更改景點資訊的不是該景點擁有者
-				if(!speaker.getId().equals(temp.getSpeakerId())){
-					throw new RuntimeException("你沒有權限更改該景點資訊");
-				} else {
+				//如果要求更改景點資訊的是該景點擁有者或是管理員
+				if(speaker.getId().equals(temp.getSpeakerId()) || "admin".equals(speaker.getRole())){
 					//更新景點資訊
 					service.updateViewpoint(vp);
+				} else {
+					throw new RuntimeException("你沒有權限更改該景點資訊");
 				}
 			}
 		} catch (Exception e) {

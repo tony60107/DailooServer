@@ -6,6 +6,7 @@ import java.util.UUID;
 import com.dailoo.dao.SpeakerDao;
 import com.dailoo.domain.Speaker;
 import com.dailoo.factory.BasicFactory;
+import com.dailoo.util.MD5Utils;
 
 public class SpeakerServiceImpl implements SpeakerService{
 	
@@ -14,6 +15,8 @@ public class SpeakerServiceImpl implements SpeakerService{
 	@Override
 	public void addSpeaker(Speaker speaker) {
 		speaker.setId(UUID.randomUUID().toString());
+		speaker.setPassword(MD5Utils.md5(speaker.getPassword()));
+		speaker.setRole("user");
 		dao.addSpeaker(speaker);
 	}
 

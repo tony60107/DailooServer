@@ -58,6 +58,11 @@
     <servlet-name>ViewpointServlet</servlet-name>
     <servlet-class>com.dailoo.web.ViewpointServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.dailoo.web.LogoutServlet</servlet-class>
+  </servlet>
+
 
 
   <servlet-mapping>
@@ -75,6 +80,10 @@
   <servlet-mapping>
     <servlet-name>ViewpointServlet</servlet-name>
     <url-pattern>/ViewpointServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
 
 </web-app>
