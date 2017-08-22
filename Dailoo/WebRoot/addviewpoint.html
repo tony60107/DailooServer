@@ -71,3 +71,18 @@
 </div>
 </body>
 </html>
+<script type="text/javascript" src="js/base.js"></script>
+<script>
+    $.ajax({
+        url: "http://localhost:8080/Dailoo/ViewpointServlet", context: document.body,
+        data: {
+            "method": "getViewpointInfo",
+            "viewpointId":"3edfc669-3424-4172-b14b-48ce83c5849c"
+        },
+        success: function (data) {
+            var data = eval("(" + data + ")");
+            console.dir(data);
+        },
+    });
+
+</script>
