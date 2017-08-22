@@ -31,11 +31,4 @@ public interface ViewpointService extends Service{
 	 */
 	void updateViewpoint(Viewpoint viewpoint);
 
-	/**
-	 * 查詢該景點ID所有資訊
-	 * @param viewpointId 景點ID
-	 * @return JSON數據
-	 */
-	String findViewpointByIdToJson(String viewpointId);
-
 }

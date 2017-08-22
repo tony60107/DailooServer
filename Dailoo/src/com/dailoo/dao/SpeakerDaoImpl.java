@@ -67,17 +67,4 @@ public class SpeakerDaoImpl implements SpeakerDao{
 		
 	}
 
-	@Override
-	public Speaker findSpeakerById(String speakerId) {
-		String sql = "select * from speakers where id = ?";
-		
-		try {
-			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			return runner.query(sql, new BeanHandler<Speaker>(Speaker.class), speakerId);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-	}
-
 }

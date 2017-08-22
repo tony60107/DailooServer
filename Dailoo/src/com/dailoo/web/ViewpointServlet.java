@@ -74,13 +74,6 @@ public class ViewpointServlet extends HttpServlet {
 					throw new RuntimeException("你沒有權限更改該景點資訊");
 				}
 			}
-			//如果是取得景點資訊
-			else if("getViewpointInfo".equals(method)){
-				//取得要獲取的景點ID
-				String viewpointId = request.getParameter("viewpointId");
-				String json = service.findViewpointByIdToJson(viewpointId);
-				response.getWriter().write(json);
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

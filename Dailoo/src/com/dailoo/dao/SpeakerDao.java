@@ -30,12 +30,5 @@ public interface SpeakerDao extends Dao{
 	 */
 	Speaker findSpeakerByPhotoUrl(String photoUrl);
 
-	/**
-	 * 根據講者ID找出講者
-	 * @param speakerId 講者ID
-	 * @return 講者Bean
-	 */
-	Speaker findSpeakerById(String speakerId);
-
 	
 }

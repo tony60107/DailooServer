@@ -34,6 +34,7 @@ window.onload = function () {
     }
 
     initData();
+
     initDataFromServer(serverData);
 
 }
@@ -2779,7 +2780,7 @@ function initData() {
             "name": "龍田村",
             "subtitle": "特色概覽",
             "location": "https://goo.gl/maps/T9xCUTaJ7Bp",
-            "intro": "龍田村有好多特色，這個位置是日本人發現的，當時開闢了棋盤式農田，造就現在很整齊的街道，形成很豐富的農產、自然景觀。從鹿野高台飛行傘場遠眺、俯瞰龍田村，就可以看出這裡的棋盤式農田和街道區廓。花東縱谷管理處在這裡設置一個飛行傘的降落場，這個龍田大草原是一個大家可以休閒、放鬆的地方。推動單車導覽的阿度的店曾經在北三路的小葉欖仁綠色隧道創下千人躺馬路的話題並且帶動風潮。",
+            "intro": "翠蝶園從蝴蝶生態至工藝發展與藝術創作至今，以營造蝴蝶花園的自然生態提供一個戶外教學的環境，讓遊客更深一層的認識蝴蝶生態之美與多變的蝴蝶世界，此外還有檳榔葉鞘的手創工藝品與植物種子DIY等體驗活動。",
             "speaker": {
                 "name": "邱樹蘭",
                 "photo": "images/photo/C龍田逛逛/LT0037龍田 邱樹蘭 A龍田西門町/LT0037_icon.jpg",
@@ -6347,7 +6348,7 @@ function initData() {
                         "photoSrc": "images/photo/C龍田逛逛/LT0071龍田 韋立琦 崑慈堂鹿野神社苦楝樹/DSCN1000.jpg"
                     },{
                         "time": 80,
-                        "photoSrc": "images/photo/C龍田逛逛/LT0071龍田 韋立琦 崑慈堂鹿野神社苦楝樹/DSCN1231.jpg"
+                        "photoSrc": "images/photo/C龍田逛逛/LT0071龍田 韋立琦 崑慈堂鹿野神社苦楝樹/DSCN1225.jpg"
                     },{
                         "time": 90,
                         "photoSrc": "images/photo/C龍田逛逛/LT0071龍田 韋立琦 崑慈堂鹿野神社苦楝樹/DSCN1226.jpg"
@@ -6900,8 +6901,6 @@ function initData() {
         };
     }
 }
-
-
 
 //處理所有從伺服器拿回來的資料
 function initDataFromServer(serverData) {
