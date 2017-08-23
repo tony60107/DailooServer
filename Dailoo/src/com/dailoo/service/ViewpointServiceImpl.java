@@ -8,6 +8,7 @@ import com.dailoo.domain.Speaker;
 import com.dailoo.domain.Viewpoint;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.util.GoogleMapUtils;
+import com.dailoo.util.UrlShorterUtils;
 import com.google.gson.Gson;
 
 public class ViewpointServiceImpl implements ViewpointService{
@@ -17,15 +18,22 @@ public class ViewpointServiceImpl implements ViewpointService{
 	private Gson gson = new Gson();
 
 	@Override
-	public void addViewpoint(Viewpoint viewpoint) {
-		viewpoint.setId(UUID.randomUUID().toString());
+	public void addViewpoint(Viewpoint vp) {
+		vp.setId(UUID.randomUUID().toString());
 		
 		//根據地址取得經緯度
-		double [] address = GoogleMapUtils.getAdressXY(viewpoint.getAddress());
-		viewpoint.setLatitude(address[0]);
-		viewpoint.setLongitude(address[1]);
+		double [] address = GoogleMapUtils.getAdressXY(vp.getAddress());
+		vp.setLatitude(address[0]);
+		vp.setLongitude(address[1]);
 		
-		dao.addViewpoint(viewpoint);
+		//建立短網址
+		String domain = BasicFactory.getFactory().getPropData("Domain");
+		String url = domain + "viewpoint.html?utm_source=PrintAds&utm_campaign="+ vp.getName() + "_" 
+						+ vp.getSubtitle() + "#!" + vp.getId();
+		String shortUrl = UrlShorterUtils.shorten(url);
+		vp.setShortUrl(shortUrl);
+		
+		dao.addViewpoint(vp);
 	}
 
 	@Override
@@ -39,14 +47,21 @@ public class ViewpointServiceImpl implements ViewpointService{
 	}
 
 	@Override
-	public void updateViewpoint(Viewpoint viewpoint) {
+	public void updateViewpoint(Viewpoint vp) {
 		
 		//更新景點經緯度
-		double [] address = GoogleMapUtils.getAdressXY(viewpoint.getAddress());
-		viewpoint.setLatitude(address[0]);
-		viewpoint.setLongitude(address[1]);
+		double [] address = GoogleMapUtils.getAdressXY(vp.getAddress());
+		vp.setLatitude(address[0]);
+		vp.setLongitude(address[1]);
 		
-		dao.updateViewpoint(viewpoint);
+		//更新短網址
+		String domain = BasicFactory.getFactory().getPropData("Domain");
+		String url = domain + "viewpoint.html?utm_source=PrintAds&utm_campaign="+ vp.getName() + "_" 
+						+ vp.getSubtitle() + "#!" + vp.getId();
+		String shortUrl = UrlShorterUtils.shorten(url);
+		vp.setShortUrl(shortUrl);
+		
+		dao.updateViewpoint(vp);
 		
 	}
 
@@ -54,6 +69,10 @@ public class ViewpointServiceImpl implements ViewpointService{
 	public String findViewpointByIdToJson(String viewpointId) {
 		
 		Viewpoint vp = dao.findViewpointById(viewpointId);
+		
+		//如果該景點ID不存在
+		if(vp == null) return null;
+		
 		Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
 		
 		String vpJson = gson.toJson(vp);

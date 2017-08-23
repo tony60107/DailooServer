@@ -46,13 +46,16 @@ public class ViewpointServlet extends HttpServlet {
 				if(temp == null){
 					//在資料庫中新增景點
 					service.addViewpoint(vp);
-					//取得已新增景點的ID
-					String vpId = service.findViewpointByNameAndSt(vp.getName(), vp.getSubtitle()).getId();
-					//更新音檔資訊
-					audio.setSrc(audioUrl);
-					audio.setViewpointId(vpId);
-					//在資料庫中新增音檔
-					audioService.addAudio(audio);
+					//如果有上傳景點音檔
+					if(audioUrl != null){
+						//取得已新增景點的ID
+						String vpId = service.findViewpointByNameAndSt(vp.getName(), vp.getSubtitle()).getId();
+						//更新音檔資訊
+						audio.setSrc(audioUrl);
+						audio.setViewpointId(vpId);
+						//在資料庫中新增音檔
+						audioService.addAudio(audio);
+					}
 				} else {
 					throw new RuntimeException("該景點已存在");
 				}
@@ -67,11 +70,14 @@ public class ViewpointServlet extends HttpServlet {
 				//根據景點ID查找該景點
 				Viewpoint temp = service.findViewpointById(vp.getId());
 				//如果要求更改景點資訊的是該景點擁有者或是管理員
-				if(speaker.getId().equals(temp.getSpeakerId()) || "admin".equals(speaker.getRole())){
+				
+				if(speaker == null){
+					throw new RuntimeException("您尚未登入");
+				}else if(speaker.getId().equals(temp.getSpeakerId()) || "admin".equals(speaker.getRole())){
 					//更新景點資訊
 					service.updateViewpoint(vp);
 				} else {
-					throw new RuntimeException("你沒有權限更改該景點資訊");
+					throw new RuntimeException("您沒有權限更改該景點資訊");
 				}
 			}
 			//如果是取得景點資訊
@@ -79,6 +85,7 @@ public class ViewpointServlet extends HttpServlet {
 				//取得要獲取的景點ID
 				String viewpointId = request.getParameter("viewpointId");
 				String json = service.findViewpointByIdToJson(viewpointId);
+				if(json == null) json = "";
 				response.getWriter().write(json);
 			}
 		} catch (Exception e) {

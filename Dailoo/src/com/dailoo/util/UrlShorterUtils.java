@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.util.HashMap;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -15,7 +16,7 @@ import com.google.gson.Gson;
 
 
 
-public class UrlShortenerUtils {
+public class UrlShorterUtils {
 	
 	private static final String GOOGLE_URL_SHORT_API = "https://www.googleapis.com/urlshortener/v1/url";
 	private static final String GOOGLE_API_KEY = "AIzaSyCKTF7PMXDpU9Hs-UxwHjHC6UEG7Y5jYBM";
@@ -50,5 +51,33 @@ public class UrlShortenerUtils {
 		        return "error";
 		    }
 	}
+	
+	public static String getActualURLAgainstGoogleShortURL(String shortUrl){
+	     
+        if (shortUrl == null) {
+            return shortUrl;
+        }else if(!shortUrl.startsWith("http://") && !shortUrl.startsWith("https://")){
+            shortUrl = "http://"+shortUrl;
+        }
+        try {
+            String apiURL =GOOGLE_URL_SHORT_API+"?key="+GOOGLE_API_KEY + "&shortUrl=" + shortUrl;
+            HttpGet getRequest = new HttpGet(apiURL);
+             
+            CloseableHttpClient httpClient = HttpClients.createDefault();
+            HttpResponse response = httpClient.execute(getRequest);
+            String responseText = EntityUtils.toString(response.getEntity());           
+             
+            Gson gson = new Gson();
+            @SuppressWarnings("unchecked")
+            HashMap<String, String> res = gson.fromJson(responseText, HashMap.class);
+ 
+            return res.get("longUrl");           
+             
+        } catch (MalformedURLException e) {
+            return "error";
+        } catch (IOException e) {
+            return "error";
+        }
+     }
 
 }

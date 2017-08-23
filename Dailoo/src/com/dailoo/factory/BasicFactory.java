@@ -95,6 +95,15 @@ public class BasicFactory {
 		}
 	}
 	
+	/**
+	 * 取得配置文件數據
+	 * @param key 鍵
+	 * @return 值
+	 */
+	public String getPropData(String key){
+		return prop.getProperty(key);
+	}
+	
 //	public <T> T getInstance(Class<T> clazz){
 //		try{
 //		String infName = clazz.getSimpleName();

@@ -15,16 +15,17 @@ public class ViewpointDaoImpl implements ViewpointDao{
 	public void addViewpoint(Viewpoint vp) {
 		
 		String sql = "insert into viewpoints (id, name, subtitle, theme, country, city, town, village,"
-				+ "address, longitude, latitude, navUrl, intro, speakerId) "
-				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ "address, longitude, latitude, navUrl, intro, shortUrl, speakerId) "
+				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
 			runner.update(sql, vp.getId(), vp.getName(), vp.getSubtitle(), vp.getTheme(), vp.getCountry(), 
 					vp.getCity(), vp.getTown(), vp.getVillage(), vp.getAddress(), vp.getLongitude(),
-					vp.getLatitude(), vp.getNavUrl(), vp.getIntro(), null);
+					vp.getLatitude(), vp.getNavUrl(), vp.getIntro(), vp.getShortUrl(), null);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -58,12 +59,12 @@ public class ViewpointDaoImpl implements ViewpointDao{
 	public void updateViewpoint(Viewpoint vp) {
 		String sql = "update viewpoints set name=?, subtitle=?, theme=?, country=?,"
 				+ "city=?, town=?, village=?, address=?, longitude=?, latitude=?, navUrl=?,"
-				+ "intro=? where id=?";
+				+ "intro=?, shortUrl=? where id=?";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
 			runner.update(sql, vp.getName(), vp.getSubtitle(), vp.getTheme(), vp.getCountry(),
 					vp.getCity(), vp.getTown(), vp.getVillage(), vp.getAddress(), vp.getLongitude(),
-					vp.getLatitude(), vp.getNavUrl(), vp.getIntro(), vp.getId());
+					vp.getLatitude(), vp.getNavUrl(), vp.getIntro(), vp.getShortUrl(), vp.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

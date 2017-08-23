@@ -17,6 +17,7 @@ public class Viewpoint {
 	private double latitude;	//緯度
 	private String navUrl;		//Google導航網址
 	private String intro;		//景點介紹
+	private String shortUrl; 	//短網址
 	private String speakerId;   //講者ID
 	private Timestamp updateTime;	//上傳時間
 	
@@ -111,6 +112,12 @@ public class Viewpoint {
 	public void setSpeakerId(String speakerId) {
 		this.speakerId = speakerId;
 	}
+	public String getShortUrl() {
+		return shortUrl;
+	}
+	public void setShortUrl(String shortUrl) {
+		this.shortUrl = shortUrl;
+	}
 	@Override
 	public String toString() {
 		return "Viewpoint [id=" + id + ", name=" + name + ", subtitle="
@@ -118,8 +125,8 @@ public class Viewpoint {
 				+ ", city=" + city + ", town=" + town + ", village=" + village
 				+ ", address=" + address + ", longitude=" + longitude
 				+ ", latitude=" + latitude + ", navUrl=" + navUrl + ", intro="
-				+ intro + ", speakerId=" + speakerId + ", updateTime="
-				+ updateTime + "]";
+				+ intro + ", shortUrl=" + shortUrl + ", speakerId=" + speakerId
+				+ ", updateTime=" + updateTime + "]";
 	}
-
+	
 }
