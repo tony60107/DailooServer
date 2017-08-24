@@ -1,10 +1,15 @@
 package com.dailoo.service;
 
+import java.util.List;
 import java.util.UUID;
 
+import com.dailoo.dao.AudioDao;
 import com.dailoo.dao.SpeakerDao;
+import com.dailoo.dao.TagDao;
 import com.dailoo.dao.ViewpointDao;
+import com.dailoo.domain.Audio;
 import com.dailoo.domain.Speaker;
+import com.dailoo.domain.Tag;
 import com.dailoo.domain.Viewpoint;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.util.GoogleMapUtils;
@@ -15,6 +20,8 @@ public class ViewpointServiceImpl implements ViewpointService{
 	
 	private ViewpointDao dao = BasicFactory.getFactory().getDao(ViewpointDao.class);
 	private SpeakerDao speakerDao = BasicFactory.getFactory().getDao(SpeakerDao.class);
+	private AudioDao audioDao = BasicFactory.getFactory().getDao(AudioDao.class);
+	private TagDao tagDao = BasicFactory.getFactory().getDao(TagDao.class);
 	private Gson gson = new Gson();
 
 	@Override
@@ -74,12 +81,23 @@ public class ViewpointServiceImpl implements ViewpointService{
 		if(vp == null) return null;
 		
 		Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
+		Audio audio = audioDao.findAudioByViewpointId(vp.getId());
+		List<Tag> tags = tagDao.findTagsByAudioId(audio.getId());
 		
 		String vpJson = gson.toJson(vp);
 		String speakerJson = gson.toJson(speaker);
+		String audioJson = gson.toJson(audio);
+		String tagsJson = gson.toJson(tags);
+		
+		//將Tags的JSON數據加到audioJson中
+		audioJson = audioJson.substring(0, audioJson.length()-1) + ", \"tags\":" + tagsJson +"}";
+		System.out.println();
 		
 		//完整的Json數據
-		String result = vpJson.substring(0, vpJson.length()-1) + ", \"speaker\":" + speakerJson +"}";
+		String result = vpJson.substring(0, vpJson.length()-1) + ", \"speaker\":" + speakerJson 
+				+ ", \"audio\":" + audioJson +"}";
+		
+		
 		
 		return result;
 	}

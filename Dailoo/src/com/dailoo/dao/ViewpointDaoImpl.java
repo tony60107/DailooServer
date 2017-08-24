@@ -31,6 +31,7 @@ public class ViewpointDaoImpl implements ViewpointDao{
 
 	@Override
 	public Viewpoint findViewpointByNameAndSt(String name, String subtitle) {
+		
 		String sql = "select * from viewpoints where name = ? and subtitle = ?";
 		
 		try {

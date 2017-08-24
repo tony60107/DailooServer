@@ -12,7 +12,7 @@ public class TagServiceImpl implements TagService{
 	TagDao dao = BasicFactory.getFactory().getDao(TagDao.class);
 	
 	@Override
-	public void addData(Map<String, String> paramMap) {
+	public void addTag(Map<String, String> paramMap) {
 		String [] imgurl = paramMap.get("imgurls").split(",");
 		for(int i = 0;;i++){
 			//如果已取完time值則跳出

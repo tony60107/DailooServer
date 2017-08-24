@@ -3,8 +3,10 @@ package com.dailoo.dao;
 import java.sql.SQLException;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 
 import com.dailoo.domain.Audio;
+import com.dailoo.domain.Viewpoint;
 import com.dailoo.util.TransactionManager;
 
 public class AudioDaoImpl implements AudioDao{
@@ -18,6 +20,19 @@ public class AudioDaoImpl implements AudioDao{
 			runner.update(sql, audio.getId(), audio.getSrc(), audio.getLength(), audio.getViewpointId());
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public Audio findAudioByViewpointId(String viewpointId) {
+		String sql = "select * from audios where viewpointId = ?";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanHandler<Audio>(Audio.class), viewpointId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 	}
 

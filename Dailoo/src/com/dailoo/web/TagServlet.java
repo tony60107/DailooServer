@@ -21,8 +21,14 @@ public class TagServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		// 取得客戶端要求
+		String method = request.getParameter("method");
+		
+		if("addTag".equals(method)){
 			Map<String, String> paramMap = FileUploadUtils.getParamMap(request,response, this);
-			service.addData(paramMap);
+			service.addTag(paramMap);
+		}
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
