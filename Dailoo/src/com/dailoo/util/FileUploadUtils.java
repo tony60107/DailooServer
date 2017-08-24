@@ -41,7 +41,7 @@ public class FileUploadUtils {
 			ServletFileUpload fileUpload = new ServletFileUpload(factory);
 			fileUpload.setHeaderEncoding(encode);
 			fileUpload.setFileSizeMax(10 * 1024 * 1024 * 1); //單個檔案大小10M
-			fileUpload.setSizeMax(10 * 1024 * 1024);
+			fileUpload.setSizeMax(100 * 1024 * 1024);
 
 			if (!fileUpload.isMultipartContent(request)) {
 				throw new RuntimeException("请使用正确的表单进行上传!");
@@ -76,7 +76,11 @@ public class FileUploadUtils {
 					if("acc".equals(format) || "mp3".equals(format)){
 						paramMap.put("audiourls", fileurl);
 					}else{
-						paramMap.put("imgurls", fileurl);
+						if(paramMap.get("imgurls") == null){
+							paramMap.put("imgurls", fileurl);
+						} else {
+							paramMap.put("imgurls",paramMap.get("imgurls") + "," + fileurl);
+						}
 					}
 
 					File uploadFile = new File(upload);

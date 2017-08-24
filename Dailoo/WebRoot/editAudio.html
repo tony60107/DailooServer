@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>編輯音檔</title>
+    <!-- 最新編譯和最佳化的 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!-- 選擇性佈景主題 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <!-- 最新編譯和最佳化的 JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+<div class="w">
+    <form id="mainForm" action="/TagServlet" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>音檔ID</label>
+            <input type="text" name="audioId" class="form-control" placeholder="輸入音檔ID" value="44ed1f12-8fdd-4378-9dc1-0e518dcfa975">
+        </div>
+        <div class="form-group clearfix">
+            <input type="file" name="file1" class="form-control fl" style="width: 200px; margin-right: 80px;"/>
+            <input type="text" name="time0" class="form-control fl" style="width: 200px; margin-right: 300px;"/>
+        </div>
+        <input type="submit" value="提交"/>
+    </form>
+    <button id="addRow" class="btn btn-warning fl" value="">+</button>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
+<script>
+    var num = 1;
+    $$("addRow").onclick = function() {
+        var row = document.createElement("div");
+        row.className = "form-group  clearfix";
+        row.innerHTML = " <input type='file' name='file1' class='form-control fl' style='width: 200px; margin-right: 80px;'/> " +
+                            "<input type='text' name='time" + num + "'class='form-control fl' style='width: 200px; margin-right: 80px;'/>";
+        $$("mainForm").appendChild(row);
+        num++;
+    }
+</script>
