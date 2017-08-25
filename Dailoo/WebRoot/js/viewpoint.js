@@ -6980,6 +6980,19 @@ function initAuthorData(speakerData) {
         $$("ytplayer").style.display = "none";
         $$("videoPrep").style.display = "block";
     }
+
+    /*var ytplayer;
+    ytplayer = new YT.Player('ytplayer', {
+        height: '495',
+        width: '880',
+        videoId: 'M7lc1UVf-VE',
+        events: {'onStateChange': onPlayerStateChange}
+    });
+    function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING) {
+            document.getElementById("audio").pause();
+        }
+    }*/
 }
 
 //初始化景點資訊

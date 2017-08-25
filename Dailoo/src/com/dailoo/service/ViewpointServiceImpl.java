@@ -91,13 +91,10 @@ public class ViewpointServiceImpl implements ViewpointService{
 		
 		//將Tags的JSON數據加到audioJson中
 		audioJson = audioJson.substring(0, audioJson.length()-1) + ", \"tags\":" + tagsJson +"}";
-		System.out.println();
 		
 		//完整的Json數據
 		String result = vpJson.substring(0, vpJson.length()-1) + ", \"speaker\":" + speakerJson 
 				+ ", \"audio\":" + audioJson +"}";
-		
-		
 		
 		return result;
 	}
