@@ -7,6 +7,7 @@ public class Viewpoint {
 	private String id;			//ID
 	private String name;		//景點名稱
 	private String subtitle;	//副標題
+	private String behalfPhotoUrl; //景點代表圖片
 	private String theme;		//主題
 	private String country;		//國家
 	private String city;		//縣市
@@ -117,6 +118,13 @@ public class Viewpoint {
 	}
 	public void setShortUrl(String shortUrl) {
 		this.shortUrl = shortUrl;
+	}
+	
+	public String getBehalfPhotoUrl() {
+		return behalfPhotoUrl;
+	}
+	public void setBehalfPhotoUrl(String behalfPhotoUrl) {
+		this.behalfPhotoUrl = behalfPhotoUrl;
 	}
 	@Override
 	public String toString() {

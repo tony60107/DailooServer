@@ -1,5 +1,6 @@
 package com.dailoo.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,6 +12,7 @@ import com.dailoo.domain.Audio;
 import com.dailoo.domain.Speaker;
 import com.dailoo.domain.Tag;
 import com.dailoo.domain.Viewpoint;
+import com.dailoo.domain.ViewpointSimple;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.util.GoogleMapUtils;
 import com.dailoo.util.UrlShorterUtils;
@@ -95,6 +97,41 @@ public class ViewpointServiceImpl implements ViewpointService{
 		//完整的Json數據
 		String result = vpJson.substring(0, vpJson.length()-1) + ", \"speaker\":" + speakerJson 
 				+ ", \"audio\":" + audioJson +"}";
+		
+		return result;
+	}
+
+	@Override
+	public String findViewpointSimplesByTheme(String theme) {
+		
+		List<ViewpointSimple> vpsims = new ArrayList<ViewpointSimple>();
+		
+		//查找相同主題下的所有景點
+		List<Viewpoint> list = dao.findViewpointByTheme(theme);
+		
+		//遍歷所有景點
+		for(int i = 0; i < list.size(); i++){
+
+			Viewpoint vp = list.get(i);
+			ViewpointSimple vpsim = new ViewpointSimple();
+			
+			//設定簡易版景點資訊內容
+			vpsim.setId(vp.getId());
+			vpsim.setName(vp.getName());
+			vpsim.setSubtilte(vp.getSubtitle());
+			if(vp.getBehalfPhotoUrl() != null) vpsim.setBehalfPhotoUrl(vp.getBehalfPhotoUrl());
+			Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
+			if(speaker != null) vpsim.setSpeakerName(speaker.getName());
+			Audio audio = audioDao.findAudioByViewpointId(vp.getId());
+			if(audio != null) vpsim.setAudioLength(audio.getLength());
+
+			//將簡易版景點資訊新增到List中
+			vpsims.add(vpsim);
+		}
+		
+		Gson gson = new Gson();
+		String result = gson.toJson(vpsims);
+		
 		
 		return result;
 	}

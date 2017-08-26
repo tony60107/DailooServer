@@ -1,5 +1,7 @@
 package com.dailoo.dao;
 
+import java.util.List;
+
 import com.dailoo.domain.Viewpoint;
 
 public interface ViewpointDao extends Dao{
@@ -30,5 +32,12 @@ public interface ViewpointDao extends Dao{
 	 * @param viewpoint 景點資訊Bean
 	 */
 	void updateViewpoint(Viewpoint viewpoint);
+
+	/**
+	 * 	根據景點主題，找出景點的List集合
+	 * @param theme 主題名稱
+	 * @return 景點的List集合
+	 */
+	List<Viewpoint> findViewpointByTheme(String theme);
 
 }

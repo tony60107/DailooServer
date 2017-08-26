@@ -38,4 +38,12 @@ public interface ViewpointService extends Service{
 	 */
 	String findViewpointByIdToJson(String viewpointId);
 
+	
+	/**
+	 * 根據主題名稱，獲取簡易版景點資訊
+	 * @param theme 主題名稱
+	 * @return 多個簡易版景點資訊的JSON數據
+	 */
+	String findViewpointSimplesByTheme(String theme);
+
 }
