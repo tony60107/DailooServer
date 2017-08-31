@@ -17,4 +17,10 @@ public interface AudioDao extends Dao{
 	 */
 	Audio findAudioByViewpointId(String viewpointId);
 
+	/**
+	 * 根據音檔ID，刪除音檔
+	 * @param id 音檔ID
+	 */
+	void delAudio(String id);
+
 }

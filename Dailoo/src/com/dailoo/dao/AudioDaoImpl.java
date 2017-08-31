@@ -36,4 +36,16 @@ public class AudioDaoImpl implements AudioDao{
 		}
 	}
 
+	@Override
+	public void delAudio(String id) {
+		String sql = "delete from audios where id = ?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
 }

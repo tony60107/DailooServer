@@ -19,4 +19,10 @@ public interface TagDao extends Dao{
 	 */
 	List<Tag> findTagsByAudioId(String audioId);
 
+	/**
+	 * 根據標記ID，刪除標記
+	 * @param id
+	 */
+	void delTag(String id);
+
 }

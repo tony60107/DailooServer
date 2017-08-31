@@ -40,4 +40,10 @@ public interface ViewpointDao extends Dao{
 	 */
 	List<Viewpoint> findViewpointByTheme(String theme);
 
+	/**
+	 * 根據景點ID，刪除景點
+	 * @param viewpointId 景點ID
+	 */
+	void delViewpoint(String viewpointId);
+
 }

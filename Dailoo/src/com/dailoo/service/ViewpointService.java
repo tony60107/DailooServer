@@ -46,4 +46,10 @@ public interface ViewpointService extends Service{
 	 */
 	String findViewpointSimplesByTheme(String theme);
 
+	/**
+	 * 根據景點ID刪除景點
+	 * @param viewpointId
+	 */
+	void delViewpoint(String viewpointId);
+
 }

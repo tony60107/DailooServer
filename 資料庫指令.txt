@@ -6,6 +6,7 @@ CREATE TABLE dailoo.viewpoints (
   id varchar(255) NOT NULL DEFAULT '',
   name varchar(255) DEFAULT NULL,
   subtitle varchar(255) DEFAULT NULL,
+  behalfPhotoUrl varchar(255) DEFAULT NULL,
   theme varchar(255) DEFAULT NULL,
   country varchar(255) DEFAULT NULL,
   city varchar(255) DEFAULT NULL,
@@ -16,6 +17,7 @@ CREATE TABLE dailoo.viewpoints (
   latitude double DEFAULT NULL,
   navUrl varchar(255) DEFAULT NULL,
   intro varchar(1000) DEFAULT NULL,
+  shortUrl varchar(255) DEFAULT NULL,
   speakerId varchar(255) DEFAULT NULL,
   updatetime timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
@@ -23,20 +25,22 @@ CREATE TABLE dailoo.viewpoints (
 
 
 
-create table audios(
-	id varchar(100) primary key,
-	src varchar(200),
-	viewpoint_id varchar(100),
-	foreign key(viewpoint_id) references viewpoints(id)
+CREATE TABLE dailoo.audios (
+  id varchar(255) NOT NULL DEFAULT '',
+  src varchar(255) DEFAULT NULL,
+  length int(11) DEFAULT NULL,
+  viewpointId varchar(255) DEFAULT NULL,
+  updateTime timestamp NULL DEFAULT NULL
 );
 
 
-create table tags(
-	id varchar(100) primary key,
-	time int,
-	photo_src varchar(200),
-	audio_id varchar(100),
-	foreign key(audio_id) references audios(id)
+
+CREATE TABLE dailoo.tags (
+  id varchar(255) NOT NULL DEFAULT '',
+  time int(11) DEFAULT NULL,
+  photoUrl varchar(255) DEFAULT NULL,
+  audioId varchar(255) DEFAULT NULL,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE dailoo.speakers (
@@ -44,12 +48,14 @@ CREATE TABLE dailoo.speakers (
   username varchar(255) DEFAULT NULL,
   password varchar(255) DEFAULT NULL,
   name varchar(255) DEFAULT NULL,
-  photo varchar(255) DEFAULT NULL,
+  photoUrl varchar(255) DEFAULT NULL,
   phoneNumber varchar(255) DEFAULT NULL,
   homeNumber varchar(255) DEFAULT NULL,
   speakerUrl varchar(255) DEFAULT NULL,
   resume varchar(255) DEFAULT NULL,
   intro varchar(1000) DEFAULT NULL,
   youtubeUrl varchar(255) DEFAULT NULL,
+  role varchar(255) DEFAULT NULL,
+  registTime timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
-)
+);

@@ -44,7 +44,7 @@ public class FileUploadUtils {
 			fileUpload.setSizeMax(100 * 1024 * 1024);
 
 			if (!fileUpload.isMultipartContent(request)) {
-				throw new RuntimeException("请使用正确的表单进行上传!");
+				throw new RuntimeException("請使用正確的表單進行上傳!");
 			}
 
 			List<FileItem> list = fileUpload.parseRequest(request);
@@ -57,9 +57,12 @@ public class FileUploadUtils {
 				} else {
 					// 文件上传项
 					String realname = item.getName();
+					//取得檔案格式
+					String format = realname.substring(realname.lastIndexOf(".")+1).toLowerCase();
+					
 					if("".equals(realname) || realname == null) break;
-					String uuidname = UUID.randomUUID().toString() + "_"
-							+ realname;
+					String uuidname = UUID.randomUUID().toString() + "." + format; 
+							//+ "_" + realname;
 
 					String hash = Integer.toHexString(uuidname.hashCode());
 					String upload = servlet.getServletContext().getRealPath(
@@ -71,8 +74,7 @@ public class FileUploadUtils {
 					}
 					fileurl += "/" + uuidname;
 					
-					//取得檔案格式
-					String format = fileurl.substring(fileurl.lastIndexOf(".")+1).toLowerCase();
+					//根據不同檔案格式，存到參數中
 					if("acc".equals(format) || "mp3".equals(format)){
 						paramMap.put("audiourls", fileurl);
 					}else{

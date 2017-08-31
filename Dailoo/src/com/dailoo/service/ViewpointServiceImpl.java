@@ -1,5 +1,6 @@
 package com.dailoo.service;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -131,9 +132,36 @@ public class ViewpointServiceImpl implements ViewpointService{
 		
 		Gson gson = new Gson();
 		String result = gson.toJson(vpsims);
-		
-		
+
 		return result;
+	}
+
+	@Override
+	public void delViewpoint(String viewpointId) {
+		
+		//取得景點音檔
+		Audio audio = audioDao.findAudioByViewpointId(viewpointId);
+		
+		//取得該景點的標記,以取得照片地址
+		List<Tag> tagList = tagDao.findTagsByAudioId(audio.getId());
+		//刪除景點照片
+		for(int i = 0; i < tagList.size(); i++){
+			Tag tag = tagList.get(i);
+			String fileURL = ViewpointService.class.getClassLoader().getResource("../../").getPath(); 
+			File file = new File(fileURL.substring(0, fileURL.length() - 1) + tag.getPhotoUrl()); 
+			if(file.exists()){	file.delete(); }
+			//刪除標記在資料庫中的紀錄
+			tagDao.delTag(tag.getId());
+		}
+		
+		//刪除景點音檔
+		String fileURL = ViewpointService.class.getClassLoader().getResource("../../").getPath(); 
+		File file = new File(fileURL.substring(0, fileURL.length() - 1) + audio.getSrc()); 
+		if(file.exists()){	file.delete(); }
+		//刪除音檔在資料庫中的紀錄
+		audioDao.delAudio(audio.getId());
+		
+		dao.delViewpoint(viewpointId);
 	}
 
 }

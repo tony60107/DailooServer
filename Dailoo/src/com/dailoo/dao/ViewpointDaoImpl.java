@@ -87,4 +87,16 @@ public class ViewpointDaoImpl implements ViewpointDao{
 		}
 	}
 
+	@Override
+	public void delViewpoint(String viewpointId) {
+		String sql = "delete from viewpoints where id = ?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, viewpointId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}		
+	}
+
 }
