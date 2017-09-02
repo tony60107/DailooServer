@@ -72,7 +72,7 @@
         success: function (data) {
             var data = eval("(" + data + ")");
             $$("name").value = data.name;
-            $$("photoUrl").src = "/Dailoo/ImgServlet?imgurl=" + data.photoUrl;
+            $$("photoUrl").src = "/Dailoo/ResourceServlet?url=" + data.photoUrl;
             $$("phoneNumber").value = data.phoneNumber;
             $$("homeNumber").value = data.homeNumber;
             $$("speakerUrl").value = data.speakerUrl;

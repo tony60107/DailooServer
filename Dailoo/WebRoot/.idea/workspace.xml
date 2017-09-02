@@ -26,8 +26,8 @@
       <file leaf-file-name="viewpoint2.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/viewpoint2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.419354">
-              <caret line="158" column="6" selection-start-line="158" selection-start-column="6" selection-end-line="158" selection-end-column="6" />
+            <state vertical-scroll-proportion="-17.967741">
+              <caret line="85" column="29" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="29" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#div#2;n#class#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#6;n#class#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -36,14 +36,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="viewpoint2.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="viewpoint2.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/viewpoint2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="20.067797">
-              <caret line="90" column="8" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.56461">
+              <caret line="197" column="41" selection-start-line="197" selection-start-column="41" selection-end-line="197" selection-end-column="41" />
               <folding>
-                <element signature="n#!!block;n#initViewpointData#0" expanded="false" />
+                <element signature="n#!!block;n#initDataFromServer#0" expanded="false" />
+                <element signature="n#!!block;n#initAuthorData#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="viewlist.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/viewlist.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.32258">
+              <caret line="82" column="20" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -58,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="imgSlider2.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="imgSlider2.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/imgSlider2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0305011">
-              <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="41" column="48" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -71,8 +82,8 @@
       <file leaf-file-name="updateSpeakerInfo.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/updateSpeakerInfo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-25.129032">
-              <caret line="82" column="7" selection-start-line="68" selection-start-column="4" selection-end-line="82" selection-end-column="7" />
+            <state vertical-scroll-proportion="-23.709677">
+              <caret line="68" column="12" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -117,7 +128,6 @@
         <option value="$PROJECT_DIR$/css/viewpoint.css" />
         <option value="$PROJECT_DIR$/css/question.css" />
         <option value="$PROJECT_DIR$/question.html" />
-        <option value="$PROJECT_DIR$/css/viewlist.css" />
         <option value="$PROJECT_DIR$/themelist.html" />
         <option value="$PROJECT_DIR$/css/addviewpoint.css" />
         <option value="$PROJECT_DIR$/viewlist.html" />
@@ -129,15 +139,16 @@
         <option value="$PROJECT_DIR$/js/viewpoint.js" />
         <option value="$PROJECT_DIR$/footer.html" />
         <option value="$PROJECT_DIR$/viewpoint.html" />
-        <option value="$PROJECT_DIR$/updateSpeakerInfo.html" />
         <option value="$PROJECT_DIR$/test.html" />
         <option value="$PROJECT_DIR$/editAudio.html" />
         <option value="$PROJECT_DIR$/js/imgSlider.js" />
         <option value="$PROJECT_DIR$/js/audio.js" />
-        <option value="$PROJECT_DIR$/js/viewpoint2.js" />
         <option value="$PROJECT_DIR$/js/audio2.js" />
-        <option value="$PROJECT_DIR$/viewpoint2.html" />
         <option value="$PROJECT_DIR$/js/imgSlider2.js" />
+        <option value="$PROJECT_DIR$/updateSpeakerInfo.html" />
+        <option value="$PROJECT_DIR$/css/viewlist.css" />
+        <option value="$PROJECT_DIR$/viewpoint2.html" />
+        <option value="$PROJECT_DIR$/js/viewpoint2.js" />
       </list>
     </option>
   </component>
@@ -215,6 +226,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dailoo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebRoot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -785,12 +810,12 @@
       <workItem from="1503729548100" duration="4019000" />
       <workItem from="1504191279016" duration="1677000" />
       <workItem from="1504279689051" duration="807000" />
-      <workItem from="1504334178388" duration="11278000" />
+      <workItem from="1504334178388" duration="15634000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="572772000" />
+    <option name="totallyTimeSpent" value="577128000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -998,13 +1023,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/viewlist.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sitemap.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1123,14 +1141,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/updateSpeakerInfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.129032">
-          <caret line="82" column="7" selection-start-line="68" selection-start-column="4" selection-end-line="82" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/imgSlider.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4553377">
@@ -1174,13 +1184,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/viewpoint2.js">
+    <entry file="file://$PROJECT_DIR$/updateSpeakerInfo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="20.067797">
-          <caret line="90" column="8" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="8" />
-          <folding>
-            <element signature="n#!!block;n#initViewpointData#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="-23.709677">
+          <caret line="68" column="12" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1192,10 +1200,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/imgSlider2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="48" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/viewlist.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.32258">
+          <caret line="82" column="20" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/viewpoint2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.419354">
-          <caret line="158" column="6" selection-start-line="158" selection-start-column="6" selection-end-line="158" selection-end-column="6" />
+        <state vertical-scroll-proportion="-17.967741">
+          <caret line="85" column="29" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="29" />
           <folding>
             <element signature="n#style#0;n#img#0;n#div#2;n#class#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#6;n#class#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -1203,11 +1227,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/imgSlider2.js">
+    <entry file="file://$PROJECT_DIR$/js/viewpoint2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0305011">
-          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
-          <folding />
+        <state vertical-scroll-proportion="0.56461">
+          <caret line="197" column="41" selection-start-line="197" selection-start-column="41" selection-end-line="197" selection-end-column="41" />
+          <folding>
+            <element signature="n#!!block;n#initDataFromServer#0" expanded="false" />
+            <element signature="n#!!block;n#initAuthorData#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
