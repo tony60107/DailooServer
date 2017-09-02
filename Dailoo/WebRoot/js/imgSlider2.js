@@ -20,12 +20,15 @@ var imgSlider = Class.extend({
 
     initDataFromServer: function (tagsData) {
         tags = tagsData;
+
         if(typeof tags[0] == 'undefined'){ return;}
-        updateMainPhoto(tags[0].photoSrc);
+
+        updateMainPhoto(tags[0].photoUrl);
+
         //預加載導覽圖片
         var t = setInterval(function(){
             if(temp >= tags.length - 1){clearInterval(t);}
-            $$("tempImg").src = tags[temp].photoSrc; // 用於預加載圖片
+            $$("tempImg").src = tags[temp].photoUrl; // 用於預加載圖片
             temp++;
         },200);
     },
@@ -35,7 +38,8 @@ var imgSlider = Class.extend({
         var photoNum = 1; //紀錄是第幾張相片
 
         for (var i = 0; i < tags.length; i++) {
-            if (decodeURI(mainPhoto.src).search(tags[i].photoSrc) != -1) {
+            //console.dir(mainPhoto.src + ":" + tags[i].photoUrl);
+            if (decodeURI(mainPhoto.src).indexOf(tags[i].photoUrl) != -1) {
                 photoNum = i;
             }
         }

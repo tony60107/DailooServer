@@ -29,7 +29,7 @@ public class TagDaoImpl implements TagDao{
 	@Override
 	public List<Tag> findTagsByAudioId(String audioId) {
 		
-		String sql = "select * from tags where audioId = ?";
+		String sql = "select * from tags where audioId = ? order by time asc";
 		
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());

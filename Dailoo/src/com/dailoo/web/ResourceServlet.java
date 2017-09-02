@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ImgServlet extends HttpServlet {
+public class ResourceServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String imgurl =request.getParameter("imgurl"); 
+		String imgurl =request.getParameter("url"); 
 		request.getRequestDispatcher(imgurl).forward(request, response);
 	}
 

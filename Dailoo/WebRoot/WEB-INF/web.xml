@@ -51,8 +51,8 @@
     <servlet-class>com.dailoo.web.SpeakerServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>ImgServlet</servlet-name>
-    <servlet-class>com.dailoo.web.ImgServlet</servlet-class>
+    <servlet-name>ResourceServlet</servlet-name>
+    <servlet-class>com.dailoo.web.ResourceServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ViewpointServlet</servlet-name>
@@ -79,8 +79,8 @@
     <url-pattern>/SpeakerServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>ImgServlet</servlet-name>
-    <url-pattern>/ImgServlet</url-pattern>
+    <servlet-name>ResourceServlet</servlet-name>
+    <url-pattern>/ResourceServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ViewpointServlet</servlet-name>
