@@ -51,13 +51,16 @@
             <label>副標題</label>
             <input type="text" name="subtitle" class="form-control" placeholder="輸入副標題" value="遠眺都蘭山">
         </div>
+
+        <div class="form-group">
+            <label>講者</label>
+            <select id="speaker_list" name="speakerId" class="fl form-control"></select>
+        </div>
+
+
         <div class="form-group">
             <label>景點地址</label>
             <input type="text" name="address" class="form-control" placeholder="輸入景點地址" value="臺東縣鹿野鄉永安村高台路42巷">
-        </div>
-        <div class="form-group">
-            <label>景點導航網址</label>
-            <input type="text" name="navUrl" class="form-control" placeholder="輸入景點導航網址" value="https://goo.gl/maps/Fg2KJB9VUmr">
         </div>
         <div class="form-group">
             <label>景點介紹</label>
@@ -80,14 +83,18 @@
 <script type="text/javascript" src="js/base.js"></script>
 <script>
     $.ajax({
-        url: "http://localhost:8080/Dailoo/ViewpointServlet", context: document.body,
+        url: "http://localhost:8080/Dailoo/SpeakerServlet", context: document.body,
         data: {
-            "method": "getViewpointInfo",
-            "viewpointId":"63771a9c-c913-4e95-bf62-842b83a782ec"
+            "method": "findAllSpeakers"
         },
-        success: function (data) {
-            var data = eval("(" + data + ")");
-            console.dir(data);
+        success: function (speakers) {
+            var speakers = eval("(" + speakers + ")");
+            console.dir(speakers);
+            var speakerList = document.getElementById("speaker_list");
+            for(var i = 0; i < speakers.length; i++){
+                var dom =  '<option value="' + speakers[i].id + '">' + speakers[i].name + '</option>';
+                speakerList.innerHTML = speakerList.innerHTML + dom;
+            }
         },
     });
 

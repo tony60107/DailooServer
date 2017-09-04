@@ -36,6 +36,10 @@ public class ViewpointServiceImpl implements ViewpointService{
 		vp.setLatitude(address[0]);
 		vp.setLongitude(address[1]);
 		
+		//更新景點導航地址
+		//https://www.google.com.tw/maps/@22.9176907,121.1210067,16z
+		vp.setNavUrl("https://www.google.com.tw/maps/@" + vp.getLatitude() + "," + vp.getLongitude() + ",16z");
+		
 		//建立短網址
 		String domain = BasicFactory.getFactory().getPropData("Domain");
 		String url = domain + "viewpoint.html?utm_source=PrintAds&utm_campaign="+ vp.getName() + "_" 
@@ -64,6 +68,9 @@ public class ViewpointServiceImpl implements ViewpointService{
 		vp.setLatitude(address[0]);
 		vp.setLongitude(address[1]);
 		
+		//更新景點導航地址
+		vp.setNavUrl("https://www.google.com.tw/maps/@" + vp.getLatitude() + "," + vp.getLongitude() + ",16z");
+		
 		//更新短網址
 		String domain = BasicFactory.getFactory().getPropData("Domain");
 		String url = domain + "viewpoint.html?utm_source=PrintAds&utm_campaign="+ vp.getName() + "_" 
@@ -79,25 +86,26 @@ public class ViewpointServiceImpl implements ViewpointService{
 	public String findViewpointByIdToJson(String viewpointId) {
 		
 		Viewpoint vp = dao.findViewpointById(viewpointId);
-		
 		//如果該景點ID不存在
 		if(vp == null) return null;
 		
 		Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
 		Audio audio = audioDao.findAudioByViewpointId(vp.getId());
 		List<Tag> tags = tagDao.findTagsByAudioId(audio.getId());
+		List<Viewpoint> moreAudio = dao.findViewpointsByName(vp.getName());
 		
 		String vpJson = gson.toJson(vp);
 		String speakerJson = gson.toJson(speaker);
 		String audioJson = gson.toJson(audio);
 		String tagsJson = gson.toJson(tags);
+		String moreAudioJson = gson.toJson(moreAudio);
 		
 		//將Tags的JSON數據加到audioJson中
 		audioJson = audioJson.substring(0, audioJson.length()-1) + ", \"tags\":" + tagsJson +"}";
 		
 		//完整的Json數據
 		String result = vpJson.substring(0, vpJson.length()-1) + ", \"speaker\":" + speakerJson 
-				+ ", \"audio\":" + audioJson +"}";
+				+ ", \"audio\":" + audioJson + ", \"moreAudio\":" + moreAudioJson + "}";
 		
 		return result;
 	}

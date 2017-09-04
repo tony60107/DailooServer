@@ -56,7 +56,7 @@ function initData() {
 
      param = decodeURI(aryPara['utm_campaign']);*/
 
-    var param = location.hash.substring(1, location.hash.length);
+    var param = location.hash.substring(2, location.hash.length);
     $.ajax({
         url: "http://localhost:8080/Dailoo/ViewpointServlet", context: document.body,
         type:"POST",
@@ -71,7 +71,6 @@ function initData() {
                     tags[i].photoUrl = "/ResourceServlet?url=" + tags[i].photoUrl;
                 }
             }
-
             console.dir(data);
             initDataFromServer(data);
         },
@@ -213,10 +212,10 @@ function initViewpointData(vpData) {
         var moreAudioDiv = $$("moreAudio");
         for (var i = 0; i < vpData.moreAudio.length; i++) {
             var audioA = document.createElement("a");
-            audioA.href = "viewpoint.html?utm_source=InSite&utm_campaign=" + vpData.name + "_" + vpData.moreAudio[i];
+            audioA.href = "viewpoint.html?utm_source=InSite&utm_campaign=" + vpData.moreAudio[i].name + "_" + vpData.moreAudio[i].subtitle + "#!" + vpData.moreAudio[i].id;
             var audioDiv = document.createElement("div");
             audioDiv.className = "audio";
-            audioDiv.innerHTML = vpData.moreAudio[i];
+            audioDiv.innerHTML = vpData.moreAudio[i].subtitle;
             audioA.append(audioDiv);
             moreAudioDiv.appendChild(audioA);
         }

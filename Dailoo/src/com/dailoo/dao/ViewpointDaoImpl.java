@@ -23,7 +23,7 @@ public class ViewpointDaoImpl implements ViewpointDao{
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
 			runner.update(sql, vp.getId(), vp.getName(), vp.getSubtitle(), vp.getTheme(), vp.getBehalfPhotoUrl(),
 					vp.getCountry(), vp.getCity(), vp.getTown(), vp.getVillage(), vp.getAddress(), 
-					vp.getLongitude(), vp.getLatitude(), vp.getNavUrl(), vp.getIntro(), vp.getShortUrl(), null);
+					vp.getLongitude(), vp.getLatitude(), vp.getNavUrl(), vp.getIntro(), vp.getShortUrl(), vp.getSpeakerId());
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -97,6 +97,19 @@ public class ViewpointDaoImpl implements ViewpointDao{
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}		
+	}
+
+	@Override
+	public List<Viewpoint> findViewpointsByName(String name) {
+		String sql = "select * from viewpoints where name = ? order by updatetime asc";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class), name);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 
 }

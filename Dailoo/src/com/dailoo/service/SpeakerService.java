@@ -25,4 +25,10 @@ public interface SpeakerService extends Service{
 	 */
 	void updateSpeakerInfo(Speaker speaker, String imgurls);
 
+	/**
+	 * 找出現在所有的講者
+	 * @return 有講者ID與名稱的JSON數據
+	 */
+	String findAllSpeakers();
+
 }

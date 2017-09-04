@@ -1,5 +1,7 @@
 package com.dailoo.dao;
 
+import java.util.List;
+
 import com.dailoo.domain.Speaker;
 
 public interface SpeakerDao extends Dao{
@@ -36,6 +38,12 @@ public interface SpeakerDao extends Dao{
 	 * @return 講者Bean
 	 */
 	Speaker findSpeakerById(String speakerId);
+
+	/**
+	 * 找出現在所有的講者
+	 * @return 講者的List集合
+	 */
+	List<Speaker> finAllSpeakers();
 
 	
 }

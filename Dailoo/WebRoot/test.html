@@ -14,8 +14,8 @@
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 <script>
     $.ajax({
-        url: "http://localhost:8080/Dailoo/ViewpointServlet", context: document.body,
-        data: {"method": "getViewpointSimplesByTheme", "theme":"龍田逛逛"},
+        url: "http://localhost:8080/Dailoo/SpeakerServlet", context: document.body,
+        data: {"method": "findAllSpeakers"},
         type:"POST",
         success: function (data) {
             var data = eval("(" + data + ")");

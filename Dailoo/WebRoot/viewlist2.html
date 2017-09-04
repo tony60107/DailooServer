@@ -125,7 +125,7 @@
     function initDataFromServer(vps){
         for(var i = 0; i < vps.length; i++) {
             //單一景點的HTML
-            var dom = '<a class="view" href="viewpoint.html?utm_source=InSite&utm_campaign=' + vps[i].name + '_' + vps[i].subtitle + '#!id=' + vps[i].id + '">' +
+            var dom = '<a class="view" href="viewpoint.html?utm_source=InSite&utm_campaign=' + vps[i].name + '_' + vps[i].subtitle + '#!' + vps[i].id + '">' +
                     '<div>' +
                     '<img src="/ResourceServlet?url=' + vps[i].behalfPhotoUrl + '">' +
                     '<div class="cover"></div>' +

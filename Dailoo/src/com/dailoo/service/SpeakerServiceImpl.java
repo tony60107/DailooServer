@@ -1,6 +1,7 @@
 package com.dailoo.service;
 
 import java.io.File;
+import java.util.List;
 import java.util.UUID;
 
 import com.dailoo.dao.SpeakerDao;
@@ -41,6 +42,19 @@ public class SpeakerServiceImpl implements SpeakerService{
 		
 		//Speaker設置新的大頭照地址
 		dao.updateSpeakerInfo(speaker);
+	}
+
+	@Override
+	public String findAllSpeakers() {
+		List<Speaker> speakers = dao.finAllSpeakers();
+		String json = "[";
+		for(int i = 0; i < speakers.size(); i++){
+			Speaker sp = speakers.get(i);
+			String speakerJson = "{\"id\":\"" + sp.getId() + "\", \"name\":\"" + sp.getName() + "\"},";
+			json = json + speakerJson;
+		}
+		json = json.substring(0, json.length()-1) + "]";
+		return json;
 	}
 
 }

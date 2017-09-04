@@ -46,4 +46,11 @@ public interface ViewpointDao extends Dao{
 	 */
 	void delViewpoint(String viewpointId);
 
+	/**
+	 * 查找同一景點名稱下的其他景點
+	 * @param name 景點名稱
+	 * @return 景點的List集合
+	 */
+	List<Viewpoint> findViewpointsByName(String name);
+
 }

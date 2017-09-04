@@ -63,6 +63,11 @@ public class SpeakerServlet extends HttpServlet {
 				}
 				response.sendRedirect("/updateSpeakerInfo.html");
 			}
+			//如果是找到所有的講者
+			else if ("findAllSpeakers".equals(method)) {
+				String json = service.findAllSpeakers();
+				response.getWriter().write(json);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
