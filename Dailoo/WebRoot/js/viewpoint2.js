@@ -59,6 +59,7 @@ function initData() {
     var param = location.hash.substring(1, location.hash.length);
     $.ajax({
         url: "http://localhost:8080/Dailoo/ViewpointServlet", context: document.body,
+        type:"POST",
         data: {"method": "getViewpointInfo", "viewpointId": param},
         success: function (data) {
             var data = eval("(" + data + ")");

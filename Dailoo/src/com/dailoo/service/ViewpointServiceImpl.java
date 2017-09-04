@@ -120,6 +120,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 			vpsim.setId(vp.getId());
 			vpsim.setName(vp.getName());
 			vpsim.setSubtilte(vp.getSubtitle());
+			vpsim.setTheme(vp.getTheme());
 			if(vp.getBehalfPhotoUrl() != null) vpsim.setBehalfPhotoUrl(vp.getBehalfPhotoUrl());
 			Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
 			if(speaker != null) vpsim.setSpeakerName(speaker.getName());

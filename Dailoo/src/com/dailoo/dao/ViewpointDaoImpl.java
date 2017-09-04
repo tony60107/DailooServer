@@ -16,14 +16,14 @@ public class ViewpointDaoImpl implements ViewpointDao{
 	@Override
 	public void addViewpoint(Viewpoint vp) {
 		
-		String sql = "insert into viewpoints (id, name, subtitle, theme, country, city, town, village,"
-				+ "address, longitude, latitude, navUrl, intro, shortUrl, speakerId) "
-				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into viewpoints (id, name, subtitle, theme, behalfPhotoUrl, country, city"
+				+ ", town, village, address, longitude, latitude, navUrl, intro, shortUrl, speakerId) "
+				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			runner.update(sql, vp.getId(), vp.getName(), vp.getSubtitle(), vp.getTheme(), vp.getCountry(), 
-					vp.getCity(), vp.getTown(), vp.getVillage(), vp.getAddress(), vp.getLongitude(),
-					vp.getLatitude(), vp.getNavUrl(), vp.getIntro(), vp.getShortUrl(), null);
+			runner.update(sql, vp.getId(), vp.getName(), vp.getSubtitle(), vp.getTheme(), vp.getBehalfPhotoUrl(),
+					vp.getCountry(), vp.getCity(), vp.getTown(), vp.getVillage(), vp.getAddress(), 
+					vp.getLongitude(), vp.getLatitude(), vp.getNavUrl(), vp.getIntro(), vp.getShortUrl(), null);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -76,7 +76,7 @@ public class ViewpointDaoImpl implements ViewpointDao{
 
 	@Override
 	public List<Viewpoint> findViewpointByTheme(String theme) {
-		String sql = "select * from viewpoints where theme = ?";
+		String sql = "select * from viewpoints where theme = ? order by updatetime asc";
 		
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());

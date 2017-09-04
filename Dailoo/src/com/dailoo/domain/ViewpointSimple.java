@@ -4,9 +4,11 @@ public class ViewpointSimple {
 	private String id;
 	private String name;
 	private String subtilte;
+	private String theme;
 	private String behalfPhotoUrl;
 	private String speakerName;
 	private int audioLength;
+	
 	public String getId() {
 		return id;
 	}
@@ -43,6 +45,12 @@ public class ViewpointSimple {
 	}
 	public void setAudioLength(int audioLength) {
 		this.audioLength = audioLength;
+	}
+	public String getTheme() {
+		return theme;
+	}
+	public void setTheme(String theme) {
+		this.theme = theme;
 	}
 	@Override
 	public String toString() {

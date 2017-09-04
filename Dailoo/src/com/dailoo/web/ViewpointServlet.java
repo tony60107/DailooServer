@@ -40,9 +40,12 @@ public class ViewpointServlet extends HttpServlet {
 				//取得景點音檔路徑
 				String audioUrl = paramMap.get("audiourls");
 				//取得景點代表圖片
+				String photoUrl = paramMap.get("imgurls");
 				
 				//設置景點資料
 				BeanUtils.populate(vp, paramMap);
+				//設定景點代表圖片
+				vp.setBehalfPhotoUrl(photoUrl);
 				//檢查是否已有相同景點名稱與副標的景點
 				Viewpoint temp = service.findViewpointByNameAndSt(vp.getName(), vp.getSubtitle());
 				if(temp == null){
