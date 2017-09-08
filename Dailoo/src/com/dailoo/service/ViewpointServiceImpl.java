@@ -90,6 +90,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 		if(vp == null) return null;
 		
 		Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
+		speaker.setPassword("");
 		Audio audio = audioDao.findAudioByViewpointId(vp.getId());
 		List<Tag> tags = tagDao.findTagsByAudioId(audio.getId());
 		List<Viewpoint> moreAudio = dao.findViewpointsByName(vp.getName());
@@ -152,23 +153,30 @@ public class ViewpointServiceImpl implements ViewpointService{
 		Audio audio = audioDao.findAudioByViewpointId(viewpointId);
 		
 		//取得該景點的標記,以取得照片地址
-		List<Tag> tagList = tagDao.findTagsByAudioId(audio.getId());
+		List<Tag> tagList = null;
+		if(audio != null){
+			tagList = tagDao.findTagsByAudioId(audio.getId());
+		}
 		//刪除景點照片
-		for(int i = 0; i < tagList.size(); i++){
-			Tag tag = tagList.get(i);
-			String fileURL = ViewpointService.class.getClassLoader().getResource("../../").getPath(); 
-			File file = new File(fileURL.substring(0, fileURL.length() - 1) + tag.getPhotoUrl()); 
-			if(file.exists()){	file.delete(); }
-			//刪除標記在資料庫中的紀錄
-			tagDao.delTag(tag.getId());
+		if(tagList != null){
+			for(int i = 0; i < tagList.size(); i++){
+				Tag tag = tagList.get(i);
+				String fileURL = ViewpointService.class.getClassLoader().getResource("../../").getPath(); 
+				File file = new File(fileURL.substring(0, fileURL.length() - 1) + tag.getPhotoUrl()); 
+				if(file.exists()){	file.delete(); }
+				//刪除標記在資料庫中的紀錄
+				tagDao.delTag(tag.getId());
+			}
 		}
 		
 		//刪除景點音檔
-		String fileURL = ViewpointService.class.getClassLoader().getResource("../../").getPath(); 
-		File file = new File(fileURL.substring(0, fileURL.length() - 1) + audio.getSrc()); 
-		if(file.exists()){	file.delete(); }
-		//刪除音檔在資料庫中的紀錄
-		audioDao.delAudio(audio.getId());
+		if(audio != null){
+			String fileURL = ViewpointService.class.getClassLoader().getResource("../../").getPath(); 
+			File file = new File(fileURL.substring(0, fileURL.length() - 1) + audio.getSrc()); 
+			if(file.exists()){	file.delete(); }
+			//刪除音檔在資料庫中的紀錄
+			audioDao.delAudio(audio.getId());
+		}
 		
 		dao.delViewpoint(viewpointId);
 	}

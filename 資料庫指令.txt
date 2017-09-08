@@ -4,24 +4,26 @@ create user dailoo identified by 'dailoo';
 
 CREATE TABLE dailoo.viewpoints (
   id varchar(255) NOT NULL DEFAULT '',
-  name varchar(255) DEFAULT NULL,
-  subtitle varchar(255) DEFAULT NULL,
-  behalfPhotoUrl varchar(255) DEFAULT NULL,
-  theme varchar(255) DEFAULT NULL,
-  country varchar(255) DEFAULT NULL,
-  city varchar(255) DEFAULT NULL,
-  town varchar(255) DEFAULT NULL,
-  village varchar(255) DEFAULT NULL,
-  address varchar(255) DEFAULT NULL,
+  name varchar(255) DEFAULT '',
+  subtitle varchar(255) DEFAULT '',
+  behalfPhotoUrl varchar(255) DEFAULT '',
+  theme varchar(255) DEFAULT '',
+  country varchar(255) DEFAULT '',
+  city varchar(255) DEFAULT '',
+  town varchar(255) DEFAULT '',
+  village varchar(255) DEFAULT '',
+  address varchar(255) DEFAULT '',
   longitude double DEFAULT NULL,
   latitude double DEFAULT NULL,
-  navUrl varchar(255) DEFAULT NULL,
-  intro varchar(1000) DEFAULT NULL,
-  shortUrl varchar(255) DEFAULT NULL,
-  speakerId varchar(255) DEFAULT NULL,
+  navUrl varchar(255) DEFAULT '',
+  intro varchar(1000) DEFAULT '',
+  shortUrl varchar(255) DEFAULT '',
+  speakerId varchar(255) DEFAULT '',
   updatetime timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (id)
-)
+  PRIMARY KEY (id),
+  CONSTRAINT FK_viewpoints_speakers_id FOREIGN KEY (speakerId)
+  REFERENCES dailoo.speakers (id) ON DELETE RESTRICT ON UPDATE RESTRICT
+);
 
 
 
@@ -30,32 +32,38 @@ CREATE TABLE dailoo.audios (
   src varchar(255) DEFAULT NULL,
   length int(11) DEFAULT NULL,
   viewpointId varchar(255) DEFAULT NULL,
-  updateTime timestamp NULL DEFAULT NULL
+  updateTime timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE INDEX UK_audios_id (id),
+  INDEX viewpointId (viewpointId),
+  CONSTRAINT audios_ibfk_1 FOREIGN KEY (viewpointId)
+  REFERENCES dailoo.viewpoints (id) ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
 
 
 CREATE TABLE dailoo.tags (
-  id varchar(255) NOT NULL DEFAULT '',
+   id varchar(255) NOT NULL DEFAULT '',
   time int(11) DEFAULT NULL,
   photoUrl varchar(255) DEFAULT NULL,
   audioId varchar(255) DEFAULT NULL,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  CONSTRAINT FK_tags_audios_id FOREIGN KEY (audioId)
+  REFERENCES dailoo.audios (id) ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
 CREATE TABLE dailoo.speakers (
   id varchar(255) NOT NULL DEFAULT '',
-  username varchar(255) DEFAULT NULL,
-  password varchar(255) DEFAULT NULL,
-  name varchar(255) DEFAULT NULL,
-  photoUrl varchar(255) DEFAULT NULL,
-  phoneNumber varchar(255) DEFAULT NULL,
-  homeNumber varchar(255) DEFAULT NULL,
-  speakerUrl varchar(255) DEFAULT NULL,
-  resume varchar(255) DEFAULT NULL,
-  intro varchar(1000) DEFAULT NULL,
-  youtubeUrl varchar(255) DEFAULT NULL,
-  role varchar(255) DEFAULT NULL,
+  username varchar(255) DEFAULT '',
+  password varchar(255) DEFAULT '',
+  name varchar(255) DEFAULT '',
+  photoUrl varchar(255) DEFAULT '',
+  phoneNumber varchar(255) DEFAULT '',
+  homeNumber varchar(255) DEFAULT '',
+  speakerUrl varchar(255) DEFAULT '',
+  resume varchar(255) DEFAULT '',
+  intro varchar(1000) DEFAULT '',
+  youtubeUrl varchar(255) DEFAULT '',
+  role varchar(255) DEFAULT '',
   registTime timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 );

@@ -24,7 +24,7 @@
 <body>
 <div class="w">
     <div class="title">更新個人資訊</div>
-    <form class="main-form" role="form" action="http://localhost:8080/Dailoo/SpeakerServlet?method=updateSpeakerInfo"
+    <form class="main-form" role="form" action="/SpeakerServlet?method=updateSpeakerInfo"
           method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label>姓名</label>
@@ -67,12 +67,12 @@
 <script type="text/javascript" src="js/base.js"></script>
 <script>
     $.ajax({
-        url: "http://localhost:8080/Dailoo/SpeakerServlet", context: document.body,
+        url: "/SpeakerServlet", context: document.body,
         data: {"method": "getSpeakerInfo"},
         success: function (data) {
             var data = eval("(" + data + ")");
             $$("name").value = data.name;
-            $$("photoUrl").src = "/Dailoo/ResourceServlet?url=" + data.photoUrl;
+            $$("photoUrl").src = "/ResourceServlet?url=" + data.photoUrl;
             $$("phoneNumber").value = data.phoneNumber;
             $$("homeNumber").value = data.homeNumber;
             $$("speakerUrl").value = data.speakerUrl;

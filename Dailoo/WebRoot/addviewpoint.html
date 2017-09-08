@@ -41,7 +41,7 @@
         </div>
         <div class="form-group">
             <label>景點ID</label>
-            <input type="text" name="id" class="form-control" placeholder="輸入景點ID" value="e1c1555b-bf97-4a28-ab00-8419a5cbd162">
+            <input type="text" name="id" class="form-control" placeholder="輸入景點ID" value="">
         </div>
         <div class="form-group">
             <label>景點名稱</label>
@@ -83,7 +83,7 @@
 <script type="text/javascript" src="js/base.js"></script>
 <script>
     $.ajax({
-        url: "http://localhost:8080/Dailoo/SpeakerServlet", context: document.body,
+        url: "/SpeakerServlet", context: document.body,
         data: {
             "method": "findAllSpeakers"
         },

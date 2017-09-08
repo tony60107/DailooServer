@@ -24,7 +24,7 @@ public class AudioServiceImpl implements AudioService {
 		try {
 			audio.setId(UUID.randomUUID().toString());
 			//取得音檔在硬盤中的完整地址
-			String fileURL = AudioService.class.getClassLoader().getResource("../../").getPath(); 
+			String fileURL = AudioService.class.getClassLoader().getResource("../../").toURI().getPath();
 			MP3File mp3File = new MP3File(fileURL.substring(0, fileURL.length() - 1) + audio.getSrc());
 			MP3AudioHeader audioHeader = (MP3AudioHeader) mp3File.getAudioHeader();
 			//設定音檔長度

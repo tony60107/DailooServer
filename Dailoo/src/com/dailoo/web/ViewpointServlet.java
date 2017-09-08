@@ -93,6 +93,7 @@ public class ViewpointServlet extends HttpServlet {
 				String viewpointId = request.getParameter("viewpointId");
 				String json = service.findViewpointByIdToJson(viewpointId);
 				if(json == null) json = "";
+				System.out.println(json);
 				response.getWriter().write(json);
 			}
 			//根據主題名稱，獲取簡易版景點資訊

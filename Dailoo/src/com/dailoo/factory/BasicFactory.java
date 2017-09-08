@@ -21,7 +21,7 @@ public class BasicFactory {
 	static{
 		try {
 			prop = new Properties();
-			prop.load(new FileReader(BasicFactory.class.getClassLoader().getResource("config.properties").getPath()));
+			prop.load(new FileReader(BasicFactory.class.getClassLoader().getResource("config.properties").toURI().getPath()));
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

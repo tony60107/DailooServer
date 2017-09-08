@@ -70,7 +70,7 @@
         }
 
         //初始化選擇哪個主題
-        var param = location.hash.substring(1);
+        var param = location.href.split("?")[1];
         for (var n = 0; n < con.length; n++) {
             con[n].style.display = "none";
             nav[n].className = "";
@@ -110,7 +110,7 @@
 
         //依據主題名稱，從伺服器中獲取該景點下的景點
         $.ajax({
-            url: "http://localhost:8080/Dailoo/ViewpointServlet", context: document.body,
+            url: "/ViewpointServlet", context: document.body,
             type: "POST",
             data: {"method": "getViewpointSimplesByTheme", "theme": themes[i]},
             success: function (data) {
@@ -120,12 +120,13 @@
             },
         });
     }
+    history.replaceState(null, null, location.href);
 
     //根據伺服器的資料，將單一景點新增到景點列表中
     function initDataFromServer(vps){
         for(var i = 0; i < vps.length; i++) {
             //單一景點的HTML
-            var dom = '<a class="view" href="viewpoint.html?utm_source=InSite&utm_campaign=' + vps[i].name + '_' + vps[i].subtitle + '#!' + vps[i].id + '">' +
+            var dom = '<a class="view" href="viewpoint2.html?utm_source=InSite&utm_campaign=' + vps[i].name + '_' + vps[i].subtilte + '&id=' + vps[i].id + '">' +
                     '<div>' +
                     '<img src="/ResourceServlet?url=' + vps[i].behalfPhotoUrl + '">' +
                     '<div class="cover"></div>' +

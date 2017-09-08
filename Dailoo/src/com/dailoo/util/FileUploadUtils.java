@@ -35,6 +35,10 @@ public class FileUploadUtils {
 			// 1.上传图片
 			DiskFileItemFactory factory = new DiskFileItemFactory();
 			factory.setSizeThreshold(1024 * 100);
+			
+			File tempDir = new File(servlet.getServletContext().getRealPath("WEB-INF/temp"));
+			if (!tempDir.exists())tempDir.mkdirs();
+			
 			factory.setRepository(new File(servlet.getServletContext()
 					.getRealPath("WEB-INF/temp")));
 

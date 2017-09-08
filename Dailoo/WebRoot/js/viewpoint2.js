@@ -56,25 +56,6 @@ function initData() {
 
      param = decodeURI(aryPara['utm_campaign']);*/
 
-    var param = location.hash.substring(2, location.hash.length);
-    $.ajax({
-        url: "http://localhost:8080/Dailoo/ViewpointServlet", context: document.body,
-        type:"POST",
-        data: {"method": "getViewpointInfo", "viewpointId": param},
-        success: function (data) {
-            var data = eval("(" + data + ")");
-
-            //修正照片URL
-            var tags = data.audio.tags;
-            if (typeof tags[0] != 'undefined') {
-                for (var i = 0; i < tags.length; i++) {
-                    tags[i].photoUrl = "/ResourceServlet?url=" + tags[i].photoUrl;
-                }
-            }
-            console.dir(data);
-            initDataFromServer(data);
-        },
-    });
 
 }
 
@@ -89,11 +70,10 @@ function initDataFromServer(serverData) {
     if (typeof serverData.audio.tags[0] != "undefined") {
         updateMainPhoto(serverData.audio.tags[0].photoUrl);
     }
-    //初始化景點資訊
-    initViewpointData(serverData);
     //初始化講者資訊
     initAuthorData(serverData.speaker);
-
+    //初始化景點資訊
+    initViewpointData(serverData);
 }
 
 //初始化講者資訊
@@ -211,13 +191,17 @@ function initViewpointData(vpData) {
         $$("moreAudioTitle").innerHTML = vpData.name + "還有以下可以收聽：";
         var moreAudioDiv = $$("moreAudio");
         for (var i = 0; i < vpData.moreAudio.length; i++) {
-            var audioA = document.createElement("a");
+            /*var audioA = document.createElement("a");
             audioA.href = "viewpoint.html?utm_source=InSite&utm_campaign=" + vpData.moreAudio[i].name + "_" + vpData.moreAudio[i].subtitle + "#!" + vpData.moreAudio[i].id;
             var audioDiv = document.createElement("div");
             audioDiv.className = "audio";
             audioDiv.innerHTML = vpData.moreAudio[i].subtitle;
             audioA.append(audioDiv);
-            moreAudioDiv.appendChild(audioA);
+            moreAudioDiv.appendChild(audioA);*/
+            moreAudioDiv.innerHTML = moreAudioDiv.innerHTML +
+                '<a href="viewpoint.html?utm_source=InSite&utm_campaign=' + vpData.moreAudio[i].name + '_' +
+                vpData.moreAudio[i].subtitle + '&id=' + vpData.moreAudio[i].id +
+                '"><div class="audio">' + vpData.moreAudio[i].subtitle + '</div></a>';
         }
     } else {
         $$("moreAudio").style.display = "none";
