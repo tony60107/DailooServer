@@ -53,4 +53,10 @@ public interface ViewpointDao extends Dao{
 	 */
 	List<Viewpoint> findViewpointsByName(String name);
 
+	/**
+	 * 查找所有景點
+	 * @return 景點的List集合
+	 */
+	List<Viewpoint> findAllViewpoints();
+
 }

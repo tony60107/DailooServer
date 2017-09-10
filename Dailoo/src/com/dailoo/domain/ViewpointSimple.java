@@ -3,7 +3,7 @@ package com.dailoo.domain;
 public class ViewpointSimple {
 	private String id;
 	private String name;
-	private String subtilte;
+	private String subtitle;
 	private String theme;
 	private String behalfPhotoUrl;
 	private String speakerName;
@@ -21,11 +21,11 @@ public class ViewpointSimple {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getSubtilte() {
-		return subtilte;
+	public String getSubtitle() {
+		return subtitle;
 	}
-	public void setSubtilte(String subtilte) {
-		this.subtilte = subtilte;
+	public void setSubtitle(String subtilte) {
+		this.subtitle = subtilte;
 	}
 	public String getBehalfPhotoUrl() {
 		return behalfPhotoUrl;
@@ -55,7 +55,7 @@ public class ViewpointSimple {
 	@Override
 	public String toString() {
 		return "ViewpointSimple [id=" + id + ", name=" + name + ", subtilte="
-				+ subtilte + ", behalfPhotoUrl=" + behalfPhotoUrl
+				+ subtitle + ", behalfPhotoUrl=" + behalfPhotoUrl
 				+ ", speakerName=" + speakerName + ", audioLength="
 				+ audioLength + "]";
 	}

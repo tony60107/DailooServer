@@ -128,7 +128,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 			//設定簡易版景點資訊內容
 			vpsim.setId(vp.getId());
 			vpsim.setName(vp.getName());
-			vpsim.setSubtilte(vp.getSubtitle());
+			vpsim.setSubtitle(vp.getSubtitle());
 			vpsim.setTheme(vp.getTheme());
 			if(vp.getBehalfPhotoUrl() != null) vpsim.setBehalfPhotoUrl(vp.getBehalfPhotoUrl());
 			Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
@@ -179,6 +179,40 @@ public class ViewpointServiceImpl implements ViewpointService{
 		}
 		
 		dao.delViewpoint(viewpointId);
+	}
+
+	@Override
+	public String findAllViewpointSimples() {
+		List<ViewpointSimple> vpsims = new ArrayList<ViewpointSimple>();
+		
+		//查找所有的景點
+		List<Viewpoint> list = dao.findAllViewpoints();
+		
+		//遍歷所有景點
+		for(int i = 0; i < list.size(); i++){
+
+			Viewpoint vp = list.get(i);
+			ViewpointSimple vpsim = new ViewpointSimple();
+			
+			//設定簡易版景點資訊內容
+			vpsim.setId(vp.getId());
+			vpsim.setName(vp.getName());
+			vpsim.setSubtitle(vp.getSubtitle());
+			vpsim.setTheme(vp.getTheme());
+			if(vp.getBehalfPhotoUrl() != null) vpsim.setBehalfPhotoUrl(vp.getBehalfPhotoUrl());
+			Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
+			if(speaker != null) vpsim.setSpeakerName(speaker.getName());
+			Audio audio = audioDao.findAudioByViewpointId(vp.getId());
+			if(audio != null) vpsim.setAudioLength(audio.getLength());
+
+			//將簡易版景點資訊新增到List中
+			vpsims.add(vpsim);
+		}
+		
+		Gson gson = new Gson();
+		String result = gson.toJson(vpsims);
+		System.out.println(result);
+		return result;
 	}
 
 }

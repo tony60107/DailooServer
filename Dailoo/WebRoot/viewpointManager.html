@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>景點管理</title>
+    <!-- 最新編譯和最佳化的 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!-- 選擇性佈景主題 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <!-- 最新編譯和最佳化的 JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .demo {
+            font-family: 'trebuchet MS', 'Lucida sans', Arial;
+            font-size: 14px;
+            color: #444;
+        }
+
+        table {
+            margin-top: 60px;
+            *border-collapse: collapse; /* IE7 and lower */
+            border-spacing: 0;
+            width: 100%;
+        }
+
+        /*========bordered table========*/
+        .bordered {
+            border: solid #ccc 1px;
+            -moz-border-radius: 6px;
+            -webkit-border-radius: 6px;
+            border-radius: 6px;
+            -webkit-box-shadow: 0 1px 1px #ccc;
+            -moz-box-shadow: 0 1px 1px #ccc;
+            box-shadow: 0 1px 1px #ccc;
+        }
+
+        .bordered tr {
+            -o-transition: all 0.1s ease-in-out;
+            -webkit-transition: all 0.1s ease-in-out;
+            -moz-transition: all 0.1s ease-in-out;
+            -ms-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+        }
+
+        .bordered .highlight,
+        .bordered tr:hover {
+            background: #fbf8e9;
+        }
+
+        .bordered td,
+        .bordered th {
+            border-left: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .bordered th {
+            background-color: #dce9f9;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+            background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+            background-image: -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+            background-image: -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+            background-image: -o-linear-gradient(top, #ebf3fc, #dce9f9);
+            background-image: linear-gradient(top, #ebf3fc, #dce9f9);
+            filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#ebf3fc, endColorstr=#dce9f9);
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#ebf3fc, endColorstr=#dce9f9)";
+            -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+            -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+            box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+            border-top: none;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+        }
+
+        .bordered td:first-child,
+        .bordered th:first-child {
+            border-left: none;
+        }
+
+        .bordered th:first-child {
+            -moz-border-radius: 6px 0 0 0;
+            -webkit-border-radius: 6px 0 0 0;
+            border-radius: 6px 0 0 0;
+        }
+
+        .bordered th:last-child {
+            -moz-border-radius: 0 6px 0 0;
+            -webkit-border-radius: 0 6px 0 0;
+            border-radius: 0 6px 0 0;
+        }
+
+        .bordered tr:last-child td:first-child {
+            -moz-border-radius: 0 0 0 6px;
+            -webkit-border-radius: 0 0 0 6px;
+            border-radius: 0 0 0 6px;
+        }
+
+        .bordered tr:last-child td:last-child {
+            -moz-border-radius: 0 0 6px 0;
+            -webkit-border-radius: 0 0 6px 0;
+            border-radius: 0 0 6px 0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="w">
+    <div class="demo">
+        <table class="bordered">
+            <thead>
+            <tr>
+                <th width="85px">景點名稱</th>
+                <th>副標題</th>
+                <th>講者</th>
+                <th>時間長度</th>
+                <th>編輯</th>
+                <th>預覽</th>
+                <th>狀態</th>
+                <th>動作</th>
+                <th>刪除</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+            <tr>
+                <td>鹿野高台</td>
+                <td>翱翔飛行傘</td>
+                <td>委立其</td>
+                <td>2：45</td>
+                <td><a href="#">編輯</a></td>
+                <td><a href="#">預覽</a></td>
+                <td>草稿</td>
+                <td><a href="#">立即發布</a></td>
+                <td><img src="#"/></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/base.js"></script>
+<script>
+    $.ajax({
+        url: "/ViewpointServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getAllViewpointSimples"},
+        success: function (data) {
+            var data = eval("(" + data + ")");
+            console.dir(data);
+            initDataFromServer(data);
+        },
+    });
+    function initDataFromServer(data) {
+        for (var i = 0; i < data.length; i++) {
+            var dom = '<tr>' +
+            '<td>' + data[i].name + '</td>' +
+            '<td>' + data[i].subtitle + '</td>' +
+            '<td>' + data[i].speakerName + '</td>' +
+            '<td>' + parseInt(data[i].audioLength / 60) + ' : ' + data[i].audioLength % 60 + '</td>' +
+            '<td><a href="/updateViewpointInfo.html?id=' + data[i].id + '">' + '編輯' + '</a></td>' +
+            '<td><a href="#">' + '預覽' + '</a></td>' +
+            '<td>' + '草稿' + '</td>' +
+            '<td><a href="#">' + '立即發布' + '</a></td>' +
+            '<td><img src="#"/></td>' +
+            '</tr>';
+            $$("tbody").innerHTML = $$("tbody").innerHTML + dom;
+        }
+    }
+</script>

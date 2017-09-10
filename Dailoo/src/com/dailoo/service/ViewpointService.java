@@ -52,4 +52,10 @@ public interface ViewpointService extends Service{
 	 */
 	void delViewpoint(String viewpointId);
 
+	/**
+	 * 獲取所有簡易版景點資訊
+	 * @return
+	 */
+	String findAllViewpointSimples();
+
 }

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新增景點</title>
+    <!-- 最新編譯和最佳化的 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!-- 選擇性佈景主題 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <!-- 最新編譯和最佳化的 JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/addviewpoint.css">
+</head>
+<body>
+<div class="w">
+    <div class="title">更新景點資訊</div>
+    <form class="main-form" role="form" action="/ViewpointServlet?method=addViewpoint" method="post"
+          enctype="multipart/form-data">
+        <div class="area form-group clearfix">
+            <input type="text" name="country" class="fl form-control" value="台灣" style="display: none">
+            <input type="text" name="village" class="fl form-control" value="" style="display: none">
+            <div id="twzipcode" style="width: 500px;">
+                <div data-role="county" data-name="city" data-value="臺東縣" data-style="form-control area" class="fl"></div>
+                <div data-role="district" data-name="town" data-value="鹿野鄉" data-style="form-control area" class="fl"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>景點主題</label>
+            <select name="theme" class="village fl form-control">
+                <option value="高台散步">高台散步</option>
+                <option value="鹿野品茶">鹿野品茶</option>
+                <option value="龍田逛逛">龍田逛逛</option>
+            </select>
+        </div>
+        <div class="form-group" style="display: none">
+            <label>景點ID</label>
+            <input id="viewpointId" type="text" name="id" class="form-control" placeholder="輸入景點ID" value="">
+        </div>
+        <div class="form-group">
+            <label>景點名稱</label>
+            <input type="text" name="name" class="form-control" placeholder="輸入景點名稱" value="鹿野高台">
+        </div>
+        <div class="form-group">
+            <label>副標題</label>
+            <input type="text" name="subtitle" class="form-control" placeholder="輸入副標題" value="遠眺都蘭山">
+        </div>
+
+        <div class="form-group">
+            <label>講者</label>
+            <select id="speaker_list" name="speakerId" class="fl form-control"></select>
+        </div>
+
+
+        <div class="form-group">
+            <label>景點地址</label>
+            <input type="text" name="address" class="form-control" placeholder="輸入景點地址" value="臺東縣鹿野鄉永安村高台路42巷">
+        </div>
+        <div class="form-group">
+            <label>景點介紹</label>
+            <input type="text" name="intro" class="form-control" placeholder="輸入景點介紹"
+                   value="當我們站在鹿野高台向東邊望去，就可以看見一座山形美麗的山，位在海岸山脈當中，同時也是海岸山脈南段的最高峰，高度1,190公尺，這座山不是一座普通的山，它是守護台東千百年的一座聖山，叫做都蘭山。">
+        </div>
+        <div class="form-group">
+            <label>景點代表圖</label>
+            <input type="file" name="file1" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>景點音檔</label>
+            <input type="file" name="file2" class="form-control">
+        </div>
+        <input type="button" class="btn btn-default" value="更新"
+               onClick="this.form.action='/ViewpointServlet?method=updateViewpoint';this.form.submit();">
+    </form>
+
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/jquery.twzipcode.min.js"></script>
+<script>
+    var param = location.href.split("id=")[1];
+    $$("viewpointId").value = param;
+    $.ajax({
+        url: "/SpeakerServlet", context: document.body,
+        type: "POST",
+        data: {
+            "method": "findAllSpeakers"
+        },
+        success: function (speakers) {
+            var speakers = eval("(" + speakers + ")");
+            console.dir(speakers);
+            var speakerList = document.getElementById("speaker_list");
+            for (var i = 0; i < speakers.length; i++) {
+                var dom = '<option value="' + speakers[i].id + '">' + speakers[i].name + '</option>';
+                speakerList.innerHTML = speakerList.innerHTML + dom;
+            }
+        },
+    });
+    $('#twzipcode').twzipcode();
+</script>
