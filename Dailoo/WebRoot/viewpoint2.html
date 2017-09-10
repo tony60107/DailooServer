@@ -157,7 +157,7 @@
     $.ajax({
         url: "/ViewpointServlet", context: document.body,
         type:"POST",
-        data: {"method": "getViewpointInfo", "viewpointId": param},
+        data: {"method": "getViewpointInfo", "id": param},
         success: function (data) {
             var data = eval("(" + data + ")");
 

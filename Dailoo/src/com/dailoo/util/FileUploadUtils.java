@@ -61,6 +61,8 @@ public class FileUploadUtils {
 				} else {
 					// 文件上传项
 					String realname = item.getName();
+					//如果上傳的檔案中有空白欄，則跳過
+					if("".equals(realname)){continue;}
 					//取得檔案格式
 					String format = realname.substring(realname.lastIndexOf(".")+1).toLowerCase();
 					

@@ -37,4 +37,22 @@ public class AudioServiceImpl implements AudioService {
 
 	}
 
+	@Override
+	public void updateSrcByViewpointId(String srcUrl, String viewpointId) {
+		try{
+			Audio audio = new Audio();
+			audio.setSrc(srcUrl);
+			audio.setViewpointId(viewpointId);
+			//取得音檔在硬盤中的完整地址
+			String fileURL = AudioService.class.getClassLoader().getResource("../../").toURI().getPath();
+			MP3File mp3File = new MP3File(fileURL.substring(0, fileURL.length() - 1) + audio.getSrc());
+			MP3AudioHeader audioHeader = (MP3AudioHeader) mp3File.getAudioHeader();
+			//設定音檔長度
+			audio.setLength(audioHeader.getTrackLength());
+			dao.updateSrcByViewpointId(audio);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
 }

@@ -23,4 +23,10 @@ public interface AudioDao extends Dao{
 	 */
 	void delAudio(String id);
 
+	
+	/**
+	 * @param audio 要更新的音檔Bean
+	 */
+	void updateSrcByViewpointId(Audio audio);
+
 }

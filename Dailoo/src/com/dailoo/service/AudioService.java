@@ -10,5 +10,11 @@ public interface AudioService extends Service{
 	 */
 	void addAudio(Audio audio);
 
+	/**
+	 * @param srcUrl 音檔在硬盤中的位置
+	 * @param viewpointId 景點ID
+	 */
+	void updateSrcByViewpointId(String srcUrl, String viewpointId);
+
 
 }

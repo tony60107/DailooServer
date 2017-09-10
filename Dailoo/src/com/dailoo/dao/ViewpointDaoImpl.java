@@ -60,14 +60,14 @@ public class ViewpointDaoImpl implements ViewpointDao{
 
 	@Override
 	public void updateViewpoint(Viewpoint vp) {
-		String sql = "update viewpoints set name=?, subtitle=?, theme=?, country=?,"
+		String sql = "update viewpoints set name=?, subtitle=?, behalfPhotoUrl=?, theme=?, country=?,"
 				+ "city=?, town=?, village=?, address=?, longitude=?, latitude=?, navUrl=?,"
-				+ "intro=?, shortUrl=? where id=?";
+				+ "intro=?, shortUrl=?, speakerId=? where id=?";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			runner.update(sql, vp.getName(), vp.getSubtitle(), vp.getTheme(), vp.getCountry(),
+			runner.update(sql, vp.getName(), vp.getSubtitle(), vp.getBehalfPhotoUrl(), vp.getTheme(), vp.getCountry(),
 					vp.getCity(), vp.getTown(), vp.getVillage(), vp.getAddress(), vp.getLongitude(),
-					vp.getLatitude(), vp.getNavUrl(), vp.getIntro(), vp.getShortUrl(), vp.getId());
+					vp.getLatitude(), vp.getNavUrl(), vp.getIntro(), vp.getShortUrl(),vp.getSpeakerId(), vp.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

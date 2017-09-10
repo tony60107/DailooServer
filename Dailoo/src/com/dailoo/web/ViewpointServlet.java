@@ -70,10 +70,22 @@ public class ViewpointServlet extends HttpServlet {
 			else if("updateViewpoint".equals(method)){
 				Map<String, String> paramMap = FileUploadUtils.getParamMap(request, response, this);
 				BeanUtils.populate(vp, paramMap);
+				
 				//取得目前登入者的資訊
 				Speaker speaker = (Speaker) request.getSession().getAttribute("speaker");
 				//根據景點ID查找該景點
 				Viewpoint temp = service.findViewpointById(vp.getId());
+				
+				//設定景點代表圖
+				if(paramMap.get("imgurls") != null){
+					vp.setBehalfPhotoUrl(paramMap.get("imgurls"));
+				} else {
+					vp.setBehalfPhotoUrl(temp.getBehalfPhotoUrl());
+				}
+				//設定音檔
+				if(paramMap.get("audiourls") != null){
+					audioService.updateSrcByViewpointId(paramMap.get("audiourls"), vp.getId());
+				}
 				
 				//進行權限管理
 				if(speaker == null){
@@ -86,11 +98,12 @@ public class ViewpointServlet extends HttpServlet {
 				} else {
 					throw new RuntimeException("您沒有權限更改該景點資訊");
 				}
+				response.sendRedirect("/updateViewpointInfo.html?id=" + vp.getId());
 			}
 			//如果是取得景點資訊
 			else if("getViewpointInfo".equals(method)){
 				//取得要獲取的景點ID
-				String viewpointId = request.getParameter("viewpointId");
+				String viewpointId = request.getParameter("id");
 				String json = service.findViewpointByIdToJson(viewpointId);
 				if(json == null) json = "";
 				//System.out.println(json);

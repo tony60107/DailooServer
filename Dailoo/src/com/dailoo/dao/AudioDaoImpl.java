@@ -48,4 +48,17 @@ public class AudioDaoImpl implements AudioDao{
 		}
 	}
 
+	@Override
+	public void updateSrcByViewpointId(Audio audio) {
+		String sql = "update audios set src = ?, length = ? where viewpointId = ?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, audio.getSrc(), audio.getLength(), audio.getViewpointId());
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}		
+		
+	}
+
 }
