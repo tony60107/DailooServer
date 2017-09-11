@@ -1,5 +1,6 @@
 package com.dailoo.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -40,11 +41,19 @@ public class AudioServiceImpl implements AudioService {
 	@Override
 	public void updateSrcByViewpointId(String srcUrl, String viewpointId) {
 		try{
+			//取得專案路徑
+			String fileURL = AudioService.class.getClassLoader().getResource("../../").toURI().getPath();
+			
+			//取得舊音檔路徑，並刪除舊音檔
+			File file = new File(fileURL.substring(0, fileURL.length() - 1) + dao.findAudioByViewpointId(viewpointId).getSrc()); 
+			if(file.exists()){	file.delete(); }
+			
+			//設定新音檔內容
 			Audio audio = new Audio();
 			audio.setSrc(srcUrl);
 			audio.setViewpointId(viewpointId);
-			//取得音檔在硬盤中的完整地址
-			String fileURL = AudioService.class.getClassLoader().getResource("../../").toURI().getPath();
+			
+			//取得音檔在硬盤中的完整地址，並取得音檔長度
 			MP3File mp3File = new MP3File(fileURL.substring(0, fileURL.length() - 1) + audio.getSrc());
 			MP3AudioHeader audioHeader = (MP3AudioHeader) mp3File.getAudioHeader();
 			//設定音檔長度

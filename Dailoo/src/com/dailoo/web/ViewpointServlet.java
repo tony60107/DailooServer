@@ -1,5 +1,6 @@
 package com.dailoo.web;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
@@ -76,23 +77,30 @@ public class ViewpointServlet extends HttpServlet {
 				//根據景點ID查找該景點
 				Viewpoint temp = service.findViewpointById(vp.getId());
 				
-				//設定景點代表圖
-				if(paramMap.get("imgurls") != null){
-					vp.setBehalfPhotoUrl(paramMap.get("imgurls"));
-				} else {
-					vp.setBehalfPhotoUrl(temp.getBehalfPhotoUrl());
-				}
-				//設定音檔
-				if(paramMap.get("audiourls") != null){
-					audioService.updateSrcByViewpointId(paramMap.get("audiourls"), vp.getId());
-				}
-				
 				//進行權限管理
 				if(speaker == null){
 					throw new RuntimeException("您尚未登入");
 				}
 				//如果要求更改景點資訊的是該景點擁有者或是管理員
 				else if(speaker.getId().equals(temp.getSpeakerId()) || "admin".equals(speaker.getRole())){
+					
+					//設定景點代表圖
+					if(paramMap.get("imgurls") != null){ //如果要更換景點代表圖
+						//刪除舊景點代表圖檔案
+						String contextUrl = getServletContext().getRealPath("/");
+						File file = new File(contextUrl.substring(0, contextUrl.length()-1) + temp.getBehalfPhotoUrl()); 
+						if(file.exists()){	file.delete(); }
+						
+						//設定新景點代表圖URL
+						vp.setBehalfPhotoUrl(paramMap.get("imgurls"));
+					} else { //沒有要更換代表圖
+						vp.setBehalfPhotoUrl(temp.getBehalfPhotoUrl());
+					}
+					//更新音檔資訊
+					if(paramMap.get("audiourls") != null){
+						audioService.updateSrcByViewpointId(paramMap.get("audiourls"), vp.getId());
+					}
+					
 					//更新景點資訊
 					service.updateViewpoint(vp);
 				} else {
