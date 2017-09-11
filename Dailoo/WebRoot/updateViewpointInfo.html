@@ -16,6 +16,7 @@
 <body>
 <div class="w">
     <div class="title">更新景點資訊</div>
+    <a href="/viewpointManager.html">返回景點管理頁面</a>
     <form class="main-form" role="form" action="/ViewpointServlet?method=updateViewpoint" method="post"
           enctype="multipart/form-data">
         <div class="area form-group clearfix">
@@ -63,7 +64,7 @@
         </div>
         <div class="form-group">
             <label>景點介紹</label>
-            <textarea id="intro" type="text" name="intro" class="form-control" placeholder="輸入景點介紹"></textarea>
+            <textarea id="intro" type="text" name="intro" class="form-control" rows="5" placeholder="輸入景點介紹"></textarea>
         </div>
         <div class="form-group">
             <label>景點代表圖</label>
@@ -87,6 +88,8 @@
 <script>
     var viewpointId = location.href.split("id=")[1];
     $$("viewpointId").value = viewpointId;
+
+    //取得現在所有的講者
     $.ajax({
         url: "/SpeakerServlet", context: document.body,
         type: "POST",
@@ -104,6 +107,7 @@
         },
     });
 
+    //取得該景點資訊
     $.ajax({
         url: "/ViewpointServlet", context: document.body,
         type: "POST",

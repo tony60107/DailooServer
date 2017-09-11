@@ -20,7 +20,7 @@
     <div class="player clearfix">
         <!--頭部導航欄-->
         <div class="header clearfix">
-            <a href="viewlist2.html#0"><img src="images/viewpoint/back.png" alt="" class="back fl"></a>
+            <a href="viewlist2.html?0"><img src="images/viewpoint/back.png" alt="" class="back fl"></a>
             <a id="share" href="#"><img src="images/viewpoint/share.png" alt="" class="share fr"></a>
             <a id="vpLocation" target="_blank"><img src="images/viewpoint/location.png" alt="" class="location fr"></a>
         </div>
@@ -54,7 +54,7 @@
     <!--景點簡介-->
     <div id="summary" class="summary">
         <div id="vpTitle" class="title"></div>
-        <div class="subtitle">台東縣鹿野鄉</div>
+        <div id="area" class="subtitle">台東縣鹿野鄉</div>
         <div id="vpIntro" class="intro"></div>
         <div id="readAllCont" class="readall">…展開全文</div>
     </div>
@@ -153,10 +153,13 @@
 <!--<script type="text/javascript" src="js/all.min.js"></script>-->
 
 <script>
+
     var param = location.href.split("id=")[1];
+    var speakerData = "";
+
     $.ajax({
         url: "/ViewpointServlet", context: document.body,
-        type:"POST",
+        type: "POST",
         data: {"method": "getViewpointInfo", "id": param},
         success: function (data) {
             var data = eval("(" + data + ")");
@@ -169,10 +172,39 @@
                 }
             }
             console.dir(data);
+            speakerData = data.speaker;
             initDataFromServer(data);
         },
     });
     history.replaceState(null, null, location.href);
+
+    function onYouTubeIframeAPIReady() {
+        //如果還沒有拿到講者資訊，等待0.5秒後再執行
+        if("" == speakerData){setTimeout(function(){
+            setSpeakerYoutube();
+        }, 500);} else{ setSpeakerYoutube(); }
+    }
+
+    //設定講者影片
+    function setSpeakerYoutube(){
+        var YTUrl = speakerData.youtubeUrl;
+        if (YTUrl != '') {
+            var YTID = YTUrl.substr(YTUrl.indexOf("v=") + 2, YTUrl.length);
+            var ytplayer;
+            ytplayer = new YT.Player('ytplayer', {
+                height: '495',
+                width: '880',
+                videoId: YTID,
+                events: {'onStateChange': onPlayerStateChange}
+            });
+            function onPlayerStateChange(event) {
+                if (event.data == YT.PlayerState.PLAYING) {
+                    document.getElementById("audio").pause();
+                }
+            }
+            $$("videoPrep").style.display = "none";
+        }
+    }
 
     //Google Analytics程式碼 開始
     (function (i, s, o, g, r, a, m) {

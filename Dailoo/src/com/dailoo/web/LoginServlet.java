@@ -27,7 +27,8 @@ public class LoginServlet extends HttpServlet {
 		Speaker speaker = service.getSpeakerByUnAndPsw(username,password);
 		if(speaker == null){
 			request.setAttribute("msg", "用户名密码不正确!");
-			request.getRequestDispatcher("/login.jsp").forward(request, response);
+			//request.getRequestDispatcher("/login.jsp").forward(request, response);
+			response.sendRedirect("/login.html");
 			return;
 		}
 		

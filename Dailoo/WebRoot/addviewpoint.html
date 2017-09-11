@@ -16,40 +16,40 @@
 <body>
 <div class="w">
     <div class="title">新增景點</div>
-    <form class="main-form" role="form" action="/ViewpointServlet?method=addViewpoint" method="post" enctype="multipart/form-data">
+    <a href="/viewpointManager.html">返回景點管理頁面</a>
+    <form class="main-form" role="form" action="/ViewpointServlet?method=addViewpoint" method="post"
+          enctype="multipart/form-data">
         <div class="area form-group clearfix">
-            <select name="country" class="fl form-control">
-                <option  value="台灣">台灣</option>
-            </select>
-            <select name="city" class="fl form-control">
-                <option value="台東縣">台東縣</option>
-            </select>
-            <select name="town" class="fl form-control">
-                <option value="鹿野鄉">鹿野鄉</option>
-            </select>
-            <select name="village" class="fl form-control">
-                <option value="永安村">永安村</option>
-            </select>
+            <input type="text" name="country" class="fl form-control" value="台灣" style="display: none">
+            <input type="text" name="village" class="fl form-control" value="" style="display: none">
+            <div id="twzipcode" style="width: 500px;">
+                <div id="city" data-role="county" data-name="city" data-style="form-control area" data-value="臺東縣"
+                     class="fl"></div>
+                <div id="town" data-role="district" data-name="town" data-style="form-control area" data-value="鹿野鄉"
+                     class="fl"></div>
+                <div data-role="zipcode" data-name="zipcode" data-value="" data-style="form-control area"
+                     style="display: none"></div>
+            </div>
         </div>
         <div class="form-group">
             <label>景點主題</label>
-            <select name="theme" class="village fl form-control">
+            <select id="theme" name="theme" class="village fl form-control">
                 <option value="高台散步">高台散步</option>
                 <option value="鹿野品茶">鹿野品茶</option>
                 <option value="龍田逛逛">龍田逛逛</option>
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group" style="display: none">
             <label>景點ID</label>
-            <input type="text" name="id" class="form-control" placeholder="輸入景點ID" value="">
+            <input id="viewpointId" type="text" name="id" class="form-control" placeholder="輸入景點ID" value="">
         </div>
         <div class="form-group">
             <label>景點名稱</label>
-            <input type="text" name="name" class="form-control" placeholder="輸入景點名稱" value="鹿野高台">
+            <input id="name" type="text" name="name" class="form-control" placeholder="輸入景點名稱" value="">
         </div>
         <div class="form-group">
             <label>副標題</label>
-            <input type="text" name="subtitle" class="form-control" placeholder="輸入副標題" value="遠眺都蘭山">
+            <input id="subtitle" type="text" name="subtitle" class="form-control" placeholder="輸入副標題" value="">
         </div>
 
         <div class="form-group">
@@ -57,33 +57,38 @@
             <select id="speaker_list" name="speakerId" class="fl form-control"></select>
         </div>
 
-
         <div class="form-group">
             <label>景點地址</label>
-            <input type="text" name="address" class="form-control" placeholder="輸入景點地址" value="臺東縣鹿野鄉永安村高台路42巷">
+            <input id="address" type="text" name="address" class="form-control" placeholder="輸入景點地址" value="">
         </div>
         <div class="form-group">
             <label>景點介紹</label>
-            <input type="text" name="intro" class="form-control" placeholder="輸入景點介紹" value="當我們站在鹿野高台向東邊望去，就可以看見一座山形美麗的山，位在海岸山脈當中，同時也是海岸山脈南段的最高峰，高度1,190公尺，這座山不是一座普通的山，它是守護台東千百年的一座聖山，叫做都蘭山。">
+            <textarea id="intro" type="text" name="intro" class="form-control" placeholder="輸入景點介紹"></textarea>
         </div>
         <div class="form-group">
             <label>景點代表圖</label>
-            <input type="file" name="file1" class="form-control" >
+            <input type="file" name="file1" class="form-control">
         </div>
         <div class="form-group">
             <label>景點音檔</label>
-            <input type="file" name="file2" class="form-control" >
+            <input type="file" name="file2" class="form-control">
         </div>
-        <input type="button" class="btn btn-default" value="新增" onClick="this.form.action='/ViewpointServlet?method=addViewpoint';this.form.submit();">
-        <input type="button" class="btn btn-default" value="更新" onClick="this.form.action='/ViewpointServlet?method=updateViewpoint';this.form.submit();">
+
+        <input type="button" class="btn btn-default" value="新增"
+               onClick="this.form.action='/ViewpointServlet?method=addViewpoint';this.form.submit();">
     </form>
+
 </div>
 </body>
 </html>
 <script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/jquery.twzipcode.min.js"></script>
 <script>
+
+    //取得現在所有的講者
     $.ajax({
         url: "/SpeakerServlet", context: document.body,
+        type: "POST",
         data: {
             "method": "findAllSpeakers"
         },
@@ -91,11 +96,11 @@
             var speakers = eval("(" + speakers + ")");
             console.dir(speakers);
             var speakerList = document.getElementById("speaker_list");
-            for(var i = 0; i < speakers.length; i++){
-                var dom =  '<option value="' + speakers[i].id + '">' + speakers[i].name + '</option>';
+            for (var i = 0; i < speakers.length; i++) {
+                var dom = '<option value="' + speakers[i].id + '">' + speakers[i].name + '</option>';
                 speakerList.innerHTML = speakerList.innerHTML + dom;
             }
         },
     });
-
+    $('#twzipcode').twzipcode();
 </script>

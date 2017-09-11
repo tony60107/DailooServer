@@ -133,7 +133,7 @@ public class ViewpointServlet extends HttpServlet {
 			//如果是刪除景點
 			else if("delViewpoint".equals(method)){
 				//取得要刪除的景點ID
-				String viewpointId = request.getParameter("viewpointId");
+				String viewpointId = request.getParameter("id");
 				//取得目前登入者的資訊
 				Speaker speaker = (Speaker) request.getSession().getAttribute("speaker");
 				//根據景點ID查找該景點
@@ -147,8 +147,9 @@ public class ViewpointServlet extends HttpServlet {
 				}
 				//如果要求更改景點資訊的是該景點擁有者或是管理員
 				else if(speaker.getId().equals(temp.getSpeakerId()) || "admin".equals(speaker.getRole())){
-					//更新景點資訊
+					//刪除景點
 					service.delViewpoint(viewpointId);
+					response.sendRedirect("/viewpointManager.html");
 				} else {
 					throw new RuntimeException("您沒有權限更改該景點資訊");
 				}

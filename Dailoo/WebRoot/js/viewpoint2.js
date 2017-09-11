@@ -134,32 +134,6 @@ function initAuthorData(speakerData) {
         $$("speakerResume").appendChild(li);
     }
 
-    //講者影片
-    /*if (speakerData.videoUrl != "") {
-     $$("ytplayer").src = speakerData.videoUrl;
-     } else {
-     $$("ytplayer").style.display = "none";
-     $$("videoPrep").style.display = "block";
-     }*/
-
-    //講者影片
-    var YTUrl = speakerData.youtubeUrl;
-    if (YTUrl != '') {
-        var YTID = YTUrl.substr(YTUrl.indexOf("v=") + 2, YTUrl.length);
-        var ytplayer;
-        ytplayer = new YT.Player('ytplayer', {
-            height: '495',
-            width: '880',
-            videoId: YTID,
-            events: {'onStateChange': onPlayerStateChange}
-        });
-        function onPlayerStateChange(event) {
-            if (event.data == YT.PlayerState.PLAYING) {
-                document.getElementById("audio").pause();
-            }
-        }
-        $$("videoPrep").style.display = "none";
-    }
 }
 
 //初始化景點資訊
@@ -191,13 +165,6 @@ function initViewpointData(vpData) {
         $$("moreAudioTitle").innerHTML = vpData.name + "還有以下可以收聽：";
         var moreAudioDiv = $$("moreAudio");
         for (var i = 0; i < vpData.moreAudio.length; i++) {
-            /*var audioA = document.createElement("a");
-            audioA.href = "viewpoint.html?utm_source=InSite&utm_campaign=" + vpData.moreAudio[i].name + "_" + vpData.moreAudio[i].subtitle + "#!" + vpData.moreAudio[i].id;
-            var audioDiv = document.createElement("div");
-            audioDiv.className = "audio";
-            audioDiv.innerHTML = vpData.moreAudio[i].subtitle;
-            audioA.append(audioDiv);
-            moreAudioDiv.appendChild(audioA);*/
             moreAudioDiv.innerHTML = moreAudioDiv.innerHTML +
                 '<a href="viewpoint.html?utm_source=InSite&utm_campaign=' + vpData.moreAudio[i].name + '_' +
                 vpData.moreAudio[i].subtitle + '&id=' + vpData.moreAudio[i].id +
