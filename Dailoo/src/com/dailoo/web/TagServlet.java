@@ -29,6 +29,8 @@ public class TagServlet extends HttpServlet {
 			Map<String, String> paramMap = FileUploadUtils.getParamMap(request,response, this);
 			service.addTag(paramMap);
 		}
+		
+		response.sendRedirect("/viewpointManager.html");
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

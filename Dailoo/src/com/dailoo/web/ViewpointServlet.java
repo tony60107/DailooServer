@@ -65,7 +65,7 @@ public class ViewpointServlet extends HttpServlet {
 				} else {
 					throw new RuntimeException("該景點已存在");
 				}
-				response.sendRedirect("/addviewpoint.html");
+				response.sendRedirect("/addViewpoint.html");
 			}
 			//如果是更新景點
 			else if("updateViewpoint".equals(method)){

@@ -17,7 +17,7 @@
     <form id="mainForm" action="/TagServlet?method=addTag" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label>音檔ID</label>
-            <input type="text" name="audioId" class="form-control" placeholder="輸入音檔ID" value="">
+            <input id="audioId" type="text" name="audioId" class="form-control" placeholder="輸入音檔ID" value="">
         </div>
         <div class="form-group clearfix">
             <input type="file" name="file1" class="form-control fl" multiple="multiple" style="width: 200px; margin-right: 80px;"/>
@@ -32,6 +32,10 @@
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
 <script>
+
+    var id = location.href.split("id=")[1];
+    $$("audioId").value = id;
+
     var num = 1;
     $$("addRow").onclick = function() {
         var row = document.createElement("div");

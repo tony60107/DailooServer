@@ -181,7 +181,7 @@
     function onYouTubeIframeAPIReady() {
         //如果還沒有拿到講者資訊，等待0.5秒後再執行
         if("" == speakerData){setTimeout(function(){
-            setSpeakerYoutube();
+            onYouTubeIframeAPIReady();
         }, 500);} else{ setSpeakerYoutube(); }
     }
 

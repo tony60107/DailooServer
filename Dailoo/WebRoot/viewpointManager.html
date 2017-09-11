@@ -112,6 +112,8 @@
 </head>
 <body>
 <div class="w">
+    <div><a href="/addViewpoint.html">新增景點</a></div>
+    <div><a href="/LogoutServlet">登出</a></div>
     <div class="demo">
         <table class="bordered">
             <thead>
@@ -155,7 +157,7 @@
             '<td>' + parseInt(vp[i].audioLength / 60) + ' : ' + vp[i].audioLength % 60 + '</td>' +
             '<td><a href="/updateViewpointInfo.html?id=' + vp[i].id + '">' + '編輯' + '</a></td>' +
             '<td><a href="/viewpoint2.html?id=' + vp[i].id + '">預覽</a></td>' +
-            '<td>' + '草稿' + '</td>' +
+            '<td>' + '發佈中' + '</td>' +
             '<td><a href="#">' + '立即發布' + '</a></td>' +
             '<td><a href="/ViewpointServlet?method=delViewpoint&id=' + vp[i].id + '">刪除</a></td>' +
             '</tr>';
