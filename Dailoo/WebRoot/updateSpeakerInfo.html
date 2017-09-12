@@ -71,6 +71,7 @@
 <script>
     $.ajax({
         url: "/SpeakerServlet", context: document.body,
+        type: "POST",
         data: {"method": "getSpeakerInfo"},
         success: function (data) {
             var data = eval("(" + data + ")");

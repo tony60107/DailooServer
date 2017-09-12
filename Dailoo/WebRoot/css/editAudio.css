@@ -1,0 +1,33 @@
+
+.taglist {
+    width: 100%;
+}
+
+.taglist .tag {
+    margin-right: 50px;
+    position: relative;
+    width: 150px;
+}
+
+.taglist .tag .pic {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #cccccc;
+}
+
+.taglist .tag .pic img {
+    width: 150px;
+    height: 150px;
+}
+
+.taglist .tag input {
+    width: 50px;
+    border-bottom: 2px solid #cccccc;
+    text-align: center;
+}
+
+.taglist .tag .del-tag {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+}

@@ -165,7 +165,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 					File file = new File(fileURL.substring(0, fileURL.length() - 1) + tag.getPhotoUrl()); 
 					if(file.exists()){	file.delete(); }
 					//刪除標記在資料庫中的紀錄
-					tagDao.delTag(tag.getId());
+					tagDao.delTagById(tag.getId());
 				}
 			}
 			

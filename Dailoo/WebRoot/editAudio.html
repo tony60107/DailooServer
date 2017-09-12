@@ -11,6 +11,7 @@
     <!-- 最新編譯和最佳化的 JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/editAudio.css">
 </head>
 <body>
 <div class="w">
@@ -20,12 +21,19 @@
             <input id="audioId" type="text" name="audioId" class="form-control" placeholder="輸入音檔ID" value="">
         </div>
         <div class="form-group clearfix">
-            <input type="file" name="file1" class="form-control fl" multiple="multiple" style="width: 200px; margin-right: 80px;"/>
+            <input type="file" name="file1" class="form-control fl" multiple="multiple"
+                   style="width: 200px; margin-right: 80px;"/>
             <input type="text" name="time0" class="form-control fl" style="width: 200px; margin-right: 300px;"/>
         </div>
-        <input type="submit" value="提交"/>
+        <button>提交</button>
     </form>
-    <button id="addRow" class="btn btn-warning fl" value="">+</button>
+    <div style="height: 100px;">
+        <button id="addRow" class="btn btn-warning fl" value="">+</button>
+    </div>
+    <div id="taglist" class="taglist clearfix">
+
+    </div>
+    <div><button onclick="updateTag()">更新所有標記時間</button></div>
 </div>
 </body>
 </html>
@@ -33,16 +41,79 @@
 <script type="text/javascript" src="js/base.js"></script>
 <script>
 
+    //獲取音檔ID
     var id = location.href.split("id=")[1];
     $$("audioId").value = id;
 
+    //增加上傳欄位
     var num = 1;
-    $$("addRow").onclick = function() {
+    $$("addRow").onclick = function () {
         var row = document.createElement("div");
         row.className = "form-group  clearfix";
         row.innerHTML = " <input type='file' name='file1' class='form-control fl' style='width: 200px; margin-right: 80px;'/> " +
-                            "<input type='text' name='time" + num + "'class='form-control fl' style='width: 200px; margin-right: 80px;'/>";
+                "<input type='text' name='time" + num + "'class='form-control fl' style='width: 200px; margin-right: 80px;'/>";
         $$("mainForm").appendChild(row);
         num++;
     }
+
+    //獲取該音檔ID下的所有Tag
+    $.ajax({
+        url: "/TagServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getTagsByAudioId", "id": id},
+        success: function (data) {
+            var data = eval("(" + data + ")");
+            console.dir(data);
+            initDataFromServer(data);
+        },
+    });
+
+    //將Tag展示在頁面上
+    function initDataFromServer(tags) {
+        for (var i = 0; i < tags.length; i++) {
+            var dom = '<div id="'+ tags[i].id +'" class="tag fl">' +
+                    '<div class="pic">' +
+                    '<img src="/ResourceServlet?url=' + tags[i].photoUrl + '" alt="">' +
+                    '</div>' +
+                    '<div class="time">' +
+                    '<input name="min" type="text" value="' + parseInt(tags[i].time / 60) + '"> 分 <input name="sec" type="text" value="' + tags[i].time % 60 + '"> 秒' +
+                    '</div>' +
+                    '<button onclick="delTag(this,\'' + tags[i].id + '\');"><img src="images/general/delete.png" alt="" class="del-tag"></button>' +
+                    '</div>';
+            $$("taglist").innerHTML = $$("taglist").innerHTML + dom;
+        }
+
+    }
+
+    //向伺服器中刪除Tag，並在刪除成功後，刪除頁面上的Tag
+    function delTag(btn, id) {
+        $.ajax({
+            url: "/TagServlet", context: btn,
+            type: "POST",
+            data: {"method": "delTagById", "id": id},
+            success: function (result) {
+                if (result == "OK") this.parentNode.parentNode.removeChild(this.parentNode);
+            },
+        });
+    }
+
+    function updateTag(){
+        var tags = $$("taglist").children;
+        for(var i = 0; i < tags.length; i++){
+            var id = tags[i].id;
+            var timeDiv = tags[i].children[1];
+            var time = parseInt(timeDiv.children[0].value * 60) + parseInt(timeDiv.children[1].value);
+            $.ajax({
+                url: "/TagServlet", context: document.body,
+                type: "POST",
+                data: {"method": "updateTagById", "id": id, "time": time},
+                success: function (data) {
+                    var data = eval("(" + data + ")");
+                    console.dir(data);
+                },
+            });
+        }
+        window.location.reload();
+    }
+
 </script>

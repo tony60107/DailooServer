@@ -18,6 +18,7 @@
     <div class="title">更新景點資訊</div>
     <div><a id="editAudio" href="#">編輯音檔資訊</a></div>
     <div><a href="/viewpointManager.html">返回景點管理頁面</a></div>
+    <div><a id="preview" href="">預覽景點</a></div>
     <form class="main-form" role="form" action="/ViewpointServlet?method=updateViewpoint" method="post"
           enctype="multipart/form-data">
         <div class="area form-group clearfix">
@@ -135,6 +136,7 @@
         $$("speaker_list").value = vp.speaker.id;
 
         $$("editAudio").href = "/editAudio.html?id=" + vp.audio.id;
+        $$("preview").href = "/viewpoint2.html?id=" + vp.id;
 
         $('#twzipcode').twzipcode();
     }

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import com.dailoo.domain.Tag;
@@ -41,7 +42,7 @@ public class TagDaoImpl implements TagDao{
 	}
 
 	@Override
-	public void delTag(String id) {
+	public void delTagById(String id) {
 		String sql = "delete from tags where id = ?";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
@@ -50,6 +51,31 @@ public class TagDaoImpl implements TagDao{
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
+	}
+
+	@Override
+	public Tag findTagById(String id) {
+		String sql = "select * from tags where id = ?";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanHandler<Tag>(Tag.class), id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public void updateTagById(Tag tag) {
+		String sql = "update tags set time = ? where id = ?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, tag.getTime(), tag.getId());
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}		
 	}
 
 }
