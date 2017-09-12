@@ -15,8 +15,10 @@
 </head>
 <body>
 <div class="w">
+    <audio id="audio" src="" controls="controls"></audio>
+    <div style="margin-bottom: 30px;"><a id="preview" href="">預覽景點</a></div>
     <form id="mainForm" action="/TagServlet?method=addTag" method="post" enctype="multipart/form-data">
-        <div class="form-group">
+        <div class="form-group" style="display: none">
             <label>音檔ID</label>
             <input id="audioId" type="text" name="audioId" class="form-control" placeholder="輸入音檔ID" value="">
         </div>
@@ -25,11 +27,11 @@
                    style="width: 200px; margin-right: 80px;"/>
             <input type="text" name="time0" class="form-control fl" style="width: 200px; margin-right: 300px;"/>
         </div>
-        <button>提交</button>
     </form>
-    <div style="height: 100px;">
+    <div style="height: 40px;">
         <button id="addRow" class="btn btn-warning fl" value="">+</button>
     </div>
+    <button onclick="$$('mainForm').submit();">上傳標記資訊</button>
     <div id="taglist" class="taglist clearfix">
 
     </div>
@@ -42,8 +44,8 @@
 <script>
 
     //獲取音檔ID
-    var id = location.href.split("id=")[1];
-    $$("audioId").value = id;
+    var audioId = location.href.split("id=")[1];
+    $$("audioId").value = audioId;
 
     //增加上傳欄位
     var num = 1;
@@ -60,11 +62,24 @@
     $.ajax({
         url: "/TagServlet", context: document.body,
         type: "POST",
-        data: {"method": "getTagsByAudioId", "id": id},
+        data: {"method": "getTagsByAudioId", "id": audioId},
         success: function (data) {
             var data = eval("(" + data + ")");
             console.dir(data);
             initDataFromServer(data);
+        },
+    });
+
+    //獲取音檔
+    $.ajax({
+        url: "/AudioServlet", context: document.body,
+        type: "POST",
+        data: {"method": "findAudioById", "id": audioId},
+        success: function (data) {
+            var audioData = eval("(" + data + ")");
+            $$("audio").src = "/ResourceServlet?url=" + audioData.src;
+            $$("preview").href = "/viewpoint2.html?id=" + audioData.viewpointId;
+            console.dir(data);
         },
     });
 

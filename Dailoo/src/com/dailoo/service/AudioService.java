@@ -16,5 +16,12 @@ public interface AudioService extends Service{
 	 */
 	void updateSrcByViewpointId(String srcUrl, String viewpointId);
 
+	/**
+	 * 根據音檔ID找到音檔
+	 * @param id 音檔ID
+	 * @return 音檔Bean的JSON數據
+	 */
+	String findAudioById(String id);
+
 
 }

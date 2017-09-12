@@ -66,6 +66,11 @@
     <servlet-name>TagServlet</servlet-name>
     <servlet-class>com.dailoo.web.TagServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AudioServlet</servlet-name>
+    <servlet-class>com.dailoo.web.AudioServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -93,6 +98,10 @@
   <servlet-mapping>
     <servlet-name>TagServlet</servlet-name>
     <url-pattern>/TagServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AudioServlet</servlet-name>
+    <url-pattern>/AudioServlet</url-pattern>
   </servlet-mapping>
 
 </web-app>

@@ -1,23 +1,20 @@
 package com.dailoo.service;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.UUID;
 
-import org.jaudiotagger.audio.exceptions.CannotReadException;
-import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
-import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
 import org.jaudiotagger.audio.mp3.MP3AudioHeader;
 import org.jaudiotagger.audio.mp3.MP3File;
-import org.jaudiotagger.tag.TagException;
 
 import com.dailoo.dao.AudioDao;
 import com.dailoo.domain.Audio;
 import com.dailoo.factory.BasicFactory;
+import com.google.gson.Gson;
 
 public class AudioServiceImpl implements AudioService {
 	
 	AudioDao dao = BasicFactory.getFactory().getDao(AudioDao.class);
+	Gson gson = new Gson();
 
 	@Override
 	public void addAudio(Audio audio) {
@@ -62,6 +59,13 @@ public class AudioServiceImpl implements AudioService {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public String findAudioById(String id) {
+		Audio audio = dao.findAudioById(id);
+		String json = gson.toJson(audio);
+		return json;
 	}
 
 }

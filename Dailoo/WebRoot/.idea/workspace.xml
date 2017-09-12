@@ -26,18 +26,19 @@
       <file leaf-file-name="editAudio.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/editAudio.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.80157834">
-              <caret line="115" column="33" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.4464487">
+              <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#1909#2327#0" expanded="false" />
-                <element signature="e#2361#2660#0" expanded="false" />
-                <element signature="e#3572#3883#0" expanded="false" />
-                <marker date="1505229278191" expanded="true" signature="2097:2130" placeholder="..." />
-                <marker date="1505229278191" expanded="true" signature="2227:2260" placeholder="..." />
-                <marker date="1505229278191" expanded="true" signature="2833:3417" placeholder="..." />
-                <marker date="1505229278191" expanded="true" signature="2875:2964" placeholder="..." />
-                <marker date="1505229278191" expanded="true" signature="2875:2965" placeholder="..." />
+                <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#2110#2528#0" expanded="false" />
+                <element signature="e#4226#4537#0" expanded="false" />
+                <marker date="1505231848571" expanded="true" signature="2298:2331" placeholder="..." />
+                <marker date="1505231848571" expanded="true" signature="2428:2461" placeholder="..." />
+                <marker date="1505231848571" expanded="true" signature="3487:4071" placeholder="..." />
+                <marker date="1505231848571" expanded="true" signature="3529:3618" placeholder="..." />
+                <marker date="1505231848571" expanded="true" signature="3529:3619" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -74,8 +75,8 @@
       <file leaf-file-name="editAudio.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/editAudio.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.4838705">
-              <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+            <state vertical-scroll-proportion="-2.1290324">
+              <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -146,8 +147,8 @@
         <option value="$PROJECT_DIR$/viewpointManager.html" />
         <option value="$PROJECT_DIR$/viewpoint2.html" />
         <option value="$PROJECT_DIR$/updateSpeakerInfo.html" />
-        <option value="$PROJECT_DIR$/css/editAudio.css" />
         <option value="$PROJECT_DIR$/updateViewpointInfo.html" />
+        <option value="$PROJECT_DIR$/css/editAudio.css" />
         <option value="$PROJECT_DIR$/editAudio.html" />
       </list>
     </option>
@@ -901,12 +902,12 @@
       <workItem from="1505025715981" duration="16636000" />
       <workItem from="1505111260406" duration="8819000" />
       <workItem from="1505200733293" duration="3863000" />
-      <workItem from="1505206847334" duration="9848000" />
+      <workItem from="1505206847334" duration="12409000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="653570000" />
+    <option name="totallyTimeSpent" value="656131000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1292,14 +1293,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/editAudio.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.4838705">
-          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/updateViewpointInfo.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8511838">
@@ -1323,20 +1316,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/editAudio.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.1290324">
+          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/editAudio.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.80157834">
-          <caret line="115" column="33" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.4464487">
+          <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#1909#2327#0" expanded="false" />
-            <element signature="e#2361#2660#0" expanded="false" />
-            <element signature="e#3572#3883#0" expanded="false" />
-            <marker date="1505229278191" expanded="true" signature="2097:2130" placeholder="..." />
-            <marker date="1505229278191" expanded="true" signature="2227:2260" placeholder="..." />
-            <marker date="1505229278191" expanded="true" signature="2833:3417" placeholder="..." />
-            <marker date="1505229278191" expanded="true" signature="2875:2964" placeholder="..." />
-            <marker date="1505229278191" expanded="true" signature="2875:2965" placeholder="..." />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#2110#2528#0" expanded="false" />
+            <element signature="e#4226#4537#0" expanded="false" />
+            <marker date="1505231848571" expanded="true" signature="2298:2331" placeholder="..." />
+            <marker date="1505231848571" expanded="true" signature="2428:2461" placeholder="..." />
+            <marker date="1505231848571" expanded="true" signature="3487:4071" placeholder="..." />
+            <marker date="1505231848571" expanded="true" signature="3529:3618" placeholder="..." />
+            <marker date="1505231848571" expanded="true" signature="3529:3619" placeholder="..." />
           </folding>
         </state>
       </provider>

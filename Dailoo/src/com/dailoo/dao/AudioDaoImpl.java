@@ -61,4 +61,16 @@ public class AudioDaoImpl implements AudioDao{
 		
 	}
 
+	@Override
+	public Audio findAudioById(String id) {
+		String sql = "select * from audios where id = ?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanHandler<Audio>(Audio.class), id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
 }
