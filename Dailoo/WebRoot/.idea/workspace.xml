@@ -23,10 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="editAudio.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="editAudio.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/editAudio.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4464487">
+            <state vertical-scroll-proportion="-6.387097">
               <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -47,36 +47,65 @@
       <file leaf-file-name="updateSpeakerInfo.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/updateSpeakerInfo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.419354">
-              <caret line="73" column="21" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
+            <state vertical-scroll-proportion="-4.064516">
+              <caret line="54" column="64" selection-start-line="54" selection-start-column="64" selection-end-line="54" selection-end-column="64" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="viewlist2.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/viewlist2.html">
+      <file leaf-file-name="updateViewpointInfo.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/updateViewpointInfo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.096775">
-              <caret line="143" column="66" selection-start-line="143" selection-start-column="20" selection-end-line="143" selection-end-column="66" />
+            <state vertical-scroll-proportion="21.774193">
+              <caret line="68" column="86" selection-start-line="68" selection-start-column="86" selection-end-line="68" selection-end-column="86" />
               <folding>
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#2690#3080#0" expanded="false" />
-                <marker date="1504862604710" expanded="true" signature="3485:3627" placeholder="..." />
-                <marker date="1504862604710" expanded="true" signature="3485:3628" placeholder="..." />
-                <marker date="1504862604710" expanded="true" signature="3485:3653" placeholder="..." />
-                <marker date="1504862604710" expanded="true" signature="3485:3654" placeholder="..." />
+                <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#8;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editAudio.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/editAudio.css">
+      <file leaf-file-name="addViewpoint.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/addViewpoint.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.1290324">
-              <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+            <state vertical-scroll-proportion="-16.32258">
+              <caret line="65" column="108" selection-start-line="65" selection-start-column="97" selection-end-line="65" selection-end-column="108" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="viewpoint2.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/viewpoint2.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="94" column="51" selection-start-line="94" selection-start-column="51" selection-end-line="94" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="viewpoint2.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/viewpoint2.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-29.806452">
+              <caret line="288" column="22" selection-start-line="288" selection-start-column="22" selection-end-line="288" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="viewpoint2.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/viewpoint2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.34723788">
+              <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -142,14 +171,15 @@
         <option value="$PROJECT_DIR$/css/viewpoint.css" />
         <option value="$PROJECT_DIR$/js/youtube_iframe_api.js" />
         <option value="$PROJECT_DIR$/css/addviewpoint.css" />
-        <option value="$PROJECT_DIR$/addViewpoint.html" />
-        <option value="$PROJECT_DIR$/js/viewpoint2.js" />
         <option value="$PROJECT_DIR$/viewpointManager.html" />
-        <option value="$PROJECT_DIR$/viewpoint2.html" />
-        <option value="$PROJECT_DIR$/updateSpeakerInfo.html" />
-        <option value="$PROJECT_DIR$/updateViewpointInfo.html" />
         <option value="$PROJECT_DIR$/css/editAudio.css" />
         <option value="$PROJECT_DIR$/editAudio.html" />
+        <option value="$PROJECT_DIR$/addViewpoint.html" />
+        <option value="$PROJECT_DIR$/updateViewpointInfo.html" />
+        <option value="$PROJECT_DIR$/updateSpeakerInfo.html" />
+        <option value="$PROJECT_DIR$/js/viewpoint2.js" />
+        <option value="$PROJECT_DIR$/css/viewpoint2.css" />
+        <option value="$PROJECT_DIR$/viewpoint2.html" />
       </list>
     </option>
   </component>
@@ -196,9 +226,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -228,6 +256,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dailoo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebRoot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -329,6 +371,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -344,17 +388,17 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot" />
-      <recent name="E:\resource\DailooTest\Dailoo\images\photo\C龍田逛逛\LT0042 龍田 輝哥 鹿野區役場" />
-      <recent name="E:\resource\DailooTest\Dailoo\images\photo\A高台散步" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\css" />
       <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\images\general" />
       <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot" />
       <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\js" />
       <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\WEB-INF" />
-      <recent name="E:\resource\DailooTest\Dailoo\audio\C龍田逛逛\2017-07-01 韋立琦 龍田村" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot" />
+      <recent name="E:\resource\DailooTest\Dailoo\images\photo\C龍田逛逛\LT0042 龍田 輝哥 鹿野區役場" />
+      <recent name="E:\resource\DailooTest\Dailoo\images\photo\A高台散步" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -903,11 +947,12 @@
       <workItem from="1505111260406" duration="8819000" />
       <workItem from="1505200733293" duration="3863000" />
       <workItem from="1505206847334" duration="12409000" />
+      <workItem from="1505286875405" duration="3305000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="656131000" />
+    <option name="totallyTimeSpent" value="659436000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -982,13 +1027,6 @@
     <entry file="file://$PROJECT_DIR$/images/viewpoint/back.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/viewpoint2.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.516129">
-          <caret line="457" column="10" selection-start-line="409" selection-start-column="0" selection-end-line="457" selection-end-column="10" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/jquery-1.11.1.min.js">
@@ -1214,13 +1252,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viewpoint.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62795943">
-          <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/navMap.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.80157834">
@@ -1242,27 +1273,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/addViewpoint.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="8.5161295">
-          <caret line="27" column="115" selection-start-line="27" selection-start-column="115" selection-end-line="27" selection-end-column="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/viewpoint2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viewpoint2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.419354">
-          <caret line="174" column="39" selection-start-line="174" selection-start-column="39" selection-end-line="174" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/viewpointManager.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.064516">
@@ -1279,7 +1289,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/viewlist2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.096775">
+        <state vertical-scroll-proportion="0.0">
           <caret line="143" column="66" selection-start-line="143" selection-start-column="20" selection-end-line="143" selection-end-column="66" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1293,32 +1303,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/updateViewpointInfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8511838">
-          <caret line="138" column="60" selection-start-line="138" selection-start-column="60" selection-end-line="138" selection-end-column="60" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#8;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/updateSpeakerInfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.419354">
-          <caret line="73" column="21" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/editAudio.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.1290324">
+        <state vertical-scroll-proportion="0.0">
           <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
           <folding />
         </state>
@@ -1326,7 +1313,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/editAudio.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4464487">
+        <state vertical-scroll-proportion="-6.387097">
           <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1340,6 +1327,69 @@
             <marker date="1505231848571" expanded="true" signature="3529:3618" placeholder="..." />
             <marker date="1505231848571" expanded="true" signature="3529:3619" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/updateViewpointInfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="21.774193">
+          <caret line="68" column="86" selection-start-line="68" selection-start-column="86" selection-end-line="68" selection-end-column="86" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#8;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addViewpoint.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.32258">
+          <caret line="65" column="108" selection-start-line="65" selection-start-column="97" selection-end-line="65" selection-end-column="108" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/updateSpeakerInfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.064516">
+          <caret line="54" column="64" selection-start-line="54" selection-start-column="64" selection-end-line="54" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpoint.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65050733">
+          <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/viewpoint2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="94" column="51" selection-start-line="94" selection-start-column="51" selection-end-line="94" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/viewpoint2.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-29.806452">
+          <caret line="288" column="22" selection-start-line="288" selection-start-column="22" selection-end-line="288" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpoint2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34723788">
+          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>

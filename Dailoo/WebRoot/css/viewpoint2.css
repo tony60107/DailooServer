@@ -1,411 +1,547 @@
-@charset "UTF-8";
-
-body {
-}
-
-.header {
-    height: 120px;
-    background-color: #ffbf0f;
-}
-
-.header .backward {
+.player {
+    margin: 0 auto;
+    width: 980px;
+    height: 1580px;
+    background: url("../images/viewpoint/background_player.png");
     position: relative;
 }
 
-.backward img {
+/*主功能頭部導航欄開始*/
+.player .header {
+    margin-top: 52px;
+    height: 76px;
+    margin-left: 43px;
+    margin-right: 43px;
+}
+
+.player .header .back {
+    margin-right: 30px;
+}
+
+.player .header .location {
+    margin-right: 28px;
+}
+/*主功能頭部導航欄結束*/
+
+/*標題區塊開始*/
+.player .title {
+    margin-top: 32px;
+    font-size: 76px;
+    line-height: 107px;
+    text-align: center;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: 3px;
+}
+
+.player .subtitle {
+    margin-top: 16px;
+    font-size: 42px;
+    line-height: 59px;
+    text-align: center;
+    color: #ffffff;
+}
+/*標題區塊結束*/
+
+/*圖片輪播區塊開始*/
+.player .picshower {
+    margin-top: 144px; /*42px*/
+    position: relative;
+}
+
+.player .picshower .prevpic {
+    width: 80px;
+    height: 80px;
+    background: url("../images/viewpoint/prev_pic.png") no-repeat;
     position: absolute;
-    height: 90px;
-    top: 2px;
-    left: 22px;
-    display: inline-block;
-}
-
-.backward .title {
-    position: absolute;
-    font-size: 50px;
-    color: #E5E5E5;
-    width: 100px;
-    top: 16px;
-    left: 68px;
-}
-
-.header-l .descrip {
-    font-size: 50px;
-    position: absolute;
-    top: 52px;
-    left: 200px;
-}
-
-.header-r {
-    width: 210px;
-    height: 100%;
-}
-
-.header-r .searinp {
-    margin-top: 26px;
-    width: 370px;
-    height: 64px;
-    display: inline-block;
-    border-bottom: 4px solid #666;
-    background-color: #ffbf0f;
-    font-size: 34px;
-    line-height: 34px;
+    top: 230px;
+    left: 26px;
     display: none;
 }
 
-.header-r .search {
-    background: url("../images/search.png") no-repeat top left;
-    width: 64px;
-    height: 64px;
-    display: inline-block;
+.player .picshower .pic {
+    width: 100%;
+    height: 540px; /*720px*/
+    margin: 0 auto;
+    display: block;
 }
 
-.header-r .more {
-    background: url("../images/more.png") no-repeat top left;
-    width: 64px;
-    height: 64px;
-    margin-top: 26px;
-    margin-left: 34px;
-    display: inline-block;
-}
-
-.main {
-    margin-top: 20px;
-    position: relative;
-}
-
-.main .cover {
-    font-size: 50px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-}
-
-/*聲音撥放區開始*/
-/*拖動條開始*/
-.scroll {
-    width: 800px;
-    height: 20px;
-    background-color: #ccc;
-    margin: 100px;
-    position: relative;
-
-}
-
-.bar {
-    width: 20px;
-    height: 42px;
-    background-color: #369;
+.player .picshower .nextpic {
+    width: 80px;
+    height: 80px;
+    background: url("../images/viewpoint/next_pic.png") no-repeat;
     position: absolute;
-    top: -9px;
-    left: 0;
-    cursor: pointer;
-    z-index: 5;
+    top: 230px;
+    right: 26px;
+    display: none;
 }
 
-.tag {
-    width: 10px;
-    height: 20px;
-    background-color: #ffe631;
+.player .picshower .photo-count {
+    font-size: 36px;
+    line-height: 50px;
+    letter-spacing: 6px;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: -70px;
+    right: 52px;
+}
+
+/*圖片輪播區塊結束*/
+
+/*講者小圖*/
+.player .speaker-small {
+    width: 100px;
+    height: 100px;
+    margin-top: 73px; /*-16px*/
+    margin-left: 80px;
+    border-radius: 50%;
+}
+
+
+/*聲音進度條開始*/
+.player .scroll {
+    width: 720px;
+    height: 12px;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin-top: 44px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.player .bar {
+    width: 60px;
+    height: 60px;
+    background: url("../images/viewpoint/bar.png") no-repeat;
+    cursor: pointer;
+    position: absolute;
+    top: -24px;
+    left: 0;
+    z-index: 5;
+    margin-left: -30px;
+}
+
+.player .mask {
+    width: 0;
+    height: 100%;
+    background-color: #FFFFFF;
     position: absolute;
     top: 0;
+    left: 0;
+}
+
+.player .nowtime {
+    font-size: 32px;
+    line-height: 45px;
+    color: #ffffff;
+    position: absolute;
+    top: 20px;
+    left: -40px;
+}
+
+.player .alltime {
+    font-size: 32px;
+    line-height: 45px;
+    color: #ffffff;
+    position: absolute;
+    top: 20px;
+    right: -40px;
+}
+
+.player .tag {
+    width: 16px;
+    height: 32px;
+    background: url("../images/viewpoint/tag.png") no-repeat;
+    position: absolute;
+    top: -36px;
     left: 0;
     cursor: pointer;
     z-index: 3;
 }
 
-.mask {
-    width: 0;
+.player .tag.cur {
+    background: url("../images/viewpoint/tag_choosed.png") no-repeat;
+}
+
+/*聲音進度條結束*/
+
+/*聲音控制器開始*/
+.player .soundctrl {
+    width: 474px;
+    margin: 0 auto;
+    margin-top: 56px;
+}
+
+.player .soundctrl .prevtag {
+    width: 100px;
+    height: 100px;
+    margin-right: 45px;
+    margin-top: 40px;
+    background: url("../images/viewpoint/prev_tag.png") no-repeat;
+}
+
+.player .soundctrl .play {
+    width: 180px;
+    height: 180px;
+    margin-right: 45px;
+    background: url("../images/viewpoint/play.png") no-repeat;
+}
+
+.player .soundctrl .nexttag {
+    width: 100px;
+    height: 100px;
+    margin-top: 40px;
+    background: url("../images/viewpoint/next_tag.png") no-repeat;
+}
+
+/*聲音控制器結束*/
+
+/*景點簡介開始*/
+.summary {
+    width: 860px;
     height: 100%;
-    background-color: #369;
+    margin: 0 auto;
+    margin-top: 56px;
+    margin-bottom: 34px;
+    position: relative;
+    overflow: hidden;
+}
+
+.summary .title {
+    font-size: 50px;
+    line-height: 70px;
+    letter-spacing: 2.5px;
+}
+
+.summary .subtitle {
+    font-size: 38px;
+    line-height: 53px;
+    font-weight: 300;
+    letter-spacing: 1.2px;
+    color: #595959;
+}
+
+.summary .intro {
+    height: 100%;
+    margin-top: 24px;
+    font-size: 40px;
+    line-height: 55px;
+    overflow: hidden;
+}
+
+.summary .readall {
+    width: 100%;
+    font-size: 40px;
+    line-height: 55px;
+    text-align: left;
+    color: #267091;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+}
+
+/*景點簡介結束*/
+
+/*意見回饋開始*/
+.feedback {
+    width: 400px;
+    height: 140px;
+    margin-left: 560px;
+    background: url("../images/viewpoint/feedback_ground.png");
+    font-size: 38px;
+    line-height: 140px;
+    letter-spacing: 1.2px;
+    text-align: center;
+    color: #ffffff;
+}
+/*意見回饋結束*/
+
+/*講者介紹開始*/
+.speaker {
+    width: 880px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+
+/*講者基礎資訊開始*/
+.speaker .info {
+    margin-top: 56px;
+}
+
+.speaker .info-l {
+    margin-left: 36px;
+}
+
+.speaker .info-l .photo {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+.speaker .info-r .name {
+    width: 460px;
+    margin-left: 80px;
+    margin-top: 25px;
+    font-size: 56px;
+    line-height: 78px;
+    letter-spacing: 2.4px;
+    color: #000;
+    text-align: left;
+}
+
+/*講者簡歷開始*/
+.speaker .info-r .resume {
+    margin-left: 56px;
+    margin-top: 2px;
+}
+.speaker .info-r .resume ul {
+    margin-left: 26px;
+}
+
+.speaker .info-r .resume li {
+    width: 460px;
+    margin-top: 6px;
+    font-size: 36px;
+    line-height: 50px;
+    font-weight: 300;
+    color: #595959;
+    letter-spacing: 1px;
+    text-align: left;
+}
+/*講者簡歷結束*/
+
+
+/*講者聯絡資訊開始*/
+.speaker .contactInfo {
+    width: 792px;
+    overflow: hidden;
+    margin-left: 42px;
+    margin-top: 46px;
+}
+
+.speaker .contactInfo .phone, .speaker .contactInfo .home, .speaker .contactInfo .facebook {
+    width: 1200px;
+    margin-top: 24px;
+    position: relative;
+    font-size: 36px;
+    line-height: 43px;
+    letter-spacing: 2.4px;
+    text-align: left;
+    color: #267091;
+    display: inline-block;
+}
+
+.speaker .contactInfo .phone {
+    padding-left: 60px;
+}
+
+.speaker .contactInfo .phone s {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
     position: absolute;
     top: 0;
     left: 0;
+    background: url("../images/viewpoint/phone.png") no-repeat;
 }
 
-.demo {
-    font-size: 50px;
+.speaker .contactInfo .home {
+    padding-left: 60px;
 }
 
-/*控制按鈕開始*/
-.controls {
-    width: 980px;
-}
-
-.controls .next, .controls .pre {
-    position: relative;
+.speaker .contactInfo .home s {
+    width: 40px;
+    height: 40px;
     display: inline-block;
-    margin-top: 68px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("../images/viewpoint/call.png") no-repeat;
 }
 
-.controls .playpause {
-    position: relative;
-    margin-left: 120px;
+.speaker .contactInfo .facebook {
+    padding-left: 60px;
+    word-wrap: break-word;
+}
+
+.speaker .contactInfo .facebook s {
+    width: 40px;
+    height: 40px;
     display: inline-block;
-}
-
-.controls .pre {
-    margin-left: 110px;
-}
-
-.controls .next {
-    margin-right: 113px;
-}
-
-.controls .pre .pretxt, .controls .next .nexttxt {
     position: absolute;
-    font-size: 32px;
-    display: block;
-    width: 160px;
-    line-height: 32px;
-    bottom: -41px;
-    left: -18px;
+    top: 0;
+    left: 0;
+    background: url("../images/viewpoint/home.png") no-repeat;
 }
+/*講者聯絡資訊結束*/
 
-.controls .playpause .pausetxt {
-    position: absolute;
-    font-size: 32px;
-    display: block;
-    width: 180px;
-    line-height: 32px;
-    bottom: -48px;
-    left: 95px;
-}
+/*講者基礎資訊結束*/
 
-.controls .pre .prebtn {
-    width: 128px;
-    height: 128px;
-    background: url("../images/preTag.png") no-repeat top left;
-}
 
-.controls .next .nextbtn {
-    width: 128px;
-    height: 128px;
-    background: url("../images/nextTag.png") no-repeat top left;
-}
 
-.controls .playpause .pausebtn {
-    width: 256px;
-    height: 256px;
-    background: url("../images/play.png") no-repeat top left;
-}
-
-/*控制按鈕結束*/
-
-/*圖片展示欄開始*/
-.imgManager {
-    margin-top: 100px;;
-    position: relative;
-}
-
-.imgSlider {
-    width: 830px;
-    height: 325px;
-    margin-left: 86px;;
+/*講者簡述開始*/
+.speaker .intro {
+    margin-top: 42px;
+    margin-left: 36px;
+    width: 808px;
+    height: 100%;
+    font-size: 40px;
+    line-height: 56px;
     position: relative;
     overflow: hidden;
-    margin-bottom: 30px;
 }
 
-.imgSlider ul {
-    width: 10000px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 0px;
+.speaker .readall {
+    width: 100%;
+    background-color: #FFF;
+    font-size: 40px;
+    line-height: 56px;
+    text-align: left;
+    color: #267091;
     position: absolute;
     left: 0;
+    bottom: -4px;
 }
+/*講者簡述結束*/
 
-.imgSlider li {
-    margin-right: 30px;
-    float: left;
+/*講者介紹影片*/
+.speaker .ytplayer {
+    margin-top: 72px;
 }
+/*講者介紹結束*/
 
-.imgSlider li img {
-    border: 1px solid #666;
-    width: 250px;
-    height: 300px;
-}
-
-.imgManager .prev,
-.imgManager .next {
-    font: 400 60px/74px "微软雅黑";
-    position: absolute;
-    background-color: #FFFFFF;
-    cursor: pointer;
-}
-
-.imgManager .prev {
-    top: 118px;
-    left: 18px;
-}
-
-.imgManager .next {
-    top: 118px;
-    right: 16px;
-}
-
-/*圖片展示欄結束*/
-
-/*紀錄區塊開始*/
-.record {
-    width: 900px;
-    height: 200px;
+/*還可以收聽開始*/
+.more-audio {
+    width: 880px;
     margin: 0 auto;
+    margin-top: 148px;
 }
 
-.record .cont {
-    font-size: 34px;
-    line-height: 34px;
-    position: absolute;
-    bottom: -37px;
-    left: 31px;
-    width: 80px;
+.more-audio .title {
+    margin-bottom: 46px;
+    font-size: 42px;
+    line-height: 59px;
+    letter-spacing: 1.2px;
+    text-align: left;
 }
 
-.record img {
-    width: 135px;
-    height: 135px;
+.more-audio .audio {
+    width: 880px;
+    height: 140px;
+    margin-top: 14px;
+    background: url("../images/viewpoint/other_attraction.png");
+
+    font-size: 40px;
+    line-height: 140px;
+    font-weight: 500;
+    letter-spacing: 1.4px;
+    text-align: center;
+    color: #ffffff;
+}
+/*還可以收聽結束*/
+
+/*週邊景點開始*/
+.neigh-view {
+    width: 880px;
+    margin: 0 auto;
+    margin-top: 134px;
 }
 
-.record .listen, .record .heart, .record .like, .record .share {
-    width: 100px;
-    height: 150px;
-    margin-right: 152px;
-    position: relative;
+.neigh-view .title {
+    margin-bottom: 46px;
+    font-size: 42px;
+    line-height: 59px;
+    letter-spacing: 1.2px;
+    text-align: left;
 }
 
-.record .listen {
-    margin-left: 125px;
+.neigh-view .view {
+    width: 880px;
+    height: 140px;
+    margin-top: 14px;
+    background: url("../images/viewpoint/neighbor_viewpoint.png");
+
+    font-size: 40px;
+    line-height: 140px;
+    font-weight: 500;
+    letter-spacing: 1.4px;
+    text-align: center;
+    color: #ffffff;
 }
 
-/*紀錄區塊結束*/
 
-/*導覽簡介開始*/
-.summary {
-    position: relative;
-    width: 800px;
-    margin: 16px auto;
-    padding: 14px;
-    height: 200px;
+/*周邊景點開始*/
+/*.neigview {
+    margin-top: 148px;
+    margin-left: 52px;
     overflow: hidden;
 }
 
-.summary .cover {
-    font-size: 40px;
-    font-weight: 800;
-    text-align: left;
-    line-height: 48px;
-}
-
-.summary .cont {
-    margin-top: 10px;
-    font-size: 38px;
-    line-height: 50px;
-    text-indent: 2em;
-}
-
-.summary .cont button {
-    position: absolute;
+.neigview .title {
+    line-height: 36px;
     font-size: 36px;
-    line-height: 47px;
-    right: 16px;
-    top: 176px;
-    border-bottom: 3px solid #286bcc;
-    background-color: #fff;
-    color: #286bcc;
-    padding-right: 15px;
-}
-
-/*導覽簡介結束*/
-
-/*導覽員開始*/
-.author {
-    margin-left: 87px;
-    margin-right: 50px;
-    margin-top: 48px;
-    margin-bottom: 40px;
-    position: relative;
-}
-
-.author .ytplayer {
-    margin-right: 25px;
-}
-
-.author .playbtn {
-    position: absolute;
-    top: 155px;
-    left: 334px;
-}
-
-.author .playbtn img {
-    width: 75px;
-    height: 75px;
-    padding: 50px;
-}
-
-.author .authorexp .cover {
-    font-size: 50px;
-    line-height: 52px;
-    font-weight: 800;
-    text-align: left;
-}
-
-.author .authorexp {
-    font-size: 38px;
-    line-height: 76px;
-    color: #333;
-    margin-top: 15px;
-}
-
-.author .authordesc {
-    width: 845px;
-    font-size: 32px;
-    line-height: 50px;
-    margin-top: 30px;
     font-weight: 700;
 }
 
-.author .authorcont {
-    width: 900px;
-    font-size: 32px;
-    line-height: 50px;
-    margin-top: 30px;
+.neigview ul {
+    margin-top: 73px;
+    width: 5000px;
 }
 
-.author .authorcont a {
-    color: #286bcc;
+.neigview .view {
+    width: 400px;
+    margin-right: 30px;
+    float: left;
+    position: relative;
 }
 
-/*導覽員結束*/
-
-/*意見回饋開始*/
-.option {
-    width: 800px;
-    margin: 0 auto;
+.neigview .view img {
+    width: 400px;
+    height: 400px;
 }
 
-.option .cover {
-    font-size: 38px;
+.neigview .view .mask {
+    width: 390px;
+    height: 74px;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    left: 0;
+    bottom: 104px;
+    line-height: 56px;
+    font-size: 56px;
+    letter-spacing: 3px;
     text-align: left;
+    color: #ffffff;
+    padding-left: 10px;
+    padding-top: 58px;
 }
 
-.option input {
-    width: 800px;
-    height: 50px;
-    margin-top: 10px;
-    border-bottom: 3px solid #666;
+.neigview .view .name {
+    line-height: 56px;
+    font-size: 56px;
+    letter-spacing: 3px;
+    text-align: left;
+    color: #ffffff;
+    position: absolute;
+    left: 10px;
+    bottom: 164px;
+}
+
+.neigview .view .speaker {
+    margin-top: 14px;
+    font-size: 36px;
+    line-height: 45px;
+}
+
+.neigview .view .time {
     font-size: 32px;
-}
-
-.option button {
-    font-size: 32px;
-    background-color: #FFF;
-    margin-top: 10px;
-    border-bottom: 2px solid #666;
-}
-
-/*意見回饋結束*/
+    line-height: 45px;
+    color: #363636;
+}*/
+/*週邊景點結束*/
 
 /*分享功能開始*/
 .sharemask {
@@ -423,7 +559,7 @@ body {
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 560px;
+    width: 570px;
     height: 250px;
     z-index: 1000;
     margin: -125px 0 0 -280px;
@@ -454,76 +590,4 @@ ul.share-buttons .sr-only {
 ul.share-buttons img {
     width: 100px;
 }
-
 /*分享功能結束*/
-
-/*.audiolist {
-    margin: 0 auto;
-    width: 810px;
-    height: 730px;
-    position: relative;
-    overflow: hidden;
-}
-.audiolist .title {
-    font-size: 36px;
-    text-align: left;
-}
-
-.audiolist .audio {
-    width: 800px;
-    border-radius: 18px;
-    border: 2px solid #999;
-    font-size: 36px;
-    line-height: 36px;
-    height: 55px;
-    position: relative;
-    margin-bottom: 11px;
-}
-
-.audiolist .audio .play {
-    width: 45px;
-    height: 45px;
-    position: absolute;
-    top: 5px;
-    left: 20px;
-}
-
-.audiolist .audio .cont {
-    position: absolute;
-    top: 11px;
-    left: 90px;
-}
-
-.audiolist .audio .time {
-    position: absolute;
-    top: 11px;
-    right: 34px;
-}
-
-.audiolist .line {
-    width: 800px;
-    height: 3px;
-    border-bottom: 3px solid #666;
-    margin: 60px auto;
-}
-
-.audiolist .readall {
-    position: absolute;
-    top: 413px;
-    right: 3px;
-    font-size: 32px;
-    line-height: 34px;
-    border-bottom: 2px solid #666;
-}
-
-.audiolist .info {
-    font-size: 32px;
-    line-height: 36px;
-    margin-top: -6px;
-    margin-bottom: 18px;
-}*/
-
-
-
-
-
