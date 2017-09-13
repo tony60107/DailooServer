@@ -25,12 +25,8 @@
         <div class="form-group clearfix">
             <input type="file" name="file1" class="form-control fl" multiple="multiple"
                    style="width: 200px; margin-right: 80px;"/>
-            <input type="text" name="time0" class="form-control fl" style="width: 200px; margin-right: 300px;"/>
         </div>
     </form>
-    <div style="height: 40px;">
-        <button id="addRow" class="btn btn-warning fl" value="">+</button>
-    </div>
     <button onclick="$$('mainForm').submit();">上傳標記資訊</button>
     <div id="taglist" class="taglist clearfix">
 
@@ -46,17 +42,6 @@
     //獲取音檔ID
     var audioId = location.href.split("id=")[1];
     $$("audioId").value = audioId;
-
-    //增加上傳欄位
-    var num = 1;
-    $$("addRow").onclick = function () {
-        var row = document.createElement("div");
-        row.className = "form-group  clearfix";
-        row.innerHTML = " <input type='file' name='file1' class='form-control fl' style='width: 200px; margin-right: 80px;'/> " +
-                "<input type='text' name='time" + num + "'class='form-control fl' style='width: 200px; margin-right: 80px;'/>";
-        $$("mainForm").appendChild(row);
-        num++;
-    }
 
     //獲取該音檔ID下的所有Tag
     $.ajax({
@@ -107,7 +92,7 @@
             type: "POST",
             data: {"method": "delTagById", "id": id},
             success: function (result) {
-                if (result == "OK") this.parentNode.parentNode.removeChild(this.parentNode);
+                if (result == "OK"){ this.parentNode.parentNode.removeChild(this.parentNode);}
             },
         });
     }

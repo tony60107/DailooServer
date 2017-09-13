@@ -17,16 +17,17 @@ public class TagServiceImpl implements TagService{
 	
 	@Override
 	public void addTag(Map<String, String> paramMap) {
-		String [] imgurl = paramMap.get("imgurls").split(",");
-		for(int i = 0;;i++){
+		String [] imgurls = paramMap.get("imgurls").split(",");
+		for(int i = 0; i < imgurls.length;i++){
 			//如果已取完time值則跳出
-			if("".equals(paramMap.get("time" + i)) || paramMap.get("time" + i) == null) break;
+			//if("".equals(paramMap.get("time" + i)) || paramMap.get("time" + i) == null) break;
 			
 			//設定Tag的值
 			Tag tag = new Tag();
 			tag.setId(UUID.randomUUID().toString());
-			tag.setTime(Integer.parseInt(paramMap.get("time" + i)));
-			tag.setPhotoUrl(imgurl[i]);
+			//tag.setTime(Integer.parseInt(paramMap.get("time" + i)));
+			tag.setTime(0);
+			tag.setPhotoUrl(imgurls[i]);
 			tag.setAudioId(paramMap.get("audioId"));
 			//向資料庫中新增Tag
 			dao.addTag(tag);

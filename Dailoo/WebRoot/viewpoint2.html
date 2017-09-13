@@ -187,9 +187,10 @@
 
     //設定講者影片
     function setSpeakerYoutube(){
+
         var YTUrl = speakerData.youtubeUrl;
         if (YTUrl != '') {
-            var YTID = YTUrl.substr(YTUrl.indexOf("v=") + 2, YTUrl.length);
+            var YTID = YTUrl.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)[1];
             var ytplayer;
             ytplayer = new YT.Player('ytplayer', {
                 height: '495',
