@@ -39,7 +39,9 @@ public class ViewpointServlet extends HttpServlet {
 			if ("addViewpoint".equals(method)) {
 				Map<String, String> paramMap = FileUploadUtils.getParamMap(request, response, this);
 				//取得景點音檔路徑
-				String audioUrl = paramMap.get("audiourls");
+				String[] audioUrls = paramMap.get("audiourls") != null ? paramMap.get("audiourls").split(",") : null;
+				//取得多個景點副標題
+				String[] subtitles = paramMap.get("subtitle") != null ? paramMap.get("subtitle").split(",") : null;
 				//取得景點代表圖片
 				String photoUrl = paramMap.get("imgurls");
 				
@@ -47,24 +49,31 @@ public class ViewpointServlet extends HttpServlet {
 				BeanUtils.populate(vp, paramMap);
 				//設定景點代表圖片
 				vp.setBehalfPhotoUrl(photoUrl);
-				//檢查是否已有相同景點名稱與副標的景點
-				Viewpoint temp = service.findViewpointByNameAndSt(vp.getName(), vp.getSubtitle());
-				if(temp == null){
-					//在資料庫中新增景點
-					service.addViewpoint(vp);
-					//如果有上傳景點音檔
-					if(audioUrl != null){
-						//取得已新增景點的ID
-						String vpId = service.findViewpointByNameAndSt(vp.getName(), vp.getSubtitle()).getId();
-						//更新音檔資訊
-						audio.setSrc(audioUrl);
-						audio.setViewpointId(vpId);
-						//在資料庫中新增音檔
-						audioService.addAudio(audio);
+				
+				if(audioUrls == null) throw new RuntimeException("音檔不能為空");
+				
+				for(int i = 0; i < audioUrls.length; i++) {
+					vp.setSubtitle(i < subtitles.length ? subtitles[i] : "");
+					//檢查是否已有相同景點名稱與副標的景點
+					Viewpoint temp = service.findViewpointByNameAndSt(vp.getName(), vp.getSubtitle());
+					if(temp == null){
+						//在資料庫中新增景點
+						service.addViewpoint(vp);
+						//如果有上傳景點音檔
+						if(audioUrls[i] != null){
+							//取得已新增景點的ID
+							String vpId = service.findViewpointByNameAndSt(vp.getName(), vp.getSubtitle()).getId();
+							//設定音檔內容
+							audio.setSrc(audioUrls[i]);
+							audio.setViewpointId(vpId);
+							//在資料庫中新增音檔
+							audioService.addAudio(audio);
+						}
+					} else {
+						throw new RuntimeException("該景點已存在");
 					}
-				} else {
-					throw new RuntimeException("該景點已存在");
 				}
+				
 				response.sendRedirect("/addViewpoint.html");
 			}
 			//如果是更新景點

@@ -12,3 +12,32 @@
     margin-right: 50px;
 }
 
+.audio-group {
+    margin-top: 65px;
+    margin-bottom: 65px;
+    position: relative;
+}
+
+.audio-group .plus {
+    position: absolute;
+    top: 28px;
+    left: 325px;
+}
+
+.audio-group .plus :hover {
+    cursor: pointer;
+}
+
+.audio-group .audio {
+    position: relative;
+}
+
+.audio-group .audio .del {
+    position: absolute;
+    top: 13px;
+    right: -10px;
+}
+
+.audio-group .audio .del :hover {
+    cursor: pointer;
+}

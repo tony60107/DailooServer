@@ -47,11 +47,17 @@
             <label>景點名稱</label>
             <input id="name" type="text" name="name" class="form-control" placeholder="輸入景點名稱" value="">
         </div>
-        <div class="form-group">
-            <label>副標題</label>
-            <input id="subtitle" type="text" name="subtitle" class="form-control" placeholder="輸入副標題" value="">
-        </div>
 
+        <div id="audioGroup" class="audio-group">
+            <div class="plus" onclick="addAduio();"><img src="images/general/add.png" alt=""></div>
+            <div class="form-group audio" style="width: 300px; margin-top: 40px;">
+                <label>副標題</label>
+                <input type="text" name="subtitle" class="form-control" placeholder="輸入副標題" value="">
+                <label>景點音檔</label>
+                <input type="file" name="file0" class="form-control">
+            </div>
+
+        </div>
         <div class="form-group">
             <label>講者</label>
             <select id="speaker_list" name="speakerId" class="fl form-control"></select>
@@ -69,11 +75,6 @@
             <label>景點代表圖</label>
             <input type="file" name="file1" class="form-control">
         </div>
-        <div class="form-group">
-            <label>景點音檔</label>
-            <input type="file" name="file2" class="form-control">
-        </div>
-
         <input type="button" class="btn btn-default" value="新增"
                onClick="this.form.action='/ViewpointServlet?method=addViewpoint';this.form.submit();">
     </form>
@@ -103,4 +104,14 @@
         },
     });
     $('#twzipcode').twzipcode();
+
+    function addAduio(){
+        var audioGroup = $$("audioGroup");
+        var dom = '<div class="form-group audio" style="width: 300px;"> <div class="del" onclick="delAudio(this);"><img src="images/general/delete.png" alt=""></div> <label>副標題</label> <input type="text" name="subtitle" class="form-control" placeholder="輸入副標題" value=""> <label>景點音檔</label> <input type="file" name="file0" class="form-control"> </div>';
+        audioGroup.innerHTML = audioGroup.innerHTML + dom;
+    }
+
+    function delAudio(btn){
+        btn.parentNode.parentNode.removeChild(btn.parentNode);
+    }
 </script>

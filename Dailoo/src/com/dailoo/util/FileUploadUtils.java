@@ -56,7 +56,13 @@ public class FileUploadUtils {
 				if (item.isFormField()) {
 					// 普通字段
 					String name = item.getFieldName();
-					String value = item.getString(encode);
+					String value;
+					//如果該字段已存在（一個表單有多個相同名稱的name）
+					if(paramMap.get(item.getFieldName()) != null){
+						value = paramMap.get(item.getFieldName()) + "," + item.getString(encode);
+					}else {
+						value = item.getString(encode);
+					}
 					paramMap.put(name, value);
 				} else {
 					// 文件上传项
@@ -82,7 +88,11 @@ public class FileUploadUtils {
 					
 					//根據不同檔案格式，存到參數中
 					if("acc".equals(format) || "mp3".equals(format)){
-						paramMap.put("audiourls", fileurl);
+						if(paramMap.get("audiourls") == null){
+							paramMap.put("audiourls", fileurl);
+						} else {
+							paramMap.put("audiourls",paramMap.get("audiourls") + "," + fileurl);
+						}
 					}else{
 						if(paramMap.get("imgurls") == null){
 							paramMap.put("imgurls", fileurl);
