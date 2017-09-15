@@ -6,12 +6,15 @@ import java.util.List;
 import java.util.UUID;
 
 import com.dailoo.dao.AudioDao;
+import com.dailoo.dao.RegionDao;
 import com.dailoo.dao.SpeakerDao;
 import com.dailoo.dao.TagDao;
+import com.dailoo.dao.ThemeDao;
 import com.dailoo.dao.ViewpointDao;
 import com.dailoo.domain.Audio;
 import com.dailoo.domain.Speaker;
 import com.dailoo.domain.Tag;
+import com.dailoo.domain.Theme;
 import com.dailoo.domain.Viewpoint;
 import com.dailoo.domain.ViewpointSimple;
 import com.dailoo.factory.BasicFactory;
@@ -25,6 +28,8 @@ public class ViewpointServiceImpl implements ViewpointService{
 	private SpeakerDao speakerDao = BasicFactory.getFactory().getDao(SpeakerDao.class);
 	private AudioDao audioDao = BasicFactory.getFactory().getDao(AudioDao.class);
 	private TagDao tagDao = BasicFactory.getFactory().getDao(TagDao.class);
+	private RegionDao regionDao = BasicFactory.getFactory().getDao(RegionDao.class);
+	private ThemeDao themeDao = BasicFactory.getFactory().getDao(ThemeDao.class);
 	private Gson gson = new Gson();
 
 	@Override
@@ -93,12 +98,15 @@ public class ViewpointServiceImpl implements ViewpointService{
 		speaker.setPassword("");
 		Audio audio = audioDao.findAudioByViewpointId(vp.getId());
 		List<Tag> tags = tagDao.findTagsByAudioId(audio.getId());
+		Theme theme = themeDao.findThemeById(vp.getThemeId());
 		List<Viewpoint> moreAudio = dao.findViewpointsByName(vp.getName());
+		
 		
 		String vpJson = gson.toJson(vp);
 		String speakerJson = gson.toJson(speaker);
 		String audioJson = gson.toJson(audio);
 		String tagsJson = gson.toJson(tags);
+		String themeJson = gson.toJson(theme);
 		String moreAudioJson = gson.toJson(moreAudio);
 		
 		//將Tags的JSON數據加到audioJson中
@@ -106,18 +114,19 @@ public class ViewpointServiceImpl implements ViewpointService{
 		
 		//完整的Json數據
 		String result = vpJson.substring(0, vpJson.length()-1) + ", \"speaker\":" + speakerJson 
-				+ ", \"audio\":" + audioJson + ", \"moreAudio\":" + moreAudioJson + "}";
+				+ ", \"audio\":" + audioJson + ", \"moreAudio\":" + moreAudioJson
+				+ ", \"theme\":"+ themeJson +"}";
 		
 		return result;
 	}
 
 	@Override
-	public String findViewpointSimplesByTheme(String theme) {
+	public String findViewpointSimplesByThemeId(String theme) {
 		
 		List<ViewpointSimple> vpsims = new ArrayList<ViewpointSimple>();
 		
 		//查找相同主題下的所有景點
-		List<Viewpoint> list = dao.findViewpointByTheme(theme);
+		List<Viewpoint> list = dao.findViewpointByThemeId(theme);
 		
 		//遍歷所有景點
 		for(int i = 0; i < list.size(); i++){
@@ -129,7 +138,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 			vpsim.setId(vp.getId());
 			vpsim.setName(vp.getName());
 			vpsim.setSubtitle(vp.getSubtitle());
-			vpsim.setTheme(vp.getTheme());
+			vpsim.setTheme(vp.getThemeId());
 			if(vp.getBehalfPhotoUrl() != null) vpsim.setBehalfPhotoUrl(vp.getBehalfPhotoUrl());
 			Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
 			if(speaker != null) vpsim.setSpeakerName(speaker.getName());
@@ -201,7 +210,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 			vpsim.setId(vp.getId());
 			vpsim.setName(vp.getName());
 			vpsim.setSubtitle(vp.getSubtitle());
-			vpsim.setTheme(vp.getTheme());
+			vpsim.setTheme(vp.getThemeId());
 			if(vp.getBehalfPhotoUrl() != null) vpsim.setBehalfPhotoUrl(vp.getBehalfPhotoUrl());
 			Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
 			if(speaker != null) vpsim.setSpeakerName(speaker.getName());

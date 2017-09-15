@@ -8,7 +8,7 @@ public class Viewpoint {
 	private String name;		//景點名稱
 	private String subtitle;	//副標題
 	private String behalfPhotoUrl; //景點代表圖片
-	private String theme;		//主題
+	private String themeId;		//主題Id
 	private String country;		//國家
 	private String city;		//縣市
 	private String town;		//鄉鎮
@@ -41,11 +41,11 @@ public class Viewpoint {
 	public void setSubtitle(String subtitle) {
 		this.subtitle = subtitle;
 	}
-	public String getTheme() {
-		return theme;
+	public String getThemeId() {
+		return themeId;
 	}
-	public void setTheme(String theme) {
-		this.theme = theme;
+	public void setThemeId(String themeId) {
+		this.themeId = themeId;
 	}
 	public String getCountry() {
 		return country;
@@ -129,7 +129,7 @@ public class Viewpoint {
 	@Override
 	public String toString() {
 		return "Viewpoint [id=" + id + ", name=" + name + ", subtitle="
-				+ subtitle + ", theme=" + theme + ", country=" + country
+				+ subtitle + ", theme=" + themeId + ", country=" + country
 				+ ", city=" + city + ", town=" + town + ", village=" + village
 				+ ", address=" + address + ", longitude=" + longitude
 				+ ", latitude=" + latitude + ", navUrl=" + navUrl + ", intro="

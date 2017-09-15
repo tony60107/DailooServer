@@ -16,12 +16,12 @@ public class ViewpointDaoImpl implements ViewpointDao{
 	@Override
 	public void addViewpoint(Viewpoint vp) {
 		
-		String sql = "insert into viewpoints (id, name, subtitle, theme, behalfPhotoUrl, country, city"
+		String sql = "insert into viewpoints (id, name, subtitle, themeId, behalfPhotoUrl, country, city"
 				+ ", town, village, address, longitude, latitude, navUrl, intro, shortUrl, speakerId) "
 				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			runner.update(sql, vp.getId(), vp.getName(), vp.getSubtitle(), vp.getTheme(), vp.getBehalfPhotoUrl(),
+			runner.update(sql, vp.getId(), vp.getName(), vp.getSubtitle(), vp.getThemeId(), vp.getBehalfPhotoUrl(),
 					vp.getCountry(), vp.getCity(), vp.getTown(), vp.getVillage(), vp.getAddress(), 
 					vp.getLongitude(), vp.getLatitude(), vp.getNavUrl(), vp.getIntro(), vp.getShortUrl(), vp.getSpeakerId());
 			
@@ -60,12 +60,12 @@ public class ViewpointDaoImpl implements ViewpointDao{
 
 	@Override
 	public void updateViewpoint(Viewpoint vp) {
-		String sql = "update viewpoints set name=?, subtitle=?, behalfPhotoUrl=?, theme=?, country=?,"
+		String sql = "update viewpoints set name=?, subtitle=?, behalfPhotoUrl=?, themeId=?, country=?,"
 				+ "city=?, town=?, village=?, address=?, longitude=?, latitude=?, navUrl=?,"
 				+ "intro=?, shortUrl=?, speakerId=? where id=?";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			runner.update(sql, vp.getName(), vp.getSubtitle(), vp.getBehalfPhotoUrl(), vp.getTheme(), vp.getCountry(),
+			runner.update(sql, vp.getName(), vp.getSubtitle(), vp.getBehalfPhotoUrl(), vp.getThemeId(), vp.getCountry(),
 					vp.getCity(), vp.getTown(), vp.getVillage(), vp.getAddress(), vp.getLongitude(),
 					vp.getLatitude(), vp.getNavUrl(), vp.getIntro(), vp.getShortUrl(),vp.getSpeakerId(), vp.getId());
 		} catch (Exception e) {
@@ -75,12 +75,12 @@ public class ViewpointDaoImpl implements ViewpointDao{
 	}
 
 	@Override
-	public List<Viewpoint> findViewpointByTheme(String theme) {
-		String sql = "select * from viewpoints where theme = ? order by updatetime asc";
+	public List<Viewpoint> findViewpointByThemeId(String themeId) {
+		String sql = "select * from viewpoints where themeId = ? order by updatetime asc";
 		
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class), theme);
+			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class), themeId);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

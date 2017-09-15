@@ -129,7 +129,7 @@ public class ViewpointServlet extends HttpServlet {
 			//根據主題名稱，獲取簡易版景點資訊
 			else if("getViewpointSimplesByTheme".equals(method)){
 				String theme = request.getParameter("theme");
-				String json = service.findViewpointSimplesByTheme(theme);
+				String json = service.findViewpointSimplesByThemeId(theme);
 				if(json == null) json = "";
 				response.getWriter().write(json);
 			}

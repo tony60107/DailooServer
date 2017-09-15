@@ -61,6 +61,8 @@
 </head>
 <body>
 <div class="w">
+    <div><a href="/viewpointManager.html">返回景點管理頁面</a></div>
+    <div><a href="/editRegion.html">新增地區</a></div>
     <form id="mainForm" action="/ThemeServlet?method=addTheme" method="post" enctype="multipart/form-data" style="margin-top: 100px;">
         <div class="form-group">
             <label>地區</label>
@@ -85,6 +87,7 @@
 <script type="text/javascript" src="js/base.js"></script>
 <script>
 
+    //獲取所有的地區，以取得地區下所有的主題
     $.ajax({
         url: "/RegionServlet", context: document.body,
         type: "POST",

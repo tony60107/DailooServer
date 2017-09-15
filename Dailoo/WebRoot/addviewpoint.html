@@ -32,11 +32,10 @@
             </div>
         </div>
         <div class="form-group">
+            <label>主題地區</label>
+            <select id="regionSelect" type="text" name="regionId" class="form-control"></select>
             <label>景點主題</label>
-            <select id="theme" name="theme" class="village fl form-control">
-                <option value="高台散步">高台散步</option>
-                <option value="鹿野品茶">鹿野品茶</option>
-                <option value="龍田逛逛">龍田逛逛</option>
+            <select id="theme" name="themeId" class="village fl form-control">
             </select>
         </div>
         <div class="form-group" style="display: none">
@@ -113,5 +112,39 @@
 
     function delAudio(btn){
         btn.parentNode.parentNode.removeChild(btn.parentNode);
+    }
+
+    //獲取所有的地區，以取得地區下所有的主題
+    $.ajax({
+        url: "/RegionServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getAllRegions"},
+        success: function (data) {
+            var regions = eval("(" + data + ")");
+            console.dir(data);
+            for(var i = 0; i < regions.length; i++){
+                var dom = '<option value="'+ regions[i].id +'">' + regions[i].name +'</option>';
+                $$("regionSelect").innerHTML = $$("regionSelect").innerHTML + dom;
+            }
+            $$("regionSelect").onchange();
+        },
+    });
+
+    //當主題地區變更時，抓取該地區下的所有主題
+    $$("regionSelect").onchange = function() {
+        $.ajax({
+            url: "/ThemeServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getThemesByRegionId", "regionId": $$("regionSelect").value},
+            success: function (data) {
+                var themes = eval("(" + data + ")");
+                console.dir(data);
+                $$("theme").innerHTML = "";
+                for (var i = 0; i < themes.length; i++) {
+                    var dom = '<option value="' + themes[i].id + '">' + themes[i].name + '</option>';
+                    $$("theme").innerHTML = $$("theme").innerHTML + dom;
+                }
+            }
+        });
     }
 </script>
