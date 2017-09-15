@@ -11,22 +11,78 @@
     <!-- 最新編譯和最佳化的 JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/base.css">
+    <style>
+        /*主題列表開始*/
+        .themelist {
+            margin-top: 52px;
+            margin-left: 13px;
+            margin-right: 12px;
+            margin-bottom: 60px;
+            width: 935px;
+        }
+
+        .theme {
+            position: relative;
+        }
+
+        .theme .cover {
+            position: absolute;
+            background: rgba(0,0,0,0.2);
+            width: 100%;
+            text-align: center;
+            top: 72px;
+        }
+
+        .theme .cover .title {
+            font-size: 72px;
+            line-height: 142px;
+            color: #FFF;
+            letter-spacing: 25px;
+        }
+
+        /*.theme .cover .desc {
+            font-size: 36px;
+            line-height: 36px;
+            color: #FFF;
+            margin-top: 18px;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+        }*/
+
+        .themelist .theme {
+            margin-top: 47px;
+        }
+
+        .themelist .theme img {
+            width: 936px;
+            height: 284px;
+        }
+    </style>
 </head>
 <body>
 <div class="w">
-    <form id="mainForm" action="/ThemeServlet?method=addTag" method="post" enctype="multipart/form-data">
-        <div class="form-group" style="display: none">
-            <label>音檔ID</label>
-            <input id="audioId" type="text" name="audioId" class="form-control" placeholder="輸入音檔ID" value="">
+    <form id="mainForm" action="/ThemeServlet?method=addTheme" method="post" enctype="multipart/form-data" style="margin-top: 100px;">
+        <div class="form-group">
+            <label>地區</label>
+            <select id="regionSelect" type="text" name="regionId" class="form-control"></select>
         </div>
-        <div class="form-group clearfix">
-            <input type="file" name="file1" class="form-control fl" multiple="multiple"
-                   style="width: 200px; margin-right: 80px;"/>
+        <div class="form-group">
+            <label>主題代表圖</label>
+            <input type="file" name="file1" class="form-control"/>
         </div>
+        <div class="form-group">
+            <label>主題名稱</label>
+            <input type="text" name="name" class="form-control"/>
+        </div>
+        <button class="btn btn-warning" type="submit" value="">新增</button>
     </form>
+    <div id="themelist" class="themelist">
+    </div>
 </div>
 </body>
 </html>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
 <script>
 
     $.ajax({
@@ -34,8 +90,38 @@
         type: "POST",
         data: {"method": "getAllRegions"},
         success: function (data) {
-            var data = eval("(" + data + ")");
+            var regions = eval("(" + data + ")");
             console.dir(data);
+            for(var i = 0; i < regions.length; i++){
+                var dom = '<option value="'+ regions[i].id +'">' + regions[i].name +'</option>';
+                $$("regionSelect").innerHTML = $$("regionSelect").innerHTML + dom;
+            }
+            $$("regionSelect").onchange();
         },
     });
+
+    $$("regionSelect").onchange = function() {
+        $.ajax({
+            url: "/ThemeServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getThemesByRegionId", "regionId": $$("regionSelect").value},
+            success: function (data) {
+                var themes = eval("(" + data + ")");
+                console.dir(data);
+                $$("themelist").innerHTML = "";
+                for (var i = 0; i < themes.length; i++) {
+                    var dom = '<a href="viewlist.html?id=' + themes[i].id + '">' +
+                            '<div class="theme">' +
+                            '<div class="cover">' +
+                            '<div class="title">' + themes[i].name + '</div>' +
+                            '</div>' +
+                            '<img src="/ResourceServlet?url=' + themes[i].behalfPhotoUrl + '"/>' +
+                            '</div>' +
+                            '</a>' +
+                            '<a href="/ThemeServlet?method=delThemeById&id='+ themes[i].id +'"><button class="btn btn-danger fr">刪除上方主題</button></a>';
+                    $$("themelist").innerHTML = $$("themelist").innerHTML + dom;
+                }
+            },
+        });
+    }
 </script>

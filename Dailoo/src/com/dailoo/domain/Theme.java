@@ -1,10 +1,13 @@
 package com.dailoo.domain;
 
+import java.sql.Timestamp;
+
 public class Theme {
 	private String id;
 	private String name;
 	private String behalfPhotoUrl;
 	private String regionId;
+	private Timestamp updateTime;
 	
 	public String getId() {
 		return id;
@@ -30,4 +33,11 @@ public class Theme {
 	public void setRegionId(String regionId) {
 		this.regionId = regionId;
 	}
+	public Timestamp getUpdateTime() {
+		return updateTime;
+	}
+	public void setUpdateTime(Timestamp updateTime) {
+		this.updateTime = updateTime;
+	}
+	
 }

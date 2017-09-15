@@ -74,6 +74,11 @@
     <servlet-name>RegionServlet</servlet-name>
     <servlet-class>com.dailoo.web.RegionServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ThemeServlet</servlet-name>
+    <servlet-class>com.dailoo.web.ThemeServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -111,6 +116,10 @@
   <servlet-mapping>
     <servlet-name>RegionServlet</servlet-name>
     <url-pattern>/RegionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ThemeServlet</servlet-name>
+    <url-pattern>/ThemeServlet</url-pattern>
   </servlet-mapping>
 
 </web-app>
