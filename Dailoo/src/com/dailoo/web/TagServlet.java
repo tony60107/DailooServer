@@ -53,6 +53,7 @@ public class TagServlet extends HttpServlet {
 				service.updateTagById(tag);
 			} catch (Exception e) {
 				e.printStackTrace();
+				throw new RuntimeException(e);
 			} 
 		}
 	}

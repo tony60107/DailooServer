@@ -20,6 +20,7 @@ public class AudioDaoImpl implements AudioDao{
 			runner.update(sql, audio.getId(), audio.getSrc(), audio.getLength(), audio.getViewpointId());
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 	}
 

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>編輯地區</title>
+    <!-- 最新編譯和最佳化的 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!-- 選擇性佈景主題 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <!-- 最新編譯和最佳化的 JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+<div class="w">
+    <form id="mainForm" action="/RegionServlet?method=addRegion" method="post" style="margin-top: 100px;">
+        <div class="form-group">
+            <label>地區名稱</label>
+            <input id="name" type="text" name="name" class="form-control" placeholder="輸入景點名稱" value="鹿野地區">
+        </div>
+        <input type="submit" value="送出"/>
+    </form>
+</div>
+</body>
+</html>
