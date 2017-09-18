@@ -35,6 +35,7 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jaudiotagger-2.2.6.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/httpcore-4.3.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/httpclient-4.3.4.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/thumbnailator-0.4.8.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

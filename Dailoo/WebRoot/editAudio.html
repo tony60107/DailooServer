@@ -74,7 +74,7 @@
         for (var i = 0; i < tags.length; i++) {
             var dom = '<div id="'+ tags[i].id +'" class="tag fl">' +
                     '<div class="pic">' +
-                    '<img src="/ResourceServlet?url=' + tags[i].photoUrl + '" alt="">' +
+                    '<img onerror="reloadImg(this);" src="/ResourceServlet?url=' + tags[i].photoUrl + '" alt="">' +
                     '</div>' +
                     '<div class="time">' +
                     '<input name="min" type="text" value="' + parseInt(tags[i].time / 60) + '"> 分 <input name="sec" type="text" value="' + tags[i].time % 60 + '"> 秒' +
@@ -83,7 +83,11 @@
                     '</div>';
             $$("taglist").innerHTML = $$("taglist").innerHTML + dom;
         }
+    }
 
+    //圖片載入失敗時，重新加載圖片
+    function reloadImg(img){
+        img.src = img.src + "#";
     }
 
     //向伺服器中刪除Tag，並在刪除成功後，刪除頁面上的Tag

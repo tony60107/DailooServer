@@ -1,5 +1,6 @@
 package com.dailoo.util;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -9,9 +10,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import net.coobird.thumbnailator.Thumbnails;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -76,6 +80,7 @@ public class FileUploadUtils {
 					String uuidname = UUID.randomUUID().toString() + "." + format; 
 							//+ "_" + realname;
 
+					//取得檔案存放地址
 					String hash = Integer.toHexString(uuidname.hashCode());
 					String upload = servlet.getServletContext().getRealPath(
 							"WEB-INF/upload");
@@ -85,6 +90,20 @@ public class FileUploadUtils {
 						fileurl += "/" + c;
 					}
 					fileurl += "/" + uuidname;
+
+					File uploadFile = new File(upload);
+					if (!uploadFile.exists())
+						uploadFile.mkdirs();
+
+					//檔案傳輸
+					InputStream in = item.getInputStream();
+					OutputStream out = new FileOutputStream(new File(upload,
+							uuidname));
+
+					IOUtils.In2Out(in, out);
+					IOUtils.close(in, out);
+
+					item.delete();
 					
 					//根據不同檔案格式，存到參數中
 					if("acc".equals(format) || "mp3".equals(format)){
@@ -94,25 +113,29 @@ public class FileUploadUtils {
 							paramMap.put("audiourls",paramMap.get("audiourls") + "," + fileurl);
 						}
 					}else{
-						if(paramMap.get("imgurls") == null){
+						//圖片壓縮
+						File imgFile = new File(servlet.getServletContext().getRealPath(fileurl));
+						BufferedImage bi = ImageIO.read(imgFile);
+				        int imgWidth = bi.getWidth();
+				        int imgHeight = bi.getHeight();
+				        
+				        if(imgWidth > 1920 || imgHeight > 1920){ //判斷是否要壓縮
+				        	if(imgWidth > imgHeight){
+				        		Thumbnails.of(bi).outputQuality(0.88)
+				        			.size(1920, imgHeight * 1920 / imgWidth).toFile(imgFile);
+				        	} else {
+				        		Thumbnails.of(bi).outputQuality(0.88)
+				        			.size(imgWidth * 1920 / imgHeight, 1920).toFile(imgFile);
+				        	}
+				        }
+				        //儲存紀錄
+				        if(paramMap.get("imgurls") == null){
 							paramMap.put("imgurls", fileurl);
 						} else {
 							paramMap.put("imgurls",paramMap.get("imgurls") + "," + fileurl);
 						}
+						
 					}
-
-					File uploadFile = new File(upload);
-					if (!uploadFile.exists())
-						uploadFile.mkdirs();
-
-					InputStream in = item.getInputStream();
-					OutputStream out = new FileOutputStream(new File(upload,
-							uuidname));
-
-					IOUtils.In2Out(in, out);
-					IOUtils.close(in, out);
-
-					item.delete();
 
 					// --生成缩略图
 					// PicUtils picu = new
