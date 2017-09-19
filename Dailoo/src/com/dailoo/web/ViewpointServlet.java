@@ -163,6 +163,21 @@ public class ViewpointServlet extends HttpServlet {
 					throw new RuntimeException("您沒有權限更改該景點資訊");
 				}
 			}
+			//如果是更新景點是否付費刊登
+			else if("updateIsPublishById".equals(method)){
+				String vpId = request.getParameter("id");
+				String stat = request.getParameter("stat");
+				service.updateIsPublishById(vpId, stat);
+				response.getWriter().write("OK");
+			}
+			//如果是更新景點是否優先顯示
+			else if("updateIsPriorityById".equals(method)){
+				String vpId = request.getParameter("id");
+				String stat = request.getParameter("stat");
+				service.updateIsPriorityById(vpId, stat);
+				response.getWriter().write("OK");
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

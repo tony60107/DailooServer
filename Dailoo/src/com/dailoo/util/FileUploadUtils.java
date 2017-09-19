@@ -137,10 +137,6 @@ public class FileUploadUtils {
 						
 					}
 
-					// --生成缩略图
-					// PicUtils picu = new
-					// PicUtils(this.getServletContext().getRealPath(imgurl));
-					// picu.resizeByHeight(140);
 				}
 			}
 			return paramMap;

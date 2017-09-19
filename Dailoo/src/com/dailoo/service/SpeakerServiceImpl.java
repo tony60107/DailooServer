@@ -8,10 +8,12 @@ import com.dailoo.dao.SpeakerDao;
 import com.dailoo.domain.Speaker;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.util.MD5Utils;
+import com.google.gson.Gson;
 
 public class SpeakerServiceImpl implements SpeakerService{
 	
 	SpeakerDao dao = BasicFactory.getFactory().getDao(SpeakerDao.class);
+	Gson gson = new Gson();
 
 	@Override
 	public void addSpeaker(Speaker speaker) {
@@ -47,14 +49,21 @@ public class SpeakerServiceImpl implements SpeakerService{
 	@Override
 	public String findAllSpeakers() {
 		List<Speaker> speakers = dao.finAllSpeakers();
-		String json = "[";
+		//String json = "[";
 		for(int i = 0; i < speakers.size(); i++){
 			Speaker sp = speakers.get(i);
-			String speakerJson = "{\"id\":\"" + sp.getId() + "\", \"name\":\"" + sp.getName() + "\"},";
-			json = json + speakerJson;
+			sp.setPassword("");
+			//String speakerJson = "{\"id\":\"" + sp.getId() + "\", \"name\":\"" + sp.getName() + "\"},";
+			//json = json + speakerJson;
 		}
-		json = json.substring(0, json.length()-1) + "]";
-		return json;
+		//json = json.substring(0, json.length()-1) + "]";
+		
+		return gson.toJson(speakers);
+	}
+
+	@Override
+	public void delSpeakerById(String id) {
+		dao.delSpeakerById(id);
 	}
 
 }

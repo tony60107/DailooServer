@@ -59,4 +59,18 @@ public interface ViewpointDao extends Dao{
 	 */
 	List<Viewpoint> findAllViewpoints();
 
+	/**
+	 * 更新景點是否付費刊登狀態
+	 * @param vpId 景點ID
+	 * @param stat 刊登狀態
+	 */
+	void updateIsPublishById(String vpId, String stat);
+
+	/**
+	 * 更新景點是否優先顯示狀態
+	 * @param vpId 景點ID
+	 * @param stat 顯示狀態
+	 */
+	void updateIsPriorityById(String vpId, String stat);
+
 }

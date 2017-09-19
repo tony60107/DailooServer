@@ -45,5 +45,11 @@ public interface SpeakerDao extends Dao{
 	 */
 	List<Speaker> finAllSpeakers();
 
+	/**
+	 * 刪除講者
+	 * @param id 講者ID
+	 */
+	void delSpeakerById(String id);
+
 	
 }

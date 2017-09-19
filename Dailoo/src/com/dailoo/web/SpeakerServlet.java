@@ -36,7 +36,7 @@ public class SpeakerServlet extends HttpServlet {
 
 				BeanUtils.populate(speaker, request.getParameterMap());
 				service.addSpeaker(speaker);
-
+				response.sendRedirect("/speakersManager.html");
 			} 
 			// 如果是取得講者資料
 			else if ("getSpeakerInfo".equals(method)) {
@@ -68,6 +68,12 @@ public class SpeakerServlet extends HttpServlet {
 				String json = service.findAllSpeakers();
 				response.getWriter().write(json);
 			}
+			//如果是刪除講者
+			else if("delSpeakerById".equals(method)){
+				service.delSpeakerById(request.getParameter("id"));
+				response.sendRedirect("/speakersManager.html");
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

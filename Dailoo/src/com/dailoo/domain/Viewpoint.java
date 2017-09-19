@@ -19,10 +19,10 @@ public class Viewpoint {
 	private String navUrl;		//Google導航網址
 	private String intro;		//景點介紹
 	private String shortUrl; 	//短網址
+	private String isPublish;	//是否付費刊登 1為刊登，0為不刊登
+	private String isPriority;	//是否優先顯示 1為優先，0為不優先 
 	private String speakerId;   //講者ID
 	private Timestamp updateTime;	//上傳時間
-	
-	
 	public String getId() {
 		return id;
 	}
@@ -40,6 +40,12 @@ public class Viewpoint {
 	}
 	public void setSubtitle(String subtitle) {
 		this.subtitle = subtitle;
+	}
+	public String getBehalfPhotoUrl() {
+		return behalfPhotoUrl;
+	}
+	public void setBehalfPhotoUrl(String behalfPhotoUrl) {
+		this.behalfPhotoUrl = behalfPhotoUrl;
 	}
 	public String getThemeId() {
 		return themeId;
@@ -101,11 +107,23 @@ public class Viewpoint {
 	public void setIntro(String intro) {
 		this.intro = intro;
 	}
-	public Timestamp getUpdateTime() {
-		return updateTime;
+	public String getShortUrl() {
+		return shortUrl;
 	}
-	public void setUpdateTime(Timestamp updateTime) {
-		this.updateTime = updateTime;
+	public void setShortUrl(String shortUrl) {
+		this.shortUrl = shortUrl;
+	}
+	public String getIsPublish() {
+		return isPublish;
+	}
+	public void setIsPublish(String isPublish) {
+		this.isPublish = isPublish;
+	}
+	public String getIsPriority() {
+		return isPriority;
+	}
+	public void setIsPriority(String isPriority) {
+		this.isPriority = isPriority;
 	}
 	public String getSpeakerId() {
 		return speakerId;
@@ -113,28 +131,17 @@ public class Viewpoint {
 	public void setSpeakerId(String speakerId) {
 		this.speakerId = speakerId;
 	}
-	public String getShortUrl() {
-		return shortUrl;
+	public Timestamp getUpdateTime() {
+		return updateTime;
 	}
-	public void setShortUrl(String shortUrl) {
-		this.shortUrl = shortUrl;
+	public void setUpdateTime(Timestamp updateTime) {
+		this.updateTime = updateTime;
 	}
 	
-	public String getBehalfPhotoUrl() {
-		return behalfPhotoUrl;
-	}
-	public void setBehalfPhotoUrl(String behalfPhotoUrl) {
-		this.behalfPhotoUrl = behalfPhotoUrl;
-	}
 	@Override
 	public String toString() {
 		return "Viewpoint [id=" + id + ", name=" + name + ", subtitle="
-				+ subtitle + ", theme=" + themeId + ", country=" + country
-				+ ", city=" + city + ", town=" + town + ", village=" + village
-				+ ", address=" + address + ", longitude=" + longitude
-				+ ", latitude=" + latitude + ", navUrl=" + navUrl + ", intro="
-				+ intro + ", shortUrl=" + shortUrl + ", speakerId=" + speakerId
-				+ ", updateTime=" + updateTime + "]";
+				+ subtitle +  "]";
 	}
 	
 }

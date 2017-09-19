@@ -211,6 +211,9 @@ public class ViewpointServiceImpl implements ViewpointService{
 			vpsim.setName(vp.getName());
 			vpsim.setSubtitle(vp.getSubtitle());
 			vpsim.setTheme(vp.getThemeId());
+			vpsim.setIsPublish(vp.getIsPublish());
+			vpsim.setIsPriority(vp.getIsPriority());
+			
 			if(vp.getBehalfPhotoUrl() != null) vpsim.setBehalfPhotoUrl(vp.getBehalfPhotoUrl());
 			Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
 			if(speaker != null) vpsim.setSpeakerName(speaker.getName());
@@ -224,6 +227,16 @@ public class ViewpointServiceImpl implements ViewpointService{
 		Gson gson = new Gson();
 		String result = gson.toJson(vpsims);
 		return result;
+	}
+
+	@Override
+	public void updateIsPublishById(String vpId, String stat) {
+		dao.updateIsPublishById(vpId, stat);
+	}
+
+	@Override
+	public void updateIsPriorityById(String vpId, String stat) {
+		dao.updateIsPriorityById(vpId, stat);		
 	}
 
 }

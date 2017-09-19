@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>景點管理</title>
+    <title>講者管理頁面</title>
     <!-- 最新編譯和最佳化的 CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <!-- 選擇性佈景主題 -->
@@ -115,21 +115,30 @@
     <div><a href="/editRegion.html">新增地區</a></div>
     <div><a href="/editThemes.html">新增主題</a></div>
     <div><a href="/addViewpoint.html">新增景點</a></div>
-    <div><a href="/updateSpeakerInfo.html">個人資訊頁面</a></div>
-    <div><a href="/speakersManager.html">講者管理頁面</a></div>
+    <div><a href="/viewpointManager.html">景點管理頁面</a></div>
     <div><a href="/LogoutServlet">登出</a></div>
+
+    <div class="title" style="text-align: center; margin-top: 20px;">註冊講者</div>
+    <form class="main-form" role="form" action="/SpeakerServlet?method=registSpeaker" method="post">
+        <div class="form-group">
+            <label>帳號</label>
+            <input type="text" name="username" class="form-control" placeholder="輸入帳號" value="">
+        </div>
+        <div class="form-group">
+            <label>密碼</label>
+            <input type="password" name="password" class="form-control" placeholder="輸入密碼" value="">
+        </div>
+        <button type="submit" class="btn btn-default">送出</button>
+    </form>
+
     <div class="demo">
         <table class="bordered">
             <thead>
             <tr>
-                <th width="120px">景點名稱</th>
-                <th>副標題</th>
-                <th>講者</th>
-                <th>時間長度</th>
+                <th>帳號</th>
+                <th>姓名</th>
+                <th>權限</th>
                 <th>編輯</th>
-                <th>預覽</th>
-                <th>付費刊登</th>
-                <th>優先顯示</th>
                 <th>刪除</th>
             </tr>
             </thead>
@@ -143,74 +152,26 @@
 <script type="text/javascript" src="js/base.js"></script>
 <script>
     $.ajax({
-        url: "/ViewpointServlet", context: document.body,
+        url: "/SpeakerServlet", context: document.body,
         type: "POST",
-        data: {"method": "getAllViewpointSimples"},
+        data: {"method": "findAllSpeakers"},
         success: function (data) {
-            var data = eval("(" + data + ")");
-            console.dir(data);
-            initDataFromServer(data);
+            var speakers = eval("(" + data + ")");
+            console.dir(speakers);
+            initDataFromServer(speakers);
         },
     });
-    function initDataFromServer(vp) {
-        for (var i = 0; i < vp.length; i++) {
+
+    function initDataFromServer(speakers) {
+        for(var i = 0; i < speakers.length; i++){
             var dom = '<tr>' +
-                    '<td>' + vp[i].name + '</td>' +
-                    '<td>' + vp[i].subtitle + '</td>' +
-                    '<td>' + vp[i].speakerName + '</td>' +
-                    '<td>' + parseInt(vp[i].audioLength / 60) + ' : ' + vp[i].audioLength % 60 + '</td>' +
-                    '<td><a href="/updateViewpointInfo.html?id=' + vp[i].id + '">' + '編輯' + '</a></td>' +
-                    '<td><a href="/viewpoint2.html?id=' + vp[i].id + '">預覽</a></td>';
-                    if(vp[i].isPublish == 1){
-                        dom += '<td style="text-align: center;"><img src="/images/general/check.png" onclick="switchPublishStat(\''+ vp[i].id +'\',0,this);"/></td>';
-                    }else if(vp[i].isPublish == 0){
-                        dom += '<td style="text-align: center;"><img src="/images/general/cancel.png" onclick="switchPublishStat(\''+ vp[i].id +'\',1,this);"/></td>';
-                    }
-                    if(vp[i].isPriority == 1){
-                        dom += '<td style="text-align: center;"><img src="/images/general/check.png" onclick="switchPriority(\''+ vp[i].id +'\',0,this);"/></td>';
-                    }else if(vp[i].isPriority == 0){
-                        dom += '<td style="text-align: center;"><img src="/images/general/cancel.png" onclick="switchPriority(\''+ vp[i].id +'\',1,this);"/></td>';
-                    }
-                    dom += '<td><a href="/ViewpointServlet?method=delViewpoint&id=' + vp[i].id + '">刪除</a></td>' +
-                    '</tr>';
+                '<td>' + speakers[i].username + '</td>' +
+                '<td>' + speakers[i].name + '</td>' +
+                '<td>' + speakers[i].role + '</td>' +
+                '<td><a href="/updateSpeakerInfo.html?id=' + speakers[i].id + '">編輯</a></td>' +
+                '<td><a href="/SpeakerServlet?method=delSpeakerById&id='+ speakers[i].id +'">刪除</a></td> </tr>';
             $$("tbody").innerHTML = $$("tbody").innerHTML + dom;
         }
-    }
-
-    //向伺服器發送更改付費刊登的狀態
-    function switchPublishStat(id,stat,img){
-        $.ajax({
-            url: "/ViewpointServlet", context: img,
-            type: "POST",
-            data: {"method": "updateIsPublishById", "id":id, "stat":stat},
-            success: function (data) {
-                var td = this.parentNode;
-                td.removeChild(this);
-                if(stat == 1){
-                    td.innerHTML = '<img src="/images/general/check.png" onclick="switchPublishStat(\''+ id +'\',0,this);"/>';
-                }else if(stat == 0){
-                    td.innerHTML = '<img src="/images/general/cancel.png" onclick="switchPublishStat(\''+ id +'\',1,this);"/>';
-                }
-            },
-        });
-    }
-
-    //向伺服器發送更改優先顯示的狀態
-    function switchPriority(id,stat,img){
-        $.ajax({
-            url: "/ViewpointServlet", context: img,
-            type: "POST",
-            data: {"method": "updateIsPriorityById", "id":id, "stat":stat},
-            success: function (data) {
-                var td = this.parentNode;
-                td.removeChild(this);
-                if(stat == 1){
-                    td.innerHTML = '<img src="/images/general/check.png" onclick="switchPriority(\''+ id +'\',0,this);"/>';
-                }else if(stat == 0){
-                    td.innerHTML = '<img src="/images/general/cancel.png" onclick="switchPriority(\''+ id +'\',1,this);"/>';
-                }
-            },
-        });
     }
 
 </script>

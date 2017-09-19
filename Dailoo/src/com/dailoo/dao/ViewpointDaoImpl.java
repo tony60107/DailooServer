@@ -125,4 +125,28 @@ public class ViewpointDaoImpl implements ViewpointDao{
 		}
 	}
 
+	@Override
+	public void updateIsPublishById(String vpId, String stat) {
+		String sql = "update viewpoints set isPublish=? where id=?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, stat, vpId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}		
+	}
+
+	@Override
+	public void updateIsPriorityById(String vpId, String stat) {
+		String sql = "update viewpoints set isPriority=? where id=?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, stat, vpId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}		
+	}
+
 }

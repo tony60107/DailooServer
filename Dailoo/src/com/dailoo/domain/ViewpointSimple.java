@@ -8,6 +8,8 @@ public class ViewpointSimple {
 	private String behalfPhotoUrl;
 	private String speakerName;
 	private int audioLength;
+	private String isPublish;
+	private String isPriority;
 	
 	public String getId() {
 		return id;
@@ -51,6 +53,19 @@ public class ViewpointSimple {
 	}
 	public void setTheme(String theme) {
 		this.theme = theme;
+	}
+
+	public String getIsPublish() {
+		return isPublish;
+	}
+	public void setIsPublish(String isPublish) {
+		this.isPublish = isPublish;
+	}
+	public String getIsPriority() {
+		return isPriority;
+	}
+	public void setIsPriority(String isPriority) {
+		this.isPriority = isPriority;
 	}
 	@Override
 	public String toString() {
