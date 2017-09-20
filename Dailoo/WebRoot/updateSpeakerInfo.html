@@ -26,9 +26,14 @@
     <div class="title">更新個人資訊</div>
     <div><a href="/addViewpoint.html">前往新增景點</a></div>
     <div><a href="/viewpointManager.html">前往景點管理頁面</a></div>
+    <div><a href="/speakersManager.html">講者管理頁面</a></div>
     <div><a href="/LogoutServlet">登出</a></div>
     <form class="main-form" role="form" action="/SpeakerServlet?method=updateSpeakerInfo"
           method="post" enctype="multipart/form-data">
+        <div class="form-group" style="display: none">
+            <label>講者ID</label>
+            <input id="speakerId" type="text" name="id" class="form-control" placeholder="輸入ID" value="">
+        </div>
         <div class="form-group">
             <label>姓名</label>
             <input id="name" type="text" name="name" class="form-control" placeholder="輸入姓名" value="">
@@ -69,10 +74,14 @@
 </html>
 <script type="text/javascript" src="js/base.js"></script>
 <script>
+
+    var speakerId = location.href.split("id=")[1] == undefined ? "" : location.href.split("id=")[1];
+    $$("speakerId").value = speakerId;
+
     $.ajax({
         url: "/SpeakerServlet", context: document.body,
         type: "POST",
-        data: {"method": "getSpeakerInfo"},
+        data: {"method": "getSpeakerInfo", "id":speakerId},
         success: function (data) {
             var data = eval("(" + data + ")");
             $$("name").value = data.name;

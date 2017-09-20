@@ -25,7 +25,8 @@ public class SpeakerServiceImpl implements SpeakerService{
 
 	@Override
 	public Speaker getSpeakerByUnAndPsw(String username, String password) {
-		return dao.getSpeakerByUnAndPsw(username, password);
+		Speaker speaker =  dao.getSpeakerByUnAndPsw(username, password);
+		return speaker;
 	}
 
 	@Override
@@ -64,6 +65,12 @@ public class SpeakerServiceImpl implements SpeakerService{
 	@Override
 	public void delSpeakerById(String id) {
 		dao.delSpeakerById(id);
+	}
+
+	@Override
+	public String findSpeakerById(String id) {
+		Speaker speaker = dao.findSpeakerById(id);
+		return gson.toJson(speaker);
 	}
 
 }

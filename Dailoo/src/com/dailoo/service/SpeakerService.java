@@ -37,4 +37,11 @@ public interface SpeakerService extends Service{
 	 */
 	void delSpeakerById(String id);
 
+	/**
+	 * 根據ID查找講者
+	 * @param id 講者ID
+	 * @return	講者Json資料
+	 */
+	String findSpeakerById(String id);
+
 }
