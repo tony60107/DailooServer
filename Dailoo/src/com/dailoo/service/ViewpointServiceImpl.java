@@ -211,6 +211,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 			vpsim.setName(vp.getName());
 			vpsim.setSubtitle(vp.getSubtitle());
 			vpsim.setTheme(vp.getThemeId());
+			vpsim.setShortUrl(vp.getShortUrl());
 			vpsim.setIsPublish(vp.getIsPublish());
 			vpsim.setIsPriority(vp.getIsPriority());
 			

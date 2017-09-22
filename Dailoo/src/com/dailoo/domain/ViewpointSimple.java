@@ -6,6 +6,7 @@ public class ViewpointSimple {
 	private String subtitle;
 	private String theme;
 	private String behalfPhotoUrl;
+	private String shortUrl;
 	private String speakerName;
 	private int audioLength;
 	private String isPublish;
@@ -42,6 +43,12 @@ public class ViewpointSimple {
 		this.speakerName = speakerName;
 	}
 
+	public String getShortUrl() {
+		return shortUrl;
+	}
+	public void setShortUrl(String shortUrl) {
+		this.shortUrl = shortUrl;
+	}
 	public int getAudioLength() {
 		return audioLength;
 	}

@@ -114,7 +114,7 @@ public class ViewpointDaoImpl implements ViewpointDao{
 
 	@Override
 	public List<Viewpoint> findAllViewpoints() {
-		String sql = "select * from viewpoints";
+		String sql = "select * from viewpoints order by updatetime asc";
 		
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());

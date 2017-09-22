@@ -104,12 +104,42 @@
     });
     $('#twzipcode').twzipcode();
 
+    //增加上傳語音欄位
     function addAduio(){
         var audioGroup = $$("audioGroup");
-        var dom = '<div class="form-group audio" style="width: 300px;"> <div class="del" onclick="delAudio(this);"><img src="images/general/delete.png" alt=""></div> <label>副標題</label> <input type="text" name="subtitle" class="form-control" placeholder="輸入副標題" value=""> <label>景點音檔</label> <input type="file" name="file0" class="form-control"> </div>';
-        audioGroup.innerHTML = audioGroup.innerHTML + dom;
+        //var dom = '<div class="form-group audio" style="width: 300px;"> <div class="del" onclick="delAudio(this);"><img src="images/general/delete.png" alt=""></div> <label>副標題</label> <input type="text" name="subtitle" class="form-control" placeholder="輸入副標題" value=""> <label>景點音檔</label> <input type="file" name="file0" class="form-control"> </div>';
+        var formDiv = document.createElement("div");
+        formDiv.className = "form-group audio";
+        formDiv.style = "width: 300px;";
+        var delBtn = document.createElement("div");
+        delBtn.className = "del";
+        delBtn.onclick = function(){delAudio(this);};
+        var delBtnImg = document.createElement("img");
+        delBtnImg.src = "images/general/delete.png";
+        delBtn.appendChild(delBtnImg);
+        formDiv.appendChild(delBtn);
+        var subtitleLabel = document.createElement("label");
+        subtitleLabel.innerHTML = "副標題";
+        formDiv.appendChild(subtitleLabel);
+        var subtitleInput = document.createElement("input");
+        subtitleInput.type = "text";
+        subtitleInput.name = "subtitle";
+        subtitleInput.className = "form-control";
+        subtitleInput.placeholder = "輸入副標題";
+        formDiv.appendChild(subtitleInput);
+        var audioLabel = document.createElement("label");
+        audioLabel.innerHTML = "景點音檔";
+        formDiv.appendChild(audioLabel);
+        var audioInput = document.createElement("input");
+        audioInput.type = "file";
+        audioInput.name="file";
+        audioInput.className = "form-control";
+        formDiv.appendChild(audioInput);
+        audioGroup.appendChild(formDiv);
+        //audioGroup.innerHTML = audioGroup.innerHTML + dom;
     }
 
+    //刪除上傳語音欄位
     function delAudio(btn){
         btn.parentNode.parentNode.removeChild(btn.parentNode);
     }
