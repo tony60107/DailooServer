@@ -72,4 +72,25 @@ public interface ViewpointService extends Service{
 	 */
 	void updateIsPriorityById(String vpId, String stat);
 
+	/**
+	 * 根據城市獲取所有簡易版景點資訊
+	 * @param city 城市名稱
+	 * @return 簡易版景點集合的JSON數據
+	 */
+	String findViewpointSimplesByCity(String city);
+
+	/**
+	 * 根據鄉鎮獲取所有簡易版景點資訊
+	 * @param town 鄉鎮名稱
+	 * @return 簡易版景點集合的JSON數據
+	 */
+	String findViewpointSimplesByTown(String town);
+
+	/**
+	 * 根據地區ID獲取所有簡易版景點資訊
+	 * @param id 地區ID
+	 * @return 簡易版景點集合的JSON數據
+	 */
+	String findViewpointSimplesByRegionId(String id);
+
 }

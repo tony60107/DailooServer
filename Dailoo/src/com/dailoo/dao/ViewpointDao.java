@@ -73,4 +73,18 @@ public interface ViewpointDao extends Dao{
 	 */
 	void updateIsPriorityById(String vpId, String stat);
 
+	/**
+	 * 根據城市獲取所有簡易版景點資訊
+	 * @param city 城市名稱
+	 * @return 簡易版景點集合
+	 */
+	List<Viewpoint> findViewpointSimplesByCity(String city);
+
+	/**
+	 * 根據鄉鎮獲取所有簡易版景點資訊
+	 * @param town 鄉鎮名稱
+	 * @return 簡易版景點集合
+	 */
+	List<Viewpoint> findViewpointSimplesByTown(String town);
+
 }

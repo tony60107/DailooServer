@@ -118,6 +118,29 @@
     <div><a href="/updateSpeakerInfo.html">個人資訊頁面</a></div>
     <div><a href="/speakersManager.html">講者管理頁面</a></div>
     <div><a href="/LogoutServlet">登出</a></div>
+
+    <div class="filters clearfix">
+        <label class="fl" style="font-size: 16px; line-height: 36px;">地區：</label>
+        <select id="regionSelect" type="text" name="regionId" class="fl form-control" style="width: 200px; margin-right: 35px;">
+            <option selected disabled hidden style='display: none' value=''>請選擇地區</option>
+        </select>
+        <label class="fl" style="font-size: 16px; line-height: 36px;">主題：</label>
+        <select id="themeSelec" name="themeId" class="fl form-control" style="width: 200px;">
+            <option selected disabled hidden style='display: none' value=''>請選擇主題</option>
+        </select>
+    </div>
+
+
+    <div id="twzipcode" class="clearfix" style="width: 500px; margin-top: 15px;">
+        <label class="fl" style="font-size: 16px; line-height: 36px;">地址：</label>
+        <div id="city" data-role="county" data-name="city" data-style="form-control"
+             class="fl" style="width: 100px; margin-right: 40px;"></div>
+        <div id="town" data-role="district" data-name="town" data-style="form-control"
+             class="fl" style="width: 120px;"></div>
+        <div data-role="zipcode" data-name="zipcode" data-value="" data-style="form-control area"
+             style="display: none"></div>
+    </div>
+
     <div class="demo">
         <table class="bordered">
             <thead>
@@ -142,7 +165,17 @@
 </body>
 </html>
 <script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/jquery.twzipcode.min.js"></script>
 <script>
+
+    $('#twzipcode').twzipcode();
+    var regionSelec = $$("regionSelect");
+    var themeSelec = $$("themeSelec");
+    var citySelec = $$('city').children[0];
+    var townSelec = $$('town').children[0];
+
+
+    //向伺服器請求所有景點的資料
     $.ajax({
         url: "/ViewpointServlet", context: document.body,
         type: "POST",
@@ -154,6 +187,7 @@
         },
     });
     function initDataFromServer(vp) {
+        $$("tbody").innerHTML = "";
         for (var i = 0; i < vp.length; i++) {
             var dom = '<tr>' +
                     '<td>' + vp[i].name + '</td>' +
@@ -215,6 +249,110 @@
                 }
             },
         });
+    }
+
+    //獲取所有的地區，以取得地區下所有的主題
+    $.ajax({
+        url: "/RegionServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getAllRegions"},
+        success: function (data) {
+            var regions = eval("(" + data + ")");
+            console.dir(data);
+            for(var i = 0; i < regions.length; i++){
+                var dom = '<option value="'+ regions[i].id +'">' + regions[i].name +'</option>';
+                $$("regionSelect").innerHTML = $$("regionSelect").innerHTML + dom;
+            }
+        },
+    });
+
+    //當主題地區變更時，抓取該地區下的所有主題
+    regionSelec.onchange = function() {
+
+        //默認不顯示鄉鎮地區
+        themeSelec.innerHTML = "";
+        themeSelec.innerHTML = ' <option selected disabled hidden style="display: none" value="">請選擇主題</option>' + themeSelec.innerHTML;
+
+        //獲取該地區下的所有主題
+        $.ajax({
+            url: "/ThemeServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getThemesByRegionId", "regionId": regionSelec.value},
+            success: function (data) {
+                var themes = eval("(" + data + ")");
+                for (var i = 0; i < themes.length; i++) {
+                    var dom = '<option value="' + themes[i].id + '">' + themes[i].name + '</option>';
+                    themeSelec.innerHTML = themeSelec.innerHTML + dom;
+                }
+            }
+        });
+
+        //獲取該地區下的所有景點
+        $.ajax({
+            url: "/ViewpointServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getViewpointSimplesByRegionId", "regionId": regionSelec.value},
+            success: function (data) {
+                var data = eval("(" + data + ")");
+                console.dir(data);
+                initDataFromServer(data);
+            },
+        });
+
+        citySelec.value = "";
+        townSelec.value = "";
+    }
+
+    //當選擇的主題變更時，向伺服器請求該主題下所有景點的資料
+    themeSelec.onchange = function(){
+        $.ajax({
+            url: "/ViewpointServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getViewpointSimplesByTheme", "themeId": themeSelec.value},
+            success: function (data) {
+                var data = eval("(" + data + ")");
+                console.dir(data);
+                initDataFromServer(data);
+            },
+        });
+    }
+
+    //當選擇的城市變更時，向伺服器請求該城市下的所有景點資料
+    citySelec.onchange = function(){
+
+        //默認不顯示鄉鎮地區
+        //townSelec.innerHTML = '<option selected disabled hidden style="display: none" value="">請選擇</option>' + townSelec.innerHTML;
+
+        $.ajax({
+            url: "/ViewpointServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getViewpointSimplesByCity", "city": citySelec.value},
+            success: function (data) {
+                var data = eval("(" + data + ")");
+                console.dir(data);
+                initDataFromServer(data);
+            },
+        });
+
+        regionSelec.value = "";
+        themeSelec.value = "";
+        townSelec.innerHTML = '<option selected disabled hidden style="display: none" value="">鄉鎮市區</option>' + townSelec.innerHTML;
+    }
+
+    townSelec.onchange = function(){
+        $.ajax({
+            url: "/ViewpointServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getViewpointSimplesByTown", "town": townSelec.value},
+            success: function (data) {
+                var data = eval("(" + data + ")");
+                console.dir(data);
+                initDataFromServer(data);
+            },
+        });
+
+        regionSelec.value = "";
+        themeSelec.value = "";
     }
 
 </script>

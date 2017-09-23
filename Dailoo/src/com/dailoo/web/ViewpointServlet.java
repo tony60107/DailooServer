@@ -125,7 +125,7 @@ public class ViewpointServlet extends HttpServlet {
 			}
 			//根據主題名稱，獲取簡易版景點資訊
 			else if("getViewpointSimplesByTheme".equals(method)){
-				String theme = request.getParameter("theme");
+				String theme = request.getParameter("themeId");
 				String json = service.findViewpointSimplesByThemeId(theme);
 				if(json == null) json = "";
 				response.getWriter().write(json);
@@ -189,6 +189,21 @@ public class ViewpointServlet extends HttpServlet {
 					throw new RuntimeException("您沒有權限更改該景點資訊");
 				}
 				response.getWriter().write("OK");
+			}
+			//根據城市獲取所有簡易版景點資訊
+			else if("getViewpointSimplesByCity".equals(method)){
+				String json = service.findViewpointSimplesByCity(request.getParameter("city"));
+				response.getWriter().write(json);
+			}
+			//根據鄉鎮獲取所有簡易版景點資訊
+			else if("getViewpointSimplesByTown".equals(method)){
+				String json = service.findViewpointSimplesByTown(request.getParameter("town"));
+				response.getWriter().write(json);
+			}
+			//根據地區獲取所有簡易版景點資訊
+			else if("getViewpointSimplesByRegionId".equals(method)){
+				String json = service.findViewpointSimplesByRegionId(request.getParameter("regionId"));
+				response.getWriter().write(json);
 			}
 			
 		} catch (Exception e) {

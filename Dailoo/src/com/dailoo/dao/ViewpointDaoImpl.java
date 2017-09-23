@@ -149,4 +149,30 @@ public class ViewpointDaoImpl implements ViewpointDao{
 		}		
 	}
 
+	@Override
+	public List<Viewpoint> findViewpointSimplesByCity(String city) {
+		String sql = "select * from viewpoints where city = ? order by updatetime asc";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class), city);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public List<Viewpoint> findViewpointSimplesByTown(String town) {
+		String sql = "select * from viewpoints where town = ? order by updatetime asc";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class), town);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
 }

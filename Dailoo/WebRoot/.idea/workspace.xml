@@ -23,70 +23,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="speakersManager.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/speakersManager.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="117" column="53" selection-start-line="117" selection-start-column="53" selection-end-line="117" selection-end-column="53" />
-              <folding>
-                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1505814700664" expanded="true" signature="5667:5750" placeholder="..." />
-                <marker date="1505814700664" expanded="true" signature="5667:5778" placeholder="..." />
-                <marker date="1505814700664" expanded="true" signature="5667:5779" placeholder="..." />
-                <marker date="1505814700664" expanded="true" signature="5667:5838" placeholder="..." />
-                <marker date="1505814700664" expanded="true" signature="5667:5929" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="registSpeaker.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/registSpeaker.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="11" selection-start-line="17" selection-start-column="4" selection-end-line="28" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="viewpointManager.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="viewpointManager.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/viewpointManager.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.225807">
-              <caret line="174" column="60" selection-start-line="174" selection-start-column="60" selection-end-line="174" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.6527621">
+              <caret line="338" column="99" selection-start-line="338" selection-start-column="99" selection-end-line="338" selection-end-column="99" />
               <folding>
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-                <marker date="1505888295551" expanded="true" signature="5876:5895" placeholder="..." />
-                <marker date="1505888295551" expanded="true" signature="6094:6113" placeholder="..." />
-                <marker date="1505888295551" expanded="true" signature="6330:6349" placeholder="..." />
-                <marker date="1505888295551" expanded="true" signature="6546:6565" placeholder="..." />
+                <element signature="n#style#0;n#label#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#option#0;n#select#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#1;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#1;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#option#0;n#select#1;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#6412#6713#0" expanded="false" />
+                <element signature="e#6752#8517#0" expanded="false" />
+                <element signature="e#8584#9248#0" expanded="false" />
+                <element signature="e#9312#9971#0" expanded="false" />
+                <element signature="e#10010#10511#0" expanded="false" />
+                <marker date="1506151509880" expanded="true" signature="7479:7498" placeholder="..." />
+                <marker date="1506151509880" expanded="true" signature="7697:7716" placeholder="..." />
+                <marker date="1506151509880" expanded="true" signature="7933:7952" placeholder="..." />
+                <marker date="1506151509880" expanded="true" signature="8149:8168" placeholder="..." />
+                <marker date="1506151509880" expanded="true" signature="10711:10724" placeholder="..." />
+                <marker date="1506151509880" expanded="true" signature="12466:12479" placeholder="..." />
+                <marker date="1506151509880" expanded="true" signature="13046:13059" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addViewpoint.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="addViewpoint.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/addViewpoint.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25591883">
-              <caret line="141" column="8" selection-start-line="141" selection-start-column="8" selection-end-line="141" selection-end-column="8" />
+            <state vertical-scroll-proportion="-10.258064">
+              <caret line="85" column="8" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="8" />
               <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#4727#6475#0" expanded="false" />
                 <marker date="1506092156355" expanded="true" signature="4830:4843" placeholder="..." />
                 <marker date="1506092156355" expanded="true" signature="4844:5117" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="updateSpeakerInfo.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/updateSpeakerInfo.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="59" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -95,8 +75,8 @@
       <file leaf-file-name="updateViewpointInfo.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/updateViewpointInfo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="91" column="52" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="52" />
+            <state vertical-scroll-proportion="-26.967741">
+              <caret line="38" column="89" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="89" />
               <folding>
                 <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -181,8 +161,8 @@
         <option value="$PROJECT_DIR$/editSpeaker.html" />
         <option value="$PROJECT_DIR$/speakersManager.html" />
         <option value="$PROJECT_DIR$/updateSpeakerInfo.html" />
-        <option value="$PROJECT_DIR$/viewpointManager.html" />
         <option value="$PROJECT_DIR$/addViewpoint.html" />
+        <option value="$PROJECT_DIR$/viewpointManager.html" />
       </list>
     </option>
   </component>
@@ -229,6 +209,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -342,7 +323,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -924,12 +904,13 @@
       <workItem from="1505811927956" duration="11270000" />
       <workItem from="1505876853702" duration="4421000" />
       <workItem from="1505982120866" duration="608000" />
-      <workItem from="1506090725875" duration="1429000" />
+      <workItem from="1506090725875" duration="3914000" />
+      <workItem from="1506138755397" duration="9001000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="701653000" />
+    <option name="totallyTimeSpent" value="713139000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1307,42 +1288,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/registSpeaker.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="11" selection-start-line="17" selection-start-column="4" selection-end-line="28" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/speakersManager.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="-14.193548">
           <caret line="117" column="53" selection-start-line="117" selection-start-column="53" selection-end-line="117" selection-end-column="53" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <marker date="1505814700664" expanded="true" signature="5667:5750" placeholder="..." />
             <marker date="1505814700664" expanded="true" signature="5667:5778" placeholder="..." />
             <marker date="1505814700664" expanded="true" signature="5667:5779" placeholder="..." />
             <marker date="1505814700664" expanded="true" signature="5667:5838" placeholder="..." />
             <marker date="1505814700664" expanded="true" signature="5667:5929" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/updateViewpointInfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="91" column="52" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="52" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#option#0;n#select#0;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#8;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1357,27 +1314,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viewpointManager.html">
+    <entry file="file://$PROJECT_DIR$/registSpeaker.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.225807">
-          <caret line="174" column="60" selection-start-line="174" selection-start-column="60" selection-end-line="174" selection-end-column="60" />
-          <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-            <marker date="1505888295551" expanded="true" signature="5876:5895" placeholder="..." />
-            <marker date="1505888295551" expanded="true" signature="6094:6113" placeholder="..." />
-            <marker date="1505888295551" expanded="true" signature="6330:6349" placeholder="..." />
-            <marker date="1505888295551" expanded="true" signature="6546:6565" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="-19.870968">
+          <caret line="28" column="11" selection-start-line="17" selection-start-column="4" selection-end-line="28" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/addViewpoint.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25591883">
-          <caret line="141" column="8" selection-start-line="141" selection-start-column="8" selection-end-line="141" selection-end-column="8" />
+        <state vertical-scroll-proportion="-10.258064">
+          <caret line="85" column="8" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="8" />
           <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#4727#6475#0" expanded="false" />
             <marker date="1506092156355" expanded="true" signature="4830:4843" placeholder="..." />
             <marker date="1506092156355" expanded="true" signature="4844:5117" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/updateViewpointInfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-26.967741">
+          <caret line="38" column="89" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="89" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#0;n#select#0;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#8;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpointManager.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6527621">
+          <caret line="338" column="99" selection-start-line="338" selection-start-column="99" selection-end-line="338" selection-end-column="99" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#label#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#0;n#select#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#1;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#1;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#0;n#select#1;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#6412#6713#0" expanded="false" />
+            <element signature="e#6752#8517#0" expanded="false" />
+            <element signature="e#8584#9248#0" expanded="false" />
+            <element signature="e#9312#9971#0" expanded="false" />
+            <element signature="e#10010#10511#0" expanded="false" />
+            <marker date="1506151509880" expanded="true" signature="7479:7498" placeholder="..." />
+            <marker date="1506151509880" expanded="true" signature="7697:7716" placeholder="..." />
+            <marker date="1506151509880" expanded="true" signature="7933:7952" placeholder="..." />
+            <marker date="1506151509880" expanded="true" signature="8149:8168" placeholder="..." />
+            <marker date="1506151509880" expanded="true" signature="10711:10724" placeholder="..." />
+            <marker date="1506151509880" expanded="true" signature="12466:12479" placeholder="..." />
+            <marker date="1506151509880" expanded="true" signature="13046:13059" placeholder="..." />
           </folding>
         </state>
       </provider>

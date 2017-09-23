@@ -31,6 +31,39 @@ public class ViewpointServiceImpl implements ViewpointService{
 	private RegionDao regionDao = BasicFactory.getFactory().getDao(RegionDao.class);
 	private ThemeDao themeDao = BasicFactory.getFactory().getDao(ThemeDao.class);
 	private Gson gson = new Gson();
+	
+	
+	private List<ViewpointSimple> toVpSimple(List<Viewpoint> vps){
+		
+		List<ViewpointSimple> vpsims = new ArrayList<ViewpointSimple>();
+		
+		//遍歷所有景點
+		for(int i = 0; i < vps.size(); i++){
+
+			Viewpoint vp = vps.get(i);
+			ViewpointSimple vpsim = new ViewpointSimple();
+			
+			//設定簡易版景點資訊內容
+			vpsim.setId(vp.getId());
+			vpsim.setName(vp.getName());
+			vpsim.setSubtitle(vp.getSubtitle());
+			vpsim.setTheme(vp.getThemeId());
+			vpsim.setShortUrl(vp.getShortUrl());
+			vpsim.setIsPublish(vp.getIsPublish());
+			vpsim.setIsPriority(vp.getIsPriority());
+			
+			if(vp.getBehalfPhotoUrl() != null) vpsim.setBehalfPhotoUrl(vp.getBehalfPhotoUrl());
+			Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
+			if(speaker != null) vpsim.setSpeakerName(speaker.getName());
+			Audio audio = audioDao.findAudioByViewpointId(vp.getId());
+			if(audio != null) vpsim.setAudioLength(audio.getLength());
+
+			//將簡易版景點資訊新增到List中
+			vpsims.add(vpsim);
+		}
+		
+		return vpsims;
+	}
 
 	@Override
 	public void addViewpoint(Viewpoint vp) {
@@ -126,28 +159,9 @@ public class ViewpointServiceImpl implements ViewpointService{
 		List<ViewpointSimple> vpsims = new ArrayList<ViewpointSimple>();
 		
 		//查找相同主題下的所有景點
-		List<Viewpoint> list = dao.findViewpointByThemeId(theme);
+		List<Viewpoint> vps = dao.findViewpointByThemeId(theme);
 		
-		//遍歷所有景點
-		for(int i = 0; i < list.size(); i++){
-
-			Viewpoint vp = list.get(i);
-			ViewpointSimple vpsim = new ViewpointSimple();
-			
-			//設定簡易版景點資訊內容
-			vpsim.setId(vp.getId());
-			vpsim.setName(vp.getName());
-			vpsim.setSubtitle(vp.getSubtitle());
-			vpsim.setTheme(vp.getThemeId());
-			if(vp.getBehalfPhotoUrl() != null) vpsim.setBehalfPhotoUrl(vp.getBehalfPhotoUrl());
-			Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
-			if(speaker != null) vpsim.setSpeakerName(speaker.getName());
-			Audio audio = audioDao.findAudioByViewpointId(vp.getId());
-			if(audio != null) vpsim.setAudioLength(audio.getLength());
-
-			//將簡易版景點資訊新增到List中
-			vpsims.add(vpsim);
-		}
+		vpsims = this.toVpSimple(vps);
 		
 		Gson gson = new Gson();
 		String result = gson.toJson(vpsims);
@@ -198,32 +212,9 @@ public class ViewpointServiceImpl implements ViewpointService{
 		List<ViewpointSimple> vpsims = new ArrayList<ViewpointSimple>();
 		
 		//查找所有的景點
-		List<Viewpoint> list = dao.findAllViewpoints();
+		List<Viewpoint> vps = dao.findAllViewpoints();
 		
-		//遍歷所有景點
-		for(int i = 0; i < list.size(); i++){
-
-			Viewpoint vp = list.get(i);
-			ViewpointSimple vpsim = new ViewpointSimple();
-			
-			//設定簡易版景點資訊內容
-			vpsim.setId(vp.getId());
-			vpsim.setName(vp.getName());
-			vpsim.setSubtitle(vp.getSubtitle());
-			vpsim.setTheme(vp.getThemeId());
-			vpsim.setShortUrl(vp.getShortUrl());
-			vpsim.setIsPublish(vp.getIsPublish());
-			vpsim.setIsPriority(vp.getIsPriority());
-			
-			if(vp.getBehalfPhotoUrl() != null) vpsim.setBehalfPhotoUrl(vp.getBehalfPhotoUrl());
-			Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
-			if(speaker != null) vpsim.setSpeakerName(speaker.getName());
-			Audio audio = audioDao.findAudioByViewpointId(vp.getId());
-			if(audio != null) vpsim.setAudioLength(audio.getLength());
-
-			//將簡易版景點資訊新增到List中
-			vpsims.add(vpsim);
-		}
+		vpsims = this.toVpSimple(vps);
 		
 		Gson gson = new Gson();
 		String result = gson.toJson(vpsims);
@@ -238,6 +229,43 @@ public class ViewpointServiceImpl implements ViewpointService{
 	@Override
 	public void updateIsPriorityById(String vpId, String stat) {
 		dao.updateIsPriorityById(vpId, stat);		
+	}
+
+	@Override
+	public String findViewpointSimplesByCity(String city) {
+		
+		List<Viewpoint> vps = dao.findViewpointSimplesByCity(city);
+		List<ViewpointSimple> vpsims = this.toVpSimple(vps);
+		
+		return gson.toJson(vpsims);
+	}
+
+	@Override
+	public String findViewpointSimplesByTown(String town) {
+		
+		List<Viewpoint> vps = dao.findViewpointSimplesByTown(town);
+		List<ViewpointSimple> vpsims = this.toVpSimple(vps);
+		
+		return gson.toJson(vpsims);
+	}
+
+	@Override
+	public String findViewpointSimplesByRegionId(String regionId) {
+		
+		List<Viewpoint> vps = new ArrayList<Viewpoint>();
+		List<Theme> themes = themeDao.findThemesByRegionId(regionId);
+		
+		for(int i = 0; i < themes.size(); i++){
+			List<Viewpoint> temps = dao.findViewpointByThemeId(themes.get(i).getId());
+			for(int j = 0; j < temps.size(); j++){
+				Viewpoint vp = temps.get(j);
+				vps.add(vp);
+			}
+		}
+		
+		List<ViewpointSimple> vpsims = this.toVpSimple(vps);
+		
+		return gson.toJson(vpsims);
 	}
 
 }
