@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import com.dailoo.dao.RegionDao;
 import com.dailoo.dao.ThemeDao;
-import com.dailoo.domain.Tag;
 import com.dailoo.domain.Theme;
 import com.dailoo.factory.BasicFactory;
 import com.google.gson.Gson;
@@ -54,6 +54,13 @@ public class ThemeServiceImpl implements ThemeService{
 			e.printStackTrace();
 		} 
 		
+	}
+
+	@Override
+	public String findThemesByThemeId(String id) {
+		Theme theme = dao.findThemeById(id);
+		List<Theme> themes = dao.findThemesByRegionId(theme.getRegionId());
+		return gson.toJson(themes);
 	}
 
 }

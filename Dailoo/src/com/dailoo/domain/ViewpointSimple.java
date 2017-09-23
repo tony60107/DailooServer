@@ -8,6 +8,7 @@ public class ViewpointSimple {
 	private String behalfPhotoUrl;
 	private String shortUrl;
 	private String speakerName;
+	private String speakerPhotoUrl;
 	private int audioLength;
 	private String isPublish;
 	private String isPriority;
@@ -43,6 +44,12 @@ public class ViewpointSimple {
 		this.speakerName = speakerName;
 	}
 
+	public String getSpeakerPhotoUrl() {
+		return speakerPhotoUrl;
+	}
+	public void setSpeakerPhotoUrl(String speakerPhotoUrl) {
+		this.speakerPhotoUrl = speakerPhotoUrl;
+	}
 	public String getShortUrl() {
 		return shortUrl;
 	}

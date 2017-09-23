@@ -23,5 +23,12 @@ public interface ThemeService extends Service{
 	 */
 	void delThemeById(String id);
 
+	/**
+	 * 根據主題ID,找到該主題對應地區下的所有主題
+	 * @param id 主題ID
+	 * @return 主題集合的JSON數據
+	 */
+	String findThemesByThemeId(String id);
+
 
 }

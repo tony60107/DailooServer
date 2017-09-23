@@ -40,6 +40,11 @@ public class ThemeServlet extends HttpServlet {
 			service.delThemeById(request.getParameter("id"));
 			response.sendRedirect("/editThemes.html");
 		}
+		//如果是根據主題ID,找到該主題對應地區下的所有主題
+		else if("getThemesByThemeId".equals(method)){
+			String json = service.findThemesByThemeId(request.getParameter("id"));
+			response.getWriter().write(json);
+		}
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

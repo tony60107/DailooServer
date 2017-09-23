@@ -8,7 +8,7 @@
     <meta name="Description" content="鹿野週邊語音導覽服務 - 就像導遊親自為您解說">
     <link rel="shortcut icon" href="images/general/dailoo.png">
     <link rel="stylesheet" href="css/base.css"/>
-    <link rel="stylesheet" href="css/viewlist.css"/>
+    <link rel="stylesheet" href="css/viewlist2.css"/>
     <style>
 
     </style>
@@ -19,27 +19,14 @@
         <a href="themelist.html">
             <img class="back fl" src="images/viewlist/back.png"/>
         </a>
-        <div class="tab" id="tab">
-            <ul>
-            </ul>
-        </div>
+        <div id="title" class="title" onclick="themelist.style.display = 'block';"><span class="drop"></span></div>
     </div>
-    <div id="con">
-        <div class="con" style="" name="con">
-            <div id="temp" class="viewlist clearfix">
 
-            </div>
-        </div>
-        <div class="con" style="display:block" name="con">
-            <div class="viewlist">
+    <div id="themelist" class="themelist">
+        <div class="reply" onclick="themelist.style.display = 'none';"><img src="images/viewlist/back.png"/></div>
+    </div>
 
-            </div>
-        </div>
-        <div class="con" style="display:block" name="con">
-            <div class="viewlist">
-
-            </div>
-        </div>
+    <div id="viewlist" class="viewlist clearfix">
     </div>
     <iframe src="question.html" id="questionIframe" width="100%" height="0" marginwidth="0" marginheight="0"
             scrolling="No" frameborder="0"></iframe>
@@ -53,98 +40,78 @@
 <script type="text/javascript" src="js/base.js"></script>
 <script language="javascript">
 
-    window.onload = function () {
-        var nav = document.getElementById("tab").getElementsByTagName("li");
-        var con = document.getElementById("con").getElementsByClassName("con");
-        for (i = 0; i < nav.length; i++) {
-            nav[i].index = i;
-            nav[i].onmouseover = function () {
-                for (var n = 0; n < con.length; n++) {
-                    con[n].style.display = "none";
-                    nav[n].className = "";
-                }
-                con[this.index].style.display = "block"
-                nav[this.index].className = "cur";
-            }
+    var themeId = location.href.split("id=")[1];
 
-        }
+    getViewpointsDataFromServer(themeId);
 
-        //初始化選擇哪個主題
-        var param = location.href.split("?")[1];
-        for (var n = 0; n < con.length; n++) {
-            con[n].style.display = "none";
-            nav[n].className = "";
-        }
-        con[param].style.display = "block"
-        nav[param].className = "cur";
-
-
-        //Google Analytics程式碼 開始
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
-                        (i[r].q = i[r].q || []).push(arguments)
-                    }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                    m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-102968998-1', 'auto');
-        ga('send', 'pageview');
-        //Google Analytics程式碼 結束
-    }
-
-    var themes = ["高台散步","鹿野品茶","龍田逛逛"];
-    //初始化上方Tab欄內容
-    var ul = $$("tab").children[0];
-    for(var i = 0; i < themes.length; i++){ // 遍歷主題
-        //Tab欄中的HTML
-        var li = '<li class="">' +
-                    '<div class="cont">' + themes[i] + '</div>' +
-                    '<img class="point" src="images/viewlist/point.png"/>' +
-                '</li>';
-        ul.innerHTML = ul.innerHTML + li;
-
-        //依據主題名稱，從伺服器中獲取該景點下的景點
+    //依據主題ID，從伺服器中獲取該景點下的景點
+    function getViewpointsDataFromServer(themeId) {
         $.ajax({
             url: "/ViewpointServlet", context: document.body,
             type: "POST",
-            data: {"method": "getViewpointSimplesByTheme", "theme": themes[i]},
+            data: {"method": "getViewpointSimplesByTheme", "themeId": themeId},
             success: function (data) {
-                var data = eval("(" + data + ")");
-                console.dir(data);
-                initDataFromServer(data);
+                var vps = eval("(" + data + ")");
+                console.dir(vps);
+                initDataFromServer(vps);
             },
         });
     }
+
+    var themelist = $$("themelist");
+
+
+    $.ajax({
+        url: "/ThemeServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getThemesByThemeId", "id": themeId},
+        success: function (data) {
+            var themes = eval("(" + data + ")");
+            for(var i = 0; i < themes.length; i++){
+                var dom = '<div class="theme" onclick="getViewpointsDataFromServer(\''+ themes[i].id +'\')">' + themes[i].name + '</div>';
+                themelist.innerHTML = dom + themelist.innerHTML;
+                if(themes[i].id == themeId) {$$("title").innerHTML = themes[i].name + '<span class="drop"></span>';};
+            }
+        },
+    });
+
     history.replaceState(null, null, location.href);
 
-    //根據伺服器的資料，將單一景點新增到景點列表中
+    //將該主題的景點資料，新增到景點列表中
     function initDataFromServer(vps){
+        themelist.style.display = "none";
+        $$("viewlist").innerHTML = "";
         for(var i = 0; i < vps.length; i++) {
-            //單一景點的HTML
-            var dom = '<a class="view" href="viewpoint2.html?utm_source=InSite&utm_campaign=' + vps[i].name + '_' + vps[i].subtilte + '&id=' + vps[i].id + '">' +
-                    '<div>' +
-                    '<img src="/ResourceServlet?url=' + vps[i].behalfPhotoUrl + '">' +
-                    '<div class="cover"></div>' +
-                    '<div class="title">' + vps[i].name + '</div>' +
+            var dom = '<a class="view" href="viewpoint2.html?utm_source=InSite&utm_campaign='+ vps[i].name + '_' + vps[i].subtilte + '&id=' + vps[i].id +'">' +
+                '<img src="/ResourceServlet?url=' + vps[i].behalfPhotoUrl + '">' +
+                '<div class="cover"></div>' +
+                '<div class="title">' + vps[i].name + '</div>' +
+                '<img class="speaker-photo fl" src="/ResourceServlet?url='+ vps[i].speakerPhotoUrl +'" alt="">' +
+                '<div class="fl">' +
                     '<div class="speaker">' + vps[i].speakerName + '</div>' +
                     '<div class="time">' + parseInt(vps[i].audioLength / 60) + '分' + vps[i].audioLength % 60 + '秒</div>' +
-                    '</div>' +
-                    '</a>';
-            //查看該景點是哪個主題
-            var theme = vps[i].theme;
-            for(var j = 0; j < themes.length; j++){
-                if(theme == themes[j])  {
-                    //將景點加到景點列表中
-                    var viewlist = $$("con").children[j].children[0];
-                    viewlist.innerHTML = viewlist.innerHTML + dom;
-                }
-            }
+                '</div>' +
+                '</a>';
 
+            $$("viewlist").innerHTML = $$("viewlist").innerHTML + dom;
         }
     }
+
+
+    //Google Analytics程式碼 開始
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-102968998-1', 'auto');
+    ga('send', 'pageview');
+    //Google Analytics程式碼 結束
 </script>
