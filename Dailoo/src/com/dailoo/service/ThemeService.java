@@ -2,6 +2,8 @@ package com.dailoo.service;
 
 import java.util.Map;
 
+import com.dailoo.domain.Theme;
+
 public interface ThemeService extends Service{
 
 	/**
@@ -29,6 +31,20 @@ public interface ThemeService extends Service{
 	 * @return 主題集合的JSON數據
 	 */
 	String findThemesByThemeId(String id);
+
+	/**
+	 * 根據主題ID找出主題
+	 * @param id 主題ID
+	 * @return 主題的JSON數據
+	 */
+	String findThemeById(String id);
+
+	/**
+	 * 更新主題資訊
+	 * @param theme 主題Bean
+	 * @param imgurls 主題代表圖路徑
+	 */
+	void updateThemeInfo(Theme theme, String imgurls);
 
 
 }

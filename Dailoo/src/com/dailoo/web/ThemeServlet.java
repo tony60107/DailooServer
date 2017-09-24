@@ -8,10 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.beanutils.BeanUtils;
+
 import com.dailoo.domain.Theme;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.service.ThemeService;
 import com.dailoo.util.FileUploadUtils;
+import com.google.gson.Gson;
 
 public class ThemeServlet extends HttpServlet {
 
@@ -20,30 +23,48 @@ public class ThemeServlet extends HttpServlet {
 		
 		ThemeService service = BasicFactory.getFactory().getService(ThemeService.class);
 		Theme theme = new Theme();
+		Gson gson = new Gson();
 		
-		// 取得客戶端要求
-		String method = request.getParameter("method");
-		
-		// 如果是新增主題
-		if ("addTheme".equals(method)) {
-			Map<String, String> paramMap = FileUploadUtils.getParamMap(request,response, this);
-			service.addTheme(paramMap);
-			response.sendRedirect("/editThemes.html");
-		}
-		//如果是根據地區ID取得主題
-		else if("getThemesByRegionId".equals(method)){
-			String json = service.findThemesByRegionId(request.getParameter("regionId"));
-			response.getWriter().write(json);
-		}
-		//如果是根據ID刪除主題
-		else if("delThemeById".equals(method)){
-			service.delThemeById(request.getParameter("id"));
-			response.sendRedirect("/editThemes.html");
-		}
-		//如果是根據主題ID,找到該主題對應地區下的所有主題
-		else if("getThemesByThemeId".equals(method)){
-			String json = service.findThemesByThemeId(request.getParameter("id"));
-			response.getWriter().write(json);
+		try {
+			// 取得客戶端要求
+			String method = request.getParameter("method");
+			
+			// 如果是新增主題
+			if ("addTheme".equals(method)) {
+				Map<String, String> paramMap = FileUploadUtils.getParamMap(request,response, this);
+				service.addTheme(paramMap);
+				response.sendRedirect("/editThemes.html");
+			}
+			//如果是根據地區ID取得主題
+			else if("getThemesByRegionId".equals(method)){
+				String json = service.findThemesByRegionId(request.getParameter("regionId"));
+				response.getWriter().write(json);
+			}
+			//如果是根據ID刪除主題
+			else if("delThemeById".equals(method)){
+				service.delThemeById(request.getParameter("id"));
+				response.sendRedirect("/editThemes.html");
+			}
+			//如果是根據主題ID,找到該主題對應地區下的所有主題
+			else if("getThemesByThemeId".equals(method)){
+				String json = service.findThemesByThemeId(request.getParameter("id"));
+				response.getWriter().write(json);
+			}
+			//如果是根據地區ID取得主題
+			else if("getThemeById".equals(method)){
+				String json = service.findThemeById(request.getParameter("id"));
+				response.getWriter().write(json);
+			}
+			//如果是更新主題資訊
+			else if("updateThemeInfo".equals(method)){
+				Map<String, String> paramMap = FileUploadUtils.getParamMap(request, response, this);
+				BeanUtils.populate(theme, paramMap);
+				service.updateThemeInfo(theme, paramMap.get("imgurls"));
+				response.sendRedirect("/updateThemeInfo.html?id=" + theme.getId());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 	}
 

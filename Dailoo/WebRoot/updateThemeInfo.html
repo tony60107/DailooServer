@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>更新主題資訊</title>
+    <!-- 最新編譯和最佳化的 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!-- 選擇性佈景主題 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <!-- 最新編譯和最佳化的 JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+
+    <style type="text/css">
+        .title {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 35px;
+            line-height: 35px;
+        }
+    </style>
+</head>
+<body>
+<div class="w">
+    <div class="title">更新主題資訊</div>
+    <div><a href="/addViewpoint.html">前往新增景點</a></div>
+    <div><a href="/viewpointManager.html">前往景點管理頁面</a></div>
+    <div><a href="/speakersManager.html">前往講者管理頁面</a></div>
+    <div><a href="/LogoutServlet">登出</a></div>
+    <form class="main-form" role="form" action="/ThemeServlet?method=updateThemeInfo"
+          method="post" enctype="multipart/form-data">
+        <div class="form-group" style="display: none">
+            <label>主題ID</label>
+            <input id="themeId" type="text" name="id" class="form-control" placeholder="輸入ID" value="">
+        </div>
+        <div class="form-group">
+            <label>主題地區</label>
+            <select id="regionSelect" type="text" name="regionId" class="form-control">
+                <option selected disabled hidden style='display: none' value=''></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>主題名稱</label>
+            <input id="name" type="text" name="name" class="form-control" placeholder="輸入姓名" value="">
+        </div>
+
+        <img id="photoUrl" src="" style="width: 350px; height: 100px;"/>
+        <input type="file" name="file"/>
+        <button type="submit" class="btn btn-default">送出</button>
+    </form>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/base.js"></script>
+<script>
+
+    var themeId = location.href.split("id=")[1];
+    var theme = null;
+
+    $.ajax({
+        url: "/ThemeServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getThemeById", "id":themeId},
+        success: function (data) {
+            theme = eval("(" + data + ")");
+            console.dir(data);
+            $$("themeId").value = theme.id;
+            $$("name").value = theme.name;
+            $$("regionSelect").value = theme.regionId;
+            $$("photoUrl").src = "/ResourceServlet?url=" + theme.behalfPhotoUrl;
+        },
+    });
+
+
+    $.ajax({
+        url: "/RegionServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getAllRegions"},
+        success: function (data) {
+            var regions = eval("(" + data + ")");
+            console.dir(data);
+            for (var i = 0; i < regions.length; i++) {
+                var dom = '<option value="' + regions[i].id + '">' + regions[i].name + '</option>';
+                $$("regionSelect").innerHTML = $$("regionSelect").innerHTML + dom;
+            }
+            //$$("regionSelect").dataset.value = "";
+            if(theme != null) $$("regionSelect").value = theme.regionId;
+        },
+    });
+</script>

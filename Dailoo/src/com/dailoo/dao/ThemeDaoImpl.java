@@ -62,4 +62,16 @@ public class ThemeDaoImpl implements ThemeDao{
 		}
 	}
 
+	@Override
+	public void updateThemeById(Theme theme) {
+		String sql = "update themes set name=?, behalfPhotoUrl=?, regionId=?  where id = ?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, theme.getName(), theme.getBehalfPhotoUrl(), theme.getRegionId(), theme.getId());
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}		
+	}
+
 }

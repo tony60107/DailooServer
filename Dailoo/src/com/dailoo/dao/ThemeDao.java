@@ -32,4 +32,10 @@ public interface ThemeDao extends Dao{
 	 */
 	void delThemeById(String id);
 
+	/**
+	 * 根據主題ID,更新主題資訊
+	 * @param theme 主題Bean
+	 */
+	void updateThemeById(Theme theme);
+
 }

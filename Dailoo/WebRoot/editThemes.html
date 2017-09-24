@@ -118,9 +118,10 @@
                             '<div class="cover">' +
                             '<div class="title">' + themes[i].name + '</div>' +
                             '</div>' +
-                            '<img src="/ResourceServlet?url=' + themes[i].behalfPhotoUrl + '"/>' +
+                            '<img alt="無" src="/ResourceServlet?url=' + themes[i].behalfPhotoUrl + '"/>' +
                             '</div>' +
                             '</a>' +
+                            '<a href="/updateThemeInfo.html?id='+ themes[i].id +'"><button class="btn btn-warning fr">更新上方主題資訊</button></a>' +
                             '<a href="/ThemeServlet?method=delThemeById&id='+ themes[i].id +'"><button class="btn btn-danger fr">刪除上方主題</button></a>';
                     $$("themelist").innerHTML = $$("themelist").innerHTML + dom;
                 }
