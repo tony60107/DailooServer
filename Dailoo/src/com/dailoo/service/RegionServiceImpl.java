@@ -25,10 +25,25 @@ public class RegionServiceImpl implements RegionService{
 
 	@Override
 	public String findAllRegions() {
-		
 		List<Region> regions = dao.findAllRegions();
 		String json = gson.toJson(regions);
 		return json;
+	}
+
+	@Override
+	public void delRegionById(String id) {
+		dao.delRegionById(id);
+	}
+
+	@Override
+	public String findRegionById(String id) {
+		Region region = dao.findRegionById(id);
+		return gson.toJson(region);
+	}
+
+	@Override
+	public void updateRegionById(Region region) {
+		dao.updateRegionById(region);
 	}
 
 }

@@ -16,4 +16,23 @@ public interface RegionService extends Service{
 	 */
 	String findAllRegions();
 
+	/**
+	 * 根據地區ID刪除地區
+	 * @param id
+	 */
+	void delRegionById(String id);
+
+	/**
+	 * 根據地區ID取得地區
+	 * @param id 地區ID
+	 * @return 地區JSON數據
+	 */
+	String findRegionById(String id);
+
+	/**
+	 * 更新地區資訊
+	 * @param region 地區Bean
+	 */
+	void updateRegionById(Region region);
+
 }

@@ -25,4 +25,23 @@ public interface RegionDao extends Dao{
 	 */
 	List<Region> findAllRegions();
 
+	/**
+	 * 根據地區ID刪除地區
+	 * @param id 地區ID
+	 */
+	void delRegionById(String id);
+
+	/**
+	 * 根據地區ID找出地區
+	 * @param id 地區ID
+	 * @return 地區Bean
+	 */
+	Region findRegionById(String id);
+
+	/**
+	 * 根據ID更新地區資訊
+	 * @param region 地區Bean
+	 */
+	void updateRegionById(Region region);
+
 }

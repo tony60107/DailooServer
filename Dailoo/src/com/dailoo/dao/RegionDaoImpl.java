@@ -50,4 +50,40 @@ public class RegionDaoImpl implements RegionDao{
 		}
 	}
 
+	@Override
+	public void delRegionById(String id) {
+		String sql = "delete from regions where id = ?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public Region findRegionById(String id) {
+		String sql = "select * from regions where id = ?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanHandler<Region>(Region.class), id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public void updateRegionById(Region region) {
+		String sql = "update regions set name = ? where id = ?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, region.getName(), region.getId());
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}		
+	}
+
 }

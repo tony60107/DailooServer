@@ -29,11 +29,30 @@ public class RegionServlet extends HttpServlet {
 		if ("addRegion".equals(method)) {
 			region.setName(request.getParameter("name"));
 			service.addRegion(region);
+			response.sendRedirect("/editRegion.html");
 		}
 		// 如果是取得所有地區
 		else if("getAllRegions".equals(method)){
 			String json = service.findAllRegions();
 			response.getWriter().write(json);
+		}
+		// 如果是根據ID刪除地區
+		else if("delRegionById".equals(method)){
+			service.delRegionById(request.getParameter("id"));
+			response.sendRedirect("/editRegion.html");
+		}
+		// 如果是根據ID取得地區
+		else if("getRegionById".equals(method)){
+			String json = service.findRegionById(request.getParameter("id"));
+			System.out.println(json);
+			response.getWriter().write(json);
+		}
+		// 如果是更新地區資訊
+		else if("updateRegionInfo".equals(method)){
+			region.setId(request.getParameter("id"));
+			region.setName(request.getParameter("name"));
+			service.updateRegionById(region);
+			response.sendRedirect("/updateRegionInfo.html?id=" + request.getParameter("id"));
 		}
 	}
 
