@@ -28,9 +28,10 @@
 }
 
 .nav .drop {
-    width: 50px;
-    height: 50px;
-    background: url("../images/viewlist/back.png") no-repeat;
+    width: 40px;
+    height: 56px;
+    margin-left: 16px;
+    background: url("../images/viewlist/dropdown.png") no-repeat;
     display: inline-block;
 }
 
@@ -61,11 +62,11 @@
 }
 
 .themelist .reply img {
-    width: 50px;
-    height: 50px;
+    width: 76px;
+    height: 76px;
     position: absolute;
     margin-left: 50%;
-    left: -25px;
+    left: -38px;
 }
 
 /*主題列表結束*/

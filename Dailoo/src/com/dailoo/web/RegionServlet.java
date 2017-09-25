@@ -44,7 +44,6 @@ public class RegionServlet extends HttpServlet {
 		// 如果是根據ID取得地區
 		else if("getRegionById".equals(method)){
 			String json = service.findRegionById(request.getParameter("id"));
-			System.out.println(json);
 			response.getWriter().write(json);
 		}
 		// 如果是更新地區資訊

@@ -19,11 +19,11 @@
         <a href="themelist.html">
             <img class="back fl" src="images/viewlist/back.png"/>
         </a>
-        <div id="title" class="title" onclick="themelist.style.display = 'block';"><span class="drop"></span></div>
+        <div id="title" class="title" onclick="$$('drop').style.display = 'none'; themelist.style.display = 'block';"><span id="drop" class="drop"></span></div>
     </div>
 
     <div id="themelist" class="themelist">
-        <div class="reply" onclick="themelist.style.display = 'none';"><img src="images/viewlist/back.png"/></div>
+        <div class="reply" onclick="$$('drop').style.display = 'inline-block'; themelist.style.display = 'none';"><img src="images/viewlist/reply.png"/></div>
     </div>
 
     <div id="viewlist" class="viewlist clearfix">
@@ -41,12 +41,13 @@
 <script language="javascript">
 
     var themeId = location.href.split("id=")[1];
+    var themelist = $$("themelist");
 
     getViewpointsDataFromServer(themeId);
 
     //依據主題ID，從伺服器中獲取該景點下的景點
     function getViewpointsDataFromServer(themeId, themeName) {
-        $$("title").innerHTML = themeName + '<span class="drop"></span>';
+        $$("title").innerHTML = themeName + '<span id="drop" class="drop"></span>';
         $.ajax({
             url: "/ViewpointServlet", context: document.body,
             type: "POST",
@@ -59,9 +60,6 @@
         });
     }
 
-    var themelist = $$("themelist");
-
-
     $.ajax({
         url: "/ThemeServlet", context: document.body,
         type: "POST",
@@ -71,7 +69,7 @@
             for(var i = 0; i < themes.length; i++){
                 var dom = '<div class="theme" onclick="getViewpointsDataFromServer(\''+ themes[i].id +'\',\'' + themes[i].name + '\');">' + themes[i].name + '</div>';
                 themelist.innerHTML = dom + themelist.innerHTML;
-                if(themes[i].id == themeId) {$$("title").innerHTML = themes[i].name + '<span class="drop"></span>';};
+                if(themes[i].id == themeId) {$$("title").innerHTML = themes[i].name + '<span id="drop" class="drop"></span>';};
             }
         },
     });

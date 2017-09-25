@@ -112,8 +112,12 @@
 </head>
 <body>
 <div class="w">
-    <div><a href="/viewpointManager.html">返回景點管理頁面</a></div>
-    <div><a href="/editThemes.html">新增主題</a></div>
+    <div><a href="/addViewpoint.html">新增景點</a></div>
+    <div><a href="/editRegion.html">地區管理頁面</a></div>
+    <div><a href="/editThemes.html">主題管理頁面</a></div>
+    <div><a href="/viewpointManager.html">景點管理頁面</a></div>
+    <div><a href="/speakersManager.html">講者管理頁面</a></div>
+    <div><a href="/LogoutServlet">登出</a></div>
     <form id="mainForm" action="/RegionServlet?method=addRegion" method="post" style="margin-top: 100px;">
         <div class="form-group">
             <label>地區名稱</label>
@@ -128,6 +132,7 @@
             <tr>
                 <th>地區名稱</th>
                 <th>編輯</th>
+                <th>預覽</th>
                 <th>刪除</th>
             </tr>
             </thead>
@@ -151,7 +156,8 @@
             for(var i = 0; i < regions.length; i++) {
                 var dom = '<tr>' +
                         '<td>' + regions[i].name + '</td>' +
-                        '<td><a href="/updateRegionInfo.html?id=' + regions[i].id + '">' + '編輯' + '</a></td>' +
+                        '<td><a href="/updateRegionInfo.html?id=' + regions[i].id + '">編輯</a></td>' +
+                        '<td><a href="/themelist2.html?id=' + regions[i].id + '">預覽</a></td>' +
                         '<td><a href="/RegionServlet?method=delRegionById&id=' + regions[i].id + '">刪除</a></td>' +
                         '</tr>';
                 $$("tbody").innerHTML = $$("tbody").innerHTML + dom;
