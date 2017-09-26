@@ -34,11 +34,11 @@ public interface ViewpointDao extends Dao{
 	void updateViewpoint(Viewpoint viewpoint);
 
 	/**
-	 * 	根據景點主題，找出景點的List集合
+	 * 	根據景點主題Id，找出景點的List集合
 	 * @param theme 主題名稱
 	 * @return 景點的List集合
 	 */
-	List<Viewpoint> findViewpointByThemeId(String theme);
+	List<Viewpoint> findViewpointByThemeId(String themeId);
 
 	/**
 	 * 根據景點ID，刪除景點
@@ -86,5 +86,7 @@ public interface ViewpointDao extends Dao{
 	 * @return 簡易版景點集合
 	 */
 	List<Viewpoint> findViewpointSimplesByTown(String town);
+
+	List<Viewpoint> findViewpointByThemeIdAndPublish(String themeId);
 
 }

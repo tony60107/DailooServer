@@ -26,7 +26,7 @@ public class ThemeDaoImpl implements ThemeDao{
 
 	@Override
 	public List<Theme> findThemesByRegionId(String id) {
-		String sql = "select * from themes where regionId = ?";
+		String sql = "select * from themes where regionId = ? order by updateTime asc";
 		
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());

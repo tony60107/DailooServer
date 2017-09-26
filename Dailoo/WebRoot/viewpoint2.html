@@ -20,8 +20,8 @@
     <div class="player clearfix">
         <!--頭部導航欄-->
         <div class="header clearfix">
-            <a href="viewlist2.html?0"><img src="images/viewpoint/back.png" alt="" class="back fl"></a>
-            <a id="share" href="#"><img src="images/viewpoint/share.png" alt="" class="share fr"></a>
+            <a id="backward" href="viewlist2.html?0"><img src="images/viewpoint/back.png" alt="" class="back fl"></a>
+            <div id="share" href=""><img src="images/viewpoint/share.png" alt="" class="share fr"></div>
             <a id="vpLocation" target="_blank"><img src="images/viewpoint/location.png" alt="" class="location fr"></a>
         </div>
         <!--標題區塊-->
@@ -111,25 +111,28 @@
             <li>
                 <a href="http://line.naver.jp/R/msg/text/?www.dailoo.com"
                    target="_blank" title="Share on Line"
-                   onclick="window.open('http://line.naver.jp/R/msg/text/?' + encodeURIComponent(document.URL)); return false;"><img
+                   onclick="window.open('http://line.naver.jp/R/msg/text/?' + encodeURIComponent(document.shortUrl)); return false;"><img
                         alt="Share on Line" src="images/social_flat_rounded_rects_svg/Line.png"></a></li>
             <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.test.com&t="
                    title="Share on Facebook" target="_blank"
-                   onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><img
+                   onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.shortUrl) + '&t=' + encodeURIComponent(document.shortUrl)); return false;"><img
                     alt="Share on Facebook" src="images/social_flat_rounded_rects_svg/Facebook.svg"></a></li>
             <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.test.com" target="_blank"
                    title="Share on Google+"
-                   onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><img
+                   onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.shortUrl)); return false;"><img
                     alt="Share on Google+" src="images/social_flat_rounded_rects_svg/Google+.svg"></a></li>
             <li>
                 <a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fwww.test.com&text=:%20http%3A%2F%2Fwww.test.com"
                    target="_blank" title="Tweet"
-                   onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL)); return false;"><img
+                   onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.shortUrl)); return false;"><img
                         alt="Tweet" src="images/social_flat_rounded_rects_svg/Twitter.svg"></a></li>
             <li><a href="mailto:?subject=&body=:%20http%3A%2F%2Fwww.test.com" target="_blank" title="Send email"
-                   onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><img
+                   onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.shortUrl)); return false;"><img
                     alt="Send email" src="images/social_flat_rounded_rects_svg/Email.svg"></a></li>
         </ul>
+        <div class="share-input">
+            <input id="shareInput" type="text" />
+        </div>
     </div>
     <!--用於預加載圖片-->
     <img id="tempImg" style="display: none" src="" alt="">

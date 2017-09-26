@@ -590,4 +590,15 @@ ul.share-buttons .sr-only {
 ul.share-buttons img {
     width: 100px;
 }
+
+.sharebox .share-input {
+    margin-top: 30px;
+}
+
+.sharebox .share-input input{
+    width: 528px;
+    height: 66px;
+    font-size: 46px;
+    padding: 5px 5px 5px 15px;
+}
 /*分享功能結束*/

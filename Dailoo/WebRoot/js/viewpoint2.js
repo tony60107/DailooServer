@@ -13,6 +13,7 @@ window.onload = function () {
         $$("sharemask").style.display = "block";
         $$("sharebox").style.display = "block";
         $$("sharemask").style.overflowY = "hidden";
+        $$("shareInput").value = document.shortUrl;
     }
 
     // 點擊分享的灰色背景
@@ -139,6 +140,10 @@ function initAuthorData(speakerData) {
 //初始化景點資訊
 function initViewpointData(vpData) {
     document.title = vpData.name + " " + vpData.subtitle;
+    //將短網址存入全局變量中
+    document.shortUrl = vpData.shortUrl;
+    //上一頁按鈕
+    $$("backward").href = "/viewlist2.html?id=" + vpData.theme.id;
     //景點名稱
     $$("vpName").innerHTML = vpData.name;
     //景點簡介標題

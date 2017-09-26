@@ -271,4 +271,19 @@ public class ViewpointServiceImpl implements ViewpointService{
 		return gson.toJson(vpsims);
 	}
 
+	@Override
+	public String findViewpointSimplesByThemeIdAndPublish(String themeId) {
+		List<ViewpointSimple> vpsims = new ArrayList<ViewpointSimple>();
+		
+		//查找相同主題下的所有景點
+		List<Viewpoint> vps = dao.findViewpointByThemeIdAndPublish(themeId);
+		
+		vpsims = this.toVpSimple(vps);
+		
+		Gson gson = new Gson();
+		String result = gson.toJson(vpsims);
+
+		return result;
+	}
+
 }

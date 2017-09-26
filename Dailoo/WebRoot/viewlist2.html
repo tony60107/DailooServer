@@ -16,14 +16,14 @@
 <body>
 <div class="w">
     <div class="nav clearfix">
-        <a href="themelist.html">
+        <a id="backward" href="themelist.html">
             <img class="back fl" src="images/viewlist/back.png"/>
         </a>
         <div id="title" class="title" onclick="$$('drop').style.display = 'none'; themelist.style.display = 'block';"><span id="drop" class="drop"></span></div>
     </div>
 
     <div id="themelist" class="themelist">
-        <div class="reply" onclick="$$('drop').style.display = 'inline-block'; themelist.style.display = 'none';"><img src="images/viewlist/reply.png"/></div>
+        <!--div class="reply" onclick="$$('drop').style.display = 'inline-block'; themelist.style.display = 'none';"><img src="images/viewlist/reply.png"/></div-->
     </div>
 
     <div id="viewlist" class="viewlist clearfix">
@@ -51,7 +51,7 @@
         $.ajax({
             url: "/ViewpointServlet", context: document.body,
             type: "POST",
-            data: {"method": "getViewpointSimplesByTheme", "themeId": themeId},
+            data: {"method": "getViewpointSimplesByThemeIdAndPublish", "themeId": themeId},
             success: function (data) {
                 var vps = eval("(" + data + ")");
                 console.dir(vps);
@@ -60,17 +60,24 @@
         });
     }
 
+    //獲取主題列表並新增到導航欄中
     $.ajax({
         url: "/ThemeServlet", context: document.body,
         type: "POST",
         data: {"method": "getThemesByThemeId", "id": themeId},
         success: function (data) {
             var themes = eval("(" + data + ")");
+            console.dir(themes);
             for(var i = 0; i < themes.length; i++){
                 var dom = '<div class="theme" onclick="getViewpointsDataFromServer(\''+ themes[i].id +'\',\'' + themes[i].name + '\');">' + themes[i].name + '</div>';
-                themelist.innerHTML = dom + themelist.innerHTML;
-                if(themes[i].id == themeId) {$$("title").innerHTML = themes[i].name + '<span id="drop" class="drop"></span>';};
+                themelist.innerHTML = themelist.innerHTML + dom;
+                if(themes[i].id == themeId) {
+                    $$("title").innerHTML = themes[i].name + '<span id="drop" class="drop"></span>';
+                    $$("backward").href = "/themelist2.html?id=" + themes[i].regionId;
+                }
             }
+            //增加返回按鈕
+            themelist.innerHTML = themelist.innerHTML +  '<div class="reply" onclick="$$(\'drop\').style.display = \'inline-block\'; themelist.style.display = \'none\';"><img src="images/viewlist/reply.png"/></div>';
         },
     });
 
@@ -81,7 +88,7 @@
         themelist.style.display = "none";
         $$("viewlist").innerHTML = "";
         for(var i = 0; i < vps.length; i++) {
-            var dom = '<a class="view" href="viewpoint2.html?utm_source=InSite&utm_campaign='+ vps[i].name + '_' + vps[i].subtilte + '&id=' + vps[i].id +'">' +
+            var dom = '<a class="view" href="viewpoint2.html?utm_source=InSite&utm_campaign='+ vps[i].name + '_' + vps[i].subtitle + '&id=' + vps[i].id +'">' +
                 '<img src="/ResourceServlet?url=' + vps[i].behalfPhotoUrl + '">' +
                 '<div class="cover"></div>' +
                 '<div class="title">' + vps[i].name + '</div>' +
