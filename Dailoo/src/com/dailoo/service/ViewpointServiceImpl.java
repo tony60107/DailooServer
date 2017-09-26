@@ -78,8 +78,8 @@ public class ViewpointServiceImpl implements ViewpointService{
 		vp.setLongitude(address[1]);
 		
 		//更新景點導航地址
-		//https://www.google.com.tw/maps/@22.9176907,121.1210067,16z
-		vp.setNavUrl("https://www.google.com.tw/maps/@" + vp.getLatitude() + "," + vp.getLongitude() + ",16z");
+		//https://www.google.com.tw/maps/place/龍田邱仁銘宅/@22.9038065,121.1273646,16z
+		vp.setNavUrl("https://www.google.com.tw/maps/place/"+ vp.getName() +"/@" + vp.getLatitude() + "," + vp.getLongitude() + ",16z");
 		
 		//建立短網址
 		String domain = BasicFactory.getFactory().getPropData("Domain");
@@ -110,8 +110,8 @@ public class ViewpointServiceImpl implements ViewpointService{
 		vp.setLongitude(address[1]);
 		
 		//更新景點導航地址
-		vp.setNavUrl("https://www.google.com.tw/maps/@" + vp.getLatitude() + "," + vp.getLongitude() + ",16z");
-		
+		vp.setNavUrl("https://www.google.com.tw/maps/place/"+ vp.getName() +"/@" + vp.getLatitude() + "," + vp.getLongitude() + ",16z");
+				
 		//更新短網址
 		String domain = BasicFactory.getFactory().getPropData("Domain");
 		String url = domain + "viewpoint.html?utm_source=PrintAds&utm_campaign="+ vp.getName() + "_" 

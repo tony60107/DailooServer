@@ -47,7 +47,7 @@
 
     //依據主題ID，從伺服器中獲取該景點下的景點
     function getViewpointsDataFromServer(themeId, themeName) {
-        $$("title").innerHTML = themeName + '<span id="drop" class="drop"></span>';
+        if(themeName != null) $$("title").innerHTML = themeName + '<span id="drop" class="drop"></span>';
         $.ajax({
             url: "/ViewpointServlet", context: document.body,
             type: "POST",

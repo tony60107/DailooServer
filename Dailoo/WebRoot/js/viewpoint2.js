@@ -127,9 +127,11 @@ function initViewpointData(vpData) {
     if (vpData.subtitle != "") {
         $$("vpSubtitle").innerHTML = vpData.subtitle;
     }
+    //景點行政區
+    $$("area").innerHTML = vpData.city + vpData.town;
 
     //景點位置
-    $$("vpLocation").href = vpData.navUrl;
+    $$("vpLocation").href = "https://www.google.com.tw/maps/place/" + vpData.name + "/@" + vpData.latitude + "," + vpData.longitude + ",17z";
 
     //景點介紹內容
     var vpIntro = $$("vpIntro");
