@@ -7,8 +7,8 @@ import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
-import com.dailoo.domain.Speaker;
 import com.dailoo.domain.Viewpoint;
+import com.dailoo.domain.ViewpointSimple;
 import com.dailoo.util.TransactionManager;
 
 public class ViewpointDaoImpl implements ViewpointDao{
@@ -179,10 +179,25 @@ public class ViewpointDaoImpl implements ViewpointDao{
 	public List<Viewpoint> findViewpointByThemeIdAndPublish(String themeId) {
 		String sql = "select * from viewpoints where themeId = ? and isPublish =?"
 				+ " order by isPriority desc, updatetime asc";
-		
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
 			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class), themeId, 1);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public List<ViewpointSimple> findNeighViewpoints(Viewpoint vp) {
+		String sql = "SELECT id, name, subtitle, ( 3959 * acos( cos( radians(?) ) * cos( radians( latitude ) )" + 
+				"* cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin(radians(latitude)) ) ) AS distance " + 
+				" FROM viewpoints GROUP BY name HAVING distance BETWEEN 0.0001 AND 20 " +
+				" ORDER BY distance  LIMIT 0 , 5 ;";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanListHandler<ViewpointSimple>(ViewpointSimple.class),
+					vp.getLatitude(), vp.getLongitude(), vp.getLatitude());
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

@@ -34,32 +34,7 @@ window.onload = function () {
         this.style.display = "none";
     }
 
-    initData();
-    //initDataFromServer(serverData);
-
 }
-
-function initData() {
-    //取得網頁參數
-    /*var strUrl = location.search;
-     var getPara, ParaVal;
-     var aryPara = [];
-
-     if (strUrl.indexOf("?") != -1) {
-     var getSearch = strUrl.split("?");
-     getPara = getSearch[1].split("&");
-     for (i = 0; i < getPara.length; i++) {
-     ParaVal = getPara[i].split("=");
-     aryPara.push(ParaVal[0]);
-     aryPara[ParaVal[0]] = ParaVal[1];
-     }
-     }
-
-     param = decodeURI(aryPara['utm_campaign']);*/
-
-
-}
-
 
 //處理所有從伺服器拿回來的資料
 function initDataFromServer(serverData) {
@@ -171,7 +146,7 @@ function initViewpointData(vpData) {
         var moreAudioDiv = $$("moreAudio");
         for (var i = 0; i < vpData.moreAudio.length; i++) {
             moreAudioDiv.innerHTML = moreAudioDiv.innerHTML +
-                '<a href="viewpoint.html?utm_source=InSite&utm_campaign=' + vpData.moreAudio[i].name + '_' +
+                '<a href="viewpoint2.html?utm_source=InSite&utm_campaign=' + vpData.moreAudio[i].name + '_' +
                 vpData.moreAudio[i].subtitle + '&id=' + vpData.moreAudio[i].id +
                 '"><div class="audio">' + vpData.moreAudio[i].subtitle + '</div></a>';
         }
@@ -184,13 +159,9 @@ function initViewpointData(vpData) {
         var neighViewDiv = $$("neighView");
         neighViewData = vpData.neighView;
         for (var i = 0; i < neighViewData.length; i++) {
-            var viewA = document.createElement("a");
-            viewA.href = "viewpoint.html?utm_source=InSite&utm_campaign=" + neighViewData[i].title + "_" + neighViewData[i].subtitle;
-            var viewDiv = document.createElement("div");
-            viewDiv.className = "view";
-            viewDiv.innerHTML = neighViewData[i].title;
-            viewA.append(viewDiv);
-            neighViewDiv.appendChild(viewA);
+            var dom = '<a href="viewpoint2.html?utm_source=InSite&amp;utm_campaign=' + vpData.neighView[i].name + '_' + vpData.neighView[i].subtitle + '' +
+                '&id=' + vpData.neighView[i].id + '"><div class="view">' + vpData.neighView[i].name + '</div></a>';
+            neighViewDiv.innerHTML = neighViewDiv.innerHTML + dom;
         }
     }
 }

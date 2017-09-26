@@ -136,6 +136,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 		List<Tag> tags = tagDao.findTagsByAudioId(audio.getId());
 		Theme theme = themeDao.findThemeById(vp.getThemeId());
 		List<Viewpoint> moreAudio = dao.findViewpointsByName(vp.getName());
+		List<ViewpointSimple> neighView = dao.findNeighViewpoints(vp);
 		
 		
 		String vpJson = gson.toJson(vp);
@@ -144,6 +145,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 		String tagsJson = gson.toJson(tags);
 		String themeJson = gson.toJson(theme);
 		String moreAudioJson = gson.toJson(moreAudio);
+		String neighViewJson = gson.toJson(neighView);
 		
 		//將Tags的JSON數據加到audioJson中
 		audioJson = audioJson.substring(0, audioJson.length()-1) + ", \"tags\":" + tagsJson +"}";
@@ -151,7 +153,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 		//完整的Json數據
 		String result = vpJson.substring(0, vpJson.length()-1) + ", \"speaker\":" + speakerJson 
 				+ ", \"audio\":" + audioJson + ", \"moreAudio\":" + moreAudioJson
-				+ ", \"theme\":"+ themeJson +"}";
+				+ ", \"theme\":"+ themeJson + ", \"neighView\":"+ neighViewJson +"}";
 		
 		return result;
 	}

@@ -3,6 +3,7 @@ package com.dailoo.dao;
 import java.util.List;
 
 import com.dailoo.domain.Viewpoint;
+import com.dailoo.domain.ViewpointSimple;
 
 public interface ViewpointDao extends Dao{
 
@@ -87,6 +88,18 @@ public interface ViewpointDao extends Dao{
 	 */
 	List<Viewpoint> findViewpointSimplesByTown(String town);
 
+	/**
+	 * 根據主題ID，找到該主題下已發布的景點，並依照是否優先排序
+	 * @param themeId 主題ID
+	 * @return 景點List集合
+	 */
 	List<Viewpoint> findViewpointByThemeIdAndPublish(String themeId);
+
+	/**
+	 * 根據景點，尋找週邊景點
+	 * @param vp 作為依據的景點
+	 * @return 景點的List集合
+	 */
+	List<ViewpointSimple> findNeighViewpoints(Viewpoint vp);
 
 }
