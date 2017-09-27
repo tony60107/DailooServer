@@ -40,6 +40,7 @@ var Audio = Class.extend({
                 tagNode.style.left = tags[i].time / audioLength * scrollBarWidth - 8 + "px"; //計算Tag在進度條中的位置, 8 為bar寬度的一半
                 scrollBar.appendChild(tagNode);
             }
+
         }
 
     },
@@ -61,7 +62,7 @@ var Audio = Class.extend({
 
         nextTagBtn.addEventListener("click", function () { //跳到下一個Tag標記
             var curTime = audio.currentTime;
-            var tempTime = 99999; //用於保存最接近且大於currentTime的Tag時間
+            var tempTime = tags[tags.length -1].time; //用於保存最接近且大於currentTime的Tag時間
 
             //找出符合條件的Tag時間
             for (var i = 0; i < tags.length; i++) {
@@ -89,6 +90,10 @@ var Audio = Class.extend({
             playBtn.style.backgroundImage = "url(images/viewpoint/play.png)";
         }
 
+        //如果瀏覽器帶有要求自動播放參數，則點下播放鍵
+        if(location.href.split("autoplay=")[1] == 'true') {
+            playBtn.click();
+        }
     },
 
     initDataFromServer : function(audioData){
@@ -125,6 +130,12 @@ var Audio = Class.extend({
                     updateMainPhoto($$("mainPhoto").src);
                 }
             }
+        }
+
+        //設定如果播放到尾端，自動播放下一段語音
+        var nextAudio = document.nextAudio;
+        if(curTime > audioLength - 0.5 && audio.paused == false && nextAudio != null){
+            location.href = "/viewpoint2.html?utm_source=InSite&utm_campaign=" + nextAudio.name + "_" + nextAudio.subtitle +"&id=" + nextAudio.id + "&autoplay=true";
         }
     }
 });

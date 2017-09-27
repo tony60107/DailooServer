@@ -79,7 +79,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 		
 		//更新景點導航地址
 		//https://www.google.com.tw/maps/place/龍田邱仁銘宅/@22.9038065,121.1273646,16z
-		vp.setNavUrl("https://www.google.com.tw/maps/place/"+ vp.getName() +"/@" + vp.getLatitude() + "," + vp.getLongitude() + ",16z");
+		vp.setNavUrl("https://www.google.com.tw/maps/place/"+ vp.getName() +"/@" + vp.getLatitude() + "," + vp.getLongitude() + ",19z");
 		
 		//建立短網址
 		String domain = BasicFactory.getFactory().getPropData("Domain");

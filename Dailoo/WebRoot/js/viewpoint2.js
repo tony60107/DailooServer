@@ -131,7 +131,7 @@ function initViewpointData(vpData) {
     $$("area").innerHTML = vpData.city + vpData.town;
 
     //景點位置
-    $$("vpLocation").href = "https://www.google.com.tw/maps/place/" + vpData.name + "/@" + vpData.latitude + "," + vpData.longitude + ",17z";
+    $$("vpLocation").href = "https://www.google.com.tw/maps/place/" + vpData.name + "/@" + vpData.latitude + "," + vpData.longitude + ",19.5z";
 
     //景點介紹內容
     var vpIntro = $$("vpIntro");
@@ -151,6 +151,12 @@ function initViewpointData(vpData) {
                 '<a href="viewpoint2.html?utm_source=InSite&utm_campaign=' + vpData.moreAudio[i].name + '_' +
                 vpData.moreAudio[i].subtitle + '&id=' + vpData.moreAudio[i].id +
                 '"><div class="audio">' + vpData.moreAudio[i].subtitle + '</div></a>';
+
+            //設定自動播放下一段語音資料
+            if(vpData.id == vpData.moreAudio[i].id && vpData.moreAudio[i+1] != null) {
+                //將下一段語音資料設為全域變量
+                document.nextAudio = vpData.moreAudio[i+1];
+            }
         }
     } else {
         $$("moreAudio").style.display = "none";

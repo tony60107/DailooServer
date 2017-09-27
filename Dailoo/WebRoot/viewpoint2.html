@@ -157,13 +157,13 @@
 
 <script>
 
-    var param = location.href.split("id=")[1];
+    var vpId = location.href.split("id=")[1].split("&")[0];
     var speakerData = "";
 
     $.ajax({
         url: "/ViewpointServlet", context: document.body,
         type: "POST",
-        data: {"method": "getViewpointInfo", "id": param},
+        data: {"method": "getViewpointInfo", "id": vpId},
         success: function (data) {
             var data = eval("(" + data + ")");
 
@@ -222,7 +222,6 @@
         a.src = g;
         m.parentNode.insertBefore(a, m)
     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
     ga('create', 'UA-102968998-1', 'auto');
     ga('send', 'pageview');
     //Google Analytics程式碼 結束
