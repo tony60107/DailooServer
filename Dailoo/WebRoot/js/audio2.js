@@ -41,12 +41,21 @@ var Audio = Class.extend({
                 scrollBar.appendChild(tagNode);
             }
 
+            //自動播放語音
+            /*function autoPlayAudio(e){
+                //如果瀏覽器帶有要求自動播放參數，則點下播放鍵
+                if(location.href.split("autoplay=")[1] == 'true') {playBtn.click();}
+                document.removeEventListener("touchstart", autoPlayAudio);
+                console.dir(e);
+                e.stopImmediatePropagation();
+            }
+            document.addEventListener("touchstart", autoPlayAudio);*/
         }
 
     },
     bindEvent: function () {
 
-        playBtn.addEventListener("click", function () { //點下了播放按鈕
+        playBtn.addEventListener("click", function (event) { //點下了播放按鈕
             if (audio.paused == true) { //如果為暫停狀態
                 playBtn.style.backgroundImage = "url(images/viewpoint/pause.png)";
                 audio.play();
@@ -62,7 +71,7 @@ var Audio = Class.extend({
 
         nextTagBtn.addEventListener("click", function () { //跳到下一個Tag標記
             var curTime = audio.currentTime;
-            var tempTime = tags[tags.length -1].time; //用於保存最接近且大於currentTime的Tag時間
+            var tempTime = audioLength - 5;//tags[tags.length -1].time; //用於保存最接近且大於currentTime的Tag時間
 
             //找出符合條件的Tag時間
             for (var i = 0; i < tags.length; i++) {
@@ -90,10 +99,6 @@ var Audio = Class.extend({
             playBtn.style.backgroundImage = "url(images/viewpoint/play.png)";
         }
 
-        //如果瀏覽器帶有要求自動播放參數，則點下播放鍵
-        if(location.href.split("autoplay=")[1] == 'true') {
-            playBtn.click();
-        }
     },
 
     initDataFromServer : function(audioData){

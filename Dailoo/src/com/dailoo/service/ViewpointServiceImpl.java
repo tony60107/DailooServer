@@ -74,6 +74,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 		
 		//根據地址取得經緯度
 		double [] address = GoogleMapUtils.getAdressXY(vp.getAddress());
+		
 		vp.setLatitude(address[0]);
 		vp.setLongitude(address[1]);
 		
@@ -106,8 +107,14 @@ public class ViewpointServiceImpl implements ViewpointService{
 		
 		//更新景點經緯度
 		double [] address = GoogleMapUtils.getAdressXY(vp.getAddress());
-		vp.setLatitude(address[0]);
-		vp.setLongitude(address[1]);
+		if(address[0] != 0 && address[1] != 0) {
+			vp.setLatitude(address[0]);
+			vp.setLongitude(address[1]);
+		} else {
+			Viewpoint temp = dao.findViewpointById(vp.getId());
+			vp.setLatitude(temp.getLatitude());
+			vp.setLongitude(temp.getLongitude());
+		}
 		
 		//更新景點導航地址
 		vp.setNavUrl("https://www.google.com.tw/maps/place/"+ vp.getName() +"/@" + vp.getLatitude() + "," + vp.getLongitude() + ",16z");

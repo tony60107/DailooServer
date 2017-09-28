@@ -114,6 +114,8 @@ function initAuthorData(speakerData) {
 
 //初始化景點資訊
 function initViewpointData(vpData) {
+
+    //網頁標題
     document.title = vpData.name + " " + vpData.subtitle;
     //將短網址存入全局變量中
     document.shortUrl = vpData.shortUrl;
