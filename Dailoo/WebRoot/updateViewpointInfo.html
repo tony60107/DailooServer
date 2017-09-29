@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>新增景點</title>
+    <title>更新景點資訊</title>
     <!-- 最新編譯和最佳化的 CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <!-- 選擇性佈景主題 -->
@@ -72,7 +72,7 @@
         </div>
         <div class="form-group">
             <label>景點介紹</label>
-            <textarea id="intro" type="text" name="intro" class="form-control" cols="5" rows="7" wrap="hard" placeholder="輸入景點介紹" style="width: 328px;"></textarea>
+            <textarea id="intro" type="text" name="intro" class="form-control" cols="5" rows="7" wrap="hard" placeholder="輸入景點介紹" style="width: 326px;"></textarea>
         </div>
         <div class="form-group">
             <label>景點代表圖</label>
@@ -96,6 +96,7 @@
 <script>
     var viewpointId = location.href.split("id=")[1];
     $$("viewpointId").value = viewpointId;
+    var vp;
 
     //取得現在所有的講者
     $.ajax({
@@ -112,6 +113,7 @@
                 var dom = '<option value="' + speakers[i].id + '">' + speakers[i].name + '</option>';
                 speakerList.innerHTML = speakerList.innerHTML + dom;
             }
+            $$("speaker_list").value = vp.speaker.id;
         },
     });
 
@@ -124,7 +126,7 @@
             "id": viewpointId,
         },
         success: function (data) {
-            var vp = eval("(" + data + ")");
+            vp = eval("(" + data + ")");
             console.dir(vp);
             initDataFromServer(vp)
         },

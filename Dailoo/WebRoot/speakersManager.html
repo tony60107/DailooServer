@@ -169,7 +169,7 @@
                 '<td>' + speakers[i].username + '</td>' +
                 '<td>' + speakers[i].name + '</td>' +
                 '<td>' + speakers[i].role + '</td>' +
-                '<td><a href="/updateSpeakerInfo.html?id=' + speakers[i].id + '">編輯</a></td>' +
+                '<td><a target="_blank" href="/updateSpeakerInfo.html?id=' + speakers[i].id + '">編輯</a></td>' +
                 '<td><a href="/SpeakerServlet?method=delSpeakerById&id='+ speakers[i].id +'">刪除</a></td> </tr>';
             $$("tbody").innerHTML = $$("tbody").innerHTML + dom;
         }
