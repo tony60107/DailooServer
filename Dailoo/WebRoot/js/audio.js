@@ -9,7 +9,7 @@ var audioLength; //聲音總長度
 var nowTime; //現在播放到的時間
 var tags; //音檔標記的JSON數據
 
-var imgSliderClass;
+var imgSliderClass = new imgSlider();
 
 var Audio = Class.extend({
     init: function () {
@@ -129,10 +129,10 @@ var Audio = Class.extend({
             if (childs[i].className.indexOf("tag") != -1) { //如果是Tag
                 if (i == tempTag) { //如果是剛剛找到符合條件的Tag
                     childs[i].className = "tag cur"; //標記該Tag為當前的Tag
-                    updateMainPhoto(tempphotoUrl); //更新圖片輪播區主相片
+                    imgSliderClass.updateMainPhoto(tempphotoUrl); //更新圖片輪播區主相片
                 } else {
                     childs[i].className = "tag";
-                    updateMainPhoto($$("mainPhoto").src);
+                    imgSliderClass.updateMainPhoto($$("mainPhoto").src);
                 }
             }
         }

@@ -46,7 +46,7 @@ function initDataFromServer(serverData) {
     //初始化圖片輪播區相片
     imgSliderClass.initDataFromServer(serverData.audio.tags);
     if (typeof serverData.audio.tags[0] != "undefined") {
-        updateMainPhoto(serverData.audio.tags[0].photoUrl);
+        imgSliderClass.updateMainPhoto(serverData.audio.tags[0].photoUrl);
     }
     //初始化講者資訊
     initAuthorData(serverData.speaker);

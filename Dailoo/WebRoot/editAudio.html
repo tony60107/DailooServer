@@ -69,7 +69,7 @@
         success: function (data) {
             var audioData = eval("(" + data + ")");
             $$("audio").src = "/ResourceServlet?url=" + audioData.src;
-            $$("preview").href = "/viewpoint2.html?id=" + audioData.viewpointId;
+            $$("preview").href = "/viewpoint.html?id=" + audioData.viewpointId;
             console.dir(data);
         },
     });
