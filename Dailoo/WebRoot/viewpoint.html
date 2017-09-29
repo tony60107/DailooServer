@@ -12,7 +12,7 @@
     <meta id="og_title" property="og:title" content="帶路 - Dailoo"/>
     <meta id="og_image" property="og:image" content="http://www.dailoo.com/images/themelist/luye.png"/>
     <link rel="stylesheet" href="css/base.css"/>
-    <link rel="stylesheet" href="css/viewpoint2.css"/>
+    <link rel="stylesheet" href="css/viewpoint.css"/>
 </head>
 <body>
 <class class="w">
@@ -150,9 +150,9 @@
 <script type="text/javascript" src="js/simplejsinher.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
 <script type="text/javascript" src="js/scrollbar.js"></script>
-<script type="text/javascript" src="js/imgSlider2.js"></script>
-<script type="text/javascript" src="js/audio2.js"></script>
-<script type="text/javascript" src="js/viewpoint2.js"></script>
+<script type="text/javascript" src="js/imgSlider.js"></script>
+<script type="text/javascript" src="js/audio.js"></script>
+<script type="text/javascript" src="js/viewpoint.js"></script>
 <!--<script type="text/javascript" src="js/all.min.js"></script>-->
 
 <script>
@@ -182,11 +182,13 @@
     });
     history.replaceState(null, null, location.href);
 
+    var i = 0;
     function onYouTubeIframeAPIReady() {
         //如果還沒有拿到講者資訊，等待0.5秒後再執行
         if("" == speakerData){setTimeout(function(){
             onYouTubeIframeAPIReady();
-        }, 500);} else{ setSpeakerYoutube(); }
+            console.dir("KKK: " + i);
+        }, 500);} else{ setSpeakerYoutube(); console.dir("OK");}
     }
 
     //設定講者影片

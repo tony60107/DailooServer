@@ -113,10 +113,10 @@
 <body>
 <div class="w">
     <div><a href="/addViewpoint.html">新增景點</a></div>
-    <div><a href="/editRegion.html">地區管理頁面</a></div>
-    <div><a href="/editThemes.html">主題管理頁面</a></div>
-    <div><a href="/viewpointManager.html">景點管理頁面</a></div>
-    <div><a href="/speakersManager.html">講者管理頁面</a></div>
+    <div><a href="/manageRegions.html">地區管理頁面</a></div>
+    <div><a href="/manageThemes.html">主題管理頁面</a></div>
+    <div><a href="/manageViewpoints.html">景點管理頁面</a></div>
+    <div><a href="/manageSpeakers.html">講者管理頁面</a></div>
     <div><a href="/LogoutServlet">登出</a></div>
 
     <div class="filters clearfix">
@@ -212,6 +212,7 @@
                     dom += '<td><a href="/ViewpointServlet?method=delViewpoint&id=' + vp[i].id + '">刪除</a></td>' +
                     '</tr>';
             $$("tbody").innerHTML = $$("tbody").innerHTML + dom;
+            //console.dir("<url>\n\11<loc>" + "http://www.dailoo.com/viewpoint.html?utm_source=InSite&utm_campaign=" + vp[i].name + "_" + vp[i].subtitle + "&id=" + vp[i].id + "</loc>\n</url>");
         }
     }
 
