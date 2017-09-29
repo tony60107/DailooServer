@@ -7,12 +7,12 @@
     <link rel="shortcut icon" href="images/general/dailoo.png">
     <meta name="Keywords" content="Dailoo, 帶路, 鹿野, 語音導覽, 導覽, 導遊, 高台散步, 鹿野品茶, 龍田逛逛">
     <meta name="Description" content="鹿野週邊語音導覽服務 - 就像在地人親自帶路">
-    <meta property="og:site_name" content="帶路 - Dailoo" />
-    <meta property="og:description" content="鹿野週邊語音導覽服務 - 就像在地人親自帶路" />
-    <meta property="og:title" content="帶路 - Dailoo"/>
-    <meta property="og:image" content="http://www.dailoo.com/images/themelist/luye.png"/>
+    <meta id="og_name" property="og:site_name" content="帶路 - Dailoo" />
+    <meta id="og_desc" property="og:description" content="鹿野週邊語音導覽服務 - 就像在地人親自帶路" />
+    <meta id="og_title" property="og:title" content="帶路 - Dailoo"/>
+    <meta id="og_image" property="og:image" content="http://www.dailoo.com/images/themelist/luye.png"/>
     <link rel="stylesheet" href="css/base.css"/>
-    <link rel="stylesheet" href="css/viewpoint.css"/>
+    <link rel="stylesheet" href="css/viewpoint2.css"/>
 </head>
 <body>
 <class class="w">
@@ -20,8 +20,8 @@
     <div class="player clearfix">
         <!--頭部導航欄-->
         <div class="header clearfix">
-            <a href="viewlist.html#0"><img src="images/viewpoint/back.png" alt="" class="back fl"></a>
-            <a id="share" href="#"><img src="images/viewpoint/share.png" alt="" class="share fr"></a>
+            <a id="backward" href="#"><img src="images/viewpoint/back.png" alt="" class="back fl"></a>
+            <div id="share" href=""><img src="images/viewpoint/share.png" alt="" class="share fr"></div>
             <a id="vpLocation" target="_blank"><img src="images/viewpoint/location.png" alt="" class="location fr"></a>
         </div>
         <!--標題區塊-->
@@ -54,7 +54,7 @@
     <!--景點簡介-->
     <div id="summary" class="summary">
         <div id="vpTitle" class="title"></div>
-        <div class="subtitle">台東縣鹿野鄉</div>
+        <div id="area" class="subtitle">台東縣鹿野鄉</div>
         <div id="vpIntro" class="intro"></div>
         <div id="readAllCont" class="readall">…展開全文</div>
     </div>
@@ -83,7 +83,7 @@
                 <s></s>
                 <div></div>
             </a>
-            <a id="speakerFacebook" class="facebook" href="#" target="_blank">
+            <a id="speakerUrl" class="facebook" href="#" target="_blank">
                 <s></s>
                 <div></div>
             </a>
@@ -92,9 +92,9 @@
             <div id="speakerIntro" class="cont"></div>
             <div id="readAllSpeakerIntro" class="readall">...展開全文</div>
         </div>
-        <iframe id="ytplayer" class="ytplayer" width="880" height="495" src="" frameborder="0" allowfullscreen></iframe>
-        <!--<div id="ytplayer" class="ytplayer"></div>-->
-        <img id="videoPrep" src="images/viewpoint/video_preparing.png" alt="" style="display: none; margin-top: 76px;">
+        <!--<iframe id="ytplayer" class="ytplayer" width="880" height="495" src="" frameborder="0" allowfullscreen></iframe>-->
+        <div id="ytplayer" class="ytplayer"></div>
+        <img id="videoPrep" src="images/viewpoint/video_preparing.png" alt="" style="margin-top: 76px;">
     </div>
     <!--還可以收聽-->
     <div id="moreAudio" class="more-audio">
@@ -104,37 +104,6 @@
     <div id="neighView" class="neigh-view">
         <div class="title">周邊景點</div>
     </div>
-    <!--div class="neigview clearfix">
-        <div class="title">周邊景點</div>
-        <ul>
-            <li>
-                <div class="view">
-                    <img src="images/viewpoint/luyegautai_defalut.JPG">
-                    <div class="mask">鹿野高台</div>
-                    <div class="speaker">韋立琦</div>
-                    <div class="time">2分05秒</div>
-                </div>
-                <div class="view">
-                    <img src="images/viewpoint/luyegautai_defalut.JPG">
-                    <div class="mask">鹿野高台</div>
-                    <div class="speaker">韋立琦</div>
-                    <div class="time">2分05秒</div>
-                </div>
-                <div class="view">
-                    <img src="images/viewpoint/luyegautai_defalut.JPG">
-                    <div class="mask">鹿野高台</div>
-                    <div class="speaker">韋立琦</div>
-                    <div class="time">2分05秒</div>
-                </div>
-                <div class="view">
-                    <img src="images/viewpoint/luyegautai_defalut.JPG">
-                    <div class="mask">鹿野高台</div>
-                    <div class="speaker">韋立琦</div>
-                    <div class="time">2分05秒</div>
-                </div>
-            </li>
-        </ul>
-    </div-->
     <!--分享區塊-->
     <div id="sharemask" class="sharemask"></div>
     <div id="sharebox" class="sharebox">
@@ -142,25 +111,28 @@
             <li>
                 <a href="http://line.naver.jp/R/msg/text/?www.dailoo.com"
                    target="_blank" title="Share on Line"
-                   onclick="window.open('http://line.naver.jp/R/msg/text/?' + encodeURIComponent(document.URL)); return false;"><img
+                   onclick="window.open('http://line.naver.jp/R/msg/text/?' + encodeURIComponent(document.shortUrl)); return false;"><img
                         alt="Share on Line" src="images/social_flat_rounded_rects_svg/Line.png"></a></li>
             <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.test.com&t="
                    title="Share on Facebook" target="_blank"
-                   onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><img
+                   onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.shortUrl) + '&t=' + encodeURIComponent(document.shortUrl)); return false;"><img
                     alt="Share on Facebook" src="images/social_flat_rounded_rects_svg/Facebook.svg"></a></li>
             <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.test.com" target="_blank"
                    title="Share on Google+"
-                   onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><img
+                   onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.shortUrl)); return false;"><img
                     alt="Share on Google+" src="images/social_flat_rounded_rects_svg/Google+.svg"></a></li>
             <li>
                 <a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fwww.test.com&text=:%20http%3A%2F%2Fwww.test.com"
                    target="_blank" title="Tweet"
-                   onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL)); return false;"><img
+                   onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.shortUrl)); return false;"><img
                         alt="Tweet" src="images/social_flat_rounded_rects_svg/Twitter.svg"></a></li>
             <li><a href="mailto:?subject=&body=:%20http%3A%2F%2Fwww.test.com" target="_blank" title="Send email"
-                   onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><img
+                   onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.shortUrl)); return false;"><img
                     alt="Send email" src="images/social_flat_rounded_rects_svg/Email.svg"></a></li>
         </ul>
+        <div class="share-input">
+            <input id="shareInput" type="text" />
+        </div>
     </div>
     <!--用於預加載圖片-->
     <img id="tempImg" style="display: none" src="" alt="">
@@ -178,12 +150,67 @@
 <script type="text/javascript" src="js/simplejsinher.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
 <script type="text/javascript" src="js/scrollbar.js"></script>
-<script type="text/javascript" src="js/imgSlider.js"></script>
-<script type="text/javascript" src="js/audio.js"></script>
-<script type="text/javascript" src="js/viewpoint.js"></script>
+<script type="text/javascript" src="js/imgSlider2.js"></script>
+<script type="text/javascript" src="js/audio2.js"></script>
+<script type="text/javascript" src="js/viewpoint2.js"></script>
 <!--<script type="text/javascript" src="js/all.min.js"></script>-->
 
 <script>
+
+    var vpId = location.href.split("id=")[1];
+    if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
+    var speakerData = "";
+
+    $.ajax({
+        url: "/ViewpointServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getViewpointInfo", "id": vpId},
+        success: function (data) {
+            var data = eval("(" + data + ")");
+
+            //修正照片URL
+            var tags = data.audio.tags;
+            if (typeof tags[0] != 'undefined') {
+                for (var i = 0; i < tags.length; i++) {
+                    tags[i].photoUrl = "/ResourceServlet?url=" + tags[i].photoUrl;
+                }
+            }
+            console.dir(data);
+            speakerData = data.speaker;
+            initDataFromServer(data);
+        },
+    });
+    history.replaceState(null, null, location.href);
+
+    function onYouTubeIframeAPIReady() {
+        //如果還沒有拿到講者資訊，等待0.5秒後再執行
+        if("" == speakerData){setTimeout(function(){
+            onYouTubeIframeAPIReady();
+        }, 500);} else{ setSpeakerYoutube(); }
+    }
+
+    //設定講者影片
+    function setSpeakerYoutube(){
+
+        var YTUrl = speakerData.youtubeUrl;
+        if (YTUrl != '') {
+            var YTID = YTUrl.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)[1];
+            var ytplayer;
+            ytplayer = new YT.Player('ytplayer', {
+                height: '495',
+                width: '880',
+                videoId: YTID,
+                events: {'onStateChange': onPlayerStateChange}
+            });
+            function onPlayerStateChange(event) {
+                if (event.data == YT.PlayerState.PLAYING) {
+                    document.getElementById("audio").pause();
+                }
+            }
+            $$("videoPrep").style.display = "none";
+        }
+    }
+
     //Google Analytics程式碼 開始
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
@@ -196,7 +223,6 @@
         a.src = g;
         m.parentNode.insertBefore(a, m)
     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
     ga('create', 'UA-102968998-1', 'auto');
     ga('send', 'pageview');
     //Google Analytics程式碼 結束

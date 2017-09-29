@@ -120,7 +120,7 @@ function initViewpointData(vpData) {
     //將短網址存入全局變量中
     document.shortUrl = vpData.shortUrl;
     //上一頁按鈕
-    $$("backward").href = "/viewlist2.html?id=" + vpData.theme.id;
+    $$("backward").href = "/viewlist.html?id=" + vpData.theme.id;
     //景點名稱
     $$("vpName").innerHTML = vpData.name;
     //景點簡介標題
@@ -150,7 +150,7 @@ function initViewpointData(vpData) {
         var moreAudioDiv = $$("moreAudio");
         for (var i = 0; i < vpData.moreAudio.length; i++) {
             moreAudioDiv.innerHTML = moreAudioDiv.innerHTML +
-                '<a href="viewpoint2.html?utm_source=InSite&utm_campaign=' + vpData.moreAudio[i].name + '_' +
+                '<a href="viewpoint.html?utm_source=InSite&utm_campaign=' + vpData.moreAudio[i].name + '_' +
                 vpData.moreAudio[i].subtitle + '&id=' + vpData.moreAudio[i].id +
                 '"><div class="audio">' + vpData.moreAudio[i].subtitle + '</div></a>';
 
@@ -169,7 +169,7 @@ function initViewpointData(vpData) {
         var neighViewDiv = $$("neighView");
         neighViewData = vpData.neighView;
         for (var i = 0; i < neighViewData.length; i++) {
-            var dom = '<a href="viewpoint2.html?utm_source=InSite&amp;utm_campaign=' + vpData.neighView[i].name + '_' + vpData.neighView[i].subtitle + '' +
+            var dom = '<a href="viewpoint.html?utm_source=InSite&amp;utm_campaign=' + vpData.neighView[i].name + '_' + vpData.neighView[i].subtitle + '' +
                 '&id=' + vpData.neighView[i].id + '"><div class="view">' + vpData.neighView[i].name + '</div></a>';
             neighViewDiv.innerHTML = neighViewDiv.innerHTML + dom;
         }

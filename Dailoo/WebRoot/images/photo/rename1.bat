@@ -1,1 +1,0 @@
-rename *.JPG *.png

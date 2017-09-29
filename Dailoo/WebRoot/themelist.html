@@ -2,8 +2,8 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <meta name="themelist" content="user-scalable=no"/>
-    <title>鹿野帶路語音導覽  主選單</title>
+    <meta name="viewport" content="user-scalable=no"/>
+    <title>鹿野帶路語音導覽 主選單</title>
     <link rel="shortcut icon" href="images/general/dailoo.png">
     <meta name="Keywords" content="Dailoo, 帶路, 鹿野, 語音導覽, 導覽, 導遊, 高台散步, 鹿野品茶, 龍田逛逛">
     <meta name="Description" content="鹿野週邊語音導覽服務 - 就像導遊親自為您解說">
@@ -16,49 +16,70 @@
 <div class="w">
     <div class="header clearfix">
         <img class="logo fl" src="images/themelist/logo.png">
-        <div class="cover fl">鹿野高台周邊導覽</div>
+        <div id="title" class="cover fl"></div>
     </div>
-    <div class="themelist">
-        <a href="viewlist.html#0">
-            <div class="theme">
-                <div class="cover">
-                    <div class="title">高台散步</div>
-                    <!--<div class="desc">駕車3分鐘+徒步/建議預留30分鐘+用餐時間</div>-->
-                </div>
-                <img src="images/themelist/luye.png"/>
-            </div>
-        </a>
-        <a href="viewlist.html#1">
-            <div class="theme">
-                <div class="cover">
-                    <div class="title">鹿野品茶</div>
-                    <!--<div class="desc">駕車7分鐘+徒步/建議預留40分鐘+用餐時間</div>-->
-                </div>
-                <img src="images/themelist/tea.png"/>
-            </div>
-        </a>
-        <a href="viewlist.html#2">
-            <div class="theme">
-                <div class="cover">
-                    <div class="title">龍田逛逛</div>
-                    <!--<div class="desc">駕車10分鐘+徒步/建議預留40分鐘</div>-->
-                </div>
-                <img src="images/themelist/longtian.png"/>
-            </div>
-        </a>
+    <div id="themelist" class="themelist">
+
     </div>
 </div>
-<iframe src="question.html" id="questionIframe" width="100%" height="950px" marginwidth="0" marginheight="0" scrolling="No" frameborder="0"></iframe>
+<iframe src="question.html" id="questionIframe" width="100%" height="950px" marginwidth="0" marginheight="0"
+        scrolling="No" frameborder="0"></iframe>
 <iframe src="footer.html" id="footerIframe" width="100%" height="0" marginwidth="0" marginheight="0"
         scrolling="No" frameborder="0" style="margin-top: 80px;"></iframe>
 </body>
 </html>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
 <script type="text/javascript">
+
+    var regionId = location.href.split("id=")[1];
+
+    $.ajax({
+        url: "/ThemeServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getThemesByRegionId", "regionId": regionId},
+        success: function (data) {
+            var themes = eval("(" + data + ")");
+            console.dir(data);
+            $$("themelist").innerHTML = "";
+            for (var i = 0; i < themes.length; i++) {
+                var dom = '<a href="viewlist.html?id=' + themes[i].id + '">' +
+                        '<div class="theme">' +
+                        '<div class="cover">' +
+                        '<div class="title">' + themes[i].name + '</div>' +
+                        '</div>' +
+                        '<img alt="" src="/ResourceServlet?url=' + themes[i].behalfPhotoUrl + '"/>' +
+                        '</div>' +
+                        '</a>';
+                $$("themelist").innerHTML = $$("themelist").innerHTML + dom;
+
+            }
+        },
+    });
+
+    $.ajax({
+        url: "/RegionServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getRegionById", "id": regionId},
+        success: function (data) {
+            var region = eval("(" + data + ")");
+            $$("title").innerHTML = region.name + "周邊導覽";
+        },
+    });
+
+
     //Google Analytics程式碼
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-102968998-1', 'auto');
     ga('send', 'pageview');
