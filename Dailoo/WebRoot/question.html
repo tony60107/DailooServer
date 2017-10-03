@@ -7,25 +7,48 @@
     <link rel="stylesheet" href="css/question.css"/>
 </head>
 <body onload="initIframeHeight(0);">
-<div class="route clearfix">
-    <div class="clearfix">
-        <a href="/navMap.html" target="_blank" class="fl" style="margin-right: 56px;">
-            <div id="map" class="cover">全區導覽地圖</div>
-        </a>
-        <a href="https://goo.gl/iN64e6" target="_blank" class="fl">
-            <div class="cover">Google路線圖</div>
-        </a>
-    </div>
-    <div class="line"></div>
-    <div class="desc">您的意見可以幫助我們<br/>提供更好的服務！</div>
-    <a href="https://goo.gl/iN64e6" target="_blank" class="fl">
-        <div class="cover">填問卷</div>
+<div class="question">
+
+    <a href="/navMap.html" target="_blank">
+        <div class="cover">導覽地圖</div>
     </a>
+
+    <a href="https://goo.gl/iN64e6" target="_blank">
+        <div class="cover" style="margin-top: 50px;">填問卷</div>
+        <div class="desc">您的意見可以讓我們提供更好的服務！</div>
+    </a>
+    <div class="servdesc" style="display: none;">
+        <div class="title clearfix">
+            <img class="fl" src="images/question/headphones.png">
+            <div class="title fl">耳機租借與歸還服務地點</div>
+        </div>
+        <div class="desc">您可至以下地點租借或購買個人耳機搭配帶路導覽語音使用：</div>
+        <ul class="locationlist">
+            <li><a href="#">鹿野高台熱氣球服務台</a></li>
+            <li><a href="#">鹿野草原餐廳</a></li>
+            <li><a href="#">鹿野遊客中心</a></li></a>
+            <li><a href="#">春一枝鹿野76</a></li>
+            <li><a href="#">愛嬌姨茶餐</a></li>
+            <li><a href="#">新元昌紅茶文化館</a></li>
+            <li><a href="#">田媽媽傅姐風味餐</a></li>
+            <li><a href="#">阿榮甘仔店</a></li>
+            <li><a href="#">鹿野區役場</a></li>
+        </ul>
+        <div class="headphone-desc">
+            <div class="price clearfix">
+                <div class="price-r fl">耳機租借每條 $20</div>
+                <div class="sepa fl"></div>
+                <div class="price-r fl">耳機購買每條 $50</div>
+            </div>
+            <div class="desc">
+                所有耳機租借歸還後皆會更換全新耳塞，兼顧環保與衛生，敬請放心使用。 
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="js/base.js"></script>
 <script>
     function initIframeHeight(height) {
         var userAgent = navigator.userAgent;
@@ -46,9 +69,5 @@
         else {
             $(iframe).height(realHeight);
         }
-    }
-
-    function changeCss(navMapColor){
-        $$("map").style.backgroundColor = navMapColor;
     }
 </script>

@@ -140,7 +140,7 @@ var Audio = Class.extend({
         //設定如果播放到尾端，自動播放下一段語音
         var nextAudio = document.nextAudio;
         if(curTime > audioLength - 0.5 && audio.paused == false && nextAudio != null){
-            location.href = "/viewpoint.html?utm_source=InSite&utm_campaign=" + nextAudio.name + "_" + nextAudio.subtitle +"&id=" + nextAudio.id;
+            location.href = "/viewpoint.html?utm_source=InSite&utm_campaign=" + nextAudio.name + "_" + nextAudio.subtitle +"&id=" + nextAudio.id + "&autoplay=true";
         }
     }
 });
