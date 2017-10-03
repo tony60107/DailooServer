@@ -18,14 +18,14 @@
         <img class="logo fl" src="images/themelist/logo.png">
         <div id="title" class="cover fl"></div>
     </div>
-    <div id="themelist" class="themelist">
+
+    <div id="themelist" class="themelist clearfix">
 
     </div>
+    <div id="themelistFill"></div>
 </div>
-<iframe src="question.html" id="questionIframe" width="100%" height="950px" marginwidth="0" marginheight="0"
-        scrolling="No" frameborder="0"></iframe>
 <iframe src="footer.html" id="footerIframe" width="100%" height="0" marginwidth="0" marginheight="0"
-        scrolling="No" frameborder="0" style="margin-top: 80px;"></iframe>
+        scrolling="No" frameborder="0" style="margin-top: 96px;"></iframe>
 </body>
 </html>
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
@@ -33,6 +33,11 @@
 <script type="text/javascript">
 
     var regionId = location.href.split("id=")[1];
+    //if(typeof regionId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
+
+    window.onload = function() {
+        $$("footerIframe").contentWindow.changeCss("#EEB962");
+    }
 
     $.ajax({
         url: "/ThemeServlet", context: document.body,
@@ -43,16 +48,18 @@
             console.dir(data);
             $$("themelist").innerHTML = "";
             for (var i = 0; i < themes.length; i++) {
+                var title = themes[i].name.split(",");
                 var dom = '<a href="viewlist.html?id=' + themes[i].id + '">' +
-                        '<div class="theme">' +
+                        '<div class="theme" style="top: ' + parseInt(i * 352) + 'px">' +
                         '<div class="cover">' +
-                        '<div class="title">' + themes[i].name + '</div>' +
+                        '<div class="title">' + title[0] + '</div>' +
+                        '<div class="title-eng">' + title[1] + '</div>' +
                         '</div>' +
                         '<img alt="" src="/ResourceServlet?url=' + themes[i].behalfPhotoUrl + '"/>' +
                         '</div>' +
                         '</a>';
                 $$("themelist").innerHTML = $$("themelist").innerHTML + dom;
-
+                $$("themelistFill").style.height = ((i+1) * 352) + 144 + "px";
             }
         },
     });

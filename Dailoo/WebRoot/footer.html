@@ -6,16 +6,28 @@
     <link rel="stylesheet" href="css/base.css"/>
     <link rel="stylesheet" href="css/footer.css"/>
 </head>
-<body onload="initIframeHeight(800);">
+<body>
 <div class="w">
-    <!--贊助區塊-->
-    <div class="sup">
-        <div class="title">贊助支持</div>
-        <div class="companys">
-            <img src="images/footer/taitung_logo.png" alt="">
-            <img src="images/footer/TTMaker_Logo.png" alt="">
+    <!-- 導覽地圖 -->
+    <div class="route clearfix">
+        <div class="clearfix">
+            <a href="/navMap.html" target="_blank" class="fl" style="margin-right: 56px;">
+                <div id="map" class="cover">全區導覽地圖</div>
+            </a>
+            <a href="https://goo.gl/iN64e6" target="_blank" class="fl">
+                <div class="cover">Google路線圖</div>
+            </a>
         </div>
     </div>
+    <div class="line"></div>
+    <!-- 填問卷 -->
+    <div class="question">
+        <div class="desc">您的意見可以幫助我們<br/>提供更好的服務！</div>
+        <a href="https://goo.gl/iN64e6" target="_blank">
+            <div class="cover">填問卷</div>
+        </a>
+    </div>
+
     <!--帶路介紹-->
     <div class="intro">
         <div class="dailoo-logo">
@@ -42,25 +54,26 @@
 </html>
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 <script>
-    function initIframeHeight(height) {
-        var userAgent = navigator.userAgent;
-        var iframe = parent.document.getElementById("footerIframe");
-        var subdoc = iframe.contentDocument || iframe.contentWindow.document;
-        var subbody = subdoc.body;
-        var realHeight;
-        //谷歌瀏覽器特殊處理
-        if (userAgent.indexOf("Chrome") > -1) {
-            realHeight = subdoc.documentElement.scrollHeight;
-        }
-        else {
-            realHeight = subbody.scrollHeight;
-        }
-        if (realHeight < height) {
-            $(iframe).height(height);
-        }
-        else {
-            $(iframe).height(realHeight);
-        }
-    }
+//    function initIframeHeight(height) {
+//        var userAgent = navigator.userAgent;
+//        var iframe = parent.document.getElementById("footerIframe");
+//        var subdoc = iframe.contentDocument || iframe.contentWindow.document;
+//        var subbody = subdoc.body;
+//        var realHeight;
+//        //谷歌瀏覽器特殊處理
+//        if (userAgent.indexOf("Chrome") > -1) {
+//            realHeight = subdoc.documentElement.scrollHeight;
+//        }
+//        else {
+//            realHeight = subbody.scrollHeight;
+//        }
+//        if (realHeight < height) {
+//            $(iframe).height(height);
+//        }
+//        else {
+//            $(iframe).height(realHeight);
+//        }
+//    }
+
 
 </script>

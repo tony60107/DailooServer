@@ -1,116 +1,46 @@
-.question {
-    width: 880px;
+.route {
+    width: 852px;
     margin: 0 auto;
     font-size: 32px;
     line-height: 60px;
 }
 
-/*填問卷開始*/
-.question .cover {
-    width: 500px;
-    height: 180px;
-    margin: 0 auto;
+.route a {
+    display: inline-block;
+}
 
-    font-size: 56px;
-    line-height: 180px;
+/*路線圖開始*/
+.route .cover {
+    height: 120px;
+    padding: 0 50px 0 50px;
+
+    font-size: 48px;
+    line-height: 120px;
     text-align: center;
     color: #ffffff;
 
-    background: url("../images/question/question_background.png") no-repeat;
+    background-color: #267091;
+    border-radius: 72px;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
-.question .desc {
-    margin-top: 8px;
-    margin-bottom: 148px;
+.route .desc {
+    width: 880px;
+    margin-top: 32px;
     font-size: 40px;
     line-height: 56px;
     letter-spacing: 1.3px;
     text-align: center;
     color: #000000;
 }
-/*填問卷結束*/
+/*路線圖結束*/
 
-/*耳機服務開始*/
-.question .servdesc {
-    width: 880px;
-    height: 100%;
-    border-radius: 72px;
-    background-color: #ffffff;
-    border: solid 4px #979797;
-    margin-top: 50px;
-}
-
-.question .servdesc .title img {
-    margin-top: 24px;
-    margin-left: 102px;
-}
-
-.question .servdesc .title .title {
-    font-size: 46px;
-    line-height: 65px;
-    text-align: left;
-    margin-left: 24px;
-    margin-top: 38px;
-}
-
-.question .servdesc .desc {
-    width: 808px;
+.route .line {
     margin: 0 auto;
-    margin-top: 32px;
-    font-size: 40px;
-    font-weight: 300;
-    line-height: 1.38;
-    letter-spacing: 1.4px;
-    text-align: left;
-    color: #000000;
+    margin-top: 128px;
+    margin-bottom: 96px;
+    width: 800px;
+    height: 1px;
+    border: solid 1px #979797;
 }
 
-.question .locationlist {
-    list-style-type: none;
-    margin-top: 24px;
-}
-
-.question .locationlist li {
-    font-size: 40px;
-    line-height: 56px;
-    margin-left: 38px;
-    margin-top: 12px;
-    letter-spacing: 1.3px;
-    text-align: left;
-    padding-left: 40px;
-    background: url("../images/question/location.png") -1px 13px no-repeat;
-}
-
-.question .locationlist li a {
-    color: #267091;
-}
-
-.servdesc .headphone-desc .price {
-    width: 724px;
-    margin: 0 auto;
-    margin-top: 50px;
-    font-size: 40px;
-    line-height: 48px;
-    font-family: Helvetica;
-    color: #595959;
-
-}
-
-.servdesc .headphone-desc .price .sepa {
-    height: 50px;
-    margin-left: 42px;
-    margin-right: 42px;
-    border: solid 2px #595959;
-}
-
-.servdesc .headphone-desc .desc {
-    width: 748px;
-    margin-top: 42px;
-    margin-bottom: 48px;
-    font-size: 40px;
-    line-height: 1.38;
-    font-weight: 300;
-    letter-spacing: 1.4px;
-    text-align: left;
-}
-/*耳機服務結束*/
