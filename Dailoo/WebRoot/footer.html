@@ -31,18 +31,18 @@
     <!--帶路介紹-->
     <div class="intro">
         <div class="dailoo-logo">
-            <img class="" src="images/footer/dailoo_logo.png" alt="">
+            <img id="dailooLogo" src="images/footer/dailoo_logo.png" alt="">
         </div>
         <div class="link clearfix">
             <a href="http://pic.sopili.net/l/facebook/page/175672579574489" target="_blank">
                 <div class="fanpage">
-                    <img src="images/footer/faceboook_icon.png" alt="">
+                    <img id="facebookIcon" src="images/footer/faceboook_icon.png" alt="">
                     <div class="desc">帶路粉絲頁</div>
                 </div>
             </a>
             <a href="http://dailoo.strikingly.com/" target="_blank">
                 <div class="offweb">
-                    <img src="images/footer/dailoo_icon.png" alt="">
+                    <img id="dailooIcon" src="images/footer/dailoo_icon.png" alt="">
                     <div class="desc">帶路官網</div>
                 </div>
             </a>
@@ -53,6 +53,7 @@
 </body>
 </html>
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
 <script>
     function initIframeHeight(height) {
         var userAgent = navigator.userAgent;
@@ -74,5 +75,17 @@
             $(iframe).height(realHeight);
         }
     }
+
+    /*function changeCss(type){
+        if(type == 'orange') {
+            var cover = $(".cover");
+            for(var i = 0; i < cover.length; i++){
+                cover[i].style.backgroundColor = "#EEB962";
+            }
+            $$("dailooLogo").src = "images/footer/dailoo_logo_orange.png";
+            $$("facebookIcon").src = "images/footer/facebook_icon_orange.png";
+            $$("dailooIcon").src = "images/footer/dailoo_icon_orange.png";
+        }
+    }*/
 
 </script>
