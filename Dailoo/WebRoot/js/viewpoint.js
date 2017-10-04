@@ -135,7 +135,7 @@ function initViewpointData(vpData) {
     $$("area").innerHTML = vpData.city + vpData.town;
 
     //景點位置
-    $$("vpLocation").href = "https://www.google.com.tw/maps/place/" + vpData.name + "/@" + vpData.latitude + "," + vpData.longitude + ",19.5z";
+    $$("vpLocation").href = "https://www.google.com.tw/maps/place/" + vpData.address + "/@" + vpData.latitude + "," + vpData.longitude + ",19.5z";
 
     //景點介紹內容
     var vpIntro = $$("vpIntro");
