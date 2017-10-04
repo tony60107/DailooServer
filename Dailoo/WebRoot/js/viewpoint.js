@@ -182,5 +182,6 @@ function initViewpointData(vpData) {
     if(jinfeng.indexOf(vpData.theme.id) != -1){ //如果是金峰鄉主題
         $$("footerIframe").contentWindow.changeCss("orange");
     }
+
 }
 

@@ -32,15 +32,15 @@
 
     var regionId = location.href.split("id=")[1];
 
-    window.onload = function() {
+    window.onload = function () {
         //更換Footer樣式
-        if(regionId == "61ae4ab6-ed11-4131-85e2-9f2be7651e65"){ //如果是金峰鄉地區
+        if (regionId == "61ae4ab6-ed11-4131-85e2-9f2be7651e65") { //如果是金峰鄉地區
             $$("logo").src = "images/footer/dailoo_dogo_blackorange.png";
             $$("footerIframe").contentWindow.changeCss("orange");
         }
     }
 
-    //根據地區ID取得主題資料，並新增到主題列表中
+
     $.ajax({
         url: "/ThemeServlet", context: document.body,
         type: "POST",
@@ -55,18 +55,18 @@
                         '<div class="theme" style="top: ' + parseInt(i * 352) + 'px">' +
                         '<div class="cover">' +
                         '<div class="title">' + title[0] + '</div>' +
-                        '<div class="title-eng">' + (title[1] == undefined ? "" : title[1]) + '</div>' +
+                        '<div class="title-eng">' + title[1] + '</div>' +
                         '</div>' +
                         '<img alt="" src="/ResourceServlet?url=' + themes[i].behalfPhotoUrl + '"/>' +
                         '</div>' +
                         '</a>';
                 $$("themelist").innerHTML = $$("themelist").innerHTML + dom;
-                $$("themelistFill").style.height = ((i+1) * 352) + "px";
+                $$("themelistFill").style.height = ((i + 1) * 352) + "px";
             }
         },
     });
 
-    //取得地區名稱
+
     $.ajax({
         url: "/RegionServlet", context: document.body,
         type: "POST",
