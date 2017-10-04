@@ -23,20 +23,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="themelist.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="themelist.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/themelist.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.4838705">
-              <caret line="25" column="61" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
-              <folding />
+            <state vertical-scroll-proportion="0.8184893">
+              <caret line="54" column="65" selection-start-line="54" selection-start-column="65" selection-end-line="54" selection-end-column="65" />
+              <folding>
+                <element signature="n#style#0;n#iframe#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1507109335411" expanded="true" signature="1740:1772" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="viewpoint.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="viewpoint.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/viewpoint.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7688839">
+            <state vertical-scroll-proportion="-7.096774">
               <caret line="138" column="65" selection-start-line="138" selection-start-column="65" selection-end-line="138" selection-end-column="65" />
               <folding />
             </state>
@@ -46,8 +49,8 @@
       <file leaf-file-name="themelist.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/themelist.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.645162">
-              <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+            <state vertical-scroll-proportion="-27.193548">
+              <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -171,9 +174,9 @@
         <option value="$PROJECT_DIR$/footer.html" />
         <option value="$PROJECT_DIR$/viewlist.html" />
         <option value="$PROJECT_DIR$/css/footer.css" />
+        <option value="$PROJECT_DIR$/viewpoint.html" />
         <option value="$PROJECT_DIR$/css/themelist.css" />
         <option value="$PROJECT_DIR$/themelist.html" />
-        <option value="$PROJECT_DIR$/viewpoint.html" />
       </list>
     </option>
   </component>
@@ -805,12 +808,12 @@
       <workItem from="1506926116335" duration="6746000" />
       <workItem from="1507014658239" duration="13314000" />
       <workItem from="1507048811650" duration="132000" />
-      <workItem from="1507101508648" duration="1961000" />
+      <workItem from="1507101508648" duration="2617000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="809861000" />
+    <option name="totallyTimeSpent" value="810517000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -876,7 +879,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="39" column="5" selection-start-line="37" selection-start-column="3" selection-end-line="39" selection-end-column="5" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#iframe#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1507109335411" expanded="true" signature="1740:1772" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -910,7 +916,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="59" column="62" selection-start-line="59" selection-start-column="62" selection-end-line="59" selection-end-column="62" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#iframe#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1507109335411" expanded="true" signature="1740:1772" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1242,27 +1251,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/viewpoint.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.096774">
+          <caret line="138" column="65" selection-start-line="138" selection-start-column="65" selection-end-line="138" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/themelist.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.645162">
-          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+        <state vertical-scroll-proportion="-27.193548">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/themelist.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.4838705">
-          <caret line="25" column="61" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viewpoint.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7688839">
-          <caret line="138" column="65" selection-start-line="138" selection-start-column="65" selection-end-line="138" selection-end-column="65" />
-          <folding />
+        <state vertical-scroll-proportion="0.8184893">
+          <caret line="54" column="65" selection-start-line="54" selection-start-column="65" selection-end-line="54" selection-end-column="65" />
+          <folding>
+            <element signature="n#style#0;n#iframe#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1507109335411" expanded="true" signature="1740:1772" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
