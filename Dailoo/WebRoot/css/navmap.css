@@ -92,8 +92,8 @@ a {
 
 #vp14 {
     width: 111px;
-    height: 115px;
-    top: 1029px;
+    height: 30px;
+    top: 1113px;
     left: 415px;
 }
 
@@ -117,7 +117,6 @@ a {
 
 #vp18 {
     width: 158px;
-    height: 56px;
     top: 1082px;
     left: 537px;
 }
@@ -176,8 +175,33 @@ a {
     left: 780px;
 }
 
+#vp28 {
+    width: 111px;
+    height: 25px;
+    top: 1030px;
+    left: 415px;
+}
 
+#vp29 {
+    width: 111px;
+    height: 25px;
+    top: 1056px;
+    left: 415px;
+}
 
+#vp30 {
+    width: 111px;
+    height: 25px;
+    top: 1085px;
+    left: 415px;
+}
+
+#vp31 {
+    width: 158px;
+    height: 25px;
+    top: 1113px;
+    left: 537px;
+}
 
 
 
