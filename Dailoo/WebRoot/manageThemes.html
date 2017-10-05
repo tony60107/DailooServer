@@ -12,8 +12,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/base.css">
     <style>
+        /*主題列表開始*/
         .themelist {
-            position: relative;
             width: 100%;
         }
 
@@ -50,11 +50,8 @@
         }
 
         .themelist .theme {
-            position: absolute;
-            top:0;
-            left: -10px;
             width: 100%;
-            height: 284px;
+            height: 304px;
             margin-top: 48px;
         }
 
@@ -62,6 +59,7 @@
             width: 980px;
             height: 303px;
         }
+        /*主題列表結束*/
     </style>
 </head>
 <body>
@@ -124,16 +122,16 @@
                 for (var i = 0; i < themes.length; i++) {
                     var title = themes[i].name.split(",");
                     var dom = '<a href="viewlist.html?id=' + themes[i].id + '">' +
-                            '<div class="theme" style="top: ' + parseInt(i * 352) + 'px">' +
+                            '<div class="theme">' +
                             '<div class="cover">' +
                             '<div class="title">' + title[0] + '</div>' +
                             '<div class="title-eng">' + (title[1] == undefined ? "" : title[1]) + '</div>' +
                             '</div>' +
                             '<img alt="" src="/ResourceServlet?url=' + themes[i].behalfPhotoUrl + '"/>' +
                             '</div>' +
-                            '<a href="/updateThemeInfo.html?id='+ themes[i].id +'" style="position: absolute; top:' + parseInt((i+1) * 352) + 'px; right: 0;"><button class="btn btn-warning fr">更新上方主題資訊</button></a>' +
-                            '<a href="/ThemeServlet?method=delThemeById&id='+ themes[i].id +'" style="position: absolute; top:' + parseInt((i+1) * 352) + 'px; right: 150px;"><button class="btn btn-danger fr">刪除上方主題</button></a>' +
-                            '</a>';
+                            '</a>' +
+                            '<a href="/updateThemeInfo.html?id='+ themes[i].id +'"><button class="btn btn-warning fr">更新上方主題資訊</button></a>' +
+                            '<a href="/ThemeServlet?method=delThemeById&id='+ themes[i].id +'"><button class="btn btn-danger fr">刪除上方主題</button></a>';
 
                     $$("themelist").innerHTML = $$("themelist").innerHTML + dom;
                 }
