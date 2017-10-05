@@ -131,9 +131,10 @@
                             '</div>' +
                             '<img alt="" src="/ResourceServlet?url=' + themes[i].behalfPhotoUrl + '"/>' +
                             '</div>' +
+                            '<a href="/updateThemeInfo.html?id='+ themes[i].id +'" style="position: absolute; top:' + parseInt((i+1) * 352) + 'px; right: 0;"><button class="btn btn-warning fr">更新上方主題資訊</button></a>' +
+                            '<a href="/ThemeServlet?method=delThemeById&id='+ themes[i].id +'" style="position: absolute; top:' + parseInt((i+1) * 352) + 'px; right: 150px;"><button class="btn btn-danger fr">刪除上方主題</button></a>' +
                             '</a>';
-                            //'<a href="/updateThemeInfo.html?id='+ themes[i].id +'" style="position: absolute; bottom: 0; right: 0;"><button class="btn btn-warning fr">更新上方主題資訊</button></a>' +
-                            //'<a href="/ThemeServlet?method=delThemeById&id='+ themes[i].id +'"><button class="btn btn-danger fr">刪除上方主題</button></a>';
+
                     $$("themelist").innerHTML = $$("themelist").innerHTML + dom;
                 }
             },

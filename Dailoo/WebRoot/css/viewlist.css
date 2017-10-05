@@ -74,8 +74,7 @@
 
 /*景點列表開始*/
 .viewlist {
-    width: 900px;
-    margin-top: 200px;
+    margin-top: 242px;
     margin-left: 56px;
     margin-bottom: 32px;
 }
@@ -84,7 +83,7 @@
     float: left;
     width: 400px;
     height: 508px;
-    margin-right: 48px;
+    margin-right: 52px;
     margin-bottom: 48px;
     position: relative;
     z-index: 0;
