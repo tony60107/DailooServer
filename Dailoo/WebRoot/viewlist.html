@@ -19,7 +19,7 @@
         <a id="backward" href="themelist.html">
             <img class="back fl" src="images/viewlist/back.png"/>
         </a>
-        <div id="title" class="title" onclick="$$('drop').style.display = 'none'; themelist.style.display = 'block';"><span id="drop" class="drop"></span></div>
+        <div id="title" class="title" onclick="switchDrop();"><span id="drop" class="drop"></span></div>
     </div>
 
     <div id="themelist" class="themelist">
@@ -38,35 +38,16 @@
 <script type="text/javascript" src="js/base.js"></script>
 <script language="javascript">
 
+    //獲取主題ID
     var themeId = location.href.split("id=")[1];
+    //如果沒有主題ID，則跳轉到鹿野地區主題列表
     if(typeof themeId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
+
     var themelist = $$("themelist");
+    var title = $$("title");
 
-    window.onload = function() {
-         //更換Footer樣式
-         var jinfeng = "03326ff3-cad4-42bc-a8aa-35fca64eb2ef,8daa252d-42e6-4535-a0b6-d794d7e5029d,e6862f47-a7a3-4b22-9647-763425705f0a,10c09cb8-355c-4db9-a852-fc3d20eca556,9de8cafd-203e-4f5e-8faf-aeda29264952,4652c369-be78-460d-90e3-e0e66267069f";
-         if(jinfeng.indexOf(themeId) != -1){ //如果是金峰鄉主題
-         $$("footerIframe").contentWindow.changeCss("orange");
-         }
-     }
-
-
+    //依據主題ID，從伺服器中獲取該主題下的景點
     getViewpointsDataFromServer(themeId);
-
-    //依據主題ID，從伺服器中獲取該景點下的景點
-    function getViewpointsDataFromServer(themeId, themeName) {
-        if(themeName != null) $$("title").innerHTML = themeName + '<span id="drop" class="drop"></span>';
-        $.ajax({
-            url: "/ViewpointServlet", context: document.body,
-            type: "POST",
-            data: {"method": "getViewpointSimplesByThemeIdAndPublish", "themeId": themeId},
-            success: function (data) {
-                var vps = eval("(" + data + ")");
-                console.dir(vps);
-                initDataFromServer(vps);
-            },
-        });
-    }
 
     //獲取主題列表並新增到導航欄中
     $.ajax({
@@ -77,10 +58,10 @@
             var themes = eval("(" + data + ")");
             console.dir(themes);
             for(var i = 0; i < themes.length; i++){
-                var dom = '<div class="theme" onclick="getViewpointsDataFromServer(\''+ themes[i].id +'\',\'' + themes[i].name + '\');">' + themes[i].name + '</div>';
+                var dom = '<div class="theme" onclick="getViewpointsDataFromServer(\''+ themes[i].id +'\',\'' + themes[i].name.split(",")[0] + '\', this);">' + themes[i].name.split(",")[0] + '</div>';
                 themelist.innerHTML = themelist.innerHTML + dom;
                 if(themes[i].id == themeId) {
-                    $$("title").innerHTML = themes[i].name + '<span id="drop" class="drop"></span>';
+                    title.innerHTML = themes[i].name.split(",")[0] + '<span id="drop" class="drop"></span>';
                     $$("backward").href = "/themelist.html?id=" + themes[i].regionId;
                 }
             }
@@ -90,6 +71,23 @@
     });
 
     history.replaceState(null, null, location.href);
+
+    //依據主題ID，從伺服器中獲取該主題下的景點
+    function getViewpointsDataFromServer(themeId, themeName, btn) {
+
+        //更換標題文字
+        if(themeName != null) title.innerHTML = themeName + '<span id="drop" class="drop"></span>';
+        $.ajax({
+            url: "/ViewpointServlet", context: btn,
+            type: "POST",
+            data: {"method": "getViewpointSimplesByThemeIdAndPublish", "themeId": themeId},
+            success: function (data) {
+                var vps = eval("(" + data + ")");
+                console.dir(vps);
+                initDataFromServer(vps);
+            },
+        });
+    }
 
     //將該主題的景點資料，新增到景點列表中
     function initDataFromServer(vps){
@@ -111,21 +109,51 @@
         }
     }
 
+    function switchDrop(){
+        var drop = $$('drop');
+        if(themelist.style.display == 'none') { //如果主題下拉選單未顯示
+            //顯示下拉選單
+            drop.style.display = 'none';
+            themelist.style.display = 'block';
 
-    //Google Analytics程式碼 開始
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+            //設定當前選中主題
+            var themes = $(".theme");
+            for(var i = 0; i < themes.length; i++) {
+                themes[i].className = "theme";
+                if(themes[i].innerText == title.innerText){
+                    themes[i].className = "theme select";
+                }
+            }
+        } else {
+            drop.style.display = 'inline-block';
+            themelist.style.display = 'none';
+        }
+    }
 
-    ga('create', 'UA-102968998-1', 'auto');
-    ga('send', 'pageview');
-    //Google Analytics程式碼 結束
+
+    window.onload = function() {
+        //更換Footer樣式
+        var jinfeng = "03326ff3-cad4-42bc-a8aa-35fca64eb2ef,8daa252d-42e6-4535-a0b6-d794d7e5029d,e6862f47-a7a3-4b22-9647-763425705f0a,10c09cb8-355c-4db9-a852-fc3d20eca556,9de8cafd-203e-4f5e-8faf-aeda29264952,4652c369-be78-460d-90e3-e0e66267069f";
+        if(jinfeng.indexOf(themeId) != -1){ //如果是金峰鄉主題
+            $$("footerIframe").contentWindow.changeCss("orange");
+        }
+
+        //Google Analytics程式碼 開始
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-102968998-1', 'auto');
+        ga('send', 'pageview');
+        //Google Analytics程式碼 結束
+    }
+
+
 </script>
