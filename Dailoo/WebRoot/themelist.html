@@ -15,7 +15,7 @@
 <body>
 <div class="w">
     <div class="header clearfix">
-        <img id="logo" class="logo fl" src="images/themelist/logo.png">
+        <img id="logo" class="logo fl" src="images/themelist/dailoo_dogo_blackorange.png">
         <div id="title" class="cover fl"></div>
     </div>
     <div id="themelist" class="themelist">
@@ -35,7 +35,6 @@
     window.onload = function () {
         //更換Footer樣式
         if (regionId == "61ae4ab6-ed11-4131-85e2-9f2be7651e65") { //如果是金峰鄉地區
-            $$("logo").src = "images/footer/dailoo_dogo_blackorange.png";
             $$("footerIframe").contentWindow.changeCss("orange");
         }
     }
@@ -55,7 +54,7 @@
                         '<div class="theme" style="top: ' + parseInt(i * 352) + 'px">' +
                         '<div class="cover">' +
                         '<div class="title">' + title[0] + '</div>' +
-                        '<div class="title-eng">' + title[1] + '</div>' +
+                        '<div class="title-eng">' + (title[1] == undefined ? "" : title[1]) + '</div>' +
                         '</div>' +
                         '<img alt="" src="/ResourceServlet?url=' + themes[i].behalfPhotoUrl + '"/>' +
                         '</div>' +
