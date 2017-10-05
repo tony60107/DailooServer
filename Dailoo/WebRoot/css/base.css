@@ -57,11 +57,20 @@ table {
     border-collapse: collapse;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     font: 12px/150% Arial, Verdana, "\5b8b\4f53";
     font-family: Helvetica, Arial, "PingFang TC","LiHei Pro","Heiti TC","Droid Sans","Microsoft JhengHei","新細明體",sans-serif;
     color: #000;
-    background: #fff
+    background: #fff;
+
+    /*sticky footer*/
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .clearfix:before, .clearfix:after {
@@ -106,6 +115,9 @@ s, i, em {
     /*版心 提取 */
     width: 980px;
     margin: 0 auto;
+
+    /*sticky footer*/
+    flex: 1;
 }
 
 .fl {
