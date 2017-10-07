@@ -9,7 +9,7 @@ var audioLength; //聲音總長度
 var nowTime; //現在播放到的時間
 var tags; //音檔標記的JSON數據
 
-var imgSliderClass = new imgSlider();
+var imgSliderClass;
 
 var Audio = Class.extend({
     init: function () {
@@ -20,6 +20,7 @@ var Audio = Class.extend({
         audio.currentTime = 0;
         nowTime = 0;
         audio.volume = 1.0;
+        imgSliderClass = new imgSlider();
 
         setInterval(function(){audioClass.updateTagState()}, 300);
 

@@ -3,6 +3,7 @@
  */
 var serverData;
 window.onload = function () {
+    var imgSliderClass = new imgSlider();
     scrollBarClass.bindEvent();
     imgSliderClass.bindEvent();
     audioClass.bindEvent();
