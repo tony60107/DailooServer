@@ -148,37 +148,11 @@
 <script type="text/javascript" src="js/viewpoint/imgSlider.js"></script>
 <script type="text/javascript" src="js/viewpoint/audio.js"></script>
 <script type="text/javascript" src="js/viewpoint/viewpoint.js"></script>
-<!--<script type="text/javascript" src="js/viewpoint.all.min.js"></script>-->
-<!--<script type="text/javascript" src="js/all.min.js"></script>-->
+<!--<script type="text/javascript" src="js/viewpoint/viewpoint.all.min.js"></script>-->
 
 <script>
 
-    var vpId = location.href.split("id=")[1];
-    if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
     var speakerData = "";
-
-    $.ajax({
-        url: "/ViewpointServlet", context: document.body,
-        type: "POST",
-        data: {"method": "getViewpointInfo", "id": vpId},
-        success: function (data) {
-            var data = eval("(" + data + ")");
-
-            //修正照片URL
-            var tags = data.audio.tags;
-            if (typeof tags[0] != 'undefined') {
-                for (var i = 0; i < tags.length; i++) {
-                    tags[i].photoUrl = "/ResourceServlet?url=" + tags[i].photoUrl;
-                }
-            }
-            console.dir(data);
-            speakerData = data.speaker;
-            initDataFromServer(data);
-        },
-    });
-    history.replaceState(null, null, location.href);
-
-    var i = 0;
     function onYouTubeIframeAPIReady() {
         //如果還沒有拿到講者資訊，等待0.5秒後再執行
         if("" == speakerData){setTimeout(function(){

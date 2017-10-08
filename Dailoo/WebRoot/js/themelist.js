@@ -22,7 +22,7 @@ $.ajax({
     data: {"method": "getThemesByRegionId", "regionId": regionId},
     success: function (data) {
         var themes = eval("(" + data + ")");
-        console.dir(data);
+        //console.dir(data);
         $$("themelist").innerHTML = "";
         for (var i = 0; i < themes.length; i++) {
             var title = themes[i].name.split(",");

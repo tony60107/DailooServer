@@ -1,7 +1,6 @@
 /**
  * Created by Waiting on 2017/7/16.
  */
-var serverData;
 window.onload = function () {
     var imgSliderClass = new imgSlider();
     scrollBarClass.bindEvent();
@@ -36,6 +35,34 @@ window.onload = function () {
         $$("speakerIntro").style.height = "100%";
         this.style.display = "none";
     }
+
+    //取得景點ID
+    var vpId = location.href.split("id=")[1];
+    //如果未提供景點ID，則跳轉到鹿野主題列表
+    if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
+
+    //根據景點ID，取得景點資訊
+    $.ajax({
+        url: "/ViewpointServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getViewpointInfo", "id": vpId},
+        success: function (data) {
+            var data = eval("(" + data + ")");
+
+            //修正照片URL
+            var tags = data.audio.tags;
+            if (typeof tags[0] != 'undefined') {
+                for (var i = 0; i < tags.length; i++) {
+                    tags[i].photoUrl = "/ResourceServlet?url=" + tags[i].photoUrl;
+                }
+            }
+            //console.dir(data);
+            speakerData = data.speaker;
+            initDataFromServer(data);
+        },
+    });
+    history.replaceState(null, null, location.href);
+
 
 }
 

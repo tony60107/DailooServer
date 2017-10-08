@@ -19,7 +19,7 @@ $.ajax({
     data: {"method": "getThemesByThemeId", "id": themeId},
     success: function (data) {
         var themes = eval("(" + data + ")");
-        console.dir(themes);
+        //console.dir(themes);
         for(var i = 0; i < themes.length; i++){
             var dom = '<div class="theme" onclick="getViewpointsDataFromServer(\''+ themes[i].id +'\',\'' + themes[i].name.split(",")[0] + '\', this);">' + themes[i].name.split(",")[0] + '</div>';
             themelist.innerHTML = themelist.innerHTML + dom;
@@ -46,7 +46,7 @@ function getViewpointsDataFromServer(themeId, themeName, btn) {
         data: {"method": "getViewpointSimplesByThemeIdAndPublish", "themeId": themeId},
         success: function (data) {
             var vps = eval("(" + data + ")");
-            console.dir(vps);
+            //console.dir(vps);
             initDataFromServer(vps);
         },
     });
