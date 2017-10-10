@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>序號管理</title>
+    <!-- 最新編譯和最佳化的 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!-- 選擇性佈景主題 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- 最新編譯和最佳化的 JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .demo {
+            font-family: 'trebuchet MS', 'Lucida sans', Arial;
+            font-size: 14px;
+            color: #444;
+        }
+
+        table {
+            margin-top: 60px;
+            *border-collapse: collapse; /* IE7 and lower */
+            border-spacing: 0;
+            width: 100%;
+        }
+
+        /*========bordered table========*/
+        .bordered {
+            border: solid #ccc 1px;
+            -moz-border-radius: 6px;
+            -webkit-border-radius: 6px;
+            border-radius: 6px;
+            -webkit-box-shadow: 0 1px 1px #ccc;
+            -moz-box-shadow: 0 1px 1px #ccc;
+            box-shadow: 0 1px 1px #ccc;
+        }
+
+        .bordered tr {
+            -o-transition: all 0.1s ease-in-out;
+            -webkit-transition: all 0.1s ease-in-out;
+            -moz-transition: all 0.1s ease-in-out;
+            -ms-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+        }
+
+        .bordered .highlight,
+        .bordered tr:hover {
+            background: #fbf8e9;
+        }
+
+        .bordered td,
+        .bordered th {
+            border-left: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .bordered th {
+            background-color: #dce9f9;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+            background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+            background-image: -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+            background-image: -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+            background-image: -o-linear-gradient(top, #ebf3fc, #dce9f9);
+            background-image: linear-gradient(top, #ebf3fc, #dce9f9);
+            filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#ebf3fc, endColorstr=#dce9f9);
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#ebf3fc, endColorstr=#dce9f9)";
+            -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+            -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+            box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+            border-top: none;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+        }
+
+        .bordered td:first-child,
+        .bordered th:first-child {
+            border-left: none;
+        }
+
+        .bordered th:first-child {
+            -moz-border-radius: 6px 0 0 0;
+            -webkit-border-radius: 6px 0 0 0;
+            border-radius: 6px 0 0 0;
+        }
+
+        .bordered th:last-child {
+            -moz-border-radius: 0 6px 0 0;
+            -webkit-border-radius: 0 6px 0 0;
+            border-radius: 0 6px 0 0;
+        }
+
+        .bordered tr:last-child td:first-child {
+            -moz-border-radius: 0 0 0 6px;
+            -webkit-border-radius: 0 0 0 6px;
+            border-radius: 0 0 0 6px;
+        }
+
+        .bordered tr:last-child td:last-child {
+            -moz-border-radius: 0 0 6px 0;
+            -webkit-border-radius: 0 0 6px 0;
+            border-radius: 0 0 6px 0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="w">
+    <form id="mainForm" action="/SNServlet?method=addSN" method="post" style="margin-top: 100px;">
+        <div class="form-group">
+            <label>產生數量</label>
+            <input id="name" type="text" name="createNum" class="form-control" placeholder="產生序號的數量" value="1">
+        </div>
+        <div class="form-group">
+            <label>最大使用次數</label>
+            <input type="text" name="maxUseCount" class="form-control" placeholder="產生序號的數量" value="1">
+        </div>
+        <div class="form-group">
+            <label>使用時長</label>
+            <input type="text" name="useLength" class="form-control" placeholder="產生序號的數量" value="1">
+        </div>
+        <button type="submit" class="btn btn-default">產生</button>
+    </form>
+
+    <div class="demo">
+        <table class="bordered">
+            <thead>
+            <tr>
+                <th>序號</th>
+                <th>已使用次數</th>
+                <th>最大使用次數</th>
+                <th>開始使用時間</th>
+                <th>使用時長</th>
+                <th>使用序號</th>
+                <th>測試</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/base.js"></script>
+<script>
+    $.ajax({
+        url: "/SNServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getAllSNs"},
+        success: function (data) {
+            var sns = eval("(" + data + ")");
+            console.dir(sns);
+            initDataFromServer(sns);
+        },
+    });
+    function initDataFromServer(sns) {
+        for(var i = 0; i < sns.length; i++) {
+            var dom = '<tr>' +
+                    '<td>' + sns[i].code + '</td>' +
+                    '<td>' + sns[i].usedCount + '</td>' +
+                    '<td>' + sns[i].maxUseCount + '</td>' +
+                    '<td>' + sns[i].startTime + '</td>' +
+                    '<td>' + sns[i].useLength + '</td>' +
+                    '<td><a href="/SNServlet?method=useSN&code='+ sns[i].code +'">使用</a></td>' +
+                    '<td><a href="/SNServlet?method=test">測試</a></td> </tr>';
+            $$("tbody").innerHTML = $$("tbody").innerHTML + dom;
+        }
+    }
+</script>

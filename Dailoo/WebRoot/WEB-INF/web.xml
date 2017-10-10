@@ -31,6 +31,16 @@
 		<filter-name>AutoLoginFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<filter>
+		<description>自動註冊序號過濾器</description>
+		<filter-name>SNFilter</filter-name>
+		<filter-class>com.dailoo.filter.SNFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>SNFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
     <!--過濾器配置結束 -->
     
     <error-page>
@@ -78,6 +88,11 @@
     <servlet-name>ThemeServlet</servlet-name>
     <servlet-class>com.dailoo.web.ThemeServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>SNServlet</servlet-name>
+    <servlet-class>com.dailoo.web.SNServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -120,6 +135,10 @@
   <servlet-mapping>
     <servlet-name>ThemeServlet</servlet-name>
     <url-pattern>/ThemeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SNServlet</servlet-name>
+    <url-pattern>/SNServlet</url-pattern>
   </servlet-mapping>
 
 </web-app>
