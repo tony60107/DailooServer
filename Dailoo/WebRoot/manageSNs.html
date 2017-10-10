@@ -113,17 +113,21 @@
 <body>
 <div class="w">
     <form id="mainForm" action="/SNServlet?method=addSN" method="post" style="margin-top: 100px;">
-        <div class="form-group">
+        <div class="form-group" style="width: 80px; margin-right: 50px; display: inline-block">
             <label>產生數量</label>
-            <input id="name" type="text" name="createNum" class="form-control" placeholder="產生序號的數量" value="1">
+            <input type="text" name="createNum" class="form-control" placeholder="產生序號的數量" value="1">
         </div>
-        <div class="form-group">
+        <div class="form-group" style="width: 80px; margin-right: 50px; display: inline-block">
             <label>最大使用次數</label>
             <input type="text" name="maxUseCount" class="form-control" placeholder="產生序號的數量" value="1">
         </div>
-        <div class="form-group">
+        <div class="form-group" style="width: 80px; margin-right: 50px; display: inline-block">
             <label>使用時長</label>
-            <input type="text" name="useLength" class="form-control" placeholder="產生序號的數量" value="1">
+            <select name="useLength" class="form-control" style="width: 100%;">
+                <option value='24'>1天</option>
+                <option value='48'>2天</option>
+                <option value='72'>3天</option>
+            </select>
         </div>
         <button type="submit" class="btn btn-default">產生</button>
     </form>
@@ -167,7 +171,7 @@
                     '<td>' + sns[i].usedCount + '</td>' +
                     '<td>' + sns[i].maxUseCount + '</td>' +
                     '<td>' + sns[i].startTime + '</td>' +
-                    '<td>' + sns[i].useLength + '</td>' +
+                    '<td>' + sns[i].useLength + '小時</td>' +
                     '<td><a href="/SNServlet?method=useSN&code='+ sns[i].code +'">使用</a></td>' +
                     '<td><a href="/SNServlet?method=test">測試</a></td> </tr>';
             $$("tbody").innerHTML = $$("tbody").innerHTML + dom;

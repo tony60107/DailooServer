@@ -24,4 +24,10 @@ public interface SNService extends Service{
 	 */
 	SerialNumber findSNByCode(String code);
 
+	/**
+	 * 更新序號資訊
+	 * @param sn 序號Bean
+	 */
+	void updateSN(SerialNumber sn);
+
 }

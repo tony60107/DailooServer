@@ -1,6 +1,7 @@
 package com.dailoo.web;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -39,6 +40,7 @@ public class SNServlet extends HttpServlet {
 			}
 			//如果是使用序號
 			else if("useSN".equals(method)) {
+				
 				SerialNumber sn  = service.findSNByCode(request.getParameter("code"));
 				if(sn == null) {
 					throw new RuntimeException("該序號不存在");
@@ -47,8 +49,28 @@ public class SNServlet extends HttpServlet {
 					if(sn.getUsedCount() < sn.getMaxUseCount()) { 
 						Cookie snC = new Cookie("SN", sn.getCode());
 						snC.setPath("/");
-						snC.setMaxAge(sn.getUseLength() * 3600);
-						response.addCookie(snC);
+						//截止使用期限
+						long endTime = 0;
+						if(sn.getStartTime() != null){
+							endTime = sn.getStartTime().getTime() + sn.getUseLength() * 3600 * 1000;
+						}
+						//如果序號還沒啟用
+						if(sn.getStartTime() == null){
+							snC.setMaxAge(sn.getUseLength() * 3600);
+							response.addCookie(snC);
+							sn.setStartTime(new Timestamp(System.currentTimeMillis()));
+							sn.setUsedCount(sn.getUsedCount() + 1);
+						}
+						//如果序號已使用，但還在使用期限內
+						else if(System.currentTimeMillis() - endTime < 0){
+							snC.setMaxAge((int) ((endTime - System.currentTimeMillis()) / 1000));
+							response.addCookie(snC);
+							sn.setUsedCount(sn.getUsedCount() + 1);
+						} else {
+							throw new RuntimeException("該序號已過期");
+						}
+						//更新序號資訊
+						service.updateSN(sn);
 					} else {
 						throw new RuntimeException("該序號使用次數已用完");
 					} 

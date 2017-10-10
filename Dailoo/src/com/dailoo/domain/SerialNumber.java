@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 
 public class SerialNumber {
 	
-	private String id; 				//序號ID
 	private String code; 			//序號
 	private int usedCount;			//已使用次數
 	private int maxUseCount;		//最大使用次數
@@ -13,12 +12,6 @@ public class SerialNumber {
 	private Timestamp createTime;	//序號創建時間
 	
 	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public String getCode() {
 		return code;
 	}
@@ -57,7 +50,7 @@ public class SerialNumber {
 	}
 	@Override
 	public String toString() {
-		return "SerialNumber [id=" + id + ", code=" + code + ", usedCount="
+		return "SerialNumber [code=" + code + ", usedCount="
 				+ usedCount + ", maxUseCount=" + maxUseCount + ", useLength="
 				+ useLength + ", startTime=" + startTime + ", createTime="
 				+ createTime + "]";

@@ -15,11 +15,11 @@ public class SNDaoImpl implements SNDao{
 
 	@Override
 	public void addSN(SerialNumber sn) {
-		String sql = "insert into serialnumbers (id, code, usedCount, maxUseCount, useLength, startTime) "
-				+ "values(?,?,?,?,?,?)";
+		String sql = "insert into serialnumbers (code, usedCount, maxUseCount, useLength, startTime) "
+				+ "values(?,?,?,?,?)";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			runner.update(sql, sn.getId(), sn.getCode(), sn.getUsedCount(), sn.getMaxUseCount(),
+			runner.update(sql, sn.getCode(), sn.getUsedCount(), sn.getMaxUseCount(),
 					sn.getUseLength(), null);
 			
 		} catch (SQLException e) {
@@ -30,7 +30,7 @@ public class SNDaoImpl implements SNDao{
 
 	@Override
 	public List<SerialNumber> findAllSN() {
-		String sql = "select * from serialnumbers order by createTime asc";
+		String sql = "select * from serialnumbers order by createTime desc";
 		
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
@@ -52,6 +52,20 @@ public class SNDaoImpl implements SNDao{
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
+	}
+
+	@Override
+	public void updateSN(SerialNumber sn) {
+		String sql = "update serialnumbers set usedCount = ?, maxUseCount = ?, "
+				+ "useLength = ?, startTime = ? where code = ?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, sn.getUsedCount(), sn.getMaxUseCount(), sn.getUseLength(), 
+					sn.getStartTime(), sn.getCode());
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}		
 	}
 
 }

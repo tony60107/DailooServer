@@ -18,7 +18,6 @@ public class SNServiceImpl implements SNService{
 		
 		for(int i = 0; i < createNum; i++){
 			SerialNumber sn = serialNumber;
-			sn.setId(UUID.randomUUID().toString());
 			sn.setCode(UUID.randomUUID().toString());
 			sn.setUsedCount(0);
 			//sn.setUseLength(serialNumber.getUseLength() * 24);
@@ -36,6 +35,11 @@ public class SNServiceImpl implements SNService{
 	@Override
 	public SerialNumber findSNByCode(String code) {
 		return dao.findSNByCode(code);
+	}
+
+	@Override
+	public void updateSN(SerialNumber sn) {
+		dao.updateSN(sn);
 	}
 
 }
