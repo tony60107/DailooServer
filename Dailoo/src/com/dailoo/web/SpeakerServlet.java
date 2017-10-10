@@ -35,10 +35,9 @@ public class SpeakerServlet extends HttpServlet {
 		try {
 			// 如果是註冊講者
 			if ("registSpeaker".equals(method)) {
-
 				BeanUtils.populate(speaker, request.getParameterMap());
 				service.addSpeaker(speaker);
-				response.sendRedirect("/speakersManager.html");
+				response.sendRedirect("/manageSpeakers.html");
 			} 
 			// 如果是取得講者資料
 			else if ("getSpeakerInfo".equals(method)) {
@@ -96,7 +95,7 @@ public class SpeakerServlet extends HttpServlet {
 			else if("delSpeakerById".equals(method)){
 				if("admin".equals(loginUser.getRole())){
 					service.delSpeakerById(request.getParameter("id"));
-					response.sendRedirect("/speakersManager.html");
+					response.sendRedirect("/manageSpeakers.html");
 				}else {
 					throw new RuntimeException("您沒有權限更改該資料");
 				}

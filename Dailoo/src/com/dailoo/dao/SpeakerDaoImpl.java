@@ -85,7 +85,7 @@ public class SpeakerDaoImpl implements SpeakerDao{
 
 	@Override
 	public List<Speaker> finAllSpeakers() {
-		String sql = "select * from speakers order by registTime asc";
+		String sql = "select * from speakers order by registTime desc";
 		
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
@@ -107,6 +107,19 @@ public class SpeakerDaoImpl implements SpeakerDao{
 			throw new RuntimeException(e);
 		}
 		
+	}
+
+	@Override
+	public Speaker findSpeakerByUsername(String username) {
+		String sql = "select * from speakers where username = ?";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanHandler<Speaker>(Speaker.class), username);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 
 }

@@ -77,7 +77,7 @@ public class ViewpointServlet extends HttpServlet {
 					}
 				}
 				
-				response.sendRedirect("/addViewpoint.html");
+				response.sendRedirect("/addviewpoint.html");
 			}
 			//如果是更新景點
 			else if("updateViewpoint".equals(method)){
@@ -158,7 +158,7 @@ public class ViewpointServlet extends HttpServlet {
 				if(speaker.getId().equals(temp.getSpeakerId()) || "admin".equals(speaker.getRole())){
 					//刪除景點
 					service.delViewpoint(viewpointId);
-					response.sendRedirect("/viewpointManager.html");
+					response.sendRedirect("/manageViewpoints.html");
 				} else {
 					throw new RuntimeException("您沒有權限更改該景點資訊");
 				}

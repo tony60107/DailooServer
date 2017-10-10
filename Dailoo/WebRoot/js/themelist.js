@@ -48,6 +48,7 @@ $.ajax({
     success: function (data) {
         var region = eval("(" + data + ")");
         $$("title").innerHTML = region.name + "周邊導覽";
+        document.title = region.name + " 帶路語音導覽";
     },
 });
 

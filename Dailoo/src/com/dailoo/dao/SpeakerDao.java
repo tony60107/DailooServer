@@ -51,5 +51,12 @@ public interface SpeakerDao extends Dao{
 	 */
 	void delSpeakerById(String id);
 
+	/**
+	 * 根據用戶名查找講者
+	 * @param username 用戶名
+	 * @return 講者Bean
+	 */
+	Speaker findSpeakerByUsername(String username);
+
 	
 }

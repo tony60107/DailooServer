@@ -7,5 +7,12 @@
   
   <body>
 	${pageContext.exception.message }<br>
+	 <% 
+         exception.printStackTrace(response.getWriter()); 
+     %> 
   </body>
 </html>
+<script>
+	console.dir(document.body);
+	document.body.innerHTML = document.body.innerHTML.split("Caused by: java.lang.RuntimeException:")[1];
+</script>

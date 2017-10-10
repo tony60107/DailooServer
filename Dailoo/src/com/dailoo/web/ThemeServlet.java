@@ -33,7 +33,7 @@ public class ThemeServlet extends HttpServlet {
 			if ("addTheme".equals(method)) {
 				Map<String, String> paramMap = FileUploadUtils.getParamMap(request,response, this);
 				service.addTheme(paramMap);
-				response.sendRedirect("/editThemes.html");
+				response.sendRedirect("/manageThemes.html");
 			}
 			//如果是根據地區ID取得主題
 			else if("getThemesByRegionId".equals(method)){
@@ -43,7 +43,7 @@ public class ThemeServlet extends HttpServlet {
 			//如果是根據ID刪除主題
 			else if("delThemeById".equals(method)){
 				service.delThemeById(request.getParameter("id"));
-				response.sendRedirect("/editThemes.html");
+				response.sendRedirect("/manageThemes.html");
 			}
 			//如果是根據主題ID,找到該主題對應地區下的所有主題
 			else if("getThemesByThemeId".equals(method)){

@@ -16,7 +16,12 @@ public class SpeakerServiceImpl implements SpeakerService{
 	Gson gson = new Gson();
 
 	@Override
-	public void addSpeaker(Speaker speaker) {
+	public void addSpeaker(Speaker speaker) throws Exception {
+		
+		if(dao.findSpeakerByUsername(speaker.getUsername()) != null) {
+			throw new RuntimeException("用戶名已存在");
+		}
+		
 		speaker.setId(UUID.randomUUID().toString());
 		speaker.setPassword(MD5Utils.md5(speaker.getPassword()));
 		speaker.setRole("user");

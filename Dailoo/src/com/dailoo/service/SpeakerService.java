@@ -7,8 +7,9 @@ public interface SpeakerService extends Service{
 	/**
 	 * 新增講者
 	 * @param speaker 講者Bean
+	 * @throws Exception 用戶名已存在異常
 	 */
-	void addSpeaker(Speaker speaker);
+	void addSpeaker(Speaker speaker) throws Exception;
 
 	/**
 	 * 取得講者Bean
@@ -43,5 +44,6 @@ public interface SpeakerService extends Service{
 	 * @return	講者Json資料
 	 */
 	String findSpeakerById(String id);
+
 
 }

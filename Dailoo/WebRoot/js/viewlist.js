@@ -26,6 +26,7 @@ $.ajax({
             if(themes[i].id == themeId) {
                 title.innerHTML = themes[i].name.split(",")[0] + '<span id="drop" class="drop"></span>';
                 $$("backward").href = "/themelist.html?id=" + themes[i].regionId;
+                document.title = themes[i].name.split(",")[0] + "  帶路語音導覽";
             }
         }
         //增加返回按鈕
@@ -40,6 +41,7 @@ function getViewpointsDataFromServer(themeId, themeName, btn) {
 
     //更換標題文字
     if(themeName != null) title.innerHTML = themeName + '<span id="drop" class="drop"></span>';
+    document.title =  themeName + "  帶路語音導覽";
     $.ajax({
         url: "/ViewpointServlet", context: btn,
         type: "POST",
