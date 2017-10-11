@@ -123,15 +123,20 @@
         </div>
         <div class="form-group" style="width: 80px; margin-right: 50px; display: inline-block">
             <label>使用時長</label>
-            <select name="useLength" class="form-control" style="width: 100%;">
+            <select name="useLength" class="form-control">
                 <option value='24'>1天</option>
                 <option value='48'>2天</option>
                 <option value='72'>3天</option>
             </select>
         </div>
+        <div class="form-group" style="width: 150px; margin-right: 50px; display: inline-block">
+            <label>擁有者</label>
+            <select id="speaker_list" name="ownerId" class="form-control"></select>
+        </div>
         <button type="submit" class="btn btn-default">產生</button>
     </form>
-
+    <div id="qrcode" style="width: 150px; height: 150px; border: 1px solid #666"></div>
+    <div id="SNStat" style="width: 100%; text-align: center">正在使用的序號：</div>
     <div class="demo">
         <table class="bordered">
             <thead>
@@ -142,7 +147,8 @@
                 <th>開始使用時間</th>
                 <th>使用時長</th>
                 <th>使用序號</th>
-                <th>測試</th>
+                <th>擁有者</th>
+                <th>刪除</th>
             </tr>
             </thead>
             <tbody id="tbody">
@@ -152,8 +158,10 @@
 </div>
 </body>
 </html>
+<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>>
 <script type="text/javascript" src="js/base.js"></script>
 <script>
+    //取得所有序號
     $.ajax({
         url: "/SNServlet", context: document.body,
         type: "POST",
@@ -164,17 +172,59 @@
             initDataFromServer(sns);
         },
     });
+    //初始化序號列表
     function initDataFromServer(sns) {
         for(var i = 0; i < sns.length; i++) {
             var dom = '<tr>' +
-                    '<td>' + sns[i].code + '</td>' +
+                    '<td onclick="toQRC(\'' + sns[i].code + '\')">' + sns[i].code + '</td>' +
                     '<td>' + sns[i].usedCount + '</td>' +
                     '<td>' + sns[i].maxUseCount + '</td>' +
-                    '<td>' + sns[i].startTime + '</td>' +
+                    '<td>' + new Date(sns[i].startTime).toLocaleString() + '</td>' +
                     '<td>' + sns[i].useLength + '小時</td>' +
                     '<td><a href="/SNServlet?method=useSN&code='+ sns[i].code +'">使用</a></td>' +
-                    '<td><a href="/SNServlet?method=test">測試</a></td> </tr>';
+                    '<td>' + sns[i].ownerName + '</td>' +
+                    '<td><a href="/SNServlet?method=delSN&code=' + sns[i].code +'">刪除</a></td> </tr>';
             $$("tbody").innerHTML = $$("tbody").innerHTML + dom;
         }
+    }
+
+    $.ajax({
+        url: "/SNServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getUseStatus"},
+        success: function (data) {
+            var sn = eval("(" + data + ")");
+            console.dir(sn);
+            var endTime = new Date(sn.startTime);
+            endTime.setHours(new Date(sn.startTime).getHours() + sn.useLength)
+            console.dir(endTime);
+            $$("SNStat").innerHTML = "正在使用的序號：" + sn.code + " ， 到期時間： " + endTime.toLocaleString();
+        },
+    });
+
+    //取得現在所有的講者
+    $.ajax({
+        url: "/SpeakerServlet", context: document.body,
+        type: "POST",
+        data: {
+            "method": "findAllSpeakers"
+        },
+        success: function (speakers) {
+            var speakers = eval("(" + speakers + ")");
+            console.dir(speakers);
+            var speakerList = document.getElementById("speaker_list");
+            for (var i = 0; i < speakers.length; i++) {
+                var dom = '<option value="' + speakers[i].id + '">' + speakers[i].name + '</option>';
+                speakerList.innerHTML = speakerList.innerHTML + dom;
+            }
+            speakerList.value = "54689bfe-b548-4c56-8f11-979128bc82b2";
+        },
+    });
+
+    //將序號轉換為QRC
+    function toQRC(code) {
+        var url = "http://www.dailoo.com/SNServlet?method=useSN&code=" + code;
+        $$('qrcode').innerHTML = "";
+        $('#qrcode').qrcode({width: 150,height: 150,text: url});
     }
 </script>

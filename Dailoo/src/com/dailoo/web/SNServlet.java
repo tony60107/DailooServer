@@ -2,7 +2,6 @@ package com.dailoo.web;
 
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -13,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 
 import com.dailoo.domain.SerialNumber;
+import com.dailoo.domain.Speaker;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.service.SNService;
+import com.google.gson.Gson;
 
 public class SNServlet extends HttpServlet {
 	
@@ -32,6 +33,7 @@ public class SNServlet extends HttpServlet {
 				SerialNumber sn = new SerialNumber();
 				BeanUtils.populate(sn, request.getParameterMap());
 				service.addSN(sn, createNum);
+				response.sendRedirect("/manageSNs.html");
 			}
 			//如果是找出所有的序號
 			else if("getAllSNs".equals(method)) {
@@ -40,6 +42,10 @@ public class SNServlet extends HttpServlet {
 			}
 			//如果是使用序號
 			else if("useSN".equals(method)) {
+				
+				if(request.getSession().getAttribute("SN") != null && service.findSNByCode(((SerialNumber)request.getSession().getAttribute("SN")).getCode()) != null) {
+					throw new RuntimeException("你的序號仍在有效時間內");
+				}
 				
 				SerialNumber sn  = service.findSNByCode(request.getParameter("code"));
 				if(sn == null) {
@@ -75,9 +81,28 @@ public class SNServlet extends HttpServlet {
 						throw new RuntimeException("該序號使用次數已用完");
 					} 
 				}
+				response.sendRedirect("/manageSNs.html");
 			}
-			else if("test".equals(method)) {
-				System.out.println(request.getSession().getAttribute("SN").toString());
+			//如果是刪除序號
+			else if("delSN".equals(method)) {
+				Speaker loginUser = (Speaker) request.getSession().getAttribute("speaker");
+				if(loginUser == null) throw new RuntimeException("你尚未登入");
+				//只有管理員才可以刪除序號
+				if("admin".equals(loginUser.getRole())){
+					service.delSN(request.getParameter("code"));
+				} else {
+					throw new RuntimeException("你沒有權限刪除序號");
+				}
+				response.sendRedirect("/manageSNs.html");
+			}
+			//如果是，取得現在序號使用的狀態
+			else if("getUseStatus".equals(method)) {
+				SerialNumber sn = (SerialNumber) request.getSession().getAttribute("SN");
+				if(sn != null) {
+					response.getWriter().write(new Gson().toJson(sn));
+				} else {
+					response.getWriter().write("");
+				} 
 			}
 		} catch(Exception e) {
 			e.printStackTrace();

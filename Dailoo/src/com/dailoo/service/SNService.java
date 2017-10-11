@@ -30,4 +30,10 @@ public interface SNService extends Service{
 	 */
 	void updateSN(SerialNumber sn);
 
+	/**
+	 * 刪除序號
+	 * @param code 序號Code
+	 */
+	void delSN(String code);
+
 }

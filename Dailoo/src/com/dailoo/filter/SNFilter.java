@@ -45,11 +45,12 @@ public class SNFilter implements Filter{
 				}
 			}
 			if(findC!=null){
-				//3.只有序號正確的用戶，才會自動註冊
+				//3.只有序號正確的用戶且序號在有效時間內，才會自動註冊
 				String code = URLDecoder.decode(findC.getValue(),"utf-8");
 				SNService service = BasicFactory.getFactory().getService(SNService.class);
 				SerialNumber sn = service.findSNByCode(code);
-				if(sn != null){
+				long endTime = sn.getStartTime().getTime() + sn.getUseLength() * 3600 * 1000;
+				if(sn != null && endTime - System.currentTimeMillis() > 0){
 					req.getSession().setAttribute("SN", sn);
 				}
 			}

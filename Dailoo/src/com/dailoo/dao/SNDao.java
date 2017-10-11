@@ -31,4 +31,10 @@ public interface SNDao extends Dao{
 	 */
 	void updateSN(SerialNumber sn);
 
+	/**
+	 * 刪除序號
+	 * @param code 序號Code
+	 */
+	void delSN(String code);
+
 }

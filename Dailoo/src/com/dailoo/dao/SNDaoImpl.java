@@ -15,12 +15,12 @@ public class SNDaoImpl implements SNDao{
 
 	@Override
 	public void addSN(SerialNumber sn) {
-		String sql = "insert into serialnumbers (code, usedCount, maxUseCount, useLength, startTime) "
-				+ "values(?,?,?,?,?)";
+		String sql = "insert into serialnumbers (code, usedCount, maxUseCount, useLength, startTime, ownerId) "
+				+ "values(?,?,?,?,?,?)";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
 			runner.update(sql, sn.getCode(), sn.getUsedCount(), sn.getMaxUseCount(),
-					sn.getUseLength(), null);
+					sn.getUseLength(), null, sn.getOwnerId());
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -66,6 +66,18 @@ public class SNDaoImpl implements SNDao{
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}		
+	}
+
+	@Override
+	public void delSN(String code) {
+		String sql = "delete from serialnumbers where code = ?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, code);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 
 }

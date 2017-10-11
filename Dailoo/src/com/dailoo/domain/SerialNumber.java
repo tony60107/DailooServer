@@ -10,6 +10,8 @@ public class SerialNumber {
 	private int useLength;			//使用時長，單位小時
 	private Timestamp startTime;	//開始使用時間
 	private Timestamp createTime;	//序號創建時間
+	private String ownerId;			//序號擁有者ID
+	private String ownerName;		//序號擁有者姓名
 	
 	
 	public String getCode() {
@@ -47,6 +49,18 @@ public class SerialNumber {
 	}
 	public void setCreateTime(Timestamp createTime) {
 		this.createTime = createTime;
+	}
+	public String getOwnerId() {
+		return ownerId;
+	}
+	public void setOwnerId(String ownerId) {
+		this.ownerId = ownerId;
+	}
+	public String getOwnerName() {
+		return ownerName;
+	}
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
 	}
 	@Override
 	public String toString() {
