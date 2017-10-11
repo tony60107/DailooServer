@@ -15,11 +15,11 @@ public class TagDaoImpl implements TagDao{
 	@Override
 	public void addTag(Tag tag) {
 		
-		String sql = "insert into tags (id, time, photoUrl, audioId) "
-				+ "values(?,?,?,?)";
+		String sql = "insert into tags (id, time, photoUrl, audioId, createTime) "
+				+ "values(?,?,?,?,?)";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			runner.update(sql,tag.getId(), tag.getTime(), tag.getPhotoUrl(), tag.getAudioId());
+			runner.update(sql,tag.getId(), tag.getTime(), tag.getPhotoUrl(), tag.getAudioId(), tag.getCreateTime());
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -30,7 +30,7 @@ public class TagDaoImpl implements TagDao{
 	@Override
 	public List<Tag> findTagsByAudioId(String audioId) {
 		
-		String sql = "select * from tags where audioId = ? order by time asc";
+		String sql = "select * from tags where audioId = ? order by time asc, createTime asc";
 		
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());

@@ -1,6 +1,7 @@
 package com.dailoo.service;
 
 import java.io.File;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -29,6 +30,7 @@ public class TagServiceImpl implements TagService{
 			tag.setTime(0);
 			tag.setPhotoUrl(imgurls[i]);
 			tag.setAudioId(paramMap.get("audioId"));
+			tag.setCreateTime(System.currentTimeMillis() + "");
 			//向資料庫中新增Tag
 			dao.addTag(tag);
 		}

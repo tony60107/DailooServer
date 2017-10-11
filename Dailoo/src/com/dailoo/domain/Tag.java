@@ -1,10 +1,15 @@
 package com.dailoo.domain;
 
+import java.sql.Timestamp;
+
 public class Tag {
+	
 	private String id;
 	private int time;
 	private String photoUrl;
 	private String audioId;
+	private String createTime;
+	
 	public String getId() {
 		return id;
 	}
@@ -28,6 +33,12 @@ public class Tag {
 	}
 	public void setAudioId(String audioId) {
 		this.audioId = audioId;
+	}
+	public String getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
 	}
 	@Override
 	public String toString() {
