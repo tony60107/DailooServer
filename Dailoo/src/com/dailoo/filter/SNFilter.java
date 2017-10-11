@@ -29,8 +29,11 @@ public class SNFilter implements Filter{
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
+		
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
+		SNService service = BasicFactory.getFactory().getService(SNService.class);
+		
 		//1.只有未註冊序號的用戶，才會自動註冊
 		if(req.getSession(false)==null || req.getSession().getAttribute("SN")==null){
 			//2.只有带了序號cookie的用户才自动註冊
@@ -47,15 +50,31 @@ public class SNFilter implements Filter{
 			if(findC!=null){
 				//3.只有序號正確的用戶且序號在有效時間內，才會自動註冊
 				String code = URLDecoder.decode(findC.getValue(),"utf-8");
-				SNService service = BasicFactory.getFactory().getService(SNService.class);
 				SerialNumber sn = service.findSNByCode(code);
 				if(sn != null){
 					long endTime = sn.getStartTime().getTime() + sn.getUseLength() * 3600 * 1000;
 					if(endTime - System.currentTimeMillis() > 0){
 						req.getSession().setAttribute("SN", sn);
+					} else { //序號過期
+						req.getSession().removeAttribute("SN");
 					}
+				}else {	//序號不正確
+					req.getSession().removeAttribute("SN");
+				}
+			}else {	//沒有帶序號Cookie
+				req.getSession().removeAttribute("SN");
+			}
+		} else {
+			SerialNumber sn = service.findSNByCode(((SerialNumber) req.getSession().getAttribute("SN")).getCode());
+			if(sn == null){ //序號不正確
+				req.getSession().removeAttribute("SN");
+			} else {
+				long endTime = sn.getStartTime().getTime() + sn.getUseLength() * 3600 * 1000;
+				if(endTime - System.currentTimeMillis() < 0){ //序號過期
+					req.getSession().removeAttribute("SN");
 				}
 			}
+			
 		}
 		//4.無論是否自動註冊都要放行
 		chain.doFilter(request, response);

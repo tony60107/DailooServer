@@ -49,6 +49,7 @@ public class SNServlet extends HttpServlet {
 				}
 				
 				/*******針對移動端Session問題處理********/
+				//取得序號Cookie
 				Cookie [] cs = request.getCookies();
 				Cookie findC = null;
 				if(cs!=null){
@@ -58,10 +59,11 @@ public class SNServlet extends HttpServlet {
 				}
 				if(findC != null){
 					String code = URLDecoder.decode(findC.getValue(),"utf-8");
+					//根據Cookie取得序號Bean
 					SerialNumber sn = service.findSNByCode(code);
 					if(sn != null){
 						long endTime = sn.getStartTime().getTime() + sn.getUseLength() * 3600 * 1000;
-						if(endTime - System.currentTimeMillis() > 0){ 
+						if(endTime - System.currentTimeMillis() > 0){ //如果Cookie的序號仍在有效時間內
 							throw new RuntimeException("你的序號仍在有效時間內");
 						}
 					} 
