@@ -77,7 +77,7 @@ public class ViewpointServlet extends HttpServlet {
 					}
 				}
 				
-				response.sendRedirect("/addviewpoint.html");
+				response.sendRedirect("/addViewpoint.html");
 			}
 			//如果是更新景點
 			else if("updateViewpoint".equals(method)){
@@ -119,9 +119,15 @@ public class ViewpointServlet extends HttpServlet {
 				//取得要獲取的景點ID
 				String viewpointId = request.getParameter("id");
 				String json = service.findViewpointByIdToJson(viewpointId);
-				if(json == null) json = "";
-				//System.out.println(json);
-				response.getWriter().write(json);
+				vp = gson.fromJson(json, Viewpoint.class);
+				//如果是付費景點，但卻沒有註冊序號
+				if(vp != null && vp.getIsPay() == 1 && request.getSession().getAttribute("SN") == null) {
+					response.getWriter().write("{\"error\":\"您沒有權限查看該景點，請註冊序號後查看^_^\"}");
+				} else if (json == null) { //景點不存在
+					response.getWriter().write("{\"error\":\"該景點不存在\"}");
+				} else { //景點正常
+					response.getWriter().write(json);
+				}
 			}
 			//根據主題名稱，獲取簡易版景點資訊
 			else if("getViewpointSimplesByTheme".equals(method)){
@@ -171,14 +177,17 @@ public class ViewpointServlet extends HttpServlet {
 				
 				//根據景點ID查找該景點
 				Viewpoint temp = service.findViewpointById(vpId);				
-				//進行權限管理，如果要求更改景點資訊的是該景點擁有者或是管理員
-				if(speaker == null) throw new RuntimeException("您尚未登入");
-				if(speaker.getId().equals(temp.getSpeakerId()) || "admin".equals(speaker.getRole())){
+				
+				//進行權限管理
+				if(speaker == null){response.getWriter().write("{\"error\":\"您尚未登入\"}"); return;}
+				//如果要求更改景點資訊的是該景點擁有者或是管理員
+				else if(speaker.getId().equals(temp.getSpeakerId()) || "admin".equals(speaker.getRole())){
 					service.updateIsPublishById(vpId, stat);
 				} else {
-					throw new RuntimeException("您沒有權限更改該景點資訊");
+					response.getWriter().write("{\"error\":\"您沒有權限更改該景點資訊\"}"); return;
 				}
-				response.getWriter().write("OK");
+				
+				response.getWriter().write("{}");
 			}
 			//如果是更新景點是否優先顯示
 			else if("updateIsPriorityById".equals(method)){
@@ -188,14 +197,36 @@ public class ViewpointServlet extends HttpServlet {
 				
 				//根據景點ID查找該景點
 				Viewpoint temp = service.findViewpointById(vpId);				
-				//進行權限管理，如果要求更改景點資訊的是該景點擁有者或是管理員
-				if(speaker == null) throw new RuntimeException("您尚未登入");
-				if(speaker.getId().equals(temp.getSpeakerId()) || "admin".equals(speaker.getRole())){
+				
+				//進行權限管理
+				if(speaker == null){response.getWriter().write("{\"error\":\"您尚未登入\"}"); return;}
+				//如果要求更改景點資訊的是該景點擁有者或是管理員
+				else if(speaker.getId().equals(temp.getSpeakerId()) || "admin".equals(speaker.getRole())){
 					service.updateIsPriorityById(vpId, stat);
 				} else {
-					throw new RuntimeException("您沒有權限更改該景點資訊");
+					response.getWriter().write("{\"error\":\"您沒有權限更改該景點資訊\"}"); return;
 				}
-				response.getWriter().write("OK");
+				
+				response.getWriter().write("{}");
+			}
+			//如果是更新景點是否為付費景點
+			else if("updateIsPayById".equals(method)){
+				
+				String vpId = request.getParameter("id");
+				String stat = request.getParameter("stat");
+				
+				//根據景點ID查找該景點
+				Viewpoint temp = service.findViewpointById(vpId);
+				
+				//進行權限管理
+				if(speaker == null){response.getWriter().write("{\"error\":\"您尚未登入\"}"); return;}
+				//如果要求更改景點資訊的是該景點擁有者或是管理員
+				else if(speaker.getId().equals(temp.getSpeakerId()) || "admin".equals(speaker.getRole())){
+					service.updateIsPayById(vpId, stat);
+				} else {
+					response.getWriter().write("{\"error\":\"您沒有權限更改該景點資訊\"}"); return;
+				}
+				response.getWriter().write("{}");
 			}
 			//根據城市獲取所有簡易版景點資訊
 			else if("getViewpointSimplesByCity".equals(method)){

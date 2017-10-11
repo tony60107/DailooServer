@@ -23,35 +23,102 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="manageSNs.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="manageSNs.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manageSNs.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33032694">
-              <caret line="181" column="72" selection-start-line="181" selection-start-column="72" selection-end-line="181" selection-end-column="72" />
+            <state vertical-scroll-proportion="-16.32258">
+              <caret line="120" column="46" selection-start-line="114" selection-start-column="4" selection-end-line="120" selection-end-column="46" />
               <folding>
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <marker date="1507708926678" expanded="true" signature="6397:6852" placeholder="..." />
-                <marker date="1507708926678" expanded="true" signature="6520:6549" placeholder="..." />
+                <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#8;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <marker date="1507713245689" expanded="true" signature="6774:7229" placeholder="..." />
+                <marker date="1507713245689" expanded="true" signature="6897:6926" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addViewpoint.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addViewpoint.html">
+      <file leaf-file-name="manageRegions.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manageRegions.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.5161295">
+              <caret line="120" column="46" selection-start-line="120" selection-start-column="46" selection-end-line="120" selection-end-column="46" />
+              <folding>
+                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manageSpeakers.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manageSpeakers.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.0">
+              <caret line="120" column="46" selection-start-line="120" selection-start-column="46" selection-end-line="120" selection-end-column="46" />
+              <folding>
+                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manageThemes.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manageThemes.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.064516">
+              <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="viewpoint.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/viewpoint/viewpoint.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="102" column="60" selection-start-line="102" selection-start-column="60" selection-end-line="102" selection-end-column="60" />
+              <caret line="49" column="46" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manageViewpoints.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manageViewpoints.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.32258">
+              <caret line="120" column="46" selection-start-line="114" selection-start-column="4" selection-end-line="120" selection-end-column="46" />
               <folding>
-                <element signature="n#style#0;n#textarea#0;n#div#7;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+                <marker date="1507714620062" expanded="true" signature="7670:7689" placeholder="..." />
+                <marker date="1507714620062" expanded="true" signature="7888:7907" placeholder="..." />
+                <marker date="1507714620062" expanded="true" signature="8124:8143" placeholder="..." />
+                <marker date="1507714620062" expanded="true" signature="8340:8359" placeholder="..." />
+                <marker date="1507714620062" expanded="true" signature="8568:8587" placeholder="..." />
+                <marker date="1507714620062" expanded="true" signature="8774:8793" placeholder="..." />
+                <marker date="1507714620062" expanded="true" signature="12716:12729" placeholder="..." />
+                <marker date="1507714620062" expanded="true" signature="15022:15035" placeholder="..." />
+                <marker date="1507714620062" expanded="true" signature="15134:15147" placeholder="..." />
+                <marker date="1507714620062" expanded="true" signature="15729:15742" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="editAudio.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/editAudio.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.25479144">
+              <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -118,14 +185,8 @@
         <option value="$PROJECT_DIR$/updateRegionInfo.html" />
         <option value="$PROJECT_DIR$/updateThemeInfo.html" />
         <option value="$PROJECT_DIR$/updateViewpointInfo.html" />
-        <option value="$PROJECT_DIR$/js/viewpoint/viewpoint.js" />
         <option value="$PROJECT_DIR$/js/viewpoint/audio.js" />
         <option value="$PROJECT_DIR$/footer.html" />
-        <option value="$PROJECT_DIR$/manageThemes.html" />
-        <option value="$PROJECT_DIR$/manageSpeakers.html" />
-        <option value="$PROJECT_DIR$/manageRegions.html" />
-        <option value="$PROJECT_DIR$/editAudio.html" />
-        <option value="$PROJECT_DIR$/manageViewpoints.html" />
         <option value="$PROJECT_DIR$/viewpoint.html" />
         <option value="$PROJECT_DIR$/viewlist.html" />
         <option value="$PROJECT_DIR$/themelist.html" />
@@ -133,6 +194,12 @@
         <option value="$PROJECT_DIR$/js/viewlist.js" />
         <option value="$PROJECT_DIR$/updateSpeakerInfo.html" />
         <option value="$PROJECT_DIR$/manageSNs.html" />
+        <option value="$PROJECT_DIR$/manageRegions.html" />
+        <option value="$PROJECT_DIR$/manageSpeakers.html" />
+        <option value="$PROJECT_DIR$/manageThemes.html" />
+        <option value="$PROJECT_DIR$/js/viewpoint/viewpoint.js" />
+        <option value="$PROJECT_DIR$/manageViewpoints.html" />
+        <option value="$PROJECT_DIR$/editAudio.html" />
       </list>
     </option>
   </component>
@@ -209,6 +276,56 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dailoo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebRoot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="viewpoint" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dailoo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebRoot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dailoo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebRoot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="general" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -773,12 +890,12 @@
       <workItem from="1507471283347" duration="645000" />
       <workItem from="1507541105788" duration="5556000" />
       <workItem from="1507618312838" duration="9476000" />
-      <workItem from="1507704330433" duration="3926000" />
+      <workItem from="1507704330433" duration="8771000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="862964000" />
+    <option name="totallyTimeSpent" value="867809000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1103,38 +1220,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manageThemes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27282977">
-          <caret line="66" column="35" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="35" />
-          <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manageRegions.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10033822">
-          <caret line="11" column="83" selection-start-line="11" selection-start-column="83" selection-end-line="11" selection-end-column="83" />
-          <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22322436">
           <caret line="9" column="92" selection-start-line="9" selection-start-column="92" selection-end-line="9" selection-end-column="92" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/editAudio.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17361894">
-          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -1173,13 +1262,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/viewpoint/viewpoint.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37288135">
-          <caret line="148" column="18" selection-start-line="148" selection-start-column="4" selection-end-line="148" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/viewlist.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.967742">
@@ -1198,44 +1280,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manageSpeakers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39007893">
-          <caret line="130" column="14" selection-start-line="130" selection-start-column="14" selection-end-line="130" selection-end-column="14" />
-          <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manageViewpoints.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22096956">
-          <caret line="128" column="90" selection-start-line="128" selection-start-column="12" selection-end-line="128" selection-end-column="90" />
-          <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-            <marker date="1507619217665" expanded="true" signature="7549:7568" placeholder="..." />
-            <marker date="1507619217665" expanded="true" signature="7767:7786" placeholder="..." />
-            <marker date="1507619217665" expanded="true" signature="8003:8022" placeholder="..." />
-            <marker date="1507619217665" expanded="true" signature="8219:8238" placeholder="..." />
-            <marker date="1507619217665" expanded="true" signature="10975:10988" placeholder="..." />
-            <marker date="1507619217665" expanded="true" signature="13281:13294" placeholder="..." />
-            <marker date="1507619217665" expanded="true" signature="13393:13406" placeholder="..." />
-            <marker date="1507619217665" expanded="true" signature="13988:14001" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addViewpoint.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="102" column="60" selection-start-line="102" selection-start-column="60" selection-end-line="102" selection-end-column="60" />
-          <folding>
-            <element signature="n#style#0;n#textarea#0;n#div#7;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/jquery.qrcode.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1244,22 +1288,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manageSNs.html">
+    <entry file="file://$PROJECT_DIR$/addViewpoint.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33032694">
-          <caret line="181" column="72" selection-start-line="181" selection-start-column="72" selection-end-line="181" selection-end-column="72" />
+        <state vertical-scroll-proportion="0.48387095">
+          <caret line="102" column="60" selection-start-line="102" selection-start-column="60" selection-end-line="102" selection-end-column="60" />
+          <folding>
+            <element signature="n#style#0;n#textarea#0;n#div#7;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#5044#6792#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manageRegions.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.5161295">
+          <caret line="120" column="46" selection-start-line="120" selection-start-column="46" selection-end-line="120" selection-end-column="46" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manageSpeakers.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.0">
+          <caret line="120" column="46" selection-start-line="120" selection-start-column="46" selection-end-line="120" selection-end-column="46" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manageSNs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.32258">
+          <caret line="120" column="46" selection-start-line="114" selection-start-column="4" selection-end-line="120" selection-end-column="46" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <marker date="1507708926678" expanded="true" signature="6397:6852" placeholder="..." />
-            <marker date="1507708926678" expanded="true" signature="6520:6549" placeholder="..." />
+            <element signature="n#style#0;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#8;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <marker date="1507713245689" expanded="true" signature="6774:7229" placeholder="..." />
+            <marker date="1507713245689" expanded="true" signature="6897:6926" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manageThemes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.064516">
+          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/viewpoint/viewpoint.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="46" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manageViewpoints.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.32258">
+          <caret line="120" column="46" selection-start-line="114" selection-start-column="4" selection-end-line="120" selection-end-column="46" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+            <marker date="1507714620062" expanded="true" signature="7670:7689" placeholder="..." />
+            <marker date="1507714620062" expanded="true" signature="7888:7907" placeholder="..." />
+            <marker date="1507714620062" expanded="true" signature="8124:8143" placeholder="..." />
+            <marker date="1507714620062" expanded="true" signature="8340:8359" placeholder="..." />
+            <marker date="1507714620062" expanded="true" signature="8568:8587" placeholder="..." />
+            <marker date="1507714620062" expanded="true" signature="8774:8793" placeholder="..." />
+            <marker date="1507714620062" expanded="true" signature="12716:12729" placeholder="..." />
+            <marker date="1507714620062" expanded="true" signature="15022:15035" placeholder="..." />
+            <marker date="1507714620062" expanded="true" signature="15134:15147" placeholder="..." />
+            <marker date="1507714620062" expanded="true" signature="15729:15742" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/editAudio.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25479144">
+          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>

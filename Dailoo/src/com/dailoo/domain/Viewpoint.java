@@ -19,8 +19,9 @@ public class Viewpoint {
 	private String navUrl;		//Google導航網址
 	private String intro;		//景點介紹
 	private String shortUrl; 	//短網址
-	private String isPublish;	//是否付費刊登 1為刊登，0為不刊登
-	private String isPriority;	//是否優先顯示 1為優先，0為不優先 
+	private int isPublish;	//是否付費刊登 1為刊登，0為不刊登
+	private int isPriority;	//是否優先顯示 1為優先，0為不優先 
+	private int isPay; 		//是否為付費景點，1為是，0為否
 	private String speakerId;   //講者ID
 	private Timestamp updateTime;	//上傳時間
 	public String getId() {
@@ -113,17 +114,23 @@ public class Viewpoint {
 	public void setShortUrl(String shortUrl) {
 		this.shortUrl = shortUrl;
 	}
-	public String getIsPublish() {
+	public int getIsPublish() {
 		return isPublish;
 	}
-	public void setIsPublish(String isPublish) {
+	public void setIsPublish(int isPublish) {
 		this.isPublish = isPublish;
 	}
-	public String getIsPriority() {
+	public int getIsPriority() {
 		return isPriority;
 	}
-	public void setIsPriority(String isPriority) {
+	public void setIsPriority(int isPriority) {
 		this.isPriority = isPriority;
+	}
+	public int getIsPay() {
+		return isPay;
+	}
+	public void setIsPay(int isPay) {
+		this.isPay = isPay;
 	}
 	public String getSpeakerId() {
 		return speakerId;

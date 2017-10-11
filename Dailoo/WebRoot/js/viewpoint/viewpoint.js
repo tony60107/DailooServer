@@ -48,6 +48,7 @@ window.onload = function () {
         data: {"method": "getViewpointInfo", "id": vpId},
         success: function (data) {
             var data = eval("(" + data + ")");
+            if(data.error != undefined) alert(data.error);
 
             //修正照片URL
             var tags = data.audio.tags;

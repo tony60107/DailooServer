@@ -100,4 +100,11 @@ public interface ViewpointService extends Service{
 	 */
 	String findViewpointSimplesByThemeIdAndPublish(String themeId);
 
+	/**
+	 * 更新景點是否為付費景點
+	 * @param vpId 景點ID
+	 * @param stat 付費狀態
+	 */
+	void updateIsPayById(String vpId, String stat);
+
 }

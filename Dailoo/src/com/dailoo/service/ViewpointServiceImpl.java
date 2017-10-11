@@ -51,6 +51,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 			vpsim.setShortUrl(vp.getShortUrl());
 			vpsim.setIsPublish(vp.getIsPublish());
 			vpsim.setIsPriority(vp.getIsPriority());
+			vpsim.setIsPay(vp.getIsPay());
 			
 			if(vp.getBehalfPhotoUrl() != null) vpsim.setBehalfPhotoUrl(vp.getBehalfPhotoUrl());
 			Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
@@ -293,6 +294,11 @@ public class ViewpointServiceImpl implements ViewpointService{
 		String result = gson.toJson(vpsims);
 
 		return result;
+	}
+
+	@Override
+	public void updateIsPayById(String vpId, String stat) {
+		dao.updateIsPayById(vpId, stat);
 	}
 
 }

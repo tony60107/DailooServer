@@ -49,9 +49,11 @@ public class SNFilter implements Filter{
 				String code = URLDecoder.decode(findC.getValue(),"utf-8");
 				SNService service = BasicFactory.getFactory().getService(SNService.class);
 				SerialNumber sn = service.findSNByCode(code);
-				long endTime = sn.getStartTime().getTime() + sn.getUseLength() * 3600 * 1000;
-				if(sn != null && endTime - System.currentTimeMillis() > 0){
-					req.getSession().setAttribute("SN", sn);
+				if(sn != null){
+					long endTime = sn.getStartTime().getTime() + sn.getUseLength() * 3600 * 1000;
+					if(endTime - System.currentTimeMillis() > 0){
+						req.getSession().setAttribute("SN", sn);
+					}
 				}
 			}
 		}

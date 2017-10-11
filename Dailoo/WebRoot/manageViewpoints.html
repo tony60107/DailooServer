@@ -117,6 +117,7 @@
     <div><a href="/manageThemes.html">主題管理頁面</a></div>
     <div><a href="/manageViewpoints.html">景點管理頁面</a></div>
     <div><a href="/manageSpeakers.html">講者管理頁面</a></div>
+    <div><a href="/manageSNs.html">序號管理頁面</a></div>
     <div><a href="/LogoutServlet">登出</a></div>
 
     <div class="filters clearfix">
@@ -152,8 +153,9 @@
                 <th>編輯</th>
                 <th>預覽</th>
                 <th>短網址</th>
-                <th>付費刊登</th>
-                <th>優先顯示</th>
+                <th width="60px">付費刊登</th>
+                <th width="60px">優先顯示</th>
+                <th width="60px">付費景點</th>
                 <th>刪除</th>
             </tr>
             </thead>
@@ -208,6 +210,11 @@
                     }else if(vp[i].isPriority == 0){
                         dom += '<td style="text-align: center;"><img src="/images/general/cancel.png" onclick="switchPriority(\''+ vp[i].id +'\',1,this);"/></td>';
                     }
+                    if(vp[i].isPay == 1){
+                        dom += '<td style="text-align: center;"><img src="/images/general/check.png" onclick="switchPay(\''+ vp[i].id +'\',0,this);"/></td>';
+                    }else if(vp[i].isPay == 0){
+                        dom += '<td style="text-align: center;"><img src="/images/general/cancel.png" onclick="switchPay(\''+ vp[i].id +'\',1,this);"/></td>';
+                    }
 
                     dom += '<td><a href="/ViewpointServlet?method=delViewpoint&id=' + vp[i].id + '">刪除</a></td>' +
                     '</tr>';
@@ -223,6 +230,12 @@
             type: "POST",
             data: {"method": "updateIsPublishById", "id":id, "stat":stat},
             success: function (data) {
+
+                var data = eval("(" + data + ")");
+                if(data.error != undefined){
+                    alert(data.error); return;
+                }
+
                 var td = this.parentNode;
                 td.removeChild(this);
                 if(stat == 1){
@@ -241,12 +254,41 @@
             type: "POST",
             data: {"method": "updateIsPriorityById", "id":id, "stat":stat},
             success: function (data) {
+
+                var data = eval("(" + data + ")");
+                if(data.error != undefined){
+                    alert(data.error); return;
+                }
+
                 var td = this.parentNode;
                 td.removeChild(this);
                 if(stat == 1){
                     td.innerHTML = '<img src="/images/general/check.png" onclick="switchPriority(\''+ id +'\',0,this);"/>';
                 }else if(stat == 0){
                     td.innerHTML = '<img src="/images/general/cancel.png" onclick="switchPriority(\''+ id +'\',1,this);"/>';
+                }
+            },
+        });
+    }
+
+    //向伺服器發送更改是否為付費景點
+    function switchPay(id,stat,img){
+        $.ajax({
+            url: "/ViewpointServlet", context: img,
+            type: "POST",
+            data: {"method": "updateIsPayById", "id":id, "stat":stat},
+            success: function (data) {
+                var data = eval("(" + data + ")");
+                if(data.error != undefined){
+                    alert(data.error); return;
+                }
+
+                var td = this.parentNode;
+                td.removeChild(this);
+                if(stat == 1){
+                    td.innerHTML = '<img src="/images/general/check.png" onclick="switchPay(\''+ id +'\',0,this);"/>';
+                }else if(stat == 0){
+                    td.innerHTML = '<img src="/images/general/cancel.png" onclick="switchPay(\''+ id +'\',1,this);"/>';
                 }
             },
         });

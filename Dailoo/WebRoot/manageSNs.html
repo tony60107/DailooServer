@@ -112,7 +112,14 @@
 </head>
 <body>
 <div class="w">
-    <form id="mainForm" action="/SNServlet?method=addSN" method="post" style="margin-top: 100px;">
+    <div><a href="/addViewpoint.html">新增景點</a></div>
+    <div><a href="/manageRegions.html">地區管理頁面</a></div>
+    <div><a href="/manageThemes.html">主題管理頁面</a></div>
+    <div><a href="/manageViewpoints.html">景點管理頁面</a></div>
+    <div><a href="/manageSpeakers.html">講者管理頁面</a></div>
+    <div><a href="/manageSNs.html">序號管理頁面</a></div>
+    <div><a href="/LogoutServlet">登出</a></div>
+    <form id="mainForm" action="/SNServlet?method=addSN" method="post" style="margin-top: 40px;">
         <div class="form-group" style="width: 80px; margin-right: 50px; display: inline-block">
             <label>產生數量</label>
             <input type="text" name="createNum" class="form-control" placeholder="產生序號的數量" value="1">
@@ -158,7 +165,7 @@
 </div>
 </body>
 </html>
-<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>>
+<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
 <script>
     //取得所有序號
