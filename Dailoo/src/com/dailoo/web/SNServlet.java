@@ -1,6 +1,7 @@
 package com.dailoo.web;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.sql.Timestamp;
 
 import javax.servlet.ServletException;
@@ -46,6 +47,27 @@ public class SNServlet extends HttpServlet {
 				if(request.getSession().getAttribute("SN") != null && service.findSNByCode(((SerialNumber)request.getSession().getAttribute("SN")).getCode()) != null) {
 					throw new RuntimeException("你的序號仍在有效時間內");
 				}
+				
+				/*******針對移動端Session問題處理********/
+				Cookie [] cs = request.getCookies();
+				Cookie findC = null;
+				if(cs!=null){
+					for(Cookie c : cs){
+						if("SN".equals(c.getName())){	findC = c; break;}
+					}
+				}
+				if(findC != null){
+					String code = URLDecoder.decode(findC.getValue(),"utf-8");
+					SerialNumber sn = service.findSNByCode(code);
+					if(sn != null){
+						long endTime = sn.getStartTime().getTime() + sn.getUseLength() * 3600 * 1000;
+						if(endTime - System.currentTimeMillis() > 0){ 
+							throw new RuntimeException("你的序號仍在有效時間內");
+						}
+					} 
+				}
+				/*******針對移動端Session問題處理********/
+				
 				
 				SerialNumber sn  = service.findSNByCode(request.getParameter("code"));
 				if(sn == null) {
@@ -97,12 +119,25 @@ public class SNServlet extends HttpServlet {
 			}
 			//如果是，取得現在序號使用的狀態
 			else if("getUseStatus".equals(method)) {
-				SerialNumber sn = (SerialNumber) request.getSession().getAttribute("SN");
-				if(sn != null) {
-					response.getWriter().write(new Gson().toJson(sn));
-				} else {
-					response.getWriter().write("");
-				} 
+				
+				Cookie [] cs = request.getCookies();
+				Cookie findC = null;
+				if(cs!=null){
+					for(Cookie c : cs){
+						if("SN".equals(c.getName())){	findC = c; break;}
+					}
+				}
+				
+				if(findC != null) {
+					String code = URLDecoder.decode(findC.getValue(),"utf-8");
+					SerialNumber sn = service.findSNByCode(code);
+					
+					if(sn != null) {
+						response.getWriter().write(new Gson().toJson(sn));
+					} else {
+						response.getWriter().write("");
+					} 
+				}
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
