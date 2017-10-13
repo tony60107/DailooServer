@@ -422,7 +422,7 @@
 }
 
 .more-audio .title {
-    margin-bottom: 46px;
+    margin-bottom: 60px;
     font-size: 42px;
     line-height: 59px;
     letter-spacing: 1.2px;
@@ -430,13 +430,13 @@
 }
 
 .more-audio .audio {
-    width: 880px;
-    height: 140px;
-    margin-top: 14px;
-    background: url("../images/viewpoint/other_attraction.png");
+    margin-top: 42px;
+    width: 860px;
+    border-radius: 72px;
+    background-color: #267091;
 
     font-size: 40px;
-    line-height: 140px;
+    line-height: 112px;
     font-weight: 500;
     letter-spacing: 1.4px;
     text-align: center;
@@ -452,7 +452,7 @@
 }
 
 .neigh-view .title {
-    margin-bottom: 46px;
+    margin-bottom: 60px;
     font-size: 42px;
     line-height: 59px;
     letter-spacing: 1.2px;
@@ -460,89 +460,18 @@
 }
 
 .neigh-view .view {
-    width: 880px;
-    height: 140px;
-    margin-top: 14px;
-    background: url("../images/viewpoint/neighbor_viewpoint.png");
+    margin-top: 42px;
+    width: 860px;
+    border-radius: 72px;
+    background-color: #ffa53b;
 
     font-size: 40px;
-    line-height: 140px;
+    line-height: 112px;
     font-weight: 500;
     letter-spacing: 1.4px;
     text-align: center;
     color: #ffffff;
 }
-
-
-/*周邊景點開始*/
-/*.neigview {
-    margin-top: 148px;
-    margin-left: 52px;
-    overflow: hidden;
-}
-
-.neigview .title {
-    line-height: 36px;
-    font-size: 36px;
-    font-weight: 700;
-}
-
-.neigview ul {
-    margin-top: 73px;
-    width: 5000px;
-}
-
-.neigview .view {
-    width: 400px;
-    margin-right: 30px;
-    float: left;
-    position: relative;
-}
-
-.neigview .view img {
-    width: 400px;
-    height: 400px;
-}
-
-.neigview .view .mask {
-    width: 390px;
-    height: 74px;
-    background-color: rgba(0, 0, 0, 0.2);
-    position: absolute;
-    left: 0;
-    bottom: 104px;
-    line-height: 56px;
-    font-size: 56px;
-    letter-spacing: 3px;
-    text-align: left;
-    color: #ffffff;
-    padding-left: 10px;
-    padding-top: 58px;
-}
-
-.neigview .view .name {
-    line-height: 56px;
-    font-size: 56px;
-    letter-spacing: 3px;
-    text-align: left;
-    color: #ffffff;
-    position: absolute;
-    left: 10px;
-    bottom: 164px;
-}
-
-.neigview .view .speaker {
-    margin-top: 14px;
-    font-size: 36px;
-    line-height: 45px;
-}
-
-.neigview .view .time {
-    font-size: 32px;
-    line-height: 45px;
-    color: #363636;
-}*/
-/*週邊景點結束*/
 
 /*分享功能開始*/
 .sharemask {

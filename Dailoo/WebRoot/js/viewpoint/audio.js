@@ -17,7 +17,7 @@ var Audio = Class.extend({
         playBtn = $$("playBtn");
         nextTagBtn = $$("nextTagBtn");
         audio = $$("audio");
-        audio.currentTime = 0;
+        audio.onloadeddata = function(){audio.currentTime = 0;}
         nowTime = 0;
         audio.volume = 1.0;
         imgSliderClass = new imgSlider();
