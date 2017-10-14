@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="css/base.css"/>
     <link rel="stylesheet" href="css/footer.css"/>
 </head>
-<body onload="initIframeHeight(800);">
-<div class="w">
+<body>
+<div class="w" style="margin-top: 128px;">
     <!-- 導覽地圖 -->
     <div class="route">
         <div class="desc">以簡易地圖模式瀏覽<br/>本區所有景點並可直<br/>接點選導覽</div>
@@ -54,7 +54,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
 <script>
-    function initIframeHeight(height) {
+    /*function initIframeHeight(height) {
         var userAgent = navigator.userAgent;
         var iframe = parent.document.getElementById("footerIframe");
         var subdoc = iframe.contentDocument || iframe.contentWindow.document;
@@ -73,7 +73,7 @@
         else {
             $(iframe).height(realHeight);
         }
-    }
+    }*/
 
     function changeCss(type){
         if(type == 'orange') {

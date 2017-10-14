@@ -4,9 +4,6 @@
     background: url("../images/viewlist/nav_background.png");
     width: 980px;
     height: 166px;
-    position: absolute;
-    left: 0;
-    top: 0;
     box-shadow: 0 11px 11px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -78,7 +75,7 @@
 
 /*景點列表開始*/
 .viewlist {
-    margin-top: 242px;
+    margin-top: 76px;
     margin-left: 64px;
 }
 
