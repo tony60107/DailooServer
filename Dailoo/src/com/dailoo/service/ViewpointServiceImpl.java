@@ -73,11 +73,12 @@ public class ViewpointServiceImpl implements ViewpointService{
 	public void addViewpoint(Viewpoint vp) {
 		vp.setId(UUID.randomUUID().toString());
 		
-		//根據地址取得經緯度
-		double [] address = GoogleMapUtils.getAdressXY(vp.getAddress());
-		
-		vp.setLatitude(address[0]);
-		vp.setLongitude(address[1]);
+		if(vp.getLatitude() == null || vp.getLongitude() == null){
+			//根據地址取得經緯度
+			double [] address = GoogleMapUtils.getAdressXY(vp.getAddress());
+			vp.setLatitude(address[0]);
+			vp.setLongitude(address[1]);
+		}
 		
 		//更新景點導航地址
 		//https://www.google.com.tw/maps/place/龍田邱仁銘宅/@22.9038065,121.1273646,16z
@@ -107,7 +108,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 	public void updateViewpoint(Viewpoint vp) {
 		
 		//更新景點經緯度
-		double [] address = GoogleMapUtils.getAdressXY(vp.getAddress());
+		/*double [] address = GoogleMapUtils.getAdressXY(vp.getAddress());
 		if(address[0] != 0 && address[1] != 0) {
 			vp.setLatitude(address[0]);
 			vp.setLongitude(address[1]);
@@ -115,7 +116,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 			Viewpoint temp = dao.findViewpointById(vp.getId());
 			vp.setLatitude(temp.getLatitude());
 			vp.setLongitude(temp.getLongitude());
-		}
+		}*/
 		
 		//更新景點導航地址
 		vp.setNavUrl("https://www.google.com.tw/maps/place/"+ vp.getName() +"/@" + vp.getLatitude() + "," + vp.getLongitude() + ",16z");

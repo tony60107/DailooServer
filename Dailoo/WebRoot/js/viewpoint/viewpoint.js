@@ -164,8 +164,11 @@ function initViewpointData(vpData) {
     $$("area").innerHTML = vpData.city + vpData.town;
 
     //景點位置
-    $$("vpLocation").href = "https://www.google.com.tw/maps/place/" + vpData.address + "/@" + vpData.latitude + "," + vpData.longitude + ",19.5z";
-
+    if(vpData.latLngPri == 1) {
+        $$("vpLocation").href = "https://www.google.com.tw/maps/place/" + vpData.latitude + "," + vpData.longitude + "/@" + vpData.latitude + "," + vpData.longitude + ",19.5z";
+    } else {
+        $$("vpLocation").href = "https://www.google.com.tw/maps/place/" + vpData.address + "/@" + vpData.latitude + "," + vpData.longitude + ",19.5z";
+    }
     //景點介紹內容
     var vpIntro = $$("vpIntro");
     vpIntro.innerHTML = vpData.intro.replace(/\n/g,'<br>');

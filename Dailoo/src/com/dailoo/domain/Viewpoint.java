@@ -14,8 +14,9 @@ public class Viewpoint {
 	private String town;		//鄉鎮
 	private String village;		//村里
 	private String address;		//詳細地址
-	private double longitude;	//經度
-	private double latitude;	//緯度
+	private Double longitude;	//經度
+	private Double latitude;	//緯度
+	private Integer latLngPri;	//經緯度優先
 	private String navUrl;		//Google導航網址
 	private String intro;		//景點介紹
 	private String shortUrl; 	//短網址
@@ -84,17 +85,23 @@ public class Viewpoint {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public double getLongitude() {
+	public Double getLongitude() {
 		return longitude;
 	}
-	public void setLongitude(double longitude) {
+	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
-	public double getLatitude() {
+	public Double getLatitude() {
 		return latitude;
 	}
-	public void setLatitude(double latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
+	}
+	public Integer getLatLngPri() {
+		return latLngPri;
+	}
+	public void setLatLngPri(Integer latLngPri) {
+		this.latLngPri = latLngPri;
 	}
 	public String getNavUrl() {
 		return navUrl;

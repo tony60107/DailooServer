@@ -70,6 +70,19 @@
             <label>景點地址</label>
             <input id="address" type="text" name="address" class="form-control" placeholder="輸入景點地址" value="">
         </div>
+        <div class="form-group fl" style="width: 280px; margin-right: 30px;">
+            <label>緯度</label>
+            <input id="lat" type="text" name="latitude" class="form-control" placeholder="輸入緯度" value="">
+        </div>
+        <div class="form-group fl" style="width: 280px;">
+            <label>經度</label>
+            <input id="lng" type="text" name="longitude" class="form-control" placeholder="輸入經度" value="">
+        </div>
+        <div class="form-group fl">
+            <label>經緯度優先</label>
+            <input id="latLngPri" type="checkbox" name="latLngPri" class="form-control" value="1">
+        </div>
+        <div id="map" style="width: 600px; height: 300px;"></div>
         <div class="form-group">
             <label>景點介紹</label>
             <textarea id="intro" type="text" name="intro" class="form-control" cols="5" rows="7" wrap="hard" placeholder="輸入景點介紹" style="width: 326px;"></textarea>
@@ -149,6 +162,13 @@
         $$("preview").href = "/viewpoint.html?id=" + vp.id;
 
         $('#twzipcode').twzipcode();
+
+
+        map.setCenter({'lat': vp.latitude, 'lng': vp.longitude});
+        addMarker({'lat': vp.latitude, 'lng': vp.longitude});
+        $$("lat").value = vp.latitude;
+        $$("lng").value = vp.longitude;
+        if(vp.latLngPri == 1){$$("latLngPri").checked = "checked";}
     }
 
     //獲取所有的地區，以取得地區下所有的主題
@@ -184,4 +204,52 @@
             }
         });
     }
+
+    $$("address").onblur = function(){
+        var url = "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=" + $$("address").value;
+
+        $.ajax({
+            url: url, context: document.body,
+            type: "POST",
+            success: function (data) {
+                if(data.status != "OK"){  $$("address").onblur();}
+                var loc = data.results[0].geometry.location;
+                map.setCenter(loc);
+            },
+        });
+    }
+
+
+    var map;
+    var markers = [];
+    function initMap() {
+        var initLocation = {lat: 22.925489, lng: 121.125867515};
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 19,
+            center: initLocation,
+        });
+        map.addListener('click', function(event) {addMarker(event.latLng);});
+    }
+
+    function addMarker(location) {
+        deleteMarkers();
+
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+        markers.push(marker);
+        var loc =  location.toString().substring(1, location.toString().length-1);
+        $$("lat").value = loc.split(",")[0];
+        $$("lng").value = loc.split(",")[1];
+    }
+
+    function deleteMarkers() {
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
+        markers = [];
+    }
 </script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtkHtxJhAxfxCzkdphlPoDoSuCq4FTh_c&callback=initMap"></script>
