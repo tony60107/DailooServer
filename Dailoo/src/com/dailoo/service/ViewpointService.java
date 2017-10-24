@@ -107,4 +107,11 @@ public interface ViewpointService extends Service{
 	 */
 	void updateIsPayById(String vpId, String stat);
 
+	/**
+	 * 根據講者ID，獲取其擁有的景點
+	 * @param id 講者ID
+	 * @return 景點List集合的JSON數據
+	 */
+	String findViewpointsBySpeakerId(String id);
+
 }

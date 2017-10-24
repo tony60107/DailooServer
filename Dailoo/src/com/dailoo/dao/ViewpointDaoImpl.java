@@ -230,4 +230,17 @@ public class ViewpointDaoImpl implements ViewpointDao{
 		}
 	}
 
+	@Override
+	public List<Viewpoint> findViewpointsBySpeakerId(String id) {
+		String sql = "select * from viewpoints where speakerId = ? order by updatetime asc";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class), id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
 }

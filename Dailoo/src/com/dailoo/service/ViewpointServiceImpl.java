@@ -314,4 +314,9 @@ public class ViewpointServiceImpl implements ViewpointService{
 		dao.updateIsPayById(vpId, stat);
 	}
 
+	@Override
+	public String findViewpointsBySpeakerId(String id) {
+		return gson.toJson(dao.findViewpointsBySpeakerId(id));
+	}
+
 }

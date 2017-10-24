@@ -15,12 +15,13 @@ public class SNDaoImpl implements SNDao{
 
 	@Override
 	public void addSN(SerialNumber sn) {
-		String sql = "insert into serialnumbers (code, usedCount, maxUseCount, useLength, startTime, ownerId) "
-				+ "values(?,?,?,?,?,?)";
+		String sql = "insert into serialnumbers (code, usedCount, maxUseCount, useLength, "
+				+ "startTime, ownerId, viewpointId) "
+				+ "values(?,?,?,?,?,?,?)";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
 			runner.update(sql, sn.getCode(), sn.getUsedCount(), sn.getMaxUseCount(),
-					sn.getUseLength(), null, sn.getOwnerId());
+					sn.getUseLength(), null, sn.getOwnerId(), sn.getViewpointId());
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

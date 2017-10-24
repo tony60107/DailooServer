@@ -12,6 +12,7 @@ public class SerialNumber {
 	private Timestamp createTime;	//序號創建時間
 	private String ownerId;			//序號擁有者ID
 	private String ownerName;		//序號擁有者姓名
+	private String viewpointId; 	//序號對應的景點ID
 	
 	
 	public String getCode() {
@@ -61,6 +62,12 @@ public class SerialNumber {
 	}
 	public void setOwnerName(String ownerName) {
 		this.ownerName = ownerName;
+	}
+	public String getViewpointId() {
+		return viewpointId;
+	}
+	public void setViewpointId(String viewpointId) {
+		this.viewpointId = viewpointId;
 	}
 	@Override
 	public String toString() {

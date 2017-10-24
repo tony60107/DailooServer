@@ -116,4 +116,11 @@ public interface ViewpointDao extends Dao{
 	 */
 	List<Viewpoint> findViewpointByAddressNotSpeaker(Viewpoint vp);
 
+	/**
+	 * 根據講者ID，獲取其擁有的景點
+	 * @param id 講者ID
+	 * @return 景點List集合
+	 */
+	List<Viewpoint> findViewpointsBySpeakerId(String id);
+
 }

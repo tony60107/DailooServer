@@ -35,7 +35,7 @@ public class ViewpointServlet extends HttpServlet {
 		String method = request.getParameter("method");
 		
 		//取得目前登入者的資訊
-		Speaker speaker = (Speaker) request.getSession().getAttribute("speaker");
+		Speaker loginUser = (Speaker) request.getSession().getAttribute("speaker");
 
 		try {
 			//如果是新增景點
@@ -87,8 +87,8 @@ public class ViewpointServlet extends HttpServlet {
 				//根據景點ID查找該景點
 				Viewpoint temp = service.findViewpointById(vp.getId());				
 				//進行權限管理，如果要求更改景點資訊的是該景點擁有者或是管理員
-				if(speaker == null) throw new RuntimeException("您尚未登入");
-				if(speaker.getId().equals(temp.getSpeakerId()) || "admin".equals(speaker.getRole())){
+				if(loginUser == null) throw new RuntimeException("您尚未登入");
+				if(loginUser.getId().equals(temp.getSpeakerId()) || "admin".equals(loginUser.getRole())){
 					
 					//設定景點代表圖
 					if(paramMap.get("imgurls") != null){ //如果要更換景點代表圖
@@ -160,8 +160,8 @@ public class ViewpointServlet extends HttpServlet {
 				if(temp == null) throw new RuntimeException("該景點不存在");
 				
 				//進行權限管理，如果要求更改景點資訊的是該景點擁有者或是管理員
-				if(speaker == null) throw new RuntimeException("您尚未登入");
-				if(speaker.getId().equals(temp.getSpeakerId()) || "admin".equals(speaker.getRole())){
+				if(loginUser == null) throw new RuntimeException("您尚未登入");
+				if(loginUser.getId().equals(temp.getSpeakerId()) || "admin".equals(loginUser.getRole())){
 					//刪除景點
 					service.delViewpoint(viewpointId);
 					response.sendRedirect("/manageViewpoints.html");
@@ -179,9 +179,9 @@ public class ViewpointServlet extends HttpServlet {
 				Viewpoint temp = service.findViewpointById(vpId);				
 				
 				//進行權限管理
-				if(speaker == null){response.getWriter().write("{\"error\":\"您尚未登入\"}"); return;}
+				if(loginUser == null){response.getWriter().write("{\"error\":\"您尚未登入\"}"); return;}
 				//如果要求更改景點資訊的是該景點擁有者或是管理員
-				else if(speaker.getId().equals(temp.getSpeakerId()) || "admin".equals(speaker.getRole())){
+				else if(loginUser.getId().equals(temp.getSpeakerId()) || "admin".equals(loginUser.getRole())){
 					service.updateIsPublishById(vpId, stat);
 				} else {
 					response.getWriter().write("{\"error\":\"您沒有權限更改該景點資訊\"}"); return;
@@ -199,9 +199,9 @@ public class ViewpointServlet extends HttpServlet {
 				Viewpoint temp = service.findViewpointById(vpId);				
 				
 				//進行權限管理
-				if(speaker == null){response.getWriter().write("{\"error\":\"您尚未登入\"}"); return;}
+				if(loginUser == null){response.getWriter().write("{\"error\":\"您尚未登入\"}"); return;}
 				//如果要求更改景點資訊的是該景點擁有者或是管理員
-				else if(speaker.getId().equals(temp.getSpeakerId()) || "admin".equals(speaker.getRole())){
+				else if(loginUser.getId().equals(temp.getSpeakerId()) || "admin".equals(loginUser.getRole())){
 					service.updateIsPriorityById(vpId, stat);
 				} else {
 					response.getWriter().write("{\"error\":\"您沒有權限更改該景點資訊\"}"); return;
@@ -219,9 +219,9 @@ public class ViewpointServlet extends HttpServlet {
 				Viewpoint temp = service.findViewpointById(vpId);
 				
 				//進行權限管理
-				if(speaker == null){response.getWriter().write("{\"error\":\"您尚未登入\"}"); return;}
+				if(loginUser == null){response.getWriter().write("{\"error\":\"您尚未登入\"}"); return;}
 				//如果要求更改景點資訊的是該景點擁有者或是管理員
-				else if(speaker.getId().equals(temp.getSpeakerId()) || "admin".equals(speaker.getRole())){
+				else if(loginUser.getId().equals(temp.getSpeakerId()) || "admin".equals(loginUser.getRole())){
 					service.updateIsPayById(vpId, stat);
 				} else {
 					response.getWriter().write("{\"error\":\"您沒有權限更改該景點資訊\"}"); return;
@@ -241,6 +241,11 @@ public class ViewpointServlet extends HttpServlet {
 			//根據地區獲取所有簡易版景點資訊
 			else if("getViewpointSimplesByRegionId".equals(method)){
 				String json = service.findViewpointSimplesByRegionId(request.getParameter("regionId"));
+				response.getWriter().write(json);
+			}
+			//根據登入者，獲取其擁有的景點
+			else if("getViewpointsByLoginUser".equals(method)){
+				String json = service.findViewpointsBySpeakerId(loginUser.getId());
 				response.getWriter().write(json);
 			}
 			

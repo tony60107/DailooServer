@@ -25,6 +25,9 @@ public class SNServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		//取得目前登入者的資訊
+		Speaker loginUser = (Speaker) request.getSession().getAttribute("speaker");
+		
 		// 取得客戶端要求
 		String method = request.getParameter("method");
 		try {
@@ -33,6 +36,7 @@ public class SNServlet extends HttpServlet {
 				int createNum = Integer.valueOf(request.getParameter("createNum"));
 				SerialNumber sn = new SerialNumber();
 				BeanUtils.populate(sn, request.getParameterMap());
+				sn.setOwnerId(loginUser.getId());
 				service.addSN(sn, createNum);
 				response.sendRedirect("/manageSNs.html");
 			}
@@ -45,7 +49,9 @@ public class SNServlet extends HttpServlet {
 			else if("useSN".equals(method)) {
 				
 				if(request.getSession().getAttribute("SN") != null && service.findSNByCode(((SerialNumber)request.getSession().getAttribute("SN")).getCode()) != null) {
-					throw new RuntimeException("你的序號仍在有效時間內");
+					//throw new RuntimeException("你的序號仍在有效時間內");
+					response.sendRedirect(request.getContextPath() + "/viewpoint.html?id=" + ((SerialNumber) request.getSession().getAttribute("SN")).getViewpointId());
+					return;
 				}
 				
 				/*******針對移動端Session問題處理********/
@@ -64,7 +70,8 @@ public class SNServlet extends HttpServlet {
 					if(sn != null){
 						long endTime = sn.getStartTime().getTime() + sn.getUseLength() * 3600 * 1000;
 						if(endTime - System.currentTimeMillis() > 0){ //如果Cookie的序號仍在有效時間內
-							throw new RuntimeException("你的序號仍在有效時間內");
+							//throw new RuntimeException("你的序號仍在有效時間內");
+							response.sendRedirect(request.getContextPath() + "/viewpoint.html?id=" + sn.getViewpointId());
 						}
 					} 
 				}
@@ -105,11 +112,10 @@ public class SNServlet extends HttpServlet {
 						throw new RuntimeException("該序號使用次數已用完");
 					} 
 				}
-				response.sendRedirect("/manageSNs.html");
+				response.sendRedirect(request.getContextPath() + "/viewpoint.html?id=" + sn.getViewpointId());
 			}
 			//如果是刪除序號
 			else if("delSN".equals(method)) {
-				Speaker loginUser = (Speaker) request.getSession().getAttribute("speaker");
 				if(loginUser == null) throw new RuntimeException("你尚未登入");
 				//只有管理員才可以刪除序號
 				if("admin".equals(loginUser.getRole())){

@@ -136,10 +136,15 @@
                 <option value='72'>3天</option>
             </select>
         </div>
-        <div class="form-group" style="width: 150px; margin-right: 50px; display: inline-block">
+        <div class="form-group" style="width: 300px; margin-right: 50px; display: inline-block">
+            <label>對應景點</label>
+            <select id="vpSelect" name="viewpointId" class="form-control">
+            </select>
+        </div>
+        <!--div class="form-group" style="width: 150px; margin-right: 50px; display: inline-block">
             <label>擁有者</label>
             <select id="speaker_list" name="ownerId" class="form-control"></select>
-        </div>
+        </div-->
         <button type="submit" class="btn btn-default">產生</button>
     </form>
     <div id="qrcode" style="width: 150px; height: 150px; border: 1px solid #666"></div>
@@ -195,6 +200,7 @@
         }
     }
 
+    //獲取該帳號的序號使用狀態
     $.ajax({
         url: "/SNServlet", context: document.body,
         type: "POST",
@@ -209,8 +215,22 @@
         },
     });
 
-    //取得現在所有的講者
+    //取得登入帳號旗下的所有景點
     $.ajax({
+        url: "/ViewpointServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getViewpointsByLoginUser"},
+        success: function (data) {
+            var vps = eval("(" + data + ")");
+            for(var i = 0; i < vps.length; i++) {
+                var dom =  "<option value='" + vps[i].id +"'>" + vps[i].name + "&nbsp; - &nbsp;" + vps[i].subtitle + "</option>";
+                $$("vpSelect").innerHTML = $$("vpSelect").innerHTML + dom;
+            }
+        },
+    });
+
+    //取得現在所有的講者
+    /*$.ajax({
         url: "/SpeakerServlet", context: document.body,
         type: "POST",
         data: {
@@ -226,7 +246,7 @@
             }
             speakerList.value = "54689bfe-b548-4c56-8f11-979128bc82b2";
         },
-    });
+    });*/
 
     //將序號轉換為QRC
     function toQRC(code) {
