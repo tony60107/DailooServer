@@ -5,8 +5,10 @@ import java.util.UUID;
 
 import com.dailoo.dao.SNDao;
 import com.dailoo.dao.SpeakerDao;
+import com.dailoo.dao.ViewpointDao;
 import com.dailoo.domain.SerialNumber;
 import com.dailoo.domain.Speaker;
+import com.dailoo.domain.Viewpoint;
 import com.dailoo.factory.BasicFactory;
 import com.google.gson.Gson;
 
@@ -14,6 +16,7 @@ public class SNServiceImpl implements SNService{
 
 	SNDao dao = BasicFactory.getFactory().getDao(SNDao.class);
 	SpeakerDao speakerDao = BasicFactory.getFactory().getDao(SpeakerDao.class);
+	ViewpointDao viewpointDao = BasicFactory.getFactory().getDao(ViewpointDao.class);
 	Gson gson = new Gson();
 	
 	@Override
@@ -34,6 +37,11 @@ public class SNServiceImpl implements SNService{
 		List<SerialNumber> sns = dao.findAllSN();
 		for(int i = 0; i < sns.size(); i++){
 			Speaker sp = speakerDao.findSpeakerById(sns.get(i).getOwnerId());
+			Viewpoint vp = null;
+			if(sns.get(i).getViewpointId() != null){
+				 vp = viewpointDao.findViewpointById(sns.get(i).getViewpointId());
+				 sns.get(i).setViewpointName(vp.getName() + "_" + vp.getSubtitle());
+			}
 			sns.get(i).setOwnerName(sp.getName());
 		}
 		return gson.toJson(sns);

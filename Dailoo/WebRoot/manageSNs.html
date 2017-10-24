@@ -153,11 +153,12 @@
         <table class="bordered">
             <thead>
             <tr>
-                <th>序號</th>
-                <th>已使用次數</th>
-                <th>最大使用次數</th>
-                <th>開始使用時間</th>
-                <th>使用時長</th>
+                <th style="width: 140px;">序號</th>
+                <th style="width: 70px;">已使用次數</th>
+                <th style="width: 70px;">最大使用次數</th>
+                <th style="width: 200px;">開始使用時間</th>
+                <th style="width: 66px;">使用時長</th>
+                <th style="width: 220px;">對應景點</th>
                 <th>使用序號</th>
                 <th>擁有者</th>
                 <th>刪除</th>
@@ -193,6 +194,7 @@
                     '<td>' + sns[i].maxUseCount + '</td>' +
                     '<td>' + new Date(sns[i].startTime).toLocaleString() + '</td>' +
                     '<td>' + sns[i].useLength + '小時</td>' +
+                    '<td>' + sns[i].viewpointName + '</td>' +
                     '<td><a href="/SNServlet?method=useSN&code='+ sns[i].code +'">使用</a></td>' +
                     '<td>' + sns[i].ownerName + '</td>' +
                     '<td><a href="/SNServlet?method=delSN&code=' + sns[i].code +'">刪除</a></td> </tr>';
