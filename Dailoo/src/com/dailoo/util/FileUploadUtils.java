@@ -121,10 +121,10 @@ public class FileUploadUtils {
 				        
 				        if(imgWidth > 1920 || imgHeight > 1920){ //判斷是否要壓縮
 				        	if(imgWidth > imgHeight){
-				        		Thumbnails.of(bi).outputQuality(0.88)
+				        		Thumbnails.of(bi).outputQuality(0.83)
 				        			.size(1920, imgHeight * 1920 / imgWidth).toFile(imgFile);
 				        	} else {
-				        		Thumbnails.of(bi).outputQuality(0.88)
+				        		Thumbnails.of(bi).outputQuality(0.83)
 				        			.size(imgWidth * 1920 / imgHeight, 1920).toFile(imgFile);
 				        	}
 				        }
