@@ -118,6 +118,13 @@ public class ViewpointServiceImpl implements ViewpointService{
 			vp.setLongitude(temp.getLongitude());
 		}*/
 		
+		if(vp.getLatitude() == null || vp.getLatitude() == 0 || vp.getLongitude() == null || vp.getLongitude() == 0){
+			//根據地址取得經緯度
+			double [] address = GoogleMapUtils.getAdressXY(vp.getAddress());
+			vp.setLatitude(address[0]);
+			vp.setLongitude(address[1]);
+		}
+		
 		//更新景點導航地址
 		vp.setNavUrl("https://www.google.com.tw/maps/place/"+ vp.getName() +"/@" + vp.getLatitude() + "," + vp.getLongitude() + ",16z");
 				
@@ -144,8 +151,13 @@ public class ViewpointServiceImpl implements ViewpointService{
 		Audio audio = audioDao.findAudioByViewpointId(vp.getId());
 		List<Tag> tags = tagDao.findTagsByAudioId(audio.getId());
 		Theme theme = themeDao.findThemeById(vp.getThemeId());
-		List<Viewpoint> moreAudio = dao.findViewpointsByName(vp.getName());
-		List<ViewpointSimple> neighView = dao.findNeighViewpoints(vp);
+		List<Viewpoint> moreAudio = dao.findViewpointsByNameAndSpeaker(vp.getName(), vp.getSpeakerId());
+		List<Viewpoint> neighView = dao.findNeighViewpoints(vp);
+		//找出同一地址下不同講者的景點
+		List<Viewpoint> temps = dao.findViewpointByAddressNotSpeaker(vp);
+		for(Viewpoint temp : temps){
+			neighView.add(0, temp);
+		}
 		
 		
 		String vpJson = gson.toJson(vp);

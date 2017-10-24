@@ -52,7 +52,7 @@ public interface ViewpointDao extends Dao{
 	 * @param name 景點名稱
 	 * @return 景點的List集合
 	 */
-	List<Viewpoint> findViewpointsByName(String name);
+	List<Viewpoint> findViewpointsByNameAndSpeaker(String name, String speakerId);
 
 	/**
 	 * 查找所有景點
@@ -100,7 +100,7 @@ public interface ViewpointDao extends Dao{
 	 * @param vp 作為依據的景點
 	 * @return 景點的List集合
 	 */
-	List<ViewpointSimple> findNeighViewpoints(Viewpoint vp);
+	List<Viewpoint> findNeighViewpoints(Viewpoint vp);
 
 	/**
 	 * 更新景點是否為付費景點
@@ -108,5 +108,12 @@ public interface ViewpointDao extends Dao{
 	 * @param stat 付費狀態
 	 */
 	void updateIsPayById(String vpId, String stat);
+
+	/**
+	 * 找出該地址下，不同講者的景點
+	 * @param address 地址
+	 * @return 景點的List集合
+	 */
+	List<Viewpoint> findViewpointByAddressNotSpeaker(Viewpoint vp);
 
 }

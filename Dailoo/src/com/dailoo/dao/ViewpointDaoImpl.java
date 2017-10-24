@@ -101,12 +101,12 @@ public class ViewpointDaoImpl implements ViewpointDao{
 	}
 
 	@Override
-	public List<Viewpoint> findViewpointsByName(String name) {
-		String sql = "select * from viewpoints where name = ? order by updatetime asc";
+	public List<Viewpoint> findViewpointsByNameAndSpeaker(String name, String speakerId) {
+		String sql = "select * from viewpoints where name = ? and speakerId = ? order by updatetime asc";
 		
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class), name);
+			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class), name, speakerId);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -190,14 +190,14 @@ public class ViewpointDaoImpl implements ViewpointDao{
 	}
 
 	@Override
-	public List<ViewpointSimple> findNeighViewpoints(Viewpoint vp) {
+	public List<Viewpoint> findNeighViewpoints(Viewpoint vp) {
 		String sql = "SELECT id, name, subtitle, ( 3959 * acos( cos( radians(?) ) * cos( radians( latitude ) )" + 
 				"* cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin(radians(latitude)) ) ) AS distance " + 
 				" FROM viewpoints GROUP BY name HAVING distance BETWEEN 0.0001 AND 20 " +
 				" ORDER BY distance  LIMIT 0 , 5 ;";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			return runner.query(sql, new BeanListHandler<ViewpointSimple>(ViewpointSimple.class),
+			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class),
 					vp.getLatitude(), vp.getLongitude(), vp.getLatitude());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -215,6 +215,19 @@ public class ViewpointDaoImpl implements ViewpointDao{
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}		
+	}
+
+	@Override
+	public List<Viewpoint> findViewpointByAddressNotSpeaker(Viewpoint vp) {
+		String sql = "select * from viewpoints where address = ? and speakerId != ? order by updatetime asc limit 0, 1";
+				
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class), vp.getAddress(), vp.getSpeakerId());
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 
 }
