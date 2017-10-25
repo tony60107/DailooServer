@@ -62,6 +62,21 @@ public class SNServiceImpl implements SNService{
 		dao.delSN(code);
 	}
 
+	@Override
+	public String findSNByOwnerId(String ownerId) {
+		List<SerialNumber> sns = dao.findSNByOwnerId(ownerId);
+		for(int i = 0; i < sns.size(); i++){
+			Speaker sp = speakerDao.findSpeakerById(sns.get(i).getOwnerId());
+			Viewpoint vp = null;
+			if(sns.get(i).getViewpointId() != null){
+				 vp = viewpointDao.findViewpointById(sns.get(i).getViewpointId());
+				 sns.get(i).setViewpointName(vp.getName() + "_" + vp.getSubtitle());
+			}
+			sns.get(i).setOwnerName(sp.getName());
+		}
+		return gson.toJson(sns);
+	}
+
 }
 
 

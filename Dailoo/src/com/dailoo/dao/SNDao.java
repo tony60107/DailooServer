@@ -3,6 +3,7 @@ package com.dailoo.dao;
 import java.util.List;
 
 import com.dailoo.domain.SerialNumber;
+import com.google.gson.JsonElement;
 
 public interface SNDao extends Dao{
 
@@ -36,5 +37,7 @@ public interface SNDao extends Dao{
 	 * @param code 序號Code
 	 */
 	void delSN(String code);
+
+	List<SerialNumber> findSNByOwnerId(String ownerId);
 
 }

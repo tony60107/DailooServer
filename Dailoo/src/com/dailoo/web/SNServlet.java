@@ -42,8 +42,16 @@ public class SNServlet extends HttpServlet {
 			}
 			//如果是找出所有的序號
 			else if("getAllSNs".equals(method)) {
-				String json = service.findAllSN();
-				response.getWriter().write(json);
+				//如果登入者是管理員，查詢所有的序號
+				if("admin".equals(loginUser.getRole())){
+					String json = service.findAllSN();
+					response.getWriter().write(json);
+				} 
+				//非管理員，僅查詢自己擁有的序號
+				else {
+					String json = service.findSNByOwnerId(loginUser.getId());
+					response.getWriter().write(json);
+				}
 			}
 			//如果是使用序號
 			else if("useSN".equals(method)) {

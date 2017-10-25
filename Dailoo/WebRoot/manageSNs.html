@@ -129,12 +129,8 @@
             <input type="text" name="maxUseCount" class="form-control" placeholder="產生序號的數量" value="1">
         </div>
         <div class="form-group" style="width: 80px; margin-right: 50px; display: inline-block">
-            <label>使用時長</label>
-            <select name="useLength" class="form-control">
-                <option value='24'>1天</option>
-                <option value='48'>2天</option>
-                <option value='72'>3天</option>
-            </select>
+            <label>使用時長(小時)</label>
+            <input id="useLength" name="useLength" class="form-control" value="1">
         </div>
         <div class="form-group" style="width: 300px; margin-right: 50px; display: inline-block">
             <label>對應景點</label>
@@ -145,7 +141,7 @@
             <label>擁有者</label>
             <select id="speaker_list" name="ownerId" class="form-control"></select>
         </div-->
-        <button type="submit" class="btn btn-default">產生</button>
+        <div class="btn btn-default" onclick="checkForm();">產生</div>
     </form>
     <div id="qrcode" style="width: 150px; height: 150px; border: 1px solid #666"></div>
     <div id="SNStat" style="width: 100%; text-align: center">正在使用的序號：</div>
@@ -156,7 +152,7 @@
                 <th style="width: 140px;">序號</th>
                 <th style="width: 70px;">已使用次數</th>
                 <th style="width: 70px;">最大使用次數</th>
-                <th style="width: 200px;">開始使用時間</th>
+                <th style="width: 180px;">開始使用時間</th>
                 <th style="width: 66px;">使用時長</th>
                 <th style="width: 220px;">對應景點</th>
                 <th>使用序號</th>
@@ -249,6 +245,17 @@
             speakerList.value = "54689bfe-b548-4c56-8f11-979128bc82b2";
         },
     });*/
+
+    //確認表單資料
+    function checkForm() {
+        var useLength = $$("useLength").value;
+        if(useLength > 0 && useLength <= 96) {
+            $$("mainForm").submit();
+        } else {
+            alert("使用時長輸入錯誤，請介於1~96之間");
+            return;
+        }
+    }
 
     //將序號轉換為QRC
     function toQRC(code) {

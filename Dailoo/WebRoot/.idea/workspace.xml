@@ -26,8 +26,8 @@
       <file leaf-file-name="manageSNs.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/manageSNs.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6031567">
-              <caret line="160" column="36" selection-start-line="160" selection-start-column="36" selection-end-line="160" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.47914317">
+              <caret line="132" column="80" selection-start-line="132" selection-start-column="80" selection-end-line="132" selection-end-column="80" />
               <folding>
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -42,10 +42,11 @@
                 <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#0;n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#7973#8478#0" expanded="false" />
-                <element signature="e#9039#9728#0" expanded="false" />
-                <marker date="1508867782376" expanded="true" signature="7179:7696" placeholder="..." />
-                <marker date="1508867782376" expanded="true" signature="7302:7331" placeholder="..." />
+                <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#0;n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#7841#8346#0" expanded="false" />
+                <element signature="e#8907#9596#0" expanded="false" />
+                <marker date="1508921758361" expanded="true" signature="7047:7564" placeholder="..." />
+                <marker date="1508921758361" expanded="true" signature="7170:7199" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -54,7 +55,7 @@
       <file leaf-file-name="manageViewpoints.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manageViewpoints.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.709677">
+            <state vertical-scroll-proportion="0.0">
               <caret line="220" column="64" selection-start-line="220" selection-start-column="12" selection-end-line="220" selection-end-column="64" />
               <folding>
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
@@ -231,8 +232,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -781,12 +782,13 @@
       <workItem from="1507962395228" duration="4316000" />
       <workItem from="1508145040681" duration="9438000" />
       <workItem from="1508416474735" duration="641000" />
-      <workItem from="1508852714343" duration="3370000" />
+      <workItem from="1508852714343" duration="3971000" />
+      <workItem from="1508920504944" duration="1453000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="891236000" />
+    <option name="totallyTimeSpent" value="893290000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1181,7 +1183,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1199,7 +1200,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="167" column="176" selection-start-line="167" selection-start-column="176" selection-end-line="167" selection-end-column="176" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1245,7 +1245,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manageViewpoints.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.709677">
+        <state vertical-scroll-proportion="0.0">
           <caret line="220" column="64" selection-start-line="220" selection-start-column="12" selection-end-line="220" selection-end-column="64" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
@@ -1265,8 +1265,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manageSNs.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6031567">
-          <caret line="160" column="36" selection-start-line="160" selection-start-column="36" selection-end-line="160" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.47914317">
+          <caret line="132" column="80" selection-start-line="132" selection-start-column="80" selection-end-line="132" selection-end-column="80" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1281,10 +1281,11 @@
             <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#0;n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#7973#8478#0" expanded="false" />
-            <element signature="e#9039#9728#0" expanded="false" />
-            <marker date="1508867782376" expanded="true" signature="7179:7696" placeholder="..." />
-            <marker date="1508867782376" expanded="true" signature="7302:7331" placeholder="..." />
+            <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#0;n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#7841#8346#0" expanded="false" />
+            <element signature="e#8907#9596#0" expanded="false" />
+            <marker date="1508921758361" expanded="true" signature="7047:7564" placeholder="..." />
+            <marker date="1508921758361" expanded="true" signature="7170:7199" placeholder="..." />
           </folding>
         </state>
       </provider>

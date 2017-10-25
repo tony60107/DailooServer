@@ -36,4 +36,11 @@ public interface SNService extends Service{
 	 */
 	void delSN(String code);
 
+	/**
+	 * 根據擁有者ID查詢序號
+	 * @param ownerId
+	 * @return 序號集合的JSON數據
+	 */
+	String findSNByOwnerId(String ownerId);
+
 }

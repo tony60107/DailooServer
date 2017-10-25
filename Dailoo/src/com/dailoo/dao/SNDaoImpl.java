@@ -81,4 +81,17 @@ public class SNDaoImpl implements SNDao{
 		}
 	}
 
+	@Override
+	public List<SerialNumber> findSNByOwnerId(String ownerId) {
+		String sql = "select * from serialnumbers where ownerId = ?";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanListHandler<SerialNumber>(SerialNumber.class), ownerId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
 }
