@@ -145,9 +145,15 @@ public class ViewpointServlet extends HttpServlet {
 			}
 			//獲取所有簡易版景點資訊
 			else if("getAllViewpointSimples".equals(method)){
-				String json = service.findAllViewpointSimples();
-				if(json == null) json = "";
-				response.getWriter().write(json);
+				if("admin".equals(loginUser.getRole())){
+					String json = service.findAllViewpointSimples();
+					if(json == null) json = "";
+					response.getWriter().write(json);
+				} else {
+					String json = service.findViewpointSimplesBySpeaker(loginUser);
+					if(json == null) json = "";
+					response.getWriter().write(json);
+				} 
 			}
 			//如果是刪除景點
 			else if("delViewpoint".equals(method)){
@@ -181,7 +187,8 @@ public class ViewpointServlet extends HttpServlet {
 				//進行權限管理
 				if(loginUser == null){response.getWriter().write("{\"error\":\"您尚未登入\"}"); return;}
 				//如果要求更改景點資訊的是該景點擁有者或是管理員
-				else if(loginUser.getId().equals(temp.getSpeakerId()) || "admin".equals(loginUser.getRole())){
+				//else if(loginUser.getId().equals(temp.getSpeakerId()) || "admin".equals(loginUser.getRole())){
+				else if("admin".equals(loginUser.getRole())){
 					service.updateIsPublishById(vpId, stat);
 				} else {
 					response.getWriter().write("{\"error\":\"您沒有權限更改該景點資訊\"}"); return;
@@ -201,7 +208,8 @@ public class ViewpointServlet extends HttpServlet {
 				//進行權限管理
 				if(loginUser == null){response.getWriter().write("{\"error\":\"您尚未登入\"}"); return;}
 				//如果要求更改景點資訊的是該景點擁有者或是管理員
-				else if(loginUser.getId().equals(temp.getSpeakerId()) || "admin".equals(loginUser.getRole())){
+				//else if(loginUser.getId().equals(temp.getSpeakerId()) || "admin".equals(loginUser.getRole())){
+				else if("admin".equals(loginUser.getRole())){
 					service.updateIsPriorityById(vpId, stat);
 				} else {
 					response.getWriter().write("{\"error\":\"您沒有權限更改該景點資訊\"}"); return;
@@ -221,7 +229,8 @@ public class ViewpointServlet extends HttpServlet {
 				//進行權限管理
 				if(loginUser == null){response.getWriter().write("{\"error\":\"您尚未登入\"}"); return;}
 				//如果要求更改景點資訊的是該景點擁有者或是管理員
-				else if(loginUser.getId().equals(temp.getSpeakerId()) || "admin".equals(loginUser.getRole())){
+				//else if(loginUser.getId().equals(temp.getSpeakerId()) || "admin".equals(loginUser.getRole())){
+				else if("admin".equals(loginUser.getRole())){
 					service.updateIsPayById(vpId, stat);
 				} else {
 					response.getWriter().write("{\"error\":\"您沒有權限更改該景點資訊\"}"); return;

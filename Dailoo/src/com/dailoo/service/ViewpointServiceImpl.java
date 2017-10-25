@@ -189,7 +189,6 @@ public class ViewpointServiceImpl implements ViewpointService{
 		
 		vpsims = this.toVpSimple(vps);
 		
-		Gson gson = new Gson();
 		String result = gson.toJson(vpsims);
 
 		return result;
@@ -242,7 +241,6 @@ public class ViewpointServiceImpl implements ViewpointService{
 		
 		vpsims = this.toVpSimple(vps);
 		
-		Gson gson = new Gson();
 		String result = gson.toJson(vpsims);
 		return result;
 	}
@@ -317,6 +315,13 @@ public class ViewpointServiceImpl implements ViewpointService{
 	@Override
 	public String findViewpointsBySpeakerId(String id) {
 		return gson.toJson(dao.findViewpointsBySpeakerId(id));
+	}
+
+	@Override
+	public String findViewpointSimplesBySpeaker(Speaker speaker) {
+		List<Viewpoint> vps = dao.findViewpointsBySpeakerId(speaker.getId());
+		List<ViewpointSimple> vpsims =  this.toVpSimple(vps);
+		return gson.toJson(vpsims);
 	}
 
 }

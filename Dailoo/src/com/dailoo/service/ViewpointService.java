@@ -1,5 +1,6 @@
 package com.dailoo.service;
 
+import com.dailoo.domain.Speaker;
 import com.dailoo.domain.Viewpoint;
 
 public interface ViewpointService extends Service{
@@ -113,5 +114,12 @@ public interface ViewpointService extends Service{
 	 * @return 景點List集合的JSON數據
 	 */
 	String findViewpointsBySpeakerId(String id);
+
+	/**
+	 * 根據講者，獲取簡易版景點資訊
+	 * @param speaker 
+	 * @return 多個簡易版景點資訊的JSON數據
+	 */
+	String findViewpointSimplesBySpeaker(Speaker speaker);
 
 }

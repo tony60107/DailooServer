@@ -112,13 +112,8 @@
 </head>
 <body>
 <div class="w">
-    <div><a href="/addViewpoint.html">新增景點</a></div>
-    <div><a href="/manageRegions.html">地區管理頁面</a></div>
-    <div><a href="/manageThemes.html">主題管理頁面</a></div>
-    <div><a href="/manageViewpoints.html">景點管理頁面</a></div>
-    <div><a href="/manageSpeakers.html">講者管理頁面</a></div>
-    <div><a href="/manageSNs.html">序號管理頁面</a></div>
-    <div><a href="/LogoutServlet">登出</a></div>
+    <div id="links" style="margin-top: 30px; margin-bottom: 30px;">
+    </div>
 
     <div class="filters clearfix">
         <label class="fl" style="font-size: 16px; line-height: 36px;">地區：</label>
@@ -382,7 +377,9 @@
         townSelec.innerHTML = '<option selected disabled hidden style="display: none" value="">鄉鎮市區</option>' + townSelec.innerHTML;
     }
 
+    //鄉鎮下拉選單變更
     townSelec.onchange = function(){
+        //請求該鄉鎮景點資料
         $.ajax({
             url: "/ViewpointServlet", context: document.body,
             type: "POST",
@@ -394,8 +391,47 @@
             },
         });
 
+        //初始化地區、主題下拉選單
         regionSelec.value = "";
         themeSelec.innerHTML = ' <option selected disabled hidden style="display: none" value="">請選擇主題</option>';
     }
+
+    //根據不同的登入者，顯示不同的連結
+    $.ajax({
+        url: "/SpeakerServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getLoginUser"},
+        success: function (data) {
+            var speaker = eval("(" + data + ")");
+            console.dir(speaker);
+
+            if(speaker == null) {
+                $$("links").innerHTML = '<div>尚未登入帳號，請先進行登入</div><div><a href="/login.html">登入</a></div>';
+            } else if(speaker.role == 'admin') {
+                var dom =
+                '<div><a href="/addViewpoint.html">新增景點</a></div>' +
+                '<div><a href="/manageRegions.html">地區管理頁面</a></div>' +
+                '<div><a href="/manageThemes.html">主題管理頁面</a></div>' +
+                '<div><a href="/manageViewpoints.html">景點管理頁面</a></div>' +
+                '<div><a href="/manageSpeakers.html">講者管理頁面</a></div>' +
+                '<div><a href="/manageSNs.html">序號管理頁面</a></div>' +
+                '<div>登入者： ' + speaker.username + '</div>' +
+                '<div><a href="/LogoutServlet">登出</a></div>';
+
+                $$("links").innerHTML = dom;
+            } else {
+                var dom =
+                        '<div><a href="/addViewpoint.html">新增景點</a></div>' +
+                        '<div><a href="/manageRegions.html">地區管理頁面</a></div>' +
+                        '<div><a href="/manageThemes.html">主題管理頁面</a></div>' +
+                        '<div><a href="/manageViewpoints.html">景點管理頁面</a></div>' +
+                        '<div><a href="/manageSpeakers.html">講者管理頁面</a></div>' +
+                        '<div><a href="/manageSNs.html">序號管理頁面</a></div>' +
+                        '<div>登入帳號： ' + speaker.username + '</div>' +
+                        '<div><a href="/LogoutServlet">登出</a></div>';
+                $$("links").innerHTML = dom;
+            }
+        },
+    });
 
 </script>

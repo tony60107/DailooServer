@@ -100,7 +100,10 @@ public class SpeakerServlet extends HttpServlet {
 					throw new RuntimeException("您沒有權限更改該資料");
 				}
 			}
-			
+			//如果是取得登入帳號資料
+			else if("getLoginUser".equals(method)){
+				response.getWriter().write(gson.toJson(loginUser));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
