@@ -36,6 +36,7 @@ public class SpeakerServlet extends HttpServlet {
 			// 如果是註冊講者
 			if ("registSpeaker".equals(method)) {
 				BeanUtils.populate(speaker, request.getParameterMap());
+				speaker.setOwnerId(loginUser.getId());
 				service.addSpeaker(speaker);
 				response.sendRedirect("/manageSpeakers.html");
 			} 
@@ -48,10 +49,16 @@ public class SpeakerServlet extends HttpServlet {
 					speaker = service.getSpeakerByUnAndPsw(speaker.getUsername(),speaker.getPassword());
 					response.getWriter().write(gson.toJson(speaker));
 				}
-				//如果有指定講者ID且登入身份為管理員
-				else if(request.getParameter("id") != null && "admin".equals(loginUser.getRole())){
-					String speakerJson = service.findSpeakerById(request.getParameter("id"));
-					response.getWriter().write(speakerJson);
+				//如果有指定講者ID
+				else if(request.getParameter("id") != null){
+					//根據指定的ID找到講者
+					speaker = gson.fromJson(service.findSpeakerById(request.getParameter("id")), Speaker.class);
+					//如果要更改講者資訊的為	講者本人	 或	該講者的擁有者	或	管理員 
+					if(loginUser.getId().equals(speaker.getId()) || loginUser.getId().equals(speaker.getOwnerId())
+							|| "admin".equals(loginUser.getRole())){
+						String speakerJson = service.findSpeakerById(request.getParameter("id"));
+						response.getWriter().write(speakerJson);
+					}
 				}
 			}	
 			//如果是更新講者資訊 
@@ -76,24 +83,42 @@ public class SpeakerServlet extends HttpServlet {
 					}
 					response.sendRedirect("/updateSpeakerInfo.html");
 				}
-				//如果有指定要更改講者資訊的ID且登入者為管理員
-				else if(paramMap.get("id") != null && "admin".equals(loginUser.getRole())) {
+				//如果有指定要更改講者資訊的ID
+				else if(paramMap.get("id") != null) {
 					//根據指定的ID找到講者
 					speaker = gson.fromJson(service.findSpeakerById(paramMap.get("id")), Speaker.class);
-					//將新資訊進行封裝
-					BeanUtils.populate(speaker, paramMap);
-					service.updateSpeakerInfo(speaker, paramMap.get("imgurls"));
-					response.sendRedirect("/updateSpeakerInfo.html?id=" + paramMap.get("id"));
+					//如果要更改講者資訊的為	講者本人	 或	該講者的擁有者	或	管理員 
+					if(loginUser.getId().equals(speaker.getId()) || loginUser.getId().equals(speaker.getOwnerId())
+							|| "admin".equals(loginUser.getRole())){
+						//將新資訊進行封裝
+						BeanUtils.populate(speaker, paramMap);
+						service.updateSpeakerInfo(speaker, paramMap.get("imgurls"));
+						response.sendRedirect("/updateSpeakerInfo.html?id=" + paramMap.get("id"));
+					} else {
+						throw new RuntimeException("您沒有權限更改講者資訊");
+					} 
 				}
 			}
 			//如果是找到所有的講者
 			else if ("findAllSpeakers".equals(method)) {
-				String json = service.findAllSpeakers();
-				response.getWriter().write(json);
+				//如果是管理員，找出所有的講者
+				if("admin".equals(loginUser.getRole())) {
+					String json = service.findAllSpeakers();
+					response.getWriter().write(json);
+				} 
+				//其他則僅找出登入帳號擁有的講者與自己
+				else {
+					String json = service.findSpeakersByOwnerId(loginUser.getId());
+					response.getWriter().write(json);
+				}
 			}
 			//如果是刪除講者
 			else if("delSpeakerById".equals(method)){
-				if("admin".equals(loginUser.getRole())){
+				//根據指定的ID找到講者
+				speaker = gson.fromJson(service.findSpeakerById(request.getParameter("id")), Speaker.class);
+				//如果要更改講者資訊的為	講者本人	 或	該講者的擁有者	或	管理員 
+				if(loginUser.getId().equals(speaker.getId()) || loginUser.getId().equals(speaker.getOwnerId())
+						|| "admin".equals(loginUser.getRole())){
 					service.delSpeakerById(request.getParameter("id"));
 					response.sendRedirect("/manageSpeakers.html");
 				}else {

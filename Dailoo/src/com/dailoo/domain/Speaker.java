@@ -14,6 +14,11 @@ public class Speaker {
 	private String intro;		//自我介紹
 	private String youtubeUrl;	//youtube嵌入碼網址
 	private String role;		//使用者分類
+	private String ownerId; 	//講者擁有(管理)者ID
+	
+	//-------------------------------------------
+	private String ownerName;   //講者擁有(管理)者帳號
+	
 	public String getId() {
 		return id;
 	}
@@ -80,12 +85,23 @@ public class Speaker {
 	public void setYoutubeUrl(String youtubeUrl) {
 		this.youtubeUrl = youtubeUrl;
 	}
-	
 	public String getRole() {
 		return role;
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	public String getOwnerId() {
+		return ownerId;
+	}
+	public void setOwnerId(String ownerId) {
+		this.ownerId = ownerId;
+	}
+	public String getOwnerName() {
+		return ownerName;
+	}
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
 	}
 	@Override
 	public String toString() {

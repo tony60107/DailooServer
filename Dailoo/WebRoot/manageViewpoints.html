@@ -115,28 +115,29 @@
     <div id="links" style="margin-top: 30px; margin-bottom: 30px;">
     </div>
 
-    <div class="filters clearfix">
-        <label class="fl" style="font-size: 16px; line-height: 36px;">地區：</label>
-        <select id="regionSelect" type="text" name="regionId" class="fl form-control" style="width: 200px; margin-right: 35px;">
-            <option selected disabled hidden style='display: none' value=''>請選擇地區</option>
-        </select>
-        <label class="fl" style="font-size: 16px; line-height: 36px;">主題：</label>
-        <select id="themeSelec" name="themeId" class="fl form-control" style="width: 200px;">
-            <option selected disabled hidden style='display: none' value=''>請選擇主題</option>
-        </select>
+    <div id="filter">
+        <div class="filters clearfix">
+            <label class="fl" style="font-size: 16px; line-height: 36px;">地區：</label>
+            <select id="regionSelect" type="text" name="regionId" class="fl form-control" style="width: 200px; margin-right: 35px;">
+                <option selected disabled hidden style='display: none' value=''>請選擇地區</option>
+            </select>
+            <label class="fl" style="font-size: 16px; line-height: 36px;">主題：</label>
+            <select id="themeSelec" name="themeId" class="fl form-control" style="width: 200px;">
+                <option selected disabled hidden style='display: none' value=''>請選擇主題</option>
+            </select>
+        </div>
+
+
+        <div id="twzipcode" class="clearfix" style="width: 500px; margin-top: 15px;">
+            <label class="fl" style="font-size: 16px; line-height: 36px;">地址：</label>
+            <div id="city" data-role="county" data-name="city" data-style="form-control"
+                 class="fl" style="width: 100px; margin-right: 40px;"></div>
+            <div id="town" data-role="district" data-name="town" data-style="form-control"
+                 class="fl" style="width: 120px;"></div>
+            <div data-role="zipcode" data-name="zipcode" data-value="" data-style="form-control area"
+                 style="display: none"></div>
+        </div>
     </div>
-
-
-    <div id="twzipcode" class="clearfix" style="width: 500px; margin-top: 15px;">
-        <label class="fl" style="font-size: 16px; line-height: 36px;">地址：</label>
-        <div id="city" data-role="county" data-name="city" data-style="form-control"
-             class="fl" style="width: 100px; margin-right: 40px;"></div>
-        <div id="town" data-role="district" data-name="town" data-style="form-control"
-             class="fl" style="width: 120px;"></div>
-        <div data-role="zipcode" data-name="zipcode" data-value="" data-style="form-control area"
-             style="display: none"></div>
-    </div>
-
     <div class="demo">
         <table class="bordered">
             <thead>
@@ -407,6 +408,7 @@
 
             if(speaker == null) {
                 $$("links").innerHTML = '<div>尚未登入帳號，請先進行登入</div><div><a href="/login.html">登入</a></div>';
+                $$("filter").innerHTML = "";
             } else if(speaker.role == 'admin') {
                 var dom =
                 '<div><a href="/addViewpoint.html">新增景點</a></div>' +
@@ -430,6 +432,7 @@
                         '<div>登入帳號： ' + speaker.username + '</div>' +
                         '<div><a href="/LogoutServlet">登出</a></div>';
                 $$("links").innerHTML = dom;
+                $$("filter").innerHTML = "";
             }
         },
     });

@@ -15,11 +15,12 @@ public class SpeakerDaoImpl implements SpeakerDao{
 
 	@Override
 	public void addSpeaker(Speaker speaker) {
-		String sql = "insert into speakers (id, username, password, role) "
-				+ "values(?,?,?,?)";
+		String sql = "insert into speakers (id, username, password, role, ownerId) "
+				+ "values(?,?,?,?,?)";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			runner.update(sql, speaker.getId(), speaker.getUsername(), speaker.getPassword(), speaker.getRole());
+			runner.update(sql, speaker.getId(), speaker.getUsername(), speaker.getPassword(),
+					speaker.getRole(), speaker.getOwnerId());
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -116,6 +117,19 @@ public class SpeakerDaoImpl implements SpeakerDao{
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
 			return runner.query(sql, new BeanHandler<Speaker>(Speaker.class), username);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public List<Speaker> findSpeakersByOwnerId(String ownerId) {
+		String sql = "select * from speakers where ownerId = ? order by registTime desc";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanListHandler<Speaker>(Speaker.class), ownerId);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

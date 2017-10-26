@@ -58,5 +58,12 @@ public interface SpeakerDao extends Dao{
 	 */
 	Speaker findSpeakerByUsername(String username);
 
+	/**
+	 * 根據擁有者ID，找出其擁有的講者
+	 * @param ownerId 擁有者ID 
+	 * @return 講者List集合的JSON數據
+	 */
+	List<Speaker> findSpeakersByOwnerId(String ownerId);
+
 	
 }

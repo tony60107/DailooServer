@@ -59,6 +59,7 @@ public class SpeakerServiceImpl implements SpeakerService{
 		for(int i = 0; i < speakers.size(); i++){
 			Speaker sp = speakers.get(i);
 			sp.setPassword("");
+			if(sp.getOwnerId() != null) sp.setOwnerName(dao.findSpeakerById(sp.getOwnerId()).getUsername());
 			//String speakerJson = "{\"id\":\"" + sp.getId() + "\", \"name\":\"" + sp.getName() + "\"},";
 			//json = json + speakerJson;
 		}
@@ -76,6 +77,21 @@ public class SpeakerServiceImpl implements SpeakerService{
 	public String findSpeakerById(String id) {
 		Speaker speaker = dao.findSpeakerById(id);
 		return gson.toJson(speaker);
+	}
+
+	@Override
+	public String findSpeakersByOwnerId(String ownerId) {
+		List<Speaker> list = dao.findSpeakersByOwnerId(ownerId);
+		Speaker login = dao.findSpeakerById(ownerId);
+		list.add(0, login);
+		
+		for(int i = 0; i < list.size(); i++){
+			Speaker sp = list.get(i);
+			sp.setPassword("");
+			if(sp.getOwnerId() != null) sp.setOwnerName(dao.findSpeakerById(sp.getOwnerId()).getUsername());
+		}
+		
+		return gson.toJson(list);
 	}
 
 }
