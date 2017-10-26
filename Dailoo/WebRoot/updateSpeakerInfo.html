@@ -23,12 +23,9 @@
 </head>
 <body>
 <div class="w">
-    <div><a href="/addViewpoint.html">新增景點</a></div>
-    <div><a href="/manageRegions.html">地區管理頁面</a></div>
-    <div><a href="/manageThemes.html">主題管理頁面</a></div>
-    <div><a href="/manageViewpoints.html">景點管理頁面</a></div>
-    <div><a href="/manageSpeakers.html">講者管理頁面</a></div>
-    <div><a href="/LogoutServlet">登出</a></div>
+
+    <div id="links" style="margin-top: 30px; margin-bottom: 30px;"></div>
+
     <form class="main-form" role="form" action="/SpeakerServlet?method=updateSpeakerInfo"
           method="post" enctype="multipart/form-data">
         <div class="form-group" style="display: none">
@@ -94,6 +91,44 @@
             $$("resume").value = data.resume;
             $$("intro").innerHTML = data.intro;
             $$("youtubeUrl").value = data.youtubeUrl;
+        },
+    });
+
+    //根據不同的登入者，顯示不同的連結
+    $.ajax({
+        url: "/SpeakerServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getLoginUser"},
+        success: function (data) {
+            var speaker = eval("(" + data + ")");
+            console.dir(speaker);
+
+            if(speaker == null) {
+                $$("links").innerHTML = '<div>尚未登入帳號，請先進行登入</div><div><a href="/login.html">登入</a></div>';
+                $$("filter").innerHTML = "";
+            } else if(speaker.role == 'admin') {
+                var dom =
+                        '<div><a href="/addViewpoint.html">新增景點</a></div>' +
+                        '<div><a href="/manageRegions.html">地區管理頁面</a></div>' +
+                        '<div><a href="/manageThemes.html">主題管理頁面</a></div>' +
+                        '<div><a href="/manageViewpoints.html">景點管理頁面</a></div>' +
+                        '<div><a href="/manageSpeakers.html">講者管理頁面</a></div>' +
+                        '<div><a href="/manageSNs.html">序號管理頁面</a></div>' +
+                        '<div>登入者： ' + speaker.username + '</div>' +
+                        '<div><a href="/LogoutServlet">登出</a></div>';
+
+                $$("links").innerHTML = dom;
+            } else {
+                var dom =
+                        '<div><a href="/addViewpoint.html">新增景點</a></div>' +
+                        '<div><a href="/manageViewpoints.html">景點管理頁面</a></div>' +
+                        '<div><a href="/manageSpeakers.html">講者管理頁面</a></div>' +
+                        '<div><a href="/manageSNs.html">序號管理頁面</a></div>' +
+                        '<div>登入帳號： ' + speaker.username + '</div>' +
+                        '<div><a href="/LogoutServlet">登出</a></div>';
+                $$("links").innerHTML = dom;
+                $$("filter").innerHTML = "";
+            }
         },
     });
 </script>
