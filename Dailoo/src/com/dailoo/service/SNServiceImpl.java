@@ -65,6 +65,18 @@ public class SNServiceImpl implements SNService{
 	@Override
 	public String findSNByOwnerId(String ownerId) {
 		List<SerialNumber> sns = dao.findSNByOwnerId(ownerId);
+		
+		//找出該講者 旗下的講者
+		List<Speaker> list = speakerDao.findSpeakersByOwnerId(ownerId);
+		//查詢旗下講者擁有的序號
+		for(int i = 0; i < list.size(); i++) {
+			List<SerialNumber> temps = dao.findSNByOwnerId(list.get(i).getId());
+			for(SerialNumber sn : temps){
+				sns.add(sn);
+			}
+		}
+		
+		//設定序號的擁有者姓名及景點名稱
 		for(int i = 0; i < sns.size(); i++){
 			Speaker sp = speakerDao.findSpeakerById(sns.get(i).getOwnerId());
 			Viewpoint vp = null;

@@ -171,7 +171,7 @@ function initViewpointData(vpData) {
     }
     //景點介紹內容
     var vpIntro = $$("vpIntro");
-    vpIntro.innerHTML = vpData.intro.replace(/\n/g,'<br>');
+    vpIntro.innerHTML = vpData.intro.replace(/\r\n\r\n/g,'<br>');
     if (vpIntro.offsetHeight <= 220) {
         $$("readAllCont").style.display = "none";
     } else if (vpIntro.offsetHeight >= 275) {
