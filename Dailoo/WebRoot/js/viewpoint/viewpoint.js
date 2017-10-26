@@ -99,7 +99,7 @@ function initAuthorData(speakerData) {
     }
     //講者自我介紹
     var speakerIntro = $$("speakerIntro");
-    speakerIntro.innerHTML = speakerData.intro.replace(/\n/g,'<br>');
+    speakerIntro.innerHTML = speakerData.intro.replace(/\r\n\r\n/g,'<br>');
     if (speakerIntro.offsetHeight <= 220) {
         $$("readAllSpeakerIntro").style.display = "none";
     } else if (speakerIntro.offsetHeight >= 334) {

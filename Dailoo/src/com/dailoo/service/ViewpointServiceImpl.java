@@ -320,6 +320,16 @@ public class ViewpointServiceImpl implements ViewpointService{
 	@Override
 	public String findViewpointSimplesBySpeaker(Speaker speaker) {
 		List<Viewpoint> vps = dao.findViewpointsBySpeakerId(speaker.getId());
+		
+		//找出講者 旗下所有講者擁有的景點
+		List<Speaker> speakers = speakerDao.findSpeakersByOwnerId(speaker.getId());
+		for(Speaker sp : speakers) {
+			List<Viewpoint> list = dao.findViewpointsBySpeakerId(sp.getId());
+			for(Viewpoint vp : list){
+				vps.add(vp);
+			}
+		}
+		
 		List<ViewpointSimple> vpsims =  this.toVpSimple(vps);
 		return gson.toJson(vpsims);
 	}
