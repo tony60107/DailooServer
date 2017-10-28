@@ -71,15 +71,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manageThemes.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="manageThemes.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manageThemes.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.3889515">
+            <state vertical-scroll-proportion="39.741936">
               <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
               <folding>
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="updateSpeakerInfo.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/updateSpeakerInfo.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-18.67742">
+              <caret line="68" column="56" selection-start-line="68" selection-start-column="56" selection-end-line="68" selection-end-column="56" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="viewpoint.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/css/viewpoint.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.15107103">
+              <caret line="318" column="14" selection-start-line="318" selection-start-column="14" selection-end-line="318" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -136,7 +159,6 @@
         <option value="$PROJECT_DIR$/addviewpoint.html" />
         <option value="$PROJECT_DIR$/js/viewlist.js" />
         <option value="$PROJECT_DIR$/js/viewpoint/audio.js" />
-        <option value="$PROJECT_DIR$/css/viewpoint.css" />
         <option value="$PROJECT_DIR$/css/footer.css" />
         <option value="$PROJECT_DIR$/css/base.css" />
         <option value="$PROJECT_DIR$/footer.html" />
@@ -153,7 +175,6 @@
         <option value="$PROJECT_DIR$/editAudio.html" />
         <option value="$PROJECT_DIR$/manageThemes.html" />
         <option value="$PROJECT_DIR$/updateRegionInfo.html" />
-        <option value="$PROJECT_DIR$/updateSpeakerInfo.html" />
         <option value="$PROJECT_DIR$/updateThemeInfo.html" />
         <option value="$PROJECT_DIR$/updateViewpointInfo.html" />
         <option value="$PROJECT_DIR$/addViewpoint.html" />
@@ -161,6 +182,8 @@
         <option value="$PROJECT_DIR$/manageSpeakers.html" />
         <option value="$PROJECT_DIR$/manageViewpoints.html" />
         <option value="$PROJECT_DIR$/manageRegions.html" />
+        <option value="$PROJECT_DIR$/updateSpeakerInfo.html" />
+        <option value="$PROJECT_DIR$/css/viewpoint.css" />
       </list>
     </option>
   </component>
@@ -828,12 +851,12 @@
       <workItem from="1508920504944" duration="5928000" />
       <workItem from="1509003279442" duration="6440000" />
       <workItem from="1509091434575" duration="742000" />
-      <workItem from="1509179096413" duration="11939000" />
+      <workItem from="1509179096413" duration="12953000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="916886000" />
+    <option name="totallyTimeSpent" value="917900000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1072,13 +1095,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/viewpoint.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7440812">
-          <caret line="454" column="21" selection-start-line="454" selection-start-column="21" selection-end-line="454" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/base.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.83816427">
@@ -1202,17 +1218,6 @@
           <caret line="25" column="117" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="117" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/updateSpeakerInfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7096774">
-          <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1350,12 +1355,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manageThemes.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3889515">
+        <state vertical-scroll-proportion="39.741936">
           <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/updateSpeakerInfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.67742">
+          <caret line="68" column="56" selection-start-line="68" selection-start-column="56" selection-end-line="68" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/viewpoint.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15107103">
+          <caret line="318" column="14" selection-start-line="318" selection-start-column="14" selection-end-line="318" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>

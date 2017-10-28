@@ -261,7 +261,7 @@
 
 /*講者介紹開始*/
 .speaker {
-    width: 880px;
+    width: 860px;
     margin: 0 auto;
     margin-top: 30px;
 }
@@ -273,7 +273,6 @@
 }
 
 .speaker .info-l {
-    margin-left: 36px;
 }
 
 .speaker .info-l .photo {
@@ -317,9 +316,8 @@
 
 /*講者聯絡資訊開始*/
 .speaker .contactInfo {
-    width: 792px;
+    width: 835px;
     overflow: hidden;
-    margin-left: 42px;
     margin-top: 46px;
 }
 
@@ -386,8 +384,7 @@
 /*講者簡述開始*/
 .speaker .intro {
     margin-top: 42px;
-    margin-left: 36px;
-    width: 808px;
+    width: 860px;
     height: 100%;
     font-size: 40px;
     line-height: 56px;
