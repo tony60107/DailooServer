@@ -137,7 +137,7 @@
             <label>擁有者</label>
             <select id="speaker_list" name="ownerId" class="form-control"></select>
         </div-->
-        <div class="btn btn-default" onclick="checkForm();">產生</div>
+        <div class="btn btn-warning" onclick="checkForm();">產生</div>
     </form>
     <div id="qrcode" style="width: 150px; height: 150px; border: 1px solid #666"></div>
     <div id="SNStat" style="width: 100%; text-align: center">正在使用的序號：</div>
@@ -145,14 +145,14 @@
         <table class="bordered">
             <thead>
             <tr id="thead">
-                <th style="width: 140px;">序號</th>
+                <th style="width: 140px;">序號<br/>(點擊顯示QRCode)</th>
                 <th style="width: 70px;">已使用次數</th>
                 <th style="width: 70px;">最大使用次數</th>
                 <th style="width: 180px;">開始使用時間</th>
                 <th style="width: 66px;">使用時長</th>
                 <th style="width: 220px;">對應景點</th>
                 <th>使用序號</th>
-                <th>擁有者</th>
+                <th style="width: 120px;">擁有者</th>
 
             </tr>
             </thead>
@@ -188,7 +188,7 @@
                     '<td>' + sns[i].useLength + '小時</td>' +
                     '<td>' + sns[i].viewpointName + '</td>' +
                     '<td><a href="/SNServlet?method=useSN&code='+ sns[i].code +'">使用</a></td>' +
-                    '<td>' + sns[i].ownerName + '</td>' +
+                    '<td>' + (sns[i].ownerName == '' ? '尚未設定該講者姓名' : sns[i].ownerName) + '</td>' +
                     '<td class="del"><a href="/SNServlet?method=delSN&code=' + sns[i].code +'">刪除</a></td> </tr>';
             $$("tbody").innerHTML = $$("tbody").innerHTML + dom;
         }
@@ -245,12 +245,14 @@
     //確認表單資料
     function checkForm() {
         var useLength = $$("useLength").value;
-        if(useLength > 0 && useLength <= 96) {
-            $$("mainForm").submit();
-        } else {
+        if(useLength <= 0 && useLength > 96) {
             alert("使用時長輸入錯誤，請介於1~96之間");
             return;
+        } else if($$("vpSelect").value == ''){
+            alert("尚未選擇對應景點，請先前往建立景點");
+            return;
         }
+        $$("mainForm").submit();
     }
 
     //將序號轉換為QRC

@@ -73,7 +73,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 	public void addViewpoint(Viewpoint vp) {
 		vp.setId(UUID.randomUUID().toString());
 		
-		if(vp.getLatitude() == null || vp.getLongitude() == null){
+		if(vp.getLatitude() == null || vp.getLatitude() == 0 || vp.getLongitude() == null || vp.getLongitude() == 0){
 			//根據地址取得經緯度
 			double [] address = GoogleMapUtils.getAdressXY(vp.getAddress());
 			vp.setLatitude(address[0]);

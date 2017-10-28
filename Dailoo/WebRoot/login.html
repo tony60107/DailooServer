@@ -18,14 +18,32 @@
     <form class="main-form" role="form" action="/LoginServlet" method="post">
         <div class="form-group">
             <label>帳號</label>
-            <input type="text" name="username" class="form-control" placeholder="輸入帳號" value="">
+            <input type="text" id="username" name="username" class="form-control" placeholder="輸入帳號" value="">
         </div>
         <div class="form-group">
             <label>密碼</label>
-            <input type="password" name="password" class="form-control" placeholder="輸入密碼" value="">
+            <input type="password" id="password" name="password" class="form-control" placeholder="輸入密碼" value="">
         </div>
-        <button type="submit" class="btn btn-default">送出</button>
+        <div class="btn btn-warning" onclick="submit();">登入</div>
     </form>
 </div>
 </body>
 </html>
+<script type="text/javascript" src="js/base.js"></script>
+<script>
+    function submit(){
+        $.ajax({
+            url: "/LoginServlet", context: document.body,
+            type: "POST",
+            data: {"username": $$("username").value, "password": $$("password").value},
+            success: function (data) {
+                var data = eval("(" + data + ")");
+                if(data.error != undefined) {
+                    alert(data.error);
+                } else {
+                    location.href = "/updateSpeakerInfo.html";
+                }
+            },
+        });
+    }
+</script>

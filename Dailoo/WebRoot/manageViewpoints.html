@@ -144,7 +144,7 @@
             <tr>
                 <th width="120px">景點名稱</th>
                 <th width="150px">副標題</th>
-                <th>講者</th>
+                <th  width="100px">講者</th>
                 <th>時間長度</th>
                 <th>編輯</th>
                 <th>預覽</th>
@@ -190,7 +190,7 @@
             var dom = '<tr>' +
                     '<td>' + vp[i].name + '</td>' +
                     '<td>' + vp[i].subtitle + '</td>' +
-                    '<td>' + vp[i].speakerName + '</td>' +
+                    '<td>' + (vp[i].speakerName == '' ? '未設定該講者姓名' : vp[i].speakerName) + '</td>' +
                     '<td>' + parseInt(vp[i].audioLength / 60) + ' : ' + vp[i].audioLength % 60 + '</td>' +
                     '<td><a target="_blank" href="/updateViewpointInfo.html?id=' + vp[i].id + '">' + '編輯' + '</a></td>' +
                     '<td><a target="_blank" href="/viewpoint.html?id=' + vp[i].id + '">預覽</a></td>' +

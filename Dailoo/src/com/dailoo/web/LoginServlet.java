@@ -26,9 +26,10 @@ public class LoginServlet extends HttpServlet {
 		//2.调用Service中根据用户名密码查找用户的方法
 		Speaker speaker = service.getSpeakerByUnAndPsw(username,password);
 		if(speaker == null){
-			request.setAttribute("msg", "用户名密码不正确!");
+			request.setAttribute("msg", "帳號密码不正确!");
+			response.getWriter().write("{\"error\":\"帳號密碼不正確\"}");
 			//request.getRequestDispatcher("/login.jsp").forward(request, response);
-			response.sendRedirect("/login.html");
+			//response.sendRedirect("/login.html");
 			return;
 		}
 		
@@ -58,8 +59,8 @@ public class LoginServlet extends HttpServlet {
 			response.addCookie(autologinC);
 		//}
 		
-		response.sendRedirect("/updateSpeakerInfo.html");
-		
+		//response.sendRedirect("/updateSpeakerInfo.html");
+		response.getWriter().write("{}");
 	}
 
 	

@@ -68,11 +68,11 @@
             <input id="address" type="text" name="address" class="form-control" placeholder="輸入景點地址" value="">
         </div>
         <div class="form-group fl" style="width: 280px; margin-right: 30px;">
-            <label>緯度</label>
+            <label>緯度(可不填，由系統自動建立)</label>
             <input id="lat" type="text" name="latitude" class="form-control" placeholder="輸入緯度" value="">
         </div>
         <div class="form-group fl" style="width: 280px;">
-            <label>經度</label>
+            <label>經度(可不填，由系統自動建立)</label>
             <input id="lng" type="text" name="longitude" class="form-control" placeholder="輸入經度" value="">
         </div>
         <div class="form-group fl">
@@ -111,7 +111,7 @@
             console.dir(speakers);
             var speakerList = document.getElementById("speaker_list");
             for (var i = 0; i < speakers.length; i++) {
-                var dom = '<option value="' + speakers[i].id + '">' + speakers[i].name + '</option>';
+                var dom = '<option value="' + speakers[i].id + '">' + (speakers[i].name == '' ? '未設定該講者姓名' : speakers[i].name) + '</option>';
                 speakerList.innerHTML = speakerList.innerHTML + dom;
             }
         },
