@@ -263,7 +263,12 @@ public class ViewpointServlet extends HttpServlet {
 			}
 			//根據登入者，獲取其擁有的景點
 			else if("getViewpointsByLoginUser".equals(method)){
-				String json = service.findViewpointSimplesBySpeaker(loginUser);
+				String json = "";
+				if("admin".equals(loginUser.getRole())){
+					json = service.findAllViewpointSimples();
+				}else {
+					json = service.findViewpointSimplesBySpeaker(loginUser);
+				}
 				response.getWriter().write(json);
 			}
 			

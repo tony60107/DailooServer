@@ -129,6 +129,16 @@ public class SpeakerServlet extends HttpServlet {
 			else if("getLoginUser".equals(method)){
 				response.getWriter().write(gson.toJson(loginUser));
 			}
+			//如果是重置帳號和密碼	
+			else if("resetUSNandPWD".equals(method)){
+				if("admin".equals(loginUser.getRole())){
+					BeanUtils.populate(speaker, request.getParameterMap());
+					service.resetUSNandPWD(speaker);
+				} else {
+					throw new RuntimeException("您沒有權限更改該資料");
+				}
+				response.sendRedirect(request.getContextPath() + "/manageSpeakers.html");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

@@ -52,5 +52,11 @@ public interface SpeakerService extends Service{
 	 */
 	String findSpeakersByOwnerId(String ownerId);
 
+	/**
+	 * 重置帳號和密碼
+	 * @param speaker 講者Bean
+	 */
+	void resetUSNandPWD(Speaker speaker);
+
 
 }

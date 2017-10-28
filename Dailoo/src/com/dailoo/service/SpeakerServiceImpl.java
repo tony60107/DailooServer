@@ -94,4 +94,10 @@ public class SpeakerServiceImpl implements SpeakerService{
 		return gson.toJson(list);
 	}
 
+	@Override
+	public void resetUSNandPWD(Speaker speaker) {
+		speaker.setPassword(MD5Utils.md5(speaker.getPassword()));
+		dao.resetUSNandPWD(speaker);
+	}
+
 }

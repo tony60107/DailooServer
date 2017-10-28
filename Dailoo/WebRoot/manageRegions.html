@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>編輯地區</title>
+    <title>地區管理</title>
     <!-- 最新編譯和最佳化的 CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <!-- 選擇性佈景主題 -->
@@ -107,11 +107,18 @@
             -webkit-border-radius: 0 0 6px 0;
             border-radius: 0 0 6px 0;
         }
-
+        .del :hover{
+            color: #C81623;
+            text-decoration: underline;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 <div class="w">
+
+    <div class="title" style="margin-top: 20px; text-align: center; font-size: 35px; line-height: 35px;">地區管理</div>
+
     <div><a href="/addViewpoint.html">新增景點</a></div>
     <div><a href="/manageRegions.html">地區管理頁面</a></div>
     <div><a href="/manageThemes.html">主題管理頁面</a></div>
@@ -124,7 +131,7 @@
             <label>地區名稱</label>
             <input id="name" type="text" name="name" class="form-control" placeholder="輸入景點名稱" value="">
         </div>
-        <input type="submit" value="新增"/>
+        <input class="btn btn-default" type="submit" value="新增"/>
     </form>
 
     <div class="demo">
@@ -159,10 +166,19 @@
                         '<td>' + regions[i].name + '</td>' +
                         '<td><a href="/updateRegionInfo.html?id=' + regions[i].id + '">編輯</a></td>' +
                         '<td><a href="/themelist.html?id=' + regions[i].id + '">預覽</a></td>' +
-                        '<td><a href="/RegionServlet?method=delRegionById&id=' + regions[i].id + '">刪除</a></td>' +
+                        '<td  class="del" onclick="checkDel(this);"><div link="/RegionServlet?method=delRegionById&id=' + regions[i].id + '">刪除</div></td>' +
                         '</tr>';
                 $$("tbody").innerHTML = $$("tbody").innerHTML + dom;
             }
         },
     });
+
+    //確認刪除對話框
+    function checkDel(btn){
+        var bool = confirm("確定刪除地區");
+        var url = btn.children[0].getAttribute("link");
+        if(bool){
+            location.href = url;
+        }else {return;}
+    }
 </script>

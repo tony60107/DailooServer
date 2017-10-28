@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <title>景點管理</title>
@@ -108,10 +108,16 @@
             border-radius: 0 0 6px 0;
         }
 
+        .del :hover{
+            color: #C81623;
+            text-decoration: underline;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 <div class="w">
+    <div class="title" style="margin-top: 20px; text-align: center; font-size: 35px; line-height: 35px;">景點管理</div>
     <div id="links" style="margin-top: 30px; margin-bottom: 30px;">
     </div>
 
@@ -212,11 +218,20 @@
                         dom += '<td style="text-align: center;"><img src="/images/general/cancel.png" onclick="switchPay(\''+ vp[i].id +'\',1,this);"/></td>';
                     }
 
-                    dom += '<td><a href="/ViewpointServlet?method=delViewpoint&id=' + vp[i].id + '">刪除</a></td>' +
+                    dom += '<td class="del" onclick="checkDel(this);"><div link="/ViewpointServlet?method=delViewpoint&id=' + vp[i].id + '">刪除</div></td>' +
                     '</tr>';
             $$("tbody").innerHTML = $$("tbody").innerHTML + dom;
             //console.dir("<url>\n\11<loc>" + "http://www.dailoo.com/viewpoint.html?utm_source=InSite&utm_campaign=" + vp[i].name + "_" + vp[i].subtitle + "&id=" + vp[i].id + "</loc>\n</url>");
         }
+    }
+
+    //確認刪除對話框
+    function checkDel(btn){
+        var bool = confirm("確定刪除景點");
+        var url = btn.children[0].getAttribute("link");
+        if(bool){
+            location.href = url;
+        }else {return;}
     }
 
     //向伺服器發送更改付費刊登的狀態

@@ -136,4 +136,16 @@ public class SpeakerDaoImpl implements SpeakerDao{
 		}
 	}
 
+	@Override
+	public void resetUSNandPWD(Speaker speaker) {
+		String sql = "update speakers set username=?, password=? where id=?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, speaker.getUsername(), speaker.getPassword(), speaker.getId());
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
 }

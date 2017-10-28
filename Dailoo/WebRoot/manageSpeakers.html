@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>講者管理頁面</title>
+    <title>講者管理</title>
     <!-- 最新編譯和最佳化的 CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <!-- 選擇性佈景主題 -->
@@ -108,11 +108,16 @@
             border-radius: 0 0 6px 0;
         }
 
+        .del :hover{
+            color: #C81623;
+            text-decoration: underline;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 <div class="w">
-
+    <div class="title" style="margin-top: 20px; text-align: center; font-size: 35px; line-height: 35px;">講者管理</div>
     <div id="links" style="margin-top: 30px; margin-bottom: 30px;"></div>
 
     <div class="title" style="text-align: center; margin-top: 20px;">註冊講者</div>
@@ -125,19 +130,20 @@
             <label>密碼</label>
             <input type="password" name="password" class="form-control" placeholder="輸入密碼" value="">
         </div>
-        <button type="submit" class="btn btn-default">送出</button>
+        <button type="submit" class="btn btn-default">註冊</button>
     </form>
 
     <div class="demo">
         <table class="bordered">
             <thead>
-            <tr>
+            <tr id="thead">
                 <th>帳號</th>
                 <th>姓名</th>
                 <th>權限</th>
                 <th>管理者</th>
                 <th>編輯</th>
                 <th>刪除</th>
+
             </tr>
             </thead>
             <tbody id="tbody">
@@ -168,45 +174,63 @@
                 '<td>' + speakers[i].role + '</td>' +
                 '<td>' + speakers[i].ownerName + '</td>' +
                 '<td><a target="_blank" href="/updateSpeakerInfo.html?id=' + speakers[i].id + '">編輯</a></td>' +
-                '<td><a href="/SpeakerServlet?method=delSpeakerById&id='+ speakers[i].id +'">刪除</a></td> </tr>';
+                '<td class="del" onclick="checkDel(this);"><div link="/SpeakerServlet?method=delSpeakerById&id='+ speakers[i].id +'">刪除</div></td>' +
+                '<td class="reset"><a target="_blank" href="/resetSpeaker.html?id=' + speakers[i].id + '">重設</a></td> </tr>';
             $$("tbody").innerHTML = $$("tbody").innerHTML + dom;
         }
     }
 
-    //根據不同的登入者，顯示不同的連結
-    $.ajax({
-        url: "/SpeakerServlet", context: document.body,
-        type: "POST",
-        data: {"method": "getLoginUser"},
-        success: function (data) {
-            var speaker = eval("(" + data + ")");
-            console.dir(speaker);
+    //確認刪除對話框
+    function checkDel(btn){
+        var bool = confirm("確定刪除講者");
+        var url = btn.children[0].getAttribute("link");
+        if(bool){
+            location.href = url;
+        }else {return;}
+    }
 
-            if(speaker == null) {
-                $$("links").innerHTML = '<div>尚未登入帳號，請先進行登入</div><div><a href="/login.html">登入</a></div>';
-                $$("filter").innerHTML = "";
-            } else if(speaker.role == 'admin') {
-                var dom =
-                        '<div><a href="/addViewpoint.html">新增景點</a></div>' +
-                        '<div><a href="/manageRegions.html">地區管理頁面</a></div>' +
-                        '<div><a href="/manageThemes.html">主題管理頁面</a></div>' +
-                        '<div><a href="/manageViewpoints.html">景點管理頁面</a></div>' +
-                        '<div><a href="/manageSpeakers.html">講者管理頁面</a></div>' +
-                        '<div><a href="/manageSNs.html">序號管理頁面</a></div>' +
-                        '<div>登入者： ' + speaker.username + '</div>' +
-                        '<div><a href="/LogoutServlet">登出</a></div>';
+    window.onload = function() {
+        //根據不同的登入者，顯示不同的連結
+        $.ajax({
+            url: "/SpeakerServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getLoginUser"},
+            success: function (data) {
+                var speaker = eval("(" + data + ")");
+                console.dir(speaker);
 
-                $$("links").innerHTML = dom;
-            } else {
-                var dom =
-                        '<div><a href="/addViewpoint.html">新增景點</a></div>' +
-                        '<div><a href="/manageViewpoints.html">景點管理頁面</a></div>' +
-                        '<div><a href="/manageSpeakers.html">講者管理頁面</a></div>' +
-                        '<div><a href="/manageSNs.html">序號管理頁面</a></div>' +
-                        '<div>登入帳號： ' + speaker.username + '</div>' +
-                        '<div><a href="/LogoutServlet">登出</a></div>';
-                $$("links").innerHTML = dom;
-            }
-        },
-    });
+                if (speaker == null) {
+                    $$("links").innerHTML = '<div>尚未登入帳號，請先進行登入</div><div><a href="/login.html">登入</a></div>';
+                    $$("filter").innerHTML = "";
+                } else if (speaker.role == 'admin') {
+                    var dom =
+                            '<div><a href="/addViewpoint.html">新增景點</a></div>' +
+                            '<div><a href="/manageRegions.html">地區管理頁面</a></div>' +
+                            '<div><a href="/manageThemes.html">主題管理頁面</a></div>' +
+                            '<div><a href="/manageViewpoints.html">景點管理頁面</a></div>' +
+                            '<div><a href="/manageSpeakers.html">講者管理頁面</a></div>' +
+                            '<div><a href="/manageSNs.html">序號管理頁面</a></div>' +
+                            '<div>登入者： ' + speaker.username + '</div>' +
+                            '<div><a href="/LogoutServlet">登出</a></div>';
+                    $$("links").innerHTML = dom;
+
+                    $$("thead").innerHTML = $$("thead").innerHTML + '<th>重設帳密</th>';
+                } else {
+                    var dom =
+                            '<div><a href="/addViewpoint.html">新增景點</a></div>' +
+                            '<div><a href="/manageViewpoints.html">景點管理頁面</a></div>' +
+                            '<div><a href="/manageSpeakers.html">講者管理頁面</a></div>' +
+                            '<div><a href="/manageSNs.html">序號管理頁面</a></div>' +
+                            '<div>登入帳號： ' + speaker.username + '</div>' +
+                            '<div><a href="/LogoutServlet">登出</a></div>';
+                    $$("links").innerHTML = dom;
+
+                    var resets = $(".reset");
+                    for(var i = 0; i < resets.length; i++) {
+                        resets[i].style.display = "none";
+                    }
+                }
+            },
+        });
+    }
 </script>
