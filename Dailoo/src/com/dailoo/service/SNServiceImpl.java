@@ -82,7 +82,7 @@ public class SNServiceImpl implements SNService{
 			Viewpoint vp = null;
 			if(sns.get(i).getViewpointId() != null){
 				 vp = viewpointDao.findViewpointById(sns.get(i).getViewpointId());
-				 sns.get(i).setViewpointName(vp.getName() + "_" + vp.getSubtitle());
+				 if(vp != null)sns.get(i).setViewpointName(vp.getName() + "_" + vp.getSubtitle());
 			}
 			sns.get(i).setOwnerName(sp.getName());
 		}

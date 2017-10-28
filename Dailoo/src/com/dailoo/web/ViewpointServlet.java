@@ -16,6 +16,7 @@ import com.dailoo.domain.Speaker;
 import com.dailoo.domain.Viewpoint;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.service.AudioService;
+import com.dailoo.service.SpeakerService;
 import com.dailoo.service.ViewpointService;
 import com.dailoo.util.FileUploadUtils;
 import com.google.gson.Gson;
@@ -30,6 +31,7 @@ public class ViewpointServlet extends HttpServlet {
 		Viewpoint vp = new Viewpoint();
 		AudioService audioService = BasicFactory.getFactory().getService(AudioService.class);
 		Audio audio = new Audio();
+		SpeakerService speakerService = BasicFactory.getFactory().getService(SpeakerService.class);
 
 		// 取得客戶端要求
 		String method = request.getParameter("method");
@@ -85,10 +87,14 @@ public class ViewpointServlet extends HttpServlet {
 				BeanUtils.populate(vp, paramMap);
 				
 				//根據景點ID查找該景點
-				Viewpoint temp = service.findViewpointById(vp.getId());				
-				//進行權限管理，如果要求更改景點資訊的是該景點擁有者或是管理員
+				Viewpoint temp = service.findViewpointById(vp.getId());
+				//該景點的講者
+				Speaker speaker = gson.fromJson(speakerService.findSpeakerById(temp.getSpeakerId()), Speaker.class);
+
+				//進行權限管理，如果要求更改景點資訊的是該景點 擁有者 或 該擁有者的管理者 或 管理員
 				if(loginUser == null) throw new RuntimeException("您尚未登入");
-				if(loginUser.getId().equals(temp.getSpeakerId()) || "admin".equals(loginUser.getRole())){
+				if(loginUser.getId().equals(temp.getSpeakerId()) || loginUser.getId().equals(speaker.getOwnerId())
+						|| "admin".equals(loginUser.getRole())){
 					
 					//設定景點代表圖
 					if(paramMap.get("imgurls") != null){ //如果要更換景點代表圖
@@ -162,12 +168,15 @@ public class ViewpointServlet extends HttpServlet {
 				
 				//根據景點ID查找該景點
 				Viewpoint temp = service.findViewpointById(viewpointId);
+				//該景點的講者
+				Speaker speaker = gson.fromJson(speakerService.findSpeakerById(temp.getSpeakerId()), Speaker.class);
 				
 				if(temp == null) throw new RuntimeException("該景點不存在");
 				
-				//進行權限管理，如果要求更改景點資訊的是該景點擁有者或是管理員
+				//進行權限管理，如果要求更改景點資訊的是該景點 擁有者 或 該擁有者的管理者 或 管理員
 				if(loginUser == null) throw new RuntimeException("您尚未登入");
-				if(loginUser.getId().equals(temp.getSpeakerId()) || "admin".equals(loginUser.getRole())){
+				if(loginUser.getId().equals(temp.getSpeakerId()) || loginUser.getId().equals(speaker.getOwnerId())
+						|| "admin".equals(loginUser.getRole())){
 					//刪除景點
 					service.delViewpoint(viewpointId);
 					response.sendRedirect("/manageViewpoints.html");

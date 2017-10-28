@@ -47,7 +47,7 @@ $.ajax({
     data: {"method": "getRegionById", "id": regionId},
     success: function (data) {
         var region = eval("(" + data + ")");
-        $$("title").innerHTML = region.name + "周邊導覽";
+        $$("title").innerHTML = region.name + "行動語音導覽";
         document.title = region.name + " 帶路語音導覽";
     },
 });
