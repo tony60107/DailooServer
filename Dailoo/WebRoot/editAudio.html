@@ -107,6 +107,7 @@
         });
     }
 
+    //上傳標記時間
     function updateTag(){
         var tags = $$("taglist").children;
         for(var i = 0; i < tags.length; i++){
@@ -120,10 +121,10 @@
                 success: function (data) {
                     var data = eval("(" + data + ")");
                     console.dir(data);
+                    if(data.id == tags[tags.length - 1].id){window.location.reload();}
                 },
             });
         }
-        setTimeout(function(){window.location.reload();}, 500);
     }
 
     //根據不同的登入者，顯示不同的連結

@@ -99,7 +99,8 @@ function initAuthorData(speakerData) {
     }
     //講者自我介紹
     var speakerIntro = $$("speakerIntro");
-    speakerIntro.innerHTML = speakerData.intro.replace(/\r\n\r\n/g,'<br>');
+    speakerIntro.innerHTML = speakerData.intro.replace(/\r\n\r\n/g,'<br/>');
+    speakerIntro.innerHTML = speakerIntro.innerHTML.replace(/\n/g,'');
     if (speakerIntro.offsetHeight <= 220) {
         $$("readAllSpeakerIntro").style.display = "none";
     } else if (speakerIntro.offsetHeight >= 334) {
@@ -171,7 +172,8 @@ function initViewpointData(vpData) {
     }
     //景點介紹內容
     var vpIntro = $$("vpIntro");
-    vpIntro.innerHTML = vpData.intro.replace(/\r\n\r\n/g,'<br>');
+    vpIntro.innerHTML = vpData.intro.replace(/\r\n\r\n/g,'<br/>');
+    vpIntro.innerHTML =  vpIntro.innerHTML.replace(/\n/g,'');
     if (vpIntro.offsetHeight <= 220) {
         $$("readAllCont").style.display = "none";
     } else if (vpIntro.offsetHeight >= 275) {

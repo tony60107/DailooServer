@@ -156,7 +156,15 @@ public class ViewpointServiceImpl implements ViewpointService{
 		//找出同一地址下不同講者的景點
 		List<Viewpoint> temps = dao.findViewpointByAddressNotSpeaker(vp);
 		for(Viewpoint temp : temps){
-			neighView.add(0, temp);
+			//判斷週邊景點中，是否已經有了該景點
+			boolean isContain = false;
+			for(int i = 0; i < neighView.size(); i++) {
+				if(neighView.get(i).getId().equals(temp.getId())){
+					isContain = true;
+				}
+			}
+			//沒有該景點則新增至週邊景點
+			if(!isContain){neighView.add(0, temp);}
 		}
 		
 		

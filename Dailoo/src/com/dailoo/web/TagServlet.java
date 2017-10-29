@@ -51,6 +51,7 @@ public class TagServlet extends HttpServlet {
 				Tag tag = new Tag();
 				BeanUtils.populate(tag, request.getParameterMap());
 				service.updateTagById(tag);
+				response.getWriter().write("{\"id\":\"" + tag.getId() +"\"}");
 			} catch (Exception e) {
 				e.printStackTrace();
 				throw new RuntimeException(e);
