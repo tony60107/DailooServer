@@ -153,6 +153,12 @@ public class ViewpointServiceImpl implements ViewpointService{
 		Theme theme = themeDao.findThemeById(vp.getThemeId());
 		List<Viewpoint> moreAudio = dao.findViewpointsByNameAndSpeaker(vp.getName(), vp.getSpeakerId());
 		List<Viewpoint> neighView = dao.findNeighViewpoints(vp);
+		//刪除與景點同名的週邊景點
+		for(int i = 0; i < neighView.size(); i++) {
+			if(neighView.get(i).getName().equals(vp.getName())) {
+				neighView.remove(i);	--i;
+			}
+		}
 		//找出同一地址下不同講者的景點
 		List<Viewpoint> temps = dao.findViewpointByAddressNotSpeaker(vp);
 		for(Viewpoint temp : temps){

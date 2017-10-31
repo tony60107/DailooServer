@@ -1,57 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.0"
-    xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-    
-    <!--全站參數配置 -->
-    <context-param>
-    	<description>全站編碼配置</description>
-    	<param-name>encode</param-name>
-    	<param-value>utf-8</param-value>
-    </context-param>
-    
-    <!--過濾器配置開始-->
-    <filter>
-    	<description>全站亂碼過濾器</description>
-    	<filter-name>EncodeFilter</filter-name>
-    	<filter-class>com.dailoo.filter.EncodeFilter</filter-class>
-    </filter>
-    <filter-mapping>
-    	<filter-name>EncodeFilter</filter-name>
-    	<url-pattern>/*</url-pattern>
-    </filter-mapping>
-    
-    <filter>
-		<description>自动登陆过滤器</description>
-		<filter-name>AutoLoginFilter</filter-name>
-		<filter-class>com.dailoo.filter.AutoLoginFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>AutoLoginFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	
-	<filter>
-		<description>自動註冊序號過濾器</description>
-		<filter-name>SNFilter</filter-name>
-		<filter-class>com.dailoo.filter.SNFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>SNFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-    <!--過濾器配置結束 -->
-    
-    <error-page>
-    	<exception-type>java.lang.RuntimeException</exception-type>
-    	<location>/error/500.jsp</location>
-    </error-page> 
-    <error-page>  
-        <error-code>404</error-code>  
-        <location>/error/404.jsp</location>  
-    </error-page>  
- 
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <context-param>
+    <description>全站編碼配置</description>
+    <param-name>encode</param-name>
+    <param-value>utf-8</param-value>
+  </context-param>
+  <filter>
+    <description>全站亂碼過濾器</description>
+    <filter-name>EncodeFilter</filter-name>
+    <filter-class>com.dailoo.filter.EncodeFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>EncodeFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <description>自动登陆过滤器</description>
+    <filter-name>AutoLoginFilter</filter-name>
+    <filter-class>com.dailoo.filter.AutoLoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AutoLoginFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <description>自動註冊序號過濾器</description>
+    <filter-name>SNFilter</filter-name>
+    <filter-class>com.dailoo.filter.SNFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>SNFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <error-page>
+    <exception-type>java.lang.RuntimeException</exception-type>
+    <location>/error/500.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/error/404.jsp</location>
+  </error-page>
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>com.dailoo.web.LoginServlet</servlet-class>
@@ -92,14 +80,6 @@
     <servlet-name>SNServlet</servlet-name>
     <servlet-class>com.dailoo.web.SNServlet</servlet-class>
   </servlet>
-
-
-
-
-
-
-
-
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
@@ -140,5 +120,4 @@
     <servlet-name>SNServlet</servlet-name>
     <url-pattern>/SNServlet</url-pattern>
   </servlet-mapping>
-
 </web-app>
