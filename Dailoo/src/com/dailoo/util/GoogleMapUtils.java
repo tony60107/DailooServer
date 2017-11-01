@@ -79,9 +79,9 @@ public class GoogleMapUtils {
 			System.out.println("getAdressXY Exception" + e.toString());
 		}
 		
-		if(retXY[0] == 0 || retXY[1] == 0){
+		/*if(retXY[0] == 0 || retXY[1] == 0){
 			retXY = getAdressXY(Address);
-		}
+		}*/
 		return retXY;
 	}
 

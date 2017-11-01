@@ -1,5 +1,8 @@
 package com.dailoo.domain;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+
 public class Speaker {
 	
 	private String id;			//講者ID
@@ -14,6 +17,7 @@ public class Speaker {
 	private String intro;		//自我介紹
 	private String youtubeUrl;	//youtube嵌入碼網址
 	private String role;		//使用者分類
+	private Timestamp registTime; //註冊時間
 	private String ownerId; 	//講者擁有(管理)者ID
 	
 	//-------------------------------------------
@@ -90,6 +94,13 @@ public class Speaker {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public Timestamp getRegistTime() {
+		return registTime;
+	}
+	public void setRegistTime(Timestamp registTime) {
+		this.registTime = registTime;
 	}
 	public String getOwnerId() {
 		return ownerId;

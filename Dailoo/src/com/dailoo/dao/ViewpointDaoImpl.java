@@ -17,13 +17,15 @@ public class ViewpointDaoImpl implements ViewpointDao{
 	public void addViewpoint(Viewpoint vp) {
 		
 		String sql = "insert into viewpoints (id, name, subtitle, themeId, behalfPhotoUrl, country, city"
-				+ ", town, village, address, longitude, latitude, latLngPri, navUrl, intro, shortUrl, speakerId) "
-				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ ", town, village, address, longitude, latitude, latLngPri, navUrl, intro, shortUrl, "
+				+ "speakerId, updatetime) "
+				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,now(3))";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
 			runner.update(sql, vp.getId(), vp.getName(), vp.getSubtitle(), vp.getThemeId(), vp.getBehalfPhotoUrl(),
 					vp.getCountry(), vp.getCity(), vp.getTown(), vp.getVillage(), vp.getAddress(), 
-					vp.getLongitude(), vp.getLatitude(), vp.getLatLngPri(), vp.getNavUrl(), vp.getIntro(), vp.getShortUrl(), vp.getSpeakerId());
+					vp.getLongitude(), vp.getLatitude(), vp.getLatLngPri(), vp.getNavUrl(), vp.getIntro(),
+					vp.getShortUrl(), vp.getSpeakerId());
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
