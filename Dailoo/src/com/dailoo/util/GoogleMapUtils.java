@@ -78,7 +78,7 @@ public class GoogleMapUtils {
 			// e.printStackTrace();
 			System.out.println("getAdressXY Exception" + e.toString());
 		}
-		System.out.println(retXY[0] + "," + retXY[1] + " : *************** " + time + " ************");
+		//System.out.println(retXY[0] + "," + retXY[1] + " : *************** " + time + " ************");
 		if(retXY[0] == 0 || retXY[1] == 0){
 			if(time > 10) return retXY;
 			retXY = getAdressXY(Address, time+1);

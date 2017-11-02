@@ -7,8 +7,8 @@
     <link rel="shortcut icon" href="images/general/dailoo.png">
     <meta name="Keywords" content="Dailoo, 帶路, 語音導覽, 行動導覽, 手機導覽, 導覽, 導遊, ">
     <meta name="Description" content="帶路語音導覽服務 - 就像在地人親自解說">
-    <meta id="og_name" property="og:site_name" content="帶路 - Dailoo" />
-    <meta id="og_desc" property="og:description" content="鹿野週邊語音導覽服務 - 就像在地人親自帶路" />
+    <meta id="og_name" property="og:site_name" content="帶路 - Dailoo"/>
+    <meta id="og_desc" property="og:description" content="鹿野週邊語音導覽服務 - 就像在地人親自帶路"/>
     <meta id="og_title" property="og:title" content="帶路 - Dailoo"/>
     <meta id="og_image" property="og:image" content="http://www.dailoo.com/images/themelist/luye.png"/>
     <link rel="stylesheet" href="css/base.css"/>
@@ -35,7 +35,8 @@
             <div id="photoNum" class="photo-count">1/1</div>
         </div>
         <!--講者小圖-->
-        <div><img id="speakerSmallPhoto" src="images/viewpoint/speaker_defalut_small.png" alt="" class="speaker-small"></div>
+        <div><img id="speakerSmallPhoto" src="images/viewpoint/speaker_defalut_small.png" alt="" class="speaker-small">
+        </div>
         <!--聲音進度條-->
         <div id="scrollBar" class="scroll">
             <div class="bar"></div>
@@ -59,7 +60,9 @@
         <div id="readAllCont" class="readall">…展開全文</div>
     </div>
     <!--分隔線-->
-    <a href="https://goo.gl/forms/UkVfGk86vZ2dqE1B2" target="_blank"><div class="feedback">意見回饋</div></a>
+    <a href="https://goo.gl/forms/UkVfGk86vZ2dqE1B2" target="_blank">
+        <div class="feedback">意見回饋</div>
+    </a>
     <!--講者-->
     <div id="speaker" class="speaker">
         <div class="info clearfix">
@@ -88,7 +91,7 @@
                 <div></div>
             </a>
         </div>
-        <div  class="intro">
+        <div class="intro">
             <div id="speakerIntro" class="cont"></div>
             <div id="readAllSpeakerIntro" class="readall">...展開全文</div>
         </div>
@@ -101,8 +104,10 @@
         <div id="moreAudioTitle" class="title">還有以下可以收聽：</div>
     </div>
     <!--周邊景點-->
-    <div id="neighView" class="neigh-view">
+    <div class="neigh-view">
         <div class="title">周邊景點</div>
+        <div id="neighView" class="viewlist">
+        </div>
     </div>
     <!--分享區塊-->
     <div id="sharemask" class="sharemask"></div>
@@ -131,7 +136,7 @@
                     alt="Send email" src="images/social_flat_rounded_rects_svg/Email.svg"></a></li>
         </ul>
         <div class="share-input">
-            <input id="shareInput" type="text" />
+            <input id="shareInput" type="text"/>
         </div>
     </div>
     <!--Footer引入-->
@@ -154,13 +159,17 @@
     var speakerData = "";
     function onYouTubeIframeAPIReady() {
         //如果還沒有拿到講者資訊，等待0.5秒後再執行
-        if("" == speakerData){setTimeout(function(){
-            onYouTubeIframeAPIReady();
-        }, 500);} else{ setSpeakerYoutube();}
+        if ("" == speakerData) {
+            setTimeout(function () {
+                onYouTubeIframeAPIReady();
+            }, 500);
+        } else {
+            setSpeakerYoutube();
+        }
     }
 
     //設定講者影片
-    function setSpeakerYoutube(){
+    function setSpeakerYoutube() {
 
         var YTUrl = speakerData.youtubeUrl;
         if (YTUrl != '') {
@@ -177,6 +186,7 @@
                     document.getElementById("audio").pause();
                 }
             }
+
             $$("videoPrep").style.display = "none";
         }
     }

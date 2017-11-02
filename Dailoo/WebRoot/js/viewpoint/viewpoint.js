@@ -39,7 +39,7 @@ window.onload = function () {
     //取得景點ID
     var vpId = location.href.split("id=")[1];
     //如果未提供景點ID，則跳轉到鹿野主題列表
-    if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
+    //if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
 
     //根據景點ID，取得景點資訊
     $.ajax({
@@ -190,6 +190,20 @@ function initViewpointData(vpData) {
                 vpData.moreAudio[i].subtitle + '&id=' + vpData.moreAudio[i].id +
                 '"><div class="audio">' + vpData.moreAudio[i].subtitle + '</div></a>';
 
+            /*var dom = '<a class="view" href="viewpoint.html?utm_source=InSite&utm_campaign=' + vpData.moreAudio[i].name + '_' +
+                            vpData.moreAudio[i].subtitle + '&id=' + vpData.moreAudio[i].id + '">' +
+                            '<img src="/ResourceServlet?url=' + vpData.moreAudio[i].behalfPhotoUrl +'">' +
+                            '<div class="cover"></div>' +
+                            '<div class="title">' + vpData.moreAudio[i].name + '</div>' +
+                            '<img class="speaker-photo fl" src="/ResourceServlet?url=' + vpData.moreAudio[i].speakerPhotoUrl +'" alt="">' +
+                            '<div class="speaker-info fl">' +
+                            '<div class="speaker">' + vpData.moreAudio[i].speakerName + '</div>' +
+                            '<div class="time">1分56秒</div>' +
+                        '</div>' +
+                        '</a>';
+
+            moreAudioDiv.innerHTML = moreAudioDiv.innerHTML + dom;*/
+
             //設定自動播放下一段語音資料
             if(vpData.id == vpData.moreAudio[i].id && vpData.moreAudio[i+1] != null) {
                 //將下一段語音資料設為全域變量
@@ -205,8 +219,19 @@ function initViewpointData(vpData) {
         var neighViewDiv = $$("neighView");
         neighViewData = vpData.neighView;
         for (var i = 0; i < neighViewData.length; i++) {
-            var dom = '<a href="viewpoint.html?utm_source=InSite&amp;utm_campaign=' + vpData.neighView[i].name + '_' + vpData.neighView[i].subtitle + '' +
-                '&id=' + vpData.neighView[i].id + '"><div class="view">' + vpData.neighView[i].name + '</div></a>';
+            /*var dom = '<a href="viewpoint.html?utm_source=InSite&amp;utm_campaign=' + vpData.neighView[i].name + '_' + vpData.neighView[i].subtitle + '' +
+                '&id=' + vpData.neighView[i].id + '"><div class="view">' + vpData.neighView[i].name + '</div></a>';*/
+            var dom = '<a class="view" href="viewpoint.html?utm_source=InSite&utm_campaign=' +vpData.neighView[i].name + '_' +
+                vpData.moreAudio[i].subtitle + '&id=' + vpData.neighView[i].id + '">' +
+                '<img src="/ResourceServlet?url=' + vpData.neighView[i].behalfPhotoUrl +'">' +
+                '<div class="cover"></div>' +
+                '<div class="title">' + vpData.neighView[i].name + '</div>' +
+                '<img class="speaker-photo fl" src="/ResourceServlet?url=' + vpData.neighView[i].speakerPhotoUrl +'" alt="">' +
+                '<div class="speaker-info fl">' +
+                '<div class="speaker">' + vpData.neighView[i].speakerName + '</div>' +
+                '<div class="time">1分56秒</div>' +
+                '</div>' +
+                '</a>';
             neighViewDiv.innerHTML = neighViewDiv.innerHTML + dom;
         }
     }
