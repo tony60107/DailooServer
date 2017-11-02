@@ -459,8 +459,13 @@
 }
 
 .viewlist {
-    width: 10000px;
     height: 550px;
+}
+
+.viewlist ul {
+    width: 10000px;
+    position: absolute;
+    left: 50px;
 }
 
 .viewlist .view {

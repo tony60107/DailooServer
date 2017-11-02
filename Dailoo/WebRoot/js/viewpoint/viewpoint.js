@@ -222,7 +222,7 @@ function initViewpointData(vpData) {
             /*var dom = '<a href="viewpoint.html?utm_source=InSite&amp;utm_campaign=' + vpData.neighView[i].name + '_' + vpData.neighView[i].subtitle + '' +
                 '&id=' + vpData.neighView[i].id + '"><div class="view">' + vpData.neighView[i].name + '</div></a>';*/
             var dom = '<a class="view" href="viewpoint.html?utm_source=InSite&utm_campaign=' +vpData.neighView[i].name + '_' +
-                vpData.moreAudio[i].subtitle + '&id=' + vpData.neighView[i].id + '">' +
+                vpData.neighView[i].subtitle + '&id=' + vpData.neighView[i].id + '">' +
                 '<img src="/ResourceServlet?url=' + vpData.neighView[i].behalfPhotoUrl +'">' +
                 '<div class="cover"></div>' +
                 '<div class="title">' + vpData.neighView[i].name + '</div>' +
@@ -234,6 +234,41 @@ function initViewpointData(vpData) {
                 '</a>';
             neighViewDiv.innerHTML = neighViewDiv.innerHTML + dom;
         }
+
+        for (var i = 0; i < 3; i++) {
+            var dom = '<a class="view" href="viewpoint.html?utm_source=InSite&utm_campaign=' +vpData.neighView[i].name + '_' +
+                vpData.neighView[i].subtitle + '&id=' + vpData.neighView[i].id + '">' +
+                '<img src="/ResourceServlet?url=' + vpData.neighView[i].behalfPhotoUrl +'">' +
+                '<div class="cover"></div>' +
+                '<div class="title">' + vpData.neighView[i].name + '</div>' +
+                '<img class="speaker-photo fl" src="/ResourceServlet?url=' + vpData.neighView[i].speakerPhotoUrl +'" alt="">' +
+                '<div class="speaker-info fl">' +
+                '<div class="speaker">' + vpData.neighView[i].speakerName + '</div>' +
+                '<div class="time">1分56秒</div>' +
+                '</div>' +
+                '</a>';
+            neighViewDiv.innerHTML = neighViewDiv.innerHTML + dom;
+        }
+
+        //週邊景點輪撥區塊
+        var neighTimer = null;   // 週邊景點輪撥定時器
+        var nowView = 0;  //現在播放到第幾個景點
+        neighTimer = setInterval(neighAutoplay,3000);  // 開啟週邊景點輪撥定時器
+        var neighViewList = $$("neighView"); //週邊景點列表
+        function neighAutoplay() {
+            nowView++;  // 先 ++
+            if(nowView > vpData.neighView.length){  // 後判斷
+                neighViewList.style.left = 0;  // 迅速調回
+                nowView = 1;  // 因為第6張就是第一張 第6張播放 下次播放第2張
+            }
+            animate(neighViewList,-nowView * 452 + 50);  // 再執行
+        }
+        neighViewList.addEventListener("touchstart", function (event) { //按下後，關閉定時器
+            clearInterval(neighTimer);
+        });
+        neighViewList.addEventListener("touchend", function (event) { //放開後，開啟定時器
+            neighTimer = setInterval(neighAutoplay,3000);
+        });
     }
 
     //Footer樣式
@@ -242,5 +277,20 @@ function initViewpointData(vpData) {
         $$("footerIframe").contentWindow.changeCss("orange");
     }
 
+}
+
+//勻速動畫
+function animate(obj,target){
+    clearInterval(obj.timer);  // 先清除定时器
+    var speed = obj.offsetLeft < target ? 15 : -15;  // 用来判断 应该 +  还是 -
+    obj.timer = setInterval(function() {
+        var result = target - obj.offsetLeft; // 因为他们的差值不会超过5
+        obj.style.left = obj.offsetLeft + speed + "px";
+        if(Math.abs(result)<=15)  // 如果差值不小于 5 说明到位置了
+        {
+            clearInterval(obj.timer);
+            obj.style.left = target + "px";  // 有5像素差距   我们直接跳转目标位置
+        }
+    },10)
 }
 
