@@ -151,7 +151,6 @@ public class Viewpoint {
 	public void setUpdateTime(Timestamp updateTime) {
 		this.updateTime = updateTime;
 	}
-	
 	@Override
 	public String toString() {
 		return "Viewpoint [id=" + id + ", name=" + name + ", subtitle="

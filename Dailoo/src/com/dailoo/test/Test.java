@@ -7,7 +7,7 @@ public class Test {
 	@org.junit.Test
 	public void test() {
 		for(int i = 0; i < 100; i++)
-		System.out.println(GoogleMapUtils.getAdressXY("臺東縣鹿野鄉龍田村光榮路163號")[0]);
+			GoogleMapUtils.getAdressXY("臺東縣鹿野鄉龍田村光榮路163號", 0);
 	}
 
 }

@@ -14,14 +14,14 @@ import org.json.JSONObject;
 
 public class GoogleMapUtils {
 	
-	public static double[] getAdressXY(String Address) {
+	public static double[] getAdressXY(String Address, int time) {
 		URL url;
 		double retXY[] = { 0, 0 };
 
 		try {
-			Address = URLEncoder.encode(Address, "utf-8");
+			String address = URLEncoder.encode(Address, "utf-8");
 			String actionUrl = "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address="
-					+ Address;
+					+ address;
 
 			url = new URL(actionUrl);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -78,10 +78,11 @@ public class GoogleMapUtils {
 			// e.printStackTrace();
 			System.out.println("getAdressXY Exception" + e.toString());
 		}
-		
-		/*if(retXY[0] == 0 || retXY[1] == 0){
-			retXY = getAdressXY(Address);
-		}*/
+		System.out.println(retXY[0] + "," + retXY[1] + " : *************** " + time + " ************");
+		if(retXY[0] == 0 || retXY[1] == 0){
+			if(time > 10) return retXY;
+			retXY = getAdressXY(Address, time+1);
+		}
 		return retXY;
 	}
 

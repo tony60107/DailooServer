@@ -104,7 +104,7 @@ public class ViewpointDaoImpl implements ViewpointDao{
 
 	@Override
 	public List<Viewpoint> findViewpointsByNameAndSpeaker(String name, String speakerId) {
-		String sql = "select * from viewpoints where name = ? and speakerId = ? order by updatetime asc";
+		String sql = "select * from viewpoints where name=? and speakerId=? order by updatetime asc";
 		
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
@@ -193,10 +193,10 @@ public class ViewpointDaoImpl implements ViewpointDao{
 
 	@Override
 	public List<Viewpoint> findNeighViewpoints(Viewpoint vp) {
-		String sql = "SELECT id, name, subtitle, ( 3959 * acos( cos( radians(?) ) * cos( radians( latitude ) )" + 
-				"* cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin(radians(latitude)) ) ) AS distance " + 
-				" FROM viewpoints where isPublish = 1 GROUP BY name HAVING distance BETWEEN 0.0001 AND 20 " +
-				" ORDER BY distance  LIMIT 0 , 5 ;";
+		String sql = "SELECT *, ( 3959 * acos( cos( radians(?) ) * cos( radians( latitude ) ) "+
+				 "* cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin(radians(latitude)) ) ) AS distance " + 
+				 "FROM viewpoints where isPublish = 1 HAVING distance BETWEEN 0 AND 20 " + 
+				 "ORDER BY distance  LIMIT 0 , 6" ;
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
 			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class),

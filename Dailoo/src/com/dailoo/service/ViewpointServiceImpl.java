@@ -75,7 +75,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 		
 		if(vp.getLatitude() == null || vp.getLatitude() == 0 || vp.getLongitude() == null || vp.getLongitude() == 0){
 			//根據地址取得經緯度
-			double [] address = GoogleMapUtils.getAdressXY(vp.getAddress());
+			double [] address = GoogleMapUtils.getAdressXY(vp.getAddress(), 0);
 			vp.setLatitude(address[0]);
 			vp.setLongitude(address[1]);
 		}
@@ -120,7 +120,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 		
 		if(vp.getLatitude() == null || vp.getLatitude() == 0 || vp.getLongitude() == null || vp.getLongitude() == 0){
 			//根據地址取得經緯度
-			double [] address = GoogleMapUtils.getAdressXY(vp.getAddress());
+			double [] address = GoogleMapUtils.getAdressXY(vp.getAddress(), 0);
 			vp.setLatitude(address[0]);
 			vp.setLongitude(address[1]);
 		}
@@ -153,26 +153,12 @@ public class ViewpointServiceImpl implements ViewpointService{
 		Theme theme = themeDao.findThemeById(vp.getThemeId());
 		List<Viewpoint> moreAudio = dao.findViewpointsByNameAndSpeaker(vp.getName(), vp.getSpeakerId());
 		List<Viewpoint> neighView = dao.findNeighViewpoints(vp);
-		//刪除與景點同名的週邊景點
+		//刪除自己
 		for(int i = 0; i < neighView.size(); i++) {
-			if(neighView.get(i).getName().equals(vp.getName())) {
+			if(neighView.get(i).getName().equals(vp.getName()) && neighView.get(i).getSpeakerId().equals(vp.getSpeakerId())) {
 				neighView.remove(i);	--i;
 			}
 		}
-		//找出同一地址下不同講者的景點
-		List<Viewpoint> temps = dao.findViewpointByAddressNotSpeaker(vp);
-		for(Viewpoint temp : temps){
-			//判斷週邊景點中，是否已經有了該景點
-			boolean isContain = false;
-			for(int i = 0; i < neighView.size(); i++) {
-				if(neighView.get(i).getId().equals(temp.getId())){
-					isContain = true;
-				}
-			}
-			//沒有該景點則新增至週邊景點
-			if(!isContain){neighView.add(0, temp);}
-		}
-		
 		
 		String vpJson = gson.toJson(vp);
 		String speakerJson = gson.toJson(speaker);
