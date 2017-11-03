@@ -64,7 +64,6 @@ window.onload = function () {
     });
     history.replaceState(null, null, location.href);
 
-
 }
 
 //處理所有從伺服器拿回來的資料
@@ -229,54 +228,39 @@ function initViewpointData(vpData) {
                 '<img class="speaker-photo fl" src="/ResourceServlet?url=' + vpData.neighView[i].speakerPhotoUrl +'" alt="">' +
                 '<div class="speaker-info fl">' +
                 '<div class="speaker">' + vpData.neighView[i].speakerName + '</div>' +
-                '<div class="time">1分56秒</div>' +
-                '</div>' +
-                '</a>';
-            neighViewDiv.innerHTML = neighViewDiv.innerHTML + dom;
-        }
-
-        for (var i = 0; i < 3; i++) {
-            var dom = '<a class="view" href="viewpoint.html?utm_source=InSite&utm_campaign=' +vpData.neighView[i].name + '_' +
-                vpData.neighView[i].subtitle + '&id=' + vpData.neighView[i].id + '">' +
-                '<img src="/ResourceServlet?url=' + vpData.neighView[i].behalfPhotoUrl +'">' +
-                '<div class="cover"></div>' +
-                '<div class="title">' + vpData.neighView[i].name + '</div>' +
-                '<img class="speaker-photo fl" src="/ResourceServlet?url=' + vpData.neighView[i].speakerPhotoUrl +'" alt="">' +
-                '<div class="speaker-info fl">' +
-                '<div class="speaker">' + vpData.neighView[i].speakerName + '</div>' +
-                '<div class="time">1分56秒</div>' +
+                '<div class="time">' + parseInt(vpData.neighView[i].audioLength / 60) + '分' +vpData.neighView[i].audioLength % 60 + '秒</div>' +
                 '</div>' +
                 '</a>';
             neighViewDiv.innerHTML = neighViewDiv.innerHTML + dom;
         }
 
         //週邊景點輪撥區塊
-        var neighTimer = null;   // 週邊景點輪撥定時器
-        var nowView = 0;  //現在播放到第幾個景點
-        neighTimer = setInterval(neighAutoplay,3000);  // 開啟週邊景點輪撥定時器
         var neighViewList = $$("neighView"); //週邊景點列表
-        function neighAutoplay() {
-            nowView++;  // 先 ++
-            if(nowView > vpData.neighView.length){  // 後判斷
-                neighViewList.style.left = 0;  // 迅速調回
-                nowView = 1;  // 因為第6張就是第一張 第6張播放 下次播放第2張
+
+        neighViewList.ontouchstart = function(event){
+            var event = event || window.event;
+            var leftVal = event.touches[0].clientX - this.offsetLeft;
+            var that = this;
+            document.ontouchmove = function(event){
+                that.style.left = event.touches[0].clientX - leftVal + "px";
+                var val = parseInt(that.style.left);
+                if(val > 50 ){
+                    that.style.left = "50px";
+                }else if(val < -452 * neighViewData.length + 980) {
+                    that.style.left = -452 * neighViewData.length + 980 + 'px';
+                }
             }
-            animate(neighViewList,-nowView * 452 + 50);  // 再執行
         }
-        neighViewList.addEventListener("touchstart", function (event) { //按下後，關閉定時器
-            clearInterval(neighTimer);
-        });
-        neighViewList.addEventListener("touchend", function (event) { //放開後，開啟定時器
-            neighTimer = setInterval(neighAutoplay,3000);
-        });
+        document.ontouchend = function(){
+            document.ontouchmove = null;
+        }
     }
 
     //Footer樣式
-    var jinfeng = "03326ff3-cad4-42bc-a8aa-35fca64eb2ef,8daa252d-42e6-4535-a0b6-d794d7e5029d,e6862f47-a7a3-4b22-9647-763425705f0a,10c09cb8-355c-4db9-a852-fc3d20eca556,9de8cafd-203e-4f5e-8faf-aeda29264952,4652c369-be78-460d-90e3-e0e66267069f";
-    if(jinfeng.indexOf(vpData.theme.id) != -1){ //如果是金峰鄉主題
+    //var jinfeng = "03326ff3-cad4-42bc-a8aa-35fca64eb2ef,8daa252d-42e6-4535-a0b6-d794d7e5029d,e6862f47-a7a3-4b22-9647-763425705f0a,10c09cb8-355c-4db9-a852-fc3d20eca556,9de8cafd-203e-4f5e-8faf-aeda29264952,4652c369-be78-460d-90e3-e0e66267069f";
+    /*if(jinfeng.indexOf(vpData.theme.id) != -1){ //如果是金峰鄉主題
         $$("footerIframe").contentWindow.changeCss("orange");
-    }
-
+    }*/
 }
 
 //勻速動畫
