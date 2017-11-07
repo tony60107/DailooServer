@@ -5,14 +5,17 @@
 var regionId = location.href.split("id=")[1];
 
 //如果未提供地區ID，則跳轉到鹿野地區主題列表
-if(regionId == undefined){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"};
+//if(regionId == undefined){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"};
 
 
 window.onload = function () {
-    //更換Footer樣式
-    if (regionId == "61ae4ab6-ed11-4131-85e2-9f2be7651e65") { //如果是金峰鄉地區
-        $$("footerIframe").contentWindow.changeCss("orange");
-    }
+
+    $.get("footer.html",function(data){
+        $("#footer").html(data);
+        if (regionId == "61ae4ab6-ed11-4131-85e2-9f2be7651e65") { //如果是金峰鄉地區
+            changeCss("jinfeng");
+        }
+    });
 }
 
 //根據地區ID取得主題資料，並新增到主題列表中

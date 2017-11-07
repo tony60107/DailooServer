@@ -200,7 +200,7 @@
                     '<td>' + parseInt(vp[i].audioLength / 60) + ' : ' + vp[i].audioLength % 60 + '</td>' +
                     '<td><a target="_blank" href="/updateViewpointInfo.html?id=' + vp[i].id + '">' + '編輯' + '</a></td>' +
                     '<td><a target="_blank" href="/viewpoint.html?id=' + vp[i].id + '">預覽</a></td>' +
-                    '<td>' + vp[i].shortUrl + '</td>';
+                    '<td><a target="_blank" href="' + vp[i].shortUrl + '">' + vp[i].shortUrl + '</a></td>';
 
                     if(vp[i].isPublish == 1){
                         dom += '<td style="text-align: center;"><img src="/images/general/check.png" onclick="switchPublishStat(\''+ vp[i].id +'\',0,this);"/></td>';

@@ -39,7 +39,7 @@ window.onload = function () {
     //取得景點ID
     var vpId = location.href.split("id=")[1];
     //如果未提供景點ID，則跳轉到鹿野主題列表
-    //if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
+    if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
 
     //根據景點ID，取得景點資訊
     $.ajax({
@@ -48,7 +48,8 @@ window.onload = function () {
         data: {"method": "getViewpointInfo", "id": vpId},
         success: function (data) {
             var data = eval("(" + data + ")");
-            if(data.error != undefined) alert(data.error);
+            vpData = data;
+            if (data.error != undefined) alert(data.error);
 
             //修正照片URL
             var tags = data.audio.tags;
@@ -60,9 +61,11 @@ window.onload = function () {
             //console.dir(data);
             speakerData = data.speaker;
             initDataFromServer(data);
+
         },
     });
     history.replaceState(null, null, location.href);
+
 
 }
 
@@ -98,8 +101,8 @@ function initAuthorData(speakerData) {
     }
     //講者自我介紹
     var speakerIntro = $$("speakerIntro");
-    speakerIntro.innerHTML = speakerData.intro.replace(/\r\n\r\n/g,'<br/>');
-    speakerIntro.innerHTML = speakerIntro.innerHTML.replace(/\n/g,'');
+    speakerIntro.innerHTML = speakerData.intro.replace(/\r\n\r\n/g, '<br/>');
+    speakerIntro.innerHTML = speakerIntro.innerHTML.replace(/\n/g, '');
     if (speakerIntro.offsetHeight <= 220) {
         $$("readAllSpeakerIntro").style.display = "none";
     } else if (speakerIntro.offsetHeight >= 334) {
@@ -164,15 +167,15 @@ function initViewpointData(vpData) {
     $$("area").innerHTML = vpData.city + vpData.town;
 
     //景點位置
-    if(vpData.latLngPri == 1) {
+    if (vpData.latLngPri == 1) {
         $$("vpLocation").href = "https://www.google.com.tw/maps/place/" + vpData.latitude + "," + vpData.longitude + "/@" + vpData.latitude + "," + vpData.longitude + ",19.5z";
     } else {
         $$("vpLocation").href = "https://www.google.com.tw/maps/place/" + vpData.address + "/@" + vpData.latitude + "," + vpData.longitude + ",19.5z";
     }
     //景點介紹內容
     var vpIntro = $$("vpIntro");
-    vpIntro.innerHTML = vpData.intro.replace(/\r\n\r\n/g,'<br/>');
-    vpIntro.innerHTML =  vpIntro.innerHTML.replace(/\n/g,'');
+    vpIntro.innerHTML = vpData.intro.replace(/\r\n\r\n/g, '<br/>');
+    vpIntro.innerHTML = vpIntro.innerHTML.replace(/\n/g, '');
     if (vpIntro.offsetHeight <= 220) {
         $$("readAllCont").style.display = "none";
     } else if (vpIntro.offsetHeight >= 275) {
@@ -190,23 +193,23 @@ function initViewpointData(vpData) {
                 '"><div class="audio">' + vpData.moreAudio[i].subtitle + '</div></a>';
 
             /*var dom = '<a class="view" href="viewpoint.html?utm_source=InSite&utm_campaign=' + vpData.moreAudio[i].name + '_' +
-                            vpData.moreAudio[i].subtitle + '&id=' + vpData.moreAudio[i].id + '">' +
-                            '<img src="/ResourceServlet?url=' + vpData.moreAudio[i].behalfPhotoUrl +'">' +
-                            '<div class="cover"></div>' +
-                            '<div class="title">' + vpData.moreAudio[i].name + '</div>' +
-                            '<img class="speaker-photo fl" src="/ResourceServlet?url=' + vpData.moreAudio[i].speakerPhotoUrl +'" alt="">' +
-                            '<div class="speaker-info fl">' +
-                            '<div class="speaker">' + vpData.moreAudio[i].speakerName + '</div>' +
-                            '<div class="time">1分56秒</div>' +
-                        '</div>' +
-                        '</a>';
+             vpData.moreAudio[i].subtitle + '&id=' + vpData.moreAudio[i].id + '">' +
+             '<img src="/ResourceServlet?url=' + vpData.moreAudio[i].behalfPhotoUrl +'">' +
+             '<div class="cover"></div>' +
+             '<div class="title">' + vpData.moreAudio[i].name + '</div>' +
+             '<img class="speaker-photo fl" src="/ResourceServlet?url=' + vpData.moreAudio[i].speakerPhotoUrl +'" alt="">' +
+             '<div class="speaker-info fl">' +
+             '<div class="speaker">' + vpData.moreAudio[i].speakerName + '</div>' +
+             '<div class="time">1分56秒</div>' +
+             '</div>' +
+             '</a>';
 
-            moreAudioDiv.innerHTML = moreAudioDiv.innerHTML + dom;*/
+             moreAudioDiv.innerHTML = moreAudioDiv.innerHTML + dom;*/
 
             //設定自動播放下一段語音資料
-            if(vpData.id == vpData.moreAudio[i].id && vpData.moreAudio[i+1] != null) {
+            if (vpData.id == vpData.moreAudio[i].id && vpData.moreAudio[i + 1] != null) {
                 //將下一段語音資料設為全域變量
-                document.nextAudio = vpData.moreAudio[i+1];
+                document.nextAudio = vpData.moreAudio[i + 1];
             }
         }
     } else {
@@ -219,62 +222,65 @@ function initViewpointData(vpData) {
         neighViewData = vpData.neighView;
         for (var i = 0; i < neighViewData.length; i++) {
             /*var dom = '<a href="viewpoint.html?utm_source=InSite&amp;utm_campaign=' + vpData.neighView[i].name + '_' + vpData.neighView[i].subtitle + '' +
-                '&id=' + vpData.neighView[i].id + '"><div class="view">' + vpData.neighView[i].name + '</div></a>';*/
-            var dom = '<a class="view" href="viewpoint.html?utm_source=InSite&utm_campaign=' +vpData.neighView[i].name + '_' +
+             '&id=' + vpData.neighView[i].id + '"><div class="view">' + vpData.neighView[i].name + '</div></a>';*/
+            var dom = '<a class="view" href="viewpoint.html?utm_source=InSite&utm_campaign=' + vpData.neighView[i].name + '_' +
                 vpData.neighView[i].subtitle + '&id=' + vpData.neighView[i].id + '">' +
-                '<img src="/ResourceServlet?url=' + vpData.neighView[i].behalfPhotoUrl +'">' +
+                '<img src="/ResourceServlet?url=' + vpData.neighView[i].behalfPhotoUrl + '">' +
                 '<div class="cover"></div>' +
                 '<div class="title">' + vpData.neighView[i].name + '</div>' +
-                '<img class="speaker-photo fl" src="/ResourceServlet?url=' + vpData.neighView[i].speakerPhotoUrl +'" alt="">' +
+                '<img class="speaker-photo fl" src="/ResourceServlet?url=' + vpData.neighView[i].speakerPhotoUrl + '" alt="">' +
                 '<div class="speaker-info fl">' +
                 '<div class="speaker">' + vpData.neighView[i].speakerName + '</div>' +
-                '<div class="time">' + parseInt(vpData.neighView[i].audioLength / 60) + '分' +vpData.neighView[i].audioLength % 60 + '秒</div>' +
+                '<div class="time">' + parseInt(vpData.neighView[i].audioLength / 60) + '分' + vpData.neighView[i].audioLength % 60 + '秒</div>' +
                 '</div>' +
                 '</a>';
             neighViewDiv.innerHTML = neighViewDiv.innerHTML + dom;
         }
 
-        //週邊景點輪撥區塊
+        //週邊景點滾動區塊
         var neighViewList = $$("neighView"); //週邊景點列表
-
-        neighViewList.ontouchstart = function(event){
+        neighViewList.ontouchstart = function (event) {
             var event = event || window.event;
             var leftVal = event.touches[0].clientX - this.offsetLeft;
             var that = this;
-            document.ontouchmove = function(event){
+            document.ontouchmove = function (event) {
                 that.style.left = event.touches[0].clientX - leftVal + "px";
                 var val = parseInt(that.style.left);
-                if(val > 50 ){
+                if (val > 50) {
                     that.style.left = "50px";
-                }else if(val < -452 * neighViewData.length + 980) {
+                } else if (val < -452 * neighViewData.length + 980) {
                     that.style.left = -452 * neighViewData.length + 980 + 'px';
                 }
             }
         }
-        document.ontouchend = function(){
+        document.ontouchend = function () {
             document.ontouchmove = null;
         }
     }
 
     //Footer樣式
-    //var jinfeng = "03326ff3-cad4-42bc-a8aa-35fca64eb2ef,8daa252d-42e6-4535-a0b6-d794d7e5029d,e6862f47-a7a3-4b22-9647-763425705f0a,10c09cb8-355c-4db9-a852-fc3d20eca556,9de8cafd-203e-4f5e-8faf-aeda29264952,4652c369-be78-460d-90e3-e0e66267069f";
-    /*if(jinfeng.indexOf(vpData.theme.id) != -1){ //如果是金峰鄉主題
-        $$("footerIframe").contentWindow.changeCss("orange");
-    }*/
+    $.get("footer.html",function(data){
+        $("#footer").html(data);
+        //更換Footer樣式
+        var jinfeng = "03326ff3-cad4-42bc-a8aa-35fca64eb2ef,8daa252d-42e6-4535-a0b6-d794d7e5029d,e6862f47-a7a3-4b22-9647-763425705f0a,10c09cb8-355c-4db9-a852-fc3d20eca556,9de8cafd-203e-4f5e-8faf-aeda29264952,4652c369-be78-460d-90e3-e0e66267069f";
+        if (jinfeng.indexOf(vpData.theme.id) != -1) { //如果是金峰鄉主題
+           changeCss("jinfeng");
+        }
+    });
 }
 
 //勻速動畫
-function animate(obj,target){
+function animate(obj, target) {
     clearInterval(obj.timer);  // 先清除定时器
     var speed = obj.offsetLeft < target ? 15 : -15;  // 用来判断 应该 +  还是 -
-    obj.timer = setInterval(function() {
+    obj.timer = setInterval(function () {
         var result = target - obj.offsetLeft; // 因为他们的差值不会超过5
         obj.style.left = obj.offsetLeft + speed + "px";
-        if(Math.abs(result)<=15)  // 如果差值不小于 5 说明到位置了
+        if (Math.abs(result) <= 15)  // 如果差值不小于 5 说明到位置了
         {
             clearInterval(obj.timer);
             obj.style.left = target + "px";  // 有5像素差距   我们直接跳转目标位置
         }
-    },10)
+    }, 10)
 }
 

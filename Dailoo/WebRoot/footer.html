@@ -11,13 +11,13 @@
     <!-- 導覽地圖 -->
     <div class="route">
         <div class="desc">以簡易地圖模式瀏覽<br/>本區所有景點並可直<br/>接點選導覽</div>
-        <a href="/navMap.html" target="_blank">
-            <div id="map" class="cover">全區導覽地圖</div>
+        <a id="simpleMap" href="/navMap.html" target="_blank">
+            <div id="map" class="cover">全區簡圖導覽</div>
         </a>
         <div class="line"></div>
         <div class="desc" style="margin-top: 96px;">開啟Google地圖瀏覽<br/>本區所有景點</div>
-        <a href="https://goo.gl/ZTuKoP" target="_blank">
-            <div class="cover">Google路線圖</div>
+        <a id="googleMap" href="https://goo.gl/ZTuKoP" target="_blank">
+            <div class="cover">Google地圖導覽</div>
         </a>
     </div>
     <div class="line"></div>
@@ -30,7 +30,7 @@
     </div>
 
     <!--帶路介紹-->
-    <div class="intro">
+    <div class="footer-intro">
         <img id="dailooLogo" class="dailoo-logo" src="images/footer/dailoo_logo.png" alt="">
         <div class="link">
             <a href="http://pic.sopili.net/l/facebook/page/175672579574489" target="_blank" style="margin-right: 94px;">
@@ -54,34 +54,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
 <script>
-    /*function initIframeHeight(height) {
-        var userAgent = navigator.userAgent;
-        var iframe = parent.document.getElementById("footerIframe");
-        var subdoc = iframe.contentDocument || iframe.contentWindow.document;
-        var subbody = subdoc.body;
-        var realHeight;
-        //谷歌瀏覽器特殊處理
-        if (userAgent.indexOf("Chrome") > -1) {
-            realHeight = subdoc.documentElement.scrollHeight;
-        }
-        else {
-            realHeight = subbody.scrollHeight;
-        }
-        if (realHeight < height) {
-            $(iframe).height(height);
-        }
-        else {
-            $(iframe).height(realHeight);
-        }
-    }*/
-
     function changeCss(type){
-        if(type == 'orange') {
-            var cover = $(".cover");
-            for(var i = 0; i < cover.length; i++){
-                cover[i].style.backgroundColor = "#EEB962";
-            }
-        }
+       if(type == 'jinfeng') {
+           $$("simpleMap").href = "/navMap.html#金峰鄉";
+           $$("googleMap").href = "https://goo.gl/mkRLuY";
+       }
     }
 
 </script>
