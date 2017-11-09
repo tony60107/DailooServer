@@ -22,7 +22,7 @@ public class SpeakerServiceImpl implements SpeakerService{
 	public void addSpeaker(Speaker speaker) throws Exception {
 		
 		if(dao.findSpeakerByUsername(speaker.getUsername()) != null) {
-			throw new RuntimeException("用戶名已存在");
+			throw new RuntimeException("該帳號已存在");
 		}
 		
 		speaker.setId(UUID.randomUUID().toString());

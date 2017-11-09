@@ -121,17 +121,21 @@
     <div id="links" style="margin-top: 30px; margin-bottom: 30px;"></div>
 
     <div class="title" style="text-align: center; margin-top: 20px;">註冊講者</div>
-    <form class="main-form" role="form" action="/SpeakerServlet?method=registSpeaker" method="post">
+    <form id="mainForm" class="main-form" role="form" action="/SpeakerServlet?method=registSpeaker" method="post">
         <div class="form-group">
             <label>帳號</label>
-            <input type="text" name="username" class="form-control" placeholder="輸入帳號" value="">
+            <input id="username" type="text" name="username" class="form-control" placeholder="輸入帳號" value="">
         </div>
         <div class="form-group">
             <label>密碼</label>
-            <input type="password" name="password" class="form-control" placeholder="輸入密碼" value="">
+            <input id="password" type="password" name="password" class="form-control" placeholder="輸入密碼" value="">
         </div>
-        <button type="submit" class="btn btn-default">註冊</button>
+        <div class="form-group">
+            <label>姓名</label>
+            <input id="name" type="text" name="name" class="form-control" placeholder="輸入姓名" value="">
+        </div>
     </form>
+    <div type="submit" class="btn btn-default" onclick="checkForm();">註冊</div>
 
     <div class="demo">
         <table class="bordered">
@@ -155,6 +159,7 @@
 </html>
 <script type="text/javascript" src="js/base.js"></script>
 <script>
+    //找出所有的講者
     $.ajax({
         url: "/SpeakerServlet", context: document.body,
         type: "POST",
@@ -166,6 +171,7 @@
         },
     });
 
+    //將講者初始化到表單中
     function initDataFromServer(speakers) {
         for(var i = 0; i < speakers.length; i++){
             var dom = '<tr>' +
@@ -187,6 +193,19 @@
         if(bool){
             location.href = url;
         }else {return;}
+    }
+
+    function checkForm(){
+        if($$("username").value == '' || $$("password").value == '' || $$("name").value == '' ) {
+            alert("註冊資料不能為空");
+            return;
+        }
+        var patrn=/^(\w){6,20}$/;
+        if (!patrn.exec($$("password").value)){
+            alert("密碼必須是6位以上英數字混合");
+            return;
+        }
+        $$("mainForm").submit();
     }
 
     window.onload = function() {

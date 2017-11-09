@@ -15,12 +15,12 @@ public class SpeakerDaoImpl implements SpeakerDao{
 
 	@Override
 	public void addSpeaker(Speaker speaker) {
-		String sql = "insert into speakers (id, username, password, role, ownerId) "
-				+ "values(?,?,?,?,?)";
+		String sql = "insert into speakers (id, username, password, name, role, ownerId) "
+				+ "values(?,?,?,?,?,?)";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
 			runner.update(sql, speaker.getId(), speaker.getUsername(), speaker.getPassword(),
-					speaker.getRole(), speaker.getOwnerId());
+					speaker.getName(), speaker.getRole(), speaker.getOwnerId());
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

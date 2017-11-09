@@ -15,7 +15,7 @@
 <body>
 <div class="w">
     <div class="title" style="margin-top: 40px; text-align: center; font-size: 35px; line-height: 35px;">重設帳號密碼</div>
-    <form class="main-form" role="form" action="/SpeakerServlet?method=resetUSNandPWD" method="post">
+    <form id="mainForm" class="main-form" role="form" action="/SpeakerServlet?method=resetUSNandPWD" method="post">
         <div class="form-group" style="display: none">
             <label>ID</label>
             <input type="text" id="id" name="id" class="form-control" placeholder="輸入ID" value="">
@@ -28,14 +28,15 @@
             <label>密碼</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="輸入密碼" value="">
         </div>
-        <input type="submit" class="btn btn-warning" value="重設">
     </form>
+    <div class="btn btn-default" onclick="checkForm();">重設</div>
 </div>
 </body>
 </html>
 <script type="text/javascript" src="js/base.js"></script>
 <script>
     var speakerId = location.href.split("id=")[1];
+    //取得指定講者ID與姓名
     $.ajax({
         url: "/SpeakerServlet", context: document.body,
         type: "POST",
@@ -46,4 +47,18 @@
             $$("username").value = data.username;
         },
     });
+
+    //檢查重設表單
+    function checkForm(){
+        if($$("username").value == '' || $$("password").value == '') {
+            alert("資料不能為空");
+            return;
+        }
+        var patrn=/^(\w){6,20}$/;
+        if (!patrn.exec($$("password").value)){
+            alert("密碼必須是6位以上英數字混合");
+            return;
+        }
+        $$("mainForm").submit();
+    }
 </script>
