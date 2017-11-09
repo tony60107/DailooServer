@@ -21,7 +21,7 @@
             <input type="text" id="id" name="id" class="form-control" placeholder="輸入ID" value="">
         </div>
         <div class="form-group">
-            <label>帳號</label>
+            <label id="usnLabel">帳號</label>
             <input type="text" id="username" name="username" class="form-control" placeholder="輸入帳號" value="">
         </div>
         <div class="form-group">
@@ -29,7 +29,7 @@
             <input type="password" id="password" name="password" class="form-control" placeholder="輸入密碼" value="">
         </div>
     </form>
-    <div class="btn btn-default" onclick="checkForm();">重設</div>
+    <button id="submit" class="btn btn-default" onclick="checkForm();">重設</button>
 </div>
 </body>
 </html>
@@ -47,6 +47,28 @@
             $$("username").value = data.username;
         },
     });
+
+    //帳號失去焦點，查詢該帳號名稱是否已為其他帳號所擁有
+    $$("username").onblur = function(){
+        $.ajax({
+            url: "/SpeakerServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getSpeakerByUSN", "username":$$("username").value},
+            success: function (data) {
+                var speaker = eval("(" + data + ")");
+                console.dir(speaker);
+                if(speaker.id != undefined){
+                    if(speaker.id != $$("id").value){
+                        $$("usnLabel").innerHTML = "帳號<span style='color:red'>&nbsp;&nbsp;該帳號已存在</span>";
+                        $$("submit").disabled = "true";
+                    }
+                } else {
+                    $$("usnLabel").innerHTML = "帳號";
+                    $$("submit").disabled = false;
+                }
+            },
+        });
+    }
 
     //檢查重設表單
     function checkForm(){

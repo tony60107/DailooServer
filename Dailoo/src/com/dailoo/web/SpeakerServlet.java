@@ -139,6 +139,11 @@ public class SpeakerServlet extends HttpServlet {
 				}
 				response.sendRedirect(request.getContextPath() + "/manageSpeakers.html");
 			}
+			//如果是重置帳號和密碼	
+			else if("getSpeakerByUSN".equals(method)){
+				String json = service.findSpeakerByUSN(request.getParameter("username"));
+				response.getWriter().write(json);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

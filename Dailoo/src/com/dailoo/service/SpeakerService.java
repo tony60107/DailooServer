@@ -58,5 +58,13 @@ public interface SpeakerService extends Service{
 	 */
 	void resetUSNandPWD(Speaker speaker);
 
+	/**
+	 * 根據用戶名找到講者
+	 * @param username
+	 * @return 講者的JSON數據
+	 */
+	String findSpeakerByUSN(String username);
+
+
 
 }

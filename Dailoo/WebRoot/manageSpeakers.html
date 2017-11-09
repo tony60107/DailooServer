@@ -123,7 +123,7 @@
     <div class="title" style="text-align: center; margin-top: 20px;">註冊講者</div>
     <form id="mainForm" class="main-form" role="form" action="/SpeakerServlet?method=registSpeaker" method="post">
         <div class="form-group">
-            <label>帳號</label>
+            <label id="usnLabel">帳號</label>
             <input id="username" type="text" name="username" class="form-control" placeholder="輸入帳號" value="">
         </div>
         <div class="form-group">
@@ -147,7 +147,6 @@
                 <th>管理者</th>
                 <th>編輯</th>
                 <th>刪除</th>
-
             </tr>
             </thead>
             <tbody id="tbody">
@@ -195,6 +194,7 @@
         }else {return;}
     }
 
+    //檢查表單後上傳
     function checkForm(){
         if($$("username").value == '' || $$("password").value == '' || $$("name").value == '' ) {
             alert("註冊資料不能為空");
@@ -206,6 +206,23 @@
             return;
         }
         $$("mainForm").submit();
+    }
+
+    //帳號失去焦點，查詢該帳號是否已存在
+    $$("username").onblur = function(){
+        $.ajax({
+            url: "/SpeakerServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getSpeakerByUSN", "username":$$("username").value},
+            success: function (data) {
+                var speaker = eval("(" + data + ")");
+                if(speaker.id != undefined){
+                    $$("usnLabel").innerHTML = "帳號<span style='color:red'>&nbsp;&nbsp;該帳號已存在</span>";
+                } else {
+                    $$("usnLabel").innerHTML = "帳號";
+                }
+            },
+        });
     }
 
     window.onload = function() {

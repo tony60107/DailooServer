@@ -103,4 +103,14 @@ public class SpeakerServiceImpl implements SpeakerService{
 		dao.resetUSNandPWD(speaker);
 	}
 
+	@Override
+	public String findSpeakerByUSN(String username) {
+		Speaker sp = dao.findSpeakerByUsername(username);
+		if(sp == null){
+			return "{}";
+		}else {
+			return gson.toJson(sp);
+		}
+	}
+
 }

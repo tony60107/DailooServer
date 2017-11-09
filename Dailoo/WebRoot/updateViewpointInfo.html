@@ -202,16 +202,34 @@
         });
     }
 
+    //當焦點移開地址欄
     $$("address").onblur = function(){
         var url = "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=" + $$("address").value;
-
+        //向Google查詢經緯度
         $.ajax({
             url: url, context: document.body,
             type: "POST",
             success: function (data) {
-                if(data.status != "OK"){  $$("address").onblur();}
-                var loc = data.results[0].geometry.location;
-                map.setCenter(loc);
+                //如果獲取經緯度失敗，則0.5秒後再次查詢
+                if(data.status != "OK"){ setTimeout(function(){$$("address").onblur();}, 500); }
+                //如果有正確查到經緯度
+                if(data.results[0] != undefined) {
+                    var loc = data.results[0].geometry.location;
+                    //設定地圖中心點
+                    map.setCenter(loc);
+                    //設定地圖標記
+                    deleteMarkers();
+                    var marker = new google.maps.Marker({
+                        position: loc,
+                        map: map
+                    });
+                    markers.push(marker);
+                    //設定經緯度欄位
+                    if (loc.lat != 0 || loc.lng != 0) {
+                        $$("lat").value = loc.lat;
+                        $$("lng").value = loc.lng;
+                    }
+                }
             },
         });
     }
