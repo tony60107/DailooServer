@@ -6,6 +6,7 @@ window.onload = function () {
     scrollBarClass.bindEvent();
     imgSliderClass.bindEvent();
     audioClass.bindEvent();
+    var neighSwiper; //週邊景點滾動欄
 
     //避免網速過慢導致Youtube Api未啟用，手動調用
     onYouTubeIframeAPIReady();
@@ -39,7 +40,7 @@ window.onload = function () {
     //取得景點ID
     var vpId = location.href.split("id=")[1];
     //如果未提供景點ID，則跳轉到鹿野主題列表
-    if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
+    //if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
 
     //根據景點ID，取得景點資訊
     $.ajax({
@@ -209,7 +210,7 @@ function initViewpointData(vpData) {
         for (var i = 0; i < neighViewData.length; i++) {
             /*var dom = '<a href="viewpoint.html?utm_source=InSite&amp;utm_campaign=' + vpData.neighView[i].name + '_' + vpData.neighView[i].subtitle + '' +
              '&id=' + vpData.neighView[i].id + '"><div class="view">' + vpData.neighView[i].name + '</div></a>';*/
-            var dom = '<a class="view" href="viewpoint.html?utm_source=InSite&utm_campaign=' + vpData.neighView[i].name + '_' +
+            var dom = '<a class="view swiper-slide" href="viewpoint.html?utm_source=InSite&utm_campaign=' + vpData.neighView[i].name + '_' +
                 vpData.neighView[i].subtitle + '&id=' + vpData.neighView[i].id + '">' +
                 '<img src="/ResourceServlet?url=' + vpData.neighView[i].behalfPhotoUrl + '">' +
                 '<div class="cover"></div>' +
@@ -223,8 +224,12 @@ function initViewpointData(vpData) {
             neighViewDiv.innerHTML = neighViewDiv.innerHTML + dom;
         }
 
+        //初始化週邊景點滾動欄
+        neighSwiper = new Swiper('.swiper-container', {
+            slidesPerView: 'auto',
+        });
         //週邊景點滾動區塊
-        var neighViewList = $$("neighView"); //週邊景點列表
+        /*var neighViewList = $$("neighView"); //週邊景點列表
         neighViewList.addEventListener("touchstart", function (event) { //當按下拖動按鈕
             var event = event || window.event;
             var leftVal = event.touches[0].clientX - this.offsetLeft;
@@ -241,7 +246,7 @@ function initViewpointData(vpData) {
         });
         document.addEventListener("touchend", function(event){
             document.onmousemove = null;
-        });
+        });*/
     }
 
     //Footer樣式
