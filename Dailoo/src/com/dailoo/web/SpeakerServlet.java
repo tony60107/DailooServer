@@ -131,15 +131,11 @@ public class SpeakerServlet extends HttpServlet {
 			}
 			//如果是重置帳號和密碼	
 			else if("resetUSNandPWD".equals(method)){
-				if("admin".equals(loginUser.getRole())){
-					BeanUtils.populate(speaker, request.getParameterMap());
-					service.resetUSNandPWD(speaker);
-				} else {
-					throw new RuntimeException("您沒有權限更改該資料");
-				}
+				BeanUtils.populate(speaker, request.getParameterMap());
+				service.resetUSNandPWD(speaker);
 				response.sendRedirect(request.getContextPath() + "/manageSpeakers.html");
 			}
-			//如果是重置帳號和密碼	
+			//如果是根據帳號取得講者
 			else if("getSpeakerByUSN".equals(method)){
 				String json = service.findSpeakerByUSN(request.getParameter("username"));
 				response.getWriter().write(json);

@@ -147,6 +147,7 @@
                 <th>管理者</th>
                 <th>編輯</th>
                 <th>刪除</th>
+                <th>重設帳密</th>
             </tr>
             </thead>
             <tbody id="tbody">
@@ -252,7 +253,6 @@
                             '<div><a href="/LogoutServlet">登出</a></div>';
                     $$("links").innerHTML = dom;
 
-                    $$("thead").innerHTML = $$("thead").innerHTML + '<th>重設帳密</th>';
                 } else {
                     var dom =
                             '<div><a href="/addViewpoint.html">新增景點</a></div>' +
@@ -263,10 +263,6 @@
                             '<div><a href="/LogoutServlet">登出</a></div>';
                     $$("links").innerHTML = dom;
 
-                    var resets = $(".reset");
-                    for(var i = 0; i < resets.length; i++) {
-                        resets[i].style.display = "none";
-                    }
                 }
             },
         });
