@@ -184,27 +184,13 @@ function initViewpointData(vpData) {
 
     //還可以收聽區塊
     if (typeof vpData.moreAudio != "undefined") {
-        $$("moreAudioTitle").innerHTML = vpData.name + "還有以下可以收聽：";
+        $$("moreAudioTitle").innerHTML = vpData.name + "共有以下" + vpData.moreAudio.length + "段可以收聽：";
         var moreAudioDiv = $$("moreAudio");
         for (var i = 0; i < vpData.moreAudio.length; i++) {
             moreAudioDiv.innerHTML = moreAudioDiv.innerHTML +
                 '<a href="viewpoint.html?utm_source=InSite&utm_campaign=' + vpData.moreAudio[i].name + '_' +
                 vpData.moreAudio[i].subtitle + '&id=' + vpData.moreAudio[i].id +
                 '"><div class="audio">' + vpData.moreAudio[i].subtitle + '</div></a>';
-
-            /*var dom = '<a class="view" href="viewpoint.html?utm_source=InSite&utm_campaign=' + vpData.moreAudio[i].name + '_' +
-             vpData.moreAudio[i].subtitle + '&id=' + vpData.moreAudio[i].id + '">' +
-             '<img src="/ResourceServlet?url=' + vpData.moreAudio[i].behalfPhotoUrl +'">' +
-             '<div class="cover"></div>' +
-             '<div class="title">' + vpData.moreAudio[i].name + '</div>' +
-             '<img class="speaker-photo fl" src="/ResourceServlet?url=' + vpData.moreAudio[i].speakerPhotoUrl +'" alt="">' +
-             '<div class="speaker-info fl">' +
-             '<div class="speaker">' + vpData.moreAudio[i].speakerName + '</div>' +
-             '<div class="time">1分56秒</div>' +
-             '</div>' +
-             '</a>';
-
-             moreAudioDiv.innerHTML = moreAudioDiv.innerHTML + dom;*/
 
             //設定自動播放下一段語音資料
             if (vpData.id == vpData.moreAudio[i].id && vpData.moreAudio[i + 1] != null) {

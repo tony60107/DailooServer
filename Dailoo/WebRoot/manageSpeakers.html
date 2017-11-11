@@ -135,7 +135,7 @@
             <input id="name" type="text" name="name" class="form-control" placeholder="輸入姓名" value="">
         </div>
     </form>
-    <div type="submit" class="btn btn-default" onclick="checkForm();">註冊</div>
+    <button id="submit" class="btn btn-default" onclick="checkForm();">註冊</button>
 
     <div class="demo">
         <table class="bordered">
@@ -218,8 +218,10 @@
                 var speaker = eval("(" + data + ")");
                 if(speaker.id != undefined){
                     $$("usnLabel").innerHTML = "帳號<span style='color:red'>&nbsp;&nbsp;該帳號已存在</span>";
+                    $$("submit").disabled = "true";
                 } else {
                     $$("usnLabel").innerHTML = "帳號";
+                    $$("submit").disabled = false;
                 }
             },
         });

@@ -179,17 +179,7 @@
     var townSelec = $$('town').children[0];
 
 
-    //向伺服器請求所有景點的資料
-    $.ajax({
-        url: "/ViewpointServlet", context: document.body,
-        type: "POST",
-        data: {"method": "getAllViewpointSimples"},
-        success: function (data) {
-            var data = eval("(" + data + ")");
-            console.dir(data);
-            initDataFromServer(data);
-        },
-    });
+    //初始化景點列表資料
     function initDataFromServer(vp) {
         $$("tbody").innerHTML = "";
         for (var i = 0; i < vp.length; i++) {
@@ -446,6 +436,18 @@
                         '<div><a href="/LogoutServlet">登出</a></div>';
                 $$("links").innerHTML = dom;
                 $$("filter").innerHTML = "";
+
+                //向伺服器請求所有景點的資料
+                $.ajax({
+                    url: "/ViewpointServlet", context: document.body,
+                    type: "POST",
+                    data: {"method": "getAllViewpointSimples"},
+                    success: function (data) {
+                        var data = eval("(" + data + ")");
+                        console.dir(data);
+                        initDataFromServer(data);
+                    },
+                });
             }
         },
     });
