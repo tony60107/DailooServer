@@ -225,11 +225,11 @@ function initViewpointData(vpData) {
 
         //週邊景點滾動區塊
         var neighViewList = $$("neighView"); //週邊景點列表
-        neighViewList.ontouchstart = function (event) {
+        neighViewList.addEventListener("touchstart", function (event) { //當按下拖動按鈕
             var event = event || window.event;
             var leftVal = event.touches[0].clientX - this.offsetLeft;
             var that = this;
-            document.ontouchmove = function (event) {
+            document.addEventListener("touchmove", function (event) {
                 that.style.left = event.touches[0].clientX - leftVal + "px";
                 var val = parseInt(that.style.left);
                 if (val > 50) {
@@ -237,11 +237,11 @@ function initViewpointData(vpData) {
                 } else if (val < -452 * neighViewData.length + 980) {
                     that.style.left = -452 * neighViewData.length + 980 + 'px';
                 }
-            }
-        }
-        document.ontouchend = function () {
-            document.ontouchmove = null;
-        }
+            });
+        });
+        document.addEventListener("touchend", function(event){
+            document.onmousemove = null;
+        });
     }
 
     //Footer樣式
