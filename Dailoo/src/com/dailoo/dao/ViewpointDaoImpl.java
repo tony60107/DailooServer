@@ -18,14 +18,14 @@ public class ViewpointDaoImpl implements ViewpointDao{
 		
 		String sql = "insert into viewpoints (id, name, subtitle, themeId, behalfPhotoUrl, country, city"
 				+ ", town, village, address, longitude, latitude, latLngPri, navUrl, intro, shortUrl, "
-				+ "speakerId, updatetime) "
-				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,now(3))";
+				+ "speakerId, creatorId, updatetime) "
+				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,now(3))";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
 			runner.update(sql, vp.getId(), vp.getName(), vp.getSubtitle(), vp.getThemeId(), vp.getBehalfPhotoUrl(),
 					vp.getCountry(), vp.getCity(), vp.getTown(), vp.getVillage(), vp.getAddress(), 
 					vp.getLongitude(), vp.getLatitude(), vp.getLatLngPri(), vp.getNavUrl(), vp.getIntro(),
-					vp.getShortUrl(), vp.getSpeakerId());
+					vp.getShortUrl(), vp.getSpeakerId(), vp.getCreatorId());
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -236,6 +236,19 @@ public class ViewpointDaoImpl implements ViewpointDao{
 	@Override
 	public List<Viewpoint> findViewpointsBySpeakerId(String id) {
 		String sql = "select * from viewpoints where speakerId = ? order by updatetime asc";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class), id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public List<Viewpoint> findViewpointsByCreatorId(String id) {
+		String sql = "select * from viewpoints where creatorId = ? order by updatetime asc";
 		
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());

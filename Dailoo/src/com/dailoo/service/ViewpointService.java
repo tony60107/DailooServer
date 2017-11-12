@@ -122,4 +122,11 @@ public interface ViewpointService extends Service{
 	 */
 	String findViewpointSimplesBySpeaker(Speaker speaker);
 
+	/**
+	 * 根據景點創建者，獲取所有的景點
+	 * @param creator 景點創建者
+	 * @return 多個簡易版景點資訊的JSON數據
+	 */
+	String findViewpointSimplesByCreator(Speaker creator);
+
 }

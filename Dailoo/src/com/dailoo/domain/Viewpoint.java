@@ -24,7 +24,9 @@ public class Viewpoint {
 	private int isPriority;	//是否優先顯示 1為優先，0為不優先 
 	private int isPay; 		//是否為付費景點，1為是，0為否
 	private String speakerId;   //講者ID
+	private String creatorId;	//創建者ID
 	private Timestamp updateTime;	//上傳時間
+	
 	public String getId() {
 		return id;
 	}
@@ -144,6 +146,12 @@ public class Viewpoint {
 	}
 	public void setSpeakerId(String speakerId) {
 		this.speakerId = speakerId;
+	}
+	public String getCreatorId() {
+		return creatorId;
+	}
+	public void setCreatorId(String creatorId) {
+		this.creatorId = creatorId;
 	}
 	public Timestamp getUpdateTime() {
 		return updateTime;

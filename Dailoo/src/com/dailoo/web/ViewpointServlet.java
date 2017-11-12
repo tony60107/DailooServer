@@ -54,6 +54,7 @@ public class ViewpointServlet extends HttpServlet {
 				BeanUtils.populate(vp, paramMap);
 				//設定景點代表圖片
 				vp.setBehalfPhotoUrl(photoUrl);
+				vp.setCreatorId(loginUser.getId());
 				
 				if(audioUrls == null) throw new RuntimeException("音檔不能為空");
 				
@@ -88,12 +89,11 @@ public class ViewpointServlet extends HttpServlet {
 				
 				//根據景點ID查找該景點
 				Viewpoint temp = service.findViewpointById(vp.getId());
-				//該景點的講者
-				Speaker speaker = gson.fromJson(speakerService.findSpeakerById(temp.getSpeakerId()), Speaker.class);
-
-				//進行權限管理，如果要求更改景點資訊的是該景點 擁有者 或 該擁有者的管理者 或 管理員
+				//該景點的創建者
+				Speaker speaker = gson.fromJson(speakerService.findSpeakerById(temp.getCreatorId()), Speaker.class);
+				//進行權限管理，如果要求更改景點資訊的是該景點 創建者 或 該景點創建者的管理者 或 管理員
 				if(loginUser == null) throw new RuntimeException("您尚未登入");
-				if(loginUser.getId().equals(temp.getSpeakerId()) || loginUser.getId().equals(speaker.getOwnerId())
+				if(loginUser.getId().equals(temp.getCreatorId()) || loginUser.getId().equals(speaker.getOwnerId())
 						|| "admin".equals(loginUser.getRole())){
 					
 					//設定景點代表圖
@@ -156,7 +156,7 @@ public class ViewpointServlet extends HttpServlet {
 					if(json == null) json = "";
 					response.getWriter().write(json);
 				} else {
-					String json = service.findViewpointSimplesBySpeaker(loginUser);
+					String json = service.findViewpointSimplesByCreator(loginUser);
 					if(json == null) json = "";
 					response.getWriter().write(json);
 				} 
@@ -168,14 +168,14 @@ public class ViewpointServlet extends HttpServlet {
 				
 				//根據景點ID查找該景點
 				Viewpoint temp = service.findViewpointById(viewpointId);
-				//該景點的講者
-				Speaker speaker = gson.fromJson(speakerService.findSpeakerById(temp.getSpeakerId()), Speaker.class);
+				//該景點的創建者
+				Speaker speaker = gson.fromJson(speakerService.findSpeakerById(temp.getCreatorId()), Speaker.class);
 				
 				if(temp == null) throw new RuntimeException("該景點不存在");
 				
-				//進行權限管理，如果要求更改景點資訊的是該景點 擁有者 或 該擁有者的管理者 或 管理員
+				//進行權限管理，如果要求更改景點資訊的是該景點 創建者 或 該景點創建者的管理者 或 管理員
 				if(loginUser == null) throw new RuntimeException("您尚未登入");
-				if(loginUser.getId().equals(temp.getSpeakerId()) || loginUser.getId().equals(speaker.getOwnerId())
+				if(loginUser.getId().equals(temp.getCreatorId()) || loginUser.getId().equals(speaker.getOwnerId())
 						|| "admin".equals(loginUser.getRole())){
 					//刪除景點
 					service.delViewpoint(viewpointId);
