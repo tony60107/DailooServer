@@ -12,11 +12,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/addviewpoint.css">
+    <style>
+        .manage-links div {
+            float: left;
+            margin-right: 36px;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
 <div class="w">
     <div class="title" style="margin-top: 20px; text-align: center; font-size: 35px; line-height: 35px;">新增景點</div>
-    <div id="links" style="margin-top: 30px; margin-bottom: 30px;"></div>
+    <div id="links" class="manage-links"></div>
 
     <form class="main-form" role="form" action="/ViewpointServlet?method=addViewpoint" method="post"
           enctype="multipart/form-data">
@@ -221,22 +229,22 @@
             } else if(speaker.role == 'admin') {
                 var dom =
                         '<div><a href="/addViewpoint.html">新增景點</a></div>' +
-                        '<div><a href="/manageRegions.html">地區管理頁面</a></div>' +
-                        '<div><a href="/manageThemes.html">主題管理頁面</a></div>' +
-                        '<div><a href="/manageViewpoints.html">景點管理頁面</a></div>' +
-                        '<div><a href="/manageSpeakers.html">講者管理頁面</a></div>' +
-                        '<div><a href="/manageSNs.html">序號管理頁面</a></div>' +
-                        '<div>登入者： ' + speaker.username + '</div>' +
+                        '<div><a href="/manageRegions.html">地區管理</a></div>' +
+                        '<div><a href="/manageThemes.html">主題管理</a></div>' +
+                        '<div><a href="/manageViewpoints.html">景點管理</a></div>' +
+                        '<div><a href="/manageSpeakers.html">講者管理</a></div>' +
+                        '<div><a href="/manageSNs.html">序號管理</a></div>' +
+                        '<div>登入者：' + speaker.username + '</div>' +
                         '<div><a href="/LogoutServlet">登出</a></div>';
 
                 $$("links").innerHTML = dom;
             } else {
                 var dom =
                         '<div><a href="/addViewpoint.html">新增景點</a></div>' +
-                        '<div><a href="/manageViewpoints.html">景點管理頁面</a></div>' +
-                        '<div><a href="/manageSpeakers.html">講者管理頁面</a></div>' +
-                        '<div><a href="/manageSNs.html">序號管理頁面</a></div>' +
-                        '<div>登入帳號： ' + speaker.username + '</div>' +
+                        '<div><a href="/manageViewpoints.html">景點管理</a></div>' +
+                        '<div><a href="/manageSpeakers.html">講者管理</a></div>' +
+                        '<div><a href="/manageSNs.html">序號管理</a></div>' +
+                        '<div>登入帳號：' + speaker.username + '</div>' +
                         '<div><a href="/LogoutServlet">登出</a></div>';
                 $$("links").innerHTML = dom;
             }
