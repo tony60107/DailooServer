@@ -99,7 +99,7 @@
 
     //圖片載入失敗時，重新加載圖片
     function reloadImg(img){
-        img.src = img.src;
+        setTimeout(function(){img.src = img.src;}, 500);
     }
 
     //向伺服器中刪除Tag，並在刪除成功後，刪除頁面上的Tag
