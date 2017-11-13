@@ -13,6 +13,7 @@ public class ViewpointSimple {
 	private int isPublish;
 	private int isPriority;
 	private int isPay;
+	private Double distance;
 	
 	public String getId() {
 		return id;
@@ -86,6 +87,12 @@ public class ViewpointSimple {
 	}
 	public void setIsPay(int isPay) {
 		this.isPay = isPay;
+	}
+	public Double getDistance() {
+		return distance;
+	}
+	public void setDistance(Double distance) {
+		this.distance = distance;
 	}
 	@Override
 	public String toString() {

@@ -127,12 +127,8 @@ public class ViewpointServlet extends HttpServlet {
 				String json = service.findViewpointByIdToJson(viewpointId);
 				vp = gson.fromJson(json, Viewpoint.class);
 				
-				//如果是管理員，不須註冊序號，也能查看景點資訊
-				if ("admin".equals(loginUser.getRole())) { 
-					response.getWriter().write(json);
-				}
 				//如果是付費景點，但卻沒有註冊序號
-				else if(vp != null && vp.getIsPay() == 1 && request.getSession().getAttribute("SN") == null) {
+				if(vp != null && vp.getIsPay() == 1 && request.getSession().getAttribute("SN") == null) {
 					response.getWriter().write("{\"error\":\"您沒有權限查看該景點，請註冊序號後查看^_^\"}");
 				} else if (json == null) { //景點不存在
 					response.getWriter().write("{\"error\":\"該景點不存在\"}");

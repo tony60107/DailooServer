@@ -27,6 +27,11 @@ public class Viewpoint {
 	private String creatorId;	//創建者ID
 	private Timestamp updateTime;	//上傳時間
 	
+	//-----------------------------------
+	private Double distance;	//距離
+	
+	
+	
 	public String getId() {
 		return id;
 	}
@@ -159,10 +164,15 @@ public class Viewpoint {
 	public void setUpdateTime(Timestamp updateTime) {
 		this.updateTime = updateTime;
 	}
+	public Double getDistance() {
+		return distance;
+	}
+	public void setDistance(Double distance) {
+		this.distance = distance;
+	}
 	@Override
 	public String toString() {
-		return "Viewpoint [id=" + id + ", name=" + name + ", subtitle="
-				+ subtitle +  "]";
+		return "Viewpoint [id=" + id + ", name=" + name + ", subtitle=" + subtitle + ", distance=" + distance + "]";
 	}
 	
 }

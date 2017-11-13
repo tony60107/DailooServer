@@ -49,7 +49,6 @@ window.onload = function () {
         data: {"method": "getViewpointInfo", "id": vpId},
         success: function (data) {
             var data = eval("(" + data + ")");
-            vpData = data;
             if (data.error != undefined) alert(data.error);
 
             //修正照片URL
@@ -206,21 +205,28 @@ function initViewpointData(vpData) {
     //週邊景點
     if (typeof vpData.neighView != "undefined") {
         var neighViewDiv = $$("neighView");
-        neighViewData = vpData.neighView;
-        for (var i = 0; i < neighViewData.length; i++) {
+        neighView = vpData.neighView;
+        for (var i = 0; i < neighView.length; i++) {
             /*var dom = '<a href="viewpoint.html?utm_source=InSite&amp;utm_campaign=' + vpData.neighView[i].name + '_' + vpData.neighView[i].subtitle + '' +
              '&id=' + vpData.neighView[i].id + '"><div class="view">' + vpData.neighView[i].name + '</div></a>';*/
-            var dom = '<a class="view swiper-slide" href="viewpoint.html?utm_source=InSite&utm_campaign=' + vpData.neighView[i].name + '_' +
-                vpData.neighView[i].subtitle + '&id=' + vpData.neighView[i].id + '">' +
-                '<img src="/ResourceServlet?url=' + vpData.neighView[i].behalfPhotoUrl + '">' +
+            var dom = '<a class="view swiper-slide" href="viewpoint.html?utm_source=InSite&utm_campaign=' + neighView[i].name + '_' +
+                neighView[i].subtitle + '&id=' + neighView[i].id + '">' +
+                '<img src="/ResourceServlet?url=' +neighView[i].behalfPhotoUrl + '">' +
                 '<div class="cover"></div>' +
-                '<div class="title">' + vpData.neighView[i].name + '</div>' +
-                '<img class="speaker-photo fl" src="/ResourceServlet?url=' + vpData.neighView[i].speakerPhotoUrl + '" alt="">' +
+                '<div class="title">' + neighView[i].name + '</div>' +
+                '<img class="speaker-photo fl" src="/ResourceServlet?url=' + neighView[i].speakerPhotoUrl + '" alt="">' +
                 '<div class="speaker-info fl">' +
-                '<div class="speaker">' + vpData.neighView[i].speakerName + '</div>' +
-                '<div class="time">' + parseInt(vpData.neighView[i].audioLength / 60) + '分' + vpData.neighView[i].audioLength % 60 + '秒</div>' +
-                '</div>' +
-                '</a>';
+                '<div class="speaker">' + neighView[i].speakerName + '</div>' +
+                '<div class="time">' + parseInt(neighView[i].audioLength / 60) + '分' + neighView[i].audioLength % 60 + '秒</div>' +
+                '</div>';
+
+            //計算景點距離顯示文字
+            var dt = neighView[i].distance;
+            if(dt >= 1) {
+                dom += '<div class="distance">距離' + dt.toFixed(1) + 'KM</div></a>';
+            } else {
+                dom += '<div class="distance">距離' + (dt.toFixed(2) * 1000) + 'M</div></a>';
+            }
             neighViewDiv.innerHTML = neighViewDiv.innerHTML + dom;
         }
 
@@ -228,25 +234,7 @@ function initViewpointData(vpData) {
         neighSwiper = new Swiper('.swiper-container', {
             slidesPerView: 'auto',
         });
-        //週邊景點滾動區塊
-        /*var neighViewList = $$("neighView"); //週邊景點列表
-        neighViewList.addEventListener("touchstart", function (event) { //當按下拖動按鈕
-            var event = event || window.event;
-            var leftVal = event.touches[0].clientX - this.offsetLeft;
-            var that = this;
-            document.addEventListener("touchmove", function (event) {
-                that.style.left = event.touches[0].clientX - leftVal + "px";
-                var val = parseInt(that.style.left);
-                if (val > 50) {
-                    that.style.left = "50px";
-                } else if (val < -452 * neighViewData.length + 980) {
-                    that.style.left = -452 * neighViewData.length + 980 + 'px';
-                }
-            });
-        });
-        document.addEventListener("touchend", function(event){
-            document.onmousemove = null;
-        });*/
+
     }
 
     //Footer樣式
@@ -260,18 +248,4 @@ function initViewpointData(vpData) {
     });
 }
 
-//勻速動畫
-function animate(obj, target) {
-    clearInterval(obj.timer);  // 先清除定时器
-    var speed = obj.offsetLeft < target ? 15 : -15;  // 用来判断 应该 +  还是 -
-    obj.timer = setInterval(function () {
-        var result = target - obj.offsetLeft; // 因为他们的差值不会超过5
-        obj.style.left = obj.offsetLeft + speed + "px";
-        if (Math.abs(result) <= 15)  // 如果差值不小于 5 说明到位置了
-        {
-            clearInterval(obj.timer);
-            obj.style.left = target + "px";  // 有5像素差距   我们直接跳转目标位置
-        }
-    }, 10)
-}
 
