@@ -33,6 +33,7 @@
 
     <form class="main-form" role="form" action="/ViewpointServlet?method=updateViewpoint" method="post"
           enctype="multipart/form-data">
+        <div class="fl" style="font-size: 18px; margin-top: 30px; margin-right: 25px;">景點所在位置</div>
         <div class="area form-group clearfix">
             <input type="text" name="country" class="fl form-control" value="台灣" style="display: none">
             <input type="text" name="village" class="fl form-control" value="" style="display: none">
@@ -48,7 +49,7 @@
         <div class="form-group">
             <label>主題地區</label>
             <select id="regionSelect" type="text" name="regionId" class="form-control">
-                <option selected disabled hidden style='display: none' value=''></option>
+                <option selected disabled hidden style='display: none' value=''>切換以選擇其他景點主題</option>
             </select>
             <label>景點主題</label>
             <select id="theme" name="themeId" class="village fl form-control">
