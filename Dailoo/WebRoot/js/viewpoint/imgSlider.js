@@ -63,19 +63,16 @@ var imgSlider = Class.extend({
         var imgHeight = img.height;
         var aspRat = imgWidth / imgHeight; //寬高比
         if (aspRat <= 1) { // 直式照片
-            mainPhoto.style.width = aspRat * 720 + "px";
-            //調整其他控件樣式
-            mainPhoto.style.height = "720px";
-            $$("speakerSmallPhoto").style.marginTop = "-38px";
-            $$("picShower").style.marginTop = "42px";
-            $$("photoNum").style.top = "32px";
+            mainPhoto.style.width = aspRat * 736 + "px";
+            mainPhoto.style.height = "736px";
+            mainPhoto.style.top = "0px";
+            mainPhoto.style.left = (980 - aspRat * 736) / 2 + "px";
         } else { // 橫式照片
-            //調整控件樣式
-            mainPhoto.style.width = aspRat * 540 + "px";
-            mainPhoto.style.height = "540px";
-            $$("speakerSmallPhoto").style.marginTop = "40px";
-            $$("picShower").style.marginTop = "144px";
-            $$("photoNum").style.top = "-70px";
+            mainPhoto.style.width = "980px";
+            var height = 980 / aspRat > 736 ? 736 : 980 / aspRat;
+            mainPhoto.style.height = height + "px";
+            mainPhoto.style.top = (736 - height) / 2 + "px";
+            mainPhoto.style.left = "0px";
         }
         mainPhoto.src = src;
         imgSliderClass.updatePhotoNumTxt(); //更新正在第幾張相片文字
