@@ -6,6 +6,9 @@ public class Audio {
 	private int length;		//音檔長度
 	private String viewpointId;	//音檔對應的景點ID
 	
+	//-----------------------------
+	private String subtitle; //音檔對應的副標題文字
+	
 	public String getId() {
 		return id;
 	}
@@ -29,6 +32,12 @@ public class Audio {
 	}
 	public void setLength(int length) {
 		this.length = length;
+	}
+	public String getSubtitle() {
+		return subtitle;
+	}
+	public void setSubtitle(String subtitle) {
+		this.subtitle = subtitle;
 	}
 	@Override
 	public String toString() {

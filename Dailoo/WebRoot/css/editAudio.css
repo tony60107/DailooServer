@@ -1,7 +1,12 @@
 
+.subtitle {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: -10px;
+}
 audio {
-    width: 800px;
-    margin: 50px;
+    width: 700px;
 }
 
 .taglist {

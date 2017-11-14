@@ -7,13 +7,16 @@ import org.jaudiotagger.audio.mp3.MP3AudioHeader;
 import org.jaudiotagger.audio.mp3.MP3File;
 
 import com.dailoo.dao.AudioDao;
+import com.dailoo.dao.ViewpointDao;
 import com.dailoo.domain.Audio;
+import com.dailoo.domain.Viewpoint;
 import com.dailoo.factory.BasicFactory;
 import com.google.gson.Gson;
 
 public class AudioServiceImpl implements AudioService {
 	
 	AudioDao dao = BasicFactory.getFactory().getDao(AudioDao.class);
+	ViewpointDao viewpointDao = BasicFactory.getFactory().getDao(ViewpointDao.class);
 	Gson gson = new Gson();
 
 	@Override
@@ -64,6 +67,8 @@ public class AudioServiceImpl implements AudioService {
 	@Override
 	public String findAudioById(String id) {
 		Audio audio = dao.findAudioById(id);
+		Viewpoint vp = viewpointDao.findViewpointById(audio.getViewpointId());
+		audio.setSubtitle(vp.getSubtitle());
 		String json = gson.toJson(audio);
 		return json;
 	}

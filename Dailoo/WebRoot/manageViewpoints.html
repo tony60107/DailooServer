@@ -108,15 +108,14 @@
             border-radius: 0 0 6px 0;
         }
 
-        .del :hover{
+        .del :hover {
             color: #C81623;
             text-decoration: underline;
             cursor: pointer;
         }
 
         .manage-links div {
-            float: left;
-            margin-right: 36px;
+            margin-right: 60px;
             margin-top: 30px;
             font-size: 18px;
         }
@@ -125,13 +124,13 @@
 <body>
 <div class="w">
     <div class="title" style="margin-top: 20px; text-align: center; font-size: 35px; line-height: 35px;">景點管理</div>
-    <div id="links" class="manage-links">
-    </div>
+    <div id="links" class="manage-links clearfix" style="margin-top: -76px;"></div>
 
-    <div id="filter" style="margin-top: 80px">
+    <div id="filter" style="margin-top: 40px">
         <div class="filters clearfix">
             <label class="fl" style="font-size: 16px; line-height: 36px;">地區：</label>
-            <select id="regionSelect" type="text" name="regionId" class="fl form-control" style="width: 200px; margin-right: 35px;">
+            <select id="regionSelect" type="text" name="regionId" class="fl form-control"
+                    style="width: 200px; margin-right: 35px;">
                 <option selected disabled hidden style='display: none' value=''>請選擇地區</option>
             </select>
             <label class="fl" style="font-size: 16px; line-height: 36px;">主題：</label>
@@ -157,7 +156,7 @@
             <tr>
                 <th width="120px">景點名稱</th>
                 <th width="150px">副標題</th>
-                <th  width="100px">講者</th>
+                <th width="100px">講者</th>
                 <th>時間長度</th>
                 <th>編輯</th>
                 <th>預覽</th>
@@ -199,23 +198,23 @@
                     '<td><a target="_blank" href="/viewpoint.html?id=' + vp[i].id + '">預覽</a></td>' +
                     '<td><a target="_blank" href="' + vp[i].shortUrl + '">' + vp[i].shortUrl + '</a></td>';
 
-                    if(vp[i].isPublish == 1){
-                        dom += '<td style="text-align: center;"><img src="/images/general/check.png" onclick="switchPublishStat(\''+ vp[i].id +'\',0,this);"/></td>';
-                    }else if(vp[i].isPublish == 0){
-                        dom += '<td style="text-align: center;"><img src="/images/general/cancel.png" onclick="switchPublishStat(\''+ vp[i].id +'\',1,this);"/></td>';
-                    }
-                    if(vp[i].isPriority == 1){
-                        dom += '<td style="text-align: center;"><img src="/images/general/check.png" onclick="switchPriority(\''+ vp[i].id +'\',0,this);"/></td>';
-                    }else if(vp[i].isPriority == 0){
-                        dom += '<td style="text-align: center;"><img src="/images/general/cancel.png" onclick="switchPriority(\''+ vp[i].id +'\',1,this);"/></td>';
-                    }
-                    if(vp[i].isPay == 1){
-                        dom += '<td style="text-align: center;"><img src="/images/general/check.png" onclick="switchPay(\''+ vp[i].id +'\',0,this);"/></td>';
-                    }else if(vp[i].isPay == 0){
-                        dom += '<td style="text-align: center;"><img src="/images/general/cancel.png" onclick="switchPay(\''+ vp[i].id +'\',1,this);"/></td>';
-                    }
+            if (vp[i].isPublish == 1) {
+                dom += '<td style="text-align: center;"><img src="/images/general/check.png" onclick="switchPublishStat(\'' + vp[i].id + '\',0,this);"/></td>';
+            } else if (vp[i].isPublish == 0) {
+                dom += '<td style="text-align: center;"><img src="/images/general/cancel.png" onclick="switchPublishStat(\'' + vp[i].id + '\',1,this);"/></td>';
+            }
+            if (vp[i].isPriority == 1) {
+                dom += '<td style="text-align: center;"><img src="/images/general/check.png" onclick="switchPriority(\'' + vp[i].id + '\',0,this);"/></td>';
+            } else if (vp[i].isPriority == 0) {
+                dom += '<td style="text-align: center;"><img src="/images/general/cancel.png" onclick="switchPriority(\'' + vp[i].id + '\',1,this);"/></td>';
+            }
+            if (vp[i].isPay == 1) {
+                dom += '<td style="text-align: center;"><img src="/images/general/check.png" onclick="switchPay(\'' + vp[i].id + '\',0,this);"/></td>';
+            } else if (vp[i].isPay == 0) {
+                dom += '<td style="text-align: center;"><img src="/images/general/cancel.png" onclick="switchPay(\'' + vp[i].id + '\',1,this);"/></td>';
+            }
 
-                    dom += '<td class="del" onclick="checkDel(this);"><div link="/ViewpointServlet?method=delViewpoint&id=' + vp[i].id + '">刪除</div></td>' +
+            dom += '<td class="del" onclick="checkDel(this);"><div link="/ViewpointServlet?method=delViewpoint&id=' + vp[i].id + '">刪除</div></td>' +
                     '</tr>';
             $$("tbody").innerHTML = $$("tbody").innerHTML + dom;
             //console.dir("<url>\n\11<loc>" + "http://www.dailoo.com/viewpoint.html?utm_source=InSite&utm_campaign=" + vp[i].name + "_" + vp[i].subtitle + "&id=" + vp[i].id + "</loc>\n</url>");
@@ -223,80 +222,85 @@
     }
 
     //確認刪除對話框
-    function checkDel(btn){
+    function checkDel(btn) {
         var bool = confirm("確定刪除景點");
         var url = btn.children[0].getAttribute("link");
-        if(bool){
+        if (bool) {
             location.href = url;
-        }else {return;}
+        } else {
+            return;
+        }
     }
 
     //向伺服器發送更改付費刊登的狀態
-    function switchPublishStat(id,stat,img){
+    function switchPublishStat(id, stat, img) {
         $.ajax({
             url: "/ViewpointServlet", context: img,
             type: "POST",
-            data: {"method": "updateIsPublishById", "id":id, "stat":stat},
+            data: {"method": "updateIsPublishById", "id": id, "stat": stat},
             success: function (data) {
 
                 var data = eval("(" + data + ")");
-                if(data.error != undefined){
-                    alert(data.error); return;
+                if (data.error != undefined) {
+                    alert(data.error);
+                    return;
                 }
 
                 var td = this.parentNode;
                 td.removeChild(this);
-                if(stat == 1){
-                    td.innerHTML = '<img src="/images/general/check.png" onclick="switchPublishStat(\''+ id +'\',0,this);"/>';
-                }else if(stat == 0){
-                    td.innerHTML = '<img src="/images/general/cancel.png" onclick="switchPublishStat(\''+ id +'\',1,this);"/>';
+                if (stat == 1) {
+                    td.innerHTML = '<img src="/images/general/check.png" onclick="switchPublishStat(\'' + id + '\',0,this);"/>';
+                } else if (stat == 0) {
+                    td.innerHTML = '<img src="/images/general/cancel.png" onclick="switchPublishStat(\'' + id + '\',1,this);"/>';
                 }
             },
         });
     }
 
     //向伺服器發送更改優先顯示的狀態
-    function switchPriority(id,stat,img){
+    function switchPriority(id, stat, img) {
         $.ajax({
             url: "/ViewpointServlet", context: img,
             type: "POST",
-            data: {"method": "updateIsPriorityById", "id":id, "stat":stat},
+            data: {"method": "updateIsPriorityById", "id": id, "stat": stat},
             success: function (data) {
 
                 var data = eval("(" + data + ")");
-                if(data.error != undefined){
-                    alert(data.error); return;
+                if (data.error != undefined) {
+                    alert(data.error);
+                    return;
                 }
 
                 var td = this.parentNode;
                 td.removeChild(this);
-                if(stat == 1){
-                    td.innerHTML = '<img src="/images/general/check.png" onclick="switchPriority(\''+ id +'\',0,this);"/>';
-                }else if(stat == 0){
-                    td.innerHTML = '<img src="/images/general/cancel.png" onclick="switchPriority(\''+ id +'\',1,this);"/>';
+                if (stat == 1) {
+                    td.innerHTML = '<img src="/images/general/check.png" onclick="switchPriority(\'' + id + '\',0,this);"/>';
+                } else if (stat == 0) {
+                    td.innerHTML = '<img src="/images/general/cancel.png" onclick="switchPriority(\'' + id + '\',1,this);"/>';
                 }
             },
         });
     }
 
     //向伺服器發送更改是否為付費景點
-    function switchPay(id,stat,img){
+    function switchPay(id, stat, img) {
         $.ajax({
             url: "/ViewpointServlet", context: img,
             type: "POST",
-            data: {"method": "updateIsPayById", "id":id, "stat":stat},
+            data: {"method": "updateIsPayById", "id": id, "stat": stat},
             success: function (data) {
                 var data = eval("(" + data + ")");
-                if(data.error != undefined){
-                    alert(data.error); return;
+                if (data.error != undefined) {
+                    alert(data.error);
+                    return;
                 }
 
                 var td = this.parentNode;
                 td.removeChild(this);
-                if(stat == 1){
-                    td.innerHTML = '<img src="/images/general/check.png" onclick="switchPay(\''+ id +'\',0,this);"/>';
-                }else if(stat == 0){
-                    td.innerHTML = '<img src="/images/general/cancel.png" onclick="switchPay(\''+ id +'\',1,this);"/>';
+                if (stat == 1) {
+                    td.innerHTML = '<img src="/images/general/check.png" onclick="switchPay(\'' + id + '\',0,this);"/>';
+                } else if (stat == 0) {
+                    td.innerHTML = '<img src="/images/general/cancel.png" onclick="switchPay(\'' + id + '\',1,this);"/>';
                 }
             },
         });
@@ -310,15 +314,15 @@
         success: function (data) {
             var regions = eval("(" + data + ")");
             console.dir(data);
-            for(var i = 0; i < regions.length; i++){
-                var dom = '<option value="'+ regions[i].id +'">' + regions[i].name +'</option>';
+            for (var i = 0; i < regions.length; i++) {
+                var dom = '<option value="' + regions[i].id + '">' + regions[i].name + '</option>';
                 $$("regionSelect").innerHTML = $$("regionSelect").innerHTML + dom;
             }
         },
     });
 
     //當主題地區變更時，抓取該地區下的所有主題
-    regionSelec.onchange = function() {
+    regionSelec.onchange = function () {
 
         //默認不顯示鄉鎮地區
         themeSelec.innerHTML = "";
@@ -355,7 +359,7 @@
     }
 
     //當選擇的主題變更時，向伺服器請求該主題下所有景點的資料
-    themeSelec.onchange = function(){
+    themeSelec.onchange = function () {
         $.ajax({
             url: "/ViewpointServlet", context: document.body,
             type: "POST",
@@ -369,7 +373,7 @@
     }
 
     //當選擇的城市變更時，向伺服器請求該城市下的所有景點資料
-    citySelec.onchange = function(){
+    citySelec.onchange = function () {
 
         //默認不顯示鄉鎮地區
         //townSelec.innerHTML = '<option selected disabled hidden style="display: none" value="">請選擇</option>' + townSelec.innerHTML;
@@ -391,7 +395,7 @@
     }
 
     //鄉鎮下拉選單變更
-    townSelec.onchange = function(){
+    townSelec.onchange = function () {
         //請求該鄉鎮景點資料
         $.ajax({
             url: "/ViewpointServlet", context: document.body,
@@ -418,29 +422,33 @@
             var speaker = eval("(" + data + ")");
             console.dir(speaker);
 
-            if(speaker == null) {
-                $$("links").innerHTML = '<div>尚未登入帳號，請先進行登入</div><div><a href="/login.html">登入</a></div>';
-                $$("filter").innerHTML = "";
-            } else if(speaker.role == 'admin') {
+            if (speaker == null) {
+                $$("links").innerHTML = '<div style="margin-top: 50px;">尚未登入帳號，請先進行登入</div><div><a href="/login.html">登入</a></div>';
+            } else if (speaker.role == 'admin') {
                 var dom =
-                '<div><a href="/addViewpoint.html">新增景點</a></div>' +
-                '<div><a href="/manageRegions.html">地區管理</a></div>' +
-                '<div><a href="/manageThemes.html">主題管理</a></div>' +
-                '<div><a href="/manageViewpoints.html">景點管理</a></div>' +
-                '<div><a href="/manageSpeakers.html">講者管理</a></div>' +
-                '<div><a href="/manageSNs.html">序號管理</a></div>' +
-                '<div>登入者：' + speaker.username + '</div>' +
-                '<div><a href="/LogoutServlet">登出</a></div>';
-
+                        '<div class="clearfix">' +
+                        '<div class="fl">登入者：' + speaker.username + '</div>' +
+                        '<div class="fl"><a href="/LogoutServlet">登出</a></div>' +
+                        '</div>' +
+                        '<div class="fl"><a href="/manageViewpoints.html">景點管理</a></div>' +
+                        '<div class="fl"><a href="/addViewpoint.html">新增景點</a></div>' +
+                        '<div class="fl"><a href="/manageSpeakers.html">講者管理</a></div>' +
+                        '<div class="fl"><a href="/addSpeaker.html">新增講者</a></div>' +
+                        '<div class="fl"><a href="/manageThemes.html">主題管理</a></div>' +
+                        '<div class="fl"><a href="/manageRegions.html">地區管理</a></div>' +
+                        '<div class="fl"><a href="/manageSNs.html">序號管理</a></div>';
                 $$("links").innerHTML = dom;
             } else {
                 var dom =
-                        '<div><a href="/addViewpoint.html">新增景點</a></div>' +
-                        '<div><a href="/manageViewpoints.html">景點管理</a></div>' +
-                        '<div><a href="/manageSpeakers.html">講者管理</a></div>' +
-                        '<div><a href="/manageSNs.html">序號管理</a></div>' +
-                        '<div>登入帳號：' + speaker.username + '</div>' +
-                        '<div><a href="/LogoutServlet">登出</a></div>';
+                        '<div class="clearfix">' +
+                        '<div class="fl">登入者：' + speaker.username + '</div>' +
+                        '<div class="fl"><a href="/LogoutServlet">登出</a></div>' +
+                        '</div>' +
+                        '<div class="fl"><a href="/manageViewpoints.html">景點管理</a></div>' +
+                        '<div class="fl"><a href="/addViewpoint.html">新增景點</a></div>' +
+                        '<div class="fl"><a href="/manageSpeakers.html">講者管理</a></div>' +
+                        '<div class="fl"><a href="/addSpeaker.html">新增講者</a></div>' +
+                        '<div class="fl"><a href="/manageSNs.html">序號管理</a></div>';
                 $$("links").innerHTML = dom;
                 $$("filter").innerHTML = "";
 
