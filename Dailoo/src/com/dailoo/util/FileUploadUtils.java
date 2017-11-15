@@ -22,6 +22,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.dailoo.annotation.Tran;
+import com.dailoo.web.ViewpointServlet;
 
 public class FileUploadUtils {
 
@@ -109,13 +110,14 @@ public class FileUploadUtils {
 					item.delete();
 					
 					//根據不同檔案格式，存到參數中
-					if("mp3".equals(format)){
+					if("aac".equals(format) || "mp3".equals(format) || "m4a".equals(format) || "3gpp".equals(format)){
 						if(paramMap.get("audiourls") == null){
 							paramMap.put("audiourls", fileurl);
 						} else {
 							paramMap.put("audiourls",paramMap.get("audiourls") + "," + fileurl);
 						}
-					}else{
+					}else if("jpg".equals(format) || "jpeg".equals(format) || "raw".equals(format) || "gif".equals(format) ||
+							 "png".equals(format) || "bmp".equals(format) ){
 						//圖片壓縮
 						File imgFile = new File(servlet.getServletContext().getRealPath(fileurl));
 						BufferedImage bi = ImageIO.read(imgFile);
@@ -138,6 +140,21 @@ public class FileUploadUtils {
 							paramMap.put("imgurls",paramMap.get("imgurls") + "," + fileurl);
 						}
 						
+					} else {
+						String fileURL = FileUploadUtils.class.getClassLoader().getResource("../../").toURI().getPath(); 
+						//刪除音檔
+						String[] audioUrls = paramMap.get("audiourls").split(",");
+						for(int i = 0; i < audioUrls.length; i++){
+							File file = new File(fileURL.substring(0, fileURL.length() - 1) + audioUrls[i]); 
+							if(file.exists()){	file.delete(); }
+						}
+						//刪除圖片
+						String[] imgUrls = paramMap.get("imgurls").split(",");
+						for(int i = 0; i < imgUrls.length; i++){
+							File file = new File(fileURL.substring(0, fileURL.length() - 1) + imgUrls[i]); 
+							if(file.exists()){	file.delete(); }
+						}
+						throw new RuntimeException("上傳檔案格式錯誤");
 					}
 
 				}
