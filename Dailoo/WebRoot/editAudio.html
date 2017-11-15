@@ -39,11 +39,11 @@
             <input id="audioId" type="text" name="audioId" class="form-control" placeholder="輸入音檔ID" value="">
         </div>
         <div class="form-group clearfix">
-            <input type="file" name="file1" class="form-control fl" multiple="multiple"
+            <input type="file" name="file" class="form-control fl" multiple="multiple"
                    style="width: 200px; margin-right: 80px;"/>
         </div>
     </form>
-    <button class="btn btn-default" onclick="$$('mainForm').submit();">上傳標記圖片</button>
+    <button class="btn btn-default" onclick="checkForm();">上傳標記圖片</button>
     <div id="taglist" class="taglist clearfix">
 
     </div>
@@ -136,6 +136,21 @@
                 },
             });
         }
+    }
+
+    //檢查表單內容後上傳
+    function checkForm() {
+
+        //檢查音檔檔案格式
+        var audioFormat = /\.(jpg|jpeg|raw|gif|png|bmp)$/i;  //允許的圖片檔案格式
+        var audios = $('input[name="file"]');
+        for(var i = 0; i < audios.length; i++) {
+            if(audioFormat.test(audios.get(i).value) != true){
+                alert("圖片格式不正確或未選擇");
+                return;
+            }
+        }
+        $$("mainForm").submit();
     }
 
     //根據不同的登入者，顯示不同的連結

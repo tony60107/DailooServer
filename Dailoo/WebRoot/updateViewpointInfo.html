@@ -31,7 +31,7 @@
         <div class="fl"><a id="preview" href="">預覽景點</a></div>
     </div>
 
-    <form class="main-form" role="form" action="/ViewpointServlet?method=updateViewpoint" method="post"
+    <form id="mainForm" class="main-form" role="form" action="/ViewpointServlet?method=updateViewpoint" method="post"
           enctype="multipart/form-data">
         <div class="fl" style="font-size: 18px; margin-top: 30px; margin-right: 25px;">景點所在位置</div>
         <div class="area form-group clearfix">
@@ -102,11 +102,10 @@
         </div>
         <div class="form-group">
             <label>景點音檔</label>
-            <input type="file" name="file2" class="form-control">
+            <input type="file" name="file" class="form-control">
         </div>
 
-        <input type="button" class="btn btn-default" value="更新"
-               onClick="this.form.action='/ViewpointServlet?method=updateViewpoint';this.form.submit();">
+        <input type="button" class="btn btn-default" value="更新" onClick="checkForm();">
     </form>
 
 </div>
@@ -153,6 +152,7 @@
         },
     });
 
+    //初始化表單內容
     function initDataFromServer(vp){
         $$("name").value = vp.name;
         $$("subtitle").value = vp.subtitle;
@@ -244,6 +244,31 @@
             },
         });
     }
+
+    //檢查表單內容後上傳
+    function checkForm() {
+        //檢查景點名稱
+        if($$("name").value == ''){ alert("未填寫景點名稱"); return;}
+        //檢查景點副標題
+        if($('input[name="subtitle"]').get(0).value == ''){alert("未填寫景點副標題"); return;}
+
+        //檢查音檔檔案格式
+        var audioFormat = /\.(aac|mp3|m4a|3gpp)$/i;  //允許的音檔檔案格式
+        var audio = $('input[name="file"]').get(0);
+        if(audio.value != '' && audioFormat.test(audio.value) != true){
+                alert("景點音檔格式不正確");
+                return;
+        }
+        //檢查景點代表圖格式
+        var imgFormat = /\.(jpg|jpeg|raw|gif|png|bmp)$/i;  //允許的音檔檔案格式
+        var img = $('input[name="file1"]').get(0);
+        if(img.value != '' && imgFormat.test(img.value) != true) {
+            alert("景點代表圖格式不正確");
+            return;
+        }
+        $$("mainForm").submit();
+    }
+
 
     //根據不同的登入者，顯示不同的連結
     $.ajax({
