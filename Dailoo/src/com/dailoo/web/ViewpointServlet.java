@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import com.dailoo.annotation.Tran;
 import com.dailoo.domain.Audio;
 import com.dailoo.domain.Speaker;
 import com.dailoo.domain.Viewpoint;
@@ -23,6 +24,7 @@ import com.google.gson.Gson;
 
 public class ViewpointServlet extends HttpServlet {
 
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -76,6 +78,15 @@ public class ViewpointServlet extends HttpServlet {
 							audioService.addAudio(audio);
 						}
 					} else {
+						
+						String fileURL = ViewpointServlet.class.getClassLoader().getResource("../../").toURI().getPath(); 
+						//刪除音檔
+						File file = new File(fileURL.substring(0, fileURL.length() - 1) + audioUrls[i]); 
+						if(file.exists()){	file.delete(); }
+						//刪除景點代表圖
+						file = new File(fileURL.substring(0, fileURL.length() - 1) + photoUrl); 
+						if(file.exists()){	file.delete(); }
+						
 						throw new RuntimeException("該景點已存在");
 					}
 				}

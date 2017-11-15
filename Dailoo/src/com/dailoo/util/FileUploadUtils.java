@@ -21,6 +21,8 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.dailoo.annotation.Tran;
+
 public class FileUploadUtils {
 
 	/**
@@ -30,6 +32,7 @@ public class FileUploadUtils {
 	 * @param servlet Servlet中的this對象
 	 * @return ParamMap
 	 */
+	@Tran
 	public static Map<String, String> getParamMap(HttpServletRequest request, HttpServletResponse response,
 			HttpServlet servlet) {
 		try {
@@ -106,7 +109,7 @@ public class FileUploadUtils {
 					item.delete();
 					
 					//根據不同檔案格式，存到參數中
-					if("acc".equals(format) || "mp3".equals(format)){
+					if("mp3".equals(format)){
 						if(paramMap.get("audiourls") == null){
 							paramMap.put("audiourls", fileurl);
 						} else {
