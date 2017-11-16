@@ -110,7 +110,7 @@ public class FileUploadUtils {
 					item.delete();
 					
 					//根據不同檔案格式，存到參數中
-					if("aac".equals(format) || "mp3".equals(format) || "m4a".equals(format) || "3gpp".equals(format)){
+					if("mp3".equals(format)){
 						if(paramMap.get("audiourls") == null){
 							paramMap.put("audiourls", fileurl);
 						} else {
@@ -141,18 +141,25 @@ public class FileUploadUtils {
 						}
 						
 					} else {
-						String fileURL = FileUploadUtils.class.getClassLoader().getResource("../../").toURI().getPath(); 
+						String mainUrl = FileUploadUtils.class.getClassLoader().getResource("../../").toURI().getPath();
+						//刪除最新上傳的檔案
+						File lastFile = new File(mainUrl.substring(0, mainUrl.length() - 1) + fileurl); 
+						if(lastFile.exists()){	lastFile.delete(); }
 						//刪除音檔
-						String[] audioUrls = paramMap.get("audiourls").split(",");
-						for(int i = 0; i < audioUrls.length; i++){
-							File file = new File(fileURL.substring(0, fileURL.length() - 1) + audioUrls[i]); 
-							if(file.exists()){	file.delete(); }
+						if(paramMap.get("audiourls") != null){
+							String[] audioUrls = paramMap.get("audiourls").split(",");
+							for(int i = 0; i < audioUrls.length; i++){
+								File file = new File(mainUrl.substring(0, mainUrl.length() - 1) + audioUrls[i]); 
+								if(file.exists()){	file.delete(); }
+							}
 						}
 						//刪除圖片
-						String[] imgUrls = paramMap.get("imgurls").split(",");
-						for(int i = 0; i < imgUrls.length; i++){
-							File file = new File(fileURL.substring(0, fileURL.length() - 1) + imgUrls[i]); 
-							if(file.exists()){	file.delete(); }
+						if(paramMap.get("imgurls") != null) {
+							String[] imgUrls = paramMap.get("imgurls").split(",");
+							for(int i = 0; i < imgUrls.length; i++){
+								File file = new File(mainUrl.substring(0, mainUrl.length() - 1) + imgUrls[i]); 
+								if(file.exists()){	file.delete(); }
+							}
 						}
 						throw new RuntimeException("上傳檔案格式錯誤");
 					}

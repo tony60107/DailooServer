@@ -1,14 +1,13 @@
 package com.dailoo.test;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Random;
-import java.util.UUID;
-
-import com.dailoo.util.GoogleMapUtils;
 
 import ecpay.payment.integration.AllInOne;
 import ecpay.payment.integration.domain.AioCheckOutATM;
+import it.sauronsoftware.jave.Encoder;
+import it.sauronsoftware.jave.MultimediaInfo;
 
 public class Test {
 
@@ -37,4 +36,24 @@ public class Test {
 		System.out.println(form);
 		//return form;
 	}
+	@org.junit.Test
+	public void test3() {
+		
+		try {
+			File source = new File("D:/1.mp3");
+	        Encoder encoder = new Encoder();
+	        try {
+	            MultimediaInfo m = encoder.getInfo(source);
+	            long ls = m.getDuration();
+	            System.out.println("此视频时长为:" + ls / 60000 + "分" + ls / 1000 + "秒！");
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+	}
+	
 }
