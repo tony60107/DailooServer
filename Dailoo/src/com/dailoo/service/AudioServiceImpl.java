@@ -13,6 +13,9 @@ import com.dailoo.domain.Viewpoint;
 import com.dailoo.factory.BasicFactory;
 import com.google.gson.Gson;
 
+import it.sauronsoftware.jave.Encoder;
+import it.sauronsoftware.jave.MultimediaInfo;
+
 public class AudioServiceImpl implements AudioService {
 	
 	AudioDao dao = BasicFactory.getFactory().getDao(AudioDao.class);
@@ -26,10 +29,11 @@ public class AudioServiceImpl implements AudioService {
 			audio.setId(UUID.randomUUID().toString());
 			//取得音檔在硬盤中的完整地址
 			String fileURL = AudioService.class.getClassLoader().getResource("../../").toURI().getPath();
-			MP3File mp3File = new MP3File(fileURL.substring(0, fileURL.length() - 1) + audio.getSrc());
-			MP3AudioHeader audioHeader = (MP3AudioHeader) mp3File.getAudioHeader();
+			File audioFile = new File(fileURL.substring(0, fileURL.length() - 1) + audio.getSrc());
+	        Encoder encoder = new Encoder();
+	        MultimediaInfo m = encoder.getInfo(audioFile);
 			//設定音檔長度
-			audio.setLength(audioHeader.getTrackLength());
+			audio.setLength((int) (m.getDuration() / 1000));
 			
 			dao.addAudio(audio);
 		} catch (Exception e) {
@@ -54,10 +58,13 @@ public class AudioServiceImpl implements AudioService {
 			audio.setViewpointId(viewpointId);
 			
 			//取得音檔在硬盤中的完整地址，並取得音檔長度
-			MP3File mp3File = new MP3File(fileURL.substring(0, fileURL.length() - 1) + audio.getSrc());
-			MP3AudioHeader audioHeader = (MP3AudioHeader) mp3File.getAudioHeader();
+			File audioFile = new File(fileURL.substring(0, fileURL.length() - 1) + audio.getSrc());
+	        Encoder encoder = new Encoder();
+	        MultimediaInfo m = encoder.getInfo(audioFile);
 			//設定音檔長度
-			audio.setLength(audioHeader.getTrackLength());
+			audio.setLength((int) (m.getDuration() / 1000));
+			
+			
 			dao.updateSrcByViewpointId(audio);
 		}catch(Exception e){
 			e.printStackTrace();

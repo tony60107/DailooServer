@@ -52,7 +52,7 @@ public class FileUploadUtils {
 
 			ServletFileUpload fileUpload = new ServletFileUpload(factory);
 			fileUpload.setHeaderEncoding(encode);
-			fileUpload.setFileSizeMax(10 * 1024 * 1024 * 1); //單個檔案大小10M
+			fileUpload.setFileSizeMax(20 * 1024 * 1024 * 1); //單個檔案大小20M
 			fileUpload.setSizeMax(100 * 1024 * 1024);
 
 			if (!fileUpload.isMultipartContent(request)) {
@@ -110,7 +110,7 @@ public class FileUploadUtils {
 					item.delete();
 					
 					//根據不同檔案格式，存到參數中
-					if("mp3".equals(format)){
+					if("mp3".equals(format) || "aac".equals(format) || "m4a".equals(format)){
 						if(paramMap.get("audiourls") == null){
 							paramMap.put("audiourls", fileurl);
 						} else {
