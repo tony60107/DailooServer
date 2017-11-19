@@ -108,17 +108,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 	@Override
 	public void updateViewpoint(Viewpoint vp) {
 		
-		//更新景點經緯度
-		/*double [] address = GoogleMapUtils.getAdressXY(vp.getAddress());
-		if(address[0] != 0 && address[1] != 0) {
-			vp.setLatitude(address[0]);
-			vp.setLongitude(address[1]);
-		} else {
-			Viewpoint temp = dao.findViewpointById(vp.getId());
-			vp.setLatitude(temp.getLatitude());
-			vp.setLongitude(temp.getLongitude());
-		}*/
-		
+		//更新景點經緯度		
 		if(vp.getLatitude() == null || vp.getLatitude() == 0 || vp.getLongitude() == null || vp.getLongitude() == 0){
 			//根據地址取得經緯度
 			double [] address = GoogleMapUtils.getAdressXY(vp.getAddress(), 0);
@@ -151,7 +141,11 @@ public class ViewpointServiceImpl implements ViewpointService{
 		speaker.setPassword("");
 		Audio audio = audioDao.findAudioByViewpointId(vp.getId());
 		List<Tag> tags = tagDao.findTagsByAudioId(audio.getId());
-		Theme theme = themeDao.findThemeById(vp.getThemeId());
+		
+		String[] themes = vp.getThemeId().split(",");
+		Theme theme = themeDao.findThemeById(themes[0]);
+		
+		
 		List<Viewpoint> moreAudio = dao.findViewpointsByNameAndSpeaker(vp.getName(), vp.getSpeakerId());
 		List<Viewpoint> neighView = dao.findNeighViewpoints(vp);
 		//刪除自己

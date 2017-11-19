@@ -79,11 +79,11 @@ public class ViewpointDaoImpl implements ViewpointDao{
 
 	@Override
 	public List<Viewpoint> findViewpointByThemeId(String themeId) {
-		String sql = "select * from viewpoints where themeId = ? order by updatetime asc";
+		String sql = "select * from viewpoints where themeId LIKE ? order by updatetime asc";
 		
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class), themeId);
+			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class),"%" + themeId + "%");
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -180,11 +180,11 @@ public class ViewpointDaoImpl implements ViewpointDao{
 
 	@Override
 	public List<Viewpoint> findViewpointByThemeIdAndPublish(String themeId) {
-		String sql = "select * from viewpoints where themeId = ? and isPublish =?"
+		String sql = "select * from viewpoints where themeId like ? and isPublish =?"
 				+ " order by isPriority desc, updatetime asc";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class), themeId, 1);
+			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class), "%"+themeId+"%", 1);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
