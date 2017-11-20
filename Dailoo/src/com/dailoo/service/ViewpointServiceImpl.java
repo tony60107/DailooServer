@@ -143,8 +143,11 @@ public class ViewpointServiceImpl implements ViewpointService{
 		List<Tag> tags = tagDao.findTagsByAudioId(audio.getId());
 		
 		String[] themes = vp.getThemeId().split(",");
-		Theme theme = themeDao.findThemeById(themes[0]);
-		
+		List<Theme> themelist = new ArrayList<Theme>();
+		for(int i = 0; i < themes.length; i++) {
+			Theme theme = themeDao.findThemeById(themes[i]);
+			themelist.add(theme);
+		}
 		
 		List<Viewpoint> moreAudio = dao.findViewpointsByNameAndSpeaker(vp.getName(), vp.getSpeakerId());
 		List<Viewpoint> neighView = dao.findNeighViewpoints(vp);
@@ -159,7 +162,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 		String speakerJson = gson.toJson(speaker);
 		String audioJson = gson.toJson(audio);
 		String tagsJson = gson.toJson(tags);
-		String themeJson = gson.toJson(theme);
+		String themeJson = gson.toJson(themelist);
 		String moreAudioJson = gson.toJson(moreAudio);
 		String neighViewJson = gson.toJson(toVpSimple(neighView));
 		
