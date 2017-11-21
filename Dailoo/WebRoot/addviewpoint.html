@@ -330,7 +330,7 @@
         }
 
         //檢查音檔檔案格式
-        var audioFormat = /\.(aac|mp3|m4a)$/i;  //允許的音檔檔案格式
+        var audioFormat = /\.(aac|mp3|m4a|wav)$/i;  //允許的音檔檔案格式
         var audios = $('input[name="file"]');
         for (var i = 0; i < audios.length; i++) {
             if (audioFormat.test(audios.get(i).value) != true) {

@@ -333,7 +333,7 @@
         if($('input[name="subtitle"]').get(0).value == ''){alert("未填寫景點副標題"); return;}
 
         //檢查音檔檔案格式
-        var audioFormat = /\.(aac|mp3|m4a)$/i;  //允許的音檔檔案格式
+        var audioFormat = /\.(aac|mp3|m4a|wav)$/i;  //允許的音檔檔案格式
         var audio = $('input[name="file"]').get(0);
         if(audio.value != '' && audioFormat.test(audio.value) != true){
                 alert("景點音檔格式不正確");
