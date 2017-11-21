@@ -6,15 +6,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import com.dailoo.dao.RegionDao;
 import com.dailoo.dao.ThemeDao;
+import com.dailoo.dao.ViewpointDao;
 import com.dailoo.domain.Theme;
+import com.dailoo.domain.Viewpoint;
 import com.dailoo.factory.BasicFactory;
 import com.google.gson.Gson;
 
 public class ThemeServiceImpl implements ThemeService {
 
 	ThemeDao dao = BasicFactory.getFactory().getDao(ThemeDao.class);
+	ViewpointDao viewpointDao = BasicFactory.getFactory().getDao(ViewpointDao.class);
 	Gson gson = new Gson();
 
 	@Override
@@ -41,6 +43,9 @@ public class ThemeServiceImpl implements ThemeService {
 	@Override
 	public void delThemeById(String id) {
 
+		List<Viewpoint> list = viewpointDao.findViewpointByThemeId(id);
+		if(list.size() > 0) throw new RuntimeException("該主題下仍有景點存在");
+		
 		try {
 			// 找到原來的主題，刪除對應的代表照片
 			Theme theme = dao.findThemeById(id);

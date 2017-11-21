@@ -110,7 +110,7 @@ public class FileUploadUtils {
 					item.delete();
 					
 					//根據不同檔案格式，存到參數中
-					if("mp3".equals(format) || "aac".equals(format) || "m4a".equals(format) || "3gpp".equals(format)){
+					if("mp3".equals(format) || "aac".equals(format) || "m4a".equals(format) || "wav".equals(format)){
 						if(paramMap.get("audiourls") == null){
 							paramMap.put("audiourls", fileurl);
 						} else {

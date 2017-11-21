@@ -186,18 +186,6 @@
                     '<select id="themeSelect'+ i +'" name="themeId" class="village fl form-control">' +
                     '<option value="' + vp.theme[i].id + '">' + vp.theme[i].name + '</option>' +
                     '</select>';
-            /*var dom =
-            '<div class="form-group">' +
-                '<label style=" margin-top: 25px;">主題地區</label><span id="delRegion' + regionNum +'" onclick="remvoeOneRegion(this)" style="margin-left: 30px; color: orange; cursor: pointer;">刪除這個主題</span>' +
-                '<select id="regionSelect'+ i +'" type="text" name="regionId" class="form-control">' +
-                    '<option selected disabled hidden style="display: none" value="">切換以選擇其他景點主題</option>' +
-                '</select>' +
-                '<label>景點主題</label>' +
-                '<select id="themeSelect'+ i +'" name="themeId" class="village fl form-control">' +
-                    '<option value="' + vp.theme[i].id + '">' + vp.theme[i].name + '</option>' +
-                '</select>' +
-            '</div>';
-            $$("regionGroup").innerHTML = $$("regionGroup").innerHTML + dom;*/
             $$("regionGroup").appendChild(dom);
 
             for (var j = 0; j < regions.length; j++) {

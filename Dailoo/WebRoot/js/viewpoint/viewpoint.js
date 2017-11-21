@@ -40,7 +40,7 @@ window.onload = function () {
     //取得景點ID
     var vpId = location.href.split("id=")[1];
     //如果未提供景點ID，則跳轉到鹿野主題列表
-    //if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
+    if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
 
     //根據景點ID，取得景點資訊
     $.ajax({
@@ -154,7 +154,7 @@ function initViewpointData(vpData) {
     //將短網址存入全局變量中
     document.shortUrl = vpData.shortUrl;
     //上一頁按鈕
-    $$("backward").href = "/viewlist.html?id=" + vpData.theme.id;
+    $$("backward").href = "/viewlist.html?id=" + vpData.theme[0].id;
     //景點名稱
     $$("vpName").innerHTML = vpData.name;
     //景點簡介標題
