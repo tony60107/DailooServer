@@ -163,7 +163,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 		String audioJson = gson.toJson(audio);
 		String tagsJson = gson.toJson(tags);
 		String themeJson = gson.toJson(themelist);
-		String moreAudioJson = gson.toJson(moreAudio);
+		String moreAudioJson = gson.toJson(toVpSimple(moreAudio));
 		String neighViewJson = gson.toJson(toVpSimple(neighView));
 		
 		//將Tags的JSON數據加到audioJson中

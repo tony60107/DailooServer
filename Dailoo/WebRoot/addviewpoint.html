@@ -64,8 +64,13 @@
             <div class="form-group audio" style="width: 300px; margin-top: 40px;">
                 <label>副標題</label>
                 <input type="text" name="subtitle" class="form-control" placeholder="輸入副標題" value="">
-                <label>景點音檔</label>
+                <label style="margin-top: 10px;">景點音檔</label>
                 <input type="file" name="file" class="form-control">
+                <div>
+                    ※目前支援mp3, aac, m4a, wav, 3gp/3gpp音檔格式。<br/>
+                    若您不確定自己的音檔格式或需要轉換格式，<br/>
+                    可參考這裡的說明
+                </div>
             </div>
 
         </div>
@@ -158,6 +163,7 @@
         formDiv.appendChild(subtitleInput);
         var audioLabel = document.createElement("label");
         audioLabel.innerHTML = "景點音檔";
+        audioLabel.style.marginTop = "10px";
         formDiv.appendChild(audioLabel);
         var audioInput = document.createElement("input");
         audioInput.type = "file";
@@ -330,7 +336,7 @@
         }
 
         //檢查音檔檔案格式
-        var audioFormat = /\.(aac|mp3|m4a|wav)$/i;  //允許的音檔檔案格式
+        var audioFormat = /\.(aac|mp3|m4a|wav|3gp|3gpp)$/i;  //允許的音檔檔案格式
         var audios = $('input[name="file"]');
         for (var i = 0; i < audios.length; i++) {
             if (audioFormat.test(audios.get(i).value) != true) {

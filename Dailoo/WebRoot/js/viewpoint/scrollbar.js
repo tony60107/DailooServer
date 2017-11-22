@@ -7,7 +7,7 @@ var bar; //進度條的拖動按鈕
 var mask; //拖動按鈕的後面遮罩
 var scrollBarWidth; //進度條寬度
 var nowProgRate; //現在進度條百分比
-var nowTimeTxt, allTimeTxt; //聲音的現在時間跟全部時間的文字控件
+var nowTimeTxt, allTimeTxt, flNowTimeTxt; //聲音的現在時間跟全部時間的文字控件
 
 var pressing; //是否為按進度條時的狀態
 
@@ -23,6 +23,7 @@ var ScrollBar = Class.extend({
         scrollBarWidth = scrollBar.offsetWidth;
         nowTimeTxt = $$("nowTime");
         allTimeTxt = $$("allTime");
+        flNowTimeTxt = $$("flNowTime");
         audio = $$("audio");
         pressing = false;
     },
@@ -96,8 +97,10 @@ function updateProgTime(isDragBar) { //更新進度條的時間文字
     //更新聲音時間進度文字
     if (nowSec % 60 < 10) {
         nowTimeTxt.innerHTML = parseInt(nowSec / 60) + ":0" + parseInt(nowSec % 60);
+        flNowTimeTxt.innerHTML = parseInt(nowSec / 60) + ":0" + parseInt(nowSec % 60);
     } else {
         nowTimeTxt.innerHTML = parseInt(nowSec / 60) + ":" + parseInt(nowSec % 60);
+        flNowTimeTxt.innerHTML = parseInt(nowSec / 60) + ":" + parseInt(nowSec % 60);
     }
 }
 

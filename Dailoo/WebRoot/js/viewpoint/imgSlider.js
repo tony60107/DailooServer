@@ -7,11 +7,13 @@ var tags; //進度條的Tag數據
 var photoNumTxt; //播放到第幾張相片之文字區塊
 var preLoadImgs; //用於預加載導覽照片
 var preLoadImgNow; //現在預加載到第幾張照片
+var floatPhoto; //浮動播放器照片
 
 var imgSlider = Class.extend({
 
     init: function () {
         mainPhoto = $$("mainPhoto");
+        floatPhoto = $$("floatPhoto");
         photoNumTxt = $$("photoNum");
         preLoadImgs = new Array();
         preLoadImgNow = 0;
@@ -75,9 +77,9 @@ var imgSlider = Class.extend({
             mainPhoto.style.left = "0px";
         }
         mainPhoto.src = src;
+        floatPhoto.src = src;
         imgSliderClass.updatePhotoNumTxt(); //更新正在第幾張相片文字
     }
 });
-
 
 var imgSliderClass = new imgSlider();

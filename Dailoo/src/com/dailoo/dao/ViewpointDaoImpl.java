@@ -196,7 +196,7 @@ public class ViewpointDaoImpl implements ViewpointDao{
 		String sql = "SELECT *, ( 3959 * acos( cos( radians(?) ) * cos( radians( latitude ) ) "+
 				 "* cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin(radians(latitude)) ) ) AS distance " + 
 				 "FROM viewpoints where isPublish = 1 HAVING distance BETWEEN 0 AND 20 " + 
-				 "ORDER BY distance  LIMIT 0 , 6" ;
+				 "ORDER BY distance  LIMIT 0 , 11" ;
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
 			return runner.query(sql, new BeanListHandler<Viewpoint>(Viewpoint.class),

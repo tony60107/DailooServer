@@ -17,7 +17,7 @@
 <body>
 <div class="w clearfix" style="overflow: hidden">
     <!--主播放器-->
-    <div class="player clearfix">
+    <div id="player" class="player clearfix">
         <!--頭部導航欄-->
         <div class="header clearfix">
             <a id="backward" href="#"><img src="images/viewpoint/back.png" alt="" class="back fl"></a>
@@ -142,6 +142,14 @@
             <input id="shareInput" type="text"/>
         </div>
     </div>
+    <!--浮動播放器-->
+    <div id="floatPlayer" class="float-player">
+        <div class="pic"><img id="floatPhoto" src="" alt=""></div>
+        <div id="flPreTagBtn" class="pre"></div>
+        <div id="flPlayBtn" class="play"></div>
+        <div id="flNextTagBtn" class="next"></div>
+        <div id="flNowTime" class="time">0:00</div>
+    </div>
     <!--Footer引入-->
     <div id="footer"></div>
 </div>
@@ -159,7 +167,6 @@
 <!--<script type="text/javascript" src="js/viewpoint/viewpoint.all.min.js"></script>-->
 
 <script>
-
     var speakerData = "";
     function onYouTubeIframeAPIReady() {
         //如果還沒有拿到講者資訊，等待0.5秒後再執行
@@ -190,7 +197,6 @@
                     document.getElementById("audio").pause();
                 }
             }
-
             $$("videoPrep").style.display = "none";
         }
     }

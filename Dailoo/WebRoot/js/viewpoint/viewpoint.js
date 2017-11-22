@@ -37,10 +37,21 @@ window.onload = function () {
         this.style.display = "none";
     }
 
+    //控制浮動播放器何時顯示
+    window.addEventListener('scroll',function(){
+        var scrollTop = document.documentElement.scrollTop + document.body.scrollTop;
+        var playHeight = $$("player").clientHeight;
+        if(scrollTop > playHeight) { //當主播放器消失時顯示
+            $$("floatPlayer").style.display = "block";
+        }else { //當主播放器出現時消失
+            $$("floatPlayer").style.display = "none";
+        }
+    },false);
+
     //取得景點ID
     var vpId = location.href.split("id=")[1];
     //如果未提供景點ID，則跳轉到鹿野主題列表
-    if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
+    //if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
 
     //根據景點ID，取得景點資訊
     $.ajax({
@@ -58,14 +69,13 @@ window.onload = function () {
                     tags[i].photoUrl = "/ResourceServlet?url=" + tags[i].photoUrl;
                 }
             }
-            //console.dir(data);
+            console.dir(data);
             speakerData = data.speaker;
             initDataFromServer(data);
 
         },
     });
     history.replaceState(null, null, location.href);
-
 
 }
 
@@ -188,9 +198,12 @@ function initViewpointData(vpData) {
         var moreAudioDiv = $$("moreAudio");
         for (var i = 0; i < vpData.moreAudio.length; i++) {
             moreAudioDiv.innerHTML = moreAudioDiv.innerHTML +
-                '<a href="viewpoint.html?utm_source=InSite&utm_campaign=' + vpData.moreAudio[i].name + '_' +
-                vpData.moreAudio[i].subtitle + '&id=' + vpData.moreAudio[i].id +
-                '"><div class="audio">' + vpData.moreAudio[i].subtitle + '</div></a>';
+                '<a href="viewpoint.html?utm_source=InSite&utm_campaign=' + vpData.moreAudio[i].name + '_' + vpData.moreAudio[i].subtitle + '&id=' + vpData.moreAudio[i].id + '">' +
+                '<div class="audio">' +
+                '<div class="name fl">' + vpData.moreAudio[i].subtitle + '</div>' +
+                '<div class="time fr">' + parseInt(vpData.moreAudio[i].audioLength / 60) + ':' + vpData.moreAudio[i].audioLength % 60 + '</div>' +
+                '</div>' +
+                '</a>';
 
             //設定自動播放下一段語音資料
             if (vpData.id == vpData.moreAudio[i].id && vpData.moreAudio[i + 1] != null) {

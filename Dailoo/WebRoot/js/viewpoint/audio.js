@@ -6,7 +6,6 @@
 var playBtn, preTagBtn, nextTagBtn; //聲音播放器按紐
 var audio; //播放聲音的控件
 var audioLength; //聲音總長度
-var nowTime; //現在播放到的時間
 var tags; //音檔標記的JSON數據
 
 var imgSliderClass;
@@ -16,9 +15,12 @@ var Audio = Class.extend({
         preTagBtn = $$("preTagBtn");
         playBtn = $$("playBtn");
         nextTagBtn = $$("nextTagBtn");
+        flPreTagBtn = $$("flPreTagBtn");
+        flPlayBtn = $$("flPlayBtn");
+        flNextTagBtn  = $$("flNextTagBtn");
+
         audio = $$("audio");
         audio.onloadeddata = function(){audio.currentTime = 0;}
-        nowTime = 0;
         audio.volume = 1.0;
         imgSliderClass = new imgSlider();
 
@@ -42,62 +44,26 @@ var Audio = Class.extend({
                 scrollBar.appendChild(tagNode);
             }
 
-            //自動播放語音
-            /*function autoPlayAudio(e){
-                //如果瀏覽器帶有要求自動播放參數，則點下播放鍵
-                if(location.href.split("autoplay=")[1] == 'true') {playBtn.click();}
-                document.removeEventListener("touchstart", autoPlayAudio);
-                console.dir(e);
-                e.stopImmediatePropagation();
-            }
-            document.addEventListener("touchstart", autoPlayAudio);*/
         }
 
     },
     bindEvent: function () {
 
-        playBtn.addEventListener("click", function (event) { //點下了播放按鈕
-            if (audio.paused == true) { //如果為暫停狀態
-                playBtn.style.backgroundImage = "url(images/viewpoint/pause.png)";
-                audio.play();
-                audio.timer = setInterval(function () { //每0.3秒更新進度條狀態
-                    updateProgTime(false);
-                }, 300);
-            } else { //如果為播放狀態
-                playBtn.style.backgroundImage = "url(images/viewpoint/play.png)";
-                audio.pause();
-                clearInterval(audio.timer); //清除進度條狀態更新計時器
-            }
-        });
+        //點擊音檔播放按鈕事件綁定
+        playBtn.addEventListener("click", audioClass.playAudio);
+        flPlayBtn.addEventListener("click", audioClass.playAudio);
 
-        nextTagBtn.addEventListener("click", function () { //跳到下一個Tag標記
-            var curTime = audio.currentTime;
-            var tempTime = audioLength - 5;//tags[tags.length -1].time; //用於保存最接近且大於currentTime的Tag時間
+        //點擊跳轉上一個標記事件綁定
+        preTagBtn.addEventListener("click", audioClass.toPreTag);
+        flPreTagBtn.addEventListener("click", audioClass.toPreTag);
 
-            //找出符合條件的Tag時間
-            for (var i = 0; i < tags.length; i++) {
-                if (tags[i].time > curTime && tags[i].time < tempTime) {
-                    tempTime = tags[i].time;
-                }
-            }
-            audio.currentTime = tempTime; //將當前音檔時間更改為符合條件Tag所提供的時間
-            audioClass.updateTagState(); //更新Tag狀態
-        });
-        preTagBtn.addEventListener("click", function () { //跳到上一個Tag標記
-            var curTime = audio.currentTime;
-            var tempTime = -1; //用於保存最接近且小於currentTime的Tag時間
-
-            //找出符合條件的Tag時間
-            for (var i = 0; i < tags.length; i++) {
-                if (tags[i].time < curTime - 3 && tags[i].time > tempTime) {
-                    tempTime = tags[i].time;
-                }
-            }
-            audio.currentTime = tempTime; //將當前音檔時間更改為符合條件Tag所提供的時間
-        });
+        //點擊調轉下一個標記事件綁定
+        nextTagBtn.addEventListener("click", audioClass.toNextTag);
+        flNextTagBtn.addEventListener("click", audioClass.toNextTag);
 
         audio.onpause = function(){ //音檔突然暫停時，更改Play按鈕圖示
             playBtn.style.backgroundImage = "url(images/viewpoint/play.png)";
+            flPlayBtn.style.backgroundImage = "url(images/viewpoint/play.png)";
         }
 
     },
@@ -143,9 +109,50 @@ var Audio = Class.extend({
         if(curTime > audioLength - 0.5 && audio.paused == false && nextAudio != null){
             location.href = "/viewpoint.html?utm_source=InSite&utm_campaign=" + nextAudio.name + "_" + nextAudio.subtitle +"&id=" + nextAudio.id;
         }
+    },
+    //點下了音檔播放按鈕
+    playAudio: function() {
+        if (audio.paused == true) { //如果為暫停狀態
+            playBtn.style.backgroundImage = "url(images/viewpoint/pause.png)";
+            flPlayBtn.style.backgroundImage = "url(images/viewpoint/pause.png)";
+            audio.play();
+            audio.timer = setInterval(function () { //每0.3秒更新進度條狀態
+                updateProgTime(false);
+            }, 300);
+        } else { //如果為播放狀態
+            playBtn.style.backgroundImage = "url(images/viewpoint/play.png)";
+            flPlayBtn.style.backgroundImage = "url(images/viewpoint/play.png)";
+            audio.pause();
+            clearInterval(audio.timer); //清除進度條狀態更新計時器
+        }
+    },
+    //跳往上一個Tag標記
+    toPreTag: function() {
+        var curTime = audio.currentTime;
+        var tempTime = -1; //用於保存最接近且小於currentTime的Tag時間
+
+        //找出符合條件的Tag時間
+        for (var i = 0; i < tags.length; i++) {
+            if (tags[i].time < curTime - 3 && tags[i].time > tempTime) {
+                tempTime = tags[i].time;
+            }
+        }
+        audio.currentTime = tempTime; //將當前音檔時間更改為符合條件Tag所提供的時間
+    },
+    //跳往下一個Tag標記
+    toNextTag: function(){
+        var curTime = audio.currentTime;
+        var tempTime = audioLength - 5;//tags[tags.length -1].time; //用於保存最接近且大於currentTime的Tag時間
+
+        //找出符合條件的Tag時間
+        for (var i = 0; i < tags.length; i++) {
+            if (tags[i].time > curTime && tags[i].time < tempTime) {
+                tempTime = tags[i].time;
+            }
+        }
+        audio.currentTime = tempTime; //將當前音檔時間更改為符合條件Tag所提供的時間
+        audioClass.updateTagState(); //更新Tag狀態
     }
 });
-
-
 
 var audioClass = new Audio();

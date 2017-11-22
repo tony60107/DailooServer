@@ -1,7 +1,6 @@
 .player {
     margin: 0 auto;
     width: 980px;
-    height: 1618px;
     background-image: radial-gradient(circle at 50% 36%, #8a8987, #595959);
     position: relative;
 }
@@ -182,6 +181,7 @@
     width: 474px;
     margin: 0 auto;
     margin-top: 56px;
+    margin-bottom: 60px;
 }
 
 .player .soundctrl .prevtag {
@@ -440,7 +440,9 @@
 
 .more-audio .audio {
     margin-top: 42px;
-    width: 860px;
+    padding-left: 100px;
+    padding-right: 100px;
+    width: 660px;
     border-radius: 72px;
     background-color: #267091;
 
@@ -448,10 +450,15 @@
     font-weight: 500;
     letter-spacing: 1.4px;
     font-size: 40px;
-    text-align: center;
     color: #ffffff;
 
     display:table ;
+}
+
+.more-audio .audio .name {
+}
+
+.more-audio .audio .time {
 }
 
 
@@ -629,3 +636,79 @@ ul.share-buttons img {
     padding: 5px 5px 5px 15px;
 }
 /*分享功能結束*/
+
+/*浮動播放器開始*/
+.float-player {
+    width: 100%;
+    height: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(89, 89, 89, 0.95);
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.float-player div {
+    float: left;
+}
+
+.float-player .pic {
+    width: 200px;
+    height: 200px;
+    margin-right: 156px;
+}
+
+.float-player .pic img{
+    width: 200px;
+    height: 200px;
+}
+
+.float-player .pre {
+    width: 100px;
+    height: 100px;
+    margin-right: 44px;
+    margin-top: 49px;
+    background: url(../images/viewpoint/prev_tag.png) no-repeat;
+}
+
+.float-player .play {
+    width: 180px;
+    height: 180px;
+    margin-top: 10px;
+    margin-right: 44px;
+    background: url(../images/viewpoint/play.png) no-repeat;
+}
+
+.float-player .next {
+    width: 100px;
+    height: 100px;
+    margin-top: 49px;
+    background: url(../images/viewpoint/next_tag.png) no-repeat;
+}
+
+.float-player .time {
+    position: absolute;
+    right: 32px;
+    bottom: 18px;
+    line-height: 44px;
+    font-size: 36px;
+    font-weight: 300;
+    color: #ffffff;
+}
+/*浮動播放器結束*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
