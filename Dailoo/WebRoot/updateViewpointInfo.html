@@ -97,7 +97,7 @@
         <div id="map" style="width: 600px; height: 300px;"></div>
         <div class="form-group">
             <label>景點介紹</label>
-            <textarea id="intro" type="text" name="intro" class="form-control" cols="5" rows="7" wrap="hard" placeholder="輸入景點介紹" style="width: 336px;"></textarea>
+            <textarea id="intro" type="text" name="intro" class="form-control" cols="5" rows="7" wrap="hard" placeholder="輸入景點介紹" onpropertychange="this.style.height=this.scrollHeight+'px';"  oninput="this.style.height=this.scrollHeight+'px';" style="width: 326px;overflow:hidden;"></textarea>
         </div>
         <div class="form-group">
             <label>景點代表圖</label>
