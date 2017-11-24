@@ -455,7 +455,9 @@
     display:table ;
 }
 
-.more-audio .audio .name {
+.more-audio .audio .audio-name {
+    height: 112px;
+    overflow: hidden;
 }
 
 .more-audio .audio .time {
