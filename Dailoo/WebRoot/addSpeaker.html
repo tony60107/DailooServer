@@ -59,6 +59,8 @@
         $$("mainForm").submit();
     }
 
+
+
     //帳號失去焦點，查詢該帳號是否已存在
     $$("username").onblur = function(){
         $.ajax({
@@ -76,6 +78,12 @@
                 }
             },
         });
+    }
+
+    //變更帳號內容後，不顯示帳號已存在
+    $$("username").oninput = function() {
+        $$("usnLabel").innerHTML = "帳號";
+        $$("submit").disabled = false;
     }
 
     //根據不同的登入者，顯示不同的連結

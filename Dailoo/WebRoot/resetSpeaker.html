@@ -70,6 +70,12 @@
         });
     }
 
+    //變更帳號內容後，不顯示帳號已存在
+    $$("username").oninput = function() {
+        $$("usnLabel").innerHTML = "帳號";
+        $$("submit").disabled = false;
+    }
+
     //檢查重設表單
     function checkForm(){
         if($$("username").value == '' || $$("password").value == '') {
