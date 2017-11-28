@@ -117,23 +117,31 @@
     var regions; //伺服器的地區資料
     var regionNum = 1;//現在到第幾個region編號
 
+    getAllSpeakers();
+
     //取得現在所有的講者
-    $.ajax({
-        url: "/SpeakerServlet", context: document.body,
-        type: "POST",
-        data: {
-            "method": "findAllSpeakers"
-        },
-        success: function (speakers) {
-            var speakers = eval("(" + speakers + ")");
-            console.dir(speakers);
-            var speakerList = document.getElementById("speaker_list");
-            for (var i = 0; i < speakers.length; i++) {
-                var dom = '<option value="' + speakers[i].id + '">' + (speakers[i].name == '' ? '未設定該講者姓名' : speakers[i].name) + '</option>';
-                speakerList.innerHTML = speakerList.innerHTML + dom;
+    function getAllSpeakers(){
+        $.ajax({
+            url: "/SpeakerServlet", context: document.body,
+            type: "POST",
+            data: {
+                "method": "findAllSpeakers"
+            },
+            success: function (speakers) {
+                var speakers = eval("(" + speakers + ")");
+                console.dir(speakers);
+                var speakerList = document.getElementById("speaker_list");
+                for (var i = 0; i < speakers.length; i++) {
+                    var dom = '<option value="' + speakers[i].id + '">' + (speakers[i].name == '' ? '未設定該講者姓名' : speakers[i].name) + '</option>';
+                    speakerList.innerHTML = speakerList.innerHTML + dom;
+                }
+            },
+            error: function(){
+                setTimeout(function(){getAllSpeakers();}, 1000);
             }
-        },
-    });
+        });
+    }
+
     $('#twzipcode').twzipcode();
 
     //增加上傳語音欄位
