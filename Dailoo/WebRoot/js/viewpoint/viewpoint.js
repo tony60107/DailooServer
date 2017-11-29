@@ -69,7 +69,6 @@ window.onload = function () {
                     tags[i].photoUrl = "/ResourceServlet?url=" + tags[i].photoUrl;
                 }
             }
-            console.dir(data);
             speakerData = data.speaker;
             initDataFromServer(data);
 
@@ -197,15 +196,16 @@ function initViewpointData(vpData) {
         $$("moreAudioTitle").innerHTML = vpData.name + "共有以下" + vpData.moreAudio.length + "段可以收聽：";
         var moreAudioDiv = $$("moreAudio");
         for (var i = 0; i < vpData.moreAudio.length; i++) {
-            var subtitle = vpData.moreAudio[i].subtitle;
+            var vp = vpData.moreAudio[i];
+            var subtitle = vp.subtitle;
 
             //if(subtitle.length > 13){subtitle = subtitle.substr(0,13); subtitle = subtitle + "..."}
             moreAudioDiv.innerHTML = moreAudioDiv.innerHTML +
-                '<a href="viewpoint.html?utm_source=InSite&utm_campaign=' + vpData.moreAudio[i].name + '_' + vpData.moreAudio[i].subtitle + '&id=' + vpData.moreAudio[i].id + '">' +
+                '<a href="viewpoint.html?utm_source=InSite&utm_campaign=' + vp.name + '_' + vp.subtitle + '&id=' + vp.id + '">' +
                 '<div class="audio">' +
                 '<div class="audio-name fl">' + subtitle + '</div>' +
                 '<div class="fl" style="display: none;">...</div>' +
-                '<div class="time fr">' + parseInt(vpData.moreAudio[i].audioLength / 60) + ':' + vpData.moreAudio[i].audioLength % 60 + '</div>' +
+                '<div class="time fr">' + (vp.audioLength / 60 > 9 ? parseInt(vp.audioLength / 60) : '0' + parseInt(vp.audioLength / 60)) + ':' + (vp.audioLength % 60 > 9 ? vp.audioLength % 60 : '0' + vp.audioLength % 60) + '</div>' +
                 '</div>' +
                 '</a>';
 
@@ -217,10 +217,8 @@ function initViewpointData(vpData) {
         }
         for(var i = 0; i < $(".audio-name").length; i++) {
             var dom = $(".audio-name").get(i);
-            console.dir(dom.offsetWidth);
-            if(dom.offsetWidth > 550) {
-                console.dir(dom);
-                dom.style.width = "525px";
+            if(dom.offsetWidth > 525) {
+                dom.style.width = "500px";
                 dom.nextSibling.style.display = "block";
             }
         }
@@ -243,7 +241,7 @@ function initViewpointData(vpData) {
                 '<img class="speaker-photo fl" src="/ResourceServlet?url=' + neighView[i].speakerPhotoUrl + '" alt="">' +
                 '<div class="speaker-info fl">' +
                 '<div class="speaker">' + neighView[i].speakerName + '</div>' +
-                '<div class="time">' + parseInt(neighView[i].audioLength / 60) + '分' + neighView[i].audioLength % 60 + '秒</div>' +
+                '<div class="time">' + (neighView[i].audioLength / 60 > 9 ? parseInt(neighView[i].audioLength / 60) : '0' + parseInt(neighView[i].audioLength / 60)) + '：' + (neighView[i].audioLength % 60 > 9 ? neighView[i].audioLength % 60 : '0' + neighView[i].audioLength % 60) + '</div>' +
                 '</div>';
 
             //計算景點距離顯示文字

@@ -66,7 +66,7 @@ function initDataFromServer(vps){
             '<img class="speaker-photo fl" src="/ResourceServlet?url='+ vps[i].speakerPhotoUrl +'" alt="">' +
             '<div class="fl">' +
             '<div class="speaker">' + vps[i].speakerName + '</div>' +
-            '<div class="time">' + parseInt(vps[i].audioLength / 60) + '分' + vps[i].audioLength % 60 + '秒</div>' +
+            '<div class="time">' + (vps[i].audioLength / 60 > 9 ? parseInt(vps[i].audioLength / 60) : '0' + parseInt(vps[i].audioLength / 60)) + '：' + (vps[i].audioLength % 60 > 9 ? vps[i].audioLength % 60 : '0' + vps[i].audioLength % 60) + '</div>' +
             '</div>' +
             '</a>';
 
