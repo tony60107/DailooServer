@@ -49,7 +49,7 @@ window.onload = function () {
     },false);
 
     //取得景點ID
-    var vpId = location.href.split("id=")[1];
+    var vpId = location.href.split("id=")[1].split("#")[0];
     //如果未提供景點ID，則跳轉到鹿野主題列表
     //if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
 
