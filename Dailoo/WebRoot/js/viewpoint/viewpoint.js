@@ -19,6 +19,16 @@ window.onload = function () {
         $$("shareInput").value = document.shortUrl;
     }
 
+    //點擊複製短網址
+    /*$$("copyShortUrl").onclick = function(){
+        $('body').append('<textarea id="clip_area"></textarea>');
+        var clip_area = $('#clip_area');
+        clip_area.text(document.shortUrl);
+        clip_area.select();
+        document.execCommand('copy');
+        clip_area.remove();
+    }*/
+
     // 點擊分享的灰色背景
     $$("sharemask").onclick = function () {
         $$("sharemask").style.display = "none";
@@ -32,6 +42,7 @@ window.onload = function () {
         this.style.display = "none";
     }
 
+    //點擊查看講者簡介
     $$("readAllSpeakerIntro").onclick = function () {
         $$("speakerIntro").style.height = "100%";
         this.style.display = "none";
@@ -51,7 +62,7 @@ window.onload = function () {
     //取得景點ID
     var vpId = location.href.split("id=")[1].split("#")[0];
     //如果未提供景點ID，則跳轉到鹿野主題列表
-    //if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
+    if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
 
     //根據景點ID，取得景點資訊
     $.ajax({
