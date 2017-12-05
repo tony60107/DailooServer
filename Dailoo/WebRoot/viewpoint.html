@@ -120,28 +120,61 @@
                 <a href="http://line.naver.jp/R/msg/text/?www.dailoo.com"
                    target="_blank" title="Share on Line"
                    onclick="window.open('http://line.naver.jp/R/msg/text/?' + encodeURIComponent(document.shortUrl)); return false;"><img
-                        alt="Share on Line" src="images/social_flat_rounded_rects_svg/Line.png"></a></li>
+                        alt="Share on Line" src="images/social/Line.png"></a></li>
             <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.test.com&t="
                    title="Share on Facebook" target="_blank"
                    onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.shortUrl) + '&t=' + encodeURIComponent(document.shortUrl)); return false;"><img
-                    alt="Share on Facebook" src="images/social_flat_rounded_rects_svg/Facebook.svg"></a></li>
+                    alt="Share on Facebook" src="images/social/Facebook.svg"></a></li>
             <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.test.com" target="_blank"
                    title="Share on Google+"
                    onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.shortUrl)); return false;"><img
-                    alt="Share on Google+" src="images/social_flat_rounded_rects_svg/Google+.svg"></a></li>
+                    alt="Share on Google+" src="images/social/Google+.svg"></a></li>
             <li>
                 <a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fwww.test.com&text=:%20http%3A%2F%2Fwww.test.com"
                    target="_blank" title="Tweet"
                    onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.shortUrl)); return false;"><img
-                        alt="Tweet" src="images/social_flat_rounded_rects_svg/Twitter.svg"></a></li>
+                        alt="Tweet" src="images/social/Twitter.svg"></a></li>
             <li><a href="mailto:?subject=&body=:%20http%3A%2F%2Fwww.test.com" target="_blank" title="Send email"
                    onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.shortUrl)); return false;"><img
-                    alt="Send email" src="images/social_flat_rounded_rects_svg/Email.svg"></a></li>
+                    alt="Send email" src="images/social/Email.svg"></a></li>
         </ul>
         <div class="share-input">
             <input id="shareInput" type="text"/>
         </div>
         <!--<button id="copyShortUrl">複製</button>-->
+    </div>
+    <!--廣告區塊-->
+    <div id="admask" class="admask"></div>
+    <div id="adbox" class="adbox">
+        <div id="adClose" class="close"></div>
+        <div class="ad"><img src="" alt=""></div>
+        <div id="replay" class="replay clearfix">
+            <img class="fl" src="images/viewpoint/ad_replay.png" alt="">
+            <div class="replay-r">
+                <div id="replayTitle" class="title"></div>
+                <div id="replaySpeaker" class="name"></div>
+                <div id="replayTime" class="time"></div>
+            </div>
+        </div>
+        <a id="nextAudio" href="#">
+            <div class="next-audio clearfix">
+                <img class="fl" src="images/viewpoint/ad_next_audio.png" alt="">
+                <div class="next-audio-r">
+                    <div id="nextAudioTitle" class="title"></div>
+                    <div id="nextAudioSpeaker" class="name"></div>
+                    <div id="nextAudioTime" class="time"></div>
+                </div>
+            </div>
+        </a>
+        <div class="share">
+            <ul>
+                <li><img src="images/social/qrcode.png" alt=""></li>
+                <li onclick="window.open('https://www.facebook.com/dialog/share?display=popup&app_id=883175368431883&href=' + encodeURIComponent(document.shortUrl) + '&t=' + encodeURIComponent(document.shortUrl)); return false;"><img src="images/social/facebook.png" alt=""></li>
+                <li onclick="window.open('http://line.naver.jp/R/msg/text/?' + encodeURIComponent(document.shortUrl)); return false;"><img src="images/social/line_c.png" alt=""></li>
+                <li onclick="window.open('whatsapp://send?text=' + encodeURIComponent(document.shortUrl)); return false;"><img src="images/social/whatsapp.png" alt=""></li>
+                <li><img src="images/viewpoint/ad_more.png" alt=""></li>
+            </ul>
+        </div>
     </div>
     <!--浮動播放器-->
     <div id="floatPlayer" class="float-player">

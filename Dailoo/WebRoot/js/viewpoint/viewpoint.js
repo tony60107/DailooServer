@@ -48,6 +48,12 @@ window.onload = function () {
         this.style.display = "none";
     }
 
+    //廣告區點擊關閉按鈕
+    $$("adClose").onclick = function() {
+        $$("admask").style.display = "none";
+        $$("adbox").style.display = "none";
+    }
+
     //控制浮動播放器何時顯示
     window.addEventListener('scroll',function(){
         var scrollTop = document.documentElement.scrollTop + document.body.scrollTop;
@@ -60,7 +66,8 @@ window.onload = function () {
     },false);
 
     //取得景點ID
-    var vpId = location.href.split("id=")[1].split("#")[0];
+    var vpId = location.href.split("id=")[1];
+    if(vpId != undefined) vpId = vpId.split("#")[0];
     //如果未提供景點ID，則跳轉到鹿野主題列表
     if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
 
@@ -82,7 +89,7 @@ window.onload = function () {
             }
             speakerData = data.speaker;
             initDataFromServer(data);
-
+            console.dir(data);
         },
     });
     history.replaceState(null, null, location.href);
@@ -186,6 +193,24 @@ function initViewpointData(vpData) {
     //景點行政區
     $$("area").innerHTML = vpData.city + vpData.town;
 
+    //廣告區塊 - 重播
+    $$("replayTitle").innerHTML = vpData.subtitle;
+    $$("replaySpeaker").innerHTML = vpData.speaker.name;
+    var time = vpData.audio.length;
+    $$("replayTime").innerHTML = (time / 60 > 9 ? parseInt(time / 60) : '0' + parseInt(time / 60)) + ':' + (time % 60 > 9 ? time % 60 : '0' + time % 60);
+
+    //廣告區塊 - 下一段
+    if(vpData.name == vpData.nextAudio.name){ //如果是同一景點下的其他副標題，則顯示副標題
+        $$("nextAudioTitle").innerHTML = vpData.nextAudio.subtitle;
+    } else { //如果不是同一景點，則顯示主標題
+        $$("nextAudioTitle").innerHTML = vpData.nextAudio.name;
+    }
+    $$("nextAudioSpeaker").innerHTML = vpData.nextAudio.speakerName;
+    time = vpData.nextAudio.audioLength;
+    $$("nextAudioTime").innerHTML = (time / 60 > 9 ? parseInt(time / 60) : '0' + parseInt(time / 60)) + ':' + (time % 60 > 9 ? time % 60 : '0' + time % 60);
+    $$("nextAudio").href = "/viewpoint.html?utm_source=InSite&utm_campaign=" + vpData.nextAudio.name + '_' + vpData.nextAudio.subtitle + '&id=' +vpData.nextAudio.id;
+
+
     //景點位置
     if (vpData.latLngPri == 1) {
         $$("vpLocation").href = "https://www.google.com.tw/maps/place/" + vpData.latitude + "," + vpData.longitude + "/@" + vpData.latitude + "," + vpData.longitude + ",19.5z";
@@ -220,11 +245,6 @@ function initViewpointData(vpData) {
                 '</div>' +
                 '</a>';
 
-            //設定自動播放下一段語音資料
-            if (vpData.id == vpData.moreAudio[i].id && vpData.moreAudio[i + 1] != null) {
-                //將下一段語音資料設為全域變量
-                document.nextAudio = vpData.moreAudio[i + 1];
-            }
         }
         for(var i = 0; i < $(".audio-name").length; i++) {
             var dom = $(".audio-name").get(i);

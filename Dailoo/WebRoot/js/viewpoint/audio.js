@@ -18,6 +18,7 @@ var Audio = Class.extend({
         flPreTagBtn = $$("flPreTagBtn");
         flPlayBtn = $$("flPlayBtn");
         flNextTagBtn  = $$("flNextTagBtn");
+        replayBtn = $$("replay");
 
         audio = $$("audio");
         audio.onloadeddata = function(){audio.currentTime = 0;}
@@ -66,6 +67,14 @@ var Audio = Class.extend({
             flPlayBtn.style.backgroundImage = "url(images/viewpoint/play.png)";
         }
 
+        //廣告區按下重播
+        replayBtn.onclick = function(){
+            $$("admask").style.display = "none";
+            $$("adbox").style.display = "none";
+            audio.currentTime = 0;
+            audioClass.playAudio();
+        }
+
     },
 
     initDataFromServer : function(audioData){
@@ -104,11 +113,6 @@ var Audio = Class.extend({
             }
         }
 
-        //設定如果播放到尾端，自動播放下一段語音
-        var nextAudio = document.nextAudio;
-        if(curTime > audioLength - 0.5 && audio.paused == false && nextAudio != null){
-            location.href = "/viewpoint.html?utm_source=InSite&utm_campaign=" + nextAudio.name + "_" + nextAudio.subtitle +"&id=" + nextAudio.id;
-        }
     },
     //點下了音檔播放按鈕
     playAudio: function() {

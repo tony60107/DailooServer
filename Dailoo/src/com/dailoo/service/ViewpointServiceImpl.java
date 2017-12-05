@@ -70,6 +70,32 @@ public class ViewpointServiceImpl implements ViewpointService{
 		return vpsims;
 	}
 
+	private ViewpointSimple toVpSimple(Viewpoint vp){
+		ViewpointSimple vpsim = new ViewpointSimple();
+		
+		//設定簡易版景點資訊內容
+		vpsim.setId(vp.getId());
+		vpsim.setName(vp.getName());
+		vpsim.setSubtitle(vp.getSubtitle());
+		vpsim.setTheme(vp.getThemeId());
+		vpsim.setShortUrl(vp.getShortUrl());
+		vpsim.setIsPublish(vp.getIsPublish());
+		vpsim.setIsPriority(vp.getIsPriority());
+		vpsim.setIsPay(vp.getIsPay());
+		if(vp.getDistance() != null) vpsim.setDistance(vp.getDistance());
+		
+		if(vp.getBehalfPhotoUrl() != null) vpsim.setBehalfPhotoUrl(vp.getBehalfPhotoUrl());
+		Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
+		if(speaker != null){ 
+			vpsim.setSpeakerName(speaker.getName());
+			vpsim.setSpeakerPhotoUrl(speaker.getPhotoUrl());
+		}
+		Audio audio = audioDao.findAudioByViewpointId(vp.getId());
+		if(audio != null) vpsim.setAudioLength(audio.getLength());
+		
+		return vpsim;
+	}
+	
 	@Override
 	public void addViewpoint(Viewpoint vp) {
 		vp.setId(UUID.randomUUID().toString());
@@ -142,6 +168,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 		Audio audio = audioDao.findAudioByViewpointId(vp.getId());
 		List<Tag> tags = tagDao.findTagsByAudioId(audio.getId());
 		
+		//將主題分割，並存入List中
 		String[] themes = vp.getThemeId().split(",");
 		List<Theme> themelist = new ArrayList<Theme>();
 		for(int i = 0; i < themes.length; i++) {
@@ -150,6 +177,21 @@ public class ViewpointServiceImpl implements ViewpointService{
 		}
 		
 		List<Viewpoint> moreAudio = dao.findViewpointsByNameAndSpeaker(vp.getName(), vp.getSpeakerId());
+		//設定下一段語音
+		for(int i = 0; i < moreAudio.size(); i++) {
+			//根據該景點的副標題，對比出下一段副標題為哪個景點
+			if(moreAudio.get(i).getSubtitle().equals(vp.getSubtitle())){
+				if(i+1 < moreAudio.size()) { //如果有下一段副標題，則直接設定
+					vp.setNextAudio(toVpSimple(moreAudio.get(i+1)));
+				} else { //如果已經是最後一段，則隨機尋找同一主題下的景點
+					List<Viewpoint> temps = dao.findViewpointByThemeIdAndPublish(themelist.get(0).getId());
+					System.out.println((int)(Math.random() * temps.size()));
+					vp.setNextAudio(toVpSimple(temps.get((int)(Math.random() * temps.size()))));
+				}
+			}
+		}
+		
+		//找到附近的景點
 		List<Viewpoint> neighView = dao.findNeighViewpoints(vp);
 		//刪除自己
 		for(int i = 0; i < neighView.size(); i++) {
