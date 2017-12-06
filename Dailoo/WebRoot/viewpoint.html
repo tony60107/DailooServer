@@ -133,8 +133,8 @@
 
     </div>
     <!--廣告區塊-->
-    <!--<div id="admask" class="admask"></div>-->
-    <div id="adbox" class="adbox" style="display: none">
+    <div id="admask" class="admask"></div>
+    <div id="adbox" class="adbox">
         <div id="adClose" class="close"></div>
         <div class="ad"><img src="" alt=""></div>
         <div id="replay" class="replay clearfix">
@@ -157,11 +157,11 @@
         </a>
         <div class="share">
             <ul>
-                <li><img src="images/social/qrcode.png" alt=""></li>
+                <li id="adQRC"><img src="images/social/qrcode.png" alt=""></li>
                 <li onclick="window.open('https://www.facebook.com/dialog/share?display=popup&app_id=883175368431883&href=' + encodeURIComponent(document.shortUrl) + '&t=' + encodeURIComponent(document.shortUrl)); return false;"><img src="images/social/facebook.png" alt=""></li>
                 <li onclick="window.open('http://line.naver.jp/R/msg/text/?' + encodeURIComponent(document.shortUrl)); return false;"><img src="images/social/line_c.png" alt=""></li>
                 <li onclick="window.open('whatsapp://send?text=' + encodeURIComponent(document.shortUrl)); return false;"><img src="images/social/whatsapp.png" alt=""></li>
-                <li><img src="images/viewpoint/ad_more.png" alt=""></li>
+                <li id="adMore"><img src="images/viewpoint/ad_more.png" alt=""></li>
             </ul>
         </div>
     </div>

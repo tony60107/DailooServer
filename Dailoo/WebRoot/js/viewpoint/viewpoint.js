@@ -29,7 +29,7 @@ window.onload = function () {
         clip_area.select();
         document.execCommand('copy');
         clip_area.remove();
-        alert("複製成功 " + document.shortUrl);
+        alert(document.shortUrl + " 複製成功");
     }
 
     // 點擊分享的灰色背景
@@ -55,6 +55,26 @@ window.onload = function () {
     $$("adClose").onclick = function() {
         $$("admask").style.display = "none";
         $$("adbox").style.display = "none";
+    }
+
+    //廣告區點擊QRCode
+    $$("adQRC").onclick = function(){
+        $$("admask").style.display = "none";
+        $$("adbox").style.display = "none";
+        $$("sharemask").style.display = "block";
+        $$("sharebox").style.display = "block";
+        $$("sharemask").style.overflowY = "hidden";
+        $$("shareInput").value = document.shortUrl;
+    }
+
+    //廣告區點擊更多
+    $$("adMore").onclick = function(){
+        $$("admask").style.display = "none";
+        $$("adbox").style.display = "none";
+        $$("sharemask").style.display = "block";
+        $$("sharebox").style.display = "block";
+        $$("sharemask").style.overflowY = "hidden";
+        $$("shareInput").value = document.shortUrl;
     }
 
     //分享區塊點擊關閉按鈕

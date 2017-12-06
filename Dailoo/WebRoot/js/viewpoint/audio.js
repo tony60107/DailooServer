@@ -113,6 +113,10 @@ var Audio = Class.extend({
             }
         }
 
+        if(curTime > audioLength - 0.5 && audio.paused == false){
+            $$("admask").style.display = "block";
+            $$("adbox").style.display = "block";
+        }
     },
     //點下了音檔播放按鈕
     playAudio: function() {
@@ -146,7 +150,7 @@ var Audio = Class.extend({
     //跳往下一個Tag標記
     toNextTag: function(){
         var curTime = audio.currentTime;
-        var tempTime = audioLength - 5;//tags[tags.length -1].time; //用於保存最接近且大於currentTime的Tag時間
+        var tempTime = audioLength;//tags[tags.length -1].time; //用於保存最接近且大於currentTime的Tag時間
 
         //找出符合條件的Tag時間
         for (var i = 0; i < tags.length; i++) {

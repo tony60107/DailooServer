@@ -589,16 +589,18 @@
     top: 0;
     left: 0;
     background-color: rgba(38, 37, 37, 0.9);
-    z-index: 999;
+    z-index: 1001;
+    display: none;
 }
 
 .sharebox {
     position: fixed;
-    z-index: 1000;
+    z-index: 1002;
     width: 100%;
     top: 0;
     left: 0;
     color:  #ffffff;
+    display: none;
 }
 
 .sharebox .close {
@@ -688,6 +690,7 @@
     left: 0;
     background-color: rgba(38, 37, 37, 0.9);
     z-index: 999;
+    display: none;
 }
 
 .adbox {
@@ -696,6 +699,7 @@
     top: 0;
     left: 0;
     color:  #ffffff;
+    display: none;
 }
 
 .adbox .close {
