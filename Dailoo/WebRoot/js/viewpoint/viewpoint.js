@@ -20,14 +20,17 @@ window.onload = function () {
     }
 
     //點擊複製短網址
-    /*$$("copyShortUrl").onclick = function(){
+    $$("copyShortUrl").onclick = copyShortUrl;
+    $$("shareInput").onclick = copyShortUrl;
+    function copyShortUrl(){
         $('body').append('<textarea id="clip_area"></textarea>');
         var clip_area = $('#clip_area');
         clip_area.text(document.shortUrl);
         clip_area.select();
         document.execCommand('copy');
         clip_area.remove();
-    }*/
+        alert("複製成功 " + document.shortUrl);
+    }
 
     // 點擊分享的灰色背景
     $$("sharemask").onclick = function () {
@@ -52,6 +55,12 @@ window.onload = function () {
     $$("adClose").onclick = function() {
         $$("admask").style.display = "none";
         $$("adbox").style.display = "none";
+    }
+
+    //分享區塊點擊關閉按鈕
+    $$("shareClose").onclick = function() {
+        $$("sharemask").style.display = "none";
+        $$("sharebox").style.display = "none";
     }
 
     //控制浮動播放器何時顯示
@@ -192,6 +201,9 @@ function initViewpointData(vpData) {
     }
     //景點行政區
     $$("area").innerHTML = vpData.city + vpData.town;
+
+    //分享區塊 QRCode
+    $('#qrcode').qrcode({width: 440,height: 440,text: vpData.shortUrl});
 
     //廣告區塊 - 重播
     $$("replayTitle").innerHTML = vpData.subtitle;

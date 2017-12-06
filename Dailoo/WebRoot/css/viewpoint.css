@@ -588,56 +588,94 @@
     height: 150%;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background-color: rgba(38, 37, 37, 0.9);
     z-index: 999;
-    display: none;
 }
 
 .sharebox {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 570px;
-    height: 250px;
     z-index: 1000;
-    margin: -125px 0 0 -280px;
-    display: none;
+    width: 100%;
+    top: 0;
+    left: 0;
+    color:  #ffffff;
 }
 
-ul.share-buttons {
-    list-style: none;
-    padding: 0;
-}
-
-ul.share-buttons li {
-    display: inline;
-    margin-right: 9px;
-}
-
-ul.share-buttons .sr-only {
+.sharebox .close {
+    width: 76px;
+    height: 76px;
+    background: url("../images/viewpoint/ad_close.png");
     position: absolute;
-    clip: rect(1px 1px 1px 1px);
-    clip: rect(1px, 1px, 1px, 1px);
-    padding: 0;
-    border: 0;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
+    top: 42px;
+    right: 42px;
 }
 
-ul.share-buttons img {
-    width: 100px;
+.sharebox .qrcode {
+    width: 440px;
+    height: 440px;
+    margin: auto;
+    margin-top: 230px;
+    border: 30px solid #FFFFFF;
+    background-color: #FFF;
 }
 
-.sharebox .share-input {
-    margin-top: 30px;
+.sharebox .desc {
+    margin-top: 48px;
+    padding-left: 20px;
+    font-size: 56px;
+    line-height: 78px;
+    font-weight: 500;
+    letter-spacing: 1.9px;
+    text-align: center;
+    color: #ffffff;
 }
 
-.sharebox .share-input input{
-    width: 528px;
-    height: 66px;
-    font-size: 46px;
-    padding: 5px 5px 5px 15px;
+.sharebox ul {
+    width: 1000px;
+    margin-left: 122px;
+    margin-top: 90px;
+}
+
+.sharebox ul li {
+    float: left;
+    margin-right: 24px;
+}
+
+.sharebox .input {
+    position: relative;
+    width: 736px;
+    height: 100px;
+    margin: auto;
+    margin-top: 60px;
+}
+
+.sharebox .input .url {
+    width: 686px;
+    height: 100px;
+    padding-left: 50px;
+    font-size: 40px;
+    font-weight: 500;
+    letter-spacing: 1.6px;
+    text-align: left;
+    color: #595959;
+    border-radius: 50px;
+    background-color: #ffffff;
+}
+
+.sharebox .input .copy {
+    position: absolute;
+    top: 12px;
+    right: 26px;
+}
+
+.sharebox .copy-desc {
+    margin-top: 40px;
+    font-size: 40px;
+    line-height: 56px;
+    font-weight: 500;
+    letter-spacing: 1.3px;
+    text-align: center;
+    color: #ffffff;
 }
 /*分享功能結束*/
 
