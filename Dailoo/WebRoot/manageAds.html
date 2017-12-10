@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>廣告管理</title>
+    <!-- 最新編譯和最佳化的 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!-- 選擇性佈景主題 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- 最新編譯和最佳化的 JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .demo {
+            font-family: 'trebuchet MS', 'Lucida sans', Arial;
+            font-size: 14px;
+            color: #444;
+        }
+
+        table {
+            margin-top: 60px;
+            *border-collapse: collapse; /* IE7 and lower */
+            border-spacing: 0;
+            width: 100%;
+        }
+
+        /*========bordered table========*/
+        .bordered {
+            border: solid #ccc 1px;
+            -moz-border-radius: 6px;
+            -webkit-border-radius: 6px;
+            border-radius: 6px;
+            -webkit-box-shadow: 0 1px 1px #ccc;
+            -moz-box-shadow: 0 1px 1px #ccc;
+            box-shadow: 0 1px 1px #ccc;
+        }
+
+        .bordered tr {
+            -o-transition: all 0.1s ease-in-out;
+            -webkit-transition: all 0.1s ease-in-out;
+            -moz-transition: all 0.1s ease-in-out;
+            -ms-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+        }
+
+        .bordered .highlight,
+        .bordered tr:hover {
+            background: #fbf8e9;
+        }
+
+        .bordered td,
+        .bordered th {
+            border-left: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .bordered th {
+            background-color: #dce9f9;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+            background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+            background-image: -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+            background-image: -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+            background-image: -o-linear-gradient(top, #ebf3fc, #dce9f9);
+            background-image: linear-gradient(top, #ebf3fc, #dce9f9);
+            filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#ebf3fc, endColorstr=#dce9f9);
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#ebf3fc, endColorstr=#dce9f9)";
+            -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+            -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+            box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+            border-top: none;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+        }
+
+        .bordered td:first-child,
+        .bordered th:first-child {
+            border-left: none;
+        }
+
+        .bordered th:first-child {
+            -moz-border-radius: 6px 0 0 0;
+            -webkit-border-radius: 6px 0 0 0;
+            border-radius: 6px 0 0 0;
+        }
+
+        .bordered th:last-child {
+            -moz-border-radius: 0 6px 0 0;
+            -webkit-border-radius: 0 6px 0 0;
+            border-radius: 0 6px 0 0;
+        }
+
+        .bordered tr:last-child td:first-child {
+            -moz-border-radius: 0 0 0 6px;
+            -webkit-border-radius: 0 0 0 6px;
+            border-radius: 0 0 0 6px;
+        }
+
+        .bordered tr:last-child td:last-child {
+            -moz-border-radius: 0 0 6px 0;
+            -webkit-border-radius: 0 0 6px 0;
+            border-radius: 0 0 6px 0;
+        }
+        .del :hover{
+            color: #C81623;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .manage-links div {
+            float: left;
+            margin-right: 60px;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<div class="w">
+
+    <div class="title" style="margin-top: 20px; text-align: center; font-size: 35px; line-height: 35px;">廣告管理</div>
+    <div class="manage-links clearfix">
+        <div><a href="/manageViewpoints.html">景點管理</a></div>
+        <div><a href="/addViewpoint.html">新增景點</a></div>
+        <div><a href="/manageSpeakers.html">講者管理</a></div>
+        <div><a href="/addSpeaker.html">新增講者</a></div>
+        <div><a href="/manageThemes.html">主題管理</a></div>
+        <div><a href="/manageRegions.html">地區管理</a></div>
+        <div><a href="/manageSNs.html">序號管理</a></div>
+        <div><a href="/manageSNs.html">廣告管理</a></div>
+    </div>
+    <div style="font-size: 18px; line-height: 18px;"><a href="/addAd.html">新增廣告</a></div>
+    <div class="demo">
+        <table class="bordered">
+            <thead>
+            <tr>
+                <th>廣告名稱</th>
+                <th>編輯</th>
+                <th>已顯示次數</th>
+                <th>最大顯示次數</th>
+                <th>刪除</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/base.js"></script>
+<script>
+    //獲取所有的地區
+    $.ajax({
+        url: "/AdServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getAllAds"},
+        success: function (data) {
+            var ads = eval("(" + data + ")");
+
+            console.dir(ads);
+            for(var i = 0; i < ads.length; i++) {
+                var dom = '<tr>' +
+                        '<td>' + ads[i].name + '</td>' +
+                        '<td><a href="/updateAdInfo.html?id=' + ads[i].id + '">編輯</a></td>' +
+                        '<td>' + ads[i].count + '</td>' +
+                        '<td>' + ads[i].maxCount + '</td>' +
+                        '<td  class="del" onclick="checkDel(this);"><a href="/AdServlet?method=delAdById&id=' + ads[i].id + '">刪除</a></td>' +
+                        '</tr>';
+                $$("tbody").innerHTML = $$("tbody").innerHTML + dom;
+            }
+        },
+    });
+
+</script>

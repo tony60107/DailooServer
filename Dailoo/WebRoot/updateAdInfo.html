@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>更新廣告資訊</title>
+    <!-- 最新編譯和最佳化的 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!-- 選擇性佈景主題 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- 最新編譯和最佳化的 JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+
+    <style type="text/css">
+        .title {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 35px;
+            line-height: 35px;
+        }
+    </style>
+</head>
+<body>
+<div class="w">
+    <div class="title" style="margin-top: 20px; text-align: center; font-size: 35px; line-height: 35px;">更新廣告資訊</div>
+
+    <div><a href="/addViewpoint.html">新增景點</a></div>
+    <div><a href="/manageRegions.html">地區管理頁面</a></div>
+    <div><a href="/manageThemes.html">主題管理頁面</a></div>
+    <div><a href="/manageViewpoints.html">景點管理頁面</a></div>
+    <div><a href="/manageSpeakers.html">講者管理頁面</a></div>
+    <div><a href="/LogoutServlet">登出</a></div>
+
+    <form class="main-form" role="form" action="/AdServlet?method=updateAdInfo" method="post" enctype="multipart/form-data">
+        <div class="form-group" style="display: none">
+            <label>廣告ID</label>
+            <input id="adId" type="text" name="id" class="form-control" placeholder="輸入ID" value="">
+        </div>
+        <div class="form-group">
+            <label>廣告名稱</label>
+            <input id="name" type="text" name="name" class="form-control" placeholder="輸入名稱" value="">
+        </div>
+        <div class="form-group">
+            <label>廣告已顯示次數</label>
+            <input id="count" type="text" name="count" class="form-control" placeholder="輸入名稱" value="">
+        </div>
+        <div class="form-group">
+            <label>廣告最大顯示次數</label>
+            <input id="maxCount" type="text" name="maxCount" class="form-control" placeholder="輸入名稱" value="">
+        </div>
+        <div class="form-group">
+            <label>廣告圖片</label>
+            <input type="file" name="imgurl" class="form-control"  value="">
+        </div>
+        <button type="submit" class="btn btn-default">送出</button>
+    </form>
+
+    <div>
+        <img id="adImg" src="" alt="" style="width: 980px; height: 720px;">
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/base.js"></script>
+<script>
+
+    var adId = location.href.split("id=")[1];
+
+    $.ajax({
+        url: "/AdServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getAdById", "id":adId},
+        success: function (data) {
+            var ad = eval("(" + data + ")");
+            console.dir(ad);
+            $$("adId").value = ad.id;
+            $$("name").value = ad.name;
+            $$("count").value = ad.count;
+            $$("maxCount").value = ad.maxCount;
+            $$("adImg").src = "/ResourceServlet?url=" + ad.imgurl;
+        },
+    });
+</script>

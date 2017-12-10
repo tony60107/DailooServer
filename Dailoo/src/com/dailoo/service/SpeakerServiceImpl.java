@@ -39,20 +39,24 @@ public class SpeakerServiceImpl implements SpeakerService{
 
 	@Override
 	public void updateSpeakerInfo(Speaker speaker, String photoUrl) {
-		
-		//如果要更換大頭照,刪除舊照片
-		if(photoUrl != null && !"".equals(photoUrl)){ 
-			String fileURL = SpeakerService.class.getClassLoader().getResource("../../").getPath(); 
-			//舊照片檔案
-			File file = new File(fileURL.substring(0, fileURL.length() - 1) + speaker.getPhotoUrl()); 
-			if(file.exists()){
-				file.delete(); 
+		try{
+			//如果要更換大頭照,刪除舊照片
+			if(photoUrl != null && !"".equals(photoUrl)){ 
+				String fileURL = SpeakerService.class.getClassLoader().getResource("../../").toURI().getPath();
+				//舊照片檔案
+				File file = new File(fileURL.substring(0, fileURL.length() - 1) + speaker.getPhotoUrl()); 
+				if(file.exists()){
+					file.delete(); 
+				}
+				speaker.setPhotoUrl(photoUrl);
 			}
-			speaker.setPhotoUrl(photoUrl);
+			
+			//Speaker設置新的大頭照地址
+			dao.updateSpeakerInfo(speaker);
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
-		
-		//Speaker設置新的大頭照地址
-		dao.updateSpeakerInfo(speaker);
 	}
 
 	@Override

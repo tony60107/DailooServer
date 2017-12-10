@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>新增廣告</title>
+    <!-- 最新編譯和最佳化的 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!-- 選擇性佈景主題 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- 最新編譯和最佳化的 JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+<div class="w">
+    <div class="title" style="margin-top: 20px; text-align: center; font-size: 35px; line-height: 35px;">新增廣告</div>
+    <div id="links" style="margin-top: 30px; margin-bottom: 30px;"></div>
+    <form id="mainForm" class="main-form" role="form" action="/AdServlet?method=addAd" method="post" style="width: 500px; margin: 0 auto" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>廣告名稱</label>
+            <input id="name" type="text" name="name" class="form-control" placeholder="輸入廣告名稱" value="">
+        </div>
+        <div class="form-group">
+            <label>廣告圖片</label>
+            <input type="file" name="imgurl" class="form-control" value="">
+        </div>
+        <div class="form-group">
+            <label>最大顯示次數</label>
+            <input id="maxCount" type="number" name="maxCount" class="form-control" value="100">
+        </div>
+    </form>
+    <button id="submit" class="btn btn-default" onclick="checkForm();" style="margin-left: 240px;">新增廣告</button>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/base.js"></script>
+<script>
+
+    //檢查表單後上傳
+    function checkForm(){
+        if($$("name").value == '') {
+            alert("廣告名稱不能為空");
+            return;
+        }
+
+        if($$("maxCount").value < 1 || $$("maxCount").value > 1000) {
+            alert("最大顯示次數僅能填寫1~1000之間");
+            return;
+        }
+        //檢查景點代表圖格式
+        var imgFormat = /\.(jpg|jpeg|raw|gif|png|bmp)$/i;  //允許的圖片檔案格式
+        var img = $('input[name="imgurl"]').get(0);
+        if (imgFormat.test(img.value) != true) {
+            alert("廣告圖片格式不正確或未選擇");
+            return;
+        }
+        $$("mainForm").submit();
+    }
+</script>

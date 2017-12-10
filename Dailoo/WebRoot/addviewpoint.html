@@ -353,7 +353,7 @@
             }
         }
         //檢查景點代表圖格式
-        var imgFormat = /\.(jpg|jpeg|raw|gif|png|bmp)$/i;  //允許的音檔檔案格式
+        var imgFormat = /\.(jpg|jpeg|raw|gif|png|bmp)$/i;  //允許的圖片檔案格式
         var img = $('input[name="file1"]').get(0);
         if (imgFormat.test(img.value) != true) {
             alert("景點代表圖格式不正確或未選擇");

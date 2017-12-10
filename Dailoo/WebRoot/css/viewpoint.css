@@ -717,6 +717,11 @@
     margin-top: 140px;
 }
 
+.adbox .ad img{
+    width: 980px;
+    height: 720px;
+}
+
 .adbox .replay {
     width: 780px;
     margin: auto;

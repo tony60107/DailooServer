@@ -84,6 +84,11 @@
     <servlet-name>OrderServlet</servlet-name>
     <servlet-class>com.dailoo.web.OrderServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AdServlet</servlet-name>
+    <servlet-class>com.dailoo.web.AdServlet</servlet-class>
+  </servlet>
+  
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
@@ -127,5 +132,9 @@
   <servlet-mapping>
     <servlet-name>OrderServlet</servlet-name>
     <url-pattern>/OrderServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdServlet</servlet-name>
+    <url-pattern>/AdServlet</url-pattern>
   </servlet-mapping>
 </web-app>
