@@ -25,9 +25,11 @@ public class AdServiceImpl implements AdService{
 	@Override
 	public String findAd() {
 		Ad ad = dao.findAd();
-		//廣告顯示次數+1
-		ad.setCount(ad.getCount() + 1);
-		dao.updateAdInfo(ad);
+		if(ad != null){
+			//廣告顯示次數+1
+			ad.setCount(ad.getCount() + 1);
+			dao.updateAdInfo(ad);
+		}
 		return gson.toJson(ad);
 	}
 

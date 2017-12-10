@@ -25,12 +25,8 @@
 <div class="w">
     <div class="title" style="margin-top: 20px; text-align: center; font-size: 35px; line-height: 35px;">更新地區資訊</div>
 
-    <div><a href="/addViewpoint.html">新增景點</a></div>
-    <div><a href="/manageRegions.html">地區管理頁面</a></div>
-    <div><a href="/manageThemes.html">主題管理頁面</a></div>
-    <div><a href="/manageViewpoints.html">景點管理頁面</a></div>
-    <div><a href="/manageSpeakers.html">講者管理頁面</a></div>
-    <div><a href="/LogoutServlet">登出</a></div>
+    <div id="header"></div>
+
     <form class="main-form" role="form" action="/RegionServlet?method=updateRegionInfo" method="post">
         <div class="form-group" style="display: none">
             <label>地區ID</label>
@@ -60,5 +56,10 @@
             $$("regionId").value = region.id;
             $$("name").value = region.name;
         },
+    });
+
+    //載入Header
+    $.get("backHeader.html", function (data) {
+        $("#header").html(data);
     });
 </script>

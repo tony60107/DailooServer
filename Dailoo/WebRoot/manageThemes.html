@@ -60,26 +60,12 @@
             height: 303px;
         }
         /*主題列表結束*/
-        .manage-links div {
-            float: left;
-            margin-right: 60px;
-            margin-top: 30px;
-            font-size: 18px;
-        }
     </style>
 </head>
 <body>
 <div class="w">
     <div class="title" style="margin-top: 20px; text-align: center; font-size: 35px; line-height: 35px;">主題管理</div>
-    <div class="manage-links">
-        <div><a href="/manageViewpoints.html">景點管理</a></div>
-        <div><a href="/addViewpoint.html">新增景點</a></div>
-        <div><a href="/manageSpeakers.html">講者管理</a></div>
-        <div><a href="/addSpeaker.html">新增講者</a></div>
-        <div><a href="/manageThemes.html">主題管理</a></div>
-        <div><a href="/manageRegions.html">地區管理</a></div>
-        <div><a href="/manageSNs.html">序號管理</a></div>
-    </div>
+    <div id="header"></div>
 
     <form id="mainForm" action="/ThemeServlet?method=addTheme" method="post" enctype="multipart/form-data" style="margin-top: 80px;">
         <div class="form-group">
@@ -148,4 +134,9 @@
             },
         });
     }
+
+    //載入Header
+    $.get("backHeader.html", function (data) {
+        $("#header").html(data);
+    });
 </script>

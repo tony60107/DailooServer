@@ -115,7 +115,7 @@
         }
 
         .manage-links div {
-            margin-right: 60px;
+            margin-right: 50px;
             margin-top: 30px;
             font-size: 18px;
         }
@@ -434,7 +434,8 @@
                         '<div class="fl"><a href="/addSpeaker.html">新增講者</a></div>' +
                         '<div class="fl"><a href="/manageThemes.html">主題管理</a></div>' +
                         '<div class="fl"><a href="/manageRegions.html">地區管理</a></div>' +
-                        '<div class="fl"><a href="/manageSNs.html">序號管理</a></div>';
+                        '<div class="fl"><a href="/manageSNs.html">序號管理</a></div>' +
+                        '<div class="fl"><a href="/manageAds.html">廣告管理</a></div>';
                 $$("links").innerHTML = dom;
             } else {
                 var dom =
@@ -445,8 +446,7 @@
                         '<div class="fl"><a href="/manageViewpoints.html">景點管理</a></div>' +
                         '<div class="fl"><a href="/addViewpoint.html">新增景點</a></div>' +
                         '<div class="fl"><a href="/manageSpeakers.html">講者管理</a></div>' +
-                        '<div class="fl"><a href="/addSpeaker.html">新增講者</a></div>' +
-                        '<div class="fl"><a href="/manageSNs.html">序號管理</a></div>';
+                        '<div class="fl"><a href="/addSpeaker.html">新增講者</a></div>';
                 $$("links").innerHTML = dom;
                 $$("filter").innerHTML = "";
 

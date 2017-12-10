@@ -12,21 +12,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/addviewpoint.css">
-    <style>
-        .manage-links div {
-            margin-right: 60px;
-            margin-top: 30px;
-            font-size: 18px;
-        }
-    </style>
 </head>
 <body>
 <div class="w">
     <div class="title" style="margin-top: 20px; text-align: center; font-size: 35px; line-height: 35px;">更新景點資訊</div>
 
-    <div id="links" class="manage-links clearfix"  style="margin-top: -76px;"></div>
+    <div id="header"></div>
 
-    <div class="manage-links clearfix">
+    <div class="manage-links clearfix" style="margin-top: -40px;">
         <div class="fl"><a id="editAudio" href="#">編輯音檔圖片</a></div>
         <div class="fl"><a id="preview" href="">預覽景點</a></div>
     </div>
@@ -363,45 +356,9 @@
     }
 
 
-    //根據不同的登入者，顯示不同的連結
-    $.ajax({
-        url: "/SpeakerServlet", context: document.body,
-        type: "POST",
-        data: {"method": "getLoginUser"},
-        success: function (data) {
-            var speaker = eval("(" + data + ")");
-            console.dir(speaker);
-
-            if(speaker == null) {
-                $$("links").innerHTML = '<div style="margin-top: 50px;">尚未登入帳號，請先進行登入</div><div><a href="/login.html">登入</a></div>';
-            } else if(speaker.role == 'admin') {
-                var dom =
-                        '<div class="clearfix">' +
-                        '<div class="fl">登入者：' + speaker.username + '</div>' +
-                        '<div class="fl"><a href="/LogoutServlet">登出</a></div>' +
-                        '</div>' +
-                        '<div class="fl"><a href="/manageViewpoints.html">景點管理</a></div>' +
-                        '<div class="fl"><a href="/addViewpoint.html">新增景點</a></div>' +
-                        '<div class="fl"><a href="/manageSpeakers.html">講者管理</a></div>' +
-                        '<div class="fl"><a href="/addSpeaker.html">新增講者</a></div>' +
-                        '<div class="fl"><a href="/manageThemes.html">主題管理</a></div>' +
-                        '<div class="fl"><a href="/manageRegions.html">地區管理</a></div>' +
-                        '<div class="fl"><a href="/manageSNs.html">序號管理</a></div>';
-                $$("links").innerHTML = dom;
-            } else {
-                var dom =
-                        '<div class="clearfix">' +
-                        '<div class="fl">登入者：' + speaker.username + '</div>' +
-                        '<div class="fl"><a href="/LogoutServlet">登出</a></div>' +
-                        '</div>' +
-                        '<div class="fl"><a href="/manageViewpoints.html">景點管理</a></div>' +
-                        '<div class="fl"><a href="/addViewpoint.html">新增景點</a></div>' +
-                        '<div class="fl"><a href="/manageSpeakers.html">講者管理</a></div>' +
-                        '<div class="fl"><a href="/addSpeaker.html">新增講者</a></div>' +
-                        '<div class="fl"><a href="/manageSNs.html">序號管理</a></div>';
-                $$("links").innerHTML = dom;
-            }
-        },
+    //載入Header
+    $.get("backHeader.html", function (data) {
+        $("#header").html(data);
     });
 
     var map;
