@@ -717,6 +717,12 @@
     margin-top: 140px;
 }
 
+.adbox .ad a{
+    width: 980px;
+    height: 720px;
+    display: inline-block;
+}
+
 .adbox .ad img{
     width: 980px;
     height: 720px;

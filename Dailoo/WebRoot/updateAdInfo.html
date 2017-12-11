@@ -38,15 +38,19 @@
         </div>
         <div class="form-group">
             <label>廣告已顯示次數</label>
-            <input id="count" type="text" name="count" class="form-control" placeholder="輸入名稱" value="">
+            <input id="count" type="text" name="count" class="form-control" placeholder="輸入次數" value="">
         </div>
         <div class="form-group">
             <label>廣告最大顯示次數</label>
-            <input id="maxCount" type="text" name="maxCount" class="form-control" placeholder="輸入名稱" value="">
+            <input id="maxCount" type="text" name="maxCount" class="form-control" placeholder="輸入次數" value="">
         </div>
         <div class="form-group">
             <label>廣告圖片</label>
             <input type="file" name="imgurl" class="form-control"  value="">
+        </div>
+        <div class="form-group">
+            <label>廣告連結</label>
+            <input id="href" type="text" name="href" class="form-control" placeholder="輸入廣告連結" value="">
         </div>
         <button type="submit" class="btn btn-default">送出</button>
     </form>
@@ -74,6 +78,7 @@
             $$("count").value = ad.count;
             $$("maxCount").value = ad.maxCount;
             $$("adImg").src = "/ResourceServlet?url=" + ad.imgurl;
+            $$("href").value = ad.href;
         },
     });
 

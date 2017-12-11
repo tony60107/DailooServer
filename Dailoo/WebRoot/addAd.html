@@ -26,8 +26,12 @@
             <input type="file" name="imgurl" class="form-control" value="">
         </div>
         <div class="form-group">
+            <label>廣告連結</label>
+            <input type="text" name="href" class="form-control" placeholder="輸入廣告連結" value="">
+        </div>
+        <div class="form-group">
             <label>最大顯示次數</label>
-            <input id="maxCount" type="number" name="maxCount" class="form-control" value="100">
+            <input id="maxCount" type="number" name="maxCount" class="form-control" value="1000">
         </div>
     </form>
     <button id="submit" class="btn btn-default" onclick="checkForm();" style="margin-left: 240px;">新增廣告</button>
@@ -45,8 +49,8 @@
             return;
         }
 
-        if($$("maxCount").value < 1 || $$("maxCount").value > 1000) {
-            alert("最大顯示次數僅能填寫1~1000之間");
+        if($$("maxCount").value < 1 || $$("maxCount").value > 10000) {
+            alert("最大顯示次數僅能填寫1~10000之間");
             return;
         }
         //檢查景點代表圖格式

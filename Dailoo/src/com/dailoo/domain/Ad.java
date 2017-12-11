@@ -5,6 +5,7 @@ public class Ad {
 	private String id; //廣告ID
 	private String name; //廣告名稱
 	private String imgurl; //廣告圖片地址
+	private String href; //廣告連結
 	private Integer count; //廣告已展示次數
 	private Integer maxCount; //廣告最大展示次數
 	
@@ -25,6 +26,12 @@ public class Ad {
 	}
 	public void setImgurl(String imgurl) {
 		this.imgurl = imgurl;
+	}
+	public String getHref() {
+		return href;
+	}
+	public void setHref(String href) {
+		this.href = href;
 	}
 	public Integer getCount() {
 		return count;

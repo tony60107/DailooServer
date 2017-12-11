@@ -15,11 +15,11 @@ public class AdDaoImpl implements AdDao{
 
 	@Override
 	public void addAd(Ad ad) {
-		String sql = "insert into ads (id, name, imgurl, count, maxCount)"
-				+ "values(?,?,?,?,?)";
+		String sql = "insert into ads (id, name, imgurl, href, count, maxCount)"
+				+ "values(?,?,?,?,?,?)";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			runner.update(sql, ad.getId(), ad.getName(), ad.getImgurl(), ad.getCount(), ad.getMaxCount());
+			runner.update(sql, ad.getId(), ad.getName(), ad.getImgurl(),ad.getHref(), ad.getCount(), ad.getMaxCount());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -65,10 +65,10 @@ public class AdDaoImpl implements AdDao{
 
 	@Override
 	public void updateAdInfo(Ad ad) {
-		String sql = "update ads set name=?, imgurl=?, count=?, maxCount=? where id = ?";
+		String sql = "update ads set name=?, imgurl=?, href=?, count=?, maxCount=? where id = ?";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			runner.update(sql, ad.getName(), ad.getImgurl(),ad.getCount(), ad.getMaxCount(), ad.getId());
+			runner.update(sql, ad.getName(), ad.getImgurl(), ad.getHref(),ad.getCount(), ad.getMaxCount(), ad.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

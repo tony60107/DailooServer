@@ -126,7 +126,13 @@ var Audio = Class.extend({
                 $.ajax({url: "/AdServlet", context: document.body, type: "POST", data: {"method": "getAd"},
                     success: function (data) {
                         var ad = eval("(" + data + ")");
-                        if(ad != null) $$("adImg").src = "/ResourceServlet?url=" + ad.imgurl;
+                        if(ad != null){
+                            $$("adImg").src = "/ResourceServlet?url=" + ad.imgurl;
+                            console.dir(ad.href);
+                            if(ad.href != '') {
+                                $$("adHref").href = ad.href;
+                            }
+                        }
                     },
                 });
                 getAdFlag = true;
