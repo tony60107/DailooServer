@@ -36,8 +36,8 @@ public class AdServlet extends HttpServlet {
 				response.sendRedirect("/manageAds.html");
 			} 
 			//隨機取得一個廣告
-			else if("getAd".equals(method)) { 
-				String json = service.findAd();
+			else if("getAdByRegionId".equals(method)) { 
+				String json = service.findAdByRegionId(request.getParameter("regionId"));
 				response.getWriter().write(json);
 			}
 			//取得所有的廣告

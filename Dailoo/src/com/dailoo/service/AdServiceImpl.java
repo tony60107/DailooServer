@@ -23,8 +23,8 @@ public class AdServiceImpl implements AdService{
 	}
 
 	@Override
-	public String findAd() {
-		Ad ad = dao.findAd();
+	public String findAdByRegionId(String regionId) {
+		Ad ad = dao.findAdByRegionId(regionId);
 		if(ad != null){
 			//廣告顯示次數+1
 			ad.setCount(ad.getCount() + 1);

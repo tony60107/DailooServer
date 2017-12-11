@@ -117,9 +117,8 @@ var Audio = Class.extend({
         if(curTime >= audioLength  && audio.paused == false && getStyle($$("admask"),'display') == 'none'){
             $$("admask").style.display = "block";
             $$("adbox").style.display = "block";
-
             //取得廣告圖片
-            $.ajax({url: "/AdServlet", context: document.body, type: "POST", data: {"method": "getAd"},
+            $.ajax({url: "/AdServlet", context: document.body, type: "POST", data: {"method": "getAdByRegionId", "regionId": $$("regionId").value},
                 success: function (data) {
                     var ad = eval("(" + data + ")");
                     if(ad != null){

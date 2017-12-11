@@ -14,10 +14,11 @@ public interface AdDao extends Dao{
 	void addAd(Ad ad);
 
 	/**
-	 * 隨機抽取一則廣告
+	 * 根據地區ID,隨機抽取一則廣告
+	 * @param regionId 地區ID
 	 * @return 廣告Bean
 	 */
-	Ad findAd();
+	Ad findAdByRegionId(String regionId);
 
 	/**
 	 * 找到所有的廣告

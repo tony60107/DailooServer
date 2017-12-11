@@ -118,7 +118,7 @@ window.onload = function () {
             }
             speakerData = data.speaker;
             initDataFromServer(data);
-            //console.dir(data);
+            console.dir(data);
         },
     });
     history.replaceState(null, null, location.href);
@@ -221,6 +221,8 @@ function initViewpointData(vpData) {
     }
     //景點行政區
     $$("area").innerHTML = vpData.city + vpData.town;
+    //儲存地區ID變量
+    $$("regionId").value = vpData.theme[0].regionId;
 
     //分享區塊 QRCode
     $('#qrcode').qrcode({width: 440,height: 440,text: vpData.shortUrl});

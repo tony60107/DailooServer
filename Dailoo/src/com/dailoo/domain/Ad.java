@@ -8,6 +8,7 @@ public class Ad {
 	private String href; //廣告連結
 	private Integer count; //廣告已展示次數
 	private Integer maxCount; //廣告最大展示次數
+	private String regionId; //廣告對應的地區ID
 	
 	public String getId() {
 		return id;
@@ -44,6 +45,12 @@ public class Ad {
 	}
 	public void setMaxCount(Integer maxCount) {
 		this.maxCount = maxCount;
+	}
+	public String getRegionId() {
+		return regionId;
+	}
+	public void setRegionId(String regionId) {
+		this.regionId = regionId;
 	}
 	@Override
 	public String toString() {

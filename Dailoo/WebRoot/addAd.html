@@ -18,6 +18,10 @@
     <div id="header"></div>
     <form id="mainForm" class="main-form" role="form" action="/AdServlet?method=addAd" method="post" style="width: 500px; margin: 0 auto" enctype="multipart/form-data">
         <div class="form-group">
+            <label>廣告地區</label>
+            <select id="regionSelect" type="text" name="regionId" class="form-control"></select>
+        </div>
+        <div class="form-group">
             <label>廣告名稱</label>
             <input id="name" type="text" name="name" class="form-control" placeholder="輸入廣告名稱" value="">
         </div>
@@ -62,6 +66,21 @@
         }
         $$("mainForm").submit();
     }
+
+    //獲取所有的地區，以取得地區下所有的主題
+    $.ajax({
+        url: "/RegionServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getAllRegions"},
+        success: function (data) {
+            regions = eval("(" + data + ")");
+            console.dir(data);
+            for (var i = 0; i < regions.length; i++) {
+                var dom = '<option value="' + regions[i].id + '">' + regions[i].name + '</option>';
+                $$("regionSelect").innerHTML = $$("regionSelect").innerHTML + dom;
+            }
+        },
+    });
 
     //載入Header
     $.get("backHeader.html", function (data) {

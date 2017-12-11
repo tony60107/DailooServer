@@ -11,10 +11,11 @@ public interface AdService extends Service{
 	void addAd(Ad ad);
 
 	/**
-	 * 隨機取得一個廣告
+	 * 根據地區ID隨機取得一個廣告
+	 * @param regionId 地區ID
 	 * @return 廣告的Json數據
 	 */
-	String findAd();
+	String findAdByRegionId(String regionId);
 
 	/**
 	 * 取得所有的廣告
