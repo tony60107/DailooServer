@@ -56,7 +56,7 @@
         </div>
         <div class="form-group">
             <label>自我介紹</label>
-            <textarea id="intro" name="intro" class="form-control" placeholder="輸入自我介紹" onpropertychange="this.style.height=this.scrollHeight+'px';"  oninput="this.style.height=this.scrollHeight+'px';" style="width: 100%; height:180px; overflow:hidden;">
+            <textarea id="intro" name="intro" class="form-control" placeholder="輸入自我介紹" onpropertychange="this.style.height=this.scrollHeight+'px';"  oninput="if(this.scrollHeight > 180){this.style.height=this.scrollHeight+'px';}" style="width: 100%; height:180px; overflow:hidden;">
             </textarea>
         </div>
         <div class="form-group">

@@ -118,7 +118,7 @@ window.onload = function () {
             }
             speakerData = data.speaker;
             initDataFromServer(data);
-            console.dir(data);
+            //console.dir(data);
         },
     });
     history.replaceState(null, null, location.href);

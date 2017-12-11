@@ -7,7 +7,6 @@ var playBtn, preTagBtn, nextTagBtn; //聲音播放器按紐
 var audio; //播放聲音的控件
 var audioLength; //聲音總長度
 var tags; //音檔標記的JSON數據
-var getAdFlag; //紀錄是否已取得廣告圖片
 
 var imgSliderClass;
 
@@ -20,7 +19,6 @@ var Audio = Class.extend({
         flPlayBtn = $$("flPlayBtn");
         flNextTagBtn  = $$("flNextTagBtn");
         replayBtn = $$("replay");
-        getAdFlag = false;
 
         audio = $$("audio");
         audio.onloadeddata = function(){audio.currentTime = 0;}
@@ -116,27 +114,22 @@ var Audio = Class.extend({
         }
 
         //當播放到音檔尾端時，顯示廣告區塊
-        if(curTime > audioLength - 0.5 && audio.paused == false){
+        if(curTime >= audioLength  && audio.paused == false && getStyle($$("admask"),'display') == 'none'){
             $$("admask").style.display = "block";
             $$("adbox").style.display = "block";
 
-            //如果還沒取得過廣告圖片
-            if(getAdFlag == false){
-                //取得廣告圖片
-                $.ajax({url: "/AdServlet", context: document.body, type: "POST", data: {"method": "getAd"},
-                    success: function (data) {
-                        var ad = eval("(" + data + ")");
-                        if(ad != null){
-                            $$("adImg").src = "/ResourceServlet?url=" + ad.imgurl;
-                            console.dir(ad.href);
-                            if(ad.href != '') {
-                                $$("adHref").href = ad.href;
-                            }
+            //取得廣告圖片
+            $.ajax({url: "/AdServlet", context: document.body, type: "POST", data: {"method": "getAd"},
+                success: function (data) {
+                    var ad = eval("(" + data + ")");
+                    if(ad != null){
+                        $$("adImg").src = "/ResourceServlet?url=" + ad.imgurl;
+                        if(ad.href != '') {
+                            $$("adHref").href = ad.href;
                         }
-                    },
-                });
-                getAdFlag = true;
-            }
+                    }
+                },
+            });
         }
     },
     //點下了音檔播放按鈕

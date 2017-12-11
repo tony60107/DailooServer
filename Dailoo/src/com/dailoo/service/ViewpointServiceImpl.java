@@ -185,8 +185,13 @@ public class ViewpointServiceImpl implements ViewpointService{
 					vp.setNextAudio(toVpSimple(moreAudio.get(i+1)));
 				} else { //如果已經是最後一段，則隨機尋找同一主題下的景點
 					List<Viewpoint> temps = dao.findViewpointByThemeIdAndPublish(themelist.get(0).getId());
-					System.out.println((int)(Math.random() * temps.size()));
-					vp.setNextAudio(toVpSimple(temps.get((int)(Math.random() * temps.size()))));
+					//System.out.println((int)(Math.random() * temps.size()));
+					if(temps.size() != 0){
+						vp.setNextAudio(toVpSimple(temps.get((int)(Math.random() * temps.size()))));
+					} else {
+						//如果同一主題下沒有其他景點
+						vp.setNextAudio(toVpSimple(vp));
+					} 
 				}
 			}
 		}

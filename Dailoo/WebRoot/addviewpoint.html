@@ -99,7 +99,7 @@
         <div class="form-group">
             <label>景點介紹</label>
             <textarea id="intro" type="text" name="intro" class="form-control"
-                      placeholder="輸入景點介紹" onpropertychange="this.style.height=this.scrollHeight+'px';"  oninput="this.style.height=this.scrollHeight+'px';" style="width: 100%; height: 180px;overflow:hidden;"></textarea>
+                      placeholder="輸入景點介紹" onpropertychange="this.style.height=this.scrollHeight+'px';"  oninput="if(this.scrollHeight > 180){this.style.height=this.scrollHeight+'px';}" style="width: 100%; height: 180px;overflow:hidden;"></textarea>
         </div>
         <div class="form-group">
             <label>景點代表圖</label>
