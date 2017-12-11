@@ -309,7 +309,7 @@ function initViewpointData(vpData) {
 
             //計算景點距離顯示文字
             var dt = neighView[i].distance;
-            if(dt >= 1) {
+            if(dt >= 0.995) {
                 dom += '<div class="distance">距離' + dt.toFixed(1) + 'KM</div></a>';
             } else {
                 dom += '<div class="distance">距離' + (dt.toFixed(2) * 1000) + 'M</div></a>';
