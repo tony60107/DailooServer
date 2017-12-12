@@ -126,7 +126,7 @@
     <div class="title" style="margin-top: 20px; text-align: center; font-size: 35px; line-height: 35px;">景點管理</div>
     <div id="links" class="manage-links clearfix" style="margin-top: -76px;"></div>
 
-    <div id="filter" style="margin-top: 40px">
+    <div id="filter" style="margin-top: 40px; display: none">
         <div class="filters clearfix">
             <label class="fl" style="font-size: 16px; line-height: 36px;">地區：</label>
             <select id="regionSelect" type="text" name="regionId" class="fl form-control"
@@ -437,6 +437,7 @@
                         '<div class="fl"><a href="/manageSNs.html">序號管理</a></div>' +
                         '<div class="fl"><a href="/manageAds.html">廣告管理</a></div>';
                 $$("links").innerHTML = dom;
+                $$("filter").style.display = "block";
             } else {
                 var dom =
                         '<div class="clearfix">' +
