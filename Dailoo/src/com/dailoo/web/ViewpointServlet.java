@@ -94,7 +94,7 @@ public class ViewpointServlet extends HttpServlet {
 					}
 				}
 				
-				response.sendRedirect("/addViewpoint.html");
+				response.sendRedirect("/updateViewpointInfo.html?id=" + vp.getId());
 			}
 			//如果是更新景點
 			else if("updateViewpoint".equals(method)){

@@ -210,7 +210,7 @@
             bindRegionSelect(i);
             regionNum = i + 1;
         }
-        $$("delRegion" + (regionNum-1)).style.display = "inline";
+        if(regionNum > 2) $$("delRegion" + (regionNum-1)).style.display = "inline";
 
 
         $$("editAudio").href = "/editAudio.html?id=" + vp.audio.id;
