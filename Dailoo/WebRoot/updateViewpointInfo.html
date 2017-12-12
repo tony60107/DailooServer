@@ -191,7 +191,7 @@
         for(var i = 1; i < vp.theme.length; i++) {
             var dom = document.createElement("div");
             dom.className = "form-group";
-            dom.innerHTML = '<label style=" margin-top: 25px;">主題地區</label><span id="delRegion' + regionNum +'" onclick="remvoeOneRegion(this)" style="margin-left: 30px; color: orange; cursor: pointer;">刪除這個主題</span>' +
+            dom.innerHTML = '<label style=" margin-top: 25px;">主題地區</label><span id="delRegion' + regionNum +'" onclick="remvoeOneRegion(this)" style="margin-left: 30px; color: orange; cursor: pointer; display: none">刪除這個主題</span>' +
                     '<select id="regionSelect'+ i +'" type="text" name="regionId" class="form-control">' +
                     '<option selected disabled hidden style="display: none" value="">切換以選擇其他景點主題</option>' +
                     '</select>' +
@@ -210,6 +210,8 @@
             bindRegionSelect(i);
             regionNum = i + 1;
         }
+        $$("delRegion" + (regionNum-1)).style.display = "inline";
+
 
         $$("editAudio").href = "/editAudio.html?id=" + vp.audio.id;
         $$("preview").href = "/viewpoint.html?id=" + vp.id;
@@ -299,7 +301,7 @@
         //刪除自己
         btn.parentNode.parentNode.removeChild(btn.parentNode);
         //顯示上一個地區下拉選單的刪除按鈕
-        if(regionNum > 1){
+        if(regionNum > 2){
             $$("delRegion" + (regionNum-2)).style.display = "inline";
         }
         regionNum--;

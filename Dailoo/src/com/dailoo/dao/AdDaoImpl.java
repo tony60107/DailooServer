@@ -28,11 +28,11 @@ public class AdDaoImpl implements AdDao{
 
 	@Override
 	public Ad findAdByRegionId(String regionId) {
-		String sql = "select * from ads where count < maxCount and regionId=? ORDER BY RAND() LIMIT 1";
+		String sql = "select * from ads where count < maxCount and regionId LIKE ? ORDER BY RAND() LIMIT 1";
 		
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			return runner.query(sql, regionId, new BeanHandler<Ad>(Ad.class));
+			return runner.query(sql, "%" + regionId + "%", new BeanHandler<Ad>(Ad.class));
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

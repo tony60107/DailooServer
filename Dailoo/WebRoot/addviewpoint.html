@@ -231,7 +231,7 @@
         });
     }
 
-    //增加景點區塊
+    //增加地區、主題區塊
     function addRegion() {
         //景點下拉選單HTML
         var GroupDiv = document.createElement("div");
@@ -264,7 +264,7 @@
         //刪除自己
         btn.parentNode.parentNode.removeChild(btn.parentNode);
         //顯示上一個地區下拉選單的刪除按鈕
-        if(regionNum > 1){
+        if(regionNum > 2){
             $$("delRegion" + (regionNum-2)).style.display = "inline";
         }
         regionNum--;

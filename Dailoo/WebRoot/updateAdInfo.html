@@ -32,10 +32,14 @@
             <label>廣告ID</label>
             <input id="adId" type="text" name="id" class="form-control" placeholder="輸入ID" value="">
         </div>
-        <div class="form-group">
-            <label>廣告地區</label>
-            <select id="regionSelect" type="text" name="regionId" class="form-control"></select>
+
+        <div id="regionGroup" class="clearfix" style="margin-top: 50px; margin-bottom: 50px;">
+            <div class="form-group">
+                <label>廣告播放地區</label><span onclick="addRegion();" style="margin-left: 30px; color: orange; cursor: pointer;">增加對應的地區</span>
+                <select id="regionSelect0" type="text" name="regionId" class="form-control"></select>
+            </div>
         </div>
+
         <div class="form-group">
             <label>廣告名稱</label>
             <input id="name" type="text" name="name" class="form-control" placeholder="輸入名稱" value="">
@@ -69,39 +73,102 @@
 <script>
 
     var adId = location.href.split("id=")[1];
+    var regions; //伺服器的地區資料
+    var regionNum = 1;//現在到第幾個region編號
 
-    //獲取所有的地區，以取得地區下所有的主題
+
+    //取得該廣告資訊
     $.ajax({
-        url: "/RegionServlet", context: document.body,
+        url: "/AdServlet", context: document.body,
         type: "POST",
-        data: {"method": "getAllRegions"},
+        data: {"method": "getAdById", "id":adId},
         success: function (data) {
-            regions = eval("(" + data + ")");
-            console.dir(data);
-            for (var i = 0; i < regions.length; i++) {
-                var dom = '<option value="' + regions[i].id + '">' + regions[i].name + '</option>';
-                $$("regionSelect").innerHTML = $$("regionSelect").innerHTML + dom;
-            }
-            //取得該廣告資訊
+            var ad = eval("(" + data + ")");
+            console.dir(ad);
+            $$("adId").value = ad.id;
+            //$$("regionSelect").value = ad.regionId;
+            $$("name").value = ad.name;
+            $$("count").value = ad.count;
+            $$("maxCount").value = ad.maxCount;
+            $$("adImg").src = "/ResourceServlet?url=" + ad.imgurl;
+            $$("href").value = ad.href;
+
+            //獲取所有的地區
             $.ajax({
-                url: "/AdServlet", context: document.body,
+                url: "/RegionServlet", context: document.body,
                 type: "POST",
-                data: {"method": "getAdById", "id":adId},
+                data: {"method": "getAllRegions"},
                 success: function (data) {
-                    var ad = eval("(" + data + ")");
-                    console.dir(ad);
-                    $$("adId").value = ad.id;
-                    $$("regionSelect").value = ad.regionId;
-                    $$("name").value = ad.name;
-                    $$("count").value = ad.count;
-                    $$("maxCount").value = ad.maxCount;
-                    $$("adImg").src = "/ResourceServlet?url=" + ad.imgurl;
-                    $$("href").value = ad.href;
+                    regions = eval("(" + data + ")");
+                    console.dir(data);
+
+                    var regionIds = ad.regionId.split(",");
+
+                    //填充0號地區下拉選單
+                    for (var i = 0; i < regions.length; i++) {
+                        var dom = '<option value="' + regions[i].id + '">' + regions[i].name + '</option>';
+                        $$("regionSelect0").innerHTML = $$("regionSelect0").innerHTML + dom;
+                        $$("regionSelect0").value = regionIds[0];
+                    }
+
+                    //填充1號以上地區下拉選單
+                    for(var i = 1; i < regionIds.length; i++) {
+                        var dom = document.createElement("div");
+                        dom.className = "form-group";
+                        dom.innerHTML = '<label style=" margin-top: 25px;">廣告放送地區</label><span id="delRegion' + regionNum +'" onclick="remvoeOneRegion(this)" style="margin-left: 30px; color: orange; cursor: pointer; display: none">刪除這個主題</span>' +
+                                '<select id="regionSelect'+ i +'" type="text" name="regionId" class="form-control">' +
+                                '<option selected disabled hidden style="display: none" value=""></option>' +
+                                '</select>';
+                        $$("regionGroup").appendChild(dom);
+
+                        for (var j = 0; j < regions.length; j++) {
+                            var dom = '<option value="' + regions[j].id + '">' + regions[j].name + '</option>';
+                            $$("regionSelect" + i).innerHTML = $$("regionSelect" + i).innerHTML + dom;
+                        }
+                        $$("regionSelect" + i).value = regionIds[i];
+                        $$("regionSelect" + i).value = regionIds[i];
+
+                        regionNum = i + 1;
+                    }
+                    $$("delRegion" + (regionNum-1)).style.display = "inline";
                 },
             });
+
         },
     });
 
+    //增加地區、主題區塊
+    function addRegion() {
+        //景點下拉選單HTML
+        var GroupDiv = document.createElement("div");
+        GroupDiv.className = "form-group";
+        GroupDiv.style.marginTop = "20px";
+        GroupDiv.innerHTML = ' <label style=" margin-top: 25px;">廣告播放地區</label><span id="delRegion' + regionNum +'" onclick="remvoeOneRegion(this)" style="margin-left: 30px; color: orange; cursor: pointer;">刪除這個地區</span> <select id="regionSelect' + regionNum +'" type="text" name="regionId" class="form-control"></select> ';
+        $$("regionGroup").appendChild(GroupDiv);
+
+        //填充地區數據
+        for (var i = 0; i < regions.length; i++) {
+            var dom = '<option value="' + regions[i].id + '">' + regions[i].name + '</option>';
+            $$("regionSelect" + regionNum).innerHTML = $$("regionSelect" + regionNum).innerHTML + dom;
+        }
+
+        //隱藏上方地區下拉選單的刪除按鈕
+        if(regionNum > 1) {
+            $$("delRegion" + (regionNum - 1)).style.display = "none";
+        }
+        regionNum++;
+    }
+
+    //刪除按下的地區
+    function remvoeOneRegion(btn) {
+        //刪除自己
+        btn.parentNode.parentNode.removeChild(btn.parentNode);
+        //顯示上一個地區下拉選單的刪除按鈕
+        if(regionNum > 2){
+            $$("delRegion" + (regionNum-2)).style.display = "inline";
+        }
+        regionNum--;
+    }
     //載入Header
     $.get("backHeader.html", function (data) {
         $("#header").html(data);

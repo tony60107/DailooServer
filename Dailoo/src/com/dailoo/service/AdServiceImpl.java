@@ -40,8 +40,16 @@ public class AdServiceImpl implements AdService{
 		List<Ad> ads = dao.findAllAd();
 		for(int i = 0; i < ads.size(); i++) {
 			Ad ad = ads.get(i);
-			Region region = regionDao.findRegionById(ad.getRegionId());
-			ad.setRegionName(region.getName());
+			String[] regionIds = ad.getRegionId().split(",");
+			for(int j = 0; j < regionIds.length; j++) {
+				Region region = regionDao.findRegionById(regionIds[j]);
+				if(ad.getRegionName() != null){
+					ad.setRegionName(ad.getRegionName() + "," + region.getName());
+				} else {
+					ad.setRegionName(region.getName());
+				}
+			}
+			
 		}
 		return gson.toJson(ads);
 	}
