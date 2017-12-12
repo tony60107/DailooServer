@@ -5,7 +5,7 @@
 var regionId = location.href.split("id=")[1];
 
 //如果未提供地區ID，則跳轉到鹿野地區主題列表
-//if(regionId == undefined){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"};
+if(regionId == undefined){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"};
 
 
 window.onload = function () {
