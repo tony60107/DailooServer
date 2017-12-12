@@ -10,6 +10,10 @@ public class Ad {
 	private Integer maxCount; //廣告最大展示次數
 	private String regionId; //廣告對應的地區ID
 	
+	//-------------------------------------
+	private String regionName;	//地區名稱
+	
+	
 	public String getId() {
 		return id;
 	}
@@ -51,6 +55,12 @@ public class Ad {
 	}
 	public void setRegionId(String regionId) {
 		this.regionId = regionId;
+	}
+	public String getRegionName() {
+		return regionName;
+	}
+	public void setRegionName(String regionName) {
+		this.regionName = regionName;
 	}
 	@Override
 	public String toString() {

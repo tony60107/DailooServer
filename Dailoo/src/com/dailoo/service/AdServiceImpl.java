@@ -1,18 +1,20 @@
 package com.dailoo.service;
 
 import java.io.File;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 import com.dailoo.dao.AdDao;
+import com.dailoo.dao.RegionDao;
 import com.dailoo.domain.Ad;
+import com.dailoo.domain.Region;
 import com.dailoo.factory.BasicFactory;
 import com.google.gson.Gson;
 
 public class AdServiceImpl implements AdService{
 
 	AdDao dao = BasicFactory.getFactory().getDao(AdDao.class);
+	RegionDao regionDao = BasicFactory.getFactory().getDao(RegionDao.class);
 	Gson gson = new Gson();
 	
 	@Override
@@ -36,6 +38,11 @@ public class AdServiceImpl implements AdService{
 	@Override
 	public String findAllAd() {
 		List<Ad> ads = dao.findAllAd();
+		for(int i = 0; i < ads.size(); i++) {
+			Ad ad = ads.get(i);
+			Region region = regionDao.findRegionById(ad.getRegionId());
+			ad.setRegionName(region.getName());
+		}
 		return gson.toJson(ads);
 	}
 

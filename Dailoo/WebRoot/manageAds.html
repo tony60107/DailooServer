@@ -127,6 +127,8 @@
             <thead>
             <tr>
                 <th>廣告名稱</th>
+                <th>對應地區</th>
+                <th>廣告連結</th>
                 <th>編輯</th>
                 <th>已顯示次數</th>
                 <th>最大顯示次數</th>
@@ -154,6 +156,8 @@
             for(var i = 0; i < ads.length; i++) {
                 var dom = '<tr>' +
                         '<td>' + ads[i].name + '</td>' +
+                        '<td>' + ads[i].regionName + '</td>' +
+                        '<td><a href="' + ads[i].href + '">' + ads[i].href + '</a></td>' +
                         '<td><a href="/updateAdInfo.html?id=' + ads[i].id + '">編輯</a></td>' +
                         '<td>' + ads[i].count + '</td>' +
                         '<td>' + ads[i].maxCount + '</td>' +
