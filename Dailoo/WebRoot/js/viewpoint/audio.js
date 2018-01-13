@@ -113,8 +113,9 @@ var Audio = Class.extend({
             }
         }
 
-        //當播放到音檔尾端時，顯示廣告區塊
-        if(curTime >= audioLength  && audio.paused == false && getStyle($$("admask"),'display') == 'none'){
+        //當播放到音檔尾端且廣告未曾被點擊關閉時，顯示廣告區塊
+        if(curTime >= audioLength -1 && document.isAdClose == false){
+            document.isAdClose = false;
             $$("admask").style.display = "block";
             $$("adbox").style.display = "block";
             //取得廣告圖片
@@ -129,6 +130,7 @@ var Audio = Class.extend({
                     }
                 },
             });
+
         }
     },
     //點下了音檔播放按鈕
@@ -140,6 +142,8 @@ var Audio = Class.extend({
             audio.timer = setInterval(function () { //每0.3秒更新進度條狀態
                 updateProgTime(false);
             }, 300);
+            //重新設定廣告是否已被點擊關閉標記
+            document.isAdClose = false
         } else { //如果為播放狀態
             playBtn.style.backgroundImage = "url(images/viewpoint/play.png)";
             flPlayBtn.style.backgroundImage = "url(images/viewpoint/play.png)";

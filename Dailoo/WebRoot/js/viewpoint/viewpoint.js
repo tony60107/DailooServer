@@ -51,10 +51,14 @@ window.onload = function () {
         this.style.display = "none";
     }
 
+    //廣告關閉按鈕是否已被點擊
+    document.isAdClose = false;
+
     //廣告區點擊關閉按鈕
     $$("adClose").onclick = function() {
         $$("admask").style.display = "none";
         $$("adbox").style.display = "none";
+        document.isAdClose = true;
     }
 
     //廣告區點擊QRCode
@@ -208,7 +212,11 @@ function initViewpointData(vpData) {
     //網頁標題
     document.title = vpData.name + " " + vpData.subtitle;
     //將短網址存入全局變量中
-    document.shortUrl = vpData.shortUrl;
+    if(vpData.shortUrl != undefined){
+        document.shortUrl = vpData.shortUrl;
+    } else {
+        document.shortUrl = "";
+    }
     //上一頁按鈕
     $$("backward").href = "/viewlist.html?id=" + vpData.theme[0].id;
     //景點名稱
@@ -225,7 +233,7 @@ function initViewpointData(vpData) {
     $$("regionId").value = vpData.theme[0].regionId;
 
     //分享區塊 QRCode
-    $('#qrcode').qrcode({width: 440,height: 440,text: vpData.shortUrl});
+    $('#qrcode').qrcode({width: 440,height: 440,text: vpData.shortUrl != undefined ? vpData.shortUrl : ""});
 
     //廣告區塊 - 重播
     $$("replayTitle").innerHTML = vpData.subtitle;
@@ -295,9 +303,12 @@ function initViewpointData(vpData) {
     if (typeof vpData.neighView != "undefined") {
         var neighViewDiv = $$("neighView");
         neighView = vpData.neighView;
+
+        //如果沒有週邊景點則隱藏區塊
+        if(neighView.length == 0) $$("neighViewContainer").style.display = "none";
+
         for (var i = 0; i < neighView.length; i++) {
-            /*var dom = '<a href="viewpoint.html?utm_source=InSite&amp;utm_campaign=' + vpData.neighView[i].name + '_' + vpData.neighView[i].subtitle + '' +
-             '&id=' + vpData.neighView[i].id + '"><div class="view">' + vpData.neighView[i].name + '</div></a>';*/
+
             var dom = '<a class="view swiper-slide" href="viewpoint.html?utm_source=InSite&utm_campaign=' + neighView[i].name + '_' +
                 neighView[i].subtitle + '&id=' + neighView[i].id + '">' +
                 '<img src="/ResourceServlet?url=' +neighView[i].behalfPhotoUrl + '">' +
