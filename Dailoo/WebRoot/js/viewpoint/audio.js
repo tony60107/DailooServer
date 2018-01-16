@@ -114,8 +114,8 @@ var Audio = Class.extend({
         }
 
         //當播放到音檔尾端且廣告未曾被點擊關閉時，顯示廣告區塊
-        if(curTime >= audioLength -1 && document.isAdClose == false){
-            document.isAdClose = false;
+        if(curTime >= audioLength -1 && document.isAdShowed == false){
+            document.isAdShowed = true;
             $$("admask").style.display = "block";
             $$("adbox").style.display = "block";
             //取得廣告圖片
@@ -143,7 +143,7 @@ var Audio = Class.extend({
                 updateProgTime(false);
             }, 300);
             //重新設定廣告是否已被點擊關閉標記
-            document.isAdClose = false
+            document.isAdShowed = false
         } else { //如果為播放狀態
             playBtn.style.backgroundImage = "url(images/viewpoint/play.png)";
             flPlayBtn.style.backgroundImage = "url(images/viewpoint/play.png)";

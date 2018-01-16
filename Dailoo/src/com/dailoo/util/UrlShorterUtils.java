@@ -19,7 +19,7 @@ import com.google.gson.Gson;
 public class UrlShorterUtils {
 	
 	private static final String GOOGLE_URL_SHORT_API = "https://www.googleapis.com/urlshortener/v1/url";
-	private static final String GOOGLE_API_KEY = "AIzaSyCKTF7PMXDpU9Hs-UxwHjHC6UEG7Y5jYBM";
+	private static final String GOOGLE_API_KEY = "AIzaSyBVUeIZQXMU38Z6i6rqwi2s_QTwUQ7IoF8";
 	
 	public static String shorten(String longUrl) {
 		 if (longUrl == null) {

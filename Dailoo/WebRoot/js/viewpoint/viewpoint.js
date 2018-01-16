@@ -51,14 +51,14 @@ window.onload = function () {
         this.style.display = "none";
     }
 
-    //廣告關閉按鈕是否已被點擊
-    document.isAdClose = false;
+    //廣告是否已經顯示過
+    document.isAdShowed = false;
 
     //廣告區點擊關閉按鈕
     $$("adClose").onclick = function() {
         $$("admask").style.display = "none";
         $$("adbox").style.display = "none";
-        document.isAdClose = true;
+        document.isAdShowed = true;
     }
 
     //廣告區點擊QRCode
@@ -343,8 +343,11 @@ function initViewpointData(vpData) {
         $("#footer").html(data);
         //更換Footer樣式
         var jinfeng = "03326ff3-cad4-42bc-a8aa-35fca64eb2ef,8daa252d-42e6-4535-a0b6-d794d7e5029d,e6862f47-a7a3-4b22-9647-763425705f0a,10c09cb8-355c-4db9-a852-fc3d20eca556,9de8cafd-203e-4f5e-8faf-aeda29264952,4652c369-be78-460d-90e3-e0e66267069f";
+        var chenggong = "f0cbc265-6abd-4519-a176-9296b7e032a1";
         if (jinfeng.indexOf(vpData.theme[0].id) != -1) { //如果是金峰鄉主題
             changeCss("jinfeng");
+        } else if(chenggong.indexOf(vpData.theme[0].id) != -1){ //如果是成功鎮主題
+            changeCss("none");
         }
     });
 }
