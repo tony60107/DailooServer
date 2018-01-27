@@ -98,6 +98,16 @@ window.onload = function () {
         }
     },false);
 
+    //從伺服器取得景點資料
+    getDateFromServer();
+
+    history.replaceState(null, null, location.href);
+
+}
+
+//從伺服器取得景點資料
+function getDateFromServer(){
+
     //取得景點ID
     var vpId = location.href.split("id=")[1];
     if(vpId != undefined) vpId = vpId.split("#")[0];
@@ -124,9 +134,10 @@ window.onload = function () {
             initDataFromServer(data);
             console.dir(data);
         },
+        error: function(){
+            setTimeout(getDateFromServer, 500);
+        }
     });
-    history.replaceState(null, null, location.href);
-
 }
 
 //處理所有從伺服器拿回來的資料

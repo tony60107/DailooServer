@@ -13,28 +13,36 @@ var title = $$("title");
 getViewpointsDataFromServer(themeId);
 
 //獲取主題列表並新增到導航欄中
-$.ajax({
-    url: "/ThemeServlet", context: document.body,
-    type: "POST",
-    data: {"method": "getThemesByThemeId", "id": themeId},
-    success: function (data) {
-        var themes = eval("(" + data + ")");
-        //console.dir(themes);
-        for(var i = 0; i < themes.length; i++){
-            var dom = '<div class="theme" onclick="getViewpointsDataFromServer(\''+ themes[i].id +'\',\'' + themes[i].name.split(",")[0] + '\', this);">' + themes[i].name.split(",")[0] + '</div>';
-            themelist.innerHTML = themelist.innerHTML + dom;
-            if(themes[i].id == themeId) {
-                title.innerHTML = themes[i].name.split(",")[0] + '<span id="drop" class="drop"></span>';
-                $$("backward").href = "/themelist.html?id=" + themes[i].regionId;
-                document.title = themes[i].name.split(",")[0] + "  帶路語音導覽";
-            }
-        }
-        //增加返回按鈕
-        themelist.innerHTML = themelist.innerHTML +  '<div class="reply" onclick="$$(\'drop\').style.display = \'inline-block\'; themelist.style.display = \'none\';"><img src="images/viewlist/reply.png"/></div>';
-    },
-});
+getThemesToNav();
 
 history.replaceState(null, null, location.href);
+
+//獲取主題列表並新增到導航欄中
+function getThemesToNav(){
+    $.ajax({
+        url: "/ThemeServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getThemesByThemeId", "id": themeId},
+        success: function (data) {
+            var themes = eval("(" + data + ")");
+            //console.dir(themes);
+            for(var i = 0; i < themes.length; i++){
+                var dom = '<div class="theme" onclick="getViewpointsDataFromServer(\''+ themes[i].id +'\',\'' + themes[i].name.split(",")[0] + '\', this);">' + themes[i].name.split(",")[0] + '</div>';
+                themelist.innerHTML = themelist.innerHTML + dom;
+                if(themes[i].id == themeId) {
+                    title.innerHTML = themes[i].name.split(",")[0] + '<span id="drop" class="drop"></span>';
+                    $$("backward").href = "/themelist.html?id=" + themes[i].regionId;
+                    document.title = themes[i].name.split(",")[0] + "  帶路語音導覽";
+                }
+            }
+            //增加返回按鈕
+            themelist.innerHTML = themelist.innerHTML +  '<div class="reply" onclick="$$(\'drop\').style.display = \'inline-block\'; themelist.style.display = \'none\';"><img src="images/viewlist/reply.png"/></div>';
+        },
+        error: function(){
+            setTimeout(getThemesToNav, 500);
+        }
+    });
+}
 
 //依據主題ID，從伺服器中獲取該主題下的景點
 function getViewpointsDataFromServer(themeId, themeName, btn) {
@@ -102,8 +110,11 @@ window.onload = function() {
         $("#footer").html(data);
         //更換Footer樣式
         var jinfeng = "03326ff3-cad4-42bc-a8aa-35fca64eb2ef,8daa252d-42e6-4535-a0b6-d794d7e5029d,e6862f47-a7a3-4b22-9647-763425705f0a,10c09cb8-355c-4db9-a852-fc3d20eca556,9de8cafd-203e-4f5e-8faf-aeda29264952,4652c369-be78-460d-90e3-e0e66267069f";
+        var chenggong = "f0cbc265-6abd-4519-a176-9296b7e032a1";
         if (jinfeng.indexOf(themeId) != -1) { //如果是金峰鄉主題
             changeCss("jinfeng");
+        } else if(chenggong.indexOf(themeId) != -1){ //如果是成功鎮主題
+            changeCss("none");
         }
     });
 }
