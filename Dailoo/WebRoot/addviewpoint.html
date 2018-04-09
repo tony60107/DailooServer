@@ -352,7 +352,7 @@
         markers.push(marker);
         var loc = location.toString().substring(1, location.toString().length - 1);
         $$("lat").value = loc.split(",")[0];
-        $$("lng").value = loc.split(",")[1];
+        $$("lng").value = loc.split(",")[1].trim();
     }
 
     function deleteMarkers() {
