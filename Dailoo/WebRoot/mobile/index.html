@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 首頁</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+    <div class="profilePic">
+        <img src="images/index/dailoo.png" alt="">
+    </div>
+    <div class="funcGroup">
+        <a href="#" class="func">新增景點</a>
+        <a href="#" class="func">景點管理</a>
+        <a href="#" class="func">新增講者</a>
+        <a href="#" class="func">講者管理</a>
+        <a href="#" class="func">主題管理</a>
+        <a href="#" class="func">序號管理</a>
+    </div>s
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    window.onload = function() {
+        $.get("header.html",function(data){
+            $("#header").html(data);
+        });
+        $.get("footer.html",function(data){
+            $("#footer").html(data);
+        });
+    }
+</script>

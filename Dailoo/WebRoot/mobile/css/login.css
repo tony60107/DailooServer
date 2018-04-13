@@ -1,0 +1,48 @@
+
+.logo {
+    width: 368px;
+    height: 160px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.title {
+    margin-top: 48px;
+    font-size: 40px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #595959;
+    text-align: center;
+}
+
+.form {
+    width: 496px;
+    margin: 0 auto;
+}
+
+.form input {
+    margin-top: 64px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font-size: 46px;
+    letter-spacing: 1.5px;
+    text-align: left;
+    color: #595959;
+    display: block;
+    border-bottom: 2px solid #979797;
+}
+
+.submit {
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 144px;
+    width: 116px;
+    font-size: 56px;
+    line-height: normal;
+    letter-spacing: 1.9px;
+    text-align: center;
+    color: #595959;
+}

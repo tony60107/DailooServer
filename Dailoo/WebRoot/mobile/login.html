@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 登入</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<div class="w">
+    <div class="logo">
+        <img src="../images/general/dailoo_logo.png" alt="">
+    </div>
+    <div class="title">歡迎加入帶路！</div>
+    <form class="form" action="">
+        <input type="text" value="帳號">
+        <input type="text" value="密碼">
+    </form>
+    <div class="submit">登入</div>
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    window.onload = function() {
+        $.get("footer.html",function(data){
+            $("#footer").html(data);
+        });
+    }
+</script>

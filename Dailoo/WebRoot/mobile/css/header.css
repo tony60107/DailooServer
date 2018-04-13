@@ -1,0 +1,30 @@
+.header {
+    width: 100%;
+    padding-top: 54px;
+    padding-bottom: 54px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.username {
+    margin: auto;
+    text-align: center;
+    height: 60px;
+    font-size: 40px;
+    line-height: 60px;
+    color: #595959;
+    display: block;
+}
+
+.signout {
+    width: 100px;
+    height: 76px;
+    font-size: 40px;
+    line-height: 76px;
+    text-align: center;
+    color: #595959;
+    position: absolute;
+    top: 46px;
+    right: 38px;
+}

@@ -1,0 +1,26 @@
+
+.profilePic {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.profilePic img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.funcGroup {
+    margin-top: 80px;
+}
+
+.funcGroup .func {
+    height: 156px;
+    font-size: 76px;
+    line-height: 156px;
+    text-align: center;
+    color: #595959;
+    display: block;
+}

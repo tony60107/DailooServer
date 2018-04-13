@@ -1,0 +1,127 @@
+/*贊助開始*/
+.w {
+    width: 100%;
+}
+
+/*路線圖開始*/
+.route .desc {
+    width: 100%;
+    line-height: 56px;
+    font-size: 40px;
+    letter-spacing: 1.3px;
+    text-align: center;
+    color: #595959;
+}
+
+.route .cover {
+    height: 120px;
+    width: 420px;
+    margin: 32px auto 96px auto;
+    font-size: 48px;
+    line-height: 120px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #267091;
+    border-radius: 72px;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+/*路線圖結束*/
+
+.line {
+    margin: 0 auto;
+    width: 800px;
+    height: 0;
+    border: solid 2px #979797;
+}
+
+/*填問卷開始*/
+.question .desc {
+    width: 100%;
+    margin-top: 96px;
+    font-size: 40px;
+    line-height: 56px;
+    letter-spacing: 1.3px;
+    text-align: center;
+    color: #595959;
+}
+
+.question a {
+    display: block;
+    width: 402px;
+    margin: 0 auto;
+    margin-top: 32px;
+}
+
+.question .ring {
+    line-height: 120px;
+    border-radius: 72px;
+    border: solid 4px #267091;
+    font-size: 48px;
+    letter-spacing: 0.4px;
+    text-align: center;
+    color: #267091;
+}
+/*填問卷結束*/
+
+
+/*帶路介紹開始*/
+.footer-intro {
+    margin-top: 128px;
+    background-color: #595959;
+    height: 100%;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.footer-intro .dailoo-logo {
+    width: 376px;
+    height: 162px;
+
+}
+
+.footer-intro .dailoo-logo{
+    width: 368px;
+    height: 162px;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: block;
+}
+
+.link {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.link a{
+    width: 150px;
+    margin-top: 46px;
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+    color: #ffffff;
+    display: inline-block;
+}
+
+.link .fanpage, .link .offweb {
+    width: 160px;
+}
+
+.link .fanpage {
+    margin-right: 66px;
+}
+
+.link .desc {
+    margin-top: 15px;
+}
+/*帶路介紹結束*/
+
+.copyright {
+    margin-top: 20px;
+    margin-bottom: 47px;
+    font-size: 38px;
+    line-height: 53px;
+    letter-spacing: 12px;
+    color: #ffffff;
+    text-align: center;
+}
