@@ -45,7 +45,7 @@ function getThemesData() {
                 var dom = '<a href="viewlist.html?id=' + themes[i].id + '">' +
                     '<div class="theme">' +
                     '<div class="cover">' +
-                    '<div class="title">' + title[0] + '</div>' +
+                    '<div class="main-title">' + title[0] + '</div>' +
                     '<div class="title-eng">' + (title[1] == undefined ? "" : title[1]) + '</div>' +
                     '</div>' +
                     '<img alt="" src="/ResourceServlet?url=' + themes[i].behalfPhotoUrl + '"/>' +

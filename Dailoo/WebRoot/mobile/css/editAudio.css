@@ -1,0 +1,234 @@
+
+.vp-name {
+    margin-top: 100px;
+    font-size: 56px;
+    line-height: 78px;
+    text-align: center;
+    color: #595959;
+}
+
+.selec.name {
+    height: 84px;
+}
+
+/*音檔部份開始*/
+.audio {
+    width: 780px;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.audio .main-title {
+    height: 56px;
+    font-size: 40px;
+    line-height: 56px;
+    font-weight: normal;
+    text-align: left;
+    color: #595959;
+}
+
+.audio .player {
+    width: 780px;
+    height: 104px;
+    margin-top: 24px;
+    border-radius: 30px;
+    background-color: #50afa0;
+    position: relative;
+}
+
+.audio .player .play-btn {
+    width: 76px;
+    height: 76px;
+    position: absolute;
+    top: 14px;
+    left: 44px;
+}
+
+.audio .player .pb {
+    width: 456px;
+    height: 24px;
+    position: absolute;
+    top: 26px;
+    left: 164px;
+}
+
+.audio .player .bar {
+    width: 50px;
+    height: 24px;
+    border-radius: 12px;
+    background-color: #d8f2ee;
+    position: absolute;
+    bottom: 54px;
+    left: 162px;
+}
+
+.audio .player .time, .audio .player .all-time {
+    line-height: 46px;
+    font-size: 32px;
+    text-align: left;
+    color: #ffffff;
+    position: absolute;
+    bottom: 6px;
+}
+
+.audio .player .time {
+    left: 164px;
+}
+
+.audio .player .all-time {
+    right: 164px;
+}
+
+.audio .player .download {
+    width: 40px;
+    height: 48px;
+    position: absolute;
+    top: 30px;
+    right: 62px;
+}
+/*音檔部份結束*/
+
+/*照片區塊開始*/
+.pics {
+    width: 840px;
+    margin-top:90px;
+    margin-left: 100px;
+}
+
+.pics .title {
+    font-size: 40px;
+    line-height: 56px;
+    text-align: left;
+    color: #595959;
+}
+
+.pics .desc {
+    margin-top: 16px;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 50px;
+    text-align: left;
+    color: #595959;
+}
+
+.pics .desc span {
+    color: #50afa0;
+}
+
+.pics .pic {
+    width: 220px;
+    margin-right: 60px;
+    position: relative;
+    float: left;
+}
+
+.pics .pic .img {
+    width: 220px;
+    height: 220px;
+    margin-top: 90px;
+    border-radius: 10px;
+}
+
+.pics .pic .del {
+    position: absolute;
+    top: 48px;
+    right: -42px;
+}
+
+.pics .pic .time, .pics .pic .time input {
+    font-size: 36px;
+    line-height: 50px;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #595959;
+}
+
+.pics .pic .time {
+    margin-top: 24px;
+}
+
+.pics .pic .time input {
+    width: 56px;
+    border-bottom: 2px solid #cccccc;
+    text-align: center;
+}
+/*照片區塊結束*/
+
+/*排序區塊開始*/
+.sort-desc {
+    width: 780px;
+    margin: auto;
+    margin-top: 80px;
+    font-size: 40px;
+    line-height: 56px;
+    text-align: left;
+    color: #595959;
+}
+
+.sort-desc span{
+    color: #50afa0;
+}
+
+.sorts {
+    width: 780px;
+    margin: auto;
+    margin-top: 96px;
+}
+
+.sort {
+    margin-top:80px;
+}
+
+.sorts .sort img {
+    margin-right: 48px;
+}
+
+.sorts .sort .desc {
+    width: 588px;
+    margin-top: 14px;
+    font-size: 40px;
+    line-height: 56px;
+    text-align: left;
+    color: #595959;
+}
+/*排序區塊結束*/
+
+/*儲存取消開始*/
+.btns {
+    width: 412px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 144px;
+    font-size: 56px;
+    line-height: 78px;
+    letter-spacing: 1.9px;
+    text-align: center;
+    color: #595959;
+}
+
+.btns .cancle {
+    margin-right: 180px;
+}
+
+.btns .submit {
+    color: #50afa0;
+}
+/*儲存取消結束*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -328,7 +328,7 @@ function initViewpointData(vpData) {
                 neighView[i].subtitle + '&id=' + neighView[i].id + '">' +
                 '<img src="/ResourceServlet?url=' +neighView[i].behalfPhotoUrl + '">' +
                 '<div class="cover"></div>' +
-                '<div class="title">' + neighView[i].name + '</div>' +
+                '<div class="main-title">' + neighView[i].name + '</div>' +
                 '<img class="speaker-photo fl" src="/ResourceServlet?url=' + neighView[i].speakerPhotoUrl + '" alt="">' +
                 '<div class="speaker-info fl">' +
                 '<div class="speaker">' + neighView[i].speakerName + '</div>' +

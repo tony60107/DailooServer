@@ -1,0 +1,84 @@
+/*景點名稱開始*/
+.vp-name {
+    width: 780px;
+    margin: auto;
+    padding-bottom: 14px;
+    border-bottom: solid 2px #979797;
+    position: relative;
+}
+
+.vp-name .main-title {
+    height: 56px;
+    font-size: 40px;
+    line-height: 56px;
+    font-weight: 300;
+    text-align: left;
+    color: #595959;
+}
+
+.vp-name .name {
+    width: 600px;
+    margin-top: 24px;
+    font-size: 50px;
+    line-height: 70px;
+    text-align: left;
+    color: #595959;
+}
+
+.vp-name img {
+    position: absolute;
+    bottom: 14px;
+    right: 12px;
+}
+
+.vp-name-hint {
+    width: 780px;
+    margin: auto;
+    margin-top: 18px;
+    font-size: 36px;
+    line-height: 50px;
+    letter-spacing: 1.2px;
+    text-align: left;
+    color: #595959;
+}
+
+.vp-name-hint span {
+    color: #50afa0;
+}
+/*景點名稱結束*/
+
+.list {
+    width: 780px;
+    margin: auto;
+    margin-top: 60px;
+}
+/*副標題列表開始*/
+.list .name {
+    margin-bottom: -24px;
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 56px;
+    text-align: left;
+    color: #595959;
+}
+
+.list .sub {
+    margin-top: 48px;
+    font-size: 46px;
+    line-height: 66px;
+    text-align: left;
+    color: #000000;
+    display: block;
+    border-bottom: solid 2px #979797;;
+}
+
+
+
+
+
+
+
+
+
+
+

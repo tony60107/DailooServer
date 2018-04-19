@@ -88,7 +88,6 @@ a {
 }
 
 a:hover {
-    color: #C81623;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -149,4 +148,160 @@ s, i, em {
 .hide {
     display: none
 }
+
+/**自定義控件*/
+
+/*標題*/
+.main-title {
+    width: 100%;
+    height: 108px;
+    margin-top: 80px;
+    font-size: 76px;
+    font-weight: 800;
+    line-height: 108px;
+    text-align: center;
+    color: #595959;
+}
+
+/*輸入框與下拉選單開始*/
+
+.selec, .input {
+    width: 780px;
+    margin: 0 auto;
+    margin-top: 60px;
+    border-bottom: 2px solid #979797;
+    position: relative;
+}
+
+.input {
+    height: 80px;
+}
+
+.selec {
+    height: 160px;
+}
+
+.selec .name, .input .name {
+    height: 56px;
+    font-size: 40px;
+    line-height: 56px;
+    text-align: left;
+    color: #595959;
+}
+
+.selec .cont, .input .cont {
+    height: 66px;
+    font-size: 46px;
+    line-height: 66px;
+    text-align: left;
+    color: #595959;
+}
+
+.selec .cont {
+    margin-top: 24px;
+}
+
+.selec .arrow, .input .search {
+    width: 76px;
+    height: 76px;
+    position: absolute;
+    right: 44px;
+}
+.selec .arrow {
+    bottom: 6px;
+    background: url("../images/general/unfold.png");
+}
+.input .search {
+    background: url("../images/general/search.png");
+    bottom: 10px;
+}
+/*輸入框與下拉選單結束*/
+
+/*上傳語音檔案開始*/
+.upload {
+    width: 780px;
+    height: 160px;
+    margin: 0 auto;
+    margin-top: 60px;
+    border-bottom: 2px solid #979797;
+    position: relative;
+}
+
+.upload .name {
+    height: 56px;
+    font-size: 40px;
+    line-height: 56px;
+    text-align: left;
+    color: #595959;
+}
+
+.upload .cont{
+    height: 66px;
+    margin-top: 24px;
+    font-size: 46px;
+    line-height: 66px;
+    text-align: left;
+    color: #595959;
+}
+
+.upload .choose {
+    width: 138px;
+    height: 76px;
+    background: url("../images/general/upload.png");
+    position: absolute;
+    right: 12px;
+    bottom: 16px;
+}
+
+.upload-desc {
+    width: 780px;
+    height: 150px;
+    margin: auto;
+    margin-top: 16px;
+    font-size: 36px;
+    line-height: 50px;
+    font-weight: 300;
+    letter-spacing: 1.2px;
+    text-align: left;
+    color: #595959;
+}
+
+.upload-desc a,  .upload-desc a:hover{
+    color: #50afa0;
+    text-decoration:underline
+}
+/*上傳語音檔案結束*/
+
+/*增加對應主題開始*/
+.add-theme {
+    width: 780px;
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 80px;
+    font-size: 46px;
+    line-height: 76px;
+    text-align: left;
+    color: #595959;
+}
+
+.add-theme .btn {
+    width: 76px;
+    height: 76px;
+    margin-right: 36px;
+    background: url("../images/general/add.png");
+}
+
+.add-theme .desc span {
+    color: #50afa0;
+}
+/*增加對應主題結束*/
+
+
+
+
+
+
+
+
+
 

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 編輯音檔圖片</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/editAudio.css">
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">編輯音檔圖片</div>
+
+    <!--景點名稱-->
+    <div class="vp-name">大原花布燈籠生活文化館</div>
+
+    <!--副標題-->
+    <div class="selec name">
+        <div class="cont">認識大原客</div>
+        <div class="arrow"></div>
+    </div>
+
+    <!--音檔區塊-->
+    <div class="audio">
+        <div class="main-title">音檔預覽</div>
+        <div class="player">
+            <img class="play-btn" src="images/editAudio/play.png" alt="">
+            <img src="images/editAudio/progressbar.png" alt="" class="pb">
+            <div class="bar"></div>
+            <div class="time">0:00</div>
+            <div class="all-time">1:43</div>
+            <img src="images/editAudio/download.png" alt="" class="download">
+        </div>
+    </div>
+
+    <!--圖片區塊-->
+    <div class="pics clearfix">
+        <div class="title">圖片預覽</div>
+        <div class="desc">※可輸入>60秒數值，點按<span>[儲存]</span>後會自動進位。</div>
+        <div class="pic">
+            <img class="img" src="../images/viewlist/luyegautai.png" alt="">
+            <img src="images/editAudio/delete.png" alt="" class="del">
+            <div class="time">
+                <input name="min" type="text" value="0"> 分 <input name="sec" type="text" value="0"> 秒
+            </div>
+        </div>
+        <div class="pic">
+            <img class="img" src="../images/viewlist/luyegautai.png" alt="">
+            <img src="images/editAudio/delete.png" alt="" class="del">
+            <div class="time">
+                <input name="min" type="text" value="0"> 分 <input name="sec" type="text" value="0"> 秒
+            </div>
+        </div>
+        <div class="pic">
+            <img class="img" src="../images/viewlist/luyegautai.png" alt="">
+            <img src="images/editAudio/delete.png" alt="" class="del">
+            <div class="time">
+                <input name="min" type="text" value="0"> 分 <input name="sec" type="text" value="0"> 秒
+            </div>
+        </div>
+        <div class="pic">
+            <img class="img" src="../images/viewlist/luyegautai.png" alt="">
+            <img src="images/editAudio/delete.png" alt="" class="del">
+            <div class="time">
+                <input name="min" type="text" value="0"> 分 <input name="sec" type="text" value="0"> 秒
+            </div>
+        </div>
+        <div class="pic">
+            <img class="img" src="../images/viewlist/luyegautai.png" alt="">
+            <img src="images/editAudio/delete.png" alt="" class="del">
+            <div class="time">
+                <input name="min" type="text" value="0"> 分 <input name="sec" type="text" value="0"> 秒
+            </div>
+        </div>
+        <div class="pic">
+            <img class="img" src="../images/viewlist/luyegautai.png" alt="">
+            <img src="images/editAudio/delete.png" alt="" class="del">
+            <div class="time">
+                <input name="min" type="text" value="0"> 分 <input name="sec" type="text" value="0"> 秒
+            </div>
+        </div>
+        <div class="pic">
+            <img class="img" src="../images/viewlist/luyegautai.png" alt="">
+            <img src="images/editAudio/delete.png" alt="" class="del">
+            <div class="time">
+                <input name="min" type="text" value="0"> 分 <input name="sec" type="text" value="0"> 秒
+            </div>
+        </div>
+        <div class="pic">
+            <img class="img" src="images/editAudio/add-photo.png" alt="">
+            <div class="time">
+                <div>點圖上傳</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sort-desc">試試帶路的快速排圖功能<span>［？］</span></div>
+
+    <!--排序區塊-->
+    <div class="sorts">
+        <div class="sort clearfix">
+            <img class="fl" src="images/editAudio/random.png" alt="">
+            <div class="desc fl">讓程式幫您隨機安排圖片，可點按多次試試不同組合</div>
+        </div>
+        <div class="sort clearfix">
+            <img class="fl" src="images/editAudio/reset.png" alt="">
+            <div class="desc fl">根據圖片上傳時間，將圖片排序恢復到一開始的排列順序</div>
+        </div>
+    </div>
+
+
+    <div class="btns clearfix">
+        <div class="cancle fl">取消</div>
+        <div class="submit fl">儲存</div>
+    </div>
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    window.onload = function() {
+        $.get("header.html",function(data){
+            $("#header").html(data);
+        });
+        $.get("footer.html",function(data){
+            $("#footer").html(data);
+        });
+    }
+</script>

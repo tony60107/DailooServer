@@ -14,7 +14,7 @@
 }
 
 
-.nav .title {
+.nav .main-title {
     width: 100%;
     text-align: center;
     margin: 0 auto;
@@ -106,7 +106,7 @@
     border-bottom-left-radius: 12px;
 }
 
-.viewlist .view .title {
+.viewlist .view .main-title {
     width: 400px;
     font-size: 46px;
     line-height: 1.09;

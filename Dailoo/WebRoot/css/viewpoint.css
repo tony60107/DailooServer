@@ -23,7 +23,7 @@
 /*主功能頭部導航欄結束*/
 
 /*標題區塊開始*/
-.player .title {
+.player .main-title {
     margin-top: 38px;
     font-size: 76px;
     line-height: 107px;
@@ -219,7 +219,7 @@
     overflow: hidden;
 }
 
-.summary .title {
+.summary .main-title {
     font-size: 50px;
     line-height: 70px;
     letter-spacing: 2.5px;
@@ -428,7 +428,7 @@
     margin-top: 148px;
 }
 
-.more-audio .title {
+.more-audio .main-title {
     margin-bottom: 60px;
     line-height: 59px;
     letter-spacing: 1.2px;
@@ -473,7 +473,7 @@
     margin-top: 134px;
 }
 
-.neigh-view .title {
+.neigh-view .main-title {
     margin-bottom: 60px;
     font-size: 42px;
     line-height: 59px;
@@ -518,7 +518,7 @@
     border-bottom-left-radius: 12px;
 }
 
-.viewlist .view .title {
+.viewlist .view .main-title {
     width: 400px;
     font-size: 46px;
     line-height: 1.09;
@@ -741,7 +741,7 @@
     overflow: hidden;
 }
 
-.adbox .replay .title, .adbox .next-audio .title{
+.adbox .replay .main-title, .adbox .next-audio .main-title {
     width: 2000px;
     height: 56px;
     margin-bottom: 6px;

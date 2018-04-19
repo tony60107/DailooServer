@@ -1,4 +1,125 @@
 
+/*預覽刪除景點開始*/
+.vp {
+    height: 78px;
+    width: 620px;
+    margin: auto;
+    margin-top: 80px;;
+    font-size: 56px;
+    line-height: 78px;
+    letter-spacing: 1.9px;
+    color: #595959;
+}
+
+.vp .del {
+    width: 232px;
+    height: 78px;
+    margin-right: 156px;
+    display: block;
+}
+
+.vp .show {
+    width: 232px;
+    height: 78px;
+    color: #50afa0;
+    display: block;
+}
+/*預覽刪除景點結束*/
+
+/*短網址開始*/
+.shortUrl {
+    width: 780px;
+    margin: auto;
+}
+
+.shortUrl .name {
+    margin-top: 100px;
+    margin-bottom: 16px;
+    font-size: 40px;
+    line-height: 56px;
+    text-align: left;
+    color: #595959;
+}
+
+.shortUrl .url {
+    width: 540px;
+    font-size: 46px;
+    line-height: 66px;
+    text-align: left;
+    color: #595959;
+}
+
+.shortUrl .copy {
+    width: 160px;
+    font-size: 46px;
+    line-height: 66px;
+    text-align: left;
+    color: #50afa0;
+    background: url("../images/general/copy.png") no-repeat 90px -6px;
+}
+/*短網址結束*/
+
+.selec.vp-name, .selec.vp-subtitle {
+    height: 70px;
+    margin-top: 100px;
+}
+
+
+/*上傳語音檔案開始*/
+.upload {
+    width: 780px;
+    height: 160px;
+    margin: 0 auto;
+    margin-top: 64px;
+    border-bottom: 2px solid #979797;
+    position: relative;
+}
+
+.upload .name {
+    height: 56px;
+    font-size: 40px;
+    line-height: 56px;
+    text-align: left;
+    color: #595959;
+}
+
+.upload .cont{
+    height: 66px;
+    margin-top: 24px;
+    font-size: 46px;
+    line-height: 66px;
+    text-align: left;
+    color: #595959;
+}
+
+.upload .choose {
+    width: 138px;
+    height: 76px;
+    background: url("../images/general/upload.png");
+    position: absolute;
+    right: 12px;
+    bottom: 16px;
+}
+
+.upload-desc {
+    width: 780px;
+    height: 150px;
+    margin: auto;
+    margin-top: 16px;
+    font-size: 36px;
+    line-height: 50px;
+    font-weight: 300;
+    letter-spacing: 1.2px;
+    text-align: left;
+    color: #595959;
+}
+
+.upload-desc a,  .upload-desc a:hover{
+    color: #50afa0;
+    text-decoration:underline
+}
+/*上傳語音檔案結束*/
+
 
 /*地區開始*/
 .region {
@@ -125,6 +246,7 @@
 
 /*景點介紹結束*/
 
+/*儲存取消開始*/
 .btns {
     width: 412px;
     margin: auto;
@@ -144,6 +266,12 @@
 .btns .submit {
     color: #50afa0;
 }
+/*儲存取消結束*/
+
+
+
+
+
 
 
 

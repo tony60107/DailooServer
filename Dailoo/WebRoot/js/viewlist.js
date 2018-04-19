@@ -70,7 +70,7 @@ function initDataFromServer(vps){
         var dom = '<a class="view" href="viewpoint.html?utm_source=InSite&utm_campaign='+ vps[i].name + '_' + vps[i].subtitle + '&id=' + vps[i].id +'">' +
             '<img src="/ResourceServlet?url=' + vps[i].behalfPhotoUrl + '">' +
             '<div class="cover"></div>' +
-            '<div class="title">' + vps[i].name + '</div>' +
+            '<div class="main-title">' + vps[i].name + '</div>' +
             '<img class="speaker-photo fl" src="/ResourceServlet?url='+ vps[i].speakerPhotoUrl +'" alt="">' +
             '<div class="fl">' +
             '<div class="speaker">' + vps[i].speakerName + '</div>' +

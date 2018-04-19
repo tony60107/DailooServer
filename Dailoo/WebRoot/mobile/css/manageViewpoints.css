@@ -1,0 +1,31 @@
+
+.sort {
+    width: 650px;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.sort .func {
+    margin-right:40px;
+    font-size: 46px;
+    line-height: 66px;
+    text-align: left;
+    color: #595959;
+    float: left;
+}
+
+.list {
+    width: 780px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.list .vp {
+    margin-top: 48px;
+    font-size: 46px;
+    line-height: 66px;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+    border-bottom: solid 2px #979797;
+}

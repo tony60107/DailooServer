@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 景點副標題管理</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/manageSubtitle.css">
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">副標題列表</div>
+
+    <div class="vp-name">
+        <div class="main-title">景點名稱</div>
+        <input class="name" value="大原花布燈籠生活文化館"/>
+        <img src="images/general/store.png">
+    </div>
+    <div class="vp-name-hint">※修改名稱後請按 <span>[儲存]</span></div>
+
+    <div class="list">
+        <div class="name">此景點共有 2 段副標題</div>
+        <a href="#" class="sub">副標題文字可點選</a>
+        <a href="#" class="sub">認識大原客</a>
+    </div>
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    window.onload = function() {
+        $.get("header.html",function(data){
+            $("#header").html(data);
+        });
+        $.get("footer.html",function(data){
+            $("#footer").html(data);
+        });
+
+    }
+
+</script>

@@ -40,12 +40,12 @@
     margin-top: 50px;
 }
 
-.question .servdesc .title img {
+.question .servdesc .main-title img {
     margin-top: 24px;
     margin-left: 102px;
 }
 
-.question .servdesc .title .title {
+.question .servdesc .main-title .main-title {
     font-size: 46px;
     line-height: 65px;
     text-align: left;

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 新增景點</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/editViewpoint.css">
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">編輯景點</div>
+
+    <div class="vp clearfix">
+        <a href="#" class="del fl">刪除景點</a>
+        <a href="#" class="show fl">預覽景點</a>
+    </div>
+
+    <div class="shortUrl clearfix">
+        <div class="name">短網址</div>
+        <div class="url fl">https://goo.gl/oH1ATw</div>
+        <div class="copy fl">複製</div>
+    </div>
+
+    <div class="selec vp-name">
+        <div class="cont">大原花布燈籠生活文化館</div>
+        <div class="arrow"></div>
+    </div>
+
+    <div class="selec vp-subtitle">
+        <div class="cont">認識大原客</div>
+        <div class="arrow"></div>
+    </div>
+
+    <div class="upload">
+        <div class="name">語音檔案</div>
+        <div class="cont">無檔案</div>
+        <div class="choose"></div>
+    </div>
+    <div class="upload-desc">※目前支援mp3, aac, m4a, wav, 3gp/3gpp音檔格式若您不確定自己的音檔格式或需要轉換格式，可參考<a href="#">這裡的說明</a>。</div>
+
+    <div class="selec">
+        <div class="name">講者</div>
+        <div class="cont">葉王長華(阿巴茲)</div>
+        <div class="arrow"></div>
+    </div>
+
+    <div class="selec">
+        <div class="name">主題類別</div>
+        <div class="cont">金峰鄉</div>
+        <div class="arrow"></div>
+    </div>
+
+    <div class="selec">
+        <div class="name">景點主題</div>
+        <div class="cont">正興村,Sinapayan</div>
+        <div class="arrow"></div>
+    </div>
+
+    <div class="add-theme clearfix">
+        <div class="btn fl"></div>
+        <div class="desc fl">增加對應的主題<span>［？］</span></div>
+    </div>
+
+    <div class="region clearfix">
+        <div class="region-title">景點所在地區</div>
+        <div class="selec city fl">
+            <div class="cont">請選擇</div>
+            <div class="arrow"></div>
+        </div>
+        <div class="selec village fl">
+            <div class="cont">請選擇</div>
+            <div class="arrow"></div>
+        </div>
+    </div>
+    <div class="input">
+        <input class="cont" value="輸入景點所在地址"/>
+    </div>
+
+    <div id="map"></div>
+
+    <!--手動定位優先-->
+    <div class="manu-pos">
+        <div class="clearfix">
+            <input type="checkbox" name="latLngPri" class="fl">
+            <div class="name fl">手動定位優先</div>
+        </div>
+        <div class="desc">※若地址無法正確顯示在地圖上，可手動拖曳地圖並點按一下地圖上的地點設定景點的確切位置，並勾選「手動定位優先」。</div>
+    </div>
+    <!--景點代表圖-->
+    <div class="repr-pic">
+        <img src="images/general/addPhoto.png" alt="">
+        <div class="desc">景點代表圖 <br/>（點圖上傳或更換）</div>
+    </div>
+    <!--景點介紹-->
+    <div class="intro">
+        <div class="name">景點介紹</div>
+        <textarea name="intro"></textarea>
+    </div>
+    <div class="btns clearfix">
+        <div class="cancle fl">取消</div>
+        <div class="submit fl">儲存</div>
+    </div>
+    </form>
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    window.onload = function() {
+        $.get("header.html",function(data){
+            $("#header").html(data);
+        });
+        $.get("footer.html",function(data){
+            $("#footer").html(data);
+        });
+
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtkHtxJhAxfxCzkdphlPoDoSuCq4FTh_c&callback=initMap"></script>
