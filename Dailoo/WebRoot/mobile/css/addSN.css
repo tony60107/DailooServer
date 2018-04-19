@@ -1,0 +1,125 @@
+
+/*地區區塊開始*/
+.region {
+    width: 780px;
+    margin: auto;
+    margin-top: 100px;
+}
+.region .title {
+    margin-bottom: -36px;
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 56px;
+    text-align: left;
+    color: #595959;
+}
+
+
+.selec.city {
+    width: 276px;
+    margin-right: 44px;
+}
+
+.selec.vil {
+    width: 460px;
+}
+
+.selec.city .cont, .selec.vil .cont {
+    margin-top: 0px;
+}
+.selec.city .arrow{
+    right: 0;
+}
+/*地區區塊結束*/
+
+.set {
+    width: 780px;
+    margin: auto;
+    margin-top: 60px;
+}
+
+.time, .num {
+    width: 292px;
+    margin-top: 60px;
+    font-size: 46px;
+    line-height: 66px;
+    text-align: left;
+    color: #595959;
+}
+
+.time {
+    margin-right: 173px;
+}
+
+.time .title, .num .title {
+    margin-bottom: 24px;
+    font-size: 40px;
+    line-height:  56px;
+    text-align: left;
+    color: #595959;
+}
+
+.time input, .num input {
+    width: 200px;
+    font-size: 46px;
+    line-height: 66px;
+    text-align: left;
+    color: #595959;
+    border-bottom: solid 2px #979797;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*儲存取消開始*/
+.btns {
+    width: 412px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 144px;
+    font-size: 56px;
+    line-height: 78px;
+    letter-spacing: 1.9px;
+    text-align: center;
+    color: #595959;
+}
+
+.btns .cancle {
+    margin-right: 180px;
+}
+
+.btns .submit {
+    color: #50afa0;
+}
+/*儲存取消結束*/

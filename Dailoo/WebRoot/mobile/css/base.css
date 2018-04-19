@@ -181,6 +181,10 @@ s, i, em {
     height: 160px;
 }
 
+.no-title {
+    height: 66px;
+}
+
 .selec .name, .input .name {
     height: 56px;
     font-size: 40px;

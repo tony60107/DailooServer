@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 新增序號</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/addSN.css">
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">新增序號</div>
+
+    <div class="region clearfix">
+        <div class="title">地區</div>
+        <div class="selec no-title city fl">
+            <div class="cont">請選擇</div>
+            <div class="arrow"></div>
+        </div>
+        <div class="selec no-title vil fl">
+            <div class="cont">請選擇</div>
+            <div class="arrow"></div>
+        </div>
+    </div>
+
+    <div class="selec">
+        <div class="name">講者</div>
+        <div class="cont">選擇講者</div>
+        <div class="arrow"></div>
+    </div>
+
+    <div class="selec">
+        <div class="name">景點</div>
+        <div class="cont">選擇景點</div>
+        <div class="arrow"></div>
+    </div>
+
+    <div class="set clearfix">
+        <div class="time fl">
+            <div class="title">可使用時間</div>
+            <input class="fl" type="text" value="24">小時
+        </div>
+        <div class="num fl">
+            <div class="title">可使用次數</div>
+            <input class="fl" type="text" value="1">次
+        </div>
+        <div class="num fl" style="width: 316px;">
+            <div class="title">QRCode生成數量</div>
+            <input class="fl" type="text" value="1">個
+        </div>
+    </div>
+
+    <div class="btns clearfix">
+        <div class="cancle fl">取消</div>
+        <div class="submit fl">新增</div>
+    </div>
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    window.onload = function() {
+        $.get("header.html",function(data){
+            $("#header").html(data);
+        });
+        $.get("footer.html",function(data){
+            $("#footer").html(data);
+        });
+    }
+</script>
