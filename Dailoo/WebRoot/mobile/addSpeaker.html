@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 新增講者</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/addSpeaker.css">
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">新增講者</div>
+
+    <div class="add-sp">
+        <div class="photo">
+            <img src="images/general/add-speaker.png" alt="">
+        </div>
+        <div class="desc">點按頭像上傳照片 尺寸300x300像素</div>
+    </div>
+
+    <div class="input no-title">
+        <input class="cont" value="姓名" />
+    </div>
+    <div class="input no-title">
+        <input class="cont" value="手機號碼" />
+    </div>
+    <div class="input no-title">
+        <input class="cont" value="市話號碼" />
+    </div>
+    <div class="input no-title">
+        <input class="cont" value="個人網址" />
+    </div>
+    <div class="input no-title">
+        <input class="cont" value="個人簡歷" />
+    </div>
+
+
+    <div class="intro">
+        <div class="title"></div>
+    </div>
+
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    window.onload = function() {
+        $.get("header.html",function(data){
+            $("#header").html(data);
+        });
+        $.get("footer.html",function(data){
+            $("#footer").html(data);
+        });
+    }
+</script>

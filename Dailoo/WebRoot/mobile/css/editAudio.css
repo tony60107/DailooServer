@@ -98,8 +98,6 @@
 .pics .title {
     font-size: 40px;
     line-height: 56px;
-    text-align: left;
-    color: #595959;
 }
 
 .pics .desc {
@@ -107,8 +105,6 @@
     font-size: 36px;
     font-weight: 300;
     line-height: 50px;
-    text-align: left;
-    color: #595959;
 }
 
 .pics .desc span {
@@ -140,7 +136,6 @@
     line-height: 50px;
     letter-spacing: 1px;
     text-align: center;
-    color: #595959;
 }
 
 .pics .pic .time {
@@ -161,8 +156,6 @@
     margin-top: 80px;
     font-size: 40px;
     line-height: 56px;
-    text-align: left;
-    color: #595959;
 }
 
 .sort-desc span{
@@ -188,8 +181,6 @@
     margin-top: 14px;
     font-size: 40px;
     line-height: 56px;
-    text-align: left;
-    color: #595959;
 }
 /*排序區塊結束*/
 
@@ -203,7 +194,6 @@
     line-height: 78px;
     letter-spacing: 1.9px;
     text-align: center;
-    color: #595959;
 }
 
 .submit-btns .cancle {

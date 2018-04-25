@@ -8,7 +8,6 @@
     font-size: 56px;
     line-height: 78px;
     letter-spacing: 1.9px;
-    color: #595959;
 }
 
 .vp .del {
@@ -38,7 +37,6 @@
     font-size: 40px;
     line-height: 56px;
     text-align: left;
-    color: #595959;
 }
 
 .shortUrl .url {
@@ -46,14 +44,10 @@
     font-size: 46px;
     line-height: 66px;
     text-align: left;
-    color: #595959;
 }
 
 .shortUrl .copy {
     width: 160px;
-    font-size: 46px;
-    line-height: 66px;
-    text-align: left;
     color: #50afa0;
     background: url("../images/general/copy.png") no-repeat 90px -6px;
 }
@@ -80,16 +74,11 @@
     font-size: 40px;
     line-height: 56px;
     text-align: left;
-    color: #595959;
 }
 
 .upload .cont{
     height: 66px;
     margin-top: 24px;
-    font-size: 46px;
-    line-height: 66px;
-    text-align: left;
-    color: #595959;
 }
 
 .upload .choose {
@@ -110,8 +99,6 @@
     line-height: 50px;
     font-weight: 300;
     letter-spacing: 1.2px;
-    text-align: left;
-    color: #595959;
 }
 
 .upload-desc a,  .upload-desc a:hover{
@@ -139,17 +126,17 @@
     margin-left: 100px;
 }
 
-.selec.village {
+.selec.vil {
     width: 460px;
     height: 82px;
     margin-left: 44px;
 }
 
-.selec.city .cont, .selec.village .cont {
+.selec.city .cont, .selec.vil .cont {
     margin-top: 0;
 }
 
-.selec.city .arrow, .selec.village .arrow {
+.selec.city .arrow, .selec.vil .arrow {
     right: 0;
 }
 /*地區結束*/
@@ -177,8 +164,6 @@
 .manu-pos .name {
     font-size: 40px;
     line-height: 76px;
-    text-align: left;
-    color: #595959;
 }
 
 .manu-pos .desc {
@@ -188,8 +173,6 @@
     font-size: 36px;
     line-height: 50px;
     letter-spacing: 1.2px;
-    text-align: left;
-    color: #595959;
 }
 /*手動定位優先結束*/
 
@@ -210,7 +193,6 @@
     font-size: 40px;
     line-height: 56px;
     text-align: center;
-    color: #595959;
 }
 /*景點代表圖片結束*/
 
@@ -226,7 +208,6 @@
     line-height: 56px;
     font-weight: 300;
     text-align: left;
-    color: #595959;
 }
 
 .intro textarea {
@@ -236,8 +217,6 @@
     padding: 14px 24px;
     font-size: 40px;
     line-height: 56px;
-    text-align: left;
-    color: #595959;
     border-radius: 10px;
     box-shadow: 0 0 2px 0 rgba(151, 151, 151, 0.7);
     background-color: #ffffff;
@@ -256,7 +235,6 @@
     line-height: 78px;
     letter-spacing: 1.9px;
     text-align: center;
-    color: #595959;
 }
 
 .submit-btns .cancle {

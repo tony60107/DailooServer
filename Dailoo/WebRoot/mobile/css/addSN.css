@@ -6,12 +6,10 @@
     margin-top: 100px;
 }
 .region .title {
-    margin-bottom: -36px;
-    font-size: 40px;
     font-weight: 300;
+    font-size: 40px;
     line-height: 56px;
     text-align: left;
-    color: #595959;
 }
 
 
@@ -24,9 +22,6 @@
     width: 460px;
 }
 
-.selec.city .cont, .selec.vil .cont {
-    margin-top: 0px;
-}
 .selec.city .arrow{
     right: 0;
 }
@@ -41,10 +36,6 @@
 .time, .num {
     width: 292px;
     margin-top: 60px;
-    font-size: 46px;
-    line-height: 66px;
-    text-align: left;
-    color: #595959;
 }
 
 .time {
@@ -55,16 +46,10 @@
     margin-bottom: 24px;
     font-size: 40px;
     line-height:  56px;
-    text-align: left;
-    color: #595959;
 }
 
 .time input, .num input {
     width: 200px;
-    font-size: 46px;
-    line-height: 66px;
-    text-align: left;
-    color: #595959;
     border-bottom: solid 2px #979797;
 }
 
@@ -79,7 +64,6 @@
     line-height: 78px;
     letter-spacing: 1.9px;
     text-align: center;
-    color: #595959;
 }
 
 .submit-btns .cancle {

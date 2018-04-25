@@ -25,7 +25,6 @@
     font-weight: 300;
     line-height: 56px;
     text-align: left;
-    color: #595959;
 }
 /*序號篩選結束*/
 
@@ -38,10 +37,6 @@
 
 .sorts .sort {
     margin-right: 40px;
-    font-size: 46px;
-    line-height: 66px;
-    text-align: left;
-    color: #595959;
     float: left;
 }
 
@@ -59,15 +54,10 @@
     margin-bottom: 24px;
     font-size: 40px;
     line-height: 56px;
-    text-align: left;
-    color: #595959;
 }
 
 .sns .sn {
     margin-top: 62px;
-    font-size: 46px;
-    line-height: 66px;
-    text-align: left;
     display: block;
 }
 

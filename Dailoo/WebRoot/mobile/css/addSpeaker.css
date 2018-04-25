@@ -1,0 +1,19 @@
+
+.add-sp {
+    width: 325px;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.add-sp .photo {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+}
+
+.add-sp .desc {
+    margin-top: 24px;
+    font-size: 40px;
+    line-height: 61px;
+    text-align: center;
+}

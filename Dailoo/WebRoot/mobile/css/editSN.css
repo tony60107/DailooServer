@@ -25,13 +25,9 @@
 
 .input.time {
     width: 292px;
-    font-size: 46px;
-    line-height: 66px;
-    text-align: left;
-    color: #595959;
 }
 
-.time .cont {
+.input.time .cont {
     width: 200px;
 }
 
@@ -45,7 +41,6 @@
     line-height: 78px;
     letter-spacing: 1.9px;
     text-align: center;
-    color: #595959;
 }
 
 .submit-btns .cancle {
