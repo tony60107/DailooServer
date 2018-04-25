@@ -2,16 +2,10 @@
 .vp-name {
     width: 780px;
     margin: auto;
+    margin-top: 100px;
     padding-bottom: 14px;
     border-bottom: solid 2px #979797;
     position: relative;
-}
-
-.vp-name .main-title {
-    height: 56px;
-    font-size: 40px;
-    line-height: 56px;
-    font-weight: 300;
 }
 
 .vp-name .name {
@@ -50,9 +44,6 @@
 /*副標題列表開始*/
 .list .name {
     margin-bottom: -24px;
-    font-size: 40px;
-    font-weight: 300;
-    line-height: 56px;
 }
 
 .list .sub {

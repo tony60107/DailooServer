@@ -152,6 +152,12 @@ s, i, em {
 
 /**自定義控件*/
 
+.font-s {
+    font-size: 40px;
+    line-height: 56px;
+    color: #595959;
+}
+
 /*標題*/
 .main-title {
     width: 100%;
