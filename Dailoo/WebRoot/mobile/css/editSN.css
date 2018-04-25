@@ -1,0 +1,94 @@
+.startSN {
+    width: 232px;
+    margin: auto;
+    margin-top: 80px;
+    font-size: 56px;
+    line-height: 78px;
+    letter-spacing: 1.9px;
+    text-align: center;
+    color: #50afa0;
+}
+
+.qrc {
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    margin-top: 80px;
+    border: 1px solid #666;
+}
+
+.info {
+    width: 780px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.input.time {
+    width: 292px;
+    font-size: 46px;
+    line-height: 66px;
+    text-align: left;
+    color: #595959;
+}
+
+.time .cont {
+    width: 200px;
+}
+
+/*提交區塊開始*/
+.submit-btns {
+    width: 532px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 144px;
+    font-size: 56px;
+    line-height: 78px;
+    letter-spacing: 1.9px;
+    text-align: center;
+    color: #595959;
+}
+
+.submit-btns .cancle {
+    margin-right: 180px;
+    color: #50afa0;
+}
+
+.submit-btns .submit {
+
+}
+/*提交區塊結束*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

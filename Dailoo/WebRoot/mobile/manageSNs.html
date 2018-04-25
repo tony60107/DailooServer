@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 序號管理</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/manageSNs.css">
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">序號管理</div>
+
+    <div class="add-SN">
+        <a href="#">新增序號</a>
+    </div>
+
+    <!--序號篩選-->
+    <div class="filter clearfix">
+        <div class="title">序號篩選條件</div>
+        <div class="clearfix">
+            <div class="selec city fl">
+                <div class="cont">選擇縣市</div>
+                <div class="arrow"></div>
+            </div>
+            <div class="selec village fl">
+                <div class="cont">選擇鄉鎮市區</div>
+                <div class="arrow"></div>
+            </div>
+        </div>
+
+        <div class="selec no-title">
+            <div class="cont">選擇講者</div>
+            <div class="arrow"></div>
+        </div>
+        <div class="selec no-title">
+            <div class="cont">選擇景點</div>
+            <div class="arrow"></div>
+        </div>
+    </div>
+
+    <!--序號排序-->
+    <div class="sorts clearfix">
+        <div class="sort enable">依日期</div>
+        <div class="sort">使用中</div>
+        <div class="sort">未使用</div>
+        <div class="sort">已失效</div>
+    </div>
+
+    <!--序號列表-->
+    <div class="sns">
+        <div class="title">已建立序號</div>
+        <a class="sn clearfix">
+            <div class="fl">0001.</div>
+            <div class="sn-r fr clearfix">
+                <div class="name">王小明</div>
+                <div class="time fl">2017/12/03/19:51 &nbsp; 建立</div>
+                <div class="stat fl">使用中</div>
+            </div>
+        </a>
+        <a class="sn clearfix">
+            <div class="fl">0001.</div>
+            <div class="sn-r fr clearfix">
+                <div class="name">王小明</div>
+                <div class="time fl">2017/12/03/19:51 &nbsp; 建立</div>
+                <div class="stat fl">使用中</div>
+            </div>
+        </a>
+        <a class="sn clearfix">
+            <div class="fl">0001.</div>
+            <div class="sn-r fr clearfix">
+                <div class="name">王小明</div>
+                <div class="time fl">2017/12/03/19:51 &nbsp; 建立</div>
+                <div class="stat fl">使用中</div>
+            </div>
+        </a>
+    </div>
+
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    window.onload = function () {
+        $.get("header.html", function (data) {
+            $("#header").html(data);
+        });
+        $.get("footer.html", function (data) {
+            $("#footer").html(data);
+        });
+    }
+</script>

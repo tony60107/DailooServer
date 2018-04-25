@@ -194,7 +194,7 @@
 /*排序區塊結束*/
 
 /*儲存取消開始*/
-.btns {
+.submit-btns {
     width: 412px;
     margin: auto;
     margin-top: 100px;
@@ -206,11 +206,11 @@
     color: #595959;
 }
 
-.btns .cancle {
+.submit-btns .cancle {
     margin-right: 180px;
 }
 
-.btns .submit {
+.submit-btns .submit {
     color: #50afa0;
 }
 /*儲存取消結束*/

@@ -169,20 +169,21 @@ s, i, em {
     width: 780px;
     margin: 0 auto;
     margin-top: 60px;
-    border-bottom: 2px solid #979797;
     position: relative;
 }
 
-.input {
-    height: 80px;
-}
 
-.selec {
+
+.selec, .input {
     height: 160px;
 }
 
 .no-title {
-    height: 66px;
+    height: 80px;
+}
+
+.input.no-title .cont, .selec.no-title .cont {
+    margin-top: 0;
 }
 
 .selec .name, .input .name {
@@ -195,14 +196,13 @@ s, i, em {
 
 .selec .cont, .input .cont {
     height: 66px;
+    margin-top: 24px;
+    padding-bottom: 14px;
     font-size: 46px;
     line-height: 66px;
     text-align: left;
     color: #595959;
-}
-
-.selec .cont {
-    margin-top: 24px;
+    border-bottom: 2px solid #979797;
 }
 
 .selec .arrow, .input .search {
@@ -218,6 +218,29 @@ s, i, em {
 .input .search {
     background: url("../images/general/search.png");
     bottom: 10px;
+}
+
+/*下拉選單的鄉鎮市區*/
+.selec.city {
+    width: 276px;
+    height: 82px;
+    margin-top: 24px;
+}
+
+.selec.village {
+    width: 460px;
+    height: 82px;
+    margin-top: 24px;
+    margin-left: 44px;
+}
+
+.selec.city .cont, .selec.village .cont {
+    margin-top: 0;
+    line-height: 82px;
+}
+
+.selec.city .arrow {
+    right: 0;
 }
 /*輸入框與下拉選單結束*/
 

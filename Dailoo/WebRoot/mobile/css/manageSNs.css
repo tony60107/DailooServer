@@ -1,0 +1,116 @@
+
+.add-SN {
+    width: 232px;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.add-SN  a{
+    font-size: 56px;
+    line-height: 78px;
+    letter-spacing: 1.9px;
+    text-align: center;
+    color: #50afa0;
+}
+
+/*序號篩選開始*/
+.filter {
+    width: 780px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.filter .title {
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 56px;
+    text-align: left;
+    color: #595959;
+}
+/*序號篩選結束*/
+
+/*序號排序開始*/
+.sorts {
+    width: 714px;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.sorts .sort {
+    margin-right: 40px;
+    font-size: 46px;
+    line-height: 66px;
+    text-align: left;
+    color: #595959;
+    float: left;
+}
+
+.sorts .enable {
+    color: #50afa0;
+}
+/*序號排序結束*/
+.sns {
+    width: 780px;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.sns .title {
+    margin-bottom: 24px;
+    font-size: 40px;
+    line-height: 56px;
+    text-align: left;
+    color: #595959;
+}
+
+.sns .sn {
+    margin-top: 62px;
+    font-size: 46px;
+    line-height: 66px;
+    text-align: left;
+    display: block;
+}
+
+.sns .sn .sn-r {
+    width: 630px;
+}
+
+.sns .sn .sn-r .name {
+    padding-bottom: 14px;
+    border-bottom: solid 2px #979797;
+}
+
+.sns .sn .sn-r .time, .sns .sn .sn-r .stat {
+    margin-top: 16px;
+    margin-right: 16px;
+    font-size: 34px;
+    font-weight: 300;
+    line-height: 42px;
+    text-align: left;
+    color: #595959;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
