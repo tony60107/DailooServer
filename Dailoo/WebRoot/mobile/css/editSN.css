@@ -32,7 +32,7 @@
 }
 
 /*提交區塊開始*/
-.submit-btns {
+.submit-btns.clearfix {
     width: 532px;
     margin: auto;
     margin-top: 100px;
@@ -43,14 +43,6 @@
     text-align: center;
 }
 
-.submit-btns .cancle {
-    margin-right: 180px;
-    color: #50afa0;
-}
-
-.submit-btns .submit {
-
-}
 /*提交區塊結束*/
 
 

@@ -85,25 +85,7 @@
 
 /*景點介紹結束*/
 
-.submit-btns {
-    width: 412px;
-    margin: auto;
-    margin-top: 72px;
-    margin-bottom: 144px;
-    font-size: 56px;
-    line-height: 78px;
-    letter-spacing: 1.9px;
-    text-align: center;
-    color: #595959;
-}
 
-.submit-btns .cancle {
-    margin-right: 180px;
-}
-
-.submit-btns .submit {
-    color: #50afa0;
-}
 
 
 
