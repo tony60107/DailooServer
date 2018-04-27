@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 講者管理</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/manageSpeakers.css">
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">講者管理</div>
+
+    <!--用戶資料-->
+    <div class="user">
+        <div class="photo">
+            <img src="" alt="">
+        </div>
+        <div class="name">Dailoo 帶路</div>
+        <div class="edit"><img src="images/general/edit.png" alt=""></div>
+    </div>
+
+    <a href="#" class="add-speaker">新增講者</a>
+
+    <div class="speakers">
+        <div class="title font-s">我建立的講者</div>
+        <div class="sp">講者姓名1</div>
+        <div class="sp">講者姓名1</div>
+        <div class="sp">講者姓名1</div>
+    </div>
+
+
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    window.onload = function() {
+        $.get("header.html",function(data){
+            $("#header").html(data);
+        });
+        $.get("footer.html",function(data){
+            $("#footer").html(data);
+        });
+    }
+</script>

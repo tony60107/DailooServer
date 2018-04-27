@@ -1,0 +1,96 @@
+/*用戶資料開始*/
+.user {
+    width: 280px;
+    margin-top: 80px;
+    margin: auto;
+    position: relative;
+}
+
+.user .photo{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+}
+
+.user .photo img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.user .name {
+    width: 280px;
+    margin-top: 24px;
+    font-size: 50px;
+    line-height: 70px;
+    text-align: center;
+}
+
+.user .edit {
+    width: 130px;
+    height: 66px;
+    position: absolute;
+    right: -150px;
+    bottom: 10px;
+}
+/*用戶資料結束*/
+
+.add-speaker {
+    width: 232px;
+    height: 78px;
+    margin: auto;
+    margin-top: 100px;
+    font-size: 56px;
+    line-height: 78px;
+    color: #50afa0;
+    display: block;
+}
+
+
+.speakers {
+    width: 780px;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.speakers .title {
+    margin-bottom: -24px;
+}
+
+
+.speakers .sp {
+    margin-top: 48px;
+    padding-bottom: 14px;
+    color: #000000;
+    border-bottom: solid 2px #979797;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 主題類別內容</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/editRegion.css">
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">主題類別內容</div>
+
+    <div class="input no-title">
+        <input class="cont" value="測試用"/>
+    </div>
+
+    <!--提交區塊-->
+    <div class="submit-btns preview clearfix">
+        <div class="submit-l">刪除類別</div>
+        <div class="submit-r hint">預覽</div>
+    </div>
+
+    <div class="del-desc font-s">刪除規則說明 <span>[ ? ]</span></div>
+
+    <!--提交區塊-->
+    <div class="submit-btns clearfix" style="margin-top: 116px;">
+        <div class="submit-l">取消</div>
+        <div class="submit-r hint">儲存</div>
+    </div>
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    window.onload = function () {
+        $.get("header.html", function (data) {
+            $("#header").html(data);
+        });
+        $.get("footer.html", function (data) {
+            $("#footer").html(data);
+        });
+    }
+</script>

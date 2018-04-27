@@ -1,0 +1,16 @@
+
+.add-theme {
+    width: 780px;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.add-theme img {
+    width: 780px;
+    height: 242px;
+}
+
+.add-theme .desc {
+    margin-top: 40px;
+    text-align: center;
+}

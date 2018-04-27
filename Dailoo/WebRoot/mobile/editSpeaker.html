@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 編輯講者</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/editSpeaker.css">
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">編輯講者</div>
+
+    <div class="user">
+        <div class="photo">
+            <img src="https://scontent.ftpe7-1.fna.fbcdn.net/v/t1.0-1/p160x160/14222100_1356886510991413_1830586163447787471_n.jpg?_nc_cat=0&oh=1ff54164b1470ba377c6b71968811809&oe=5B6342A2" alt="">
+        </div>
+        <div class="edit"><img src="images/general/edit-s.png" alt=""></div>
+        <div class="change">更換照片</div>
+    </div>
+
+    <div class="input">
+        <div class="name">帳號</div>
+        <input type="text" class="cont" value="dailoo">
+    </div>
+
+    <!--提交區塊-->
+    <div class="submit-btns reset clearfix">
+        <div class="submit-l">刪除帳號</div>
+        <div class="submit-r hint">重設密碼</div>
+    </div>
+
+
+    <div class="input">
+        <div class="name">姓名</div>
+        <input type="text" class="cont" value="Dailoo 帶路">
+    </div>
+    <div class="input">
+        <div class="name">手機號碼</div>
+        <input type="text" class="cont" value="09 1234 5678">
+    </div>
+    <div class="input">
+        <div class="name">市話號碼</div>
+        <input type="text" class="cont" value="02 1234 5678">
+    </div>
+    <div class="input">
+        <div class="name">個人網址</div>
+        <input type="text" class="cont" value="http://www.dailoo.com">
+    </div>
+    <div class="input">
+        <div class="name">個人簡歷</div>
+        <input type="text" class="cont" value="全校第一名,全班第一名,全家第一名">
+    </div>
+
+    <div class="intro">
+        <div class="font-s">自我介紹</div>
+        <textarea name="intro" id="" class="cont">帶路 Dailoo是一個行動自助語音導覽服務，由景區的導覽達人或在地居民，親自講述當地自然景點、人文故事或特色店家，提供自由行旅客於旅途中以手機聆聽導覽語音，深度認識當地文化、獲知周邊景點、推薦行程路線及商家優惠情報。</textarea>
+    </div>
+
+    <div class="input">
+        <div class="name">自我介紹影片網址(限Youtube)</div>
+        <input type="text" class="cont" value="https://youtu.be/Qms6OGt_t6Y">
+    </div>
+
+    <!--提交區塊-->
+    <div class="submit-btns clearfix">
+        <div class="submit-l">取消</div>
+        <div class="submit-r hint">儲存</div>
+    </div>
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    window.onload = function () {
+        $.get("header.html", function (data) {
+            $("#header").html(data);
+        });
+        $.get("footer.html", function (data) {
+            $("#footer").html(data);
+        });
+    }
+</script>

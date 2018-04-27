@@ -1,0 +1,25 @@
+
+.add-region {
+    width: 348px;
+    margin: auto;
+    margin-top: 80px;
+    font-size: 56px;
+    line-height: 78px;
+    letter-spacing: 1.9px;
+    text-align: center;
+    color: #50afa0;
+}
+
+.regions {
+    width: 780px;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.regions .region {
+    margin-top: 48px;
+    padding-bottom: 14px;
+    border-bottom: solid 2px #979797;
+    color: #000000;
+    display: block;
+}

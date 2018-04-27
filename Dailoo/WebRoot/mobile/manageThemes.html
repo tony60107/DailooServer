@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 主題管理</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/manageThemes.css">
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">主題管理</div>
+
+    <div class="links">
+        <a href="#" class="link-l">主題類別管理</a>
+        <a href="" class="link-r">新增主題</a>
+    </div>
+
+    <div class="selec">
+        <div class="name">切換主題類別</div>
+        <div class="cont">請選擇</div>
+        <div class="arrow"></div>
+    </div>
+
+
+    <div class="themes clearfix">
+        <div class="theme">
+            <div class="cover">
+                <div class="title">大王村</div>
+                <div class="title-eng">Tjavualji</div>
+            </div>
+            <img alt="" src="http://www.dailoo.com/ResourceServlet?url=/WEB-INF/upload/2/e/0/5/7/4/5/6/1a422d33-eafa-46d5-88b0-969daeeb7adf.jpg">
+            <a href="#" class="cancle fr">刪除</a>
+            <a href="#" class="edit fr">編輯</a>
+        </div>
+
+        <div class="theme">
+            <div class="cover">
+                <div class="title">大王村</div>
+                <div class="title-eng">Tjavualji</div>
+            </div>
+            <img alt="" src="http://www.dailoo.com/ResourceServlet?url=/WEB-INF/upload/2/e/0/5/7/4/5/6/1a422d33-eafa-46d5-88b0-969daeeb7adf.jpg">
+            <a href="#" class="cancle fr">刪除</a>
+            <a href="#" class="edit fr">編輯</a>
+        </div>
+
+        <div class="theme">
+            <div class="cover">
+                <div class="title">大王村</div>
+                <div class="title-eng">Tjavualji</div>
+            </div>
+            <img alt="" src="http://www.dailoo.com/ResourceServlet?url=/WEB-INF/upload/2/e/0/5/7/4/5/6/1a422d33-eafa-46d5-88b0-969daeeb7adf.jpg">
+            <a href="#" class="cancle fr">刪除</a>
+            <a href="#" class="edit fr">編輯</a>
+        </div>
+
+    </div>
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    window.onload = function () {
+        $.get("header.html", function (data) {
+            $("#header").html(data);
+        });
+        $.get("footer.html", function (data) {
+            $("#footer").html(data);
+        });
+    }
+</script>

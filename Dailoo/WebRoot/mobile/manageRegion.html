@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 主題類別管理</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/manageRegion.css">
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">主題類別管理</div>
+
+    <div class="input no-title" style="margin-top: 100px;">
+        <input class="cont" placeholder="輸入要新增的主題類別名稱"/>
+    </div>
+
+    <div class="add-region">新增主題類別</div>
+
+    <div class="regions">
+        <div class="font-s">已建立的主題類別</div>
+        <a href="#" class="region">鹿野鄉</a>
+        <a href="#" class="region">鹿野鄉</a>
+        <a href="#" class="region">鹿野鄉</a>
+        <a href="#" class="region">鹿野鄉</a>
+        <a href="#" class="region">鹿野鄉</a>
+    </div>
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    window.onload = function () {
+        $.get("header.html", function (data) {
+            $("#header").html(data);
+        });
+        $.get("footer.html", function (data) {
+            $("#footer").html(data);
+        });
+    }
+</script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 新增主題</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/addTheme.css">
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">新增主題</div>
+
+    <div class="selec">
+        <div class="name">選擇主題類別</div>
+        <div class="cont">請選擇</div>
+        <div class="arrow"></div>
+    </div>
+    <div class="input no-title">
+        <input class="cont" placeholder="輸入主題名稱"/>
+    </div>
+    
+    <div class="add-theme">
+        <img src="images/general/add-theme-photo.png" alt="">
+        <div class="desc">點圖上傳主題圖檔</div>
+    </div>
+
+    <div class="submit-btns clearfix">
+        <div class="submit-l">取消</div>
+        <div class="submit-r hint">儲存</div>
+    </div>
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    window.onload = function() {
+        $.get("header.html",function(data){
+            $("#header").html(data);
+        });
+        $.get("footer.html",function(data){
+            $("#footer").html(data);
+        });
+    }
+</script>

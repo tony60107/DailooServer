@@ -1,0 +1,16 @@
+
+.preview {
+    width: 532px;
+    margin-top: 80px;
+    margin-bottom: 0;
+}
+
+.del-desc {
+    width: 780px;
+    margin: auto;
+    margin-top: 60px;
+}
+
+.del-desc span {
+    color: #50afa0;
+}

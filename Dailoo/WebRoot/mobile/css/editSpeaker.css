@@ -1,0 +1,82 @@
+
+/*用戶資訊開始*/
+.user {
+    width: 200px;
+    margin: auto;
+    margin-top: 80px;
+    position: relative;
+}
+
+.user .photo img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.user .edit {
+    position: absolute;
+    right: 0px;
+    top: 124px;
+}
+
+.user .change {
+    margin-top: 24px;
+    text-align: center;
+    color: #50afa0;
+}
+/*用戶資訊結束*/
+
+/*刪除重設帳號開始*/
+.submit-btns.reset {
+    width: 620px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.submit-btns.reset .submit-l {
+    margin-right: 156px;
+}
+/*刪除重設帳號結束*/
+
+.intro {
+    width: 780px;
+    margin: auto;
+    margin-top: 60px;
+}
+.intro .cont{
+    width: 732px;
+    height: 472px;
+    margin-top: 24px;
+    padding: 14px 24px;
+    font-size: 40px;
+    line-height: 56px;
+    color: #595959;
+    border: solid 2px #979797;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
