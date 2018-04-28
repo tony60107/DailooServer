@@ -227,6 +227,10 @@ s, i, em {
     bottom: 10px;
 }
 
+.opt-data {
+    display: none;
+}
+
 /*下拉選單的鄉鎮市區*/
 .selec.city {
     width: 276px;
