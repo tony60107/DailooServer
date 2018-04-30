@@ -1635,11 +1635,10 @@ var taiwan = [
         ]
     }
 ]; //台灣行政區Json資料
-var cityList = $('#cityList').get(0); //縣市下拉選單
-var distList = $('#distList').get(0);  //鄉鎮下拉選單
-
 //初始化縣市下拉選單
 function initCitySelec(){
+
+    var cityList = $('#cityList').get(0); //縣市下拉選單
     for(var i = 0; i < taiwan.length; i++){
         cityList.innerHTML += '<div class="opt">' + taiwan[i].city + '</div>'
     }
@@ -1647,6 +1646,7 @@ function initCitySelec(){
 
 //更新鄉鎮下拉選單資料
 function updateDist(){
+    var distList = $('#distList').get(0);  //鄉鎮下拉選單
     for(var i = 0; i < taiwan.length; i++) {
         //如果找到與選中縣市相同的縣市
         if(taiwan[i].city == $("#city").get(0).innerHTML){
@@ -1691,6 +1691,26 @@ function getAllSpeakers(callback){
         },
         error: function(){
             setTimeout(function(){getAllSpeakers(callback);}, 1000);
+        }
+    });
+}
+
+//取得登入帳號旗下的所有景點
+function getViewpointsByLoginUser(callback){
+    var vpList = $('#vpList').get(0);
+    $.ajax({
+        url: "/ViewpointServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getViewpointsByLoginUser"},
+        success: function (data) {
+            var vps = eval("(" + data + ")");
+            for(var i = 0; i < vps.length; i++) {
+                vpList.innerHTML +=  "<div class='opt' value='" + vps[i].id +"'>" + vps[i].name + "-" + vps[i].subtitle + "</div>";
+            }
+            if(callback != undefined) callback();
+        },
+        error: function(){
+            setTimeout(function(){getViewpointsByLoginUser(callback);}, 1000);
         }
     });
 }

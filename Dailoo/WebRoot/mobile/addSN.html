@@ -45,12 +45,8 @@
         <div class="name">景點</div>
         <div class="cont">選擇景點</div>
         <div class="arrow"></div>
-        <div class="opt-data">
+        <div id="vpList" class="opt-data">
             <div class="title">切換至其他景點</div>
-            <div class="opt">1111</div>
-            <div class="opt">2222</div>
-            <div class="opt">3333</div>
-            <div class="opt">4444</div>
         </div>
     </div>
 
@@ -77,9 +73,6 @@
     <div class="pop-mask" style="display: none"></div>
     <div class="pop-menu" style="display: none">
         <div class="title">切換至其他景點</div>
-        <div class="opt">景點1</div>
-        <div class="opt">景點2</div>
-        <div class="opt selected">景點3</div>
     </div>
     <form>
         <div id="twzipcode"></div>
@@ -97,14 +90,14 @@
     //初始化頭部與腳步
     initHeaderFooter();
 
-    //取得所有的講者
-    getAllSpeakers();
-
-
-
     //初始化縣市下拉選單
     initCitySelec();
 
+    //取得所有的講者
+    getAllSpeakers();
+
+    //取得登入帳號旗下的所有景點
+    getViewpointsByLoginUser();
 
     //激活所有的下拉選單
     activeAllSelec();
