@@ -16,39 +16,28 @@
     <div class="region clearfix">
         <div class="font-s">地區</div>
         <div class="selec no-title city fl">
-            <div class="cont">請選擇</div>
+            <div id="city" class="cont">請選擇</div>
             <div class="arrow"></div>
-            <div class="opt-data">
-                <div class="title">切換至其他景點</div>
-                <div class="opt">1111</div>
-                <div class="opt">2222</div>
-                <div class="opt">3333</div>
-                <div class="opt">4444</div>
+            <div id="cityList" class="opt-data">
+                <div class="title">切換至其他縣市</div>
             </div>
         </div>
-        <div id="sp" class="selec no-title vil fl">
-            <div class="cont">請選擇</div>
+        <div class="selec no-title vil fl">
+            <div id="dist" class="cont">請選擇</div>
             <div class="arrow"></div>
-            <div class="opt-data">
-                <div class="title">切換至其他景點</div>
-                <div class="opt">1111</div>
-                <div class="opt">2222</div>
-                <div class="opt">3333</div>
-                <div class="opt">4444</div>
+            <div id="distList" class="opt-data">
+                <div class="title">切換至其他鄉鎮</div>
+
             </div>
         </div>
     </div>
 
     <div class="selec">
-        <div class="name">講者</div>
+        <div id="sp" class="name">講者</div>
         <div class="cont">選擇講者</div>
         <div class="arrow"></div>
-        <div class="opt-data">
-            <div class="title">切換至其他景點</div>
-            <div class="opt">1111</div>
-            <div class="opt">2222</div>
-            <div class="opt">3333</div>
-            <div class="opt">4444</div>
+        <div id="speakerList" class="opt-data">
+            <div class="title">切換至其他講者</div>
         </div>
     </div>
 
@@ -92,79 +81,32 @@
         <div class="opt">景點2</div>
         <div class="opt selected">景點3</div>
     </div>
+    <form>
+        <div id="twzipcode"></div>
+    </form>
+
     <!--Footer引入-->
     <div id="footer"></div>
 </div>
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
 <script>
-    window.onload = function () {
-        $.get("header.html", function (data) {
-            $("#header").html(data);
-        });
-        $.get("footer.html", function (data) {
-            $("#footer").html(data);
-        });
-    }
 
-    //激活下拉選單功能
-    function activeSelec(selec) {
-        // console.dir(selec);
-        var selecCont = $(selec).find(".cont").get(0); //下拉選單選中的內容
-        var popMenu = $(".pop-menu").get(0);    //彈出式菜單
-        var popMask = $(".pop-mask").get(0);    //彈出式遮罩
-        var $data = $(selec).find(".opt-data");   //選項的所有資料
-        var $opts = $data.find(".opt");         //所有選項的資料
+    //初始化頭部與腳步
+    initHeaderFooter();
 
-        //設定菜單標題
-        popMenu.innerHTML = '<div class="title">' + $data.find(".title").get(0).innerHTML + '</div>';
+    //取得所有的講者
+    getAllSpeakers();
 
-        //將選項更新到下拉選單上
-        for (var i = 0; i < $opts.length; i++) {
-            //如果是選中的選項，則標示選中
-            if ($opts.get(i).textContent == selecCont.innerHTML) {
-                popMenu.innerHTML += '<div class="opt selected">' + $opts.get(i).textContent + '</div>';
-            } else {
-                popMenu.innerHTML += '<div class="opt">' + $opts.get(i).textContent + '</div>';
-            }
-        }
 
-        //顯示彈出式菜單
-        popMask.style.display = "block";
-        popMenu.style.display = "block";
 
-        $menuOpts = $(".pop-menu").find(".opt");    //彈出式菜單的選項
+    //初始化縣市下拉選單
+    initCitySelec();
 
-        for (var i = 0; i < $menuOpts.length; i++) {
-            //菜單選項綁定點擊事件
-            $($menuOpts.get(i)).bind('click', function () {
-                //更改下拉選單內容
-                selecCont.innerHTML = this.innerHTML;
-                //關閉彈出式菜單
-                popMask.style.display = "none";
-                popMenu.style.display = "none";
-            });
-        }
-    }
 
     //激活所有的下拉選單
-    function activeAllSelec(){
-        $selecs = $(".selec");
-        for (var i = 0; i < $selecs.length; i++) {
-            selec = $selecs.get(i);
-            $(selec).bind('click', function () {
-                activeSelec(this);
-            });
-        }
-
-        //點擊遮罩則關閉彈出式菜單
-        $(".pop-mask").bind('click', function(){
-            this.style.display = "none";
-            $(".pop-menu").get(0).style.display = "none";
-        });
-    }
-
     activeAllSelec();
 
 </script>
