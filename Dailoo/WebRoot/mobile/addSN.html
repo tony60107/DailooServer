@@ -5,6 +5,7 @@
     <title>Dailoo - 新增序號</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/addSN.css">
+    <meta name="viewport" content="user-scalable=no"/>
 </head>
 <body>
 <div class="w">
@@ -13,7 +14,7 @@
 
     <div class="main-title">新增序號</div>
 
-    <div class="region clearfix">
+    <div class="region clearfix" style="display:none;">
         <div class="font-s">地區</div>
         <div class="selec no-title city fl">
             <div id="city" class="cont">請選擇</div>
@@ -32,7 +33,7 @@
         </div>
     </div>
 
-    <div class="selec">
+    <div class="selec" style="display: none;">
         <div id="sp" class="name">講者</div>
         <div class="cont">選擇講者</div>
         <div class="arrow"></div>
@@ -43,7 +44,7 @@
 
     <div class="selec">
         <div class="name">景點</div>
-        <div class="cont">選擇景點</div>
+        <div id="vpId" class="cont">選擇景點</div>
         <div class="arrow"></div>
         <div id="vpList" class="opt-data">
             <div class="title">切換至其他景點</div>
@@ -53,29 +54,33 @@
     <div class="set clearfix">
         <div class="time fl">
             <div class="title font-s">可使用時間</div>
-            <input class="fl" type="text" value="24">小時
+            <input id="useLength" class="fl" type="text" value="24">小時
         </div>
         <div class="num fl">
             <div class="title font-s">可使用次數</div>
-            <input class="fl" type="text" value="1">次
+            <input id="maxUseCount" class="fl" type="text" value="1">次
         </div>
         <div class="num fl" style="width: 316px;">
-            <div class="title font-s">QRCode生成數量</div>
-            <input class="fl" type="text" value="1">個
+            <div class="title font-s">QRCode產生數量</div>
+            <input id="createNum" class="fl" type="text" value="1">個
         </div>
     </div>
 
-    <div class="submit-btns clearfix">
+    <div class="submit-btns clearfix" onselectstart="return false;">
         <div class="submit-l">取消</div>
-        <div class="submit-r hint">新增</div>
+        <div class="submit-r hint" onclick="submitForm();">新增</div>
     </div>
 
     <div class="pop-mask" style="display: none"></div>
     <div class="pop-menu" style="display: none">
         <div class="title">切換至其他景點</div>
     </div>
-    <form>
-        <div id="twzipcode"></div>
+
+    <form id="mainForm" action="/SNServlet?method=addSN" method="post" style="display: none">
+        <div>對應景點ID<input type="text" name="viewpointId"></div>
+        <div>使用時長<input type="text" name="useLength"></div>
+        <div>最大使用次數<input type="text" name="maxUseCount"></div>
+        <div>產生QRC數量<input type="text" name="createNum"></div>
     </form>
 
     <!--Footer引入-->
@@ -101,5 +106,46 @@
 
     //激活所有的下拉選單
     activeAllSelec();
+
+    //表單與表單中的控件
+    var form = $('#mainForm');
+    var ipVpId = form.find('input[name="viewpointId"]');
+    var ipUseLength = form.find('input[name="useLength"]');
+    var ipMaxUseCount = form.find('input[name="maxUseCount"]');
+    var ipCreateNum = form.find('input[name="createNum"]');
+
+    //檢查表單資料
+    function checkFrom() {
+        if(ipVpId.val() == ''){alert('尚未選擇對應的景點'); return false;}
+        if(ipUseLength.val() < 1 || ipUseLength.val() > 96){alert('使用時長輸入錯誤，請介於1~96之間'); return false;}
+        if(ipMaxUseCount.val() < 1 || ipMaxUseCount.val() > 50){alert('最大使用次數輸入錯誤，請介於1~50之間'); return false;}
+        if(ipCreateNum.val() < 1 || ipCreateNum.val() > 10){alert('產生QRC數量輸入錯誤，請介於1~10之間'); return false;}
+        return true;
+    }
+
+    //上傳資料
+    function submitForm(){
+
+        //將資料填入不顯示的表單中
+        ipVpId.val($('#vpId').attr('data-value'));
+        ipUseLength.val($('#useLength').val());
+        ipMaxUseCount.val($('#maxUseCount').val());
+        ipCreateNum.val($('#createNum').val());
+
+        //檢查表單資料
+        if(checkFrom()){
+            //上傳表單
+            $.ajax({
+                url:"/SNServlet?method=addSN",
+                data:form.serialize(),//將表單資料序列化
+                success:function(result){
+                    alert("新增成功！！");
+                    document.location.href="/mobile/manageSNs.html";
+                },
+            });
+        }
+
+    }
+
 
 </script>

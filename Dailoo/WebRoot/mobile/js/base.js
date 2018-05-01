@@ -14,15 +14,19 @@ function activeSelec(selec) {
     //設定菜單標題
     popMenu.innerHTML = '<div class="title">' + $data.find(".title").get(0).innerHTML + '</div>';
 
+
     //將選項更新到下拉選單上
+    var dom = '';
     for (var i = 0; i < $opts.length; i++) {
-        //如果是選中的選項，則標示選中
+        //如果是選中的選項，則標示選中。且如果有設定data-value的值，也一併加上去，沒有則空白
+        var dataValue = $opts.get(i).dataset.value;
         if ($opts.get(i).textContent == selecCont.innerHTML) {
-            popMenu.innerHTML += '<div class="opt selected">' + $opts.get(i).textContent + '</div>';
+            dom += '<div class="opt selected" data-value="' + (dataValue != undefined ? dataValue : '') + '">' + $opts.get(i).textContent + '</div>';
         } else {
-            popMenu.innerHTML += '<div class="opt">' + $opts.get(i).textContent + '</div>';
+            dom += '<div class="opt" data-value="' + (dataValue != undefined ? dataValue : '') + '">' + $opts.get(i).textContent + '</div>';
         }
     }
+    popMenu.innerHTML += dom;
 
     //顯示彈出式菜單
     popMask.style.display = "block";
@@ -38,6 +42,11 @@ function activeSelec(selec) {
 
             //如果是縣市的下拉選單，更新鄉鎮下拉選單資料
             if(selecCont.id == 'city'){updateDist();}
+
+            //如果是景點的下拉選單
+            if(selecCont.id == 'vpId'){
+                selecCont.dataset.value = this.dataset.value;
+            }
 
             //關閉彈出式菜單
             popMask.style.display = "none";
@@ -1681,10 +1690,11 @@ function getAllSpeakers(callback){
             //console.dir(speakers);
 
             //將資料加到下拉選擇框
+            var dom = '';
             for (var i = 0; i < speakers.length; i++) {
-                var dom = '<div class="opt" value="' + speakers[i].id + '">' + (speakers[i].name == '' ? '未設定該講者姓名' : speakers[i].name) + '</div>';
-                speakerList.innerHTML = speakerList.innerHTML + dom;
+                dom += '<div class="opt" value="' + speakers[i].id + '">' + (speakers[i].name == '' ? '未設定該講者姓名' : speakers[i].name) + '</div>';
             }
+            speakerList.innerHTML += dom;
 
             //呼叫回調函數
             if(callback != undefined) callback();
@@ -1704,9 +1714,14 @@ function getViewpointsByLoginUser(callback){
         data: {"method": "getViewpointsByLoginUser"},
         success: function (data) {
             var vps = eval("(" + data + ")");
+
+            //將資料加到下拉選擇框
+            var dom = '';
             for(var i = 0; i < vps.length; i++) {
-                vpList.innerHTML +=  "<div class='opt' value='" + vps[i].id +"'>" + vps[i].name + "-" + vps[i].subtitle + "</div>";
+                dom +=  "<div class='opt' data-value='" + vps[i].id +"'>" + vps[i].name + "-" + vps[i].subtitle + "</div>";
             }
+            vpList.innerHTML += dom;
+
             if(callback != undefined) callback();
         },
         error: function(){
