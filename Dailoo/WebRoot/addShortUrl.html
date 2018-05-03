@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>新增短網址</title>
+
+</head>
+<link rel="stylesheet" href="css/base.css">
+<style>
+
+    .title {
+        text-align: center;
+        margin-top: 60px;
+        font-size: 60px;
+        line-height: 80px;
+    }
+
+    input {
+        width: 700px;
+        height: 60px;
+        margin: 0 auto;
+        margin-top: 80px;
+        padding: 10px 20px;
+        border: 2px solid #ccc;
+        border-radius: 20px;
+        font-size: 40px;
+        line-height: 56px;
+        display: block;
+    }
+
+    .btn {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 25px;
+        text-align: center;
+        font-size: 16px;
+        cursor: pointer;
+        margin-right: 122px;
+        margin-top: 30px;
+    }
+
+    #qrcode {
+        width: 250px;
+        height: 250px;
+        margin: auto;
+        margin-top: 60px;
+        border: 1px solid #666;
+    }
+
+</style>
+<body>
+    <div class="w">
+        <div class="title">產生短網址</div>
+        <form id="mainForm" action="/ShortUrlServlet?method=addShortUrl">
+            <input name="url" type="text" class="input" placeholder="輸入原網址">
+            <input id="shorten" type="text" class="input" placeholder="產生的短網址">
+        </form>
+        <div class="clearfix">
+            <button id="gen" class="btn fr">產生</button>
+            <button id="copy" class="btn fr" style="background-color: orangered;">複製</button>
+        </div>
+
+        <div id="qrcode"></div>
+    </div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
+<script>
+    $("#gen").bind('click', function(){
+        $.ajax({
+            url:"/ShortUrlServlet?method=addShortUrl",
+            data:$('#mainForm').serialize(),//將表單資料序列化
+            success:function(result){
+                $("#shorten").val('dailoo.com/' + result);
+                toQRC('dailoo.com/' + result)
+            },
+        });
+    });
+
+    $('#copy').bind('click', function(){
+        var clip_area = document.createElement('textarea');
+        clip_area.textContent = $('#shorten').val();
+
+        document.body.appendChild(clip_area);
+        clip_area.select();
+
+        document.execCommand('copy');
+        clip_area.remove();
+    });
+
+    //將序號轉換為QRC
+    function toQRC(url) {
+        $('#qrcode').html("");
+        $('#qrcode').qrcode({width: 250,height: 250,text: url});
+    }
+
+</script>

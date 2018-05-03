@@ -32,6 +32,18 @@
     <filter-name>SNFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  <filter>
+    <description>短網址過濾器</description>
+    <filter-name>ShortUrlFilter</filter-name>
+    <filter-class>com.dailoo.filter.ShortUrlFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ShortUrlFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  
   <error-page>
     <exception-type>java.lang.RuntimeException</exception-type>
     <location>/error/500.jsp</location>
@@ -88,7 +100,10 @@
     <servlet-name>AdServlet</servlet-name>
     <servlet-class>com.dailoo.web.AdServlet</servlet-class>
   </servlet>
-  
+  <servlet>
+    <servlet-name>ShortUrlServlet</servlet-name>
+    <servlet-class>com.dailoo.web.ShortUrlServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
@@ -136,5 +151,9 @@
   <servlet-mapping>
     <servlet-name>AdServlet</servlet-name>
     <url-pattern>/AdServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShortUrlServlet</servlet-name>
+    <url-pattern>/ShortUrlServlet</url-pattern>
   </servlet-mapping>
 </web-app>
