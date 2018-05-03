@@ -11,6 +11,11 @@
     margin: auto;
 }
 
+.add-sp .photo img {
+    width: 200px;
+    height: 200px;
+}
+
 .add-sp .desc {
     margin-top: 24px;
     font-size: 40px;

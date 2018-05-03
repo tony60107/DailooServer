@@ -5,6 +5,7 @@
     <title>Dailoo - 新增講者</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/addSpeaker.css">
+    <meta name="viewport" content="user-scalable=no"/>
 </head>
 <body>
 <div class="w">
@@ -15,40 +16,61 @@
 
     <div class="add-sp">
         <div class="photo">
-            <img src="images/general/add-speaker.png" alt="">
+            <img id="uploadImg" src="images/general/add-speaker.png" alt="">
         </div>
         <div class="desc">點按頭像上傳照片 尺寸300x300像素</div>
+
     </div>
 
     <div class="input no-title">
-        <input class="cont" placeholder="姓名" />
+        <input id="username" class="cont" placeholder="帳號" value="tony89236001"/>
     </div>
     <div class="input no-title">
-        <input class="cont" placeholder="手機號碼" />
+        <input id="password" class="cont" placeholder="密碼" value="s89236001"/>
     </div>
     <div class="input no-title">
-        <input class="cont" placeholder="市話號碼" />
+        <input id="name" class="cont" placeholder="姓名" value="劉威廷"/>
     </div>
     <div class="input no-title">
-        <input class="cont" placeholder="個人網址" />
+        <input id="phoneNumber" class="cont" placeholder="手機號碼" value="0908466666"/>
     </div>
     <div class="input no-title">
-        <input class="cont" placeholder="個人簡歷" />
+        <input id="homeNumber" class="cont" placeholder="市話號碼" value="0289236001"/>
+    </div>
+    <div class="input no-title">
+        <input id="speakerUrl" class="cont" placeholder="個人網址" value="www.weicards.com"/>
+    </div>
+    <div class="input no-title">
+        <input id="resume" class="cont" placeholder="個人簡歷" value="BOSS"/>
     </div>
 
     <div class="intro">
         <div class="title">自我介紹</div>
-        <textarea name="" class="cont" placeholder="建議輸入不超過150字"></textarea>
+        <textarea id="intro" name="" class="cont" placeholder="建議輸入不超過150字">安安安安安</textarea>
     </div>
 
     <div class="input no-title">
-        <input class="cont" placeholder="自我介紹影片網址(限Youtube)" />
+        <input id="youtubeUrl" class="cont" placeholder="自我介紹影片網址(限Youtube)" value="youtube.com"/>
     </div>
 
     <div class="submit-btns clearfix">
         <div class="submit-l">取消</div>
-        <div class="submit-r hint">新增</div>
+        <div class="submit-r hint" onclick="submitForm();">新增</div>
     </div>
+
+    <!--上傳表單-->
+    <form id="mainForm" action="/SpeakerServlet?method=registSpeaker" method="post" style="display: none" enctype="multipart/form-data">
+        <div>照片位置<input id="ipPhoto" name="file" type="file" onchange="previewUploadImg(event, 'uploadImg', function(){$('#uploadImg').css('border-radius', '50%')})"></div>
+        <div>帳號<input type="text" name="username"></div>
+        <div>密碼<input type="text" name="password"></div>
+        <div>姓名<input type="text" name="name"></div>
+        <div>手機號碼<input type="text" name="phoneNumber"></div>
+        <div>市話號碼<input type="text" name="homeNumber"></div>
+        <div>個人網址<input type="text" name="speakerUrl"></div>
+        <div>個人簡歷<input type="text" name="resume"></div>
+        <div>自我介紹<input type="text" name="intro"></div>
+        <div>Youtube網址<input type="text" name="youtubeUrl"></div>
+    </form>
 
     <!--Footer引入-->
     <div id="footer"></div>
@@ -56,13 +78,70 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
 <script>
-    window.onload = function() {
-        $.get("header.html",function(data){
-            $("#header").html(data);
-        });
-        $.get("footer.html",function(data){
-            $("#footer").html(data);
-        });
+
+    //初始化頭部與腳步
+    initHeaderFooter();
+
+
+    var form = $('#mainForm');
+    var ipUsername = form.find('input[name="username"]');
+    var ipPWD = form.find('input[name="password"]');
+    var ipName = form.find('input[name="name"]');
+    var ipPhoneNumber = form.find('input[name="phoneNumber"]');
+    var ipHomeNumber = form.find('input[name="homeNumber"]');
+    var ipSpeakerUrl = form.find('input[name="speakerUrl"]');
+    var ipResume = form.find('input[name="resume"]');
+    var ipIntro = form.find('input[name="intro"]');
+    var ipYoutubeUrl = form.find('input[name="youtubeUrl"]');
+
+
+    //檢查表單資料
+    function checkFrom() {
+        if(ipUsername.val() == ''){alert('帳號不能為空'); return false;}
+        var patrn=/^(\w){6,20}$/;
+        if(!patrn.exec(ipPWD.val())){alert('密碼必須是6位以上英數字混合'); return false;}
+        if(ipName.val() == ''){alert('講者姓名不能為空'); return false;}
+        return true;
     }
+
+    //上傳資料
+    function submitForm() {
+
+        //將資料填入不顯示的表單中
+        ipUsername.val($('#username').val());
+        ipPWD.val($('#password').val());
+        ipName.val($('#name').val());
+        ipPhoneNumber.val($('#phoneNumber').val());
+        ipHomeNumber.val($('#homeNumber').val());
+        ipSpeakerUrl.val($('#speakerUrl').val());
+        ipResume.val($('#resume').val());
+        ipIntro.val($('#intro').val());
+        ipYoutubeUrl.val($('#youtubeUrl').val());
+
+        //檢查表單資料
+        if(checkFrom()){
+            //上傳表單
+            $.ajax({
+                url: '/SpeakerServlet?method=registSpeaker',
+                type: 'POST',
+                cache: false,
+                data: new FormData($('#mainForm')[0]),
+                processData: false,
+                contentType: false,
+                success:function(result){
+                    alert("新增成功！！");
+                    document.location.href="/mobile/manageSpeakers.html";
+                },error:function(result){
+                    alert("新增失敗");
+                },
+            })
+        }
+    }
+
+    //點下大頭貼時，觸發上傳按鈕
+    $('#uploadImg').bind('click', function(){$('#ipPhoto').click();});
+
+
 </script>

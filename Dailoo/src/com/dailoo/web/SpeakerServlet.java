@@ -35,8 +35,14 @@ public class SpeakerServlet extends HttpServlet {
 		try {
 			// 如果是註冊講者
 			if ("registSpeaker".equals(method)) {
-				BeanUtils.populate(speaker, request.getParameterMap());
+				Map<String, String> paramMap = FileUploadUtils.getParamMap(request, response, this);
+				//取得講者大頭照
+				String photoUrl = paramMap.get("imgurls");
+				
+				//設定講者資料
+				BeanUtils.populate(speaker, paramMap);
 				speaker.setOwnerId(loginUser.getId());
+				speaker.setPhotoUrl(photoUrl);
 				service.addSpeaker(speaker);
 				response.sendRedirect("/manageSpeakers.html");
 			} 

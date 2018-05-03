@@ -14,6 +14,7 @@
 
     <div class="main-title">新增序號</div>
 
+    <!--設定地區-->
     <div class="region clearfix" style="display:none;">
         <div class="font-s">地區</div>
         <div class="selec no-title city fl">
@@ -33,6 +34,7 @@
         </div>
     </div>
 
+    <!--選擇講者-->
     <div class="selec" style="display: none;">
         <div id="sp" class="name">講者</div>
         <div class="cont">選擇講者</div>
@@ -42,6 +44,7 @@
         </div>
     </div>
 
+    <!--選擇景點-->
     <div class="selec">
         <div class="name">景點</div>
         <div id="vpId" class="cont">選擇景點</div>
@@ -51,6 +54,7 @@
         </div>
     </div>
 
+    <!--設定序號資料-->
     <div class="set clearfix">
         <div class="time fl">
             <div class="title font-s">可使用時間</div>
@@ -66,16 +70,19 @@
         </div>
     </div>
 
+    <!--上傳按鈕-->
     <div class="submit-btns clearfix" onselectstart="return false;">
         <div class="submit-l">取消</div>
         <div class="submit-r hint" onclick="submitForm();">新增</div>
     </div>
 
+    <!--彈出菜單-->
     <div class="pop-mask" style="display: none"></div>
     <div class="pop-menu" style="display: none">
         <div class="title">切換至其他景點</div>
     </div>
 
+    <!--上傳表單-->
     <form id="mainForm" action="/SNServlet?method=addSN" method="post" style="display: none">
         <div>對應景點ID<input type="text" name="viewpointId"></div>
         <div>使用時長<input type="text" name="useLength"></div>
