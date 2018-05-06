@@ -52,10 +52,10 @@
 <body>
     <div class="w">
         <div class="title">產生短網址</div>
-        <form id="mainForm" action="/ShortUrlServlet?method=addShortUrl">
+        <form id="mainForm" action="/ShortUrlServlet?method=addShortUrl" method="POST">
             <input name="url" type="text" class="input" placeholder="輸入原網址">
-            <input id="shorten" type="text" class="input" placeholder="產生的短網址">
         </form>
+        <input id="shorten" type="text" class="input" placeholder="產生的短網址">
         <div class="clearfix">
             <button id="gen" class="btn fr">產生</button>
             <button id="copy" class="btn fr" style="background-color: orangered;">複製</button>
@@ -71,9 +71,10 @@
     $("#gen").bind('click', function(){
         $.ajax({
             url:"/ShortUrlServlet?method=addShortUrl",
+            type: "POST",
             data:$('#mainForm').serialize(),//將表單資料序列化
             success:function(result){
-                $("#shorten").val('dailoo.com/' + result);
+                $("#shorten").val('https://dailoo.com/' + result);
                 toQRC('dailoo.com/' + result)
             },
         });

@@ -1,5 +1,9 @@
 package com.dailoo.service;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+
 import com.dailoo.dao.ShortUrlDao;
 import com.dailoo.dao.ThemeDao;
 import com.dailoo.dao.ViewpointDao;
@@ -14,9 +18,10 @@ public class ShortUrlServiceImpl implements ShortUrlService{
 	@Override
 	public String addShortUrl(String ori) {
 		ShortUrl url = new ShortUrl();
+		
 		url.setShorten(UrlShorterUtils.toShortUrl(ori));
 		url.setOri(ori);
-		ShortUrl test = getByShorten(url.getShorten());
+		
 		//如果該短網址還不存在
 		if(getByShorten(url.getShorten()) == null){
 			//新增短網址
