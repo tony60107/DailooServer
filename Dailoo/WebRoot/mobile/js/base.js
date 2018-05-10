@@ -44,7 +44,7 @@ function activeSelec(selec) {
             if(selecCont.id == 'city'){updateDist();}
 
             //如果是景點的下拉選單
-            if(selecCont.id == 'vpId'){
+            if(selecCont.id == 'vpId' || selecCont.id == 'regionId'){
                 selecCont.dataset.value = this.dataset.value;
             }
 
@@ -1746,6 +1746,32 @@ function getViewpointsByLoginUser(callback){
     });
 }
 
+//取得所有的地區
+function getAllRegions(callback) {
+    $.ajax({
+        url: "/RegionServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getAllRegions"},
+        success: function (regions) {
+            var regionList = $("#regionList").get(0);
+            var regions = eval("(" + regions + ")");
+            //console.dir(speakers);
+
+            //將資料加到下拉選擇框
+            var dom = '';
+            for (var i = 0; i < regions.length; i++) {
+                dom +=  "<div class='opt' data-value='" + regions[i].id +"'>" + regions[i].name + "</div>";
+            }
+            regionList.innerHTML += dom;
+
+            //呼叫回調函數
+            if(callback != undefined) callback();
+        },
+        error: function(){
+            setTimeout(function(){getAllRegions(callback);}, 1000);
+        }
+    });
+}
 /*向伺服器取得資料區塊結束*/
 
 //Google Analytics程式碼 開始

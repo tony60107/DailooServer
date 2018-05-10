@@ -366,7 +366,56 @@ s, i, em {
 }
 /*儲存取消結束*/
 
+/*彈出式菜單開始*/
+.pop-mask {
+    position: fixed;
+    width: 100%;
+    height: 150%;
+    top: 0;
+    left: 0;
+    background-color: #595959;
+    opacity: 0.8;
+    z-index: 1001;
+}
 
+.pop-menu  {
+    padding-bottom: 80px;
+    position: fixed;
+    z-index: 1002;
+    width: 880px;
+    height: 1200px;
+    top: 122px;
+    left: 50px;
+    background-color: #fff;
+    opacity: 1;
+    overflow: scroll;
+}
+
+
+.pop-menu .title {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    font-size: 40px;
+    text-align: center;
+    color: #595959;
+}
+
+.pop-menu .opt {
+    width: 780px;
+    margin: auto;
+    margin-top: 48px;
+    padding-bottom: 14px;
+    border-bottom: solid 2px #979797;
+    color: #000000;
+}
+
+.pop-menu .opt.selected {
+    font-size: 50px;
+    line-height: 70px;
+    font-weight: 500;
+    color: #50afa0;
+}
+/*彈出式菜單結束*/
 
 
 
