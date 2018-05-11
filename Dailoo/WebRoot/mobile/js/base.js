@@ -43,10 +43,17 @@ function activeSelec(selec) {
             //如果是縣市的下拉選單，更新鄉鎮下拉選單資料
             if(selecCont.id == 'city'){updateDist();}
 
-            //如果是景點的下拉選單
-            if(selecCont.id == 'vpId' || selecCont.id == 'regionId'){
+            //如果是景點或地區的下拉選單，設定data-value值在點擊的下拉選單中
+            if(selecCont.id == 'vpId' || selecCont.id == 'regionId' || selecCont.id == 'speakerId' || selecCont.id == 'themeId'){
                 selecCont.dataset.value = this.dataset.value;
+
+                //如果是地區下拉選單，且該頁面有主題下拉選單的話，則更新主題下拉選單
+                if(selecCont.id == 'regionId' && $('#themeId').length > 0) {
+                    $('#themeId').html("請選擇");
+                    getThemesByRegionId(this.dataset.value);
+                }
             }
+
 
             //關閉彈出式菜單
             popMask.style.display = "none";
@@ -1691,9 +1698,7 @@ function updateDist(){
 
 
 
-
 /*向伺服器取得資料區塊開始*/
-
 //取得所有的講者
 function getAllSpeakers(callback){
     $.ajax({
@@ -1708,7 +1713,7 @@ function getAllSpeakers(callback){
             //將資料加到下拉選擇框
             var dom = '';
             for (var i = 0; i < speakers.length; i++) {
-                dom += '<div class="opt" value="' + speakers[i].id + '">' + (speakers[i].name == '' ? '未設定該講者姓名' : speakers[i].name) + '</div>';
+                dom += '<div class="opt" data-value="' + speakers[i].id + '">' + (speakers[i].name == '' ? '未設定該講者姓名' : speakers[i].name) + '</div>';
             }
             speakerList.innerHTML += dom;
 
@@ -1769,6 +1774,39 @@ function getAllRegions(callback) {
         },
         error: function(){
             setTimeout(function(){getAllRegions(callback);}, 1000);
+        }
+    });
+}
+
+//根據地區ID，取得該地區下的主題
+function getThemesByRegionId(regionId, callback) {
+
+    var themeList = $("#themeList").get(0); //主題列表
+
+    //初始化主題列表
+    themeList.innerHTML = "<div class='title'>切換至其他主題</div>";
+
+    $.ajax({
+        url: "/ThemeServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getThemesByRegionId", "regionId": regionId},
+        success: function (themes) {
+
+            var themes = eval("(" + themes + ")");
+            //console.dir(speakers);
+
+            //將資料加到下拉選擇框
+            var dom = '';
+            for (var i = 0; i < themes.length; i++) {
+                dom +=  "<div class='opt' data-value='" + themes[i].id +"'>" + themes[i].name + "</div>";
+            }
+            themeList.innerHTML += dom;
+
+            //呼叫回調函數
+            if(callback != undefined) callback();
+        },
+        error: function(){
+            setTimeout(function(){getThemesByRegionId(callback);}, 1000);
         }
     });
 }

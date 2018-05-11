@@ -5,6 +5,7 @@
     <title>Dailoo - 新增景點</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/addViewpoint.css">
+    <meta name="viewport" content="user-scalable=no"/>
 </head>
 <body>
 <div class="w">
@@ -14,32 +15,41 @@
     <div class="main-title">新增景點</div>
     <form action="#" class="clearfix">
         <div class="input no-title">
-            <input class="cont" value="輸入景點名稱"/>
+            <input id="name" class="cont" placeholder="輸入景點名稱" value="鹿野高台"/>
             <div class="search"></div>
         </div>
         <div class="input no-title">
-            <input class="cont" value="輸入副標題"/>
+            <input id="subtitle" class="cont" placeholder="輸入副標題" value="飛行傘"/>
         </div>
         <div class="selec">
             <div class="name">講者</div>
-            <div class="cont">請選擇</div>
+            <div id="speakerId" class="cont">請選擇</div>
             <div class="arrow"></div>
+            <div id="speakerList" class="opt-data">
+                <div class="title">切換至其他講者</div>
+            </div>
         </div>
         <div class="upload">
             <div class="name">語音檔案</div>
-            <div class="cont">無檔案</div>
-            <div class="choose"></div>
+            <div id="uploadAudioCont"class="cont">無檔案</div>
+            <div id="uploadAudio" class="choose"></div>
         </div>
         <div class="upload-desc">※目前支援mp3, aac, m4a, wav, 3gp/3gpp音檔格式若您不確定自己的音檔格式或需要轉換格式，可參考<a href="#">這裡的說明</a>。</div>
         <div class="selec">
             <div class="name">主題類別</div>
-            <div class="cont">請選擇</div>
+            <div id="regionId" class="cont">請選擇</div>
             <div class="arrow"></div>
+            <div id="regionList" class="opt-data">
+                <div class="title">切換至其他主題類別</div>
+            </div>
         </div>
         <div class="selec">
             <div class="name">景點主題</div>
-            <div class="cont">請選擇</div>
+            <div id="themeId" class="cont">請選擇</div>
             <div class="arrow"></div>
+            <div id="themeList" class="opt-data">
+                <div class="title">切換至其他主題</div>
+            </div>
         </div>
         <div class="add-theme clearfix">
             <div class="btn fl"></div>
@@ -48,16 +58,22 @@
         <div class="region clearfix">
             <div class="font-s">景點所在地區</div>
             <div class="selec city fl">
-                <div class="cont">請選擇</div>
+                <div id="city" class="cont">請選擇</div>
                 <div class="arrow"></div>
+                <div id="cityList" class="opt-data">
+                    <div class="title">切換至其他縣市</div>
+                </div>
             </div>
             <div class="selec vil fl">
-                <div class="cont">請選擇</div>
+                <div id="dist" class="cont">請選擇</div>
                 <div class="arrow"></div>
+                <div id="distList" class="opt-data">
+                    <div class="title">切換至其他鄉鎮</div>
+                </div>
             </div>
         </div>
         <div class="input">
-            <input class="cont" value="輸入景點所在地址"/>
+            <input id="address" class="cont" placeholder="輸入景點所在地址" value="台東縣鹿野鄉"/>
         </div>
 
         <div id="map"></div>
@@ -65,27 +81,50 @@
         <!--手動定位優先-->
         <div class="manu-pos">
             <div class="clearfix">
-                <input type="checkbox" name="latLngPri" class="fl">
+                <input type="checkbox" id="latLngPri" name="latLngPri" class="fl">
                 <div class="name fl">手動定位優先</div>
             </div>
             <div class="desc">※若地址無法正確顯示在地圖上，可手動拖曳地圖並點按一下地圖上的地點設定景點的確切位置，並勾選「手動定位優先」。</div>
         </div>
         <!--景點代表圖-->
         <div class="repr-pic">
-            <img src="images/general/add-photo.png" alt="">
+            <img id="uploadImg" src="images/general/add-photo.png" alt="">
             <div class="desc font-s">景點代表圖 <br/>（點圖上傳或更換）</div>
         </div>
         <!--景點介紹-->
         <div class="intro">
             <div class="name font-s">景點介紹</div>
-            <textarea name="intro" class="font-s"></textarea>
+            <textarea id="intro" name="intro" class="font-s"></textarea>
         </div>
     </form>
 
     <div class="submit-btns clearfix">
         <div class="submit-l">取消</div>
-        <div class="submit-r hint">新增</div>
+        <div class="submit-r hint" onclick="submitForm();">新增</div>
     </div>
+
+    <!--彈出菜單-->
+    <div class="pop-mask" style="display: none"></div>
+    <div class="pop-menu" style="display: none">
+        <div class="title">切換至其他景點</div>
+    </div>
+
+    <!--上傳表單-->
+    <form id="mainForm" method="post" style="display: block" enctype="multipart/form-data">
+        <div>照片位置<input id="ipPhoto" name="file" type="file" onchange="previewUploadImg(event, 'uploadImg')"></div>
+        <div>音檔位置<input id="ipAudio" name="file" type="file" onchange="$('#uploadAudioCont').html($('#ipAudio').val().split('fakepath\\')[1]);"></div>
+        <div>景點名稱<input type="text" name="name"></div>
+        <div>副標題<input type="text" name="subtitle"></div>
+        <div>講者ID<input type="text" name="speakerId"></div>
+        <div>主題ID<input type="text" name="themeId"></div>
+        <div>縣市<input type="text" name="city"></div>
+        <div>鄉鎮<input type="text" name="town"></div>
+        <div>地址<input type="text" name="address"></div>
+        <div>經度<input type="text" name="longitude"></div>
+        <div>緯度<input type="text" name="latitude"></div>
+        <div>經緯度優先<input type="text" name="latLngPri"></div>
+        <div>介紹<input type="text" name="intro"></div>
+    </form>
 
     <!--Footer引入-->
     <div id="footer"></div>
@@ -93,19 +132,82 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
 <script>
-    window.onload = function() {
-        $.get("header.html",function(data){
-            $("#header").html(data);
-        });
-        $.get("footer.html",function(data){
-            $("#footer").html(data);
-        });
 
+    //初始化頭部與腳步
+    initHeaderFooter();
+
+    //初始化縣市下拉選單
+    initCitySelec();
+
+    //取得所有的地區
+    getAllRegions();
+
+    //取得所有的講者
+    getAllSpeakers();
+
+    //激活所有的下拉選單
+    activeAllSelec();
+
+    //點下景點代表圖片時，觸發上傳按鈕
+    $('#uploadImg').bind('click', function(){$('#ipPhoto').click();});
+    //點下上傳音檔時，觸發上傳按鈕
+    $('#uploadAudio').bind('click', function(){$('#ipAudio').click();});
+
+
+    var form = $('#mainForm');
+    var ipName = form.find('input[name="name"]');
+    var ipSubtitle = form.find('input[name="subtitle"]');
+    var ipSpeakerId = form.find('input[name="speakerId"]');
+    var ipThemeId = form.find('input[name="themeId"]');
+    var ipCity = form.find('input[name="city"]');
+    var ipTown = form.find('input[name="town"]');
+    var ipAddress = form.find('input[name="address"]');
+    var ipLng = form.find('input[name="longitude"]');
+    var ipLat = form.find('input[name="latitude"]');
+    var ipLatLngPri = form.find('input[name="latLngPri"]');
+    var ipIntro = form.find('input[name="intro"]');
+
+
+    //上傳資料
+    function submitForm() {
+        //將資料填入不顯示的表單中
+        ipName.val($('#name').val());
+        ipSubtitle.val($('#subtitle').val());
+        ipSpeakerId.val($('#speakerId').attr('data-value'));
+        ipThemeId.val($('#themeId').attr('data-value'));
+        ipCity.val($('#city').html());
+        ipTown.val($('#dist').html());
+        ipAddress.val($('#address').val());
+        if($('#latLngPri').get(0).checked == true){ipLatLngPri.val(1);}
+        ipIntro.val($('#intro').val());
+
+
+        //上傳表單
+        $.ajax({
+            url: '/ViewpointServlet?method=addViewpoint',
+            type: 'POST',
+            cache: false,
+            data: new FormData($('#mainForm')[0]),
+            processData: false,
+            contentType: false,
+            success:function(result){
+                alert("新增成功！！");
+                document.location.href="/mobile/manageViewpoints.html";
+            },error:function(result){
+                alert("新增失敗");
+            },
+        })
     }
-    var map;
-    var markers = [];
+
+
+    //初始化Google地圖
     function initMap() {
+
+        var map;
+        var markers = [];
+
         var initLocation = {lat: 22.925489, lng: 121.125867515};
 
         map = new google.maps.Map(document.getElementById('map'), {
@@ -115,7 +217,48 @@
         map.addListener('click', function (event) {
             addMarker(event.latLng);
         });
+
+        //地圖上新增標記
+        function addMarker(location) {
+            deleteMarkers();
+
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+            markers.push(marker);
+            var loc = location.toString().substring(1, location.toString().length - 1);
+            //將經緯度填入表單中
+            ipLat.val(loc.split(",")[0]);
+            ipLng.val(loc.split(",")[1].trim());
+        }
+
+        //地圖上刪除所有的標記
+        function deleteMarkers() {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(null);
+            }
+            markers = [];
+        }
+
+        //地址欄失去焦點時，更新地圖中心點
+        $('#address').bind('blur', function () {
+            var url = "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=" + $('#address').val();
+            $.ajax({
+                url: url, context: document.body,
+                type: "POST",
+                success: function (data) {
+                    if (data.status != "OK") {
+                        $('#address').blur();
+                    }
+                    var loc = data.results[0].geometry.location;
+                    map.setCenter(loc);
+                },
+            });
+        });
     }
+
+
+
 </script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtkHtxJhAxfxCzkdphlPoDoSuCq4FTh_c&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtkHtxJhAxfxCzkdphlPoDoSuCq4FTh_c&callback=initMap"></script>
