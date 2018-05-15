@@ -128,5 +128,11 @@ public interface ViewpointService extends Service{
 	 * @return 多個簡易版景點資訊的JSON數據
 	 */
 	String findViewpointSimplesByCreator(Speaker creator);
+	/**
+	 * 根據景點ID，取得與該景點相同名稱(副標題不同的景點)的景點
+	 * @param id 景點ID
+	 * @return
+	 */
+	String findSubtitlesById(String id);
 
 }

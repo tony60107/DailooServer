@@ -130,4 +130,11 @@ public interface ViewpointDao extends Dao{
 	 */
 	List<Viewpoint> findViewpointsByCreatorId(String id);
 
+	/**
+	 * 根據景點名稱，找出名稱相同但副標題不同的景點
+	 * @param name 景點名稱
+	 * @return 景點List
+	 */
+	List<Viewpoint> findViewpointsByName(String name);
+
 }

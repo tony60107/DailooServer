@@ -5,6 +5,7 @@
     <title>Dailoo - 編輯音檔圖片</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/editAudio.css">
+    <meta name="viewport" content="user-scalable=no"/>
 </head>
 <body>
 <div class="w">
@@ -14,97 +15,50 @@
     <div class="main-title">編輯音檔圖片</div>
 
     <!--景點名稱-->
-    <div class="vp-name">大原花布燈籠生活文化館</div>
+    <div class="vp-name"></div>
 
     <!--副標題-->
     <div class="selec name">
-        <div class="cont">認識大原客</div>
+        <div id="vpSubtitle" class="cont"></div>
         <div class="arrow"></div>
+        <div id="vpList" class="opt-data">
+
+        </div>
     </div>
 
     <!--音檔區塊-->
     <div class="audio">
         <div class="font-s">音檔預覽</div>
+        <audio id="audio" src="#"></audio>
         <div class="player">
-            <img class="play-btn" src="images/editAudio/play.png" alt="">
+            <img id='playBtn' class="play-btn" src="images/editAudio/play.png" alt="">
             <img src="images/editAudio/progressbar.png" alt="" class="pb">
-            <div class="bar"></div>
-            <div class="time">0:00</div>
-            <div class="all-time">1:43</div>
-            <img src="images/editAudio/download.png" alt="" class="download">
+            <div id="bar" class="bar"></div>
+            <div id="time" class="time">0:00</div>
+            <div id="allTime" class="all-time">0:00</div>
+            <a id="download" href="#" download="audio" class="download"></a>
         </div>
     </div>
 
     <!--圖片區塊-->
-    <div class="pics clearfix">
+    <div class="pics-desc" style="margin-top:90px;">
         <div class="font-s">圖片預覽</div>
         <div class="desc">※可輸入>60秒數值，點按<span>[儲存]</span>後會自動進位。</div>
-        <div class="pic">
-            <img class="img" src="../images/viewlist/luyegautai.png" alt="">
-            <img src="images/editAudio/delete.png" alt="" class="del">
-            <div class="time">
-                <input name="min" type="text" value="0"> 分 <input name="sec" type="text" value="0"> 秒
-            </div>
-        </div>
-        <div class="pic">
-            <img class="img" src="../images/viewlist/luyegautai.png" alt="">
-            <img src="images/editAudio/delete.png" alt="" class="del">
-            <div class="time">
-                <input name="min" type="text" value="0"> 分 <input name="sec" type="text" value="0"> 秒
-            </div>
-        </div>
-        <div class="pic">
-            <img class="img" src="../images/viewlist/luyegautai.png" alt="">
-            <img src="images/editAudio/delete.png" alt="" class="del">
-            <div class="time">
-                <input name="min" type="text" value="0"> 分 <input name="sec" type="text" value="0"> 秒
-            </div>
-        </div>
-        <div class="pic">
-            <img class="img" src="../images/viewlist/luyegautai.png" alt="">
-            <img src="images/editAudio/delete.png" alt="" class="del">
-            <div class="time">
-                <input name="min" type="text" value="0"> 分 <input name="sec" type="text" value="0"> 秒
-            </div>
-        </div>
-        <div class="pic">
-            <img class="img" src="../images/viewlist/luyegautai.png" alt="">
-            <img src="images/editAudio/delete.png" alt="" class="del">
-            <div class="time">
-                <input name="min" type="text" value="0"> 分 <input name="sec" type="text" value="0"> 秒
-            </div>
-        </div>
-        <div class="pic">
-            <img class="img" src="../images/viewlist/luyegautai.png" alt="">
-            <img src="images/editAudio/delete.png" alt="" class="del">
-            <div class="time">
-                <input name="min" type="text" value="0"> 分 <input name="sec" type="text" value="0"> 秒
-            </div>
-        </div>
-        <div class="pic">
-            <img class="img" src="../images/viewlist/luyegautai.png" alt="">
-            <img src="images/editAudio/delete.png" alt="" class="del">
-            <div class="time">
-                <input name="min" type="text" value="0"> 分 <input name="sec" type="text" value="0"> 秒
-            </div>
-        </div>
-        <div class="pic">
-            <img class="img" src="images/editAudio/add-photo.png" alt="">
-            <div class="time">
-                <div>點圖上傳</div>
-            </div>
-        </div>
+    </div>
+
+    <div id="picList" class="pics clearfix">
+
     </div>
 
     <div class="sort-desc font-s">試試帶路的快速排圖功能<span>［？］</span></div>
 
     <!--排序區塊-->
     <div class="sorts">
-        <div class="sort clearfix">
+        <div id="randomSort" class="sort clearfix">
             <img class="fl" src="images/editAudio/random.png" alt="">
             <div class="desc font-s fl">讓程式幫您隨機安排圖片，可點按多次試試不同組合</div>
         </div>
-        <div class="sort clearfix">
+        <div id="resetSort" class="sort clearfix">
             <img class="fl" src="images/editAudio/reset.png" alt="">
             <div class="desc font-s fl">根據圖片上傳時間，將圖片排序恢復到一開始的排列順序</div>
         </div>
@@ -113,7 +67,25 @@
 
     <div class="submit-btns clearfix">
         <div class="submit-l">取消</div>
-        <div class="submit-r hint">儲存</div>
+        <div class="submit-r hint" onclick="updateTag();">儲存</div>
+    </div>
+
+
+    <!--上傳表單-->
+    <form id="mainForm" action="/TagServlet?method=addTag" method="post" enctype="multipart/form-data" style="display: none">
+        <div class="form-group">
+            <label>音檔ID</label>
+            <input id="audioId" type="text" name="audioId" class="form-control" placeholder="輸入音檔ID" value="">
+        </div>
+        <div class="form-group clearfix">
+            <input id="ipPic" type="file" name="file" class="form-control fl" multiple="multiple"/>
+        </div>
+    </form>
+
+    <!--彈出菜單-->
+    <div class="pop-mask" style="display: none"></div>
+    <div class="pop-menu" style="display: none">
+        <div class="title">切換至其他景點</div>
     </div>
 
     <!--Footer引入-->
@@ -122,13 +94,287 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
 <script>
-    window.onload = function() {
-        $.get("header.html",function(data){
-            $("#header").html(data);
-        });
-        $.get("footer.html",function(data){
-            $("#footer").html(data);
+
+    /***
+     *          執行順序
+     *          -> 獲取音檔資訊   getAudioById(audioId, callback)
+     *          (-> 更新Tag列表資料   getTagsByAudioId(audioId, callback))
+     *          -> 取得與該景點名稱相同的所有景點（副標題不同），填入下拉列表 （getSubtitles(vpId)）
+     *          -> 激活下拉選單，綁定菜單選項點擊事件    （ activeAllSelec(function(){getTagsByAudioId($('#vpSubtitle').attr('data-value'))});）
+     *          -> 點擊菜單選項後，更新Tag列表資料    （getTagsByAudioId($('#vpSubtitle').attr('data-value'))）
+     *          -> 初始化新增標記圖片按鈕  （initUploadPicBtn ()）
+     *
+     *          -> 監聽檔案change事件，選擇好檔案後進行上傳  （$('#ipPic').bind('change', function ()）
+     */
+
+
+    //初始化頭部與腳步
+    initHeaderFooter();
+
+    //獲取音檔ID
+    var audioId = location.href.split("id=")[1]; //音檔ID
+    var audio = $('#audio').get(0); //音檔 DOM
+    var audioData; //從伺服器取得的音檔資料
+    var picList = $('#picList').get(0); //Tag圖片列表
+    var oriTag; //紀錄最原先的Tag狀態，用於重置
+
+    //獲取音檔資訊
+    getAudioById(audioId, initPlayerEvent);
+
+    //獲取該音檔ID下的所有Tag
+    getTagsByAudioId(audioId);
+
+
+
+
+    //獲取音檔資訊，之後取得與該景點名稱相同的所有景點（副標題不同）
+    function getAudioById(audioId, callback){
+        $.ajax({
+            url: "/AudioServlet", context: document.body,
+            type: "POST",
+            data: {"method": "findAudioById", "id": audioId},
+            success: function (data) {
+                audioData = eval("(" + data + ")");
+                //console.dir(audioData);
+
+                //設定音檔播放資源
+                $(audio).attr('src', "/ResourceServlet?url=" + audioData.src);
+                //設定下載連結
+                $('#download').attr('href', "/ResourceServlet?url=" + audioData.src)
+
+                //取得與該景點名稱相同的所有景點（副標題不同）
+                getSubtitles(audioData.viewpointId)
+
+                //呼叫回調函數
+                if(callback != undefined) callback();
+            }, error: function(){
+                setTimeout(function(){getAudioById(audioId, callback);}, 1000);
+            }
         });
     }
+
+    //取得與該景點名稱相同的所有景點（副標題不同），之後激活所有的下拉選單，點擊菜單選項後，更新圖片列表資料
+    function getSubtitles(vpId){
+        $.ajax({
+            url: "/ViewpointServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getSubtitlesById", "id": vpId},
+            success: function (data) {
+                vps = eval("(" + data + ")");
+
+                //將景點資料填入選項列表中
+                var dom = '<div class="title">切換至其他景點</div>';
+                for(var i = 0; i < vps.length; i++) {
+                    dom += '<div class="opt" data-value="' + vps[i].audioId +'">' + vps[i].subtitle + '</div>';
+                    //設定該頁面音檔標題與副標題
+                    if(vps[i].id == vpId){
+                        $('.vp-name').html(vps[i].name);
+                        $('#vpSubtitle').html(vps[i].subtitle);
+                    }
+                }
+                $('#vpList').html(dom);
+
+                //激活下拉選單，點擊菜單選項後，更新圖片列表資料
+                activeAllSelec(function(){
+                    getTagsByAudioId($('#vpSubtitle').attr('data-value'))
+                    getAudioById($('#audioId').val());
+                });
+            },
+        });
+    }
+
+    //初始化有關播放器區塊的事件與資訊(只可執行一次)
+    function initPlayerEvent(){
+
+        //播放、暫停事件綁定
+        $('#playBtn').bind('click', function(){
+            if(audio.paused == true){
+                audio.play();
+            }else {
+                audio.pause();
+            }
+        });
+
+        //設定播放器相關資訊
+        setInterval(function(){
+
+            var audioLengthTxt = $('#allTime'); //音檔總時長HTML
+            var audioLength = audioData.length; //音檔總時長
+            var nowSec = audio.currentTime; //現在音檔時間進度
+
+            //設定總時長HTML文字
+            if (audioLength % 60 < 10) {
+                audioLengthTxt.html(parseInt(audioLength / 60) + ":0" + parseInt(audioLength % 60));
+            } else {
+                audioLengthTxt.html(parseInt(audioLength / 60) + ":" + parseInt(audioLength % 60));
+            }
+
+            //更新聲音時間進度HTML文字
+            if (nowSec % 60 < 10) {
+                $('#time').html(parseInt(nowSec / 60) + ":0" + parseInt(nowSec % 60));
+            } else {
+                $('#time').html(parseInt(nowSec / 60) + ":" + parseInt(nowSec % 60));
+            }
+
+            //更新bar顯示
+            var barWidth = audio.currentTime / audioData.length * 456; //Bar寬度
+            if(barWidth < 15){  //Bar寬度太小則隱藏，避免變形
+                $('#bar').css('display', 'none');
+            } else{ //顯示，並設定Bar寬度
+                $('#bar').css('display', 'block');
+                $('#bar').css('width', barWidth + 'px');
+            }
+        }, 300);
+    }
+
+    //獲取該音檔ID下的所有Tag
+    function getTagsByAudioId(audioId, callback){
+        //設定上傳表單的音檔ID
+        $('#audioId').val(audioId);
+
+        $.ajax({
+            url: "/TagServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getTagsByAudioId", "id": audioId},
+            success: function (tags) {
+                var tags = eval("(" + tags + ")");
+                oriTag = tags;
+                //console.dir(tags);
+
+                //將Tag資料存入picList中
+                createTagDOMs(tags);
+
+                //初始化新增標記圖片按鈕
+                initUploadPicBtn();
+
+                //呼叫回調函數
+                if(callback != undefined) callback();
+            },error: function(){
+                setTimeout(function(){getTagsByAudioId(audioId, callback);}, 1000);
+            }
+        });
+    }
+
+    //將Tag資料存入picList中
+    function createTagDOMs(tags) {
+        picList.innerHTML = '';
+        var dom = '';
+        for(var i = 0; i < tags.length; i++){
+            dom += '<div id="'+ tags[i].id +'" class="pic">' +
+                    '<img class="img" src="/ResourceServlet?url=' + tags[i].photoUrl + '" alt="">' +
+                    '<img onclick="delTag(this,\'' + tags[i].id + '\');" src="images/editAudio/delete.png" alt="" class="del">' +
+                    '<div class="time">' +
+                    '<input name="min" type="text" value="' + parseInt(tags[i].time / 60) + '"> 分 <input name="sec" type="text" value="' + tags[i].time % 60 + '"> 秒' +
+                    '</div>' +
+                    '</div>';
+        }
+        //點圖上傳按鈕
+        dom += '<div id="uploadPic" class="pic">' +
+                '<img class="img" src="images/editAudio/add-photo.png" alt="">' +
+                '<div></div>' +
+                '<div class="time">' +
+                '<input name="min" type="text" value="9999" style="display: none"><input name="sec" type="text" value="9999" style="display: none">' +
+                '<div>點圖上傳</div>' +
+                '</div>' +
+                '</div>';
+        picList.innerHTML += dom;
+    }
+
+    //初始化新增標記圖片按鈕
+    function initUploadPicBtn () {
+        //點擊上傳圖片時，觸發上傳按鈕
+        $('#uploadPic').bind('click', function () {$('#ipPic').click();});
+    }
+
+    //檔案選擇完畢，進行上傳
+    $('#ipPic').bind('change', function () {
+        //上傳表單
+        $.ajax({
+            url: '/TagServlet?method=addTag',
+            type: 'POST',
+            cache: false,
+            data: new FormData($('#mainForm')[0]),
+            processData: false,
+            contentType: false,
+            success:function(result){
+                alert("新增成功！！");
+                $('#ipPic').val('');
+                //更新現有Tag資訊，並重新整理
+                updateTag();
+            },error:function(result){
+                alert("新增失敗");
+            },
+        })
+    });
+    //更新標記時間
+    function updateTag(){
+        var tags = $('#picList').get(0).children;
+        for(var i = 0; i < tags.length - 1; i++){
+            var id = tags[i].id;
+            var timeDiv = tags[i].children[2];
+            var time = parseInt(timeDiv.children[0].value * 60) + parseInt(timeDiv.children[1].value);
+            $.ajax({
+                url: "/TagServlet", context: document.body,
+                type: "POST",
+                data: {"method": "updateTagById", "id": id, "time": time},
+                success: function (data) {
+                    var data = eval("(" + data + ")");
+                    //上傳完最後一個Tag，則重新整理頁面
+                    if(data.id == tags[tags.length - 2].id){
+                        //更新標記資訊
+                        getTagsByAudioId($('#audioId').val());
+                    }
+                },
+            });
+        }
+
+
+    }
+
+    //向伺服器中刪除Tag，並在刪除成功後，刪除頁面上的Tag
+    function delTag(btn, id) {
+        $.ajax({
+            url: "/TagServlet", context: btn,
+            type: "POST",
+            data: {"method": "delTagById", "id": id},
+            success: function (result) {
+                if (result == "OK"){ this.parentNode.parentNode.removeChild(this.parentNode);}
+            },
+        });
+    }
+
+    //隨機安排按鈕事件綁定
+    $('#randomSort').bind('click', function(){
+        var tags = $('#picList').get(0).children;   //所有的Tag DOM
+        var gap = audioData.length / (tags.length-1);   //每一個Tag的間隔時間
+        var times = new Array(tags.length-1);   //Tag要對應的時間陣列
+        //計算Tag時間
+        for(var i = 0; i < times.length; i++){
+            times[i] = parseInt(gap * i);
+        }
+        //打亂時間陣列
+        times = times.sort(function() {return Math.random() - 0.5});
+        //將時間設定到Tag中，並且都換算成秒數
+        for(var i = 0; i < tags.length - 1; i++) {
+            var timeDiv = tags[i].children[2];
+            timeDiv.children[0].value = 0;
+            timeDiv.children[1].value = parseInt(times[i]);
+        }
+        //將Tag進行排序
+        var asc = function(a, b) {return parseInt(a.children[2].children[1].value) > parseInt(b.children[2].children[1].value) ? 1 : -1;}
+        var sortEle = $('#picList>div').sort(asc);
+        $('#picList').empty().append(sortEle);
+
+        //將Tag時間換成分秒格式
+        for(var i = 0; i < tags.length - 1; i++){
+            var timeDiv = tags[i].children[2];
+            timeDiv.children[0].value = parseInt(timeDiv.children[1].value / 60);
+            timeDiv.children[1].value = parseInt(timeDiv.children[1].value % 60);
+        }
+    });
+
+    $('#resetSort').bind('click',function(){createTagDOMs(oriTag);initUploadPicBtn();});
+
 </script>

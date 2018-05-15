@@ -30,6 +30,7 @@ public class Viewpoint {
 	//-----------------------------------
 	private Double distance;	//距離
 	private ViewpointSimple nextAudio; //下一段語音
+	private String audioId; //音檔ID
 	
 	
 	public String getId() {
@@ -175,6 +176,12 @@ public class Viewpoint {
 	}
 	public void setNextAudio(ViewpointSimple nextAudio) {
 		this.nextAudio = nextAudio;
+	}
+	public String getAudioId() {
+		return audioId;
+	}
+	public void setAudioId(String audioId) {
+		this.audioId = audioId;
 	}
 	@Override
 	public String toString() {

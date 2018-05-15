@@ -396,4 +396,15 @@ public class ViewpointServiceImpl implements ViewpointService{
 		return gson.toJson(vpsims);
 	}
 
+	@Override
+	public String findSubtitlesById(String id) {
+		Viewpoint vp = dao.findViewpointById(id);
+		List<Viewpoint> vps = dao.findViewpointsByName(vp.getName());
+		for(Viewpoint temp : vps){
+			Audio audio = audioDao.findAudioByViewpointId(temp.getId());
+			temp.setAudioId(audio.getId());
+		}
+		return gson.toJson(vps);
+	}
+
 }

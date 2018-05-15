@@ -44,7 +44,7 @@
 }
 
 .audio .player .bar {
-    width: 50px;
+    width: 0px;
     height: 24px;
     border-radius: 12px;
     background-color: #d8f2ee;
@@ -76,24 +76,24 @@
     position: absolute;
     top: 30px;
     right: 62px;
+    background-image: url("../images/editAudio/download.png");
 }
 /*音檔部份結束*/
 
 /*照片區塊開始*/
-.pics {
+.pics, .pics-desc {
     width: 840px;
-    margin-top:90px;
-    margin-left: 100px;
+    margin: auto;
 }
 
-.pics .desc {
+.pics-desc .desc {
     margin-top: 16px;
     font-size: 36px;
     font-weight: 300;
     line-height: 50px;
 }
 
-.pics .desc span {
+.pics-desc .desc span {
     color: #50afa0;
 }
 

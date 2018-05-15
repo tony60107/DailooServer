@@ -3,8 +3,7 @@
  */
 
 //激活下拉選單功能
-function activeSelec(selec) {
-    // console.dir(selec);
+function activeSelec(selec, optCallback) {
     var selecCont = $(selec).find(".cont").get(0); //下拉選單選中的內容
     var popMenu = $(".pop-menu").get(0);    //彈出式菜單
     var popMask = $(".pop-mask").get(0);    //彈出式遮罩
@@ -44,7 +43,7 @@ function activeSelec(selec) {
             if(selecCont.id == 'city'){updateDist();}
 
             //如果是景點或地區的下拉選單，設定data-value值在點擊的下拉選單中
-            if(selecCont.id == 'vpId' || selecCont.id == 'regionId' || selecCont.id == 'speakerId' || selecCont.id == 'themeId'){
+            if(selecCont.id == 'vpId' || selecCont.id == 'regionId' || selecCont.id == 'speakerId' || selecCont.id == 'themeId' || selecCont.id == 'vpSubtitle'){
                 selecCont.dataset.value = this.dataset.value;
 
                 //如果是地區下拉選單，且該頁面有主題下拉選單的話，則更新主題下拉選單
@@ -54,6 +53,8 @@ function activeSelec(selec) {
                 }
             }
 
+            //呼叫回調函數
+            if(optCallback != undefined) optCallback();
 
             //關閉彈出式菜單
             popMask.style.display = "none";
@@ -63,16 +64,22 @@ function activeSelec(selec) {
 }
 
 //激活所有的下拉選單
-function activeAllSelec(){
+function activeAllSelec(optCallback){
     $selecs = $(".selec");
     for (var i = 0; i < $selecs.length; i++) {
         selec = $selecs.get(i);
         $(selec).bind('click', function () {
-            activeSelec(this);
+            activeSelec(this, optCallback);
         });
     }
 
     //點擊遮罩則關閉彈出式菜單
+    initPopMenu();
+
+}
+
+//點擊遮罩則關閉彈出式菜單
+function initPopMenu() {
     $(".pop-mask").bind('click', function(){
         this.style.display = "none";
         $(".pop-menu").get(0).style.display = "none";
