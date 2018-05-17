@@ -24,7 +24,7 @@
     <div class="title" style="margin-top: 20px; text-align: center; font-size: 35px; line-height: 35px;">新增講者</div>
     <div id="header"></div>
     <div class="title" style="text-align: center; margin: 40px; font-size: 17px;">提醒：帳號、密碼、姓名皆為必填，請輸入正確並牢記。</div>
-    <form id="mainForm" class="main-form" role="form" action="/SpeakerServlet?method=registSpeaker" method="post" style="width: 500px; margin: 0 auto">
+    <form id="mainForm" class="main-form" role="form" action="/SpeakerServlet?method=registSpeaker" method="post" style="width: 500px; margin: 0 auto"  enctype="multipart/form-data">
         <div class="form-group">
             <label id="usnLabel">帳號</label>
             <input id="username" type="text" name="username" class="form-control" placeholder="輸入帳號" value="">
