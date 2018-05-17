@@ -49,7 +49,20 @@ public class SNServiceImpl implements SNService{
 
 	@Override
 	public SerialNumber findSNByCode(String code) {
-		return dao.findSNByCode(code);
+		
+		SerialNumber sn = dao.findSNByCode(code);
+		if(sn != null){
+			Speaker sp = speakerDao.findSpeakerById(sn.getOwnerId());
+			Viewpoint vp = null;
+			if(sn.getViewpointId() != null){
+				 vp = viewpointDao.findViewpointById(sn.getViewpointId());
+				 if(vp != null) sn.setViewpointName(vp.getName());
+			}
+			sn.setOwnerName(sp.getName());
+		}
+		
+		
+		return sn;
 	}
 
 	@Override
@@ -88,6 +101,7 @@ public class SNServiceImpl implements SNService{
 		}
 		return gson.toJson(sns);
 	}
+
 
 }
 

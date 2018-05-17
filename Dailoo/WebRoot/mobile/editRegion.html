@@ -58,6 +58,9 @@
     //初始化，設定regionId跟預覽
     init();
 
+    //取得地區名稱
+    getRegion();
+
 
 
     //初始化，設定regionId跟預覽
@@ -65,7 +68,10 @@
         var regionId = location.href.split("id=")[1];
         $('#regionId').val(regionId);
         $('#preview').attr('href', '/themelist.html?id=' + regionId);
+    }
 
+    //取得地區名稱
+    function getRegion(){
         $.ajax({
             url: "/RegionServlet", context: document.body,
             type: "POST",
@@ -76,7 +82,7 @@
                 $('#regionName').val(region.name);
             },
             error: function(){
-                setTimeout(function(){getAllSpeakers(callback);}, 1000);
+                setTimeout(function(){getRegion();}, 1000);
             }
         });
     }

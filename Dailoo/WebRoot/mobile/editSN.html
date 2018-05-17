@@ -5,6 +5,7 @@
     <title>Dailoo - 序號內容</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/editSN.css">
+    <meta name="viewport" content="user-scalable=no"/>
 </head>
 <body>
 <div class="w">
@@ -13,58 +14,58 @@
 
     <div class="main-title">序號內容</div>
 
-    <div class="startSN">啟用序號</div>
+    <a class="startSN" target="_blank">啟用序號</a>
 
-    <div class="qrc"></div>
+    <div id="qrc" class="qrc"></div>
 
     <!--序號資訊-->
     <div class="info">
         <div class="input">
             <div class="name">擁有者</div>
-            <div class="cont">Dailoo 帶路</div>
+            <div id="ownerName" class="cont"></div>
         </div>
         <div class="input">
             <div class="name">對應景點</div>
-            <div class="cont">大原花布燈籠生活文化館</div>
+            <div id="vpName" class="cont"></div>
         </div>
 
         <div class="clearfix">
             <div class="input time fl" style="margin-right: 196px;">
                 <div class="name">可使用時間</div>
-                <input class="cont" value="24"/>小時
+                <input id="useLength" class="cont" value=""/>小時
             </div>
             <div class="input time fl">
                 <div class="name">剩餘使用時間</div>
-                <input class="cont" value="8"/>小時
+                <input id="timeLeft" class="cont" value=""/>小時
             </div>
         </div>
 
         <div class="input">
             <div class="name">啟用時間</div>
-            <div class="cont">2017/10/24 18:07:46</div>
+            <div id="startTime" class="cont"></div>
         </div>
 
         <div class="clearfix">
             <div class="input time fl" style="margin-right: 196px;">
                 <div class="name">可使用次數</div>
-                <input class="cont" value="99"/>次
+                <input id="maxUseCount" class="cont" value=""/>次
             </div>
             <div class="input time fl">
                 <div class="name">已使用次數</div>
-                <input class="cont" value="99"/>次
+                <input id="usedCount" class="cont" value=""/>次
             </div>
         </div>
 
         <div class="input">
             <div class="name">序號碼</div>
-            <div class="cont">8aad5-daebe-f9d8a-498at-b5cb8</div>
+            <div id="code" class="cont" style="width: 1500px;"></div>
         </div>
     </div>
 
     <!--提交區塊-->
     <div class="submit-btns clearfix">
         <div class="submit-l hint">返回</div>
-        <div class="submit-r">刪除序號</div>
+        <div class="submit-r" onclick="delSN();">刪除序號</div>
     </div>
 
     <!--Footer引入-->
@@ -73,13 +74,83 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
+<script src="js/base.js"></script>
 <script>
-    window.onload = function () {
-        $.get("header.html", function (data) {
-            $("#header").html(data);
-        });
-        $.get("footer.html", function (data) {
-            $("#footer").html(data);
+    //初始化頭部與腳步
+    initHeaderFooter();
+    var code = location.href.split("id=")[1];
+
+    //取得序號資料，並將序號資料填入頁面中
+    getSN();
+
+    //將序號轉換為QRC
+    toQRC(code);
+
+
+
+    //取得序號資料
+    function getSN() {
+        $.ajax({
+            url: "/SNServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getSNByCode", "code": code},
+            success: function (data) {
+                var sn = eval("(" + data + ")");
+                initSNData(sn);
+            },
+            error: function(){
+                setTimeout(function(){getSN();}, 1000);
+            }
         });
     }
+
+    //將序號資料填入頁面中
+    function initSNData(sn){
+        $('#ownerName').html(sn.ownerName);
+        $('#vpName').html(sn.viewpointName);
+        $('#useLength').val(sn.useLength);
+        console.dir();
+        var timeLeft = parseInt(new Date(new Date(sn.startTime).getTime() + sn.useLength * 1000 * 3600 - new Date().getTime()).getTime() / (3600 * 1000)); //剩餘使用時間，小時
+        var ipTimeLeft = $('#timeLeft');
+        if(timeLeft >= 0){
+            ipTimeLeft.val(timeLeft);
+        } else if(timeLeft < 0){ //時間已過
+            ipTimeLeft.val(0);
+        } else {    //尚未啟用
+            ipTimeLeft.val(sn.useLength);
+        }
+
+        $('#startTime').html(sn.startTime == undefined ? "尚未啟用" : new Date(sn.startTime).toLocaleString());
+        $('#maxUseCount').val(sn.maxUseCount);
+        $('#usedCount').val(sn.usedCount);
+        $('#code').html(sn.code);
+    }
+
+    //將序號轉換為QRC
+    function toQRC(code) {
+        var url = "https://dailoo.com/SNServlet?method=useSN&code=" + code;
+        var shortUrl = toShortUrl(url);
+        $('.startSN').attr('href', shortUrl);
+        $('#qrc').innerHTML = "";
+        $('#qrc').qrcode({width: 500,height: 500,text: shortUrl});
+    }
+
+    function delSN(){
+        $.ajax({
+            url: "/SNServlet", context: document.body,
+            type: "POST",
+            data: {"method": "delSN", "code": code},
+            success: function (data) {
+                alert("刪除成功");
+                document.location.href="/mobile/manageSNs.html";
+            },
+            error: function(){
+                alert("刪除失敗！");
+                //setTimeout(function(){delSN();}, 1000);
+            }
+        });
+    }
+
+
 </script>

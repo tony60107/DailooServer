@@ -7,6 +7,7 @@
     letter-spacing: 1.9px;
     text-align: center;
     color: #50afa0;
+    display: block;
 }
 
 .qrc {
@@ -19,8 +20,10 @@
 
 .info {
     width: 780px;
+    padding-bottom: 2px;
     margin: auto;
     margin-top: 100px;
+    overflow: hidden;
 }
 
 .input.time {
@@ -30,6 +33,7 @@
 .input.time .cont {
     width: 200px;
 }
+
 
 /*提交區塊開始*/
 .submit-btns.clearfix {

@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 public class SNServlet extends HttpServlet {
 	
 	SNService service = BasicFactory.getFactory().getService(SNService.class);
+	Gson gson = new Gson();
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -154,6 +155,11 @@ public class SNServlet extends HttpServlet {
 						response.getWriter().write("");
 					} 
 				}
+			}
+			//如果是根據ID找出序號
+			else if("getSNByCode".equals(method)) {
+				SerialNumber sn = service.findSNByCode(request.getParameter("code"));
+				response.getWriter().write(gson.toJson(sn));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();

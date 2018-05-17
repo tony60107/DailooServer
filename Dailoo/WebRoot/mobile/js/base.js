@@ -1817,6 +1817,24 @@ function getThemesByRegionId(regionId, callback) {
         }
     });
 }
+
+//換成短網址
+function toShortUrl(url) {
+    var shortUrl = "";
+    $.ajax({
+        url: "/ShortUrlServlet", context: document.body,
+        type: "POST",
+        data: {"method": "addShortUrl", "url": url},
+        async: false,//同步
+        success: function (data) {
+            shortUrl =  "https://dailoo.com/" + data;
+        },
+        error: function(){
+            setTimeout(function(){toShortUrl(url);}, 1000);
+        }
+    });
+    return shortUrl;
+}
 /*向伺服器取得資料區塊結束*/
 
 //Google Analytics程式碼 開始

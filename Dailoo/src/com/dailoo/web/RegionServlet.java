@@ -50,6 +50,7 @@ public class RegionServlet extends HttpServlet {
 		else if("updateRegionInfo".equals(method)){
 			region.setId(request.getParameter("id"));
 			region.setName(request.getParameter("name"));
+			
 			service.updateRegionById(region);
 			response.sendRedirect("/updateRegionInfo.html?id=" + request.getParameter("id"));
 		}

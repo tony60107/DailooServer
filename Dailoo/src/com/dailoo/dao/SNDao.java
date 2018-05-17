@@ -40,4 +40,5 @@ public interface SNDao extends Dao{
 
 	List<SerialNumber> findSNByOwnerId(String ownerId);
 
+
 }
