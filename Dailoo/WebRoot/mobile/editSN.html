@@ -79,6 +79,7 @@
 <script>
     //初始化頭部與腳步
     initHeaderFooter();
+
     var code = location.href.split("id=")[1];
 
     //取得序號資料，並將序號資料填入頁面中
@@ -136,6 +137,7 @@
         $('#qrc').qrcode({width: 500,height: 500,text: shortUrl});
     }
 
+    //刪除序號
     function delSN(){
         $.ajax({
             url: "/SNServlet", context: document.body,

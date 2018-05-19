@@ -5,6 +5,7 @@
     <title>Dailoo - 編輯講者</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/editSpeaker.css">
+    <meta name="viewport" content="user-scalable=no"/>
 </head>
 <body>
 <div class="w">
@@ -15,60 +16,74 @@
 
     <div class="user">
         <div class="photo">
-            <img src="https://scontent.ftpe7-1.fna.fbcdn.net/v/t1.0-1/p160x160/14222100_1356886510991413_1830586163447787471_n.jpg?_nc_cat=0&oh=1ff54164b1470ba377c6b71968811809&oe=5B6342A2" alt="">
+            <img id="uploadImg" src="#" alt="">
         </div>
-        <div class="edit"><img src="images/general/edit-s.png" alt=""></div>
+        <div id="changePic" class="edit"><img src="images/general/edit-s.png" alt=""></div>
         <div class="change">更換照片</div>
     </div>
 
     <div class="input">
         <div class="name">帳號</div>
-        <input type="text" class="cont" value="dailoo">
+        <input id="username" type="text" class="cont" value="">
     </div>
 
     <!--提交區塊-->
     <div class="submit-btns reset clearfix">
-        <div class="submit-l">刪除帳號</div>
-        <div class="submit-r hint">重設密碼</div>
+        <div class="submit-l" onclick="delSpeaker();">刪除帳號</div>
+        <a href="#" id="resetPWD" class="submit-r hint">重設密碼</a>
     </div>
 
 
     <div class="input">
         <div class="name">姓名</div>
-        <input type="text" class="cont" value="Dailoo 帶路">
+        <input id="name" type="text" class="cont" value="">
     </div>
     <div class="input">
         <div class="name">手機號碼</div>
-        <input type="text" class="cont" value="09 1234 5678">
+        <input id="phoneNumber" type="text" class="cont" value="">
     </div>
     <div class="input">
         <div class="name">市話號碼</div>
-        <input type="text" class="cont" value="02 1234 5678">
+        <input id="homeNumber" type="text" class="cont" value="">
     </div>
     <div class="input">
         <div class="name">個人網址</div>
-        <input type="text" class="cont" value="http://www.dailoo.com">
+        <input id="speakerUrl" type="text" class="cont" value="">
     </div>
     <div class="input">
         <div class="name">個人簡歷</div>
-        <input type="text" class="cont" value="全校第一名,全班第一名,全家第一名">
+        <input id="resume" type="text" class="cont" value="">
     </div>
 
     <div class="intro">
         <div class="font-s">自我介紹</div>
-        <textarea name="intro" id="" class="cont">帶路 Dailoo是一個行動自助語音導覽服務，由景區的導覽達人或在地居民，親自講述當地自然景點、人文故事或特色店家，提供自由行旅客於旅途中以手機聆聽導覽語音，深度認識當地文化、獲知周邊景點、推薦行程路線及商家優惠情報。</textarea>
+        <textarea id="intro" name="intro" id="" class="cont"></textarea>
     </div>
 
     <div class="input">
         <div class="name">自我介紹影片網址(限Youtube)</div>
-        <input type="text" class="cont" value="https://youtu.be/Qms6OGt_t6Y">
+        <input id="youtubeUrl" type="text" class="cont" value="">
     </div>
 
     <!--提交區塊-->
     <div class="submit-btns clearfix">
         <div class="submit-l">取消</div>
-        <div class="submit-r hint">儲存</div>
+        <div class="submit-r hint" onclick="submit();">儲存</div>
     </div>
+
+    <!--上傳表單-->
+    <form id="mainForm" action="/SpeakerServlet?method=updateSpeakerInfo" method="post" style="display: none" enctype="multipart/form-data">
+        <div>講者ID <input type="text" id="spId" name="id"></div>
+        <div>照片位置<input id="ipPhoto" name="file" type="file" onchange="previewUploadImg(event, 'uploadImg', function(){$('#uploadImg').css('border-radius', '50%')})"></div>
+        <div>帳號<input type="text" name="username"></div>
+        <div>姓名<input type="text" name="name"></div>
+        <div>手機號碼<input type="text" name="phoneNumber"></div>
+        <div>市話號碼<input type="text" name="homeNumber"></div>
+        <div>個人網址<input type="text" name="speakerUrl"></div>
+        <div>個人簡歷<input type="text" name="resume"></div>
+        <div>自我介紹<input type="text" name="intro"></div>
+        <div>Youtube網址<input type="text" name="youtubeUrl"></div>
+    </form>
 
     <!--Footer引入-->
     <div id="footer"></div>
@@ -76,13 +91,100 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
 <script>
-    window.onload = function () {
-        $.get("header.html", function (data) {
-            $("#header").html(data);
-        });
-        $.get("footer.html", function (data) {
-            $("#footer").html(data);
+
+    var spId = location.href.split("id=")[1];
+    $('#spId').val(spId);
+
+    //初始化頭部與腳步
+    initHeaderFooter();
+    //取得講者資料
+    getSpeaker();
+
+
+    var form = $('#mainForm');
+    var ipUsername = form.find('input[name="username"]');
+    var ipName = form.find('input[name="name"]');
+    var ipPhoneNumber = form.find('input[name="phoneNumber"]');
+    var ipHomeNumber = form.find('input[name="homeNumber"]');
+    var ipSpeakerUrl = form.find('input[name="speakerUrl"]');
+    var ipResume = form.find('input[name="resume"]');
+    var ipIntro = form.find('input[name="intro"]');
+    var ipYoutubeUrl = form.find('input[name="youtubeUrl"]');
+
+    //取得講者資料
+    function getSpeaker() {
+        $.ajax({
+            url: "/SpeakerServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getSpeakerInfo", "id": spId},
+            success: function (data) {
+                var sp = eval("(" + data + ")");
+                //console.dir(sp);
+
+                $('#resetPWD').attr('href', '/mobile/resetPassword.html?id=' + spId);
+
+                $('#uploadImg').attr('src', '/ResourceServlet?url=' + sp.photoUrl);
+                $('#username').val(sp.username);
+                $('#name').val(sp.name);
+                $('#phoneNumber').val(sp.phoneNumber);
+                $('#homeNumber').val(sp.homeNumber);
+                $('#speakerUrl').val(sp.speakerUrl);
+                $('#resume').val(sp.resume);
+                $('#intro').html(sp.intro);
+                $('#youtubeUrl').val(sp.youtubeUrl);
+            },
+            error: function(){
+                setTimeout(function(){getSpeaker();}, 1000);
+            }
         });
     }
+
+    //更新講者資訊
+    function submit(){
+
+        //將資料填入不顯示的表單中
+        ipUsername.val($('#username').val());
+        ipName.val($('#name').val());
+        ipPhoneNumber.val($('#phoneNumber').val());
+        ipHomeNumber.val($('#homeNumber').val());
+        ipSpeakerUrl.val($('#speakerUrl').val());
+        ipResume.val($('#resume').val());
+        ipIntro.val($('#intro').val());
+        ipYoutubeUrl.val($('#youtubeUrl').val());
+
+        $.ajax({
+            url: '/SpeakerServlet?method=updateSpeakerInfo',
+            type: 'POST',
+            cache: false,
+            data: new FormData($('#mainForm')[0]),
+            processData: false,
+            contentType: false,
+            success:function(result){
+                alert("更新成功！！");
+                window.location.reload();
+                //document.location.href="/mobile/manageSpeakers.html";
+            },error:function(result){
+                alert("更新失敗");
+            },
+        })
+    }
+
+    function delSpeaker() {
+        $.ajax({
+            url: '/SpeakerServlet',
+            type: 'POST',
+            data: {"method": "delSpeakerById", "id":$('#spId').val()},
+            success:function(result){
+                alert("刪除成功！！");
+                document.location.href="/mobile/manageSpeakers.html";
+            },error:function(result){
+                alert("刪除失敗");
+            },
+        })
+    }
+
+    //點下大頭貼時，觸發上傳按鈕
+    $('#changePic').bind('click', function(){$('#ipPhoto').click();});
 </script>
