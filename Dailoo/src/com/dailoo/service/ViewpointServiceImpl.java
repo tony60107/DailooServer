@@ -12,6 +12,7 @@ import com.dailoo.dao.TagDao;
 import com.dailoo.dao.ThemeDao;
 import com.dailoo.dao.ViewpointDao;
 import com.dailoo.domain.Audio;
+import com.dailoo.domain.Region;
 import com.dailoo.domain.Speaker;
 import com.dailoo.domain.Tag;
 import com.dailoo.domain.Theme;
@@ -176,6 +177,13 @@ public class ViewpointServiceImpl implements ViewpointService{
 			themelist.add(theme);
 		}
 		
+		//找出主題對應的地區，並存入List中
+		List<Region> regionList = new ArrayList<Region>();
+		for(int i = 0; i < themelist.size(); i++) {
+			Region region = regionDao.findRegionById(themelist.get(i).getRegionId());
+			regionList.add(region);
+		}
+		
 		List<Viewpoint> moreAudio = dao.findViewpointsByNameAndSpeaker(vp.getName(), vp.getSpeakerId());
 		//設定下一段語音
 		for(int i = 0; i < moreAudio.size(); i++) {
@@ -210,6 +218,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 		String audioJson = gson.toJson(audio);
 		String tagsJson = gson.toJson(tags);
 		String themeJson = gson.toJson(themelist);
+		String regionJson = gson.toJson(regionList);
 		String moreAudioJson = gson.toJson(toVpSimple(moreAudio));
 		String neighViewJson = gson.toJson(toVpSimple(neighView));
 		
@@ -219,7 +228,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 		//完整的Json數據
 		String result = vpJson.substring(0, vpJson.length()-1) + ", \"speaker\":" + speakerJson 
 				+ ", \"audio\":" + audioJson + ", \"moreAudio\":" + moreAudioJson
-				+ ", \"theme\":"+ themeJson + ", \"neighView\":"+ neighViewJson +"}";
+				+ ", \"theme\":"+ themeJson + ", \"region\":"+ regionJson + ", \"neighView\":"+ neighViewJson +"}";
 		
 		return result;
 	}

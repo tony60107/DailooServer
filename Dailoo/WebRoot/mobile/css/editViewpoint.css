@@ -141,6 +141,11 @@
     margin-top: 90px;
 }
 
+.repr-pic .border {
+    width: 400px;
+    height: 400px;
+}
+
 .repr-pic img {
     width: 400px;
     height: 400px;

@@ -43,7 +43,7 @@ function activeSelec(selec, optCallback) {
             if(selecCont.id == 'city'){updateDist();}
 
             //如果是景點或地區的下拉選單，設定data-value值在點擊的下拉選單中
-            if(selecCont.id == 'vpId' || selecCont.id == 'regionId' || selecCont.id == 'speakerId' || selecCont.id == 'themeId' || selecCont.id == 'vpSubtitle'){
+            if(selecCont.id == 'vpId' || selecCont.id == 'regionId' || selecCont.id == 'speakerId' || selecCont.id == 'themeId' || selecCont.id == 'vpSubtitle' || selecCont.id == 'subtitle'){
                 selecCont.dataset.value = this.dataset.value;
 
                 //如果是地區下拉選單，且該頁面有主題下拉選單的話，則更新主題下拉選單
@@ -54,7 +54,7 @@ function activeSelec(selec, optCallback) {
             }
 
             //呼叫回調函數
-            if(optCallback != undefined) optCallback();
+            if(optCallback != undefined) optCallback(selec);
 
             //關閉彈出式菜單
             popMask.style.display = "none";
@@ -1836,6 +1836,77 @@ function toShortUrl(url) {
     return shortUrl;
 }
 /*向伺服器取得資料區塊結束*/
+
+//複製到剪貼簿
+function copy(s) {
+    $('body').append('<textarea id="clip_area"></textarea>');
+
+    var clip_area = $('#clip_area');
+
+    clip_area.text(s);
+    clip_area.select();
+
+    document.execCommand('copy');
+
+    clip_area.remove();
+}
+
+//初始化Google地圖
+function initMap() {
+
+    var map;
+    var markers = [];
+
+    var initLocation = {lat: 22.925489, lng: 121.125867515};
+
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 19,
+        center: initLocation,
+    });
+    map.addListener('click', function (event) {
+        addMarker(event.latLng);
+    });
+
+    //地圖上新增標記
+    function addMarker(location) {
+        deleteMarkers();
+
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+        markers.push(marker);
+        var loc = location.toString().substring(1, location.toString().length - 1);
+        //將經緯度填入表單中
+        $('#mainForm').find('input[name="latitude"]').val(loc.split(",")[0]);
+        $('#mainForm').find('input[name="longitude"]').val(loc.split(",")[1].trim());
+    }
+
+    //地圖上刪除所有的標記
+    function deleteMarkers() {
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
+        markers = [];
+    }
+
+    //地址欄失去焦點時，更新地圖中心點
+    $('#address').bind('blur', function () {
+        var url = "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=" + $('#address').val();
+        $.ajax({
+            url: url, context: document.body,
+            type: "POST",
+            success: function (data) {
+                if (data.status != "OK") {
+                    $('#address').blur();
+                }
+                var loc = data.results[0].geometry.location;
+                map.setCenter(loc);
+            },
+        });
+    });
+}
+
 
 //Google Analytics程式碼 開始
 (function (i, s, o, g, r, a, m) {
