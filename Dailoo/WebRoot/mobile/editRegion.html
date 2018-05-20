@@ -61,8 +61,6 @@
     //取得地區名稱
     getRegion();
 
-
-
     //初始化，設定regionId跟預覽
     function init(){
         var regionId = location.href.split("id=")[1];
@@ -75,7 +73,7 @@
         $.ajax({
             url: "/RegionServlet", context: document.body,
             type: "POST",
-            data: {"method": "getRegionById", "id": regionId},
+            data: {"method": "getRegionById", "id": $('#regionId').val()},
             success: function (data) {
                 var region = eval("(" + data + ")");
                 console.dir(region);

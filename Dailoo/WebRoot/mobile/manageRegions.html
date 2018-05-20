@@ -5,6 +5,7 @@
     <title>Dailoo - 主題類別管理</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/manageRegion.css">
+    <meta name="viewport" content="user-scalable=no"/>
 </head>
 <body>
 <div class="w">
@@ -14,18 +15,13 @@
     <div class="main-title">主題類別管理</div>
 
     <div class="input no-title" style="margin-top: 100px;">
-        <input class="cont" placeholder="輸入要新增的主題類別名稱"/>
+        <input id="name" class="cont" placeholder="輸入要新增的主題類別名稱"/>
     </div>
 
-    <div class="add-region">新增主題類別</div>
+    <div class="add-region" onclick="addRegion();">新增主題類別</div>
 
-    <div class="regions">
+    <div id="regionList" class="regions">
         <div class="font-s">已建立的主題類別</div>
-        <a href="#" class="region">鹿野鄉</a>
-        <a href="#" class="region">鹿野鄉</a>
-        <a href="#" class="region">鹿野鄉</a>
-        <a href="#" class="region">鹿野鄉</a>
-        <a href="#" class="region">鹿野鄉</a>
     </div>
 
     <!--Footer引入-->
@@ -34,13 +30,52 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
 <script>
-    window.onload = function () {
-        $.get("header.html", function (data) {
-            $("#header").html(data);
-        });
-        $.get("footer.html", function (data) {
-            $("#footer").html(data);
+
+    //初始化頭部與腳步
+    initHeaderFooter();
+
+    //取得地區資料
+    getRegions();
+
+    //取得地區資料
+    function getRegions() {
+        var $regionList = $('#regionList');
+        $.ajax({
+            url: "/RegionServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getAllRegions"},
+            success: function (data) {
+                var regions = eval("(" + data + ")");
+                console.dir(regions);
+                var dom = ' <div class="font-s">已建立的主題類別</div>';
+                for(var i = 0; i <  regions.length; i++) {
+                    dom += '<a href="/mobile/editRegion.html?id=' + regions[i].id +'" class="region">' + regions[i].name + '</a>';
+                }
+                $regionList.html(dom);
+
+            },
+            error: function(){
+                setTimeout(function(){getRegions();}, 1000);
+            }
         });
     }
+
+    //新增地區
+    function addRegion() {
+        $.ajax({
+            url: "/RegionServlet", context: document.body,
+            type: "POST",
+            data: {"method": "addRegion", "name": $('#name').val()},
+            success: function (data) {
+                alert('新增成功！');
+                window.location.reload();
+            },
+            error: function(){
+                setTimeout(function(){addRegion();}, 1000);
+            }
+        });
+    }
+
 </script>

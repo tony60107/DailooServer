@@ -165,10 +165,12 @@
 
     var form = $('#mainForm');
     var ipId = form.find('input[name="id"]');
+    //紀錄景點ID
     ipId.val(location.href.split("id=")[1]);
 
-    var vps;
-    var vpNames = new Set();
+    var vps;    //紀錄從伺服器中獲取的，該講者擁有的所有景點
+    var vpNames = new Set();    //用於過濾出重複的景點名稱
+
     //初始化頭部與腳步
     initHeaderFooter();
 
@@ -239,6 +241,7 @@
         });
     }
 
+    //刪除景點
     function delViewpoint() {
         if(confirm("確定刪除?")){
             $.ajax({
