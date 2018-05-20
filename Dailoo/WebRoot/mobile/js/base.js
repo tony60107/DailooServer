@@ -1851,6 +1851,12 @@ function copy(s) {
     clip_area.remove();
 }
 
+//左邊補齊全位數 Ex: 1 -> 0001, bits:長度（4）， 要填充的字元（0），要填充的數字（1）
+function leftCompleting(bits, identifier, value) {
+    value = Array(bits + 1).join(identifier) + value;
+    return value.slice(-bits);
+}
+
 //初始化Google地圖
 function initMap() {
 

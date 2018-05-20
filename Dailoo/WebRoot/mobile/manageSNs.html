@@ -5,6 +5,7 @@
     <title>Dailoo - 序號管理</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/manageSNs.css">
+    <meta name="viewport" content="user-scalable=no"/>
 </head>
 <body>
 <div class="w">
@@ -14,11 +15,11 @@
     <div class="main-title">序號管理</div>
 
     <div class="add-SN">
-        <a href="#">新增序號</a>
+        <a href="/mobile/addSN.html">新增序號</a>
     </div>
 
     <!--序號篩選-->
-    <div class="filter clearfix">
+    <div class="filter clearfix" style="display: none">
         <div class="font-s">序號篩選條件</div>
         <div class="clearfix">
             <div class="selec city fl">
@@ -43,31 +44,15 @@
 
     <!--序號排序-->
     <div class="sorts clearfix">
-        <div class="sort enable">依日期</div>
-        <div class="sort">使用中</div>
-        <div class="sort">未使用</div>
-        <div class="sort">已失效</div>
+        <div id="dateSort" class="sort enable">依日期</div>
+        <div id="usingSort" class="sort">使用中</div>
+        <div id="unuseSort" class="sort">未使用</div>
+        <div id="failSort" class="sort">已失效</div>
     </div>
 
     <!--序號列表-->
-    <div class="sns">
+    <div id="snList" class="sns">
         <div class="font-s">已建立序號</div>
-        <a class="sn clearfix">
-            <div class="fl">0001.</div>
-            <div class="sn-r fr clearfix">
-                <div class="name">王小明</div>
-                <div class="time fl">2017/12/03/19:51 &nbsp; 建立</div>
-                <div class="stat fl">使用中</div>
-            </div>
-        </a>
-        <a class="sn clearfix">
-            <div class="fl">0001.</div>
-            <div class="sn-r fr clearfix">
-                <div class="name">王小明</div>
-                <div class="time fl">2017/12/03/19:51 &nbsp; 建立</div>
-                <div class="stat fl">使用中</div>
-            </div>
-        </a>
         <a class="sn clearfix">
             <div class="fl">0001.</div>
             <div class="sn-r fr clearfix">
@@ -85,13 +70,89 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
 <script>
-    window.onload = function () {
-        $.get("header.html", function (data) {
-            $("#header").html(data);
-        });
-        $.get("footer.html", function (data) {
-            $("#footer").html(data);
+
+    var sns;    //暫存所有序號資訊
+
+    //初始化頭部與腳步
+    initHeaderFooter();
+    //取得所有序號資訊
+    getSns();
+    //綁定序號狀態監聽器按鈕
+    $('#dateSort').bind('click', function(e){enableSort(e);filterSN(sns,'date')});
+    $('#usingSort').bind('click', function(e){enableSort(e); filterSN(sns,'使用中')});
+    $('#unuseSort').bind('click', function(e){enableSort(e);filterSN(sns,'未使用')});
+    $('#failSort').bind('click', function(e){enableSort(e);filterSN(sns,'已失效')});
+
+    //取得所有序號資訊
+    function getSns() {
+        $.ajax({
+            url: "/SNServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getAllSNs"},
+            success: function (data) {
+                sns = eval("(" + data + ")");
+                console.dir(sns);
+               filterSN(sns, 'date');
+            },
+            error: function(){
+                setTimeout(function(){getSns();}, 1000);
+            }
         });
     }
+
+    //序號狀態過濾器
+    function filterSN(sns, type){
+        var $snList = $('#snList');
+        var count = 0; //計數已有多少序號在列表中
+        var dom = '<div class="font-s">已建立序號</div>';
+        //將序號資料填入列表
+        for(var i = 0; i < sns.length; i++) {
+            //建立序號DOM
+
+            if(getSNStat(sns[i]) == type){
+                dom += '<a href="/mobile/editSN.html?id=' + sns[i].code +'" class="sn clearfix">' +
+                        '<div class="fl">' + leftCompleting(4,0,count+1) + '.</div>' +
+                        '<div class="sn-r fr clearfix">' +
+                        '<div class="name">' + sns[i].ownerName + '</div>' +
+                        '<div class="time fl">' + new Date(sns[i].createTime).toLocaleString('chinese',{hour12:false}) +' &nbsp; 建立</div>' +
+                        '<div class="stat fl">' + getSNStat(sns[i]) + '</div>' +
+                        '</div>' +
+                        '</a>';
+                count++;
+            } else if(type == 'date'){ //全部顯示
+                dom += '<a href="/mobile/editSN.html?id=' + sns[i].code +'" class="sn clearfix">' +
+                        '<div class="fl">' + leftCompleting(4,0,count+1) + '.</div>' +
+                        '<div class="sn-r fr clearfix">' +
+                        '<div class="name">' + sns[i].ownerName + '</div>' +
+                        '<div class="time fl">' + new Date(sns[i].createTime).toLocaleString('chinese',{hour12:false}) +' &nbsp; 建立</div>' +
+                        '<div class="stat fl">' + getSNStat(sns[i]) + '</div>' +
+                        '</div>' +
+                        '</a>';
+                count++;
+            }
+        }
+        $snList.html(dom);
+    }
+
+    //取得序號啟用狀態
+    function getSNStat(sn) {
+        //設定序號狀態
+        var snStat = '';
+        if(sn.startTime == undefined) {snStat = '未使用'}
+        else{
+            var timeLeft = parseInt(new Date(new Date(sn.startTime).getTime() + sn.useLength * 1000 * 3600 - new Date().getTime()).getTime()); //剩餘時間
+            if(timeLeft < 0) {snStat = '已失效';}
+            else {snStat = '使用中';}
+        }
+        return snStat;
+    }
+
+    //點按過濾器後的CSS處理
+    function enableSort(e) {
+        $('.sort').removeClass("enable");
+        $(e.target).addClass("enable");
+    }
+
 </script>
