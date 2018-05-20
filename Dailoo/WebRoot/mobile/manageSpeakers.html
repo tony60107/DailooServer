@@ -5,6 +5,7 @@
     <title>Dailoo - 講者管理</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/manageSpeakers.css">
+    <meta name="viewport" content="user-scalable=no"/>
 </head>
 <body>
 <div class="w">
@@ -16,15 +17,15 @@
     <!--用戶資料-->
     <div class="user">
         <div class="photo">
-            <img src="" alt="">
+            <img id="photo" src="#" alt="">
         </div>
-        <div class="name">Dailoo 帶路</div>
-        <div class="edit"><img src="images/general/edit.png" alt=""></div>
+        <div id="name" class="name">Dailoo 帶路</div>
+        <a id="edit" class="edit"><img src="images/general/edit.png" alt=""></a>
     </div>
 
     <a href="#" class="add-speaker">新增講者</a>
 
-    <div class="speakers">
+    <div id="spList" class="speakers">
         <div class="title font-s">我建立的講者</div>
         <div class="sp">講者姓名1</div>
         <div class="sp">講者姓名1</div>
@@ -39,13 +40,48 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
 <script>
-    window.onload = function() {
-        $.get("header.html",function(data){
-            $("#header").html(data);
+    //初始化頭部與腳步
+    initHeaderFooter();
+    getLoginUser();
+    getSpeakers();
+
+    //取得所有講者資訊
+    function getSpeakers() {
+        $.ajax({
+            url: "/SpeakerServlet", context: document.body,
+            type: "POST",
+            data: {"method": "findAllSpeakers"},
+            success: function (data) {
+                var sps = eval("(" + data + ")");
+                console.dir(sps);
+                var dom = '<div class="font-s">我建立的講者</div>';
+                for(var i = 0; i < sps.length; i++) {
+                    dom += '<a class="sp" href="/mobile/editSpeaker.html?id=' + sps[i].id +'">' + sps[i].name + '</a>';
+                }
+                $('#spList').html(dom);
+            },
+            error: function(){
+                setTimeout(function(){getSpeakers();}, 1000);
+            }
         });
-        $.get("footer.html",function(data){
-            $("#footer").html(data);
+    }
+    function getLoginUser() {
+        $.ajax({
+            url: "/SpeakerServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getLoginUser"},
+            success: function (data) {
+                var user = eval("(" + data + ")");
+                console.dir(user);
+                $('#name').html(user.name);
+                $('#photo').attr('src', '/ResourceServlet?url=' + user.photoUrl);
+                $('#edit').attr('href', '/mobile/editSpeaker.html?id=' + user.id);
+            },
+            error: function(){
+                setTimeout(function(){getSpeakers();}, 1000);
+            }
         });
     }
 </script>
