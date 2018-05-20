@@ -135,4 +135,11 @@ public interface ViewpointService extends Service{
 	 */
 	String findSubtitlesById(String id);
 
+	/**
+	 * 根據景點ID，更新與該景點相同名稱(副標題不同的景點)的景點的景點名稱
+	 * @param id 景點ID
+	 * @param newName 景點新名稱
+	 */
+	void updateViewpointNameById(String id, String newName);
+
 }

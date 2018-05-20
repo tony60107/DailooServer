@@ -27,9 +27,6 @@
 
     <div id="spList" class="speakers">
         <div class="title font-s">我建立的講者</div>
-        <div class="sp">講者姓名1</div>
-        <div class="sp">講者姓名1</div>
-        <div class="sp">講者姓名1</div>
     </div>
 
 
@@ -44,7 +41,9 @@
 <script>
     //初始化頭部與腳步
     initHeaderFooter();
+    //取得登入者資料，用於大頭貼
     getLoginUser();
+    //取得所有講者資訊
     getSpeakers();
 
     //取得所有講者資訊
@@ -67,6 +66,7 @@
             }
         });
     }
+    //取得登入者資料，用於大頭貼
     function getLoginUser() {
         $.ajax({
             url: "/SpeakerServlet", context: document.body,

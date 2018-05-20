@@ -5,6 +5,7 @@
     <title>Dailoo - 景點副標題管理</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/manageSubtitle.css">
+    <meta name="viewport" content="user-scalable=no"/>
 </head>
 <body>
 <div class="w">
@@ -15,15 +16,13 @@
 
     <div class="vp-name">
         <div class="font-s">景點名稱</div>
-        <input class="name" value="大原花布燈籠生活文化館"/>
-        <img src="images/general/store.png">
+        <input id="name" class="name" value=""/>
+        <img onclick="updateVpName();" src="images/general/store.png">
     </div>
     <div class="vp-name-hint">※修改名稱後請按 <span>[儲存]</span></div>
 
-    <div class="list">
-        <div class="name font-s">此景點共有 2 段副標題</div>
-        <a href="#" class="sub">副標題文字可點選</a>
-        <a href="#" class="sub">認識大原客</a>
+    <div id="stList" class="list">
+        <div class="name font-s">此景點共有 0 段副標題</div>
     </div>
 
     <!--Footer引入-->
@@ -32,15 +31,53 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
 <script>
-    window.onload = function() {
-        $.get("header.html",function(data){
-            $("#header").html(data);
-        });
-        $.get("footer.html",function(data){
-            $("#footer").html(data);
-        });
 
+    var vpId = location.href.split("id=")[1]; //景點ID
+
+    //初始化頭部與腳步
+    initHeaderFooter();
+    //取得與該景點相同名稱但副標題不同的景點
+    getSubtitles();
+
+    //取得與該景點相同名稱但副標題不同的景點
+    function getSubtitles() {
+        $.ajax({
+            url: "/ViewpointServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getSubtitlesById", "id":vpId},
+            success: function (data) {
+                var sts = eval("(" + data + ")");
+                //console.dir(sts);
+
+                $('#name').val(sts[0].name);
+
+                //副標題列表內容
+                var dom = '<div class="name font-s">此景點共有 ' + sts.length  + ' 段副標題</div>'
+                for(var i = 0; i < sts.length; i++) {
+                    dom += '<a href="/mobile/editViewpoint.html?id=' + sts[i].id + '" class="sub">' + sts[i].subtitle + '</a>';
+                }
+                $('#stList').html(dom);
+            },
+            error: function(){
+                setTimeout(function(){getSubtitles();}, 1000);
+            }
+        });
     }
 
+    //更新景點名稱
+    function updateVpName() {
+        $.ajax({
+            url: "/ViewpointServlet", context: document.body,
+            type: "POST",
+            data: {"method": "updateViewpointNameById", "id":vpId, "name": $('#name').val()},
+            success: function (data) {
+                alert("儲存成功！");
+            },
+            error: function(){
+                alert("儲存失敗");
+            }
+        });
+    }
 </script>

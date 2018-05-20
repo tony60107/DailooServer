@@ -296,6 +296,10 @@ public class ViewpointServlet extends HttpServlet {
 				json = service.findSubtitlesById(request.getParameter("id"));
 				response.getWriter().write(json);
 			}
+			//根據景點ID，更新與該景點相同名稱(副標題不同的景點)的景點的景點名稱
+			else if("updateViewpointNameById".equals(method)) {
+				service.updateViewpointNameById(request.getParameter("id"), request.getParameter("name"));
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -416,4 +416,14 @@ public class ViewpointServiceImpl implements ViewpointService{
 		return gson.toJson(vps);
 	}
 
+	@Override
+	public void updateViewpointNameById(String id, String newName) {
+		Viewpoint vp = dao.findViewpointById(id);
+		List<Viewpoint> vps = dao.findViewpointsByName(vp.getName());
+		for(Viewpoint temp : vps){
+			temp.setName(newName);
+			dao.updateViewpoint(temp);
+		}
+	}
+
 }
