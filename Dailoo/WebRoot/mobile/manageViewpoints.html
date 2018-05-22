@@ -5,6 +5,7 @@
     <title>Dailoo - 景點管理</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/manageViewpoints.css">
+    <meta name="viewport" content="user-scalable=no"/>
 </head>
 <body>
 <div class="w">
@@ -14,16 +15,13 @@
     <div class="main-title">景點列表</div>
 
     <div class="sort clearfix">
-        <div class="func">新→舊</div>
-        <div class="func">舊→新</div>
-        <div class="func">A→Z</div>
-        <div class="func">Z→A</div>
+        <div class="func enable" onclick="sort(this, 'new');">新→舊</div>
+        <div class="func" onclick="sort(this, 'old')">舊→新</div>
+        <div class="func" onclick="sort(this, 'A')">A→Z</div>
+        <div class="func" onclick="sort(this, 'Z')">Z→A</div>
     </div>
 
-    <div class="list">
-        <div class="vp">景點名稱文字可點選</div>
-        <div class="vp">大原花布燈籠生活文化館</div>
-        <div class="vp">鹿野耕食宿</div>
+    <div id="vpList" class="list">
     </div>
 
     <!--Footer引入-->
@@ -32,15 +30,71 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
 <script>
-    window.onload = function() {
-        $.get("header.html",function(data){
-            $("#header").html(data);
-        });
-        $.get("footer.html",function(data){
-            $("#footer").html(data);
-        });
 
+    var vpNames = new Map(); //景點名稱Map，用於過濾重複的景點名稱
+
+    //初始化頭部與腳步
+    initHeaderFooter();
+    //取得該登入者擁有的景點
+    getViewpointsByLoginUser();
+
+    //取得該登入者擁有的景點
+    function getViewpointsByLoginUser() {
+        var vpList = $('#vpList');
+        $.ajax({
+            url: "/ViewpointServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getViewpointsByLoginUser"},
+            success: function (data) {
+                var vps = eval("(" + data + ")");
+
+                //將景點資料填入Map中，過濾重複的景點名稱
+                for (var i = 0; i < vps.length; i++) {vpNames.set(vps[i].name, vps[i]);}
+
+                //將景點資料填入列表
+                var dom = "";
+                vpNames.forEach(function (vp) {
+                    dom += '<a updateTime="' + vp.updateTime + '" class="vp" href="/mobile/manageSubtitle.html?id=' + vp.id + '">' + vp.name + '</a>';
+                });
+                vpList.html(dom);
+
+                //將景點由新到舊排序
+                sort($('.sort>div').get(0), 'new');
+            },
+            error: function () {
+                setTimeout(function () {getViewpointsByLoginUser();}, 1000);
+            }
+        });
     }
 
+    //進行排序
+    function sort(btn, type) {
+
+        //設定按鈕樣式
+        $('.sort>div').removeClass('enable');
+        $(btn).addClass('enable');
+
+        var sortEles = $('#vpList>a');  //準備要排序的元素
+        var sortedEles; // 已排序完的元素
+
+        //將景點由舊到新排序
+        var asc = function (a, b) {return Date.parse($(a).attr('updateTime')).valueOf() > Date.parse($(b).attr('updateTime')).valueOf() ? 1 : -1;}
+        //將景點由新到舊排序
+        var desc = function (a, b) {return Date.parse($(a).attr('updateTime')).valueOf() < Date.parse($(b).attr('updateTime')).valueOf() ? 1 : -1;}
+        //將景點由拼音A到Z排序
+        var A = function (a, b) {return $(a).html().substr(0, 1).localeCompare($(b).html().substr(0, 1), 'zh-Hans-CN', {sensitivity: 'accent'});}
+        //將景點由拼音Z到A排序
+        var Z = function (a, b) {return $(b).html().substr(0, 1).localeCompare($(a).html().substr(0, 1), 'zh-Hans-CN', {sensitivity: 'accent'});}
+
+        //判斷要求哪種排序
+        if (type == 'new') {sortedEles = sortEles.sort(desc);}
+        else if (type == 'old') {sortedEles = sortEles.sort(asc);}
+        else if(type == 'A'){sortedEles = sortEles.sort(A);}
+        else if(type == 'Z'){sortedEles = sortEles.sort(Z);}
+
+        //將景點資料填入列表
+        $('#vpList').empty().append(sortedEles);
+    }
 </script>

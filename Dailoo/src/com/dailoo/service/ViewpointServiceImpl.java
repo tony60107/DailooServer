@@ -53,6 +53,8 @@ public class ViewpointServiceImpl implements ViewpointService{
 			vpsim.setIsPublish(vp.getIsPublish());
 			vpsim.setIsPriority(vp.getIsPriority());
 			vpsim.setIsPay(vp.getIsPay());
+			vpsim.setUpdateTime(vp.getUpdateTime());
+			
 			if(vp.getDistance() != null) vpsim.setDistance(vp.getDistance());
 			
 			if(vp.getBehalfPhotoUrl() != null) vpsim.setBehalfPhotoUrl(vp.getBehalfPhotoUrl());

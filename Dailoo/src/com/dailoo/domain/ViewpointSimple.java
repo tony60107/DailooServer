@@ -1,5 +1,7 @@
 package com.dailoo.domain;
 
+import java.sql.Timestamp;
+
 public class ViewpointSimple {
 	private String id;
 	private String name;
@@ -14,6 +16,7 @@ public class ViewpointSimple {
 	private int isPriority;
 	private int isPay;
 	private Double distance;
+	private Timestamp updateTime;	//上傳時間
 	
 	public String getId() {
 		return id;
@@ -93,6 +96,12 @@ public class ViewpointSimple {
 	}
 	public void setDistance(Double distance) {
 		this.distance = distance;
+	}
+	public Timestamp getUpdateTime() {
+		return updateTime;
+	}
+	public void setUpdateTime(Timestamp updateTime) {
+		this.updateTime = updateTime;
 	}
 	@Override
 	public String toString() {

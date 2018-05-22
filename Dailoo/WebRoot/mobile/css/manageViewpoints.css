@@ -10,6 +10,10 @@
     float: left;
 }
 
+.sort .enable {
+    color: #50afa0;
+}
+
 .list {
     width: 780px;
     margin: auto;
@@ -21,4 +25,5 @@
     letter-spacing: normal;
     color: #000000;
     border-bottom: solid 2px #979797;
+    display: block;
 }
