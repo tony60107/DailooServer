@@ -5,6 +5,7 @@
     <title>Dailoo - 首頁</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/index.css">
+    <meta name="viewport" content="user-scalable=no"/>
 </head>
 <body>
 <div class="w">
@@ -14,26 +15,22 @@
         <img src="images/index/dailoo.png" alt="">
     </div>
     <div class="funcGroup">
-        <a href="#" class="func">新增景點</a>
-        <a href="#" class="func">景點管理</a>
-        <a href="#" class="func">新增講者</a>
-        <a href="#" class="func">講者管理</a>
-        <a href="#" class="func">主題管理</a>
-        <a href="#" class="func">序號管理</a>
-    </div>s
+        <a href="/mobile/addViewpoint.html" class="func">新增景點</a>
+        <a href="/mobile/manageViewpoints.html" class="func">景點管理</a>
+        <a href="/mobile/addSpeaker.html" class="func">新增講者</a>
+        <a href="/mobile/manageSpeakers.html" class="func">講者管理</a>
+        <a href="/mobile/manageThemes.html" class="func">主題管理</a>
+        <a href="/mobile/manageSNs.html" class="func">序號管理</a>
+    </div>
     <!--Footer引入-->
     <div id="footer"></div>
 </div>
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
 <script>
-    window.onload = function() {
-        $.get("header.html",function(data){
-            $("#header").html(data);
-        });
-        $.get("footer.html",function(data){
-            $("#footer").html(data);
-        });
-    }
+    //初始化頭部與腳步
+    initHeaderFooter();
+
 </script>

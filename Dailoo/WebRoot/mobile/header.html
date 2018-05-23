@@ -8,8 +8,8 @@
 <body>
 <div class="w">
     <div class="header">
-        <div class="username">username</div>
-        <div class="signout">登出</div>
+        <div id="username" class="username"></div>
+        <a href="/LogoutServlet" class="signout">登出</a>
     </div>
 
 </div>
@@ -18,5 +18,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
 <script>
+
+    getLoginUser();
+
+    //取得登入者資料，如果未登入，則跳轉到登入頁面
+    function getLoginUser() {
+        $.ajax({
+            url: "/SpeakerServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getLoginUser"},
+            success: function (data) {
+                var user = eval("(" + data + ")");
+                console.dir(user);
+                if(user.username == undefined) window.location.href = '/mobile/login.html';
+                $('#username').html(user.username);
+            },
+            error: function(){
+                setTimeout(function(){getLoginUser();}, 1000);
+            }
+        });
+    }
 
 </script>

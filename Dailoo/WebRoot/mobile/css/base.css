@@ -424,6 +424,52 @@ s, i, em {
 }
 /*彈出式菜單結束*/
 
+.pop-alert {
+    width: 720px;
+    height: 480px;
+    background-color: #ffffff;
+    position: fixed;
+    z-index: 1002;
+    top: 522px;
+    left: 130px;
+}
+
+.pop-alert .title {
+    text-align: center;
+    line-height: 112px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.pop-alert .msg {
+    width: 520px;
+    height: 132px;
+    padding: 48px 100px 0px 100px;
+    overflow: hidden;
+}
+
+.pop-alert .ok {
+    margin-top: 66px;
+    margin-left: 482px;
+    color: #50afa0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

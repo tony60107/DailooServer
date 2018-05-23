@@ -133,10 +133,15 @@ public class SpeakerServlet extends HttpServlet {
 			}
 			//如果是取得登入帳號資料
 			else if("getLoginUser".equals(method)){
-				String speakerJson = service.findSpeakerById(loginUser.getId());
-				Speaker sp = gson.fromJson(speakerJson, Speaker.class);
-				request.getSession().setAttribute("speaker", sp);
-				response.getWriter().write(speakerJson);
+				if(loginUser != null){
+					String speakerJson = service.findSpeakerById(loginUser.getId());
+					Speaker sp = gson.fromJson(speakerJson, Speaker.class);
+					request.getSession().setAttribute("speaker", sp);
+					response.getWriter().write(speakerJson);
+				} else {
+					response.getWriter().write("{}");
+				}
+				
 			}
 			//如果是重置帳號和密碼	
 			else if("resetUSNandPWD".equals(method)){

@@ -19,7 +19,7 @@
         <div class="photo">
             <img id="photo" src="#" alt="">
         </div>
-        <div id="name" class="name">Dailoo 帶路</div>
+        <div id="name" class="name"></div>
         <a id="edit" class="edit"><img src="images/general/edit.png" alt=""></a>
     </div>
 
@@ -80,7 +80,7 @@
                 $('#edit').attr('href', '/mobile/editSpeaker.html?id=' + user.id);
             },
             error: function(){
-                setTimeout(function(){getSpeakers();}, 1000);
+                setTimeout(function(){getLoginUser();}, 1000);
             }
         });
     }

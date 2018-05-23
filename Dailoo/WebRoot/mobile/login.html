@@ -5,6 +5,7 @@
     <title>Dailoo - 登入</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/login.css">
+    <meta name="viewport" content="user-scalable=no"/>
 </head>
 <body>
 <div class="w">
@@ -13,20 +14,59 @@
     </div>
     <div class="main-title">歡迎加入帶路！</div>
     <form class="form" action="">
-        <input type="text" value="帳號">
-        <input type="text" value="密碼">
+        <input id="username" type="text" placeholder="帳號">
+        <input id="password" type="password" placeholder="密碼">
     </form>
-    <div class="submit">登入</div>
+    <div class="submit" onclick="submitForm();">登入</div>
+
+    <!--上傳表單-->
+    <form id="mainForm" action="/LoginServlet" method="post" style="display: block">
+        <div>帳號<input type="text" name="username"></div>
+        <div>密碼<input type="text" name="password"></div>
+    </form>
+
+    <!--彈出菜單-->
+    <div class="pop-mask" style=""></div>
+    <div class="pop-menu" style="display: none">
+        <div class="title">切換至其他景點</div>
+    </div>
+
+
     <!--Footer引入-->
     <div id="footer"></div>
 </div>
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
 <script>
-    window.onload = function() {
-        $.get("footer.html",function(data){
-            $("#footer").html(data);
+    //初始化頭部與腳步
+    initHeaderFooter();
+
+    //表單與表單中的控件
+    var form = $('#mainForm');
+    var ipUsername = form.find('input[name="username"]');
+    var ipPassword = form.find('input[name="password"]');
+
+
+    function submitForm() {
+        ipUsername.val($('#username').val());
+        ipPassword.val($('#password').val());
+
+        //上傳表單
+        $.ajax({
+            url:"/LoginServlet",
+            type: "POST",
+            data: form.serialize(),//將表單資料序列化
+            success:function(data){
+                var result = eval("(" + data + ")");
+                console.dir(result)
+                if(result.error != undefined){
+                    alert("帳號或密碼不正確");
+                } else {
+                    window.location.href = '/mobile/index.html';
+                }
+            },
         });
     }
 </script>

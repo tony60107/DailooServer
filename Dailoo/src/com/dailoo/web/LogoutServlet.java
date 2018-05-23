@@ -21,7 +21,7 @@ public class LogoutServlet extends HttpServlet {
 			autologinC.setMaxAge(0);
 			response.addCookie(autologinC);
 		}
-		response.sendRedirect("/login.html");
+		response.sendRedirect("/mobile/login.html");
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
