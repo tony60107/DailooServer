@@ -430,8 +430,6 @@ s, i, em {
     background-color: #ffffff;
     position: fixed;
     z-index: 1002;
-    top: 522px;
-    left: 130px;
 }
 
 .pop-alert .title {

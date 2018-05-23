@@ -2,6 +2,16 @@
  * Created by Waiting on 2016/10/11.
  */
 
+//自定義Alert
+window.alert = function(msg) {
+    console.dir(document.body.clientHeight)
+    $('.pop-alert').css('margin-left', ((document.body.clientWidth - 720) / 2) + 'px');
+    $('.pop-alert').css('top', ((document.body.clientHeight - 480) / 2) + 'px');
+    $('#popAlertMsg').html(msg);
+    $('.pop-alert').css('display', 'block');
+    $('.pop-mask').css('display', 'block');
+}
+
 //激活下拉選單功能
 function activeSelec(selec, optCallback) {
     var selecCont = $(selec).find(".cont").get(0); //下拉選單選中的內容
@@ -82,7 +92,8 @@ function activeAllSelec(optCallback){
 function initPopMenu() {
     $(".pop-mask").bind('click', function(){
         this.style.display = "none";
-        $(".pop-menu").get(0).style.display = "none";
+        $(".pop-menu").css('display', 'none');
+        $(".pop-alert").css('display', 'none');
     });
 }
 

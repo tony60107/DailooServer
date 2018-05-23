@@ -28,10 +28,15 @@
         <div class="copyright">本服務由帶路文化提供</div>
     </div>
 
-    <div class="pop-alert">
+    <!--彈出菜單-->
+    <div class="pop-mask"  style="display: none"></div>
+    <div class="pop-menu" style="display: none">
+        <div class="title">切換至其他景點</div>
+    </div>
+    <div class="pop-alert" style="display: none">
         <div class="title">Dailoo</div>
-        <div class="msg">尚未選擇對應的景點尚未選擇對應的景點尚未選擇對應的景點尚未選擇對應的景點尚未選擇對應的景點</div>
-        <div class="ok">確定</div>
+        <div id="popAlertMsg" class="msg"></div>
+        <div class="ok" onclick="$('.pop-alert').css('display', 'none');$('.pop-mask').css('display', 'none');">確定</div>
     </div>
 </div>
 </body>
@@ -39,5 +44,4 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
 <script>
-
 </script>

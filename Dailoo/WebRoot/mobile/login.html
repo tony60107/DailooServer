@@ -13,23 +13,19 @@
         <img src="../images/general/dailoo_logo.png" alt="">
     </div>
     <div class="main-title">歡迎加入帶路！</div>
-    <form class="form" action="">
+    <form class="form" action="" >
         <input id="username" type="text" placeholder="帳號">
         <input id="password" type="password" placeholder="密碼">
     </form>
     <div class="submit" onclick="submitForm();">登入</div>
 
     <!--上傳表單-->
-    <form id="mainForm" action="/LoginServlet" method="post" style="display: block">
+    <form id="mainForm" action="/LoginServlet" method="post" style="display: none">
         <div>帳號<input type="text" name="username"></div>
         <div>密碼<input type="text" name="password"></div>
     </form>
 
-    <!--彈出菜單-->
-    <div class="pop-mask" style=""></div>
-    <div class="pop-menu" style="display: none">
-        <div class="title">切換至其他景點</div>
-    </div>
+
 
 
     <!--Footer引入-->
@@ -60,7 +56,7 @@
             data: form.serialize(),//將表單資料序列化
             success:function(data){
                 var result = eval("(" + data + ")");
-                console.dir(result)
+                //console.dir(result)
                 if(result.error != undefined){
                     alert("帳號或密碼不正確");
                 } else {
