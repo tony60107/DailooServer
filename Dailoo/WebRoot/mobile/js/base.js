@@ -3,29 +3,35 @@
  */
 
 //自定義Alert
-window.alert = function(msg) {
-    console.dir(document.body.clientHeight)
+window.alert = function(msg, redirect) {
+    //設定Alert方塊位置
     $('.pop-alert').css('margin-left', ((document.body.clientWidth - 720) / 2) + 'px');
     $('.pop-alert').css('top', ((document.body.clientHeight - 480) / 2) + 'px');
+    //設置內容並顯示
     $('#popAlertMsg').html(msg);
     $('.pop-alert').css('display', 'block');
     $('.pop-mask').css('display', 'block');
+
+    //如果有要求重定向
+    if(redirect != undefined){
+        setTimeout(function(){window.location.href= redirect;}, 1500);
+    }
 }
 
 //激活下拉選單功能
 function activeSelec(selec, optCallback) {
     var selecCont = $(selec).find(".cont").get(0); //下拉選單選中的內容
-    var popMenu = $(".pop-menu").get(0);    //彈出式菜單
-    var popMask = $(".pop-mask").get(0);    //彈出式遮罩
+    var $popMenu = $(".pop-menu");    //彈出式菜單
+    var $popMask = $(".pop-mask");    //彈出式遮罩
     var $data = $(selec).find(".opt-data");   //選項的所有資料
     var $opts = $data.find(".opt");         //所有選項的資料
 
     //設定菜單標題
-    popMenu.innerHTML = '<div class="title">' + $data.find(".title").get(0).innerHTML + '</div>';
+    var dom = '<div class="title">' + $data.find(".title").get(0).innerHTML + '</div>';
 
 
     //將選項更新到下拉選單上
-    var dom = '';
+
     for (var i = 0; i < $opts.length; i++) {
         //如果是選中的選項，則標示選中。且如果有設定data-value的值，也一併加上去，沒有則空白
         var dataValue = $opts.get(i).dataset.value;
@@ -35,11 +41,15 @@ function activeSelec(selec, optCallback) {
             dom += '<div class="opt" data-value="' + (dataValue != undefined ? dataValue : '') + '">' + $opts.get(i).textContent + '</div>';
         }
     }
-    popMenu.innerHTML += dom;
+    $popMenu.html(dom);
+
+    //設定Alert方塊位置
+    $popMenu.css('margin-left', ((document.body.clientWidth - 880) / 2) + 'px');
+    $popMenu.css('top', ((document.body.clientHeight - 1220) / 2) + 'px');
 
     //顯示彈出式菜單
-    popMask.style.display = "block";
-    popMenu.style.display = "block";
+    $popMask.css('display','block');
+    $popMenu.css('display','block');
 
     $menuOpts = $(".pop-menu").find(".opt");    //彈出式菜單的選項
 
@@ -67,8 +77,8 @@ function activeSelec(selec, optCallback) {
             if(optCallback != undefined) optCallback(selec);
 
             //關閉彈出式菜單
-            popMask.style.display = "none";
-            popMenu.style.display = "none";
+            $popMask.css('display','none');
+            $popMenu.css('display','none');
         });
     }
 }
@@ -83,15 +93,17 @@ function activeAllSelec(optCallback){
         });
     }
 
-    //點擊遮罩則關閉彈出式菜單
-    initPopMenu();
-
 }
 
 //點擊遮罩則關閉彈出式菜單
 function initPopMenu() {
-    $(".pop-mask").bind('click', function(){
-        this.style.display = "none";
+    $(".pop-mask").bind('touchstart',function(event){
+        $(".pop-mask").css('display', "none");
+        $(".pop-menu").css('display', 'none');
+        $(".pop-alert").css('display', 'none');
+    });
+    $(".pop-mask").bind('click',function(event){
+        $(".pop-mask").css('display', "none");
         $(".pop-menu").css('display', 'none');
         $(".pop-alert").css('display', 'none');
     });
@@ -106,7 +118,7 @@ function previewUploadImg(event, id, callback){
     reader.onload = function(){ //FileReader取得上傳檔案後執行以下內容
         var dataURL = reader.result; //設定變數dataURL為上傳圖檔的base64字串
         $('#' + id).attr('src', dataURL).show(); //將img的src設定為dataURL並顯示
-        console.dir($('#' + id).get(0));
+        //console.dir($('#' + id).get(0));
     };
 
     //呼叫回調函數
@@ -121,6 +133,8 @@ function initHeaderFooter(){
     $.get("footer.html", function (data) {
         $("#footer").html(data);
     });
+    //點選取消則返回上一頁
+    $('.submit-btns>.submit-l').bind('click', function(){history.go(-1)})
 }
 
 

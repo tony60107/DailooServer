@@ -31,6 +31,7 @@
 .sorts .sort {
     margin-right: 40px;
     float: left;
+    cursor: pointer;
 }
 
 .sorts .enable {

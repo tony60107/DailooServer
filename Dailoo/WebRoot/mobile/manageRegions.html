@@ -62,20 +62,27 @@
         });
     }
 
+    //檢查表單資料
+    function checkFrom() {
+        if($('#name').val() == ''){alert('主題類別名稱不能為空'); return false;}
+        return true;
+    }
+
     //新增地區
     function addRegion() {
-        $.ajax({
-            url: "/RegionServlet", context: document.body,
-            type: "POST",
-            data: {"method": "addRegion", "name": $('#name').val()},
-            success: function (data) {
-                alert('新增成功！');
-                window.location.reload();
-            },
-            error: function(){
-                setTimeout(function(){addRegion();}, 1000);
-            }
-        });
+        if(checkFrom()){
+            $.ajax({
+                url: "/RegionServlet", context: document.body,
+                type: "POST",
+                data: {"method": "addRegion", "name": $('#name').val()},
+                success: function (data) {
+                    alert('新增成功！',window.location);
+                },
+                error: function(){
+                    setTimeout(function(){addRegion();}, 1000);
+                }
+            });
+        }
     }
 
 </script>

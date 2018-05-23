@@ -12,7 +12,7 @@
     <!--header引入-->
     <div id="header"></div>
     <div class="profilePic">
-        <img src="images/index/dailoo.png" alt="">
+        <img id="photo" src="images/index/dailoo.png" alt="">
     </div>
     <div class="funcGroup">
         <a href="/mobile/addViewpoint.html" class="func">新增景點</a>
@@ -32,5 +32,22 @@
 <script>
     //初始化頭部與腳步
     initHeaderFooter();
+    getLoginUser();
 
+    //取得登入者資料
+    function getLoginUser() {
+        $.ajax({
+            url: "/SpeakerServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getLoginUser"},
+            success: function (data) {
+                var user = eval("(" + data + ")");
+                //console.dir(user);
+                $('#photo').attr('src', "/ResourceServlet?url=" + user.photoUrl);
+            },
+            error: function(){
+                setTimeout(function(){getLoginUser();}, 1000);
+            }
+        });
+    }
 </script>

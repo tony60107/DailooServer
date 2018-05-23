@@ -144,12 +144,10 @@
             type: "POST",
             data: {"method": "delSN", "code": code},
             success: function (data) {
-                alert("刪除成功");
-                document.location.href="/mobile/manageSNs.html";
+                alert("刪除成功", "/mobile/manageSNs.html");
             },
             error: function(){
                 alert("刪除失敗！");
-                //setTimeout(function(){delSN();}, 1000);
             }
         });
     }

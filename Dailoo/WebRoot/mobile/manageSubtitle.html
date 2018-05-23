@@ -66,18 +66,26 @@
         });
     }
 
+    //檢查表單資料
+    function checkFrom() {
+        if($('#name').val() == ''){alert('景點名稱不能為空'); return false;}
+        return true;
+    }
+
     //更新景點名稱
     function updateVpName() {
-        $.ajax({
-            url: "/ViewpointServlet", context: document.body,
-            type: "POST",
-            data: {"method": "updateViewpointNameById", "id":vpId, "name": $('#name').val()},
-            success: function (data) {
-                alert("儲存成功！");
-            },
-            error: function(){
-                alert("儲存失敗");
-            }
-        });
+        if(checkFrom()){
+            $.ajax({
+                url: "/ViewpointServlet", context: document.body,
+                type: "POST",
+                data: {"method": "updateViewpointNameById", "id":vpId, "name": $('#name').val()},
+                success: function (data) {
+                    alert("儲存成功！", window.location);
+                },
+                error: function(){
+                    alert("儲存失敗");
+                }
+            });
+        }
     }
 </script>

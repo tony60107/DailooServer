@@ -9,6 +9,7 @@
     width: 200px;
     height: 200px;
     margin: auto;
+    cursor: pointer;
 }
 
 .add-sp .photo img {

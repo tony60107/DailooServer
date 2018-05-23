@@ -8,7 +8,8 @@
 <body>
 <div class="w">
     <div class="header">
-        <div id="username" class="username"></div>
+        <a href="/mobile/index.html" class="back"></a>
+        <div id="headerUsername" class="username"></div>
         <a href="/LogoutServlet" class="signout">登出</a>
     </div>
 
@@ -29,9 +30,9 @@
             data: {"method": "getLoginUser"},
             success: function (data) {
                 var user = eval("(" + data + ")");
-                console.dir(user);
+                //console.dir(user);
                 if(user.username == undefined) window.location.href = '/mobile/login.html';
-                $('#username').html(user.username);
+                $('#headerUsername').html(user.username);
             },
             error: function(){
                 setTimeout(function(){getLoginUser();}, 1000);

@@ -22,6 +22,7 @@
     position: absolute;
     right: 0px;
     top: 124px;
+    cursor: pointer;
 }
 
 .user .change {

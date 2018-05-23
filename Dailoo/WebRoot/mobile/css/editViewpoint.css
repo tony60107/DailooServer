@@ -15,6 +15,7 @@
     height: 78px;
     margin-right: 156px;
     display: block;
+    cursor: pointer;
 }
 
 .vp .show {
@@ -44,6 +45,7 @@
     width: 160px;
     color: #50afa0;
     background: url("../images/general/copy.png") no-repeat 90px -6px;
+    cursor: pointer;
 }
 /*短網址結束*/
 
@@ -149,6 +151,7 @@
 .repr-pic img {
     width: 400px;
     height: 400px;
+    cursor: pointer;
 }
 
 .repr-pic .desc {

@@ -174,15 +174,14 @@ s, i, em {
 
 .selec, .input {
     width: 780px;
+    height: 160px;
     margin: 0 auto;
     margin-top: 60px;
     position: relative;
 }
 
-
-
-.selec, .input {
-    height: 160px;
+.selec {
+    cursor: pointer;
 }
 
 .no-title {
@@ -296,6 +295,7 @@ s, i, em {
     position: absolute;
     right: 12px;
     bottom: 16px;
+    cursor: pointer;
 }
 
 .upload-desc {
@@ -334,6 +334,7 @@ s, i, em {
     line-height: 76px;
     text-align: left;
     color: #595959;
+    cursor: pointer;
 }
 
 .add-theme .btn {
@@ -366,6 +367,11 @@ s, i, em {
 
 .submit-btns .submit-l {
     margin-right: 180px;
+    cursor: pointer;
+}
+
+.submit-btns .submit-r {
+    cursor: pointer;
 }
 
 .submit-btns .hint {
@@ -391,8 +397,6 @@ s, i, em {
     z-index: 1002;
     width: 880px;
     height: 1200px;
-    top: 122px;
-    left: 50px;
     background-color: #fff;
     opacity: 1;
     overflow: scroll;
@@ -414,6 +418,7 @@ s, i, em {
     padding-bottom: 14px;
     border-bottom: solid 2px #979797;
     color: #000000;
+    cursor: pointer;
 }
 
 .pop-menu .opt.selected {
@@ -449,6 +454,7 @@ s, i, em {
     margin-top: 66px;
     margin-left: 482px;
     color: #50afa0;
+    cursor: pointer;
 }
 
 

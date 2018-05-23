@@ -48,10 +48,9 @@ public class SpeakerServiceImpl implements SpeakerService{
 				if(file.exists()){
 					file.delete(); 
 				}
+				//Speaker設置新的大頭照地址
 				speaker.setPhotoUrl(photoUrl);
 			}
-			
-			//Speaker設置新的大頭照地址
 			dao.updateSpeakerInfo(speaker);
 		}catch(Exception e) {
 			e.printStackTrace();

@@ -38,19 +38,19 @@
         <input id="homeNumber" class="cont" placeholder="市話號碼"/>
     </div>
     <div class="input no-title">
-        <input id="speakerUrl" class="cont" placeholder="個人網址" value="www.weicards.com"/>
+        <input id="speakerUrl" class="cont" placeholder="個人網址" value=""/>
     </div>
     <div class="input no-title">
-        <input id="resume" class="cont" placeholder="個人簡歷" value="BOSS"/>
+        <input id="resume" class="cont" placeholder="個人簡歷" value=""/>
     </div>
 
     <div class="intro">
         <div class="title">自我介紹</div>
-        <textarea id="intro" name="" class="cont" placeholder="建議輸入不超過150字">安安安安安</textarea>
+        <textarea id="intro" name="" class="cont" placeholder="建議輸入不超過150字"></textarea>
     </div>
 
     <div class="input no-title">
-        <input id="youtubeUrl" class="cont" placeholder="自我介紹影片網址(限Youtube)" value="youtube.com"/>
+        <input id="youtubeUrl" class="cont" placeholder="自我介紹影片網址(限Youtube)" value=""/>
     </div>
 
     <div class="submit-btns clearfix">
@@ -102,13 +102,13 @@
         if(ipUsername.val() == ''){alert('帳號不能為空'); return false;}
         var patrn=/^(\w){6,20}$/;
         if(!patrn.exec(ipPWD.val())){alert('密碼必須是6位以上英數字混合'); return false;}
-        if(ipName.val() == ''){alert('講者姓名不能為空'); return false;}
+        if(ipName.val() == ''){alert('姓名不能為空'); return false;}
         return true;
     }
 
     //上傳資料
     function submitForm() {
-
+        console.dir($('#username').val())
         //將資料填入不顯示的表單中
         ipUsername.val($('#username').val());
         ipPWD.val($('#password').val());
@@ -131,8 +131,7 @@
                 processData: false,
                 contentType: false,
                 success:function(result){
-                    alert("新增成功！！");
-                    document.location.href="/mobile/manageSpeakers.html";
+                    alert("新增成功！！", "/mobile/manageSpeakers.html");
                 },error:function(result){
                     alert("新增失敗");
                 },

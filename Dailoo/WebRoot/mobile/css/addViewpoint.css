@@ -50,6 +50,7 @@
 .repr-pic img {
     width: 400px;
     height: 400px;
+    cursor: pointer;
 }
 
 .repr-pic .desc {

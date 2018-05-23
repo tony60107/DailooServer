@@ -43,8 +43,9 @@ public class ShortUrlFilter implements Filter {
 			//如果有找到對應的原網址
 			if(url != null){
 				String domain = url.getOri().split("\\?")[0]; //域名
+				System.out.println(url.getOri().split("\\?").length);
 				//如果該網址帶有參數
-				if(url.getOri().split("\\?").length != 0){
+				if(url.getOri().split("\\?").length > 1){
 					//問號後的參數，將非中文進行轉換，只保留中文為URL編碼
 					String param = URLEncoder.encode(url.getOri().split("\\?")[1],"UTF-8")
 							.replaceAll("%3D", "=").replaceAll("%26", "&").replaceAll("%23", "#").replaceAll("%2B", "+")

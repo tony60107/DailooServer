@@ -8,6 +8,7 @@
 .sort .func {
     margin-right:40px;
     float: left;
+    cursor: pointer;
 }
 
 .sort .enable {

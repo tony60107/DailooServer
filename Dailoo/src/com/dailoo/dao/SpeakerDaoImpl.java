@@ -47,12 +47,12 @@ public class SpeakerDaoImpl implements SpeakerDao{
 
 	@Override
 	public void updateSpeakerInfo(Speaker speaker) {
-		String sql = "update speakers set name=?, photoUrl=?, phoneNumber=?, homeNumber=?,"
+		String sql = "update speakers set username=?, name=?, photoUrl=?, phoneNumber=?, homeNumber=?,"
 				+ "speakerUrl=?, resume=?, intro=?, youtubeUrl=? where id=?";
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			runner.update(sql, speaker.getName(), speaker.getPhotoUrl(), speaker.getPhoneNumber(),
-					speaker.getHomeNumber(), speaker.getSpeakerUrl(), speaker.getResume(),
+			runner.update(sql, speaker.getUsername(), speaker.getName(), speaker.getPhotoUrl(),
+					speaker.getPhoneNumber(),speaker.getHomeNumber(), speaker.getSpeakerUrl(), speaker.getResume(),
 					speaker.getIntro(), speaker.getYoutubeUrl(), speaker.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
