@@ -5,6 +5,7 @@
     <title>Dailoo - 主題管理</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/manageThemes.css">
+    <meta name="viewport" content="user-scalable=no"/>
 </head>
 <body>
 <div class="w">
@@ -14,48 +15,27 @@
     <div class="main-title">主題管理</div>
 
     <div class="links">
-        <a href="#" class="link-l">主題類別管理</a>
-        <a href="" class="link-r">新增主題</a>
+        <a href="/mobile/manageRegions.html" class="link-l" target="_blank">主題類別管理</a>
+        <a href="/mobile/addTheme.html" class="link-r">新增主題</a>
     </div>
 
     <div class="selec">
-        <div class="name">切換主題類別</div>
-        <div class="cont">請選擇</div>
+        <div class="name">選擇主題類別</div>
+        <div id="regionId" class="cont">請選擇</div>
         <div class="arrow"></div>
+        <div id="regionList" class="opt-data">
+            <div class="title">切換至其他主題類別</div>
+        </div>
     </div>
 
 
-    <div class="themes clearfix">
-        <div class="theme">
-            <div class="cover">
-                <div class="title">大王村</div>
-                <div class="title-eng">Tjavualji</div>
-            </div>
-            <img alt="" src="http://www.dailoo.com/ResourceServlet?url=/WEB-INF/upload/2/e/0/5/7/4/5/6/1a422d33-eafa-46d5-88b0-969daeeb7adf.jpg">
-            <a href="#" class="cancle fr">刪除</a>
-            <a href="#" class="edit fr">編輯</a>
-        </div>
+    <div id="themeList" class="themes clearfix">
+    </div>
 
-        <div class="theme">
-            <div class="cover">
-                <div class="title">大王村</div>
-                <div class="title-eng">Tjavualji</div>
-            </div>
-            <img alt="" src="http://www.dailoo.com/ResourceServlet?url=/WEB-INF/upload/2/e/0/5/7/4/5/6/1a422d33-eafa-46d5-88b0-969daeeb7adf.jpg">
-            <a href="#" class="cancle fr">刪除</a>
-            <a href="#" class="edit fr">編輯</a>
-        </div>
-
-        <div class="theme">
-            <div class="cover">
-                <div class="title">大王村</div>
-                <div class="title-eng">Tjavualji</div>
-            </div>
-            <img alt="" src="http://www.dailoo.com/ResourceServlet?url=/WEB-INF/upload/2/e/0/5/7/4/5/6/1a422d33-eafa-46d5-88b0-969daeeb7adf.jpg">
-            <a href="#" class="cancle fr">刪除</a>
-            <a href="#" class="edit fr">編輯</a>
-        </div>
-
+    <!--彈出菜單-->
+    <div class="pop-mask" style="display: none"></div>
+    <div class="pop-menu" style="display: none">
+        <div class="title">切換至其他景點</div>
     </div>
 
     <!--Footer引入-->
@@ -64,13 +44,53 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
 <script>
-    window.onload = function () {
-        $.get("header.html", function (data) {
-            $("#header").html(data);
-        });
-        $.get("footer.html", function (data) {
-            $("#footer").html(data);
+    //初始化頭部與腳步
+    initHeaderFooter();
+
+    //取得所有的地區
+    getAllRegions();
+
+    //激活所有的下拉選單
+    activeAllSelec(optCallback);
+
+    //點選地區選項後觸發
+    function optCallback() {
+        getThemes($('#regionId').attr('data-value'))
+    }
+
+    //根據地區ID，取得主題資料
+    function getThemes(regionId) {
+        $.ajax({
+            url: "/ThemeServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getThemesByRegionId", "regionId": regionId},
+            success: function (data) {
+                var themes = eval("(" + data + ")");
+                //console.dir(themes);
+
+                var dom = '';
+                for (var i = 0; i < themes.length; i++) {
+                    dom += '<div class="theme">' +
+                            '<div class="cover">' +
+                            '<div class="title">' + themes[i].name.split(",")[0] + '</div>' +
+                            '<div class="title-eng">' + (themes[i].name.split(",")[1] == undefined ? '' : themes[i].name.split(",")[1]) + '</div>' +
+                            '</div>' +
+                            '<div class="img-border">' +
+                            '<img alt="" src="/ResourceServlet?url=' + themes[i].behalfPhotoUrl + '">' +
+                            '</div>' +
+                            '<a href="#" class="cancle fr">刪除</a>' +
+                            '<a href="/mobile/editTheme.html?id=' + themes[i].id + '" class="edit fr">編輯</a>' +
+                            '</div>';
+                }
+                $("#themeList").html(dom);
+            },
+            error: function () {
+                setTimeout(function () {
+                    getThemesByRegionId(regionId);
+                }, 1000);
+            }
         });
     }
 </script>

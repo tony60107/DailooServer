@@ -317,6 +317,13 @@ s, i, em {
 }
 /*上傳語音檔案結束*/
 
+/*地區開始*/
+.region {
+    width: 780px;
+    margin: auto;
+}
+/*地區結束*/
+
 /*增加對應主題開始*/
 .add-theme {
     width: 780px;

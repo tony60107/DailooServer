@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 編輯主題</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/editTheme.css">
+    <meta name="viewport" content="user-scalable=no"/>
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">編輯主題</div>
+
+    <div class="selec">
+        <div class="name">選擇主題類別</div>
+        <div id="regionId" class="cont">請選擇</div>
+        <div class="arrow"></div>
+        <div id="regionList" class="opt-data">
+            <div class="title">切換至其他主題類別</div>
+        </div>
+    </div>
+
+    <div class="input no-title">
+        <input id="name" class="cont" placeholder=""/>
+    </div>
+    <div id="theme" class="theme"></div>
+    <div class="theme-desc">點圖上傳主題圖檔</div>
+
+    <div class="submit-btns clearfix">
+        <div class="submit-l">取消</div>
+        <div class="submit-r hint" onclick="submitForm();">儲存</div>
+    </div>
+
+    <!--彈出菜單-->
+    <div class="pop-mask" style="display: none"></div>
+    <div class="pop-menu" style="display: none">
+        <div class="title">切換至其他景點</div>
+    </div>
+
+    <!--上傳表單-->
+    <form id="mainForm" action="/ThemeServlet?method=updateThemeInfo" method="post" style="display: none" enctype="multipart/form-data">
+        <div>照片位置<input id="ipPhoto" name="file" type="file" onchange="previewUploadImg(event, 'uploadImg')"></div>
+        <div>主題ID<input type="text" name="id"></div>
+        <div>主題名稱<input type="text" name="name"></div>
+        <div>地區ID<input type="text" name="regionId"></div>
+    </form>
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
+<script>
+
+    var form = $('#mainForm');
+    var ipId = form.find('input[name="id"]');
+    var ipName = form.find('input[name="name"]');
+    var ipRegionId = form.find('input[name="regionId"]');
+    ipId.val(location.href.split("id=")[1]);
+
+    //初始化頭部與腳步
+    initHeaderFooter();
+
+    //取得所有的地區
+    getAllRegions(getThemeById);
+
+    //激活所有的下拉選單
+    activeAllSelec();
+
+
+    $('#theme').bind('click', function(){$('#ipPhoto').click();})
+
+    //表單與表單中的控件
+
+
+
+    //根據地區ID，取得主題資料
+    function getThemeById(id) {
+        $.ajax({
+            url: "/ThemeServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getThemeById", "id": ipId.val()},
+            success: function (data) {
+                var theme = eval("(" + data + ")");
+                //console.dir(theme);
+                //設定主題資料
+                var dom = '<div class="cover">' +
+                            '<div class="title">' + theme.name.split(",")[0] + '</div>' +
+                            '<div class="title-eng">' + (theme.name.split(",")[1] == undefined ? '' :theme.name.split(",")[1]) + '</div>' +
+                        '</div>' +
+                        '<div class="img-border"><img id="uploadImg" alt="" src="/ResourceServlet?url=' + theme.behalfPhotoUrl + '">' +
+                        '</div>';
+                $('#theme').html(dom);
+
+                $('#name').val(theme.name);
+                $('#regionId').attr('data-value', theme.regionId);
+
+                //設定地區下拉選單被選中資料
+                var opts = $('#regionList>div');
+                for(var i = 0; i < opts.length; i++) {
+                    //console.dir(opts[i]);
+                    if(theme.regionId == opts[i].dataset.value) {
+                        $('#regionId').html(opts[i].innerHTML);
+                    }
+                }
+            },
+            error: function () {
+                setTimeout(function () {getThemeById(id);}, 1000);
+            }
+        });
+    }
+
+    function submitForm() {
+
+        //將資料填入不顯示的表單中
+        ipRegionId.val($('#regionId').attr('data-value'));
+        ipName.val($('#name').val());
+
+        //上傳表單
+        $.ajax({
+            url:"/ThemeServlet?method=updateThemeInfo",
+            type: 'POST',
+            cache: false,
+            data: new FormData($('#mainForm')[0]),
+            processData: false,
+            contentType: false,
+            success:function(result){
+                alert("更新成功！！");
+                window.location.reload();
+            },
+        });
+    }
+</script>

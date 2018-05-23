@@ -1,33 +1,11 @@
 
-.links {
-    width: 780px;
-    margin: auto;
-    margin-top: 80px;
-    margin-bottom: 100px;
-    font-size: 56px;
-    line-height: 78px;
-}
 
-.links .link-l {
-    margin-right: 200px;
-}
-
-.links .link-r {
-    color: #50afa0;
-}
-
-/*主題區塊開始*/
-
-.themes {
-    width: 780px;
-    margin: auto;
-    margin-top: -74px;
-}
 
 .theme {
     width: 780px;
     height: 242px;
-    margin-top: 154px;
+    margin: 0 auto;
+    margin-top: 80px;
     position: relative;
 }
 
@@ -59,38 +37,20 @@
     color: #ffffff;
 }
 
-.themes .theme .img-border {
+.theme .img-border {
     width: 780px;
     height: 242px;
 }
 
-.themes .theme img {
+.theme img {
     width: 780px;
     height: 242px;
 }
 
-.themes .theme .edit {
-    margin-top: 24px;
-    margin-right: 60px;
-    color: #50afa0;
+.theme-desc {
+    width: 414px;
+    margin: 0 auto;
+    margin-top: 40px;
+    font-size: 50px;
+    line-height: 70px;
 }
-
-.themes .theme .cancle {
-    margin-top: 24px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
