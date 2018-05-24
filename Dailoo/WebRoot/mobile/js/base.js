@@ -97,12 +97,11 @@ function activeAllSelec(optCallback){
 
 //點擊遮罩則關閉彈出式菜單
 function initPopMenu() {
-    $(".pop-mask").bind('touchstart',function(event){
-        $(".pop-mask").css('display', "none");
-        $(".pop-menu").css('display', 'none');
-        $(".pop-alert").css('display', 'none');
-    });
-    $(".pop-mask").bind('click',function(event){
+    $(".pop-mask").bind('click',function(e){
+        //阻止冒泡，避免點擊到其他下拉選單
+        window.event? window.event.returnValue = false : e.preventDefault();
+        e.stopPropagation();
+        //隱藏彈出物件
         $(".pop-mask").css('display', "none");
         $(".pop-menu").css('display', 'none');
         $(".pop-alert").css('display', 'none');
