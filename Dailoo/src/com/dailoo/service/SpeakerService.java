@@ -55,8 +55,9 @@ public interface SpeakerService extends Service{
 	/**
 	 * 重置帳號和密碼
 	 * @param speaker 講者Bean
+	 * @param newPwd 新密碼
 	 */
-	void resetUSNandPWD(Speaker speaker);
+	void resetUSNandPWD(Speaker speaker, String newPwd);
 
 	/**
 	 * 根據用戶名找到講者

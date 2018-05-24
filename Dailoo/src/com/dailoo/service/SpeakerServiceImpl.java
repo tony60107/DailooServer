@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.management.RuntimeErrorException;
+
 import com.dailoo.dao.SpeakerDao;
 import com.dailoo.domain.Speaker;
 import com.dailoo.factory.BasicFactory;
@@ -101,9 +103,16 @@ public class SpeakerServiceImpl implements SpeakerService{
 	}
 
 	@Override
-	public void resetUSNandPWD(Speaker speaker) {
-		speaker.setPassword(MD5Utils.md5(speaker.getPassword()));
-		dao.resetUSNandPWD(speaker);
+	public void resetUSNandPWD(Speaker speaker, String newPwd) {
+		Speaker temp = dao.findSpeakerById(speaker.getId()); //用於檢測原密碼是否正確
+		//如果原密碼輸入錯誤
+		System.out.println(temp.getPassword() + " : " + MD5Utils.md5(speaker.getPassword()));
+		if(!temp.getPassword().equals(MD5Utils.md5(speaker.getPassword()))){
+			throw new RuntimeException("原密碼不正確");
+		} else { //正確則更新密碼
+			speaker.setPassword(MD5Utils.md5(newPwd));
+			dao.resetUSNandPWD(speaker);
+		}
 	}
 
 	@Override

@@ -146,7 +146,7 @@ public class SpeakerServlet extends HttpServlet {
 			//如果是重置帳號和密碼	
 			else if("resetUSNandPWD".equals(method)){
 				BeanUtils.populate(speaker, request.getParameterMap());
-				service.resetUSNandPWD(speaker);
+				service.resetUSNandPWD(speaker, request.getParameter("newPwd"));
 				response.sendRedirect(request.getContextPath() + "/manageSpeakers.html");
 			}
 			//如果是根據帳號取得講者
