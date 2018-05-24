@@ -23,55 +23,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="addSN.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile/addSN.html">
+      <file leaf-file-name="editViewpoint.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mobile/editViewpoint.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.483871">
-              <caret line="73" column="20" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.60619974">
+              <caret line="121" column="49" selection-start-line="121" selection-start-column="49" selection-end-line="121" selection-end-column="49" />
               <folding>
-                <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#8;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#11;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#12;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#15;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#21;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="e#8324#9040#0" expanded="false" />
+                <element signature="e#9081#9616#0" expanded="false" />
+                <element signature="e#9670#10323#0" expanded="false" />
+                <element signature="e#10377#11332#0" expanded="false" />
+                <element signature="e#11372#12071#0" expanded="false" />
+                <element signature="e#12110#13142#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mobile/css/base.css">
+      <file leaf-file-name="editViewpoint.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mobile/css/editViewpoint.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7979334">
-              <caret line="456" column="19" selection-start-line="456" selection-start-column="19" selection-end-line="456" selection-end-column="19" />
+            <state vertical-scroll-proportion="-20.64516">
+              <caret line="175" column="21" selection-start-line="175" selection-start-column="21" selection-end-line="175" selection-end-column="21" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile/js/base.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="136" column="71" selection-start-line="136" selection-start-column="71" selection-end-line="136" selection-end-column="71" />
-              <folding>
-                <element signature="e#96#546#0" expanded="false" />
-                <element signature="n#!!block;n#activeSelec#0" expanded="false" />
-                <element signature="n#!!block;n#activeAllSelec#0" expanded="false" />
-                <element signature="n#!!block;n#initPopMenu#0" expanded="false" />
-                <element signature="n#!!block;n#previewUploadImg#0" expanded="false" />
-                <element signature="e#4535#39991#0" expanded="false" />
-                <element signature="n#!!block;n#initCitySelec#0" expanded="false" />
-                <element signature="n#!!block;n#updateDist#0" expanded="false" />
-                <element signature="n#!!block;n#getAllSpeakers#0" expanded="false" />
-                <element signature="n#!!block;n#getViewpointsByLoginUser#0" expanded="false" />
-                <element signature="n#!!block;n#getAllRegions#0" expanded="false" />
-                <element signature="n#!!block;n#getThemesByRegionId#0" expanded="false" />
-                <element signature="n#!!block;n#toShortUrl#0" expanded="false" />
-                <element signature="n#!!block;n#copy#0" expanded="false" />
-                <element signature="n#!!block;n#leftCompleting#0" expanded="false" />
-                <element signature="n#!!block;n#initMap#0" expanded="false" />
-                <element signature="e#46921#47219#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -102,7 +81,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/footer.html" />
         <option value="$PROJECT_DIR$/mobile/css/add-theme.css" />
         <option value="$PROJECT_DIR$/mobile/css/addTheme.css" />
         <option value="$PROJECT_DIR$/mobile/css/manageRegions.css" />
@@ -137,7 +115,6 @@
         <option value="$PROJECT_DIR$/mobile/editSN.html" />
         <option value="$PROJECT_DIR$/mobile/editSpeaker.html" />
         <option value="$PROJECT_DIR$/mobile/editTheme.html" />
-        <option value="$PROJECT_DIR$/mobile/editViewpoint.html" />
         <option value="$PROJECT_DIR$/mobile/editRegion.html" />
         <option value="$PROJECT_DIR$/mobile/manageRegions.html" />
         <option value="$PROJECT_DIR$/mobile/manageSubtitle.html" />
@@ -146,13 +123,15 @@
         <option value="$PROJECT_DIR$/mobile/addViewpoint.html" />
         <option value="$PROJECT_DIR$/mobile/css/manageViewpoints.css" />
         <option value="$PROJECT_DIR$/mobile/css/manageSubtitle.css" />
-        <option value="$PROJECT_DIR$/mobile/css/editViewpoint.css" />
         <option value="$PROJECT_DIR$/mobile/css/addSpeaker.css" />
         <option value="$PROJECT_DIR$/mobile/css/editSpeaker.css" />
         <option value="$PROJECT_DIR$/mobile/css/editTheme.css" />
         <option value="$PROJECT_DIR$/mobile/css/manageSNs.css" />
         <option value="$PROJECT_DIR$/mobile/js/base.js" />
         <option value="$PROJECT_DIR$/mobile/css/base.css" />
+        <option value="$PROJECT_DIR$/mobile/css/login.css" />
+        <option value="$PROJECT_DIR$/mobile/css/editViewpoint.css" />
+        <option value="$PROJECT_DIR$/mobile/editViewpoint.html" />
       </list>
     </option>
   </component>
@@ -283,6 +262,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="editAudio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dailoo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebRoot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mobile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -305,9 +306,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\mobile\images\editAudio" />
       <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\mobile\images\general" />
       <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\mobile\js" />
-      <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\mobile\images\editAudio" />
       <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\mobile\images" />
       <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\mobile\css" />
     </key>
@@ -901,12 +902,12 @@
       <workItem from="1526276687779" duration="50550000" />
       <workItem from="1526705503103" duration="47433000" />
       <workItem from="1527042228260" duration="377000" />
-      <workItem from="1527043247887" duration="27055000" />
+      <workItem from="1527043247887" duration="28953000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1521261000" />
+    <option name="totallyTimeSpent" value="1523159000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1936" height="1040" extended-state="0" />
@@ -968,16 +969,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/manageThemes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.12629162">
-          <caret line="72" column="60" selection-start-line="72" selection-start-column="60" selection-end-line="72" selection-end-column="60" />
-          <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/updateRegionInfo.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.645162">
@@ -1077,17 +1068,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.096775">
-          <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
-          <folding>
-            <element signature="n#style#0;n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1336,50 +1316,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mobile/addViewpoint.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.025258323">
-          <caret line="112" column="58" selection-start-line="112" selection-start-column="58" selection-end-line="112" selection-end-column="58" />
-          <folding>
-            <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mobile/css/manageSubtitle.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.5161295">
           <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile/editViewpoint.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.935484">
-          <caret line="76" column="21" selection-start-line="76" selection-start-column="21" selection-end-line="76" selection-end-column="21" />
-          <folding>
-            <element signature="n#div#11;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#12;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#15;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#20;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#6405#7952#0" expanded="false" />
-            <element signature="e#8008#8724#0" expanded="false" />
-            <element signature="e#8765#9300#0" expanded="false" />
-            <element signature="e#9354#10007#0" expanded="false" />
-            <element signature="e#10061#11016#0" expanded="false" />
-            <element signature="e#11056#11755#0" expanded="false" />
-            <element signature="e#11794#12826#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile/css/editViewpoint.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75774974">
-          <caret line="153" column="19" selection-start-line="153" selection-start-column="19" selection-end-line="153" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -1486,7 +1426,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mobile/js/base.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.462306">
           <caret line="136" column="71" selection-start-line="136" selection-start-column="71" selection-end-line="136" selection-end-column="71" />
           <folding>
             <element signature="e#96#546#0" expanded="false" />
@@ -1512,9 +1452,66 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mobile/css/base.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7979334">
+        <state vertical-scroll-proportion="-22.419355">
           <caret line="456" column="19" selection-start-line="456" selection-start-column="19" selection-end-line="456" selection-end-column="19" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.8387096">
+          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+          <folding>
+            <element signature="n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/css/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-23.838709">
+          <caret line="47" column="20" selection-start-line="47" selection-start-column="3" selection-end-line="47" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/addViewpoint.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02640643">
+          <caret line="112" column="58" selection-start-line="112" selection-start-column="58" selection-end-line="112" selection-end-column="58" />
+          <folding>
+            <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/css/editViewpoint.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.64516">
+          <caret line="175" column="21" selection-start-line="175" selection-start-column="21" selection-end-line="175" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/editViewpoint.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60619974">
+          <caret line="121" column="49" selection-start-line="121" selection-start-column="49" selection-end-line="121" selection-end-column="49" />
+          <folding>
+            <element signature="n#div#11;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#12;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#15;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#21;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#8324#9040#0" expanded="false" />
+            <element signature="e#9081#9616#0" expanded="false" />
+            <element signature="e#9670#10323#0" expanded="false" />
+            <element signature="e#10377#11332#0" expanded="false" />
+            <element signature="e#11372#12071#0" expanded="false" />
+            <element signature="e#12110#13142#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

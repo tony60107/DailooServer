@@ -117,6 +117,11 @@
         </div>
         <div class="desc font-s">景點代表圖 <br/>（點圖上傳或更換）</div>
     </div>
+    <!--編輯音檔-->
+    <div class="edit-audio">
+        <a id="editAudio" href="#" target="_blank"><img src="images/editAudio/editAudioBtn.png" class="btn" alt=""></a>
+        <div class="desc font-s">幫語音配上精彩圖片吧！</div>
+    </div>
     <!--景點介紹-->
     <div class="intro">
         <div class="font-s">景點介紹</div>
@@ -234,6 +239,7 @@
                 ipId.val(vp.id);
 
                 $('#prevVp').attr('href', '/viewpoint.html?id=' + vp.id);
+                $('#editAudio').attr('href', '/mobile/editAudio.html?id=' + vp.audio.id)
 
                 if(callback != undefined) callback();
             },

@@ -160,6 +160,24 @@
 }
 /*景點代表圖片結束*/
 
+/*編輯景點音檔開始*/
+.edit-audio {
+    width: 780px;
+    margin: 0 auto;
+    margin-top: 80px;
+}
+
+.edit-audio .btn {
+    margin: 0 auto;
+    display: block;
+}
+
+.edit-audio .desc {
+    margin-top: 24px;
+    text-align: center;
+}
+
+
 /*景點介紹開始*/
 .intro {
     width: 780px;

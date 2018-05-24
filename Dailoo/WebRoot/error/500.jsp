@@ -14,4 +14,7 @@
 </html>
 <script>
 	//document.body.innerHTML = document.body.innerHTML.split("Caused by: java.lang.RuntimeException:")[1];
+	setTimeout(function() {
+		window.location.reload();
+	}, 100);
 </script>
