@@ -129,10 +129,11 @@ public class SNServlet extends HttpServlet {
 				//只有管理員才可以刪除序號
 				if("admin".equals(loginUser.getRole())){
 					service.delSN(request.getParameter("code"));
+					response.getWriter().write("{}");
 				} else {
-					throw new RuntimeException("你沒有權限刪除序號");
+					response.getWriter().write("{\"error\":\"只有管理員才可以刪除序號喔~\"}");
 				}
-				response.sendRedirect("/manageSNs.html");
+				//response.sendRedirect("/manageSNs.html");
 			}
 			//如果是，取得現在序號使用的狀態
 			else if("getUseStatus".equals(method)) {

@@ -144,7 +144,10 @@
             type: "POST",
             data: {"method": "delSN", "code": code},
             success: function (data) {
-                alert("刪除成功", "/mobile/manageSNs.html");
+                var result = eval("(" + data + ")");
+                if(result.error != undefined){
+                    alert(result.error);
+                } else {alert("刪除成功", "/mobile/manageSNs.html");}
             },
             error: function(){
                 alert("刪除失敗！");

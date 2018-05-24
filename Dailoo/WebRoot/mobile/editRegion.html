@@ -126,7 +126,6 @@
             data: {"method": "delRegionById", "id": $('#regionId').val()},
             success:function(data){
                 var result = eval("(" + data + ")");
-                console.dir(result)
                 if(result.error != undefined){
                     alert(result.error);
                 } else {alert("刪除成功", "/mobile/manageRegions.html");}
