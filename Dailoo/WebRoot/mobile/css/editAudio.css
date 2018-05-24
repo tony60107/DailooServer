@@ -33,6 +33,7 @@
     position: absolute;
     top: 14px;
     left: 44px;
+    cursor: pointer;
 }
 
 .audio .player .pb {
@@ -109,12 +110,14 @@
     height: 220px;
     margin-top: 90px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .pics .pic .del {
     position: absolute;
     top: 48px;
     right: -42px;
+    cursor: pointer;
 }
 
 .pics .pic .time, .pics .pic .time input {
@@ -158,6 +161,7 @@
 
 .sorts .sort img {
     margin-right: 48px;
+    cursor: pointer;
 }
 
 .sorts .sort .desc {

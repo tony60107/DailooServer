@@ -23,33 +23,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="editViewpoint.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mobile/editViewpoint.html">
+      <file leaf-file-name="editAudio.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mobile/editAudio.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60619974">
-              <caret line="121" column="49" selection-start-line="121" selection-start-column="49" selection-end-line="121" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.58553386">
+              <caret line="331" column="38" selection-start-line="331" selection-start-column="38" selection-end-line="331" selection-end-column="38" />
               <folding>
+                <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#8;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#11;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#12;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#15;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#21;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="e#8324#9040#0" expanded="false" />
-                <element signature="e#9081#9616#0" expanded="false" />
-                <element signature="e#9670#10323#0" expanded="false" />
-                <element signature="e#10377#11332#0" expanded="false" />
-                <element signature="e#11372#12071#0" expanded="false" />
-                <element signature="e#12110#13142#0" expanded="false" />
+                <element signature="e#4097#4931#0" expanded="false" />
+                <element signature="e#5022#6083#0" expanded="false" />
+                <element signature="e#6146#7545#0" expanded="false" />
+                <element signature="e#7616#8367#0" expanded="false" />
+                <element signature="e#8425#9604#0" expanded="false" />
+                <element signature="e#9657#9764#0" expanded="false" />
+                <element signature="e#11455#11842#0" expanded="false" />
+                <element signature="e#11906#13104#0" expanded="false" />
+                <marker date="1527149863707" expanded="true" signature="9392:9405" placeholder="..." />
+                <marker date="1527149863707" expanded="true" signature="9457:9470" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editViewpoint.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile/css/editViewpoint.css">
+      <file leaf-file-name="editAudio.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mobile/css/editAudio.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.64516">
-              <caret line="175" column="21" selection-start-line="175" selection-start-column="21" selection-end-line="175" selection-end-column="21" />
+            <state vertical-scroll-proportion="-17.741936">
+              <caret line="163" column="19" selection-start-line="163" selection-start-column="19" selection-end-line="163" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -93,14 +96,12 @@
         <option value="$PROJECT_DIR$/js/viewpoint/viewpoint.js" />
         <option value="$PROJECT_DIR$/addShortUrl.html" />
         <option value="$PROJECT_DIR$/mobile/css/addSN.css" />
-        <option value="$PROJECT_DIR$/mobile/css/editAudio.css" />
         <option value="$PROJECT_DIR$/addSpeaker.html" />
         <option value="$PROJECT_DIR$/mobile/css/editSN.css" />
         <option value="$PROJECT_DIR$/mobile/resetPassword.html" />
         <option value="$PROJECT_DIR$/mobile/manageSNs.html" />
         <option value="$PROJECT_DIR$/mobile/css/manageSpeakers.css" />
         <option value="$PROJECT_DIR$/manageSNs.html" />
-        <option value="$PROJECT_DIR$/mobile/editAudio.html" />
         <option value="$PROJECT_DIR$/mobile/manageViewpoints.html" />
         <option value="$PROJECT_DIR$/mobile/css/manageThemes.css" />
         <option value="$PROJECT_DIR$/mobile/manageThemes.html" />
@@ -132,6 +133,8 @@
         <option value="$PROJECT_DIR$/mobile/css/login.css" />
         <option value="$PROJECT_DIR$/mobile/css/editViewpoint.css" />
         <option value="$PROJECT_DIR$/mobile/editViewpoint.html" />
+        <option value="$PROJECT_DIR$/mobile/css/editAudio.css" />
+        <option value="$PROJECT_DIR$/mobile/editAudio.html" />
       </list>
     </option>
   </component>
@@ -902,12 +905,12 @@
       <workItem from="1526276687779" duration="50550000" />
       <workItem from="1526705503103" duration="47433000" />
       <workItem from="1527042228260" duration="377000" />
-      <workItem from="1527043247887" duration="28953000" />
+      <workItem from="1527043247887" duration="30876000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1523159000" />
+    <option name="totallyTimeSpent" value="1525082000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1936" height="1040" extended-state="0" />
@@ -960,7 +963,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="172" />
+      <option name="time" value="173" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -969,14 +972,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/updateRegionInfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.645162">
-          <caret line="29" column="86" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mobile/js/jquery.qrcode.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1173,30 +1168,6 @@
             <marker date="1525080741034" expanded="true" signature="10538:10556" placeholder="..." />
             <marker date="1525080741034" expanded="true" signature="10646:10678" placeholder="..." />
             <marker date="1525080741034" expanded="true" signature="10646:10696" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile/editAudio.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-33.774193">
-          <caret line="320" column="29" selection-start-line="320" selection-start-column="15" selection-end-line="320" selection-end-column="29" />
-          <folding>
-            <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#8;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#11;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#4097#4931#0" expanded="false" />
-            <element signature="e#5022#6083#0" expanded="false" />
-            <element signature="e#6146#7545#0" expanded="false" />
-            <element signature="e#7616#8367#0" expanded="false" />
-            <element signature="e#8425#9604#0" expanded="false" />
-            <element signature="e#9657#9764#0" expanded="false" />
-            <element signature="e#9827#10345#0" expanded="false" />
-            <element signature="e#11293#11606#0" expanded="false" />
-            <element signature="e#11670#12868#0" expanded="false" />
-            <marker date="1526972927749" expanded="true" signature="9392:9405" placeholder="..." />
-            <marker date="1526972927749" expanded="true" signature="9457:9470" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1497,7 +1468,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mobile/editViewpoint.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60619974">
+        <state vertical-scroll-proportion="-6.387097">
           <caret line="121" column="49" selection-start-line="121" selection-start-column="49" selection-end-line="121" selection-end-column="49" />
           <folding>
             <element signature="n#div#11;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -1511,6 +1482,37 @@
             <element signature="e#10377#11332#0" expanded="false" />
             <element signature="e#11372#12071#0" expanded="false" />
             <element signature="e#12110#13142#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/css/editAudio.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.741936">
+          <caret line="163" column="19" selection-start-line="163" selection-start-column="19" selection-end-line="163" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/editAudio.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58553386">
+          <caret line="331" column="38" selection-start-line="331" selection-start-column="38" selection-end-line="331" selection-end-column="38" />
+          <folding>
+            <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#8;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#11;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#4097#4931#0" expanded="false" />
+            <element signature="e#5022#6083#0" expanded="false" />
+            <element signature="e#6146#7545#0" expanded="false" />
+            <element signature="e#7616#8367#0" expanded="false" />
+            <element signature="e#8425#9604#0" expanded="false" />
+            <element signature="e#9657#9764#0" expanded="false" />
+            <element signature="e#11455#11842#0" expanded="false" />
+            <element signature="e#11906#13104#0" expanded="false" />
+            <marker date="1527149863707" expanded="true" signature="9392:9405" placeholder="..." />
+            <marker date="1527149863707" expanded="true" signature="9457:9470" placeholder="..." />
           </folding>
         </state>
       </provider>

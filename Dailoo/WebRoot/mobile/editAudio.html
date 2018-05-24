@@ -312,6 +312,9 @@
     //更新標記時間
     function updateTag(){
         var tags = $('#picList').get(0).children;
+        //如果還沒有Tag，則不上傳，直接更新
+        if(tags.length == 1) {getTagsByAudioId($('#audioId').val());}
+        //遍歷Tag，上傳Tag狀態
         for(var i = 0; i < tags.length - 1; i++){
             var id = tags[i].id;
             var timeDiv = tags[i].children[2];
@@ -326,6 +329,7 @@
                     if(data.id == tags[tags.length - 2].id){
                         //更新標記資訊
                         getTagsByAudioId($('#audioId').val());
+                        alert("儲存成功");
                     }
                 },
             });
@@ -336,14 +340,16 @@
 
     //向伺服器中刪除Tag，並在刪除成功後，刪除頁面上的Tag
     function delTag(btn, id) {
-        $.ajax({
-            url: "/TagServlet", context: btn,
-            type: "POST",
-            data: {"method": "delTagById", "id": id},
-            success: function (result) {
-                if (result == "OK"){ this.parentNode.parentNode.removeChild(this.parentNode);}
-            },
-        });
+        if(confirm("確定刪除圖片？")){
+            $.ajax({
+                url: "/TagServlet", context: btn,
+                type: "POST",
+                data: {"method": "delTagById", "id": id},
+                success: function (result) {
+                    if (result == "OK"){ this.parentNode.parentNode.removeChild(this.parentNode);}
+                },
+            });
+        }
     }
 
     //隨機安排按鈕事件綁定
