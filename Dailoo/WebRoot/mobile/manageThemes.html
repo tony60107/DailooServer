@@ -80,7 +80,7 @@
                             '<div class="img-border">' +
                             '<img alt="" src="/ResourceServlet?url=' + themes[i].behalfPhotoUrl + '">' +
                             '</div>' +
-                            '<a href="#" class="cancle fr">刪除</a>' +
+                            '<div onclick="delTheme(\'' + themes[i].id + '\')" class="cancle fr">刪除</div>' +
                             '<a href="/mobile/editTheme.html?id=' + themes[i].id + '" class="edit fr">編輯</a>' +
                             '</div>';
                 }
@@ -90,6 +90,26 @@
                 setTimeout(function () {
                     getThemesByRegionId(regionId);
                 }, 1000);
+            }
+        });
+    }
+
+    function delTheme(id){
+        $.ajax({
+            url:"/ThemeServlet?method=delThemeById",
+            type: "POST",
+            data:{"id": id},
+            success:function(data){
+                var result = eval("(" + data + ")");
+                if(result.error != undefined){
+                    alert(result.error);
+                } else {
+                    alert("刪除成功");
+                    getThemes($('#regionId').attr('data-value'));
+                }
+
+            },error: function(){
+                alert("刪除失敗");
             }
         });
     }

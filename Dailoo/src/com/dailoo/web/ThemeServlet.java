@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import com.dailoo.domain.Speaker;
 import com.dailoo.domain.Theme;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.service.ThemeService;
@@ -25,15 +26,22 @@ public class ThemeServlet extends HttpServlet {
 		Theme theme = new Theme();
 		Gson gson = new Gson();
 		
+		//取得目前登入者的資訊
+		Speaker loginUser = (Speaker) request.getSession().getAttribute("speaker");
+		
 		try {
 			// 取得客戶端要求
 			String method = request.getParameter("method");
 			
 			// 如果是新增主題
 			if ("addTheme".equals(method)) {
-				Map<String, String> paramMap = FileUploadUtils.getParamMap(request,response, this);
-				service.addTheme(paramMap);
-				response.sendRedirect("/manageThemes.html");
+				if("admin".equals(loginUser.getRole())){
+					Map<String, String> paramMap = FileUploadUtils.getParamMap(request,response, this);
+					service.addTheme(paramMap);
+					response.sendRedirect("/manageThemes.html");
+				} else {
+					response.getWriter().write("{\"error\":\"只有管理員才可以新增主題喔~\"}");
+				}
 			}
 			//如果是根據地區ID取得主題
 			else if("getThemesByRegionId".equals(method)){
@@ -42,8 +50,12 @@ public class ThemeServlet extends HttpServlet {
 			}
 			//如果是根據ID刪除主題
 			else if("delThemeById".equals(method)){
-				service.delThemeById(request.getParameter("id"));
-				response.sendRedirect("/manageThemes.html");
+				if("admin".equals(loginUser.getRole())){
+					service.delThemeById(request.getParameter("id"));
+					response.sendRedirect("/manageThemes.html");
+				} else {
+					response.getWriter().write("{\"error\":\"只有管理員才可以刪除主題喔~\"}");
+				}
 			}
 			//如果是根據主題ID,找到該主題對應地區下的所有主題
 			else if("getThemesByThemeId".equals(method)){
@@ -57,10 +69,14 @@ public class ThemeServlet extends HttpServlet {
 			}
 			//如果是更新主題資訊
 			else if("updateThemeInfo".equals(method)){
-				Map<String, String> paramMap = FileUploadUtils.getParamMap(request, response, this);
-				BeanUtils.populate(theme, paramMap);
-				service.updateThemeInfo(theme, paramMap.get("imgurls"));
-				response.sendRedirect("/updateThemeInfo.html?id=" + theme.getId());
+				if("admin".equals(loginUser.getRole())){
+					Map<String, String> paramMap = FileUploadUtils.getParamMap(request, response, this);
+					BeanUtils.populate(theme, paramMap);
+					service.updateThemeInfo(theme, paramMap.get("imgurls"));
+					response.sendRedirect("/updateThemeInfo.html?id=" + theme.getId());
+				} else {
+					response.getWriter().write("{\"error\":\"只有管理員才可以編輯主題喔~\"}");
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

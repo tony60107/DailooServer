@@ -123,6 +123,7 @@
         return true;
     }
 
+    // 編輯主題
     function submitForm() {
 
         //將資料填入不顯示的表單中
@@ -138,8 +139,13 @@
                 data: new FormData($('#mainForm')[0]),
                 processData: false,
                 contentType: false,
-                success:function(result){
-                    alert("更新成功", window.location);
+                success:function(data){
+                    var result = eval("(" + data + ")");
+                    if(result.error != undefined){
+                        alert(result.error);
+                    } else {
+                        alert("更新成功", window.location);
+                    }
                 },
             });
         }

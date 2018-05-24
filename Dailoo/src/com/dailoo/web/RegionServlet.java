@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 
 import com.dailoo.domain.Region;
+import com.dailoo.domain.Speaker;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.service.RegionService;
 
@@ -24,6 +25,10 @@ public class RegionServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// 取得客戶端要求
 		String method = request.getParameter("method");
+		
+		//取得目前登入者的資訊
+		Speaker loginUser = (Speaker) request.getSession().getAttribute("speaker");
+		
 		
 		// 如果是新增地區
 		if ("addRegion".equals(method)) {

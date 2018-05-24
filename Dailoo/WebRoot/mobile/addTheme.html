@@ -97,8 +97,13 @@
                 data: new FormData($('#mainForm')[0]),
                 processData: false,
                 contentType: false,
-                success:function(result){
-                    alert("新增成功！！", "/mobile/manageThemes.html");
+                success:function(data){
+                    var result = eval("(" + data + ")");
+                    if(result.error != undefined){
+                        alert(result.error);
+                    } else {
+                        alert("新增成功！！", "/mobile/manageThemes.html");
+                    }
                 },
             });
         }
