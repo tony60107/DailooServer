@@ -38,7 +38,8 @@ public class ThemeServlet extends HttpServlet {
 				if("admin".equals(loginUser.getRole())){
 					Map<String, String> paramMap = FileUploadUtils.getParamMap(request,response, this);
 					service.addTheme(paramMap);
-					response.sendRedirect("/manageThemes.html");
+					//response.sendRedirect("/manageThemes.html");
+					response.getWriter().write("{}");
 				} else {
 					response.getWriter().write("{\"error\":\"只有管理員才可以新增主題喔~\"}");
 				}
@@ -52,7 +53,8 @@ public class ThemeServlet extends HttpServlet {
 			else if("delThemeById".equals(method)){
 				if("admin".equals(loginUser.getRole())){
 					service.delThemeById(request.getParameter("id"));
-					response.sendRedirect("/manageThemes.html");
+					//response.sendRedirect("/manageThemes.html");
+					response.getWriter().write("{}");
 				} else {
 					response.getWriter().write("{\"error\":\"只有管理員才可以刪除主題喔~\"}");
 				}
@@ -73,7 +75,8 @@ public class ThemeServlet extends HttpServlet {
 					Map<String, String> paramMap = FileUploadUtils.getParamMap(request, response, this);
 					BeanUtils.populate(theme, paramMap);
 					service.updateThemeInfo(theme, paramMap.get("imgurls"));
-					response.sendRedirect("/updateThemeInfo.html?id=" + theme.getId());
+					//response.sendRedirect("/updateThemeInfo.html?id=" + theme.getId());
+					response.getWriter().write("{}");
 				} else {
 					response.getWriter().write("{\"error\":\"只有管理員才可以編輯主題喔~\"}");
 				}

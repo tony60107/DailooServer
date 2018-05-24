@@ -76,7 +76,10 @@
                 type: "POST",
                 data: {"method": "addRegion", "name": $('#name').val()},
                 success: function (data) {
-                    alert('新增成功！',window.location);
+                    var result = eval("(" + data + ")");
+                    if(result.error != undefined){
+                        alert(result.error);
+                    } else {alert('新增成功！',window.location);}
                 },
                 error: function(){
                     setTimeout(function(){addRegion();}, 1000);

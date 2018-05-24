@@ -32,9 +32,14 @@ public class RegionServlet extends HttpServlet {
 		
 		// 如果是新增地區
 		if ("addRegion".equals(method)) {
-			region.setName(request.getParameter("name"));
-			service.addRegion(region);
-			response.sendRedirect("/manageRegions.html");
+			if("admin".equals(loginUser.getRole())){
+				region.setName(request.getParameter("name"));
+				service.addRegion(region);
+				//response.sendRedirect("/manageRegions.html");
+				response.getWriter().write("{}");
+			} else {
+				response.getWriter().write("{\"error\":\"只有管理員才可以新增主題類別喔~\"}");
+			}
 		}
 		// 如果是取得所有地區
 		else if("getAllRegions".equals(method)){
@@ -43,8 +48,13 @@ public class RegionServlet extends HttpServlet {
 		}
 		// 如果是根據ID刪除地區
 		else if("delRegionById".equals(method)){
-			service.delRegionById(request.getParameter("id"));
-			response.sendRedirect("/manageRegions.html");
+			if("admin".equals(loginUser.getRole())){
+				service.delRegionById(request.getParameter("id"));
+				//response.sendRedirect("/manageRegions.html");
+				response.getWriter().write("{}");
+			} else {
+				response.getWriter().write("{\"error\":\"只有管理員才可以刪除主題類別喔~\"}");
+			}
 		}
 		// 如果是根據ID取得地區
 		else if("getRegionById".equals(method)){
@@ -53,11 +63,15 @@ public class RegionServlet extends HttpServlet {
 		}
 		// 如果是更新地區資訊
 		else if("updateRegionInfo".equals(method)){
-			region.setId(request.getParameter("id"));
-			region.setName(request.getParameter("name"));
-			
-			service.updateRegionById(region);
-			response.sendRedirect("/updateRegionInfo.html?id=" + request.getParameter("id"));
+			if("admin".equals(loginUser.getRole())){
+				region.setId(request.getParameter("id"));
+				region.setName(request.getParameter("name"));
+				service.updateRegionById(region);
+				//response.sendRedirect("/updateRegionInfo.html?id=" + request.getParameter("id"));
+				response.getWriter().write("{}");
+			} else {
+				response.getWriter().write("{\"error\":\"只有管理員才可以編輯主題類別喔~\"}");
+			}
 		}
 	}
 

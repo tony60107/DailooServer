@@ -20,7 +20,7 @@
 
     <!--提交區塊-->
     <div class="submit-btns preview clearfix">
-        <div class="submit-l" onclick="delRegion();">刪除類別</div>
+        <div onclick="delRegion();" style="margin-right: 180px; cursor: pointer;">刪除類別</div>
         <a id="preview" href="#" class="submit-r hint" target="_blank">預覽</a>
     </div>
 
@@ -105,8 +105,11 @@
                 url: "/RegionServlet?method=updateRegionInfo", context: document.body,
                 type: "POST",
                 data: form.serialize(),//將表單資料序列化
-                success:function(result){
-                    alert("儲存成功", "/mobile/manageRegions.html");
+                success:function(data){
+                    var result = eval("(" + data + ")");
+                    if(result.error != undefined){
+                        alert(result.error);
+                    } else {alert("儲存成功", "/mobile/manageRegions.html");}
                 },error:function(result){
                     alert("儲存失敗");
                 },
@@ -116,13 +119,17 @@
 
     //刪除地區
     function delRegion(){
+
         $.ajax({
             url: "/RegionServlet", context: document.body,
             type: "POST",
             data: {"method": "delRegionById", "id": $('#regionId').val()},
-            success:function(result){
-                alert("刪除成功！！");
-                document.location.href="/mobile/manageRegions.html";
+            success:function(data){
+                var result = eval("(" + data + ")");
+                console.dir(result)
+                if(result.error != undefined){
+                    alert(result.error);
+                } else {alert("刪除成功", "/mobile/manageRegions.html");}
             },error:function(result){
                 alert("刪除失敗");
             },
