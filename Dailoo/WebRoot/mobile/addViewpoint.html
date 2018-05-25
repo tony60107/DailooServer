@@ -108,7 +108,7 @@
     </div>
 
     <!--上傳表單-->
-    <form id="mainForm" method="post" style="display: block" enctype="multipart/form-data">
+    <form id="mainForm" method="post" style="display: none" enctype="multipart/form-data">
         <div>照片位置<input id="ipPhoto" name="file" type="file" onchange="previewUploadImg(event, 'uploadImg')"></div>
         <div>音檔位置<input id="ipAudio" name="file" type="file" onchange="$('#uploadAudioCont').html($('#ipAudio').val().split('fakepath\\')[1]);"></div>
         <div>景點名稱<input type="text" name="name"></div>
@@ -153,7 +153,7 @@
     $('#uploadImg').bind('click', function(){$('#ipPhoto').click();});
     //點下上傳音檔時，觸發上傳按鈕
     $('#uploadAudio').bind('click', function(){$('#ipAudio').click();});
-
+    //增加對應主題
     $('#addThemeBtn').bind('click', function(){
         var dom = '<div class="selec region-selec">' +
                 '<div class="name">主題類別</div>' +
@@ -165,7 +165,9 @@
                 '<div class="name">景點主題</div>' +
                 '<div class="theme-cont cont">請選擇</div>' +
                 '<div class="arrow"></div>' +
-                '<div class="opt-data"></div>' +
+                '<div class="opt-data">' +
+                '<div class="title">切換至其他主題</div>' +
+                '</div>' +
                 '</div>' +
                 '</div>';
         $('#themes').html( $('#themes').html() + dom);
@@ -180,7 +182,8 @@
     function optCallback(selec) {
         //點選鄉鎮下拉選單後，自動將城市鄉鎮填入地址欄
         if(selec.id == "distSelec") {
-            $('#address').val($('#city').html() + $('#dist').html() + $('#address').val())
+            $('#address').val($('#city').html() + $('#dist').html() + $('#address').val());
+            $('#address').blur();
         }
         //點選地區下拉選單後，將主題列表填入內容
         else if($(selec).hasClass('region-selec')) {
@@ -256,7 +259,7 @@
         //檢查表單資料
         if(checkFrom()) {
             //上傳表單
-            /*$.ajax({
+            $.ajax({
                 url: '/ViewpointServlet?method=addViewpoint',
                 type: 'POST',
                 cache: false,
@@ -268,7 +271,7 @@
                 }, error: function (result) {
                     alert("新增失敗");
                 },
-            })*/
+            })
         }
     }
 
