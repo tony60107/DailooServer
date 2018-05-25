@@ -35,24 +35,28 @@
             <div id="uploadAudio" class="choose"></div>
         </div>
         <div class="upload-desc">※目前支援mp3, aac, m4a, wav, 3gp/3gpp音檔格式若您不確定自己的音檔格式或需要轉換格式，可參考<a href="#">這裡的說明</a>。</div>
-        <div class="selec">
-            <div class="name">主題類別</div>
-            <div id="regionId" class="cont">請選擇</div>
-            <div class="arrow"></div>
-            <div id="regionList" class="opt-data">
-                <div class="title">切換至其他主題類別</div>
+        <!--多主題區塊-->
+        <div id="themes" class="themes">
+            <div class="selec region-selec">
+                <div class="name">主題類別</div>
+                <div class="region-cont cont">請選擇</div>
+                <div class="arrow"></div>
+                <div class="region-list opt-data">
+                    <div class="title">切換至其他主題類別</div>
+                </div>
+            </div>
+            <div class="selec">
+                <div class="name">景點主題</div>
+                <div class="theme-cont cont">請選擇</div>
+                <div class="arrow"></div>
+                <div class="opt-data">
+                    <div class="title">切換至其他主題</div>
+                </div>
             </div>
         </div>
-        <div class="selec">
-            <div class="name">景點主題</div>
-            <div id="themeId" class="cont">請選擇</div>
-            <div class="arrow"></div>
-            <div id="themeList" class="opt-data">
-                <div class="title">切換至其他主題</div>
-            </div>
-        </div>
+
         <div class="add-theme clearfix">
-            <div class="btn fl"></div>
+            <div id="addThemeBtn" class="btn fl"></div>
             <div class="desc fl">增加對應的主題<span>［？］</span></div>
         </div>
         <div class="region clearfix">
@@ -104,7 +108,7 @@
     </div>
 
     <!--上傳表單-->
-    <form id="mainForm" method="post" style="display: none" enctype="multipart/form-data">
+    <form id="mainForm" method="post" style="display: block" enctype="multipart/form-data">
         <div>照片位置<input id="ipPhoto" name="file" type="file" onchange="previewUploadImg(event, 'uploadImg')"></div>
         <div>音檔位置<input id="ipAudio" name="file" type="file" onchange="$('#uploadAudioCont').html($('#ipAudio').val().split('fakepath\\')[1]);"></div>
         <div>景點名稱<input type="text" name="name"></div>
@@ -136,7 +140,8 @@
     initCitySelec();
 
     //取得所有的地區
-    getAllRegions();
+    var regions = getAllRegions();
+    fillAllRegionList(regions);
 
     //取得所有的講者
     getAllSpeakers();
@@ -149,10 +154,50 @@
     //點下上傳音檔時，觸發上傳按鈕
     $('#uploadAudio').bind('click', function(){$('#ipAudio').click();});
 
+    $('#addThemeBtn').bind('click', function(){
+        var dom = '<div class="selec region-selec">' +
+                '<div class="name">主題類別</div>' +
+                '<div class="region-cont cont">請選擇</div>' +
+                '<div class="arrow"></div>' +
+                '<div class="region-list opt-data"></div>' +
+                '</div>' +
+                '<div class="selec">' +
+                '<div class="name">景點主題</div>' +
+                '<div class="theme-cont cont">請選擇</div>' +
+                '<div class="arrow"></div>' +
+                '<div class="opt-data"></div>' +
+                '</div>' +
+                '</div>';
+        $('#themes').html( $('#themes').html() + dom);
+
+        //將地區資料填入所有的地區列表
+        fillAllRegionList(regions);
+
+        //激活所有的下拉選單
+        activeAllSelec(optCallback);
+    });
 
     function optCallback(selec) {
+        //點選鄉鎮下拉選單後，自動將城市鄉鎮填入地址欄
         if(selec.id == "distSelec") {
             $('#address').val($('#city').html() + $('#dist').html() + $('#address').val())
+        }
+        //點選地區下拉選單後，將主題列表填入內容
+        else if($(selec).hasClass('region-selec')) {
+            var regionId = $(selec).find('.cont').attr('data-value'); //地區ID
+            var themes = getThemesByRegionId(regionId); //從伺服器取得的主題資料
+            var themeSelec = selec.nextElementSibling; //主題下拉選單
+
+            //將資料填入主題列表中
+            var dom = '<div class="title">切換至其他主題</div>';
+            for(var i = 0; i < themes.length; i++) {
+                dom += "<div class='opt' data-value='" + themes[i].id +"'>" + themes[i].name + "</div>";
+            }
+            $(themeSelec).find('.opt-data').html(dom);
+
+            //重置主題下拉列表
+            $(themeSelec).find('.theme-cont').removeAttr('data-value');
+            $(themeSelec).find('.theme-cont').html('請選擇');
         }
     }
 
@@ -194,7 +239,14 @@
         ipName.val($('#name').val());
         ipSubtitle.val($('#subtitle').val());
         ipSpeakerId.val($('#speakerId').attr('data-value'));
-        ipThemeId.val($('#themeId').attr('data-value'));
+
+        //主題ID
+        ipThemeId.val('');
+        $('.theme-cont').each(function(){
+            if($(this).attr('data-value') != undefined) {ipThemeId.val(ipThemeId.val() + $(this).attr('data-value') + ',');}}
+        );
+        ipThemeId.val(ipThemeId.val().slice(0, -1));
+
         ipCity.val($('#city').html());
         ipTown.val($('#dist').html());
         ipAddress.val($('#address').val());
@@ -204,7 +256,7 @@
         //檢查表單資料
         if(checkFrom()) {
             //上傳表單
-            $.ajax({
+            /*$.ajax({
                 url: '/ViewpointServlet?method=addViewpoint',
                 type: 'POST',
                 cache: false,
@@ -216,7 +268,7 @@
                 }, error: function (result) {
                     alert("新增失敗");
                 },
-            })
+            })*/
         }
     }
 

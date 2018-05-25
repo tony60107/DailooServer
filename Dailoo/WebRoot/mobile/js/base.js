@@ -63,14 +63,8 @@ function activeSelec(selec, optCallback) {
             if(selecCont.id == 'city'){updateDist();}
 
             //如果是景點或地區的下拉選單，設定data-value值在點擊的下拉選單中
-            if(selecCont.id == 'vpId' || selecCont.id == 'regionId' || selecCont.id == 'speakerId' || selecCont.id == 'themeId' || selecCont.id == 'vpSubtitle' || selecCont.id == 'subtitle'){
+            if(selecCont.id == 'vpId' || selecCont.id == 'speakerId' || selecCont.id == 'vpSubtitle' || selecCont.id == 'subtitle' || $(selecCont).hasClass('region-cont') || $(selecCont).hasClass('theme-cont')){
                 selecCont.dataset.value = this.dataset.value;
-
-                //如果是地區下拉選單，且該頁面有主題下拉選單的話，則更新主題下拉選單
-                if(selecCont.id == 'regionId' && $('#themeId').length > 0) {
-                    $('#themeId').html("請選擇");
-                    getThemesByRegionId(this.dataset.value);
-                }
             }
 
             //呼叫回調函數
@@ -1784,21 +1778,15 @@ function getViewpointsByLoginUser(callback){
 
 //取得所有的地區
 function getAllRegions(callback) {
+    var regions;
     $.ajax({
         url: "/RegionServlet", context: document.body,
         type: "POST",
+        async:false,
         data: {"method": "getAllRegions"},
-        success: function (regions) {
-            var regionList = $("#regionList").get(0);
-            var regions = eval("(" + regions + ")");
-            //console.dir(speakers);
-
-            //將資料加到下拉選擇框
-            var dom = '';
-            for (var i = 0; i < regions.length; i++) {
-                dom +=  "<div class='opt' data-value='" + regions[i].id +"'>" + regions[i].name + "</div>";
-            }
-            regionList.innerHTML += dom;
+        success: function (data) {
+            regions = eval("(" + data + ")");
+            //console.dir(regions);
 
             //呼叫回調函數
             if(callback != undefined) callback();
@@ -1807,31 +1795,30 @@ function getAllRegions(callback) {
             setTimeout(function(){getAllRegions(callback);}, 1000);
         }
     });
+    return regions;
+}
+
+//填滿頁面中所有的地區列表（地區資料）
+function fillAllRegionList(regions) {
+    dom = '<div class="title">切換至其他主題類別</div>';
+    for(var i = 0; i < regions.length; i++) {
+        dom +=  "<div class='opt' data-value='" + regions[i].id +"'>" + regions[i].name + "</div>";
+    }
+    $('.region-list').html(dom);
 }
 
 //根據地區ID，取得該地區下的主題
 function getThemesByRegionId(regionId, callback) {
-
-    var themeList = $("#themeList").get(0); //主題列表
-
-    //初始化主題列表
-    themeList.innerHTML = "<div class='title'>切換至其他主題</div>";
-
+    var themes;
     $.ajax({
         url: "/ThemeServlet", context: document.body,
         type: "POST",
+        async:false,
         data: {"method": "getThemesByRegionId", "regionId": regionId},
-        success: function (themes) {
+        success: function (data) {
 
-            var themes = eval("(" + themes + ")");
-            //console.dir(speakers);
-
-            //將資料加到下拉選擇框
-            var dom = '';
-            for (var i = 0; i < themes.length; i++) {
-                dom +=  "<div class='opt' data-value='" + themes[i].id +"'>" + themes[i].name + "</div>";
-            }
-            themeList.innerHTML += dom;
+            themes = eval("(" + data + ")");
+            //console.dir(themes);
 
             //呼叫回調函數
             if(callback != undefined) callback();
@@ -1840,6 +1827,7 @@ function getThemesByRegionId(regionId, callback) {
             setTimeout(function(){getThemesByRegionId(callback);}, 1000);
         }
     });
+    return themes;
 }
 
 //換成短網址
