@@ -1905,8 +1905,8 @@ function initMap() {
         markers.push(marker);
 
         //將經緯度填入表單中
-        ipLat.val(location.lat);
-        ipLng.val(location.lng);
+        if(!isNaN(location.lat))ipLat.val(location.lat);
+        if(!isNaN(location.lng))ipLng.val(location.lng);
     }
 
     //地圖上刪除所有的標記
