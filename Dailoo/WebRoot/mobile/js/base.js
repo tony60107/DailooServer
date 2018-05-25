@@ -1882,12 +1882,14 @@ function leftCompleting(bits, identifier, value) {
 }
 
 //初始化Google地圖
+var map;
 function initMap() {
 
-    var map;
     var markers = [];
-
     var initLocation = {lat: 22.925489, lng: 121.125867515};
+    var form = $('#mainForm');
+    var ipLat = form.find('input[name="latitude"]');
+    var ipLng = form.find('input[name="longitude"]');
 
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 19,
@@ -1897,19 +1899,26 @@ function initMap() {
         addMarker(event.latLng);
     });
 
+    //編輯景點時，設定Google Map 初始標記位置
+    setTimeout(function(){
+        map.setCenter({'lat': parseFloat(ipLat.val()), 'lng': parseFloat(ipLng.val())});
+        addMarker({'lat': parseFloat(ipLat.val()), 'lng': parseFloat(ipLng.val())});
+    }, 1500);
+
+
+
     //地圖上新增標記
     function addMarker(location) {
         deleteMarkers();
-
         var marker = new google.maps.Marker({
             position: location,
             map: map
         });
         markers.push(marker);
-        var loc = location.toString().substring(1, location.toString().length - 1);
+
         //將經緯度填入表單中
-        $('#mainForm').find('input[name="latitude"]').val(loc.split(",")[0]);
-        $('#mainForm').find('input[name="longitude"]').val(loc.split(",")[1].trim());
+        ipLat.val(location.lat);
+        ipLng.val(location.lng);
     }
 
     //地圖上刪除所有的標記
@@ -1922,16 +1931,33 @@ function initMap() {
 
     //地址欄失去焦點時，更新地圖中心點
     $('#address').bind('blur', function () {
-        var url = "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=" + $('#address').val();
+
+        var url = "https://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=" + $('#address').val() + "&key=AIzaSyCJIjW2-z9cgnh9rkciGazL7h3odXo44SI";
         $.ajax({
             url: url, context: document.body,
             type: "POST",
             success: function (data) {
-                if (data.status != "OK") {
-                    $('#address').blur();
+                //console.dir(data);
+                //如果獲取經緯度失敗，則0.5秒後再次查詢
+                if(data.status != "OK"){ setTimeout(function(){$('#address').blur();}, 500); }
+                //如果有正確查到經緯度
+                if(data.results[0] != undefined) {
+                    var loc = data.results[0].geometry.location;
+                    //設定地圖中心點
+                    map.setCenter(loc);
+                    //設定地圖標記
+                    deleteMarkers();
+                    var marker = new google.maps.Marker({
+                        position: loc,
+                        map: map
+                    });
+                    markers.push(marker);
+                    //設定經緯度欄位
+                    if (loc.lat != 0 || loc.lng != 0) {
+                        ipLat.val(loc.lat);
+                        ipLng.val(loc.lng);
+                    }
                 }
-                var loc = data.results[0].geometry.location;
-                map.setCenter(loc);
             },
         });
     });

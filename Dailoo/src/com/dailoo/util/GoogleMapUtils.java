@@ -20,8 +20,8 @@ public class GoogleMapUtils {
 
 		try {
 			String address = URLEncoder.encode(Address, "utf-8");
-			String actionUrl = "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address="
-					+ address;
+			String actionUrl = "https://maps.googleapis.com/maps/api/geocode/json?sensor=false&address="
+					+ address + "&key=AIzaSyCJIjW2-z9cgnh9rkciGazL7h3odXo44SI";
 
 			url = new URL(actionUrl);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();

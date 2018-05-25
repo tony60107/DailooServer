@@ -216,7 +216,7 @@
             data: {"method": "getViewpointInfo", "id": id},
             success: function (data) {
                 var vp = eval("(" + data + ")");
-                console.dir(vp);
+                //console.dir(vp);
                 //將資料填入不顯示的表單中
                 $('#shortUrl').html(vp.shortUrl);
                 $('#name').html(vp.name);
@@ -241,6 +241,8 @@
                 $('#prevVp').attr('href', '/viewpoint.html?id=' + vp.id);
                 $('#editAudio').attr('href', '/mobile/editAudio.html?id=' + vp.audio.id)
 
+
+
                 if(callback != undefined) callback();
             },
             error: function(){
@@ -257,7 +259,7 @@
             data: {"method": "getSubtitlesById", "id":ipId.val()},
             success: function (data) {
                 var sts = eval("(" + data + ")");
-                console.dir(sts);
+                //console.dir(sts);
                 var dom = '<div class="title">切換至其他景點</div>';
                 for(var i = 0; i < sts.length; i++) {
                     dom += '<div class="opt" data-value="'+ sts[i].id +'">' + sts[i].subtitle + '</div>'

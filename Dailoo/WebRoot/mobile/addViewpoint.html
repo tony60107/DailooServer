@@ -64,7 +64,7 @@
                     <div class="title">切換至其他縣市</div>
                 </div>
             </div>
-            <div class="selec vil fl">
+            <div id="distSelec" class="selec vil fl">
                 <div id="dist" class="cont">請選擇</div>
                 <div class="arrow"></div>
                 <div id="distList" class="opt-data">
@@ -101,12 +101,6 @@
     <div class="submit-btns clearfix">
         <div class="submit-l">取消</div>
         <div class="submit-r hint" onclick="submitForm();">新增</div>
-    </div>
-
-    <!--彈出菜單-->
-    <div class="pop-mask" style="display: none"></div>
-    <div class="pop-menu" style="display: none">
-        <div class="title">切換至其他景點</div>
     </div>
 
     <!--上傳表單-->
@@ -148,12 +142,19 @@
     getAllSpeakers();
 
     //激活所有的下拉選單
-    activeAllSelec();
+    activeAllSelec(optCallback);
 
     //點下景點代表圖片時，觸發上傳按鈕
     $('#uploadImg').bind('click', function(){$('#ipPhoto').click();});
     //點下上傳音檔時，觸發上傳按鈕
     $('#uploadAudio').bind('click', function(){$('#ipAudio').click();});
+
+
+    function optCallback(selec) {
+        if(selec.id == "distSelec") {
+            $('#address').val($('#city').html() + $('#dist').html() + $('#address').val())
+        }
+    }
 
 
     var form = $('#mainForm');
@@ -168,7 +169,6 @@
     var ipLat = form.find('input[name="latitude"]');
     var ipLatLngPri = form.find('input[name="latLngPri"]');
     var ipIntro = form.find('input[name="intro"]');
-
 
     //檢查表單資料
     function checkFrom() {
@@ -188,7 +188,7 @@
         return true;
     }
 
-    //上傳資料
+    //上傳資料，新增景點
     function submitForm() {
         //將資料填入不顯示的表單中
         ipName.val($('#name').val());
@@ -219,10 +219,6 @@
             })
         }
     }
-
-
-
-
 
 
 </script>
