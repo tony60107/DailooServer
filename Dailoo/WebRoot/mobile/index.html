@@ -11,16 +11,14 @@
 <div class="w">
     <!--header引入-->
     <div id="header"></div>
-    <div class="profilePic">
-        <img id="photo" src="images/index/dailoo.png" alt="">
-    </div>
+    <a class="profilePic" href="#">
+        <img id="photo" src="images/general/add-speaker.png" alt="">
+    </a>
     <div class="funcGroup">
         <a href="/mobile/addViewpoint.html" class="func">新增景點</a>
         <a href="/mobile/manageViewpoints.html" class="func">景點管理</a>
         <a href="/mobile/addSpeaker.html" class="func">新增講者</a>
         <a href="/mobile/manageSpeakers.html" class="func">講者管理</a>
-        <a href="/mobile/manageThemes.html" class="func">主題管理</a>
-        <a href="/mobile/manageSNs.html" class="func">序號管理</a>
     </div>
     <!--Footer引入-->
     <div id="footer"></div>
@@ -42,8 +40,17 @@
             data: {"method": "getLoginUser"},
             success: function (data) {
                 var user = eval("(" + data + ")");
-                //console.dir(user);
-                $('#photo').attr('src', "/ResourceServlet?url=" + user.photoUrl);
+                console.dir(user);
+                if(user.photoUrl != undefined){
+                    $('#photo').attr('src', "/ResourceServlet?url=" + user.photoUrl);
+                    $('#photo').css('border-radius',  '50%');
+                }
+                $('.profilePic').attr('href', '/mobile/editSpeaker.html?id=' + user.id);
+                if(user.role == 'admin') {
+                    var dom = '<a href="/mobile/manageThemes.html" class="func">主題管理</a>' +
+                            '<a href="/mobile/manageSNs.html" class="func">序號管理</a>';
+                    $('.funcGroup').append(dom);
+                }
             },
             error: function(){
                 setTimeout(function(){getLoginUser();}, 1000);

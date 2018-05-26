@@ -4,12 +4,12 @@
     height: 200px;
     margin: auto;
     margin-top: 80px;
+    display: block;
 }
 
 .profilePic img {
     width: 200px;
     height: 200px;
-    border-radius: 50%;
 }
 
 .funcGroup {
