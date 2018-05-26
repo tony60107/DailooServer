@@ -192,8 +192,10 @@
         $('#playBtn').bind('click', function(){
             if(audio.paused == true){
                 audio.play();
+                $('#playBtn').attr('src', 'images/editAudio/pause.png');
             }else {
                 audio.pause();
+                $('#playBtn').attr('src', 'images/editAudio/play.png');
             }
         });
 

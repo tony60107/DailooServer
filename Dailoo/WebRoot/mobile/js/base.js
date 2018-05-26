@@ -1798,7 +1798,7 @@ function getAllRegions(callback) {
     return regions;
 }
 
-//填滿頁面中所有的地區列表（地區資料）
+//填滿頁面中所有的地區列表（param:地區資料）
 function fillAllRegionList(regions) {
     dom = '<div class="title">切換至其他主題類別</div>';
     for(var i = 0; i < regions.length; i++) {

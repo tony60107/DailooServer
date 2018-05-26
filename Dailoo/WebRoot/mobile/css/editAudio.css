@@ -72,11 +72,11 @@
 }
 
 .audio .player .download {
-    width: 40px;
-    height: 48px;
+    width: 76px;
+    height: 76px;
     position: absolute;
-    top: 30px;
-    right: 62px;
+    top: 14px;
+    right: 44px;
     background-image: url("../images/editAudio/download.png");
 }
 /*音檔部份結束*/
