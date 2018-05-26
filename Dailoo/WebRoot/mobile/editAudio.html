@@ -32,7 +32,7 @@
         <audio id="audio" src="#"></audio>
         <div class="player">
             <img id='playBtn' class="play-btn" src="images/editAudio/play.png" alt="">
-            <img src="images/editAudio/progressbar.png" alt="" class="pb">
+            <img id="pb" src="images/editAudio/progressbar.png" alt="" class="pb">
             <div id="bar" class="bar"></div>
             <div id="time" class="time">0:00</div>
             <div id="allTime" class="all-time">0:00</div>
@@ -126,7 +126,40 @@
     //獲取該音檔ID下的所有Tag
     getTagsByAudioId(audioId);
 
+    //點擊進度條時，設定音檔播放進度
+    $('#pb').bind('click', setAudioCurTime);
+    $('#bar').bind('click', setAudioCurTime);
 
+    //檔案選擇完畢，進行上傳
+    $('#ipPic').bind('change', function () {
+
+        //檢查照片檔案格式
+        var files = $(this)[0].files;
+        for (var i = 0; i < files.length; i++) {
+            var imgFormat = /\.(jpg|JPG|jpeg|JPEG|bmp|BMP|gif|GIF|png|PNG)$/i;
+            if(!imgFormat.test(this.files[i].name)){
+                alert('照片檔案格式不正確'); return;
+            }
+        }
+
+        //上傳表單
+        $.ajax({
+            url: '/TagServlet?method=addTag',
+            type: 'POST',
+            cache: false,
+            data: new FormData($('#mainForm')[0]),
+            processData: false,
+            contentType: false,
+            success:function(result){
+                alert("新增成功！！");
+                $('#ipPic').val('');
+                //更新現有Tag資訊，並重新整理
+                updateTag();
+            },error:function(result){
+                alert("新增失敗");
+            },
+        })
+    });
 
 
     //獲取音檔資訊，之後取得與該景點名稱相同的所有景點（副標題不同）
@@ -231,6 +264,13 @@
         }, 300);
     }
 
+    //點擊進度條時，設定音檔播放進度
+    function setAudioCurTime(e) {
+        var pbWidth = 456;
+        var dist = event.pageX - $('#pb').offset().left; //滑鼠點擊，距離進度條原點的距離
+        audio.currentTime = dist / pbWidth * audioData.length;
+    }
+
     //獲取該音檔ID下的所有Tag
     function getTagsByAudioId(audioId, callback){
         //設定上傳表單的音檔ID
@@ -289,37 +329,6 @@
         //點擊上傳圖片時，觸發上傳按鈕
         $('#uploadPic').bind('click', function () {$('#ipPic').click();});
     }
-
-    //檔案選擇完畢，進行上傳
-    $('#ipPic').bind('change', function () {
-
-        //檢查照片檔案格式
-        var files = $(this)[0].files;
-        for (var i = 0; i < files.length; i++) {
-            var imgFormat = /\.(jpg|JPG|jpeg|JPEG|bmp|BMP|gif|GIF|png|PNG)$/i;
-            if(!imgFormat.test(this.files[i].name)){
-               alert('照片檔案格式不正確'); return;
-            }
-        }
-
-        //上傳表單
-        $.ajax({
-            url: '/TagServlet?method=addTag',
-            type: 'POST',
-            cache: false,
-            data: new FormData($('#mainForm')[0]),
-            processData: false,
-            contentType: false,
-            success:function(result){
-                alert("新增成功！！");
-                $('#ipPic').val('');
-                //更新現有Tag資訊，並重新整理
-                updateTag();
-            },error:function(result){
-                alert("新增失敗");
-            },
-        })
-    });
 
     //更新標記時間
     function updateTag(){
