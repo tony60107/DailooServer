@@ -292,6 +292,16 @@
 
     //檔案選擇完畢，進行上傳
     $('#ipPic').bind('change', function () {
+
+        //檢查照片檔案格式
+        var files = $(this)[0].files;
+        for (var i = 0; i < files.length; i++) {
+            var imgFormat = /\.(jpg|JPG|jpeg|JPEG|bmp|BMP|gif|GIF|png|PNG)$/i;
+            if(!imgFormat.test(this.files[i].name)){
+               alert('照片檔案格式不正確'); return;
+            }
+        }
+
         //上傳表單
         $.ajax({
             url: '/TagServlet?method=addTag',
