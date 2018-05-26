@@ -103,12 +103,15 @@
         var patrn=/^(\w){6,20}$/;
         if(!patrn.exec(ipPWD.val())){alert('密碼必須是6位以上英數字混合'); return false;}
         if(ipName.val() == ''){alert('姓名不能為空'); return false;}
+
+        //檢查照片格式
+        if(checkImgFormat($('#ipPhoto')) == false){ return false;}
+
         return true;
     }
 
     //上傳資料
     function submitForm() {
-        console.dir($('#username').val())
         //將資料填入不顯示的表單中
         ipUsername.val($('#username').val());
         ipPWD.val($('#password').val());

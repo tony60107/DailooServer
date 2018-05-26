@@ -263,10 +263,11 @@
 
         var audioFormat = /\.(aac|mp3|m4a|wav|3gp|3gpp)$/i;  //允許的音檔檔案格式
         var $audio = $('#ipAudio');
-        if (audioFormat.test($audio.val()) != true) {
-            alert("語音檔案格式不正確或未選擇");
-            return false;
-        }
+        if (audioFormat.test($audio.val()) != true) {alert("語音檔案格式不正確或未選擇");return false;}
+
+        //檢查照片格式
+        if(checkImgFormat($('#ipPhoto')) == false){ return false;}
+
         return true;
     }
 

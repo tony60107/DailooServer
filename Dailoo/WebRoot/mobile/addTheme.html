@@ -70,6 +70,10 @@
     function checkFrom() {
         if(ipRegionId.val() == ''){alert('尚未選擇主題類別'); return false;}
         if(ipName.val() == ''){alert('主題名稱不能為空'); return false;}
+
+        //檢查照片格式
+        if(checkImgFormat($('#ipPhoto')) == false){ return false;}
+
         return true;
     }
 

@@ -145,6 +145,9 @@
     function checkFrom() {
         if(ipUsername.val() == ''){alert('帳號不能為空'); return false;}
         if(ipName.val() == ''){alert('姓名不能為空'); return false;}
+        //檢查照片格式
+        if(checkImgFormat($('#ipPhoto')) == false){ return false;}
+
         return true;
     }
 

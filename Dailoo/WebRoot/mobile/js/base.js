@@ -1870,6 +1870,12 @@ function leftCompleting(bits, identifier, value) {
     return value.slice(-bits);
 }
 
+function checkImgFormat($input){
+    var imgFormat = /\.(jpg|JPG|jpeg|JPEG|bmp|BMP|gif|GIF|png|PNG)$/i;
+    if (imgFormat.test($input.val()) != true && $input.val() != '') {alert("照片檔案格式不正確");return false;}
+    return true;
+}
+
 //初始化Google地圖
 var map;
 function initMap() {
