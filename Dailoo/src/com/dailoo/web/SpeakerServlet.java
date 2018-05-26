@@ -35,16 +35,20 @@ public class SpeakerServlet extends HttpServlet {
 		try {
 			// 如果是註冊講者
 			if ("registSpeaker".equals(method)) {
-				Map<String, String> paramMap = FileUploadUtils.getParamMap(request, response, this);
-				//取得講者大頭照
-				String photoUrl = paramMap.get("imgurls");
-				
-				//設定講者資料
-				BeanUtils.populate(speaker, paramMap);
-				speaker.setOwnerId(loginUser.getId());
-				speaker.setPhotoUrl(photoUrl);
-				service.addSpeaker(speaker);
-				response.sendRedirect("/manageSpeakers.html");
+				if("admin".equals(loginUser.getRole())){
+					Map<String, String> paramMap = FileUploadUtils.getParamMap(request, response, this);
+					//取得講者大頭照
+					String photoUrl = paramMap.get("imgurls");
+					
+					//設定講者資料
+					BeanUtils.populate(speaker, paramMap);
+					speaker.setOwnerId(loginUser.getId());
+					speaker.setPhotoUrl(photoUrl);
+					service.addSpeaker(speaker);
+					response.sendRedirect("/manageSpeakers.html");
+				} else {
+					response.getWriter().write("{\"error\":\"只有管理員才可以新增講者喔~\"}");
+				}
 			} 
 			// 如果是取得講者資料
 			else if ("getSpeakerInfo".equals(method)) {
