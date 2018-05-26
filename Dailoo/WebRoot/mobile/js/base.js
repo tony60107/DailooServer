@@ -31,7 +31,6 @@ function activeSelec(selec, optCallback) {
 
 
     //將選項更新到下拉選單上
-
     for (var i = 0; i < $opts.length; i++) {
         //如果是選中的選項，則標示選中。且如果有設定data-value的值，也一併加上去，沒有則空白
         var dataValue = $opts.get(i).dataset.value;
@@ -58,6 +57,8 @@ function activeSelec(selec, optCallback) {
         $($menuOpts.get(i)).bind('click', function () {
             //更改下拉選單內容
             selecCont.innerHTML = this.innerHTML;
+            //如果是input則額外處理
+            if($(selec).hasClass('input')) { $(selecCont).val(this.innerHTML)}
 
             //如果是縣市的下拉選單，更新鄉鎮下拉選單資料
             if(selecCont.id == 'city'){updateDist();}

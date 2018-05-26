@@ -226,6 +226,7 @@ s, i, em {
 .input .search {
     background: url("../images/general/search.png");
     bottom: 10px;
+    cursor: pointer;
 }
 
 .opt-data {

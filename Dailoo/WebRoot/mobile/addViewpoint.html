@@ -14,9 +14,10 @@
 
     <div class="main-title">新增景點</div>
     <form action="#" class="clearfix">
-        <div class="input no-title">
+        <div id="vpNameSelec" class="input no-title">
             <input id="name" class="cont" placeholder="輸入景點名稱" />
-            <div class="search"></div>
+            <div id="search" class="search"></div>
+            <div class="opt-data"></div>
         </div>
         <div class="input no-title">
             <input id="subtitle" class="cont" placeholder="輸入副標題" value=""/>
@@ -136,6 +137,9 @@
     //初始化頭部與腳步
     initHeaderFooter();
 
+    //取得該登入者擁有的景點
+    getViewpointsByLoginUser();
+
     //初始化縣市下拉選單
     initCitySelec();
 
@@ -149,6 +153,8 @@
     //激活所有的下拉選單
     activeAllSelec(optCallback);
 
+    //搜尋已有景點 事件綁定
+    $('#search').bind('click', function(){activeSelec(this.parentElement, optCallback);});
     //點下景點代表圖片時，觸發上傳按鈕
     $('#uploadImg').bind('click', function(){$('#ipPhoto').click();});
     //點下上傳音檔時，觸發上傳按鈕
@@ -180,6 +186,7 @@
     });
 
     function optCallback(selec) {
+        console.dir(selec)
         //點選鄉鎮下拉選單後，自動將城市鄉鎮填入地址欄
         if(selec.id == "distSelec") {
             $('#address').val($('#city').html() + $('#dist').html() + $('#address').val());
@@ -204,7 +211,34 @@
         }
     }
 
+    //取得該登入者擁有的景點
+    var vpNames = new Map(); //景點名稱Map，用於過濾重複的景點名稱
+    function getViewpointsByLoginUser() {
+        $.ajax({
+            url: "/ViewpointServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getViewpointsByLoginUser"},
+            success: function (data) {
+                var vps = eval("(" + data + ")");
 
+                //將景點資料填入Map中，過濾重複的景點名稱
+                for (var i = 0; i < vps.length; i++) {vpNames.set(vps[i].name, vps[i]);}
+
+                //將景點資料填入列表
+                var dom = '<div class="title">切換至其他景點</div>';
+                vpNames.forEach(function (vp) {
+                    dom += '<div class="opt">' + vp.name + '</div>';
+                });
+                $('#vpNameSelec').find('.opt-data').html(dom);
+
+            },
+            error: function () {
+                setTimeout(function () {getViewpointsByLoginUser();}, 1000);
+            }
+        });
+    }
+
+    
     var form = $('#mainForm');
     var ipName = form.find('input[name="name"]');
     var ipSubtitle = form.find('input[name="subtitle"]');
