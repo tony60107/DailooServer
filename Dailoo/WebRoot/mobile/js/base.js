@@ -1870,6 +1870,7 @@ function leftCompleting(bits, identifier, value) {
     return value.slice(-bits);
 }
 
+//確認圖片上傳格式
 function checkImgFormat($input){
     var imgFormat = /\.(jpg|JPG|jpeg|JPEG|bmp|BMP|gif|GIF|png|PNG)$/i;
     if (imgFormat.test($input.val()) != true && $input.val() != '') {alert("照片檔案格式不正確");return false;}

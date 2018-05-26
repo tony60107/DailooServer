@@ -16,9 +16,9 @@
 
     <div class="selec">
         <div class="name">選擇主題類別</div>
-        <div id="regionId" class="cont">請選擇</div>
+        <div id="regionId" class="region-cont cont">請選擇</div>
         <div class="arrow"></div>
-        <div id="regionList" class="opt-data">
+        <div id="regionList" class="region-list opt-data">
             <div class="title">切換至其他主題類別</div>
         </div>
     </div>
@@ -56,7 +56,8 @@
     initHeaderFooter();
 
     //取得所有的地區
-    getAllRegions();
+    var regions = getAllRegions();
+    fillAllRegionList(regions);
 
     //點下主題圖片時，觸發上傳按鈕
     $('#uploadImg').bind('click', function(){$('#ipPhoto').click();});
