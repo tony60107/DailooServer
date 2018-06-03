@@ -24,6 +24,7 @@
 }
 
 .form input {
+    width: 496px;
     margin-top: 64px;
     padding-top: 14px;
     padding-bottom: 14px;
