@@ -31,8 +31,11 @@ public class AdServiceImpl implements AdService{
 			//廣告顯示次數+1
 			ad.setCount(ad.getCount() + 1);
 			dao.updateAdInfo(ad);
-		}
-		return gson.toJson(ad);
+			return gson.toJson(ad);
+		} else {
+			//預設廣告
+			return this.findAdById("0ff882ad-fb13-4bc1-ac36-8292c4185247");
+		} 
 	}
 
 	@Override
