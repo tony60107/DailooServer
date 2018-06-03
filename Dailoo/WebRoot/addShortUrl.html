@@ -75,7 +75,7 @@
             data:$('#mainForm').serialize(),//將表單資料序列化
             success:function(result){
                 $("#shorten").val('https://dailoo.com/' + result);
-                toQRC('dailoo.com/' + result)
+                toQRC('https://dailoo.com/' + result)
             },
         });
     });
