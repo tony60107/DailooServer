@@ -25,17 +25,15 @@
         <div id="copy" class="copy fl">複製</div>
     </div>
 
-    <div id="vpNamesSelec" class="selec">
-        <div class="name">景點</div>
-        <div id="name" class="cont">選擇景點</div>
-        <div class="arrow"></div>
+    <div class="input no-title">
+        <input id="name" class="cont" autocomplete="off" placeholder="輸入景點名稱"/>
+        <div id="hintList" class="hint-list"></div>
         <div id="vpList" class="opt-data">
         </div>
     </div>
 
-    <div id="vpSubtitlesSelec" class="selec vp-subtitle">
-        <div id="subtitle" class="cont">選擇景點</div>
-        <div class="arrow"></div>
+    <div class="input vp-subtitle no-title">
+        <input id="subtitle" class="cont"  placeholder="輸入副標題"/>
         <div id="stList" class="opt-data">
         </div>
     </div>
@@ -196,6 +194,29 @@
 
     //複製短網址
     $('#copy').bind('click', function(){copy($('#shortUrl').html()); alert("複製成功")});
+    //輸入景點名稱時，搜尋相似的景點名稱
+    $('#name').bind('keyup', function(){
+        var $hintList = $('#hintList');
+        var opts = $('#vpList > .opt');
+        var dom = '';
+        for(var i = 0; i < opts.length; i++) {
+            if(opts[i].innerHTML.includes($('#name').val())){
+                dom += '<div class="opt">' + opts[i].innerHTML + '</div>';
+            }
+        }
+        $hintList.html(dom);
+        $hintList.css('display', 'block');
+
+        $('#hintList > .opt').each(function(){
+            $(this).bind('click', function(){
+                $('#name').val(this.innerHTML)
+                $hintList.css('display', 'none');
+            });
+        })
+    });
+    //點擊空白處，隱藏景點名稱提示框
+    $('body').bind("click","#test-element",function() {$('#hintList').css('display', 'none');});
+
     //點下景點代表圖片時，觸發上傳按鈕
     $('#behalfPhoto').bind('click', function(){$('#ipPhoto').click();});
     //點下上傳音檔時，觸發上傳按鈕
@@ -238,8 +259,8 @@
                 //console.dir(vp);
                 //將資料填入不顯示的表單中
                 $('#shortUrl').html(vp.shortUrl);
-                $('#name').html(vp.name);
-                $('#subtitle').html(vp.subtitle);
+                $('#name').val(vp.name);
+                $('#subtitle').val(vp.subtitle);
                 $('#subtitle').attr('data-value', vp.id);
                 $('#speakerId').attr('data-value', vp.speakerId);
                 $('#speakerId').html(vp.speaker.name);
@@ -369,7 +390,7 @@
     //處理下拉列表選項點擊事件
     function optClickEvent(selec){
         //如果是點擊景點名稱列表選項
-        if(selec.id == 'vpNamesSelec') {
+        /*if(selec.id == 'vpNamesSelec') {
             var firstSt = true; //尚未找到要求景點名稱的副標題
             var dom = '<div class="title">切換至其他景點</div>';
             //處理副標題列表內容
@@ -391,9 +412,9 @@
         //點擊副標題，重新載入新景點資料
         else if(selec.id == 'vpSubtitlesSelec') {
             getViewpoint($('#subtitle').attr('data-value'));
-        }
+        }*/
         //點選地區下拉選單後，將主題列表填入內容
-        else if($(selec).hasClass('region-selec')) {
+        if($(selec).hasClass('region-selec')) {
             fillThemeSelec(selec);
             //重置主題下拉列表
             var themeSelec = selec.nextElementSibling; //主題下拉選單

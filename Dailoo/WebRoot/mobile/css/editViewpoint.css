@@ -49,11 +49,25 @@
 }
 /*短網址結束*/
 
-.selec.vp-name, .selec.vp-subtitle {
-    height: 70px;
-    margin-top: 100px;
+/*景點名稱提示區塊開始*/
+.hint-list {
+    width: 740px;
+    padding: 20px;
+    position: absolute;
+    top: 120px;
+    left: 0;
+    background: #FFFFFF;
+    border: solid 2px #979797;
+    border-radius: 20px;
+    z-index: 1001;
+    display: none;
 }
 
+.hint-list .opt {
+    line-height: 90px;
+    border-bottom: solid 2px #979797;
+}
+/*景點名稱提示區塊結束*/
 
 /*上傳語音檔案開始*/
 .upload {

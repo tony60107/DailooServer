@@ -166,7 +166,7 @@ function initAuthorData(speakerData) {
     //講者姓名
     $$("speakerName").innerHTML = speakerData.name;
     //講者相片
-    if (speakerData.photoUrl != "") {
+    if (speakerData.photoUrl != undefined) {
         $$("speakerPhoto").src = "/ResourceServlet?url=" + speakerData.photoUrl;
         $$("speakerSmallPhoto").src = "/ResourceServlet?url=" + speakerData.photoUrl;
     }
