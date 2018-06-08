@@ -204,8 +204,10 @@
                 dom += '<div class="opt">' + opts[i].innerHTML + '</div>';
             }
         }
-        $hintList.html(dom);
-        $hintList.css('display', 'block');
+        if(dom != '') {
+            $hintList.html(dom);
+            $hintList.css('display', 'block');
+        }
 
         $('#hintList > .opt').each(function(){
             $(this).bind('click', function(){
@@ -461,8 +463,8 @@
     function submitForm() {
 
         //將資料填入不顯示的表單中
-        ipName.val($('#name').html());
-        ipSubtitle.val($('#subtitle').html());
+        ipName.val($('#name').val());
+        ipSubtitle.val($('#subtitle').val());
         ipSpeakerId.val($('#speakerId').attr('data-value'));
 
         //主題ID
@@ -481,6 +483,7 @@
 
         //上傳表單
         if(checkFrom()){
+            alert("資料上傳中...");
             $.ajax({
                 url: '/ViewpointServlet?method=updateViewpoint',
                 type: 'POST',
@@ -489,7 +492,7 @@
                 processData: false,
                 contentType: false,
                 success:function(result){
-                    alert("更新成功！！");
+                    alert("更新成功");
                     getViewpoint(ipId.val());
                 },error:function(result){
                     alert("更新失敗");

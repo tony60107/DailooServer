@@ -29,7 +29,7 @@
 
     <!--提交區塊-->
     <div class="submit-btns reset clearfix">
-        <div class="submit-l" onclick="delSpeaker();">刪除帳號</div>
+        <div onclick="delSpeaker();" style="margin-right: 156px;">刪除帳號</div>
         <a href="#" id="resetPWD" class="submit-r hint">重設密碼</a>
     </div>
 
@@ -184,17 +184,18 @@
 
     //刪除講者
     function delSpeaker() {
-        $.ajax({
-            url: '/SpeakerServlet',
-            type: 'POST',
-            data: {"method": "delSpeakerById", "id":$('#spId').val()},
-            success:function(result){
-                alert("刪除成功！！");
-                document.location.href="/mobile/manageSpeakers.html";
-            },error:function(result){
-                alert("刪除失敗");
-            },
-        })
+        if(confirm("確定刪除該講者？")){
+            $.ajax({
+                url: '/SpeakerServlet',
+                type: 'POST',
+                data: {"method": "delSpeakerById", "id":$('#spId').val()},
+                success:function(result){
+                    alert("刪除成功！！", "/mobile/manageSpeakers.html");
+                },error:function(result){
+                    alert("刪除失敗");
+                },
+            })
+        }
     }
 
     //點下大頭貼時，觸發上傳按鈕

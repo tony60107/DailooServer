@@ -335,6 +335,7 @@
         var tags = $('#picList').get(0).children;
         //如果還沒有Tag，則不上傳，直接更新
         if(tags.length == 1) {getTagsByAudioId($('#audioId').val());}
+        alert("資料更新中...");
         //遍歷Tag，上傳Tag狀態
         for(var i = 0; i < tags.length - 1; i++){
             var id = tags[i].id;
