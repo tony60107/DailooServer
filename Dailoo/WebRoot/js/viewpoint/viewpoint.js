@@ -166,7 +166,7 @@ function initAuthorData(speakerData) {
     //講者姓名
     $$("speakerName").innerHTML = speakerData.name;
     //講者相片
-    if (speakerData.photoUrl != undefined) {
+    if (speakerData.photoUrl != undefined || speakerData.photoUrl == "") {
         $$("speakerPhoto").src = "/ResourceServlet?url=" + speakerData.photoUrl;
         $$("speakerSmallPhoto").src = "/ResourceServlet?url=" + speakerData.photoUrl;
     }
@@ -181,7 +181,7 @@ function initAuthorData(speakerData) {
     }
 
     //講者手機
-    if (speakerData.phoneNumber == null || speakerData.phoneNumber == '') {
+    if (speakerData.phoneNumber == null) {
         $$("speakerPhone").href = "#speaker";
         $$("speakerPhone").children[1].innerHTML = "無";
     } else {
