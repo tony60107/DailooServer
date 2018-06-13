@@ -162,11 +162,11 @@ function initAuthorData(speakerData) {
     if (speakerData == null) {
         return;
     }
-
+    console.dir(speakerData.photoUrl == "");
     //講者姓名
     $$("speakerName").innerHTML = speakerData.name;
     //講者相片
-    if (speakerData.photoUrl != undefined || speakerData.photoUrl == "") {
+    if (speakerData.photoUrl != undefined && speakerData.photoUrl != "") {
         $$("speakerPhoto").src = "/ResourceServlet?url=" + speakerData.photoUrl;
         $$("speakerSmallPhoto").src = "/ResourceServlet?url=" + speakerData.photoUrl;
     }
