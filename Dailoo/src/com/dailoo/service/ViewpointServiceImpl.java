@@ -2,7 +2,9 @@ package com.dailoo.service;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import com.dailoo.dao.AudioDao;
@@ -167,7 +169,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 		if(vp == null) return null;
 		
 		Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
-		speaker.setPassword("");
+		speaker.setPassword("password");
 		Audio audio = audioDao.findAudioByViewpointId(vp.getId());
 		List<Tag> tags = tagDao.findTagsByAudioId(audio.getId());
 		
@@ -234,6 +236,77 @@ public class ViewpointServiceImpl implements ViewpointService{
 		
 		return result;
 	}
+	
+	@Override
+	public Map findViewpointByIdToJson2(String viewpointId) {
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		Viewpoint vp = dao.findViewpointById(viewpointId);
+		//如果該景點ID不存在
+		if(vp == null) return null;
+		
+		Speaker speaker = speakerDao.findSpeakerById(vp.getSpeakerId());
+		speaker.setPassword("");
+		Audio audio = audioDao.findAudioByViewpointId(vp.getId());
+		List<Tag> tags = tagDao.findTagsByAudioId(audio.getId());
+		
+		//將主題分割，並存入List中
+		String[] themes = vp.getThemeId().split(",");
+		List<Theme> themelist = new ArrayList<Theme>();
+		for(int i = 0; i < themes.length; i++) {
+			Theme theme = themeDao.findThemeById(themes[i]);
+			themelist.add(theme);
+		}
+		
+		//找出主題對應的地區，並存入List中
+		List<Region> regionList = new ArrayList<Region>();
+		for(int i = 0; i < themelist.size(); i++) {
+			Region region = regionDao.findRegionById(themelist.get(i).getRegionId());
+			regionList.add(region);
+		}
+		
+		List<Viewpoint> moreAudio = dao.findViewpointsByNameAndSpeaker(vp.getName(), vp.getSpeakerId());
+		//設定下一段語音
+		for(int i = 0; i < moreAudio.size(); i++) {
+			//根據該景點的副標題，對比出下一段副標題為哪個景點
+			if(moreAudio.get(i).getSubtitle().equals(vp.getSubtitle())){
+				if(i+1 < moreAudio.size()) { //如果有下一段副標題，則直接設定
+					vp.setNextAudio(toVpSimple(moreAudio.get(i+1)));
+				} else { //如果已經是最後一段，則隨機尋找同一主題下的景點
+					List<Viewpoint> temps = dao.findViewpointByThemeIdAndPublish(themelist.get(0).getId());
+					//System.out.println((int)(Math.random() * temps.size()));
+					if(temps.size() != 0){
+						vp.setNextAudio(toVpSimple(temps.get((int)(Math.random() * temps.size()))));
+					} else {
+						//如果同一主題下沒有其他景點
+						vp.setNextAudio(toVpSimple(vp));
+					} 
+				}
+			}
+		}
+		
+		//找到附近的景點
+		List<Viewpoint> neighView = dao.findNeighViewpoints(vp);
+		//刪除自己
+		for(int i = 0; i < neighView.size(); i++) {
+			if(neighView.get(i).getName().equals(vp.getName()) && neighView.get(i).getSpeakerId().equals(vp.getSpeakerId())) {
+				neighView.remove(i);	--i;
+			}
+		}
+		
+		result.put("viewpoint", vp);
+		result.put("speaker", speaker);
+		result.put("audio", audio);
+		result.put("tags", tags);
+		result.put("themes", themelist);
+		result.put("regions", regionList);
+		result.put("moreAudio", toVpSimple(moreAudio));
+		result.put("neighView", toVpSimple(neighView));
+		
+		return result;
+	}
+
 
 	@Override
 	public String findViewpointSimplesByThemeId(String theme) {

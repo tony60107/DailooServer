@@ -41,12 +41,13 @@ window.onload = function () {
     // 點擊展開全文按鈕
     $$("readAllCont").onclick = function () {
         $$("summary").style.overflow = "none";
-        $$("vpIntro").style.height = "100%";
+        $$("vpIntro").style.height = "";
         this.style.display = "none";
     }
 
     //點擊查看講者簡介
     $$("readAllSpeakerIntro").onclick = function () {
+        $$("speakerIntro").style.display = "table";
         $$("speakerIntro").style.height = "100%";
         this.style.display = "none";
     }
@@ -109,10 +110,10 @@ window.onload = function () {
 function getDateFromServer(){
 
     //取得景點ID
-    var vpId = location.href.split("id=")[1];
+    var vpId = $('#vpId').val();
     if(vpId != undefined) vpId = vpId.split("#")[0];
     //如果未提供景點ID，則跳轉到鹿野主題列表
-    if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
+    //if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
 
     //根據景點ID，取得景點資訊
     $.ajax({
@@ -132,7 +133,7 @@ function getDateFromServer(){
             }
             speakerData = data.speaker;
             initDataFromServer(data);
-            console.dir(data);
+            //console.dir(data);
         },
         error: function(){
             setTimeout(getDateFromServer, 500);
@@ -164,15 +165,15 @@ function initAuthorData(speakerData) {
     }
     console.dir(speakerData.photoUrl == "");
     //講者姓名
-    $$("speakerName").innerHTML = speakerData.name;
+    //$$("speakerName").innerHTML = speakerData.name;
     //講者相片
-    if (speakerData.photoUrl != undefined && speakerData.photoUrl != "") {
+   /* if (speakerData.photoUrl != undefined && speakerData.photoUrl != "") {
         $$("speakerPhoto").src = "/ResourceServlet?url=" + speakerData.photoUrl;
         $$("speakerSmallPhoto").src = "/ResourceServlet?url=" + speakerData.photoUrl;
-    }
+    }*/
     //講者自我介紹
     var speakerIntro = $$("speakerIntro");
-    speakerIntro.innerHTML = speakerData.intro.replace(/\r\n/g, '<br/>');
+    //speakerIntro.innerHTML = speakerData.intro.replace(/\r\n/g, '<br/>');
     //speakerIntro.innerHTML = speakerIntro.innerHTML.replace(/\n/g, '');
     if (speakerIntro.offsetHeight <= 220) {
         $$("readAllSpeakerIntro").style.display = "none";
@@ -181,39 +182,39 @@ function initAuthorData(speakerData) {
     }
 
     //講者手機
-    if (speakerData.phoneNumber == null) {
+    /*if (speakerData.phoneNumber == null) {
         $$("speakerPhone").href = "#speaker";
         $$("speakerPhone").children[1].innerHTML = "無";
     } else {
         $$("speakerPhone").href = "tel:" + speakerData.phoneNumber;
         $$("speakerPhone").children[1].innerHTML = speakerData.phoneNumber;
     }
-
+*/
     //講者家電
-    if (speakerData.homeNumber == null || speakerData.homeNumber == '') {
+   /* if (speakerData.homeNumber == null || speakerData.homeNumber == '') {
         $$("speakerHome").href = "#speaker";
         $$("speakerHome").children[1].innerHTML = "無";
     } else {
         $$("speakerHome").href = "tel:" + speakerData.homeNumber;
         $$("speakerHome").children[1].innerHTML = speakerData.homeNumber;
-    }
+    }*/
 
     //講者Facebook
-    if (speakerData.speakerUrl == null || speakerData.speakerUrl == '') {
+    /*if (speakerData.speakerUrl == null || speakerData.speakerUrl == '') {
         $$("speakerUrl").href = "#speaker";
         $$("speakerUrl").children[1].innerHTML = "無";
     } else {
         $$("speakerUrl").href = speakerData.speakerUrl;
         $$("speakerUrl").children[1].innerHTML = speakerData.speakerUrl;
-    }
+    }*/
 
     //講者簡歷
     var resume = speakerData.resume.split(',');
-    for (var i = 0; i < resume.length; i++) {
+    /*for (var i = 0; i < resume.length; i++) {
         var li = document.createElement("li");
         li.innerHTML = resume[i];
         $$("speakerResume").appendChild(li);
-    }
+    }*/
 
 }
 
@@ -221,7 +222,7 @@ function initAuthorData(speakerData) {
 function initViewpointData(vpData) {
 
     //網頁標題
-    document.title = vpData.name + " " + vpData.subtitle;
+    //document.title = vpData.name + " " + vpData.subtitle;
     //將短網址存入全局變量中
     if(vpData.shortUrl != undefined){
         document.shortUrl = vpData.shortUrl;
@@ -231,15 +232,15 @@ function initViewpointData(vpData) {
     //上一頁按鈕
     $$("backward").href = "/viewlist.html?id=" + vpData.theme[0].id;
     //景點名稱
-    $$("vpName").innerHTML = vpData.name;
+    //$$("vpName").innerHTML = vpData.name;
     //景點簡介標題
-    $$("vpTitle").innerHTML = vpData.name;
+    //$$("vpTitle").innerHTML = vpData.name;
     //景點簡介副標題
-    if (vpData.subtitle != "") {
+    /*if (vpData.subtitle != "") {
         $$("vpSubtitle").innerHTML = vpData.subtitle;
-    }
+    }*/
     //景點行政區
-    $$("area").innerHTML = vpData.city + vpData.town;
+    //$$("area").innerHTML = vpData.city + vpData.town;
     //儲存地區ID變量
     $$("regionId").value = vpData.theme[0].regionId;
 
@@ -276,7 +277,7 @@ function initViewpointData(vpData) {
 
     //景點介紹內容
     var vpIntro = $$("vpIntro");
-    vpIntro.innerHTML = vpData.intro.replace(/\n/g, '<br/>');
+    //vpIntro.innerHTML = vpData.intro.replace(/\n/g, '<br/>');
     //vpIntro.innerHTML = vpIntro.innerHTML.replace(/\n/g, '');
     if (vpIntro.offsetHeight <= 220) {
         $$("readAllCont").style.display = "none";
@@ -285,9 +286,10 @@ function initViewpointData(vpData) {
     }
 
     //還可以收聽區塊
-    if (typeof vpData.moreAudio != "undefined") {
+    /*if (typeof vpData.moreAudio != "undefined") {
         $$("moreAudioTitle").innerHTML = vpData.name + "共有以下" + vpData.moreAudio.length + "段可以收聽：";
         var moreAudioDiv = $$("moreAudio");
+        moreAudioDiv.innerHTML = "";
         for (var i = 0; i < vpData.moreAudio.length; i++) {
             var vp = vpData.moreAudio[i];
             var subtitle = vp.subtitle;
@@ -311,11 +313,11 @@ function initViewpointData(vpData) {
         }
     } else {
         $$("moreAudio").style.display = "none";
-    }
+    }*/
 
     //週邊景點
     if (typeof vpData.neighView != "undefined") {
-        var neighViewDiv = $$("neighView");
+        /*var neighViewDiv = $$("neighView");
         neighView = vpData.neighView;
 
         //如果沒有週邊景點則隱藏區塊
@@ -343,7 +345,7 @@ function initViewpointData(vpData) {
             }
             neighViewDiv.innerHTML = neighViewDiv.innerHTML + dom;
         }
-
+*/
         //初始化週邊景點滾動欄
         neighSwiper = new Swiper('.swiper-container', {
             slidesPerView: 'auto',

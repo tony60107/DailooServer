@@ -1,5 +1,7 @@
 package com.dailoo.service;
 
+import java.util.Map;
+
 import com.dailoo.domain.Speaker;
 import com.dailoo.domain.Viewpoint;
 
@@ -38,6 +40,13 @@ public interface ViewpointService extends Service{
 	 * @return JSON數據
 	 */
 	String findViewpointByIdToJson(String viewpointId);
+	
+	/**
+	 * 查詢該景點ID所有資訊，第二版，針對JSP
+	 * @param viewpointId 景點ID
+	 * @return 結果MAP
+	 */
+	Map findViewpointByIdToJson2(String viewpointId);
 
 	
 	/**
@@ -141,5 +150,7 @@ public interface ViewpointService extends Service{
 	 * @param newName 景點新名稱
 	 */
 	void updateViewpointNameById(String id, String newName);
+
+	
 
 }

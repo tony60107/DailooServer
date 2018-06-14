@@ -23,65 +23,72 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="editViewpoint.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile/editViewpoint.html">
+      <file leaf-file-name="test.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.064516">
-              <caret line="216" column="10" selection-start-line="216" selection-start-column="10" selection-end-line="216" selection-end-column="10" />
-              <folding>
-                <element signature="n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#11;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#14;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#15;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#16;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#17;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#18;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="viewpoint.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/viewpoint/viewpoint.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47276688">
-              <caret line="168" column="44" selection-start-line="168" selection-start-column="44" selection-end-line="168" selection-end-column="44" />
-              <folding>
-                <marker date="1528719133568" expanded="true" signature="10465:10479" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="editViewpoint.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile/css/editViewpoint.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.27282977">
+              <caret line="11" column="94" selection-start-line="11" selection-start-column="94" selection-end-line="11" selection-end-column="94" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addViewpoint.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile/addViewpoint.html">
+      <file leaf-file-name="viewpoint.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/viewpoint.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="18" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="18" />
+            <state vertical-scroll-proportion="-11.354838">
+              <caret line="400" column="19" selection-start-line="400" selection-start-column="19" selection-end-line="400" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/footer.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.2580647">
+              <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/footer.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.16129">
+              <caret line="70" column="18" selection-start-line="70" selection-start-column="18" selection-end-line="70" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="viewpoint.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/viewpoint2/viewpoint.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-30.237288">
+              <caret line="242" column="6" selection-start-line="242" selection-start-column="6" selection-end-line="242" selection-end-column="6" />
               <folding>
-                <element signature="n#div#7;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#10;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#11;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#12;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="e#5898#6748#0" expanded="false" />
-                <element signature="e#6784#7795#0" expanded="false" />
-                <element signature="e#7906#8738#0" expanded="false" />
-                <element signature="e#9410#10138#0" expanded="false" />
+                <element signature="e#5641#5949#0" expanded="false" />
+                <element signature="e#5964#6297#0" expanded="false" />
+                <element signature="e#6320#6639#0" expanded="false" />
+                <element signature="e#6704#6881#0" expanded="false" />
+                <element signature="e#9765#11244#0" expanded="false" />
+                <element signature="e#11315#12932#0" expanded="false" />
+                <marker date="1528965554281" expanded="true" signature="10580:10594" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="viewpoint.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/viewpoint.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-25.064516">
+              <caret line="95" column="55" selection-start-line="95" selection-start-column="55" selection-end-line="95" selection-end-column="55" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,11 +120,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mobile/css/manageRegions.css" />
-        <option value="$PROJECT_DIR$/mobile/css/editRegion.css" />
-        <option value="$PROJECT_DIR$/mobile/manageRegion.html" />
-        <option value="$PROJECT_DIR$/addViewpoint.html" />
-        <option value="$PROJECT_DIR$/manageViewpoints.html" />
         <option value="$PROJECT_DIR$/manageRegions.html" />
         <option value="$PROJECT_DIR$/mobile/css/addSN.css" />
         <option value="$PROJECT_DIR$/addSpeaker.html" />
@@ -164,6 +166,11 @@
         <option value="$PROJECT_DIR$/mobile/css/editViewpoint.css" />
         <option value="$PROJECT_DIR$/mobile/editViewpoint.html" />
         <option value="$PROJECT_DIR$/js/viewpoint/viewpoint.js" />
+        <option value="$PROJECT_DIR$/css/footer.css" />
+        <option value="$PROJECT_DIR$/viewpoint.html" />
+        <option value="$PROJECT_DIR$/css/viewpoint.css" />
+        <option value="$PROJECT_DIR$/js/viewpoint2/viewpoint.js" />
+        <option value="$PROJECT_DIR$/test.jsp" />
       </list>
     </option>
   </component>
@@ -210,6 +217,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -270,15 +278,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="viewpoint" />
+              <option name="myItemId" value="viewpoint2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -294,19 +301,19 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\js" />
-      <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\mobile\images\editAudio" />
-      <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\mobile\images\general" />
-      <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\mobile\js" />
-      <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\mobile\images" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\images\social" />
       <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\js\viewpoint" />
       <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\js" />
       <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot" />
       <recent name="E:\resource\DailooTest\Dailoo\images\photo\C龍田逛逛\LT0042 龍田 輝哥 鹿野區役場" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\js" />
+      <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\mobile\images\editAudio" />
+      <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\mobile\images\general" />
+      <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\mobile\js" />
+      <recent name="C:\Users\Waiting\Workspaces\MyEclipse Professional 2014\DailooServer\Dailoo\WebRoot\mobile\images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -893,11 +900,12 @@
       <workItem from="1527042228260" duration="377000" />
       <workItem from="1527043247887" duration="92486000" />
       <workItem from="1528710816964" duration="924000" />
+      <workItem from="1528879582003" duration="19911000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1587616000" />
+    <option name="totallyTimeSpent" value="1607527000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -959,35 +967,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/addSpeaker.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.66704935">
-          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile/css/addViewpoint.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.612904">
-          <caret line="52" column="19" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile/css/manageViewpoints.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.096774">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile/css/manageSubtitle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.5161295">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mobile/css/addSpeaker.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.806452">
@@ -1172,7 +1151,7 @@
         <state vertical-scroll-proportion="-0.6130884">
           <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
           <folding>
-            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="e#1730#2203#0" expanded="false" />
             <element signature="e#2451#2655#0" expanded="false" />
@@ -1186,9 +1165,9 @@
         <state vertical-scroll-proportion="-0.7096774">
           <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="e#1600#1769#0" expanded="false" />
             <element signature="e#1808#2304#0" expanded="false" />
             <element signature="e#2478#2643#0" expanded="false" />
@@ -1228,13 +1207,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/viewpoint/audio.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="164" column="13" selection-start-line="164" selection-start-column="8" selection-end-line="164" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/viewpoint/base.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1268,8 +1240,8 @@
             <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#8;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#10;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#11;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#10;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#11;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="e#4195#5021#0" expanded="false" />
             <element signature="e#5108#5942#0" expanded="false" />
             <element signature="e#6033#7094#0" expanded="false" />
@@ -1302,7 +1274,7 @@
         <state vertical-scroll-proportion="-14.903226">
           <caret line="64" column="31" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="31" />
           <folding>
-            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="e#2205#3659#0" expanded="false" />
             <marker date="1527346774074" expanded="true" signature="2571:2660" placeholder="..." />
             <marker date="1527346774074" expanded="true" signature="2571:2661" placeholder="..." />
@@ -1336,24 +1308,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33259425">
           <caret line="1780" column="9" selection-start-line="1780" selection-start-column="9" selection-end-line="1780" selection-end-column="9" />
-          <folding>
-            <element signature="n#!!block;n#activeAllSelec#0" expanded="false" />
-            <element signature="n#!!block;n#initPopMenu#0" expanded="false" />
-            <element signature="e#3181#3480#0" expanded="false" />
-            <element signature="n#!!block;n#previewUploadImg#0" expanded="false" />
-            <element signature="n#!!block;n#initHeaderFooter#0" expanded="false" />
-            <element signature="e#4347#39803#0" expanded="false" />
-            <element signature="n#!!block;n#initCitySelec#0" expanded="false" />
-            <element signature="n#!!block;n#updateDist#0" expanded="false" />
-            <element signature="n#!!block;n#getAllSpeakers#0" expanded="false" />
-            <element signature="n#!!block;n#getViewpointsByLoginUser#0" expanded="false" />
-            <element signature="n#!!block;n#getThemesByRegionId#0" expanded="false" />
-            <element signature="n#!!block;n#toShortUrl#0" expanded="false" />
-            <element signature="n#!!block;n#copy#0" expanded="false" />
-            <element signature="n#!!block;n#initMap#0" expanded="false" />
-            <element signature="n#!!block;n#deleteMarkers#0;n#!!block;n#initMap#0" expanded="false" />
-            <element signature="e#47607#47905#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1370,7 +1324,7 @@
         <state vertical-scroll-proportion="-14.193548">
           <caret line="29" column="10" selection-start-line="27" selection-start-column="3" selection-end-line="29" selection-end-column="10" />
           <folding>
-            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1403,14 +1357,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33251232">
-          <caret line="24" column="24" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mobile/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15154994">
@@ -1436,14 +1382,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viewpoint.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25258324">
-          <caret line="70" column="90" selection-start-line="70" selection-start-column="90" selection-end-line="70" selection-end-column="90" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mobile/addViewpoint.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1454,7 +1392,7 @@
             <element signature="n#div#11;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#12;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#form#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="e#5898#6748#0" expanded="false" />
             <element signature="e#6784#7795#0" expanded="false" />
@@ -1474,7 +1412,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mobile/editViewpoint.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.064516">
+        <state vertical-scroll-proportion="0.0">
           <caret line="216" column="10" selection-start-line="216" selection-start-column="10" selection-end-line="216" selection-end-column="10" />
           <folding>
             <element signature="n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -1484,19 +1422,86 @@
             <element signature="n#div#16;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#17;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#18;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/viewpoint/audio.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.2832243">
+          <caret line="182" column="4" selection-start-line="182" selection-start-column="4" selection-end-line="182" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/viewpoint/viewpoint.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47276688">
-          <caret line="168" column="44" selection-start-line="168" selection-start-column="44" selection-end-line="168" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="336" column="24" selection-start-line="336" selection-start-column="24" selection-end-line="336" selection-end-column="24" />
           <folding>
-            <marker date="1528719133568" expanded="true" signature="10465:10479" placeholder="..." />
+            <marker date="1528897326647" expanded="true" signature="10464:10478" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpoint.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-25.064516">
+          <caret line="95" column="55" selection-start-line="95" selection-start-column="55" selection-end-line="95" selection-end-column="55" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/viewpoint.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.354838">
+          <caret line="400" column="19" selection-start-line="400" selection-start-column="19" selection-end-line="400" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/footer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.2580647">
+          <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/footer.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.16129">
+          <caret line="70" column="18" selection-start-line="70" selection-start-column="18" selection-end-line="70" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/viewpoint2/viewpoint.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-30.237288">
+          <caret line="242" column="6" selection-start-line="242" selection-start-column="6" selection-end-line="242" selection-end-column="6" />
+          <folding>
+            <element signature="e#5641#5949#0" expanded="false" />
+            <element signature="e#5964#6297#0" expanded="false" />
+            <element signature="e#6320#6639#0" expanded="false" />
+            <element signature="e#6704#6881#0" expanded="false" />
+            <element signature="e#9765#11244#0" expanded="false" />
+            <element signature="e#11315#12932#0" expanded="false" />
+            <marker date="1528965554281" expanded="true" signature="10580:10594" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27282977">
+          <caret line="11" column="94" selection-start-line="11" selection-start-column="94" selection-end-line="11" selection-end-column="94" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -211,7 +211,6 @@
 /*景點簡介開始*/
 .summary {
     width: 860px;
-    height: 100%;
     margin: 0 auto;
     margin-top: 56px;
     margin-bottom: 34px;
@@ -234,11 +233,11 @@
 }
 
 .summary .intro {
-    height: 100%;
     margin-top: 24px;
     font-size: 40px;
     line-height: 55px;
     overflow: hidden;
+    display: table;
 }
 
 .summary .readall {
@@ -395,11 +394,11 @@
 .speaker .intro {
     margin-top: 42px;
     width: 860px;
-    height: 100%;
     font-size: 40px;
     line-height: 56px;
     position: relative;
     overflow: hidden;
+    display: table;
 }
 
 .speaker .readall {

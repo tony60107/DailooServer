@@ -68,8 +68,8 @@
 /*帶路介紹開始*/
 .footer-intro {
     margin-top: 128px;
+    height: 604px;
     background-color: #595959;
-    height: 100%;
     padding-top: 2px;
     padding-bottom: 2px;
 }
