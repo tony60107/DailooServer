@@ -238,11 +238,12 @@ public class ViewpointServiceImpl implements ViewpointService{
 	}
 	
 	@Override
-	public Map findViewpointByIdToJson2(String viewpointId) {
+	public Map findViewpointByNameAndSt2(String name, String subtitle) {
 		
 		Map<String, Object> result = new HashMap<String, Object>();
 		
-		Viewpoint vp = dao.findViewpointById(viewpointId);
+		Viewpoint vp = dao.findViewpointByNameAndSt(name, subtitle);
+		
 		//如果該景點ID不存在
 		if(vp == null) return null;
 		

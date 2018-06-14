@@ -42,11 +42,11 @@ public interface ViewpointService extends Service{
 	String findViewpointByIdToJson(String viewpointId);
 	
 	/**
-	 * 查詢該景點ID所有資訊，第二版，針對JSP
+	 * 根據景點名稱與副標題，查詢該所有資訊，針對JSP
 	 * @param viewpointId 景點ID
 	 * @return 結果MAP
 	 */
-	Map findViewpointByIdToJson2(String viewpointId);
+	Map findViewpointByNameAndSt2(String name, String subtitle);
 
 	
 	/**

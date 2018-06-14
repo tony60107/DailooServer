@@ -19,7 +19,11 @@ public class ViewpointInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ViewpointService service = BasicFactory.getFactory().getService(ViewpointService.class);
 		Gson gson = new Gson();
-		Map map = service.findViewpointByIdToJson2("c9bcf05e-8ac5-4ac1-ad12-838d94dc677c");
+		
+		String vp = request.getQueryString().split("vp=")[1];
+		System.out.println(vp);
+		vp = vp.split("\\?")[0];
+		Map map = service.findViewpointByNameAndSt2(vp.split("_")[0], vp.split("_")[1]);
 		
 		request.setAttribute("vp", map.get("viewpoint"));
 		request.setAttribute("sp", map.get("speaker"));
@@ -29,8 +33,8 @@ public class ViewpointInfoServlet extends HttpServlet {
 		request.setAttribute("regions", map.get("regions"));
 		request.setAttribute("moreAudio", map.get("moreAudio"));
 		request.setAttribute("neighView", map.get("neighView"));
-		
-		request.getRequestDispatcher("/test.jsp").forward(request, response);
+	
+		request.getRequestDispatcher("/viewpoint.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

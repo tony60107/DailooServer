@@ -1,11 +1,16 @@
 <%@ page language="java" import="java.util.*" pageEncoding="BIG5"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>${vp.name}${vp.subtitle} - Dailoo語音導覽服務</title>
+      <base href="<%=basePath%>">
+      <title>${vp.name}${vp.subtitle} - Dailoo語音導覽服務</title>
+      <link rel="shortcut icon" href="images/general/dailoo.png">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -29,7 +34,7 @@
           <div id="vpSubtitle" class="subtitle">${vp.subtitle}</div>
           <!--圖片輪播區-->
           <div id="picShower" class="picshower clearfix">
-              <img id="mainPhoto" alt="" class="pic">
+              <img id="mainPhoto" alt="${vp.name}" class="pic">
               <button class="prevpic"></button>
               <button class="nextpic"></button>
               <div id="photoNum" class="photo-count">1/1</div>
@@ -86,15 +91,15 @@
           <div class="contactInfo">
               <a id="speakerPhone" class="phone" href="tel:${sp.phoneNumber}">
                   <s></s>
-                  <div>${sp.phoneNumber}</div>
+                  <div>${sp.phoneNumber}<c:if test="${empty sp.phoneNumber}">無</c:if></div>
               </a>
               <a id="speakerHome" class="home" href="tel:${sp.homeNumber}">
                   <s></s>
-                  <div>${sp.homeNumber}</div>
+                  <div>${sp.homeNumber}<c:if test="${empty sp.homeNumber}">無</c:if></div>
               </a>
               <a id="speakerUrl" class="facebook" href="${sp.speakerUrl}" target="_blank">
                   <s></s>
-                  <div>${sp.speakerUrl}</div>
+                  <div>${sp.speakerUrl}<c:if test="${empty sp.speakerUrl}">無</c:if></div>
               </a>
           </div>
           <div class="intro">
@@ -109,7 +114,7 @@
       <div id="moreAudio" class="more-audio">
           <div id="moreAudioTitle" class="main-title">共有以下可以收聽：</div>
           <c:forEach items="${moreAudio}" var="vp">
-              <a href="viewpoint.html?utm_source=InSite&amp;utm_campaign=${vp.name}_${vp.subtitle}&amp;id=${vp.id}">
+              <a href="/view/${vp.name}_${vp.subtitle}?utm_source=InSite&amp;utm_campaign=${vp.name}_${vp.subtitle}">
                   <div class="audio">
                       <div class="audio-name fl">${vp.subtitle}</div>
                       <div class="fl" style="display: none;">...</div>
@@ -130,13 +135,12 @@
           <div class="main-title">周邊景點</div>
           <div class="viewlist swiper-container">
               <ul id="neighView" class="swiper-wrapper">
-
                   <c:forEach items="${neighView}" var="vp">
-                      <a class="view swiper-slide swiper-slide-active" href="viewpoint.html?utm_source=InSite&amp;utm_campaign=${vp.name}_${vp.subtitle}&amp;id=${vp.id}"><img
-                              src="/ResourceServlet?url=${vp.behalfPhotoUrl}">
+                      <a class="view swiper-slide swiper-slide-active" href="/view/${vp.name}_${vp.subtitle}?utm_source=InSite&amp;utm_campaign=${vp.name}_${vp.subtitle}">
+                          <img src="/ResourceServlet?url=${vp.behalfPhotoUrl}" alt="${vp.name}">
                           <div class="cover"></div>
                           <div class="main-title">${vp.name}</div>
-                          <img class="speaker-photo fl" src="/ResourceServlet?url=" alt="">
+                          <img class="speaker-photo fl" src="/ResourceServlet?url=${vp.speakerPhotoUrl}" alt="${vp.speakerName}">
                           <div class="speaker-info fl">
                               <div class="speaker">${vp.speakerName}</div>
                               <div class="time">
@@ -211,7 +215,7 @@
       </div>
       <!--浮動播放器-->
       <div id="floatPlayer" class="float-player">
-          <a href="#player"><div class="pic"><img id="floatPhoto" src="" alt=""></div></a>
+          <a href="#player"><div class="pic"><img id="floatPhoto" src="" alt="${vp.name}"></div></a>
           <div id="flPreTagBtn" class="pre"></div>
           <div id="flPlayBtn" class="play"></div>
           <div id="flNextTagBtn" class="next"></div>
@@ -223,6 +227,7 @@
       <!--其他變量儲存-->
       <input id="regionId" type="text" style="display: none"/>
       <input id="vpId" type="text" style="display: none" value="${vp.id}"/>
+  </div>
   </body>
 </html>
 <script src="https://www.youtube.com/iframe_api"></script>
