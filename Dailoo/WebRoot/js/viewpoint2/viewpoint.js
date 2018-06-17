@@ -230,7 +230,7 @@ function initViewpointData(vpData) {
         document.shortUrl = "";
     }
     //上一頁按鈕
-    $$("backward").href = "/viewlist.html?id=" + vpData.theme[0].id;
+    //$$("backward").href = "/viewlist.html?id=" + vpData.theme[0].id;
     //景點名稱
     //$$("vpName").innerHTML = vpData.name;
     //景點簡介標題

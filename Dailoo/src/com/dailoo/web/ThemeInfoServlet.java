@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dailoo.domain.Region;
 import com.dailoo.domain.Theme;
 import com.dailoo.domain.ViewpointSimple;
 import com.dailoo.factory.BasicFactory;
+import com.dailoo.service.RegionService;
 import com.dailoo.service.ThemeService;
 import com.dailoo.service.ViewpointService;
 import com.google.gson.Gson;
@@ -22,6 +24,7 @@ public class ThemeInfoServlet extends HttpServlet {
 		
 		ViewpointService service = BasicFactory.getFactory().getService(ViewpointService.class);
 		ThemeService themeService = BasicFactory.getFactory().getService(ThemeService.class);
+		RegionService regionService = BasicFactory.getFactory().getService(RegionService.class);
 		Gson gson = new Gson();
 		
 		//主題ID
@@ -31,6 +34,7 @@ public class ThemeInfoServlet extends HttpServlet {
 		//主題與景點資料
 		String themesJson = themeService.findThemesByThemeId(id);
 		String vpsJson = service.findViewpointSimplesByThemeIdAndPublish(id);
+		Region region = null;
 		
 		//刪除主題名稱中的英文，並設定要查詢的主題名稱
 		List<Theme> themes = gson.fromJson(themesJson, new TypeToken<List<Theme>>() {}.getType());
@@ -40,6 +44,8 @@ public class ThemeInfoServlet extends HttpServlet {
 			if(theme.getId().equals(id)){
 				request.setAttribute("themeName", theme.getName());
 			}
+			//查詢主題對應的地區，已取得地區名稱
+			if(i == 0) region = gson.fromJson(regionService.findRegionById(theme.getRegionId()), Region.class);
 		}
 		
 		//景點資料
@@ -48,6 +54,7 @@ public class ThemeInfoServlet extends HttpServlet {
 		//將資料存入request域中
 		request.setAttribute("vps", vps);
 		request.setAttribute("themes", themes);
+		request.setAttribute("regionName", region.getName());
 		
 		request.getRequestDispatcher("/theme.jsp").forward(request, response);
 	}

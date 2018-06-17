@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   <div class="w">
       <div class="nav clearfix">
-          <a id="backward" href="themelist.html">
+          <a id="backward" href="/region/${regionName}">
               <img class="back fl" src="images/viewlist/back.png"/>
           </a>
           <div id="title" class="main-title" onclick="switchDrop();">${themeName}<span id="drop" class="drop" style="display: inline-block"></span></div>
