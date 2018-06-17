@@ -1,5 +1,6 @@
 package com.dailoo.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.dailoo.domain.Theme;
@@ -45,6 +46,13 @@ public interface ThemeService extends Service{
 	 * @param imgurls 主題代表圖路徑
 	 */
 	void updateThemeInfo(Theme theme, String imgurls);
+
+	/**
+	 * 根據地區名稱,找到該主題對應地區下的所有主題
+	 * @param id 地區名稱
+	 * @return 主題集合的JSON數據
+	 */
+	List<Theme> findThemesByRegionName(String name);
 
 
 }

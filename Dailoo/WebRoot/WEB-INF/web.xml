@@ -119,8 +119,12 @@
     <servlet-class>com.dailoo.web.ViewpointInfoServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>ViewListInfoServlet</servlet-name>
-    <servlet-class>com.dailoo.web.ViewListInfoServlet</servlet-class>
+    <servlet-name>ThemeInfoServlet</servlet-name>
+    <servlet-class>com.dailoo.web.ThemeInfoServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RegionInfoServlet</servlet-name>
+    <servlet-class>com.dailoo.web.RegionInfoServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
@@ -179,7 +183,11 @@
     <url-pattern>/ViewpointInfoServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>ViewListInfoServlet</servlet-name>
-    <url-pattern>/ViewListInfoServlet</url-pattern>
+    <servlet-name>ThemeInfoServlet</servlet-name>
+    <url-pattern>/ThemeInfoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RegionInfoServlet</servlet-name>
+    <url-pattern>/RegionInfoServlet</url-pattern>
   </servlet-mapping>
 </web-app>

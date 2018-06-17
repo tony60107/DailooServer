@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ecpay.payment.integration.AllInOne;
-import ecpay.payment.integration.domain.AioCheckOutATM;
 
 public class OrderServlet extends HttpServlet {
 	
@@ -22,7 +20,7 @@ public class OrderServlet extends HttpServlet {
 		
 		// 如果是新增訂單
 		if ("addOrder".equals(method)) {
-			AllInOne all = new AllInOne("");;
+			/*AllInOne all = new AllInOne("");;
 			AioCheckOutATM obj = new AioCheckOutATM();
 			obj.setMerchantTradeNo(new SimpleDateFormat("yyyyMMdd").format(new Date()) + (int)(Math.random()*900000+100000));
 			obj.setMerchantTradeDate(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
@@ -35,7 +33,7 @@ public class OrderServlet extends HttpServlet {
 			obj.setExpireDate("6");
 			String form = all.aioCheckOut(obj, null);
 			System.out.println(form);
-			response.getWriter().write(form);
+			response.getWriter().write(form);*/
 		}
 		
 	}

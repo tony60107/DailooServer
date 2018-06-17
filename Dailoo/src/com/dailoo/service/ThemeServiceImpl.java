@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import com.dailoo.dao.RegionDao;
 import com.dailoo.dao.ThemeDao;
 import com.dailoo.dao.ViewpointDao;
+import com.dailoo.domain.Region;
 import com.dailoo.domain.Theme;
 import com.dailoo.domain.Viewpoint;
 import com.dailoo.factory.BasicFactory;
@@ -17,6 +19,7 @@ public class ThemeServiceImpl implements ThemeService {
 
 	ThemeDao dao = BasicFactory.getFactory().getDao(ThemeDao.class);
 	ViewpointDao viewpointDao = BasicFactory.getFactory().getDao(ViewpointDao.class);
+	RegionDao regionDao = BasicFactory.getFactory().getDao(RegionDao.class);
 	Gson gson = new Gson();
 
 	@Override
@@ -97,6 +100,13 @@ public class ThemeServiceImpl implements ThemeService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public List<Theme> findThemesByRegionName(String name) {
+		Region region = regionDao.findRegionByName(name);
+		List<Theme> themes = dao.findThemesByRegionId(region.getId());
+		return themes;
 	}
 
 }

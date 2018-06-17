@@ -17,7 +17,12 @@
 
 	<rule>
         <from>/theme/(.*)</from>
-        <to>/ViewListInfoServlet?id=$1</to>
+        <to>/ThemeInfoServlet?id=$1</to>
+    </rule>
+    
+	<rule>
+        <from>/region/(.*)</from>
+        <to>/RegionInfoServlet?name=$1</to>
     </rule>
 
     <!--

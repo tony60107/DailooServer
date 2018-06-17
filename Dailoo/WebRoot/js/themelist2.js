@@ -19,10 +19,10 @@ window.onload = function () {
 }
 
 //根據地區ID取得主題資料，並新增到主題列表中
-getThemesData();
+//getThemesData();
 
 //取得地區名稱
-getRegionData();
+//getRegionData();
 
 history.replaceState(null, null, location.href);
 

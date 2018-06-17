@@ -16,7 +16,7 @@ import com.dailoo.service.ViewpointService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-public class ViewListInfoServlet extends HttpServlet {
+public class ThemeInfoServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -26,6 +26,7 @@ public class ViewListInfoServlet extends HttpServlet {
 		
 		//主題ID
 		String id = request.getQueryString().split("id=")[1];
+		id = id.split("\\?")[0];
 		
 		//主題與景點資料
 		String themesJson = themeService.findThemesByThemeId(id);
@@ -48,7 +49,7 @@ public class ViewListInfoServlet extends HttpServlet {
 		request.setAttribute("vps", vps);
 		request.setAttribute("themes", themes);
 		
-		request.getRequestDispatcher("/viewlist.jsp").forward(request, response);
+		request.getRequestDispatcher("/theme.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
