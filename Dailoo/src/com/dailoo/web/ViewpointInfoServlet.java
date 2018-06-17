@@ -11,18 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dailoo.domain.Speaker;
 import com.dailoo.factory.BasicFactory;
+import com.dailoo.service.ThemeService;
 import com.dailoo.service.ViewpointService;
 import com.google.gson.Gson;
 
 public class ViewpointInfoServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		ViewpointService service = BasicFactory.getFactory().getService(ViewpointService.class);
 		Gson gson = new Gson();
 		
 		String vp = request.getQueryString().split("vp=")[1];
-		System.out.println(vp);
 		vp = vp.split("\\?")[0];
+		System.out.println(vp);
 		Map map = service.findViewpointByNameAndSt2(vp.split("_")[0], vp.split("_")[1]);
 		
 		request.setAttribute("vp", map.get("viewpoint"));

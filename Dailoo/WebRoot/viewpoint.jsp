@@ -9,7 +9,7 @@
 <html>
   <head>
       <base href="<%=basePath%>">
-      <title>${vp.name}${vp.subtitle} - Dailoo語音導覽服務</title>
+      <title>${vp.name}${vp.subtitle} - Dailoo帶路語音導覽服務</title>
       <link rel="shortcut icon" href="images/general/dailoo.png">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -20,6 +20,7 @@
   </head>
   
   <body>
+
   <div class="w clearfix" style="overflow: hidden">
       <!--主播放器-->
       <div id="player" class="player clearfix">
@@ -30,11 +31,11 @@
               <a id="vpLocation" target="_blank"><img src="images/viewpoint/location.png" alt="" class="location fr"></a>
           </div>
           <!--標題區塊-->
-          <div id="vpName" class="main-title">${vp.name}</div>
-          <div id="vpSubtitle" class="subtitle">${vp.subtitle}</div>
+          <h1 id="vpName" class="main-title">${vp.name}</h1>
+          <h2 id="vpSubtitle" class="subtitle">${vp.subtitle}</h2>
           <!--圖片輪播區-->
           <div id="picShower" class="picshower clearfix">
-              <img id="mainPhoto" alt="${vp.name}" class="pic">
+              <img id="mainPhoto" src="/ResourceServlet?url=${tags[0].photoUrl}" alt="${vp.name}" class="pic">
               <button class="prevpic"></button>
               <button class="nextpic"></button>
               <div id="photoNum" class="photo-count">1/1</div>
@@ -63,7 +64,7 @@
       <div id="summary" class="summary">
           <div id="vpTitle" class="main-title">${vp.name}</div>
           <div id="area" class="subtitle">${vp.city}${vp.town}</div>
-          <div id="vpIntro" class="intro">${vp.intro}</div>
+          <h2 id="vpIntro" class="intro">${vp.intro}</h2>
           <div id="readAllCont" class="readall">…展開全文</div>
       </div>
       <!--分隔線-->
@@ -78,7 +79,7 @@
                   <c:if test="${sp.photoUrl != null}"><img id="speakerPhoto" class="photo" alt="${sp.name}" src="/ResourceServlet?url=${sp.photoUrl}"/></c:if>
               </div>
               <div class="info-r fl">
-                  <div id="speakerName" class="name">${sp.name}</div>
+                  <h3 id="speakerName" class="name">${sp.name}</h3>
                   <div class="resume">
                       <ul id="speakerResume">
                         <c:forTokens items="${sp.resume}" delims="," var="str">
@@ -103,7 +104,7 @@
               </a>
           </div>
           <div class="intro">
-              <div id="speakerIntro" class="cont">${sp.intro}</div>
+              <h2 id="speakerIntro" class="cont">${sp.intro}</h2>
               <div id="readAllSpeakerIntro" class="readall">...展開全文</div>
           </div>
           <!--<iframe id="ytplayer" class="ytplayer" width="880" height="495" src="" frameborder="0" allowfullscreen></iframe>-->

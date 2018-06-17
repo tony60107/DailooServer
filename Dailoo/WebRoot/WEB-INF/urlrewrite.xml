@@ -12,10 +12,13 @@
 
     <rule>
         <from>/view/(.*)</from>
-        <to>%{HTTP_HOST}/ViewpointInfoServlet?vp=$1</to>
+        <to>/ViewpointInfoServlet?vp=$1</to>
     </rule>
 
-
+	<rule>
+        <from>/theme/(.*)</from>
+        <to>/ViewListInfoServlet?id=$1</to>
+    </rule>
 
     <!--
 
