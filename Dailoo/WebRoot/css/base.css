@@ -66,7 +66,7 @@ body {
     font-family: Helvetica, Arial, "PingFang TC","LiHei Pro","Heiti TC","Droid Sans","Microsoft JhengHei","新細明體",sans-serif;
     color: #000;
     background: #fff;
-
+    -webkit-text-size-adjust: none;
 }
 
 .clearfix:before, .clearfix:after {

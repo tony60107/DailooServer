@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="BIG5"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
@@ -11,13 +11,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>${themeName} - Dailoo±a¸ô»y­µ¾ÉÄıªA°È</title>
+    <title>${themeName} - Dailooå¸¶è·¯èªéŸ³å°è¦½æœå‹™</title>
     <meta name="viewport" content="user-scalable=no"/>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="${themeName} ´ºÂI¤¶²Ğ¡A¥]§t¥H¤U´ºÂI¡G<c:forEach items="${vps}" var="vp">${vp.name}, </c:forEach> - ´N¹³¦b¦a¤H¿Ë¦Û±a¸ô">
+	<meta http-equiv="description" content="${themeName} æ™¯é»ä»‹ç´¹ï¼ŒåŒ…å«ä»¥ä¸‹æ™¯é»ï¼š<c:forEach items="${vps}" var="vp">${vp.name}, </c:forEach> - å°±åƒåœ¨åœ°äººè¦ªè‡ªå¸¶è·¯">
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </a>
           </c:forEach>
       </div>
-      <!--Footer¤Ş¤J-->
+      <!--Footerå¼•å…¥-->
       <div id="footer"></div>
   </div>
   </body>

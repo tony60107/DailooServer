@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="BIG5"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
@@ -11,13 +11,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>${regionName} - Dailoo±a¸ô»y­µ¾ÉÄıªA°È</title>
+    <title>${regionName} - Dailooå¸¶è·¯èªéŸ³å°è¦½æœå‹™</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-    <meta http-equiv="description" content="${regionName} ¥DÃD¤¶²Ğ¡A¥]§t¥H¤U´ºÂI¡G<c:forEach items="${themes}" var="theme">${theme.name}, </c:forEach> - ´N¹³¦b¦a¤H¿Ë¦Û±a¸ô">
+    <meta http-equiv="description" content="${regionName} ä¸»é¡Œä»‹ç´¹ï¼ŒåŒ…å«ä»¥ä¸‹æ™¯é»ï¼š<c:forEach items="${themes}" var="theme">${theme.name}, </c:forEach> - å°±åƒåœ¨åœ°äººè¦ªè‡ªå¸¶è·¯">
     <!--
     <link rel="stylesheet" type="text/css" href="styles.css">
     -->
@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
       <div class="header clearfix">
           <img id="logo" class="logo fl" src="images/themelist/dailoo_logo.png" style="top: 34px;">
-          <h1 id="title" class="cover fl">${regionName}¦æ°Ê»y­µ¾ÉÄı</h1>
+          <h1 id="title" class="cover fl">${regionName}è¡Œå‹•èªéŸ³å°è¦½</h1>
       </div>
       <div id="themelist" class="themelist">
           <c:forEach items="${themes}" var="theme">
@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </c:forEach>
       </div>
       <input id="regionId" type="text" value="${regionId}" style="display: none"/>
-  <!--Footer¤Ş¤J-->
+  <!--Footerå¼•å…¥-->
   <div id="footer"></div>
   </body>
 </html>

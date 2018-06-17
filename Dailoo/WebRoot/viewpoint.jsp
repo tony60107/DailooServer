@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="BIG5"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
@@ -9,12 +9,12 @@
 <html>
   <head>
       <base href="<%=basePath%>">
-      <title>${vp.name}${vp.subtitle} - Dailoo±a¸ô»y­µ¾ÉÄıªA°È</title>
+      <title>${vp.name}${vp.subtitle} - Dailooå¸¶è·¯èªéŸ³å°è¦½æœå‹™</title>
       <link rel="shortcut icon" href="images/general/dailoo.png">
       <meta http-equiv="pragma" content="no-cache">
       <meta http-equiv="cache-control" content="no-cache">
       <meta http-equiv="expires" content="0">
-      <meta http-equiv="description" content="${vp.name}${vp.subtitle} - ${vp.intro} - ´N¹³¦b¦a¤H¿Ë¦Û±a¸ô">
+      <meta http-equiv="description" content="${vp.name}${vp.subtitle} - ${vp.intro} - å°±åƒåœ¨åœ°äººè¦ªè‡ªå¸¶è·¯">
       <link rel="stylesheet" href="css/base.css"/>
       <link rel="stylesheet" href="css/viewpoint.css?20171209"/>
   </head>
@@ -22,37 +22,37 @@
   <body>
 
   <div class="w clearfix" style="overflow: hidden">
-      <!--¥D¼½©ñ¾¹-->
+      <!--ä¸»æ’­æ”¾å™¨-->
       <div id="player" class="player clearfix">
-          <!--ÀY³¡¾É¯èÄæ-->
+          <!--é ­éƒ¨å°èˆªæ¬„-->
           <div class="header clearfix">
               <a id="backward" href="/theme/${themes.get(i).id}"><img src="images/viewpoint/back.png" alt="" class="back fl"></a>
               <div id="share" href=""><img src="images/viewpoint/share.png" alt="" class="share fr"></div>
               <a id="vpLocation" target="_blank"><img src="images/viewpoint/location.png" alt="" class="location fr"></a>
           </div>
-          <!--¼ĞÃD°Ï¶ô-->
+          <!--æ¨™é¡Œå€å¡Š-->
           <h1 id="vpName" class="main-title">${vp.name}</h1>
           <h2 id="vpSubtitle" class="subtitle">${vp.subtitle}</h2>
-          <!--¹Ï¤ù½ü¼½°Ï-->
+          <!--åœ–ç‰‡è¼ªæ’­å€-->
           <div id="picShower" class="picshower clearfix">
               <img id="mainPhoto" src="/ResourceServlet?url=${tags[0].photoUrl}" alt="${vp.name}" class="pic">
               <button class="prevpic"></button>
               <button class="nextpic"></button>
               <div id="photoNum" class="photo-count">1/1</div>
           </div>
-          <!--Á¿ªÌ¤p¹Ï-->
+          <!--è¬›è€…å°åœ–-->
           <div class="speaker-small">
               <c:if test="${sp.photoUrl == null}"><img id="speakerSmallPhoto" src="images/viewpoint/speaker_defalut_small.png" alt=""></c:if>
               <c:if test="${sp.photoUrl != null}"><img id="speakerSmallPhoto" src="/ResourceServlet?url=${sp.photoUrl}" alt="${sp.name}"></c:if>
           </div>
-          <!--Án­µ¶i«×±ø-->
+          <!--è²éŸ³é€²åº¦æ¢-->
           <div id="scrollBar" class="scroll">
               <div class="bar"></div>
               <div class="mask"></div>
               <div id="nowTime" class="nowtime">0:00</div>
               <div id="allTime" class="alltime">0:00</div>
           </div>
-          <!--Án­µ±±¨î¾¹-->
+          <!--è²éŸ³æ§åˆ¶å™¨-->
           <div class="soundctrl clearfix">
               <audio id="audio"></audio>
               <button id="preTagBtn" class="prevtag fl"></button>
@@ -60,18 +60,18 @@
               <button id="nextTagBtn" class="nexttag fl"></button>
           </div>
       </div>
-      <!--´ºÂIÂ²¤¶-->
+      <!--æ™¯é»ç°¡ä»‹-->
       <div id="summary" class="summary">
           <div id="vpTitle" class="main-title">${vp.name}</div>
           <div id="area" class="subtitle">${vp.city}${vp.town}</div>
           <h2 id="vpIntro" class="intro">${vp.intro}</h2>
-          <div id="readAllCont" class="readall">¡K®i¶}¥ş¤å</div>
+          <div id="readAllCont" class="readall">â€¦å±•é–‹å…¨æ–‡</div>
       </div>
-      <!--¤À¹j½u-->
+      <!--åˆ†éš”ç·š-->
       <a href="https://goo.gl/forms/UkVfGk86vZ2dqE1B2" target="_blank">
-          <div class="feedback">·N¨£¦^õX</div>
+          <div class="feedback">æ„è¦‹å›é¥‹</div>
       </a>
-      <!--Á¿ªÌ-->
+      <!--è¬›è€…-->
       <div id="speaker" class="speaker">
           <div class="info clearfix">
               <div class="info-l fl">
@@ -92,28 +92,28 @@
           <div class="contactInfo">
               <a id="speakerPhone" class="phone" href="tel:${sp.phoneNumber}">
                   <s></s>
-                  <div>${sp.phoneNumber}<c:if test="${empty sp.phoneNumber}">µL</c:if></div>
+                  <div>${sp.phoneNumber}<c:if test="${empty sp.phoneNumber}">ç„¡</c:if></div>
               </a>
               <a id="speakerHome" class="home" href="tel:${sp.homeNumber}">
                   <s></s>
-                  <div>${sp.homeNumber}<c:if test="${empty sp.homeNumber}">µL</c:if></div>
+                  <div>${sp.homeNumber}<c:if test="${empty sp.homeNumber}">ç„¡</c:if></div>
               </a>
               <a id="speakerUrl" class="facebook" href="${sp.speakerUrl}" target="_blank">
                   <s></s>
-                  <div>${sp.speakerUrl}<c:if test="${empty sp.speakerUrl}">µL</c:if></div>
+                  <div>${sp.speakerUrl}<c:if test="${empty sp.speakerUrl}">ç„¡</c:if></div>
               </a>
           </div>
           <div class="intro">
               <h2 id="speakerIntro" class="cont">${sp.intro}</h2>
-              <div id="readAllSpeakerIntro" class="readall">...®i¶}¥ş¤å</div>
+              <div id="readAllSpeakerIntro" class="readall">...å±•é–‹å…¨æ–‡</div>
           </div>
           <!--<iframe id="ytplayer" class="ytplayer" width="880" height="495" src="" frameborder="0" allowfullscreen></iframe>-->
           <div id="ytplayer" class="ytplayer"></div>
           <img id="videoPrep" src="images/viewpoint/video_preparing.png" alt="" style="margin-top: 76px;">
       </div>
-      <!--ÁÙ¥i¥H¦¬Å¥-->
+      <!--é‚„å¯ä»¥æ”¶è½-->
       <div id="moreAudio" class="more-audio">
-          <div id="moreAudioTitle" class="main-title">¦@¦³¥H¤U¥i¥H¦¬Å¥¡G</div>
+          <div id="moreAudioTitle" class="main-title">å…±æœ‰ä»¥ä¸‹å¯ä»¥æ”¶è½ï¼š</div>
           <c:forEach items="${moreAudio}" var="vp">
               <a href="/view/${vp.name}_${vp.subtitle}?utm_source=InSite&amp;utm_campaign=${vp.name}_${vp.subtitle}">
                   <div class="audio">
@@ -131,9 +131,9 @@
           </c:forEach>
       </div>
 
-      <!--©PÃä´ºÂI-->
+      <!--å‘¨é‚Šæ™¯é»-->
       <div id="neighViewContainer" class="neigh-view clearfix">
-          <div class="main-title">©PÃä´ºÂI</div>
+          <div class="main-title">å‘¨é‚Šæ™¯é»</div>
           <div class="viewlist swiper-container">
               <ul id="neighView" class="swiper-wrapper">
                   <c:forEach items="${neighView}" var="vp">
@@ -152,7 +152,7 @@
                                   <c:if test="${vp.audioLength % 60 < 9}">0${vp.audioLength % 60}</c:if>
                               </div>
                           </div>
-                          <div class="distance">¶ZÂ÷
+                          <div class="distance">è·é›¢
                               <c:if test="${vp.distance >= 1}">${vp.distance}KM</c:if>
                               <c:if test="${vp.distance < 1}"><fmt:formatNumber var="dt" value="${vp.distance*100}" pattern="##" maxFractionDigits="0"/>${dt*10}M</c:if>
                           </div>
@@ -161,12 +161,12 @@
               </ul>
           </div>
       </div>
-      <!--¤À¨É°Ï¶ô-->
+      <!--åˆ†äº«å€å¡Š-->
       <div id="sharemask" class="sharemask"></div>
       <div id="sharebox" class="sharebox">
           <div id="shareClose" class="close"></div>
           <div id="qrcode" class="qrcode"></div>
-          <div class="desc">©IªB¤Ş¦ñ¤@°_Å¥§a¡I</div>
+          <div class="desc">å‘¼æœ‹å¼•ä¼´ä¸€èµ·è½å§ï¼</div>
           <ul class="clearfix">
               <li onclick="window.open('https://www.facebook.com/dialog/share?display=popup&app_id=883175368431883&href=' + encodeURIComponent(document.shortUrl) + '&t=' + encodeURIComponent(document.shortUrl)); return false;"><img src="images/social/facebook.png" alt=""></li>
               <li onclick="window.open('http://line.naver.jp/R/msg/text/?' + encodeURIComponent(document.shortUrl)); return false;"><img src="images/social/line_c.png" alt=""></li>
@@ -178,10 +178,10 @@
               <input id="shareInput" type="text" class="url">
               <img id="copyShortUrl" src="images/viewpoint/ad_copy.png" alt="" class="copy">
           </div>
-          <div class="copy-desc">ÂI«öºô§}³sµ²½Æ»s</div>
+          <div class="copy-desc">é»æŒ‰ç¶²å€é€£çµè¤‡è£½</div>
 
       </div>
-      <!--¼s§i°Ï¶ô-->
+      <!--å»£å‘Šå€å¡Š-->
       <div id="admask" class="admask"></div>
       <div id="adbox" class="adbox">
           <div id="adClose" class="close"></div>
@@ -214,7 +214,7 @@
               </ul>
           </div>
       </div>
-      <!--¯B°Ê¼½©ñ¾¹-->
+      <!--æµ®å‹•æ’­æ”¾å™¨-->
       <div id="floatPlayer" class="float-player">
           <a href="#player"><div class="pic"><img id="floatPhoto" src="" alt="${vp.name}"></div></a>
           <div id="flPreTagBtn" class="pre"></div>
@@ -222,10 +222,10 @@
           <div id="flNextTagBtn" class="next"></div>
           <div id="flNowTime" class="time">0:00</div>
       </div>
-      <!--Footer¤Ş¤J-->
+      <!--Footerå¼•å…¥-->
       <div id="footer"></div>
 
-      <!--¨ä¥LÅÜ¶qÀx¦s-->
+      <!--å…¶ä»–è®Šé‡å„²å­˜-->
       <input id="regionId" type="text" style="display: none"/>
       <input id="vpId" type="text" style="display: none" value="${vp.id}"/>
   </div>
@@ -244,7 +244,7 @@
 <script>
     var speakerData = "";
     function onYouTubeIframeAPIReady() {
-        //¦pªGÁÙ¨S¦³®³¨ìÁ¿ªÌ¸ê°T¡Aµ¥«İ0.5¬í«á¦A°õ¦æ
+        //å¦‚æœé‚„æ²’æœ‰æ‹¿åˆ°è¬›è€…è³‡è¨Šï¼Œç­‰å¾…0.5ç§’å¾Œå†åŸ·è¡Œ
         if ("" == speakerData) {
             setTimeout(function () {
                 onYouTubeIframeAPIReady();
@@ -254,7 +254,7 @@
         }
     }
 
-    //³]©wÁ¿ªÌ¼v¤ù
+    //è¨­å®šè¬›è€…å½±ç‰‡
     function setSpeakerYoutube() {
 
         var YTUrl = speakerData.youtubeUrl;

@@ -36,7 +36,7 @@ function initDataFromServer(vps){
     themelist.style.display = "none";
     $$("viewlist").innerHTML = "";
     for(var i = 0; i < vps.length; i++) {
-        var dom = '<a class="view" href="viewpoint.html?utm_source=InSite&utm_campaign='+ vps[i].name + '_' + vps[i].subtitle + '&id=' + vps[i].id +'">' +
+        var dom = '<a class="view" href="/view/' + vps[i].name + '_' + vps[i].subtitle +'?utm_source=InSite&utm_campaign='+ vps[i].name + '_' + vps[i].subtitle +'">' +
             '<img src="/ResourceServlet?url=' + vps[i].behalfPhotoUrl + '">' +
             '<div class="cover"></div>' +
             '<div class="main-title">' + vps[i].name + '</div>' +
