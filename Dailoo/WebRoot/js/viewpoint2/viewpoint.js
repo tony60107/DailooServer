@@ -354,7 +354,7 @@ function initViewpointData(vpData) {
     }
 
     //Footer樣式
-    $.get("../footer2.html",function(data){
+    $.get("../footer.html",function(data){
 
         $("#footer").html(data);
         //更換Footer樣式

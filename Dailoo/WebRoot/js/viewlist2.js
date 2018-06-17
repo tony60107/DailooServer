@@ -75,7 +75,7 @@ function switchDrop(){
 
 window.onload = function() {
 
-    $.get("footer2.html",function(data){
+    $.get("footer.html",function(data){
         $("#footer").html(data);
         //更換Footer樣式
         var jinfeng = "03326ff3-cad4-42bc-a8aa-35fca64eb2ef,8daa252d-42e6-4535-a0b6-d794d7e5029d,e6862f47-a7a3-4b22-9647-763425705f0a,10c09cb8-355c-4db9-a852-fc3d20eca556,9de8cafd-203e-4f5e-8faf-aeda29264952,4652c369-be78-460d-90e3-e0e66267069f";

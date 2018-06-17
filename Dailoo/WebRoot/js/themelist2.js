@@ -2,7 +2,7 @@
  * Created by Waiting on 2017/10/7.
  */
 //取得地區ID
-var regionId = location.href.split("id=")[1];
+var regionId = $('#regionId').val();
 
 window.onload = function () {
 
@@ -18,57 +18,5 @@ window.onload = function () {
     });
 }
 
-//根據地區ID取得主題資料，並新增到主題列表中
-//getThemesData();
-
-//取得地區名稱
-//getRegionData();
-
 history.replaceState(null, null, location.href);
 
-//根據地區ID取得主題資料，並新增到主題列表中
-function getThemesData() {
-    $.ajax({
-        url: "/ThemeServlet", context: document.body,
-        type: "POST",
-        data: {"method": "getThemesByRegionId", "regionId": regionId},
-        success: function (data) {
-            var themes = eval("(" + data + ")");
-            //console.dir(data);
-            $$("themelist").innerHTML = "";
-            for (var i = 0; i < themes.length; i++) {
-                var title = themes[i].name.split(",");
-                var dom = '<a href="viewlist.html?id=' + themes[i].id + '">' +
-                    '<div class="theme">' +
-                    '<div class="cover">' +
-                    '<div class="main-title">' + title[0] + '</div>' +
-                    '<div class="title-eng">' + (title[1] == undefined ? "" : title[1]) + '</div>' +
-                    '</div>' +
-                    '<img alt="" src="/ResourceServlet?url=' + themes[i].behalfPhotoUrl + '"/>' +
-                    '</div>' +
-                    '</a>';
-                $$("themelist").innerHTML = $$("themelist").innerHTML + dom;
-            }
-        },
-        error: function(){
-            setTimeout(getThemesData, 500);
-        }
-    });
-}
-
-//取得地區名稱
-function getRegionData() {
-    $.ajax({
-        url: "/RegionServlet", context: document.body,
-        type: "POST",
-        data: {"method": "getRegionById", "id": regionId},
-        success: function (data) {
-            var region = eval("(" + data + ")");
-            $$("title").innerHTML = region.name + "行動語音導覽";
-            document.title = region.name + " 帶路語音導覽";
-        },
-        error: function(){
-            setTimeout(getRegionData, 500);
-        }
-    });
-}

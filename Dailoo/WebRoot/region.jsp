@@ -11,13 +11,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>${regionName}  - Dailoo帶路語音導覽服務</title>
+    <title>${regionName} - Dailoo帶路語音導覽服務</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
     <meta http-equiv="description" content="${regionName} 主題介紹，包含以下景點：<c:forEach items="${themes}" var="theme">${theme.name}, </c:forEach> - 就像在地人親自帶路">
     <!--
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -30,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
       <div class="header clearfix">
           <img id="logo" class="logo fl" src="images/themelist/dailoo_logo.png" style="top: 34px;">
-          <div id="title" class="cover fl">${regionName}行動語音導覽</div>
+          <h1 id="title" class="cover fl">${regionName}行動語音導覽</h1>
       </div>
       <div id="themelist" class="themelist">
           <c:forEach items="${themes}" var="theme">
@@ -38,14 +37,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <div class="theme">
                       <div class="cover">
                           <c:set value="${theme.name}" var="names" />
-                          <div class="main-title">${ fn:split(names, ',')[0]}</div>
+                          <h2 class="main-title">${ fn:split(names, ',')[0]}</h2>
                           <div class="title-eng">${ fn:split(names, ',')[1]}</div>
                       </div>
-                      <img alt="" src="/ResourceServlet?url=${theme.behalfPhotoUrl}">
+                      <img alt="${fn:split(names, ',')[0]}" src="/ResourceServlet?url=${theme.behalfPhotoUrl}">
                   </div>
               </a>
           </c:forEach>
       </div>
+      <input id="regionId" type="text" value="${regionId}" style="display: none"/>
   <!--Footer引入-->
   <div id="footer"></div>
   </body>
