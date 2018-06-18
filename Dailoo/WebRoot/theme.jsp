@@ -16,14 +16,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="${themeName} 景點介紹，包含以下景點：<c:forEach items="${vps}" var="vp">${vp.name}, </c:forEach> - 就像在地人親自帶路">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-      <link rel="shortcut icon" href="images/general/dailoo.png">
-      <link rel="stylesheet" href="css/base.css"/>
-      <link rel="stylesheet" href="css/viewlist.css?20171129"/>
+    <link rel="shortcut icon" href="images/general/dailoo.png">
+    <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/viewlist.css?20171129"/>
   </head>
   
   <body>

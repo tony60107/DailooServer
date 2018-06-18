@@ -24,7 +24,7 @@ public class ViewpointInfoServlet extends HttpServlet {
 		
 		String vp = request.getQueryString().split("vp=")[1];
 		vp = vp.split("\\?")[0];
-		System.out.println(vp);
+		//System.out.println(vp);
 		Map map = service.findViewpointByNameAndSt2(vp.split("_")[0], vp.split("_")[1]);
 		
 		request.setAttribute("vp", map.get("viewpoint"));

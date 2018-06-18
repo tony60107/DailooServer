@@ -12,15 +12,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>${regionName} - Dailoo帶路語音導覽服務</title>
-    
+      <meta name="viewport" content="user-scalable=no"/>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-    <meta http-equiv="description" content="${regionName} 主題介紹，包含以下景點：<c:forEach items="${themes}" var="theme">${theme.name}, </c:forEach> - 就像在地人親自帶路">
-    <!--
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    -->
+    <meta http-equiv="description" content="${regionName} 主題介紹，包含以下主題：<c:forEach items="${themes}" var="theme">${theme.name}, </c:forEach> - 就像在地人親自帶路">
     <link rel="shortcut icon" href="images/general/dailoo.png">
     <link rel="stylesheet" href="css/base.css"/>
     <link rel="stylesheet" href="css/themelist.css"/>

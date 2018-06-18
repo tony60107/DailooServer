@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,6 +11,7 @@
   <head>
       <base href="<%=basePath%>">
       <title>${vp.name}${vp.subtitle} - Dailoo帶路語音導覽服務</title>
+      <meta name="viewport" content="user-scalable=no"/>
       <link rel="shortcut icon" href="images/general/dailoo.png">
       <meta http-equiv="pragma" content="no-cache">
       <meta http-equiv="cache-control" content="no-cache">
@@ -54,7 +56,7 @@
           </div>
           <!--聲音控制器-->
           <div class="soundctrl clearfix">
-              <audio id="audio"></audio>
+              <audio id="audio" src="/ResourceServlet?url=${audio.src}"></audio>
               <button id="preTagBtn" class="prevtag fl"></button>
               <button id="playBtn" class="play fl"></button>
               <button id="nextTagBtn" class="nexttag fl"></button>
@@ -107,9 +109,11 @@
               <h2 id="speakerIntro" class="cont">${sp.intro}</h2>
               <div id="readAllSpeakerIntro" class="readall">...展開全文</div>
           </div>
-          <!--<iframe id="ytplayer" class="ytplayer" width="880" height="495" src="" frameborder="0" allowfullscreen></iframe>-->
-          <div id="ytplayer" class="ytplayer"></div>
-          <img id="videoPrep" src="images/viewpoint/video_preparing.png" alt="" style="margin-top: 76px;">
+          <!--Youtube播放器-->
+          <c:set value="${sp.youtubeUrl}" var="YTUrl"/>
+          <c:if test="${fn:contains(YTUrl, 'v=')}"><iframe class="ytplayer" width="880" height="495" src="https://www.youtube.com/embed/${ fn:split(YTUrl, 'v=')[1]}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></c:if>
+          <c:if test="${fn:contains(YTUrl, '.be/')}"><iframe class="ytplayer" width="880" height="495" src="https://www.youtube.com/embed${ fn:split(YTUrl, "be")[1]}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></c:if>
+          <img id="videoPrep" src="images/viewpoint/video_preparing.png" alt="Dailoo影片準備中" style="margin-top: 76px;">
       </div>
       <!--還可以收聽-->
       <div id="moreAudio" class="more-audio">
@@ -241,39 +245,3 @@
 <script type="text/javascript" src="js/viewpoint2/imgSlider.js"></script>
 <script type="text/javascript" src="js/viewpoint2/audio.js"></script>
 <script type="text/javascript" src="js/viewpoint2/viewpoint.js"></script>
-<script>
-    var speakerData = "";
-    function onYouTubeIframeAPIReady() {
-        //如果還沒有拿到講者資訊，等待0.5秒後再執行
-        if ("" == speakerData) {
-            setTimeout(function () {
-                onYouTubeIframeAPIReady();
-            }, 500);
-        } else {
-            setSpeakerYoutube();
-        }
-    }
-
-    //設定講者影片
-    function setSpeakerYoutube() {
-
-        var YTUrl = speakerData.youtubeUrl;
-        if (YTUrl != '') {
-            var YTID = YTUrl.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)[1];
-            var ytplayer;
-            ytplayer = new YT.Player('ytplayer', {
-                height: '495',
-                width: '880',
-                videoId: YTID,
-                events: {'onStateChange': onPlayerStateChange}
-            });
-            function onPlayerStateChange(event) {
-                if (event.data == YT.PlayerState.PLAYING) {
-                    document.getElementById("audio").pause();
-                }
-            }
-            $$("videoPrep").style.display = "none";
-        }
-    }
-
-</script>

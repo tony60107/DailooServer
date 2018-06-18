@@ -9,7 +9,10 @@ window.onload = function () {
     var neighSwiper; //週邊景點滾動欄
 
     //避免網速過慢導致Youtube Api未啟用，手動調用
-    onYouTubeIframeAPIReady();
+    //onYouTubeIframeAPIReady();
+
+    //如果有講者介紹影片，則隱藏無影片圖示
+    if($('.ytplayer').length != 0) { $('#videoPrep').css('display', 'none')}
 
     // 點擊分享按鈕
     $$("share").onclick = function () {
