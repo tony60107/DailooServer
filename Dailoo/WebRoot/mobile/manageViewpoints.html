@@ -62,6 +62,9 @@
 
                 //將景點由新到舊排序
                 sort($('.sort>div').get(0), 'new');
+
+                /*siteMap工具*/
+                //for(var i = 0; i < vps.length; i++) {console.dir("<url>\n\t<loc>" + encodeURI("https://www.dailoo.com/view/" + vps[i].name + "_" + vps[i].subtitle) + "</loc>\n</url>")}
             },
             error: function () {
                 setTimeout(function () {getViewpointsByLoginUser();}, 1000);

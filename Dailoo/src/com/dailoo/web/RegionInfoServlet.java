@@ -28,7 +28,7 @@ public class RegionInfoServlet extends HttpServlet {
 		
 		List<Theme> themes = service.findThemesByRegionName(name);
 		
-		request.setAttribute("regionId", themes.get(1).getRegionId());
+		if(themes.size() != 0) request.setAttribute("regionId", themes.get(0).getRegionId());
 		request.setAttribute("regionName", name);
 		request.setAttribute("themes", themes);
 		

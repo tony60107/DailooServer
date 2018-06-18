@@ -84,6 +84,9 @@
                             '<div onclick="delTheme(\'' + themes[i].id + '\')" class="cancle fr">刪除</div>' +
                             '<a href="/mobile/editTheme.html?id=' + themes[i].id + '" class="edit fr">編輯</a>' +
                             '</div>';
+
+                    /*siteMap工具*/
+                    //console.dir("<url>\n\t<loc>" + encodeURI("https://www.dailoo.com/theme/" + themes[i].id) + "</loc>\n</url>")
                 }
                 $("#themeList").html(dom);
             },

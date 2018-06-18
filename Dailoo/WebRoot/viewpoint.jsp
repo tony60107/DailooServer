@@ -44,7 +44,7 @@
           </div>
           <!--講者小圖-->
           <div class="speaker-small">
-              <c:if test="${sp.photoUrl == null}"><img id="speakerSmallPhoto" src="images/viewpoint/speaker_defalut_small.png" alt=""></c:if>
+              <c:if test="${sp.photoUrl == null}"><img id="speakerSmallPhoto" src="images/viewpoint/speaker_defalut_small.png" alt="Dailoo默認頭像"></c:if>
               <c:if test="${sp.photoUrl != null}"><img id="speakerSmallPhoto" src="/ResourceServlet?url=${sp.photoUrl}" alt="${sp.name}"></c:if>
           </div>
           <!--聲音進度條-->
@@ -77,7 +77,7 @@
       <div id="speaker" class="speaker">
           <div class="info clearfix">
               <div class="info-l fl">
-                  <c:if test="${sp.photoUrl == null}"><img id="speakerPhoto" class="photo" alt="" src="images/viewpoint/speaker_default.png"/></c:if>
+                  <c:if test="${sp.photoUrl == null}"><img id="speakerPhoto" class="photo" alt="Dailoo默認頭像" src="images/viewpoint/speaker_default.png"/></c:if>
                   <c:if test="${sp.photoUrl != null}"><img id="speakerPhoto" class="photo" alt="${sp.name}" src="/ResourceServlet?url=${sp.photoUrl}"/></c:if>
               </div>
               <div class="info-r fl">

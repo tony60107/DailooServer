@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
-    <meta http-equiv="description" content="${regionName} 主題介紹，包含以下主題：<c:forEach items="${themes}" var="theme">${theme.name}, </c:forEach> - 就像在地人親自帶路">
+    <meta http-equiv="description" content="${regionName} 主題介紹，包含以下主題：<c:forEach items="${themes}" var="theme">${theme.name}, </c:forEach>- 就像在地人親自帶路">
     <link rel="shortcut icon" href="images/general/dailoo.png">
     <link rel="stylesheet" href="css/base.css"/>
     <link rel="stylesheet" href="css/themelist.css"/>
@@ -48,4 +48,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
-<script type="text/javascript" src="js/themelist2.js"></script>
+<%--<script type="text/javascript" src="js/themelist2.js"></script>--%>

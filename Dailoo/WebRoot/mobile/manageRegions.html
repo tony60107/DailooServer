@@ -52,6 +52,9 @@
                 var dom = ' <div class="font-s">已建立的主題類別</div>';
                 for(var i = 0; i <  regions.length; i++) {
                     dom += '<a href="/mobile/editRegion.html?id=' + regions[i].id +'" class="region">' + regions[i].name + '</a>';
+
+                    /*siteMap工具*/
+                    //console.dir("<url>\n\t<loc>" + encodeURI("https://www.dailoo.com/region/" + regions[i].name) + "</loc>\n</url>")
                 }
                 $regionList.html(dom);
 
