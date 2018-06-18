@@ -64,8 +64,8 @@
       </div>
       <!--景點簡介-->
       <div id="summary" class="summary">
-          <div id="vpTitle" class="main-title">${vp.name}</div>
-          <div id="area" class="subtitle">${vp.city}${vp.town}</div>
+          <h4 id="vpTitle" class="main-title">${vp.name}</h4>
+          <h4 id="area" class="subtitle">${vp.city}${vp.town}</h4>
           <h2 id="vpIntro" class="intro">${vp.intro}</h2>
           <div id="readAllCont" class="readall">…展開全文</div>
       </div>
@@ -117,11 +117,17 @@
       </div>
       <!--還可以收聽-->
       <div id="moreAudio" class="more-audio">
-          <div id="moreAudioTitle" class="main-title">共有以下可以收聽：</div>
+          <div id="moreAudioTitle" class="main-title">${vp.name}共有以下${fn:length(moreAudio)}段可以收聽：</div>
           <c:forEach items="${moreAudio}" var="vp">
               <a href="/view/${vp.name}_${vp.subtitle}?utm_source=InSite&amp;utm_campaign=${vp.name}_${vp.subtitle}">
                   <div class="audio">
-                      <h3 class="audio-name fl">${vp.subtitle}</h3>
+                      <!--如果景點名稱太長，則刪除文字加上...-->
+                      <c:set value="${vp.subtitle}" var="subtitle"/>
+                      <c:if test="${fn:length(subtitle) > 13}">
+                        <c:set value="${fn:substring(subtitle, 0, 11)}" var="subtitle"/>
+                        <c:set value="${subtitle}..." var="subtitle"/>
+                      </c:if>
+                      <h3 class="audio-name fl">${subtitle}</h3>
                       <div class="fl" style="display: none;">...</div>
                       <div class="time fr">
                           <fmt:formatNumber var="min" value="${(vp.audioLength - vp.audioLength % 60) / 60}" pattern="##" maxFractionDigits="0"/>
