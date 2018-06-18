@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <div class="cover">
                           <c:set value="${theme.name}" var="names" />
                           <h2 class="main-title">${ fn:split(names, ',')[0]}</h2>
-                          <div class="title-eng">${ fn:split(names, ',')[1]}</div>
+                          <h3 class="title-eng">${ fn:split(names, ',')[1]}</h3>
                       </div>
                       <img alt="${fn:split(names, ',')[0]}" src="/ResourceServlet?url=${theme.behalfPhotoUrl}">
                   </div>
@@ -48,4 +48,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
-<%--<script type="text/javascript" src="js/themelist2.js"></script>--%>
+<script type="text/javascript" src="js/themelist2.js"></script>

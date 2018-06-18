@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <a id="backward" href="/region/${regionName}">
               <img class="back fl" src="images/viewlist/back.png"/>
           </a>
-          <div id="title" class="main-title" onclick="switchDrop();">${themeName}<span id="drop" class="drop" style="display: inline-block"></span></div>
+          <h1 id="title" class="main-title" onclick="switchDrop();">${themeName}<span id="drop" class="drop" style="display: inline-block"></span></h1>
       </div>
 
       <div id="themelist" class="themelist" style="display:none;">
@@ -44,12 +44,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  href="/view/${vp.name}_${vp.subtitle}?utm_source=InSite&amp;utm_campaign=${vp.name}_${vp.subtitle}">
                   <img src="/ResourceServlet?url=${vp.behalfPhotoUrl}" alt="${vp.name}">
                   <div class="cover"></div>
-                  <div class="main-title">${vp.name}</div>
+                  <h2 class="main-title">${vp.name}</h2>
                   <img class="speaker-photo fl"
                        src="/ResourceServlet?url=${vp.speakerPhotoUrl}"
                        alt="${vp.speakerName}">
                   <div class="fl">
-                      <div class="speaker">${vp.speakerName}</div>
+                      <h3 class="speaker">${vp.speakerName}</h3>
                       <div class="time">
                           <fmt:formatNumber var="min" value="${(vp.audioLength - vp.audioLength % 60) / 60}" pattern="##" maxFractionDigits="0"/>
                           <c:if test="${min >= 10}">${min}:</c:if>

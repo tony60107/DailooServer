@@ -85,22 +85,22 @@
                   <div class="resume">
                       <ul id="speakerResume">
                         <c:forTokens items="${sp.resume}" delims="," var="str">
-                            <li>${str}</li>
+                            <h4>${str}</h4>
                         </c:forTokens>
                       </ul>
                   </div>
               </div>
           </div>
           <div class="contactInfo">
-              <a id="speakerPhone" class="phone" href="tel:${sp.phoneNumber}">
+              <a id="speakerPhone" class="phone" href="tel:${sp.phoneNumber}" rel="nofollow">
                   <s></s>
                   <div>${sp.phoneNumber}<c:if test="${empty sp.phoneNumber}">無</c:if></div>
               </a>
-              <a id="speakerHome" class="home" href="tel:${sp.homeNumber}">
+              <a id="speakerHome" class="home" href="tel:${sp.homeNumber}" rel="nofollow">
                   <s></s>
                   <div>${sp.homeNumber}<c:if test="${empty sp.homeNumber}">無</c:if></div>
               </a>
-              <a id="speakerUrl" class="facebook" href="${sp.speakerUrl}" target="_blank">
+              <a id="speakerUrl" class="facebook" href="${sp.speakerUrl}" target="_blank" rel="nofollow">
                   <s></s>
                   <div>${sp.speakerUrl}<c:if test="${empty sp.speakerUrl}">無</c:if></div>
               </a>
@@ -121,7 +121,7 @@
           <c:forEach items="${moreAudio}" var="vp">
               <a href="/view/${vp.name}_${vp.subtitle}?utm_source=InSite&amp;utm_campaign=${vp.name}_${vp.subtitle}">
                   <div class="audio">
-                      <div class="audio-name fl">${vp.subtitle}</div>
+                      <h3 class="audio-name fl">${vp.subtitle}</h3>
                       <div class="fl" style="display: none;">...</div>
                       <div class="time fr">
                           <fmt:formatNumber var="min" value="${(vp.audioLength - vp.audioLength % 60) / 60}" pattern="##" maxFractionDigits="0"/>
@@ -144,7 +144,7 @@
                       <a class="view swiper-slide swiper-slide-active" href="/view/${vp.name}_${vp.subtitle}?utm_source=InSite&amp;utm_campaign=${vp.name}_${vp.subtitle}">
                           <img src="/ResourceServlet?url=${vp.behalfPhotoUrl}" alt="${vp.name}">
                           <div class="cover"></div>
-                          <div class="main-title">${vp.name}</div>
+                          <h3 class="main-title">${vp.name}</h3>
                           <img class="speaker-photo fl" src="/ResourceServlet?url=${vp.speakerPhotoUrl}" alt="${vp.speakerName}">
                           <div class="speaker-info fl">
                               <div class="speaker">${vp.speakerName}</div>

@@ -309,7 +309,7 @@
     margin-left: 26px;
 }
 
-.speaker .info-r .resume li {
+.speaker .info-r .resume li, .speaker .info-r .resume h4 {
     width: 460px;
     margin-top: 6px;
     font-size: 36px;
