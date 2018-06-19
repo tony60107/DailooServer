@@ -142,6 +142,8 @@
             }
         }
 
+        alert("資料新增中...");
+
         //上傳表單
         $.ajax({
             url: '/TagServlet?method=addTag',
@@ -305,7 +307,7 @@
         var dom = '';
         for(var i = 0; i < tags.length; i++){
             dom += '<div id="'+ tags[i].id +'" class="pic">' +
-                    '<img class="img" src="/ResourceServlet?url=' + tags[i].photoUrl + '" alt="">' +
+                    '<img onerror="reloadImg(this);" class="img" src="/ResourceServlet?url=' + tags[i].photoUrl + '" alt="">' +
                     '<img onclick="delTag(this,\'' + tags[i].id + '\');" src="images/editAudio/delete.png" alt="" class="del">' +
                     '<div class="time">' +
                     '<input name="min" type="text" value="' + parseInt(tags[i].time / 60) + '"> 分 <input name="sec" type="text" value="' + tags[i].time % 60 + '"> 秒' +
@@ -334,7 +336,7 @@
     function updateTag(){
         var tags = $('#picList').get(0).children;
         //如果還沒有Tag，則不上傳，直接更新
-        if(tags.length == 1) {getTagsByAudioId($('#audioId').val());}
+        if(tags.length == 1) {getTagsByAudioId($('#audioId').val()); return;}
         alert("資料更新中...");
         //遍歷Tag，上傳Tag狀態
         for(var i = 0; i < tags.length - 1; i++){
@@ -351,7 +353,7 @@
                     if(data.id == tags[tags.length - 2].id){
                         //更新標記資訊
                         getTagsByAudioId($('#audioId').val());
-                        alert("儲存成功");
+                        alert("更新成功");
                     }
                 },
             });

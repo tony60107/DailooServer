@@ -33,6 +33,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 	private TagDao tagDao = BasicFactory.getFactory().getDao(TagDao.class);
 	private RegionDao regionDao = BasicFactory.getFactory().getDao(RegionDao.class);
 	private ThemeDao themeDao = BasicFactory.getFactory().getDao(ThemeDao.class);
+	private ShortUrlService shortUrlService = BasicFactory.getFactory().getService(ShortUrlService.class);
 	private Gson gson = new Gson();
 	
 	
@@ -114,13 +115,14 @@ public class ViewpointServiceImpl implements ViewpointService{
 		
 		//更新景點導航地址
 		//https://www.google.com.tw/maps/place/龍田邱仁銘宅/@22.9038065,121.1273646,16z
-		vp.setNavUrl("https://www.google.com.tw/maps/place/"+ vp.getName() +"/@" + vp.getLatitude() + "," + vp.getLongitude() + ",19z");
+		//vp.setNavUrl("https://www.google.com.tw/maps/place/"+ vp.getName() +"/@" + vp.getLatitude() + "," + vp.getLongitude() + ",19z");
 		
 		//建立短網址
 		String domain = BasicFactory.getFactory().getPropData("Domain");
 		String url = domain + "viewpoint.html?utm_source=PrintAds&utm_campaign="+ vp.getName() + "_" 
 						+ vp.getSubtitle() + "&id=" + vp.getId();
 		String shortUrl = "dailoo.com/" + UrlShorterUtils.toShortUrl(url);
+		shortUrlService.addShortUrl(url);
 		vp.setShortUrl(shortUrl);
 		
 		dao.addViewpoint(vp);
@@ -155,6 +157,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 		String url = domain + "viewpoint.html?utm_source=PrintAds&utm_campaign="+ vp.getName() + "_" 
 						+ vp.getSubtitle() + "&id=" + vp.getId();
 		String shortUrl = "dailoo.com/" + UrlShorterUtils.toShortUrl(url);
+		shortUrlService.addShortUrl(url);
 		vp.setShortUrl(shortUrl);
 		
 		dao.updateViewpoint(vp);

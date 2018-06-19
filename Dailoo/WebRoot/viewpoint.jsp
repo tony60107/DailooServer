@@ -153,7 +153,7 @@
                           <h3 class="main-title">${vp.name}</h3>
                           <img class="speaker-photo fl" src="/ResourceServlet?url=${vp.speakerPhotoUrl}" alt="${vp.speakerName}">
                           <div class="speaker-info fl">
-                              <div class="speaker">${vp.speakerName}</div>
+                              <h4 class="speaker">${vp.speakerName}</h4>
                               <div class="time">
                                   <fmt:formatNumber var="min" value="${(vp.audioLength - vp.audioLength % 60) / 60}" pattern="##" maxFractionDigits="0"/>
                                   <c:if test="${min >= 10}">${min}:</c:if>
@@ -163,7 +163,7 @@
                               </div>
                           </div>
                           <div class="distance">距離
-                              <c:if test="${vp.distance >= 1}">${vp.distance}KM</c:if>
+                              <c:if test="${vp.distance >= 1}"><fmt:formatNumber var="dt" value="${vp.distance}" pattern="##" maxFractionDigits="1"/>${dt}KM</c:if>
                               <c:if test="${vp.distance < 1}"><fmt:formatNumber var="dt" value="${vp.distance*100}" pattern="##" maxFractionDigits="0"/>${dt*10}M</c:if>
                           </div>
                       </a>

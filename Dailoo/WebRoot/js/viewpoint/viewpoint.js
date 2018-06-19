@@ -181,7 +181,7 @@ function initAuthorData(speakerData) {
     }
 
     //講者手機
-    if (speakerData.phoneNumber == null) {
+    if (speakerData.phoneNumber == null || speakerData.phoneNumber == '') {
         $$("speakerPhone").href = "#speaker";
         $$("speakerPhone").children[1].innerHTML = "無";
     } else {
