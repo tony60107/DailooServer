@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.dailoo.domain.Audio;
 import com.dailoo.domain.Speaker;
@@ -27,7 +29,7 @@ public class ViewpointServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		Gson gson = new Gson();
 		ViewpointService service = BasicFactory.getFactory().getService(ViewpointService.class);
 		Viewpoint vp = new Viewpoint();
@@ -136,11 +138,11 @@ public class ViewpointServlet extends HttpServlet {
 			}
 			//如果是取得景點資訊
 			else if("getViewpointInfo".equals(method)){
+				
 				//取得要獲取的景點ID
 				String viewpointId = request.getParameter("id");
 				String json = service.findViewpointByIdToJson(viewpointId);
 				vp = gson.fromJson(json, Viewpoint.class);
-				
 				//如果是管理員，不管是否有註冊序號，皆可取得景點資訊
 				if(loginUser != null && "admin".equals(loginUser.getRole())){
 					response.getWriter().write(json);
@@ -302,6 +304,7 @@ public class ViewpointServlet extends HttpServlet {
 			}
 			
 		} catch (Exception e) {
+			LogManager.getLogger().error("系統出錯", e);
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
