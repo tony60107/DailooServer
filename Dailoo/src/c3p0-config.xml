@@ -5,6 +5,8 @@
     <property name="jdbcUrl">jdbc:mysql:///dailoo</property>
     <property name="user">dailoo</property>
     <property name="password">dailoo</property>
+    <property name="checkoutTimeout">28800</property> 
+  	<property name="maxIdleTime">28800</property>
   </default-config>
 </c3p0-config>
 	

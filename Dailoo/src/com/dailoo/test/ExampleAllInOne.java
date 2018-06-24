@@ -1,29 +1,10 @@
 package com.dailoo.test;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Hashtable;
 
-import ecpay.payment.integration.AllInOne;
-import ecpay.payment.integration.domain.AioCheckOutALL;
-import ecpay.payment.integration.domain.AioCheckOutATM;
-import ecpay.payment.integration.domain.AioCheckOutBARCODE;
-import ecpay.payment.integration.domain.AioCheckOutCVS;
-import ecpay.payment.integration.domain.AioCheckOutDevide;
-import ecpay.payment.integration.domain.AioCheckOutOneTime;
-import ecpay.payment.integration.domain.AioCheckOutPeriod;
-import ecpay.payment.integration.domain.AioCheckOutWebATM;
-import ecpay.payment.integration.domain.CaptureObj;
-import ecpay.payment.integration.domain.CreateServerOrderObj;
-import ecpay.payment.integration.domain.DoActionObj;
-import ecpay.payment.integration.domain.FundingReconDetailObj;
-import ecpay.payment.integration.domain.InvoiceObj;
-import ecpay.payment.integration.domain.QueryCreditCardPeriodInfoObj;
-import ecpay.payment.integration.domain.QueryTradeInfoObj;
-import ecpay.payment.integration.domain.QueryTradeObj;
-import ecpay.payment.integration.domain.TradeNoAioObj;
 
 public class ExampleAllInOne {
-	public static AllInOne all;
+	/*public static AllInOne all;
 	public static void main(String[] args) {
 		initial();
 		System.out.println("compare CheckMacValue method testing result: " + cmprChkMacValue());
@@ -266,5 +247,5 @@ public class ExampleAllInOne {
 		obj.setExecTimes("12");
 		String form = all.aioCheckOut(obj, null);
 		return form;
-	}
+	}*/
 }

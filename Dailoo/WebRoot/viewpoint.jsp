@@ -112,7 +112,7 @@
           <!--Youtube播放器-->
           <c:set value="${sp.youtubeUrl}" var="YTUrl"/>
           <c:if test="${fn:contains(YTUrl, 'v=')}"><iframe class="ytplayer" width="880" height="495" src="https://www.youtube.com/embed/${ fn:split(YTUrl, 'v=')[1]}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></c:if>
-          <c:if test="${fn:contains(YTUrl, '.be/')}"><iframe class="ytplayer" width="880" height="495" src="https://www.youtube.com/embed${ fn:split(YTUrl, "be")[1]}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></c:if>
+          <c:if test="${fn:contains(YTUrl, '.be/')}"><iframe class="ytplayer" width="880" height="495" src="https://www.youtube.com/embed${ fn:split(YTUrl, 'be')[1]}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></c:if>
           <img id="videoPrep" src="images/viewpoint/video_preparing.png" alt="Dailoo影片準備中" style="margin-top: 76px;">
       </div>
       <!--還可以收聽-->
