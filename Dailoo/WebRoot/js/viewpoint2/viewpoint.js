@@ -248,7 +248,7 @@ function initViewpointData(vpData) {
     $$("regionId").value = vpData.theme[0].regionId;
 
     //分享區塊 QRCode
-    $('#qrcode').qrcode({width: 440,height: 440,text: vpData.shortUrl != undefined ? vpData.shortUrl : ""});
+    $('#qrcode').qrcode({width: 440,height: 440,text: vpData.shortUrl != undefined ? "https://" + vpData.shortUrl : ""});
 
     //廣告區塊 - 重播
     $$("replayTitle").innerHTML = vpData.subtitle;

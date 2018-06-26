@@ -1,2 +1,5 @@
 User-agent: *
+Disallow:/themelist.html*
+Disallow:/viewlist.html*
+Disallow:/viewpoint.html*
 Sitemap: http://www.dailoo.com/sitemap.xml
