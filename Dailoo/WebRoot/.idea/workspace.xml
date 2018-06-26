@@ -23,31 +23,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="viewpoint.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/viewpoint/viewpoint.js">
+      <file leaf-file-name="region.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/region.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.220339">
-              <caret line="246" column="84" selection-start-line="246" selection-start-column="84" selection-end-line="246" selection-end-column="98" />
+            <state vertical-scroll-proportion="-17.032259">
+              <caret line="24" column="73" selection-start-line="24" selection-start-column="73" selection-end-line="24" selection-end-column="73" />
               <folding>
-                <marker date="1530015685624" expanded="true" signature="10510:10524" placeholder="..." />
+                <element signature="n#c:forEach#1;n#jsp:root#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="viewpoint.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/viewpoint2/viewpoint.js">
+      <file leaf-file-name="theme.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/theme.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35855645">
-              <caret line="250" column="84" selection-start-line="250" selection-start-column="84" selection-end-line="250" selection-end-column="84" />
-              <folding>
-                <element signature="e#5746#6054#0" expanded="false" />
-                <element signature="e#6069#6402#0" expanded="false" />
-                <element signature="e#6425#6744#0" expanded="false" />
-                <element signature="e#6809#6986#0" expanded="false" />
-                <element signature="e#11435#13052#0" expanded="false" />
-                <marker date="1530015788537" expanded="true" signature="10700:10714" placeholder="..." />
-              </folding>
+            <state vertical-scroll-proportion="-15.612904">
+              <caret line="22" column="73" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="73" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="viewpoint.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/viewpoint.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.54565954">
+              <caret line="22" column="57" selection-start-line="22" selection-start-column="57" selection-end-line="22" selection-end-column="57" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -117,11 +120,8 @@
         <option value="$PROJECT_DIR$/temp.html" />
         <option value="$PROJECT_DIR$/manageThemes.html" />
         <option value="$PROJECT_DIR$/js/viewpoint2/audio.js" />
-        <option value="$PROJECT_DIR$/theme.jsp" />
         <option value="$PROJECT_DIR$/css/viewpoint.css" />
         <option value="$PROJECT_DIR$/footer.html" />
-        <option value="$PROJECT_DIR$/region.jsp" />
-        <option value="$PROJECT_DIR$/viewpoint.jsp" />
         <option value="$PROJECT_DIR$/mobile/editAudio.html" />
         <option value="$PROJECT_DIR$/manageViewpoints.html" />
         <option value="$PROJECT_DIR$/mobile/manageRegions.html" />
@@ -129,6 +129,9 @@
         <option value="$PROJECT_DIR$/mobile/manageViewpoints.html" />
         <option value="$PROJECT_DIR$/js/viewpoint/viewpoint.js" />
         <option value="$PROJECT_DIR$/js/viewpoint2/viewpoint.js" />
+        <option value="$PROJECT_DIR$/theme.jsp" />
+        <option value="$PROJECT_DIR$/region.jsp" />
+        <option value="$PROJECT_DIR$/viewpoint.jsp" />
       </list>
     </option>
   </component>
@@ -205,56 +208,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Dailoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebRoot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Dailoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebRoot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="viewpoint2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Dailoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebRoot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="viewpoint" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -877,12 +830,12 @@
       <workItem from="1527043247887" duration="92486000" />
       <workItem from="1528710816964" duration="924000" />
       <workItem from="1528879582003" duration="67855000" />
-      <workItem from="1529583504353" duration="2742000" />
+      <workItem from="1529583504353" duration="6156000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1658213000" />
+    <option name="totallyTimeSpent" value="1661627000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1226,6 +1179,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40631807">
           <caret line="38" column="161" selection-start-line="38" selection-start-column="161" selection-end-line="38" selection-end-column="161" />
+          <folding>
+            <element signature="n#!!block;n#switchDrop#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1259,21 +1215,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.335512">
           <caret line="82" column="34" selection-start-line="82" selection-start-column="34" selection-end-line="82" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/region.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8680947">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viewpoint.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2294686">
-          <caret line="155" column="33" selection-start-line="155" selection-start-column="33" selection-end-line="155" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -1290,13 +1231,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49492672">
           <caret line="311" column="56" selection-start-line="311" selection-start-column="56" selection-end-line="311" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/theme.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3357488">
-          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -1436,19 +1370,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/viewpoint/viewpoint.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.220339">
-          <caret line="246" column="84" selection-start-line="246" selection-start-column="84" selection-end-line="246" selection-end-column="98" />
-          <folding>
-            <marker date="1530015685624" expanded="true" signature="10510:10524" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/viewpoint2/viewpoint.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35855645">
+        <state vertical-scroll-proportion="-15.288136">
           <caret line="250" column="84" selection-start-line="250" selection-start-column="84" selection-end-line="250" selection-end-column="84" />
           <folding>
             <element signature="e#5746#6054#0" expanded="false" />
@@ -1458,6 +1382,42 @@
             <element signature="e#11435#13052#0" expanded="false" />
             <marker date="1530015788537" expanded="true" signature="10700:10714" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/viewpoint/viewpoint.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35855645">
+          <caret line="246" column="84" selection-start-line="246" selection-start-column="84" selection-end-line="246" selection-end-column="98" />
+          <folding>
+            <marker date="1530015685624" expanded="true" signature="10510:10524" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/region.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.032259">
+          <caret line="24" column="73" selection-start-line="24" selection-start-column="73" selection-end-line="24" selection-end-column="73" />
+          <folding>
+            <element signature="n#c:forEach#1;n#jsp:root#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/theme.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.612904">
+          <caret line="22" column="73" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpoint.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54565954">
+          <caret line="22" column="57" selection-start-line="22" selection-start-column="57" selection-end-line="22" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
 String path = request.getContextPath();
@@ -15,8 +16,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="viewport" content="user-scalable=no"/>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="description" content="${themeName} 景點介紹，包含以下景點：<c:forEach items="${vps}" var="vp">${vp.name}, </c:forEach> - 就像在地人親自帶路">
+	<meta http-equiv="expires" content="0">
+      <%--description內容計算--%>
+      <c:forEach items="${vps}" var="vp"><c:set value="${desc} ${vp.name}," var="desc"/></c:forEach>
+      <c:set var="descLength" value="${fn:length(desc)}" />
+      <c:set var="desc" value="${fn:substring(desc, 0, descLength-1)}" />
+	<meta http-equiv="description" content="${themeName} 景點介紹，包含以下景點：${desc} - 就像在地人親自帶路">
     <link rel="shortcut icon" href="images/general/dailoo.png">
     <link rel="stylesheet" href="css/base.css"/>
     <link rel="stylesheet" href="css/viewlist.css?20171129"/>

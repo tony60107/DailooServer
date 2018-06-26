@@ -16,13 +16,16 @@
       <meta http-equiv="pragma" content="no-cache">
       <meta http-equiv="cache-control" content="no-cache">
       <meta http-equiv="expires" content="0">
-      <meta http-equiv="description" content="${vp.name}${vp.subtitle} - ${vp.intro} - 就像在地人親自帶路">
+      <%--刪除介紹換行字符--%>
+      <c:set var="intro" value="${vp.intro}" />
+      <%request.setAttribute("vEnter", "\r\n");%>
+      <c:set var="intro" value="${fn:replace(intro, vEnter, '')}" />
+      <meta http-equiv="description" content="${vp.name} ${vp.subtitle} - ${intro} - 就像在地人親自帶路">
       <link rel="stylesheet" href="css/base.css"/>
       <link rel="stylesheet" href="css/viewpoint.css?20171209"/>
   </head>
   
   <body>
-
   <div class="w clearfix" style="overflow: hidden">
       <!--主播放器-->
       <div id="player" class="player clearfix">

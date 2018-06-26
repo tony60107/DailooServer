@@ -11,17 +11,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>${regionName} - Dailoo帶路語音導覽服務</title>
+    <title>${regionName}  - Dailoo帶路語音導覽服務</title>
       <meta name="viewport" content="user-scalable=no"/>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-    <meta http-equiv="description" content="${regionName} 主題介紹，包含以下主題：<c:forEach items="${themes}" var="theme">${theme.name}, </c:forEach>- 就像在地人親自帶路">
+	<meta http-equiv="expires" content="0">
+      <%--description中文內容文字計算--%>
+      <c:forEach items="${themes}" var="theme">
+          <c:set value="${theme.name}" var="names" />
+          <c:set value="${desc} ${ fn:split(names, ',')[0]}," var="desc" />
+      </c:forEach>
+      <c:set var="descLength" value="${fn:length(desc)}" />
+      <c:set var="desc" value="${fn:substring(desc, 0, descLength-1)}" />
+      <%--description英文內容文字計算--%>
+      <c:forEach items="${themes}" var="theme">
+          <c:set value="${theme.name}" var="names" />
+          <c:set value="${descEng} ${ fn:split(names, ',')[1]}," var="descEng" />
+      </c:forEach>
+      <c:set var="descEngLength" value="${fn:length(descEng)}" />
+      <c:set var="descEng" value="${fn:substring(descEng, 0, descEngLength-1)}" />
+    <meta http-equiv="description" content="${regionName} 主題介紹，包含以下主題：${desc} - 就像在地人親自帶路 ${descEng}">
     <link rel="shortcut icon" href="images/general/dailoo.png">
     <link rel="stylesheet" href="css/base.css"/>
     <link rel="stylesheet" href="css/themelist.css"/>
   </head>
-  
+
+
   <body>
       <div class="header clearfix">
           <img id="logo" class="logo fl" src="images/themelist/dailoo_logo.png" style="top: 34px;">
