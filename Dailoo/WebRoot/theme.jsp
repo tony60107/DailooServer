@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -55,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div id="viewlist" class="viewlist clearfix">
           <c:forEach items="${vps}" var="vp">
               <a class="view"
-                 href="/view/${vp.name}_${vp.subtitle}?utm_source=InSite&amp;utm_campaign=${vp.name}_${vp.subtitle}">
+                 href="/view/${vp.name}_${vp.subtitle}?utm_source=InSite">
                   <img src="/ResourceServlet?url=${vp.behalfPhotoUrl}" alt="${vp.name}">
                   <div class="cover"></div>
                   <h2 class="main-title">${vp.name}</h2>

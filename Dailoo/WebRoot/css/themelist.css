@@ -18,11 +18,11 @@
 }
 
 .header .cover {
-    width: 100%;
-    text-align: center;
     font-size: 50px;
     line-height: 70px;
     letter-spacing: 3px;
+    float: right;
+    margin-right: 15px;
 }
 
 /*頭部結束*/

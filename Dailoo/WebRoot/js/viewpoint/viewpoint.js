@@ -359,12 +359,16 @@ function initViewpointData(vpData) {
         var jinfeng = "03326ff3-cad4-42bc-a8aa-35fca64eb2ef,8daa252d-42e6-4535-a0b6-d794d7e5029d,e6862f47-a7a3-4b22-9647-763425705f0a,10c09cb8-355c-4db9-a852-fc3d20eca556,9de8cafd-203e-4f5e-8faf-aeda29264952,4652c369-be78-460d-90e3-e0e66267069f";
         var chenggong = "f0cbc265-6abd-4519-a176-9296b7e032a1";
         var taitong = "740d61bc-5ae8-48c8-8d33-07eddf8fa5f1,4d0e9b6b-d077-46ba-b807-04ef0b8b6a10"
+        var chengkung = "37623549-9f15-46b4-b63a-7ebf20de0c09,c2fe4ef0-084c-47c2-9f4c-3f2fd3371591,a897d838-1dfd-41ce-b6e0-b7b1487328cb,eefdccd5-4ff7-4f1f-a51e-f7e98696ce99"
+
         if (jinfeng.indexOf(vpData.theme[0].id) != -1) { //如果是金峰鄉主題
             changeCss("jinfeng");
         } else if(chenggong.indexOf(vpData.theme[0].id) != -1){ //如果是成功鎮主題
             changeCss("none");
         } else if(taitong.indexOf(vpData.theme[0].id) != -1){ //如果是台東市主題
             changeCss("taitong");
+        } else if(chengkung.indexOf(vpData.theme[0].id) != -1){ //如果是台東市主題
+            changeCss("chengkung");
         }
     });
 }
