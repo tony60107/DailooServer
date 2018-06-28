@@ -22,6 +22,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <c:set var="descLength" value="${fn:length(desc)}" />
       <c:set var="desc" value="${fn:substring(desc, 0, descLength-1)}" />
 	<meta http-equiv="description" content="${themeName} 景點介紹，包含以下景點：${desc} - 就像在地人親自帶路">
+
+      <%--FB分享設定--%>
+      <meta id="og_name" property="og:site_name" content="${themeName} - Dailoo帶路語音導覽服務"/>
+      <meta id="og_desc" property="og:description" content="${desc} - 就像在地人親自帶路"/>
+      <meta id="og_title" property="og:title" content="${themeName} - Dailoo帶路語音導覽服務"/>
+      <c:forEach items="${vps}" var="vp">
+          <meta id="og_image" property="og:image" content="https://www.dailoo.com//ResourceServlet?url=${vp.behalfPhotoUrl}"/>
+      </c:forEach>
+
     <link rel="shortcut icon" href="images/general/dailoo.png">
     <link rel="stylesheet" href="css/base.css"/>
     <link rel="stylesheet" href="css/viewlist.css?20171129"/>
@@ -57,8 +66,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <h3 class="speaker">${vp.speakerName}</h3>
                       <div class="time">
                           <fmt:formatNumber var="min" value="${(vp.audioLength - vp.audioLength % 60) / 60}" pattern="##" maxFractionDigits="0"/>
-                          <c:if test="${min >= 10}">${min}:</c:if>
-                          <c:if test="${min < 10}">0${min}:</c:if>
+                          <c:if test="${min+0 >= 10}">${min}:</c:if>
+                          <c:if test="${min+0 < 10}">0${min}:</c:if>
                           <c:if test="${vp.audioLength % 60 > 9}">${vp.audioLength % 60}</c:if>
                           <c:if test="${vp.audioLength % 60 < 9}">0${vp.audioLength % 60}</c:if>
                       </div>

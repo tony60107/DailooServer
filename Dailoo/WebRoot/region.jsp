@@ -31,6 +31,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <c:set var="descEngLength" value="${fn:length(descEng)}" />
       <c:set var="descEng" value="${fn:substring(descEng, 0, descEngLength-1)}" />
     <meta http-equiv="description" content="${regionName} 主題介紹，包含以下主題：${desc} - 就像在地人親自帶路 ${descEng}">
+
+      <%--FB分享設定--%>
+      <meta id="og_name" property="og:site_name" content="${regionName} - Dailoo帶路語音導覽服務"/>
+      <meta id="og_desc" property="og:description" content="${desc} - 就像在地人親自帶路"/>
+      <meta id="og_title" property="og:title" content="${regionName} - Dailoo帶路語音導覽服務"/>
+      <c:forEach items="${themes}" var="theme">
+          <meta id="og_image" property="og:image" content="https://www.dailoo.com//ResourceServlet?url=${theme.behalfPhotoUrl}"/>
+      </c:forEach>
+
     <link rel="shortcut icon" href="images/general/dailoo.png">
     <link rel="stylesheet" href="css/base.css"/>
     <link rel="stylesheet" href="css/themelist.css"/>

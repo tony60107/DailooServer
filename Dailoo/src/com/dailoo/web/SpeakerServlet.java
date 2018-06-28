@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.logging.log4j.LogManager;
 
 import com.dailoo.domain.Speaker;
 import com.dailoo.factory.BasicFactory;
@@ -159,6 +160,7 @@ public class SpeakerServlet extends HttpServlet {
 				response.getWriter().write(json);
 			}
 		} catch (Exception e) {
+			LogManager.getLogger().error("系統出錯", e);
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}

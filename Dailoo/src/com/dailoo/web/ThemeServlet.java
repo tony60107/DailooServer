@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.logging.log4j.LogManager;
 
 import com.dailoo.domain.Speaker;
 import com.dailoo.domain.Theme;
@@ -82,6 +83,7 @@ public class ThemeServlet extends HttpServlet {
 				}
 			}
 		} catch (Exception e) {
+			LogManager.getLogger().error("系統出錯", e);
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}

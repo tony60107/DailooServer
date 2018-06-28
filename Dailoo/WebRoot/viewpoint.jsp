@@ -21,6 +21,14 @@
       <%request.setAttribute("vEnter", "\r\n");%>
       <c:set var="intro" value="${fn:replace(intro, vEnter, '')}" />
       <meta http-equiv="description" content="${vp.name} ${vp.subtitle} - ${intro} - 就像在地人親自帶路">
+      <%--FB分享設定--%>
+      <meta id="og_name" property="og:site_name" content="${vp.name}${vp.subtitle} - Dailoo帶路語音導覽服務"/>
+      <meta id="og_desc" property="og:description" content="${intro} - 就像在地人親自帶路"/>
+      <meta id="og_title" property="og:title" content="${vp.name}${vp.subtitle} - Dailoo帶路語音導覽服務"/>
+      <c:forEach items="${tags}" var="tag">
+          <meta id="og_image" property="og:image" content="https://www.dailoo.com//ResourceServlet?url=${tag.photoUrl}"/>
+      </c:forEach>
+
       <link rel="stylesheet" href="css/base.css"/>
       <link rel="stylesheet" href="css/viewpoint.css?20171209"/>
   </head>
@@ -133,9 +141,9 @@
                       <h3 class="audio-name fl">${subtitle}</h3>
                       <div class="fl" style="display: none;">...</div>
                       <div class="time fr">
-                          <fmt:formatNumber var="min" value="${(vp.audioLength - vp.audioLength % 60) / 60}" pattern="##" maxFractionDigits="0"/>
-                          <c:if test="${min >= 10}">${min}:</c:if>
-                          <c:if test="${min < 10}">0${min}:</c:if>
+                          <fmt:formatNumber var="min" value="${(vp.audioLength - vp.audioLength % 60) / 60}" pattern="##" maxFractionDigits="0" type="number"/>
+                          <c:if test="${min+0 >= 10}">${min}:</c:if>
+                          <c:if test="${min+0 < 10}">0${min}:</c:if>
                           <c:if test="${vp.audioLength % 60 > 9}">${vp.audioLength % 60}</c:if>
                           <c:if test="${vp.audioLength % 60 < 9}">0${vp.audioLength % 60}</c:if>
                       </div>
@@ -159,8 +167,8 @@
                               <h4 class="speaker">${vp.speakerName}</h4>
                               <div class="time">
                                   <fmt:formatNumber var="min" value="${(vp.audioLength - vp.audioLength % 60) / 60}" pattern="##" maxFractionDigits="0"/>
-                                  <c:if test="${min >= 10}">${min}:</c:if>
-                                  <c:if test="${min < 10}">0${min}:</c:if>
+                                  <c:if test="${min+0 >= 10}">${min}:</c:if>
+                                  <c:if test="${min+0 < 10}">0${min}:</c:if>
                                   <c:if test="${vp.audioLength % 60 > 9}">${vp.audioLength % 60}</c:if>
                                   <c:if test="${vp.audioLength % 60 < 9}">0${vp.audioLength % 60}</c:if>
                               </div>

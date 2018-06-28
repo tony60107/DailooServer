@@ -13,6 +13,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+
 import com.dailoo.domain.Speaker;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.service.SpeakerService;
@@ -27,33 +29,37 @@ public class AutoLoginFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest req = (HttpServletRequest) request;
-		HttpServletResponse resp = (HttpServletResponse) response;
-		Speaker sp = (Speaker) req.getSession().getAttribute("speaker");
-		//1.只有未登录的用户才自动登录
-		if(req.getSession(false)==null || req.getSession().getAttribute("speaker")==null){
-			//2.只有带了自动登陆cookie的用户才自动登陆
-			Cookie [] cs = req.getCookies();
-			Cookie findC = null;
-			if(cs!=null){
-				for(Cookie c : cs){
-					if("autologin".equals(c.getName())){
-						findC = c;
-						break;
+		try{
+			HttpServletRequest req = (HttpServletRequest) request;
+			HttpServletResponse resp = (HttpServletResponse) response;
+			Speaker sp = (Speaker) req.getSession().getAttribute("speaker");
+			//1.只有未登录的用户才自动登录
+			if(req.getSession(false)==null || req.getSession().getAttribute("speaker")==null){
+				//2.只有带了自动登陆cookie的用户才自动登陆
+				Cookie [] cs = req.getCookies();
+				Cookie findC = null;
+				if(cs!=null){
+					for(Cookie c : cs){
+						if("autologin".equals(c.getName())){
+							findC = c;
+							break;
+						}
+					}
+				}
+				if(findC!=null){
+					//3.只有自动登录cookie中的用户名密码都正确才做自动登陆
+					String v = URLDecoder.decode(findC.getValue(),"utf-8");
+					String username = v.split(":")[0];
+					String password = v.split(":")[1];
+					SpeakerService service = BasicFactory.getFactory().getService(SpeakerService.class);
+					Speaker speaker = service.getSpeakerByUnAndPsw(username, password);
+					if(speaker!=null){
+						req.getSession().setAttribute("speaker", speaker);
 					}
 				}
 			}
-			if(findC!=null){
-				//3.只有自动登录cookie中的用户名密码都正确才做自动登陆
-				String v = URLDecoder.decode(findC.getValue(),"utf-8");
-				String username = v.split(":")[0];
-				String password = v.split(":")[1];
-				SpeakerService service = BasicFactory.getFactory().getService(SpeakerService.class);
-				Speaker speaker = service.getSpeakerByUnAndPsw(username, password);
-				if(speaker!=null){
-					req.getSession().setAttribute("speaker", speaker);
-				}
-			}
+		} catch(Exception e) {
+			LogManager.getLogger().error("系統出錯", e);
 		}
 		
 		
