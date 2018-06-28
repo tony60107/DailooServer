@@ -42,20 +42,15 @@ public class ShortUrlFilter implements Filter {
 			ShortUrl url = service.getByShorten(uri.split("/")[1]);
 			//如果有找到對應的原網址
 			if(url != null){
-				String domain = url.getOri().split("\\?")[0]; //域名
-				System.out.println(url.getOri().split("\\?").length);
-				//如果該網址帶有參數
-				if(url.getOri().split("\\?").length > 1){
-					//問號後的參數，將非中文進行轉換，只保留中文為URL編碼
-					String param = URLEncoder.encode(url.getOri().split("\\?")[1],"UTF-8")
-							.replaceAll("%3D", "=").replaceAll("%26", "&").replaceAll("%23", "#").replaceAll("%2B", "+")
-							.replaceAll("%25", "%").replaceAll("%20", " ").replaceAll("%28", "(").replaceAll("%29", ")");
-					//進行跳轉
-					resp.sendRedirect(domain + "?" + param);
-				}else {
-					//進行跳轉
-					resp.sendRedirect(domain);
-				}
+				//將非中文進行轉換，只保留中文為URL編碼
+				String newUrl = URLEncoder.encode(url.getOri(),"UTF-8")
+						.replaceAll("%3D", "=").replaceAll("%26", "&").replaceAll("%23", "#").replaceAll("%2B", "+")
+						.replaceAll("%25", "%").replaceAll("%20", " ").replaceAll("%28", "(").replaceAll("%29", ")")
+						.replaceAll("%3A", ":").replaceAll("%2F", "/").replaceAll("%3F", "?");
+				
+				//System.out.println(newUrl);
+				//進行跳轉
+				resp.sendRedirect(newUrl);
 				return;
 			}
 		}
