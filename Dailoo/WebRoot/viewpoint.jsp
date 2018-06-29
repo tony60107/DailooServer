@@ -39,7 +39,9 @@
       <div id="player" class="player clearfix">
           <!--頭部導航欄-->
           <div class="header clearfix">
-              <a id="backward" href="/theme/${themes.get(i).id}"><img src="images/viewpoint/back.png" alt="" class="back fl"></a>
+              <c:set value="${header.referer}" var="ref" />
+              <a id="backward" href="<c:if test="${fn:contains(ref, 'theme')}">${header.referer}</c:if><c:if test="${!fn:contains(ref, 'theme')}">/theme/${themes.get(i).id}</c:if>">
+              <img src="images/viewpoint/back.png" alt="" class="back fl"></a>
               <div id="share" href=""><img src="images/viewpoint/share.png" alt="" class="share fr"></div>
               <a id="vpLocation" target="_blank"><img src="images/viewpoint/location.png" alt="" class="location fr"></a>
           </div>

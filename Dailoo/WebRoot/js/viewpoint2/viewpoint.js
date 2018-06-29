@@ -166,7 +166,7 @@ function initAuthorData(speakerData) {
     if (speakerData == null) {
         return;
     }
-    console.dir(speakerData.photoUrl == "");
+    //console.dir(speakerData.photoUrl == "");
     //講者姓名
     //$$("speakerName").innerHTML = speakerData.name;
     //講者相片
