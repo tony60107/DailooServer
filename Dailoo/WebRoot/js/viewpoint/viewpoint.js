@@ -123,6 +123,9 @@ function getDateFromServer(){
             var data = eval("(" + data + ")");
             if (data.error != undefined) alert(data.error);
 
+            //301重定向到新版網址
+            document.location = "/view/" + data.name + "_" + data.subtitle;
+
             //修正照片URL
             var tags = data.audio.tags;
             if (typeof tags[0] != 'undefined') {

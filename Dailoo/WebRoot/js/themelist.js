@@ -64,6 +64,10 @@ function getRegionData() {
         data: {"method": "getRegionById", "id": regionId},
         success: function (data) {
             var region = eval("(" + data + ")");
+
+            //301重定向到新版網址
+            document.location = "/region/" + region.name;
+
             $$("title").innerHTML = region.name + "行動語音導覽";
             document.title = region.name + " 帶路語音導覽";
         },

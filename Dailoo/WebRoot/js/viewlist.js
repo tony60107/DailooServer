@@ -3,6 +3,9 @@
  */
 //獲取主題ID
 var themeId = location.href.split("id=")[1];
+//301重定向到新版網址
+document.location = "/theme/" + themeId;
+
 //如果沒有主題ID，則跳轉到鹿野地區主題列表
 if(typeof themeId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
 
