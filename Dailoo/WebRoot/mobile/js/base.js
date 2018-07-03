@@ -129,6 +129,11 @@ function initHeaderFooter(){
     });
     //點選取消則返回上一頁
     $('.submit-btns>.submit-l').bind('click', function(){history.go(-1)})
+
+
+    //桌機則將頁面比例調為50％
+    if(window.screen.width > 980){$("body").css("zoom","50%");}
+    $(window).resize(function() {if(window.screen.width > 980){$("body").css("zoom","50%");}});
 }
 
 

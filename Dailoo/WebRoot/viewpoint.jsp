@@ -267,3 +267,8 @@
 <script type="text/javascript" src="js/viewpoint2/imgSlider.js"></script>
 <script type="text/javascript" src="js/viewpoint2/audio.js"></script>
 <script type="text/javascript" src="js/viewpoint2/viewpoint.js"></script>
+<script type="text/javascript">
+    //桌機則將頁面比例調為50％
+    if(window.screen.width > 980){$("body").css("zoom","50%");}
+    $(window).resize(function() {if(window.screen.width > 980){$("body").css("zoom","50%");}});
+</script>
