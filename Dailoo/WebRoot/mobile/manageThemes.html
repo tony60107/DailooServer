@@ -74,10 +74,10 @@
                 var dom = '';
                 for (var i = 0; i < themes.length; i++) {
                     dom += '<div class="theme">' +
-                            '<div class="cover">' +
+                            '<a href="/theme/' + themes[i].id + '" class="cover" target="_blank">' +
                             '<div class="title">' + themes[i].name.split(",")[0] + '</div>' +
                             '<div class="title-eng">' + (themes[i].name.split(",")[1] == undefined ? '' : themes[i].name.split(",")[1]) + '</div>' +
-                            '</div>' +
+                            '</a>' +
                             '<div class="img-border">' +
                             '<img alt="" src="/ResourceServlet?url=' + themes[i].behalfPhotoUrl + '">' +
                             '</div>' +

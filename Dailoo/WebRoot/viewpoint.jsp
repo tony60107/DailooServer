@@ -132,7 +132,7 @@
       <div id="moreAudio" class="more-audio">
           <div id="moreAudioTitle" class="main-title">${vp.name}共有以下${fn:length(moreAudio)}段可以收聽：</div>
           <c:forEach items="${moreAudio}" var="vp">
-              <a href="/view/${vp.name}_${vp.subtitle}?utm_source=InSite&amp;utm_campaign=${vp.name}_${vp.subtitle}">
+              <a href="/view/${vp.name}_${vp.subtitle}">
                   <div class="audio">
                       <!--如果景點名稱太長，則刪除文字加上...-->
                       <c:set value="${vp.subtitle}" var="subtitle"/>
@@ -160,7 +160,7 @@
           <div class="viewlist swiper-container">
               <ul id="neighView" class="swiper-wrapper">
                   <c:forEach items="${neighView}" var="vp">
-                      <a class="view swiper-slide swiper-slide-active" href="/view/${vp.name}_${vp.subtitle}?utm_source=InSite&amp;utm_campaign=${vp.name}_${vp.subtitle}">
+                      <a class="view swiper-slide swiper-slide-active" href="/view/${vp.name}_${vp.subtitle}">
                           <img src="/ResourceServlet?url=${vp.behalfPhotoUrl}" alt="${vp.name}">
                           <div class="cover"></div>
                           <h3 class="main-title">${vp.name}</h3>
@@ -238,20 +238,23 @@
           </div>
       </div>
       <!--浮動播放器-->
-      <div id="floatPlayer" class="float-player">
-          <a href="#player"><div class="pic"><img id="floatPhoto" src="" alt="${vp.name}"></div></a>
-          <div id="flPreTagBtn" class="pre"></div>
-          <div id="flPlayBtn" class="play"></div>
-          <div id="flNextTagBtn" class="next"></div>
-          <div id="flNowTime" class="time">0:00</div>
+      <div id="floatPlayer" class="float-player-bg">
+          <div class="float-player">
+              <a href="#player"><div class="pic"><img id="floatPhoto" src="" alt="${vp.name}"></div></a>
+              <div id="flPreTagBtn" class="pre"></div>
+              <div id="flPlayBtn" class="play"></div>
+              <div id="flNextTagBtn" class="next"></div>
+              <div id="flNowTime" class="time">0:00</div>
+          </div>
       </div>
-      <!--Footer引入-->
-      <div id="footer"></div>
+
 
       <!--其他變量儲存-->
       <input id="regionId" type="text" style="display: none"/>
       <input id="vpId" type="text" style="display: none" value="${vp.id}"/>
   </div>
+  <!--Footer引入-->
+  <div id="footer"></div>
   </body>
 </html>
 <script src="https://www.youtube.com/iframe_api"></script>

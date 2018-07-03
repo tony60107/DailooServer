@@ -59,7 +59,7 @@
     function init(){
         var regionId = location.href.split("id=")[1];
         $('#regionId').val(regionId);
-        $('#preview').attr('href', '/themelist.html?id=' + regionId);
+
     }
 
     //取得地區名稱
@@ -72,6 +72,7 @@
                 var region = eval("(" + data + ")");
                 console.dir(region);
                 $('#regionName').val(region.name);
+                $('#preview').attr('href', '/region/' + region.name);
             },
             error: function(){
                 setTimeout(function(){getRegion();}, 1000);

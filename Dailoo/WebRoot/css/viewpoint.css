@@ -800,7 +800,7 @@
 
 
 /*浮動播放器開始*/
-.float-player {
+.float-player-bg {
     width: 100%;
     height: 200px;
     position: fixed;
@@ -809,8 +809,14 @@
     background-color: rgba(89, 89, 89, 0.95);
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.5);
     display: none;
-
     z-index: 1;
+}
+
+.float-player {
+    width: 980px;
+    margin-left: -490px;
+    left:50%;
+    position: relative
 }
 
 .float-player div {
@@ -854,7 +860,7 @@
 .float-player .time {
     position: absolute;
     right: 32px;
-    bottom: 18px;
+    bottom: -188px;
     line-height: 44px;
     font-size: 36px;
     font-weight: 300;

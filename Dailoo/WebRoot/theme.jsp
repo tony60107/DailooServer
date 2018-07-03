@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div id="viewlist" class="viewlist clearfix">
           <c:forEach items="${vps}" var="vp">
               <a class="view"
-                 href="/view/${vp.name}_${vp.subtitle}?utm_source=InSite">
+                 href="/view/${vp.name}_${vp.subtitle}">
                   <img src="/ResourceServlet?url=${vp.behalfPhotoUrl}" alt="${vp.name}">
                   <div class="cover"></div>
                   <h2 class="main-title">${vp.name}</h2>
@@ -67,18 +67,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <h3 class="speaker">${vp.speakerName}</h3>
                       <div class="time">
                           <fmt:formatNumber var="min" value="${(vp.audioLength - vp.audioLength % 60) / 60}" pattern="##" maxFractionDigits="0"/>
-                          <c:if test="${min+0 >= 10}">${min}:</c:if>
-                          <c:if test="${min+0 < 10}">0${min}:</c:if>
-                          <c:if test="${vp.audioLength % 60 > 9}">${vp.audioLength % 60}</c:if>
-                          <c:if test="${vp.audioLength % 60 < 9}">0${vp.audioLength % 60}</c:if>
+                          <c:if test="${min+0 >= 10}">${min}：</c:if><c:if test="${min+0 < 10}">0${min}：</c:if><c:if test="${vp.audioLength % 60 > 9}">${vp.audioLength % 60}</c:if><c:if test="${vp.audioLength % 60 <= 9}">0${vp.audioLength % 60}</c:if>
                       </div>
                   </div>
               </a>
           </c:forEach>
       </div>
-      <!--Footer引入-->
-      <div id="footer"></div>
   </div>
+  <!--Footer引入-->
+  <div id="footer"></div>
   </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

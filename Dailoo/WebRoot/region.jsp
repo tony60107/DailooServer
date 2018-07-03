@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta http-equiv="description" content="${regionName} 主題介紹，包含以下主題：${desc} - 就像在地人親自帶路 ${descEng}">
 
       <%--FB分享設定--%>
-      <meta id="og_name" property="og:site_name" content="${regionName} - Dailoo帶路語音導覽服務"/>
+      <meta id="og_name" property="og:site_name" content="${regionName} &nbsp; - Dailoo帶路語音導覽服務"/>
       <meta id="og_desc" property="og:description" content="${desc} - 就像在地人親自帶路"/>
       <meta id="og_title" property="og:title" content="${regionName} - Dailoo帶路語音導覽服務"/>
       <c:forEach items="${themes}" var="theme">
@@ -47,8 +47,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
   <body>
+  <div class="w">
       <div class="header clearfix">
-          <img id="logo" class="logo fl" src="images/themelist/dailoo_logo.png" style="top: 34px;">
+          <img id="logo" class="logo fl" src="images/themelist/dailoo_logo.png">
           <h1 id="title" class="cover fl">${regionName}行動語音導覽</h1>
       </div>
       <div id="themelist" class="themelist">
@@ -66,6 +67,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </c:forEach>
       </div>
       <input id="regionId" type="text" value="${regionId}" style="display: none"/>
+  </div>
+
   <!--Footer引入-->
   <div id="footer"></div>
   </body>
