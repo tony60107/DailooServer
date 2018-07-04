@@ -240,7 +240,7 @@
       <!--浮動播放器-->
       <div id="floatPlayer" class="float-player-bg">
           <div class="float-player">
-              <a href="#player"><div class="pic"><img id="floatPhoto" src="" alt="${vp.name}"></div></a>
+              <a href="javascript:void(0)" onclick="document.getElementById('player').scrollIntoView();"><div class="pic"><img id="floatPhoto" src="" alt="${vp.name}"></div></a>
               <div id="flPreTagBtn" class="pre"></div>
               <div id="flPlayBtn" class="play"></div>
               <div id="flNextTagBtn" class="next"></div>

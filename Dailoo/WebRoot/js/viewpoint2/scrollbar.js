@@ -30,19 +30,29 @@ var ScrollBar = Class.extend({
 
     bindEvent: function () {
 
-        bar.addEventListener("touchstart", function (event) { //當按下拖動按鈕
+        $(bar).on("touchstart mousedown", function (event) { //當按下拖動按鈕
             pressing = true;
-            var leftVal = event.changedTouches[0].clientX - this.offsetLeft; // bar離螢幕左側之距離(滑鼠點下) -  bar距離進度條最左側的距離 = 進度條最左側距離螢幕左側之距離
+
+            if(event.clientX == undefined) event.clientX = event.changedTouches[0].clientX; //PC端、移動端整合
+            var leftVal = event.clientX - this.offsetLeft; // bar離螢幕左側之距離(滑鼠點下) -  bar距離進度條最左側的距離 = 進度條最左側距離螢幕左側之距離
+            if(window.screen.width > 980) leftVal = event.clientX - this.offsetLeft / 2 + 15;   //PC端修正
+
             var that = this;    // bar，拖動一定要寫到move裡面才可以
             if (audio.paused == false) { //如果聲音正在播放
                 audio.pause(); //暫停播放聲音
                 clearInterval(audio.timer);
                 isPlayedToPause = true;
             }
-            document.addEventListener("touchmove", function (event) { //滑鼠移動時
+            $(document).on("touchmove mousemove", function (event) { //滑鼠移動時
 
                 if (pressing) { //如果按下bar後，還未鬆手
-                    that.style.left = event.changedTouches[0].clientX - leftVal + that.offsetWidth / 2 + 'px'; // 滑鼠座標 - 滾動條最左側距離螢幕左側之距離 =  bar距離進度條最左側之距離
+
+                    if(event.clientX == undefined) event.clientX = event.changedTouches[0].clientX; //PC端、移動端整合
+
+                    var val = event.clientX - leftVal + that.offsetWidth / 2; // 滑鼠座標 - 滾動條最左側距離螢幕左側之距離 =  bar距離進度條最左側之距離
+                    if(window.screen.width > 980) val = val * 2; //因為PC端縮放成50％，所以距離要*2
+
+                    that.style.left = val + 'px';   //bar的位置
 
                     var val = parseInt(that.style.left);
                     if (val < 0) { //如果bar到了頂部
@@ -58,16 +68,18 @@ var ScrollBar = Class.extend({
                 }
             });
 
-            document.addEventListener("touchend", function () { //放開滑鼠
+            $(document).on("touchend mouseup", function () { //放開滑鼠
                 pressing = false;
                 if (isPlayedToPause) {//如果是拖動進度條導致暫停播放聲音，彈起後開始播放
+                    playBtn.style.backgroundImage = "url(images/viewpoint/pause.png)";
+                    flPlayBtn.style.backgroundImage = "url(images/viewpoint/pause.png)";
                     audio.play();
                     audio.timer = setInterval(function () { //每0.3秒更新進度條狀態
                         updateProgTime(false);
                     }, 300);
                     isPlayedToPause = false;
                 }
-                document.onmousemove = null;   // 弹起鼠标不做任何操作
+                $(document).off("touchmove mousemove"); // 弹起鼠标不做任何操作
             });
 
         });
