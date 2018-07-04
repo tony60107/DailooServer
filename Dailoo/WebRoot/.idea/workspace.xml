@@ -38,8 +38,18 @@
       <file leaf-file-name="viewpoint.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/viewpoint.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-25.064516">
-              <caret line="272" column="95" selection-start-line="272" selection-start-column="95" selection-end-line="272" selection-end-column="95" />
+            <state vertical-scroll-proportion="-9.451612">
+              <caret line="208" column="31" selection-start-line="208" selection-start-column="31" selection-end-line="208" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="viewpoint.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/css/viewpoint.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.54340476">
+              <caret line="701" column="0" selection-start-line="701" selection-start-column="0" selection-end-line="701" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -55,10 +65,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mobile/js/base.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.85620916">
+            <state vertical-scroll-proportion="0.0">
               <caret line="133" column="4" selection-start-line="133" selection-start-column="4" selection-end-line="133" selection-end-column="4" />
               <folding>
                 <element signature="e#96#546#0" expanded="false" />
@@ -168,11 +178,11 @@
         <option value="$PROJECT_DIR$/css/themelist.css" />
         <option value="$PROJECT_DIR$/css/footer.css" />
         <option value="$PROJECT_DIR$/footer.html" />
-        <option value="$PROJECT_DIR$/css/viewpoint.css" />
         <option value="$PROJECT_DIR$/region.jsp" />
-        <option value="$PROJECT_DIR$/viewpoint.jsp" />
         <option value="$PROJECT_DIR$/theme.jsp" />
         <option value="$PROJECT_DIR$/mobile/js/base.js" />
+        <option value="$PROJECT_DIR$/viewpoint.jsp" />
+        <option value="$PROJECT_DIR$/css/viewpoint.css" />
       </list>
     </option>
   </component>
@@ -921,12 +931,12 @@
       <workItem from="1527043247887" duration="92486000" />
       <workItem from="1528710816964" duration="924000" />
       <workItem from="1528879582003" duration="67855000" />
-      <workItem from="1529583504353" duration="33027000" />
+      <workItem from="1529583504353" duration="33892000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1688498000" />
+    <option name="totallyTimeSpent" value="1689363000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1440,37 +1450,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/viewpoint.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.193548">
-          <caret line="862" column="16" selection-start-line="862" selection-start-column="16" selection-end-line="862" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viewpoint.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.064516">
-          <caret line="272" column="95" selection-start-line="272" selection-start-column="95" selection-end-line="272" selection-end-column="95" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/theme.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-23.64516">
           <caret line="86" column="95" selection-start-line="86" selection-start-column="95" selection-end-line="86" selection-end-column="95" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/region.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.935484">
-          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="81" selection-end-column="95" />
-          <folding>
-            <element signature="n#c:forEach#1;n#jsp:root#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1484,7 +1468,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mobile/js/base.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.85620916">
+        <state vertical-scroll-proportion="0.0">
           <caret line="133" column="4" selection-start-line="133" selection-start-column="4" selection-end-line="133" selection-end-column="4" />
           <folding>
             <element signature="e#96#546#0" expanded="false" />
@@ -1508,6 +1492,32 @@
             <element signature="n#!!block;n#deleteMarkers#0;n#!!block;n#initMap#0" expanded="false" />
             <element signature="e#47789#48087#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/region.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.935484">
+          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="81" selection-end-column="95" />
+          <folding>
+            <element signature="n#c:forEach#1;n#jsp:root#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewpoint.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.451612">
+          <caret line="208" column="31" selection-start-line="208" selection-start-column="31" selection-end-line="208" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/viewpoint.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54340476">
+          <caret line="701" column="0" selection-start-line="701" selection-start-column="0" selection-end-line="701" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
