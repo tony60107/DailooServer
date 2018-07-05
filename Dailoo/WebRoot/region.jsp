@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>${regionName}  - Dailoo帶路語音導覽服務</title>
+    <title>${regionName}  :: Dailoo帶路語音導覽服務</title>
       <meta name="viewport" content="user-scalable=no"/>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">

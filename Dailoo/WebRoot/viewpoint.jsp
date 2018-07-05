@@ -10,7 +10,7 @@
 <html>
   <head>
       <base href="<%=basePath%>">
-      <title>${vp.name}${vp.subtitle} - Dailoo帶路語音導覽服務</title>
+      <title>${vp.name}${vp.subtitle}  :: Dailoo帶路語音導覽服務</title>
       <meta name="viewport" content="user-scalable=no"/>
       <link rel="shortcut icon" href="images/general/dailoo.png">
       <meta http-equiv="pragma" content="no-cache">

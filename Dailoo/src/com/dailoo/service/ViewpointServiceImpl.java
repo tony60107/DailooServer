@@ -119,8 +119,9 @@ public class ViewpointServiceImpl implements ViewpointService{
 		
 		//建立短網址
 		String domain = BasicFactory.getFactory().getPropData("Domain");
-		String url = domain + "viewpoint.html?utm_source=PrintAds&utm_campaign="+ vp.getName() + "_" 
-						+ vp.getSubtitle() + "&id=" + vp.getId();
+		String url = domain + "view/" + vp.getName() + "_" + vp.getSubtitle() 
+							+ "?utm_source=PrintAds&utm_campaign="+ vp.getName() + "_" 
+							+ vp.getSubtitle();
 		String shortUrl = "dailoo.com/" + UrlShorterUtils.toShortUrl(url);
 		shortUrlService.addShortUrl(url);
 		vp.setShortUrl(shortUrl);
@@ -154,8 +155,9 @@ public class ViewpointServiceImpl implements ViewpointService{
 				
 		//更新短網址
 		String domain = BasicFactory.getFactory().getPropData("Domain");
-		String url = domain + "viewpoint.html?utm_source=PrintAds&utm_campaign="+ vp.getName() + "_" 
-						+ vp.getSubtitle() + "&id=" + vp.getId();
+		String url = domain + "view/" + vp.getName() + "_" + vp.getSubtitle() 
+							+ "?utm_source=PrintAds&utm_campaign="+ vp.getName() + "_" 
+							+ vp.getSubtitle();
 		String shortUrl = "dailoo.com/" + UrlShorterUtils.toShortUrl(url);
 		shortUrlService.addShortUrl(url);
 		vp.setShortUrl(shortUrl);
