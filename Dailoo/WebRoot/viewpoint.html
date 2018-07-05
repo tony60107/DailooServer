@@ -194,38 +194,16 @@
 <!--<script type="text/javascript" src="js/viewpoint/viewpoint.all.min.js"></script>-->
 
 <script>
-    var speakerData = "";
-    function onYouTubeIframeAPIReady() {
-        //如果還沒有拿到講者資訊，等待0.5秒後再執行
-        if ("" == speakerData) {
-            setTimeout(function () {
-                onYouTubeIframeAPIReady();
-            }, 500);
-        } else {
-            setSpeakerYoutube();
-        }
-    }
-
-    //設定講者影片
-    function setSpeakerYoutube() {
-
-        var YTUrl = speakerData.youtubeUrl;
-        if (YTUrl != '') {
-            var YTID = YTUrl.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)[1];
-            var ytplayer;
-            ytplayer = new YT.Player('ytplayer', {
-                height: '495',
-                width: '880',
-                videoId: YTID,
-                events: {'onStateChange': onPlayerStateChange}
-            });
-            function onPlayerStateChange(event) {
-                if (event.data == YT.PlayerState.PLAYING) {
-                    document.getElementById("audio").pause();
-                }
-            }
-            $$("videoPrep").style.display = "none";
-        }
-    }
-
+    //根據景點ID，取得景點資訊
+    $.ajax({
+        url: "/ViewpointServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getViewpointInfo", "id": location.href.split("id=")[1]},
+        success: function (data) {
+            var data = eval("(" + data + ")");
+            if (data.error != undefined) alert(data.error);
+            //301重定向到新版網址
+            document.location = "/view/" + data.name + "_" + data.subtitle;
+        },
+    });
 </script>

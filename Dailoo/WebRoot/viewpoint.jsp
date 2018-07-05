@@ -259,14 +259,14 @@
 </html>
 <script src="https://www.youtube.com/iframe_api"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/viewpoint2/simplejsinher.js"></script>
+<script type="text/javascript" src="js/viewpoint/simplejsinher.js"></script>
 <script type="text/javascript" src="js/swiper.min.js"></script>
 <script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
-<script type="text/javascript" src="js/viewpoint2/scrollbar.js"></script>
-<script type="text/javascript" src="js/viewpoint2/imgSlider.js"></script>
-<script type="text/javascript" src="js/viewpoint2/audio.js"></script>
-<script type="text/javascript" src="js/viewpoint2/viewpoint.js"></script>
+<script type="text/javascript" src="js/viewpoint/scrollbar.js"></script>
+<script type="text/javascript" src="js/viewpoint/imgSlider.js"></script>
+<script type="text/javascript" src="js/viewpoint/audio.js"></script>
+<script type="text/javascript" src="js/viewpoint/viewpoint.js"></script>
 <script type="text/javascript">
     //桌機則將頁面比例調為50％
     if(window.screen.width > 980){$("body").css("zoom","50%");}

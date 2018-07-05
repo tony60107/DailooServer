@@ -9,7 +9,10 @@ window.onload = function () {
     var neighSwiper; //週邊景點滾動欄
 
     //避免網速過慢導致Youtube Api未啟用，手動調用
-    onYouTubeIframeAPIReady();
+    //onYouTubeIframeAPIReady();
+
+    //如果有講者介紹影片，則隱藏無影片圖示
+    if($('.ytplayer').length != 0) { $('#videoPrep').css('display', 'none')}
 
     // 點擊分享按鈕
     $$("share").onclick = function () {
@@ -41,12 +44,13 @@ window.onload = function () {
     // 點擊展開全文按鈕
     $$("readAllCont").onclick = function () {
         $$("summary").style.overflow = "none";
-        $$("vpIntro").style.height = "100%";
+        $$("vpIntro").style.height = "";
         this.style.display = "none";
     }
 
     //點擊查看講者簡介
     $$("readAllSpeakerIntro").onclick = function () {
+        $$("speakerIntro").style.display = "table";
         $$("speakerIntro").style.height = "100%";
         this.style.display = "none";
     }
@@ -101,18 +105,16 @@ window.onload = function () {
     //從伺服器取得景點資料
     getDateFromServer();
 
-    history.replaceState(null, null, location.href);
-
 }
 
 //從伺服器取得景點資料
 function getDateFromServer(){
 
     //取得景點ID
-    var vpId = location.href.split("id=")[1];
+    var vpId = $('#vpId').val();
     if(vpId != undefined) vpId = vpId.split("#")[0];
     //如果未提供景點ID，則跳轉到鹿野主題列表
-    if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
+    //if(typeof vpId == 'undefined'){location.href = "/themelist.html?id=e3cfc0f0-a9f5-439b-a534-efff46ced2ce"}
 
     //根據景點ID，取得景點資訊
     $.ajax({
@@ -123,9 +125,6 @@ function getDateFromServer(){
             var data = eval("(" + data + ")");
             if (data.error != undefined) alert(data.error);
 
-            //301重定向到新版網址
-            document.location = "/view/" + data.name + "_" + data.subtitle;
-
             //修正照片URL
             var tags = data.audio.tags;
             if (typeof tags[0] != 'undefined') {
@@ -135,7 +134,7 @@ function getDateFromServer(){
             }
             speakerData = data.speaker;
             initDataFromServer(data);
-            console.dir(data);
+            //console.dir(data);
         },
         error: function(){
             setTimeout(getDateFromServer, 500);
@@ -165,17 +164,17 @@ function initAuthorData(speakerData) {
     if (speakerData == null) {
         return;
     }
-    console.dir(speakerData.photoUrl == "");
+    //console.dir(speakerData.photoUrl == "");
     //講者姓名
-    $$("speakerName").innerHTML = speakerData.name;
+    //$$("speakerName").innerHTML = speakerData.name;
     //講者相片
-    if (speakerData.photoUrl != undefined && speakerData.photoUrl != "") {
+   /* if (speakerData.photoUrl != undefined && speakerData.photoUrl != "") {
         $$("speakerPhoto").src = "/ResourceServlet?url=" + speakerData.photoUrl;
         $$("speakerSmallPhoto").src = "/ResourceServlet?url=" + speakerData.photoUrl;
-    }
+    }*/
     //講者自我介紹
     var speakerIntro = $$("speakerIntro");
-    speakerIntro.innerHTML = speakerData.intro.replace(/\r\n/g, '<br/>');
+    //speakerIntro.innerHTML = speakerData.intro.replace(/\r\n/g, '<br/>');
     //speakerIntro.innerHTML = speakerIntro.innerHTML.replace(/\n/g, '');
     if (speakerIntro.offsetHeight <= 220) {
         $$("readAllSpeakerIntro").style.display = "none";
@@ -184,39 +183,39 @@ function initAuthorData(speakerData) {
     }
 
     //講者手機
-    if (speakerData.phoneNumber == null || speakerData.phoneNumber == '') {
+    /*if (speakerData.phoneNumber == null) {
         $$("speakerPhone").href = "#speaker";
         $$("speakerPhone").children[1].innerHTML = "無";
     } else {
         $$("speakerPhone").href = "tel:" + speakerData.phoneNumber;
         $$("speakerPhone").children[1].innerHTML = speakerData.phoneNumber;
     }
-
+*/
     //講者家電
-    if (speakerData.homeNumber == null || speakerData.homeNumber == '') {
+   /* if (speakerData.homeNumber == null || speakerData.homeNumber == '') {
         $$("speakerHome").href = "#speaker";
         $$("speakerHome").children[1].innerHTML = "無";
     } else {
         $$("speakerHome").href = "tel:" + speakerData.homeNumber;
         $$("speakerHome").children[1].innerHTML = speakerData.homeNumber;
-    }
+    }*/
 
     //講者Facebook
-    if (speakerData.speakerUrl == null || speakerData.speakerUrl == '') {
+    /*if (speakerData.speakerUrl == null || speakerData.speakerUrl == '') {
         $$("speakerUrl").href = "#speaker";
         $$("speakerUrl").children[1].innerHTML = "無";
     } else {
         $$("speakerUrl").href = speakerData.speakerUrl;
         $$("speakerUrl").children[1].innerHTML = speakerData.speakerUrl;
-    }
+    }*/
 
     //講者簡歷
     var resume = speakerData.resume.split(',');
-    for (var i = 0; i < resume.length; i++) {
+    /*for (var i = 0; i < resume.length; i++) {
         var li = document.createElement("li");
         li.innerHTML = resume[i];
         $$("speakerResume").appendChild(li);
-    }
+    }*/
 
 }
 
@@ -224,25 +223,27 @@ function initAuthorData(speakerData) {
 function initViewpointData(vpData) {
 
     //網頁標題
-    document.title = vpData.name + " " + vpData.subtitle;
+    //document.title = vpData.name + " " + vpData.subtitle;
     //將短網址存入全局變量中
     if(vpData.shortUrl != undefined){
         document.shortUrl = vpData.shortUrl;
     } else {
         document.shortUrl = "";
     }
+    history.replaceState(null, null, "/" + vpData.shortUrl.split("/")[1]);
+
     //上一頁按鈕
-    $$("backward").href = "/viewlist.html?id=" + vpData.theme[0].id;
+    //$$("backward").href = "/viewlist.html?id=" + vpData.theme[0].id;
     //景點名稱
-    $$("vpName").innerHTML = vpData.name;
+    //$$("vpName").innerHTML = vpData.name;
     //景點簡介標題
-    $$("vpTitle").innerHTML = vpData.name;
+    //$$("vpTitle").innerHTML = vpData.name;
     //景點簡介副標題
-    if (vpData.subtitle != "") {
+    /*if (vpData.subtitle != "") {
         $$("vpSubtitle").innerHTML = vpData.subtitle;
-    }
+    }*/
     //景點行政區
-    $$("area").innerHTML = vpData.city + vpData.town;
+    //$$("area").innerHTML = vpData.city + vpData.town;
     //儲存地區ID變量
     $$("regionId").value = vpData.theme[0].regionId;
 
@@ -279,7 +280,7 @@ function initViewpointData(vpData) {
 
     //景點介紹內容
     var vpIntro = $$("vpIntro");
-    vpIntro.innerHTML = vpData.intro.replace(/\n/g, '<br/>');
+    //vpIntro.innerHTML = vpData.intro.replace(/\n/g, '<br/>');
     //vpIntro.innerHTML = vpIntro.innerHTML.replace(/\n/g, '');
     if (vpIntro.offsetHeight <= 220) {
         $$("readAllCont").style.display = "none";
@@ -288,9 +289,10 @@ function initViewpointData(vpData) {
     }
 
     //還可以收聽區塊
-    if (typeof vpData.moreAudio != "undefined") {
+    /*if (typeof vpData.moreAudio != "undefined") {
         $$("moreAudioTitle").innerHTML = vpData.name + "共有以下" + vpData.moreAudio.length + "段可以收聽：";
         var moreAudioDiv = $$("moreAudio");
+        moreAudioDiv.innerHTML = "";
         for (var i = 0; i < vpData.moreAudio.length; i++) {
             var vp = vpData.moreAudio[i];
             var subtitle = vp.subtitle;
@@ -314,11 +316,11 @@ function initViewpointData(vpData) {
         }
     } else {
         $$("moreAudio").style.display = "none";
-    }
+    }*/
 
     //週邊景點
     if (typeof vpData.neighView != "undefined") {
-        var neighViewDiv = $$("neighView");
+        /*var neighViewDiv = $$("neighView");
         neighView = vpData.neighView;
 
         //如果沒有週邊景點則隱藏區塊
@@ -346,7 +348,7 @@ function initViewpointData(vpData) {
             }
             neighViewDiv.innerHTML = neighViewDiv.innerHTML + dom;
         }
-
+*/
         //初始化週邊景點滾動欄
         neighSwiper = new Swiper('.swiper-container', {
             slidesPerView: 'auto',
@@ -355,14 +357,14 @@ function initViewpointData(vpData) {
     }
 
     //Footer樣式
-    $.get("footer.html",function(data){
+    $.get("../footer.html",function(data){
 
         $("#footer").html(data);
         //更換Footer樣式
         var jinfeng = "03326ff3-cad4-42bc-a8aa-35fca64eb2ef,8daa252d-42e6-4535-a0b6-d794d7e5029d,e6862f47-a7a3-4b22-9647-763425705f0a,10c09cb8-355c-4db9-a852-fc3d20eca556,9de8cafd-203e-4f5e-8faf-aeda29264952,4652c369-be78-460d-90e3-e0e66267069f";
         var chenggong = "f0cbc265-6abd-4519-a176-9296b7e032a1";
         var taitong = "740d61bc-5ae8-48c8-8d33-07eddf8fa5f1,4d0e9b6b-d077-46ba-b807-04ef0b8b6a10"
-        var chengkung = "37623549-9f15-46b4-b63a-7ebf20de0c09,c2fe4ef0-084c-47c2-9f4c-3f2fd3371591,a897d838-1dfd-41ce-b6e0-b7b1487328cb,eefdccd5-4ff7-4f1f-a51e-f7e98696ce99"
+        var chengkung = "37623549-9f15-46b4-b63a-7ebf20de0c09,eefdccd5-4ff7-4f1f-a51e-f7e98696ce99"
 
         if (jinfeng.indexOf(vpData.theme[0].id) != -1) { //如果是金峰鄉主題
             changeCss("jinfeng");
@@ -370,8 +372,10 @@ function initViewpointData(vpData) {
             changeCss("none");
         } else if(taitong.indexOf(vpData.theme[0].id) != -1){ //如果是台東市主題
             changeCss("taitong");
-        } else if(chengkung.indexOf(vpData.theme[0].id) != -1){ //如果是台東市主題
+        } else if(chengkung.indexOf(vpData.theme[0].id) != -1){ //如果是成功鎮主題
             changeCss("chengkung");
+        } else if(vpData.theme[0].id == "a897d838-1dfd-41ce-b6e0-b7b1487328cb") { //南迴線精選
+            changeCss("jinfeng");
         }
     });
 }

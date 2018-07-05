@@ -80,6 +80,7 @@ var Audio = Class.extend({
     initDataFromServer : function(audioData){
         //audio.src = audioData.src;
         audio.src = "/ResourceServlet?url=" + audioData.src;
+        //console.dir(audioData.tags)
         tags = audioData.tags;
     },
 

@@ -32,6 +32,18 @@
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
-<script type="text/javascript" src="js/themelist.js"></script>
+<script type="text/javascript" src="js/region.js"></script>
 <!--<script type="text/javascript" src="js/themelist.min.js"></script>-->
+<script>
+    $.ajax({
+        url: "/RegionServlet", context: document.body,
+        type: "POST",
+        data: {"method": "getRegionById", "id": location.href.split("id=")[1]},
+        success: function (data) {
+            var region = eval("(" + data + ")");
 
+            //301重定向到新版網址
+            document.location = "/region/" + region.name;
+        },
+    });
+</script>
