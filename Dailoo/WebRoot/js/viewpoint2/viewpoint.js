@@ -105,8 +105,6 @@ window.onload = function () {
     //從伺服器取得景點資料
     getDateFromServer();
 
-    history.replaceState(null, null, location.href);
-
 }
 
 //從伺服器取得景點資料
@@ -232,6 +230,8 @@ function initViewpointData(vpData) {
     } else {
         document.shortUrl = "";
     }
+    history.replaceState(null, null, "/" + vpData.shortUrl.split("/")[1]);
+
     //上一頁按鈕
     //$$("backward").href = "/viewlist.html?id=" + vpData.theme[0].id;
     //景點名稱

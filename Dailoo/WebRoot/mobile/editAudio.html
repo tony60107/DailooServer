@@ -270,6 +270,7 @@
     function setAudioCurTime(e) {
         var pbWidth = 456;
         var dist = event.pageX - $('#pb').offset().left; //滑鼠點擊，距離進度條原點的距離
+        if(window.screen.width > 980) dist = (event.pageX - $('#pb').offset().left / 2)*2; //PC端修正
         audio.currentTime = dist / pbWidth * audioData.length;
     }
 
@@ -324,6 +325,11 @@
                 '</div>' +
                 '</div>';
         picList.innerHTML += dom;
+    }
+
+    //圖片載入失敗時，重新加載圖片
+    function reloadImg(img){
+        setTimeout(function(){img.src = img.src;}, 500);
     }
 
     //初始化新增標記圖片按鈕
