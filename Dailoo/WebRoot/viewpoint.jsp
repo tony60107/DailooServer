@@ -10,7 +10,7 @@
 <html>
   <head>
       <base href="<%=basePath%>">
-      <title>${vp.name}${vp.subtitle}  :: Dailoo帶路語音導覽服務</title>
+      <title>${vp.name}${vp.subtitle}  :: Dailoo帶路行動語音導覽服務</title>
       <meta name="viewport" content="user-scalable=no"/>
       <link rel="shortcut icon" href="images/general/dailoo.png">
       <meta http-equiv="pragma" content="no-cache">
@@ -22,7 +22,7 @@
       <c:set var="intro" value="${fn:replace(intro, vEnter, '')}" />
       <meta http-equiv="description" content="${vp.name} ${vp.subtitle} - ${intro} - 就像在地人親自帶路">
       <%--FB分享設定--%>
-      <meta id="og_name" property="og:site_name" content="${vp.name}${vp.subtitle} - Dailoo帶路語音導覽服務"/>
+      <meta id="og_name" property="og:site_name" content="${vp.name}${vp.subtitle} - Dailoo帶路行動語音導覽服務"/>
       <meta id="og_desc" property="og:description" content="${intro} - 就像在地人親自帶路"/>
       <meta id="og_title" property="og:title" content="${vp.name}${vp.subtitle} - Dailoo帶路語音導覽服務"/>
       <c:forEach items="${tags}" var="tag">
@@ -30,7 +30,7 @@
       </c:forEach>
 
       <link rel="stylesheet" href="css/base.css"/>
-      <link rel="stylesheet" href="css/viewpoint.css?20171209"/>
+      <link rel="stylesheet" href="css/viewpoint.css?20180705"/>
   </head>
   
   <body>
@@ -125,7 +125,7 @@
           <!--Youtube播放器-->
           <c:set value="${sp.youtubeUrl}" var="YTUrl"/>
           <c:if test="${fn:contains(YTUrl, 'v=')}"><iframe class="ytplayer" width="880" height="495" src="https://www.youtube.com/embed/${ fn:split(YTUrl, 'v=')[1]}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></c:if>
-          <c:if test="${fn:contains(YTUrl, '.be/')}"><iframe class="ytplayer" width="880" height="495" src="https://www.youtube.com/embed${ fn:split(YTUrl, 'be')[1]}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></c:if>
+          <c:if test="${fn:contains(YTUrl, '.be/')}"><iframe class="ytplayer" width="880" height="495" src="https://www.youtube.com/embed/${ fn:split(YTUrl, '/')[2] }" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></c:if>
           <img id="videoPrep" src="images/viewpoint/video_preparing.png" alt="Dailoo影片準備中" style="margin-top: 76px;">
       </div>
       <!--還可以收聽-->
@@ -267,6 +267,7 @@
 <script type="text/javascript" src="js/viewpoint/imgSlider.js"></script>
 <script type="text/javascript" src="js/viewpoint/audio.js"></script>
 <script type="text/javascript" src="js/viewpoint/viewpoint.js"></script>
+<%--<script type="text/javascript" src="js/viewpoint/viewpoint.all.min.js"></script>--%>
 <script type="text/javascript">
     //桌機則將頁面比例調為50％
     if(window.screen.width > 980){$("body").css("zoom","50%");}

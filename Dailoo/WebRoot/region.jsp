@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>${regionName}  :: Dailoo帶路語音導覽服務</title>
+    <title>${regionName}  :: Dailoo帶路行動語音導覽服務</title>
       <meta name="viewport" content="user-scalable=no"/>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta http-equiv="description" content="${regionName} 主題介紹，包含以下主題：${desc} - 就像在地人親自帶路 ${descEng}">
 
       <%--FB分享設定--%>
-      <meta id="og_name" property="og:site_name" content="${regionName} &nbsp; - Dailoo帶路語音導覽服務"/>
+      <meta id="og_name" property="og:site_name" content="${regionName} &nbsp; - Dailoo帶路行動語音導覽服務"/>
       <meta id="og_desc" property="og:description" content="${desc} - 就像在地人親自帶路"/>
       <meta id="og_title" property="og:title" content="${regionName} - Dailoo帶路語音導覽服務"/>
       <c:forEach items="${themes}" var="theme">
@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <link rel="shortcut icon" href="images/general/dailoo.png">
     <link rel="stylesheet" href="css/base.css"/>
-    <link rel="stylesheet" href="css/themelist.css"/>
+    <link rel="stylesheet" href="css/region.css"/>
   </head>
 
 
@@ -76,6 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
 <script type="text/javascript" src="js/region.js"></script>
+<script type="text/javascript" src="js/region.min.js"></script>
 <script type="text/javascript">
     //桌機則將頁面比例調為50％
     if(window.screen.width > 980){$("body").css("zoom","50%");}

@@ -631,14 +631,15 @@
 }
 
 .sharebox ul {
-    width: 1000px;
-    margin-left: 122px;
+    width: 760px;
+    margin: 0 auto;
     margin-top: 90px;
 }
 
 .sharebox ul li {
     float: left;
-    margin-right: 24px;
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
 .sharebox .input {

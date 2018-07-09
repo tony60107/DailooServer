@@ -67,6 +67,7 @@
 .themes .theme img {
     width: 780px;
     height: 242px;
+    overflow: hidden
 }
 
 .themes .theme .edit {
