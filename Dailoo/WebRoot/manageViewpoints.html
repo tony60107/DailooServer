@@ -192,8 +192,8 @@
                     '<td>' + vp[i].name + '</td>' +
                     '<td>' + vp[i].subtitle + '</td>' +
                     '<td>' + (vp[i].speakerName == '' ? '未設定該講者姓名' : vp[i].speakerName) + '</td>' +
-                    '<td><a target="_blank" href="/updateViewpointInfo.html?id=' + vp[i].id + '">' + '編輯' + '</a></td>' +
-                    '<td><a target="_blank" href="/viewpoint.html?id=' + vp[i].id + '">預覽</a></td>' +
+                    '<td><a target="_blank" href="/mobile/editViewpoint.html?id=' + vp[i].id + '">' + '編輯' + '</a></td>' +
+                    '<td><a target="_blank" href="/view/' + vp[i].name + '_' + vp[i].subtitle + '">預覽</a></td>' +
                     '<td><a target="_blank" href="https://' + vp[i].shortUrl + '">' + vp[i].shortUrl + '</a></td>';
 
             if (vp[i].isPublish == 1) {
@@ -427,7 +427,7 @@
                         '<div class="clearfix">' +
                         '<div class="fl">登入者：' + speaker.username + '</div>' +
                         '<div class="fl"><a href="/LogoutServlet">登出</a></div>' +
-                        '</div>' +
+                        '</div>';/* +
                         '<div class="fl"><a href="/manageViewpoints.html">景點管理</a></div>' +
                         '<div class="fl"><a href="/addViewpoint.html">新增景點</a></div>' +
                         '<div class="fl"><a href="/manageSpeakers.html">講者管理</a></div>' +
@@ -435,7 +435,7 @@
                         '<div class="fl"><a href="/manageThemes.html">主題管理</a></div>' +
                         '<div class="fl"><a href="/manageRegions.html">地區管理</a></div>' +
                         '<div class="fl"><a href="/manageSNs.html">序號管理</a></div>' +
-                        '<div class="fl"><a href="/manageAds.html">廣告管理</a></div>';
+                        '<div class="fl"><a href="/manageAds.html">廣告管理</a></div>';*/
                 $$("links").innerHTML = dom;
                 $$("filter").style.display = "block";
             } else {
@@ -443,11 +443,11 @@
                         '<div class="clearfix">' +
                         '<div class="fl">登入者：' + speaker.username + '</div>' +
                         '<div class="fl"><a href="/LogoutServlet">登出</a></div>' +
-                        '</div>' +
+                        '</div>';/* +
                         '<div class="fl"><a href="/manageViewpoints.html">景點管理</a></div>' +
                         '<div class="fl"><a href="/addViewpoint.html">新增景點</a></div>' +
                         '<div class="fl"><a href="/manageSpeakers.html">講者管理</a></div>' +
-                        '<div class="fl"><a href="/addSpeaker.html">新增講者</a></div>';
+                        '<div class="fl"><a href="/addSpeaker.html">新增講者</a></div>';*/
                 $$("links").innerHTML = dom;
                 $$("filter").innerHTML = "";
 
