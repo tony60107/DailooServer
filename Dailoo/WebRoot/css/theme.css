@@ -22,6 +22,7 @@
     font-size: 50px;
     color: #ffffff;
     display: inline-block;
+    cursor: pointer;
 }
 
 .nav .drop {
@@ -49,6 +50,7 @@
     background-color: rgba(89, 89, 89, 0.9);
     color: #fff;
     border-bottom: solid 1px #979797;
+    cursor: pointer;
 }
 
 .themelist .select {
@@ -68,6 +70,7 @@
     position: absolute;
     margin-left: 50%;
     left: -38px;
+    cursor: pointer;
 }
 
 /*主題列表結束*/

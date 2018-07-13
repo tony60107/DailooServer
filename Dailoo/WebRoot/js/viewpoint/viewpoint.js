@@ -230,7 +230,7 @@ function initViewpointData(vpData) {
     } else {
         document.shortUrl = "";
     }
-    //history.replaceState(null, null, "/" + vpData.shortUrl.split("/")[1]);
+    history.replaceState(null, null, "/" + vpData.shortUrl.split("/")[1]);
 
     //上一頁按鈕
     //$$("backward").href = "/viewlist.html?id=" + vpData.theme[0].id;

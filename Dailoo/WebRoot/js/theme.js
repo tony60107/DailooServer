@@ -16,8 +16,10 @@ history.replaceState(null, null, location.href);
 //依據主題ID，從伺服器中獲取該主題下的景點
 function getViewpointsDataFromServer(themeId, themeName, btn) {
 
+    history.replaceState(null, null, "/theme/" + themeId);
+    location.reload();
     //更換標題文字
-    if(themeName != null) title.innerHTML = themeName + '<span id="drop" class="drop"></span>';
+    /*if(themeName != null) title.innerHTML = themeName + '<span id="drop" class="drop"></span>';
     document.title =  themeName + "  - Dailoo帶路語音導覽服務";
     $.ajax({
         url: "/ViewpointServlet", context: btn,
@@ -28,7 +30,7 @@ function getViewpointsDataFromServer(themeId, themeName, btn) {
             //console.dir(vps);
             initDataFromServer(vps);
         },
-    });
+    });*/
 }
 
 //將該主題的景點資料，新增到景點列表中
