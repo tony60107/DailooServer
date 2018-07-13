@@ -1725,6 +1725,14 @@ function updateDist(){
         }
     }
 }
+
+function delTheme(selec, event) {
+    $(selec.parentNode.nextSibling).remove();
+    $(selec.parentNode).remove();
+
+    //阻止冒泡
+    window.event?window.event.cancelBubble=true:event.stopPropagation();
+}
 /*地區下拉選單區塊結束*/
 
 
@@ -1965,18 +1973,3 @@ function initMap() {
 }
 
 
-//Google Analytics程式碼 開始
-(function (i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-    a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m)
-})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-ga('create', 'UA-102968998-1', 'auto');
-ga('send', 'pageview');
-//Google Analytics程式碼 結束

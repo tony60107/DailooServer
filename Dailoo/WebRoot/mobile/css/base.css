@@ -353,6 +353,12 @@ s, i, em {
 .add-theme .desc span {
     color: #50afa0;
 }
+
+.region-selec .del-theme {
+    position: absolute;
+    top: -20px;
+    right: -44px;
+}
 /*增加對應主題結束*/
 
 /*儲存取消開始*/
