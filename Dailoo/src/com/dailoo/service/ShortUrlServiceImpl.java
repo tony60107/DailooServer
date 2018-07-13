@@ -17,17 +17,27 @@ public class ShortUrlServiceImpl implements ShortUrlService{
 
 	@Override
 	public String addShortUrl(String ori) {
+		
 		ShortUrl url = new ShortUrl();
 		
-		url.setShorten(UrlShorterUtils.toShortUrl(ori));
-		url.setOri(ori);
 		
-		//如果該短網址還不存在
-		if(getByShorten(url.getShorten()) == null){
-			//新增短網址
-			dao.addShortUrl(url);
-		} 
-		return url.getShorten();
+		String[] codes = UrlShorterUtils.toShortUrl(ori);
+		
+		
+		for(int i = 0; i < codes.length; i++) {
+			ShortUrl temp = getByShorten(codes[i]);
+			if(temp == null) { //該短網址還不存在
+				url.setShorten(codes[i]);
+				url.setOri(ori);
+				dao.addShortUrl(url);
+				return codes[i];
+			} else if(temp.getOri().equals(ori)) { //之前已儲存該短網址
+				return codes[i];
+			}
+		}
+		
+		
+		return "ERROR";
 	}
 
 	@Override

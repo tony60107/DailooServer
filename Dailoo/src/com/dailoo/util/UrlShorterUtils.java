@@ -81,7 +81,7 @@ public class UrlShorterUtils {
      }
 	
 	
-	public static String toShortUrl(String url) {
+	public static String [] toShortUrl(String url) {
 		String key = "Dailoo"; // 网址的混合KEY
 		String[] chars = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
 				"k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
@@ -108,7 +108,7 @@ public class UrlShorterUtils {
 			resUrl[i] = outChars;
 		}
 
-		return resUrl[0];
+		return resUrl;
 	}
 
 }

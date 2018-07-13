@@ -122,8 +122,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 		String url = domain + "view/" + vp.getName() + "_" + vp.getSubtitle() 
 							+ "?utm_source=PrintAds&utm_campaign="+ vp.getName() + "_" 
 							+ vp.getSubtitle();
-		String shortUrl = "dailoo.com/" + UrlShorterUtils.toShortUrl(url);
-		shortUrlService.addShortUrl(url);
+		String shortUrl = "dailoo.com/" + shortUrlService.addShortUrl(url);
 		vp.setShortUrl(shortUrl);
 		
 		dao.addViewpoint(vp);
@@ -158,8 +157,8 @@ public class ViewpointServiceImpl implements ViewpointService{
 		String url = domain + "view/" + vp.getName() + "_" + vp.getSubtitle() 
 							+ "?utm_source=PrintAds&utm_campaign="+ vp.getName() + "_" 
 							+ vp.getSubtitle();
-		String shortUrl = "dailoo.com/" + UrlShorterUtils.toShortUrl(url);
-		shortUrlService.addShortUrl(url);
+		String shortUrl = "dailoo.com/" + shortUrlService.addShortUrl(url);
+		
 		vp.setShortUrl(shortUrl);
 		
 		dao.updateViewpoint(vp);
