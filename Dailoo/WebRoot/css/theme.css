@@ -140,10 +140,13 @@
 }
 
 .viewlist .view .speaker {
+    width: 295px;
     font-size: 36px;
     line-height: 45px;
     margin-top: 16px;
     color: #000000;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .viewlist .view .time {

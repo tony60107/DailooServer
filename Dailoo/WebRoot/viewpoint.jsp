@@ -50,7 +50,8 @@
           <h2 id="vpSubtitle" class="subtitle">${vp.subtitle}</h2>
           <!--圖片輪播區-->
           <div id="picShower" class="picshower clearfix">
-              <img id="mainPhoto" src="/ResourceServlet?url=${tags[0].photoUrl}" alt="${vp.name}" class="pic">
+              <c:if test="${tags[0].photoUrl != null}"><img id="mainPhoto" src="/ResourceServlet?url=${tags[0].photoUrl}" alt="${vp.name}" class="pic"></c:if>
+              <c:if test="${tags[0].photoUrl == null}"><img id="mainPhoto" src="images/viewpoint/comingsoon.jpg" alt="${vp.name}" class="pic"></c:if>
               <button class="prevpic"></button>
               <button class="nextpic"></button>
               <div id="photoNum" class="photo-count">1/1</div>
@@ -172,7 +173,7 @@
                                   <c:if test="${min+0 >= 10}">${min}:</c:if>
                                   <c:if test="${min+0 < 10}">0${min}:</c:if>
                                   <c:if test="${vp.audioLength % 60 > 9}">${vp.audioLength % 60}</c:if>
-                                  <c:if test="${vp.audioLength % 60 < 9}">0${vp.audioLength % 60}</c:if>
+                                  <c:if test="${vp.audioLength % 60 <= 9}">0${vp.audioLength % 60}</c:if>
                               </div>
                           </div>
                           <div class="distance">距離
