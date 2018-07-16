@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <link rel="shortcut icon" href="images/general/dailoo.png">
     <link rel="stylesheet" href="css/base.css"/>
-    <link rel="stylesheet" href="css/region.css"/>
+    <link rel="stylesheet" href="css/region.css?20180713"/>
   </head>
 
 
