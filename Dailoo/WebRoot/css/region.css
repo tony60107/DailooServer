@@ -72,7 +72,7 @@
 }
 
 .themelist .theme {
-    width: 100%;
+    width: 980px;
     height: 304px;
     margin-top: 48px;
 }
@@ -80,5 +80,9 @@
 .themelist .theme img {
     width: 980px;
     height: 303px;
+}
+
+.theme .info {
+    display: none;
 }
 /*主題列表結束*/

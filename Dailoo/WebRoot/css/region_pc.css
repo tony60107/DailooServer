@@ -1,0 +1,45 @@
+.w {
+    width: 1960px;
+}
+
+.header .cover {
+    width: auto;
+    margin-left: 346px;
+}
+
+.themelist .theme, .themelist .theme img {
+    width: 600px;
+    margin-right: 40px;
+    display: inline-block;
+}
+
+.themelist .theme {
+    height: 372px;
+}
+
+.themelist .theme img {
+    height: 186px;
+}
+
+.theme .cover {
+    width: 600px;
+    height: 140px;
+    top: 46px;
+}
+
+.theme .cover .main-title, .theme .info .main-title{
+    font-size: 42px;
+    line-height: 60px;
+}
+
+.theme .info {
+    padding: 24px 0 0 40px;
+    display: block;
+}
+
+.theme .cover .title-eng, .theme .info .title-eng {
+    width: 530px;
+    height: 56px;
+    font-size: 24px;
+    line-height: 28px;
+}

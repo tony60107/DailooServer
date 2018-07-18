@@ -42,7 +42,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <link rel="shortcut icon" href="images/general/dailoo.png">
     <link rel="stylesheet" href="css/base.css"/>
-    <link rel="stylesheet" href="css/region.css?20180713"/>
+    <link rel="stylesheet" href="css/region.css"/>
+    <link rel="stylesheet" media="only screen and (min-width: 1000px)" href="css/region_pc.css" />
   </head>
 
 
@@ -52,16 +53,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <img id="logo" class="logo fl" src="images/themelist/dailoo_logo.png">
           <h1 id="title" class="cover fl">${regionName}行動語音導覽</h1>
       </div>
-      <div id="themelist" class="themelist">
+      <div id="themelist" class="themelist clearfix">
           <c:forEach items="${themes}" var="theme">
               <a href="/theme/${theme.id}">
-                  <div class="theme">
+                  <div class="theme fl">
                       <div class="cover">
                           <c:set value="${theme.name}" var="names" />
                           <h2 class="main-title">${ fn:split(names, ',')[0]}</h2>
                           <h3 class="title-eng">${ fn:split(names, ',')[1]}</h3>
                       </div>
                       <img alt="${fn:split(names, ',')[0]}" src="/ResourceServlet?url=${theme.behalfPhotoUrl}">
+                      <div class="info">
+                          <c:set value="${theme.name}" var="names" />
+                          <h2 class="main-title">${ fn:split(names, ',')[0]}</h2>
+                          <h3 class="title-eng">${ fn:split(names, ',')[1]}</h3>
+                      </div>
                   </div>
               </a>
           </c:forEach>
@@ -81,4 +87,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     //桌機則將頁面比例調為50％
     if(window.screen.width > 980){$("body").css("zoom","50%");}
     $(window).resize(function() {if(window.screen.width > 980){$("body").css("zoom","50%");}});
+    console.dir(screen.width);
 </script>

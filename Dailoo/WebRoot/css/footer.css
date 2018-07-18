@@ -88,7 +88,7 @@
 }
 
 .link {
-    width: 400px;
+    width: 520px;
     margin: 0 auto;
 }
 
@@ -107,6 +107,7 @@
 }
 
 .link .fanpage {
+    margin-left: 78px;
     margin-right: 66px;
 }
 

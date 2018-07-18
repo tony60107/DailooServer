@@ -1,0 +1,49 @@
+.w {
+    width: 1960px;
+}
+
+.route .desc, .route .cover, .question .desc, .question .ring {
+    width: 414px;
+    margin: 32px 0 66px 0;
+}
+
+.route, .question {
+    margin-left: 88px;
+    margin-right: 118px;
+    float: left;
+}
+
+.question {
+    margin-top: 48px;
+}
+
+.line {
+    display: none;
+}
+
+.footer-intro {
+}
+
+.footer-intro .dailoo-logo {
+    margin-left: 80px;
+    display: inline-block;
+}
+
+.link {
+    width: 520px;
+    margin-right: 80px;
+    float: right;
+    display: inline-block;
+}
+
+.link .desc {
+    font-size: 28px;
+}
+
+.copyright {
+    margin-right: 71px;
+    float: right;
+    display: inline-block;
+    font-size: 24px;
+    line-height: 33px;
+}

@@ -3,37 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>腳部</title>
-    <link rel="stylesheet" href="css/base.css"/>
     <link rel="stylesheet" href="css/footer.css"/>
+    <link rel="stylesheet" media="only screen and (min-width: 1000px)" href="css/footer_pc.css" />
 </head>
 <body>
-<div class="w" style="margin-top: 128px; width: 100%">
+<div class="w clearfix" style="margin-top: 128px">
     <!-- 導覽地圖 -->
-    <div class="route">
-        <div class="desc">以簡易地圖模式瀏覽<br/>本區所有景點並可直<br/>接點選導覽</div>
-        <a id="simpleMap" href="/navMap.html#luye" target="_blank" rel="nofollow">
-            <div id="map" class="cover">全區簡圖導覽</div>
-        </a>
-        <div class="line"></div>
-        <div class="desc" style="margin-top: 96px;">開啟Google地圖瀏覽<br/>本區所有景點</div>
-        <a id="googleMap" href="https://goo.gl/ZTuKoP" target="_blank" rel="nofollow">
-            <div class="cover">Google地圖導覽</div>
-        </a>
-    </div>
-    <div class="line"></div>
-    <!-- 填問卷 -->
-    <div class="question">
-        <div class="desc">您的意見可以幫助我們<br/>提供更優質的服務！</div>
-        <a id="question" href="https://goo.gl/iN64e6" target="_blank" rel="nofollow">
-            <div class="ring">填問卷</div>
-        </a>
-    </div>
+    <div style="margin: auto">
+        <div class="route">
+            <div class="desc">以簡易地圖模式瀏覽<br/>本區所有景點並可直<br/>接點選導覽</div>
+            <a id="simpleMap" href="/navMap.html#luye" target="_blank" rel="nofollow">
+                <div id="map" class="cover">全區簡圖導覽</div>
+            </a>
+        </div>
 
-    <!--帶路介紹-->
-    <div class="footer-intro">
+        <div class="line"></div>
+        <div class="route">
+            <div class="desc" style="margin-top: 85px;">開啟Google地圖瀏覽<br/>本區所有景點</div>
+            <a id="googleMap" href="https://goo.gl/ZTuKoP" target="_blank" rel="nofollow">
+                <div class="cover">Google地圖導覽</div>
+            </a>
+        </div>
+        <div class="line"></div>
+        <!-- 填問卷 -->
+        <div class="question">
+            <div class="desc">您的意見可以幫助我們<br/>提供更優質的服務！</div>
+            <a id="question" href="https://goo.gl/iN64e6" target="_blank" rel="nofollow">
+                <div class="ring">填問卷</div>
+            </a>
+        </div>
+    </div>
+</div>
+<!--帶路介紹-->
+<div class="footer-intro" style="width: 100%">
+    <div class="w">
         <img id="dailooLogo" class="dailoo-logo" src="images/footer/dailoo_logo.png" alt="">
         <div class="link">
-            <a href="http://pic.sopili.net/l/facebook/page/175672579574489" target="_blank" style="margin-right: 92px;" rel="nofollow">
+            <a href="http://pic.sopili.net/l/facebook/page/175672579574489" target="_blank" style="margin-right: 144px;" rel="nofollow">
                 <div class="fanpage">
                     <img id="facebookIcon" src="images/footer/facebook_icon.png" alt="">
                     <div class="desc">帶路粉絲頁</div>
@@ -45,8 +51,8 @@
                     <div class="desc">帶路官網</div>
                 </div>
             </a>
+            <div class="copyright">本服務由帶路文化提供</div>
         </div>
-        <div class="copyright">本服務由帶路文化提供</div>
     </div>
 </div>
 </body>
