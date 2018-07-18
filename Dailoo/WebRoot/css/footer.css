@@ -43,14 +43,9 @@
     color: #595959;
 }
 
-.question a {
-    display: block;
-    width: 402px;
-    margin: 0 auto;
-    margin-top: 32px;
-}
-
 .question .ring {
+    width: 402px;
+    margin: 32px auto 96px auto;
     line-height: 120px;
     border-radius: 72px;
     border: solid 4px #267091;

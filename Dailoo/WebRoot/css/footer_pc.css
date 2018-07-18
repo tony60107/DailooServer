@@ -10,7 +10,7 @@
 .route, .question {
     margin-left: 88px;
     margin-right: 118px;
-    float: left;
+    display: inline-block;
 }
 
 .question {

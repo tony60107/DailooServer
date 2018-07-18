@@ -82,10 +82,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
 <script type="text/javascript" src="js/region.js"></script>
-<script type="text/javascript" src="js/region.min.js"></script>
+<%--<script type="text/javascript" src="js/region.min.js"></script>--%>
 <script type="text/javascript">
     //桌機則將頁面比例調為50％
     if(window.screen.width > 980){$("body").css("zoom","50%");}
     $(window).resize(function() {if(window.screen.width > 980){$("body").css("zoom","50%");}});
-    console.dir(screen.width);
 </script>
