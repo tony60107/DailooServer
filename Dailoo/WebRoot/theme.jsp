@@ -35,6 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="shortcut icon" href="images/general/dailoo.png">
     <link rel="stylesheet" href="css/base.css"/>
     <link rel="stylesheet" href="css/theme.css?20171129"/>
+      <link rel="stylesheet" media="only screen and (min-width: 1000px)" href="css/theme_pc.css" />
   </head>
   
   <body>

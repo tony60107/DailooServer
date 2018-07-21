@@ -10,7 +10,7 @@ window.onload = function () {
         $("#footer").html(data);
         if (regionId == "61ae4ab6-ed11-4131-85e2-9f2be7651e65") { //如果是金峰鄉地區
             changeCss("jinfeng");
-        } else if(regionId == "fa179ec9-a754-45a2-8dc2-96b837594a6d"){ //如果是成功鎮''主題
+        } else if(regionId == "fa179ec9-a754-45a2-8dc2-96b837594a6d"){ //如果是台東觀光'主題
             changeCss("chengkung");
         } else if(regionId == "e031f31d-7f41-4380-b1fc-ed156a0bd96e"){ //如果是台東市主題
             changeCss("taitong");

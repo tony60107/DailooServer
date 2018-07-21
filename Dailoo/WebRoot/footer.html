@@ -61,6 +61,7 @@
 <script type="text/javascript" src="js/base.js"></script>
 <script>
     function changeCss(type){
+
         if(type == 'none'){
             $(".route").get(0).style.display = "none";
             $(".line").get(1).style.display = "none";
@@ -79,6 +80,7 @@
             $(".route").get(0).style.display = "none";
             $(".line").get(1).style.display = "none";
             $(".question").css('display', 'none');
+            $("#googleMap").attr('href',"https://goo.gl/maps/pGhxn6KR66R2");
             if(window.screen.width > 980) {$(".route").css('margin-left', '773px');$(".route").css('margin-right', '773px');}
         }
     }
