@@ -1,0 +1,37 @@
+.pics, .pics-desc {
+    width: 840px;
+    margin: auto;
+}
+
+.pics-desc .desc {
+    margin-top: 16px;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 50px;
+}
+
+.pics-desc .desc span {
+    color: #50afa0;
+}
+
+.pics .pic {
+    width: 220px;
+    margin-right: 60px;
+    position: relative;
+    float: left;
+}
+
+.pics .pic .img {
+    width: 220px;
+    height: 220px;
+    margin-top: 90px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.pics .pic .del {
+    position: absolute;
+    top: 48px;
+    right: -42px;
+    cursor: pointer;
+}

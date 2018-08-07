@@ -4,7 +4,7 @@
 
 .route .desc, .route .cover, .question .desc, .question .ring {
     width: 414px;
-    margin: 32px 0 66px 0;
+    margin: 32px 0 80px 0;
 }
 
 .route, .question {

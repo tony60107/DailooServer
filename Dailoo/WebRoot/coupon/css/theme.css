@@ -1,0 +1,86 @@
+.list {
+    width: 780px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.cp {
+    width: 720px;
+    margin-top: 30px;
+    padding: 30px 40px;
+    border: 4px solid #ccc;
+    border-radius: 20px;
+    display: block;
+}
+
+.cp .name {
+    width: 500px;
+    height: 116px;
+    font-size: 76px;
+    line-height: 116px;
+    overflow: hidden;
+}
+
+.cp .discount {
+    width: 200px;
+    position: relative;
+    color: #FFA53B;
+}
+
+.cp .discount .value {
+    margin-top: 50px;
+    font-size: 90px;
+    text-align: right;
+    margin-right: 50px;
+}
+
+.cp .discount .title {
+    font-size: 36px;
+    position: absolute;
+    left: -6px;
+    top: -14px;
+}
+
+.cp .value .cur {
+    font-size: 36px;
+    line-height: 36px;
+    position: absolute;
+    bottom: -12px;
+    right: 0px;
+}
+
+.cp-b {
+    margin-top: 15px;
+    font-size: 38px;
+}
+
+.cp-b .dist {
+    color: #666666;
+}
+
+.cp-b .num {
+    color: crimson;
+}
+
+.cp .obtain .title {
+    margin-top: 20px;
+    font-size: 28px;
+    line-height: 40px;
+}
+
+.cp .obtain .opt {
+    margin-top: 14px;
+    font-size: 34px;
+    line-height: 46px;
+    color: #007aff;
+}
+
+
+
+
+
+
+
+
+
+

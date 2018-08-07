@@ -126,6 +126,11 @@
     <servlet-name>RegionInfoServlet</servlet-name>
     <servlet-class>com.dailoo.web.RegionInfoServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CouponServlet</servlet-name>
+    <servlet-class>com.dailoo.web.CouponServlet</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
@@ -189,5 +194,10 @@
   <servlet-mapping>
     <servlet-name>RegionInfoServlet</servlet-name>
     <url-pattern>/RegionInfoServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>CouponServlet</servlet-name>
+    <url-pattern>/CouponServlet</url-pattern>
   </servlet-mapping>
 </web-app>

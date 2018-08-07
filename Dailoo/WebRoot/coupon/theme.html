@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>優惠券主題</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <meta name="viewport" content="user-scalable=no"/>
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">熱氣球嘉年華</div>
+
+    <div id="list" class="list clearfix">
+        <a class="cp">
+            <div class="cp-t clearfix">
+                <div class="name fl">安安民宿</div>
+                <div class="discount fr">
+                    <div class="title">折扣</div>
+                    <div class="value">300<div class="cur">NT</div></div>
+                </div>
+            </div>
+            <div class="cp-b clearfix">
+                <div class="dist fl">距離：200m</div>
+                <div class="num fr">已有 28 人使用</div>
+            </div>
+            <div class="obtain">
+                <div class="title">優惠券取得方式</div>
+                <div class="opt">1.與導遊合照，並將照片分享到5人以上的LINE或FB群組中</div>
+                <div class="opt" style="margin-top: 14px;">2.購買部落紀念品滿499元，並使用1元加購</div>
+            </div>
+        </a>
+    </div>
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
+<script>
+
+    //初始化頭部與腳步
+    initHeaderFooter();
+
+    getCoupons();
+
+
+    //根據主題ID，取得該主題下的所有優惠券
+    function getCoupons() {
+        $.ajax({
+            url: "/CouponServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getCouponsByThemeId", "themeId": "85f5d98f-eff2-42f0-9c92-4a1c28dcd9d0"},
+            success: function (data) {
+                cps = eval("(" + data + ")");
+                console.dir(cps);
+                var dom = '';
+                for(var i = 0; i < cps.length; i++) {
+                    dom += '<a class="cp">' +
+                            '<div class="cp-t clearfix">' +
+                            '<div class="name fl">' + cps[i].name + '</div>' +
+                            '<div class="discount fr">' +
+                            '<div class="title">折扣</div>' +
+                            '<div class="value">' + cps[i].discount + '<div class="cur">NT</div></div>' +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="cp-b clearfix">' +
+                            '<div class="dist fl">距離：200m</div>' +
+                    '<div class="num fr">已有 ' + cps[i].usedCount + ' 人使用</div>' +
+                    '</div>' +
+                    '<div class="obtain">' +
+                            '<div class="title">優惠券取得方式</div>' +
+                            '<div class="opt">1.' + cps[i].obtain.split(',')[0] + '</div>' +
+                            '<div class="opt">2.' + cps[i].obtain.split(',')[1] + '</div>' +
+                    '</div>' +
+                    '</div>';
+                }
+                $('#list').html(dom);
+            },
+            error: function(){
+                setTimeout(function(){getCoupons();}, 1000);
+            }
+        });
+    }
+</script>

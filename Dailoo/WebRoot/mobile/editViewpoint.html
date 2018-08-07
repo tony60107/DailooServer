@@ -136,7 +136,7 @@
     </div>
 
     <!--上傳表單-->
-    <form id="mainForm" method="post" style="display: none" enctype="multipart/form-data">
+    <form id="mainForm" method="post" style="display: block" enctype="multipart/form-data">
         <div>景點ID<input id="vpId" type="text" name="id"></div>
         <div>照片位置<input id="ipPhoto" name="file" type="file" onchange="previewUploadImg(event, 'uploadImg')"></div>
         <div>音檔位置<input id="ipAudio" name="file" type="file" onchange="$('#uploadAudioCont').html($('#ipAudio').val().split('fakepath\\')[1]);"></div>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>編輯優惠券照片</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/editCouponImg.css">
+    <meta name="viewport" content="user-scalable=no"/>
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">編輯優惠券照片</div>
+
+    <div id="picList" class="pics clearfix">
+        <div id="7b70c026-5df0-4ecd-aaa5-2685bfe65de6" class="pic">
+            <img onerror="reloadImg(this);" class="img" src="http://127.0.0.1:8080/ResourceServlet?url=/WEB-INF/upload/e/9/6/b/9/1/3/7/9822981e-c8f7-47ef-b1d7-f3488bc1f102.jpg" alt="">
+            <img onclick="delTag(this,'7b70c026-5df0-4ecd-aaa5-2685bfe65de6');" src="images/editAudio/delete.png" alt="" class="del">
+        </div>
+        <div id="uploadPic" class="pic">
+            <img class="img" src="images/editAudio/add-photo.png" alt="">
+            <div></div>
+            <div class="time"><input name="min" type="text" value="9999" style="display: none">
+                <input name="sec" type="text" value="9999" style="display: none">
+                <div>點圖上傳</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--上傳表單-->
+    <form id="mainForm" action="/CouponServlet?method=addCouponImg" method="post" enctype="multipart/form-data" style="display: block">
+        <div class="form-group">
+            <label>優惠券ID</label>
+            <input id="couponId" type="text" name="couponId" class="form-control" placeholder="輸入優惠券ID" value="a6f2dfb7-806d-4b08-9be8-716baca1582d">
+        </div>
+        <div class="form-group clearfix">
+            <input id="ipPic" type="file" name="file" class="form-control fl" multiple="multiple"/>
+        </div>
+    </form>
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
+<script>
+
+    //初始化頭部與腳步
+    initHeaderFooter();
+    //初始化新增標記圖片按鈕
+    initUploadPicBtn ();
+
+    getImgsByCouponId("a6f2dfb7-806d-4b08-9be8-716baca1582d");
+
+    //獲取該優惠券下的所有圖片
+    function getImgsByCouponId(couponId, callback){
+        //設定上傳表單的音檔ID
+        $('#couponId').val(couponId);
+
+        $.ajax({
+            url: "/CouponServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getImgsByCouponId", "couponId": couponId},
+            success: function (imgs) {
+                var imgs = eval("(" + imgs + ")");
+                console.dir(imgs);
+
+                createImgDOMs(imgs);
+
+                //初始化新增標記圖片按鈕
+                initUploadPicBtn();
+
+                //呼叫回調函數
+                if(callback != undefined) callback();
+            },error: function(){
+                setTimeout(function(){getImgsByCouponId(audioId, callback);}, 1000);
+            }
+        });
+    }
+
+    //將Tag資料存入picList中
+    function createImgDOMs(imgs) {
+        picList.innerHTML = '';
+        var dom = '';
+        for(var i = 0; i < imgs.length; i++){
+            dom += '<div id="'+ imgs[i].id +'" class="pic">' +
+                    '<img onerror="reloadImg(this);" class="img" src="/ResourceServlet?url=' + imgs[i].src + '" alt="">' +
+                    '<img onclick="delTag(this,\'' + imgs[i].id + '\');" src="images/editAudio/delete.png" alt="" class="del">' +
+                    '</div>';
+        }
+        //點圖上傳按鈕
+        dom += '<div id="uploadPic" class="pic">' +
+                '<img class="img" src="images/editAudio/add-photo.png" alt="">' +
+                '<div></div>' +
+                '<div class="time">' +
+                '<input name="min" type="text" value="9999" style="display: none"><input name="sec" type="text" value="9999" style="display: none">' +
+                '<div>點圖上傳</div>' +
+                '</div>' +
+                '</div>';
+        picList.innerHTML += dom;
+    }
+
+    //檔案選擇完畢，進行上傳
+    $('#ipPic').bind('change', function () {
+
+        //檢查照片檔案格式
+        var files = $(this)[0].files;
+        for (var i = 0; i < files.length; i++) {
+            var imgFormat = /\.(jpg|JPG|jpeg|JPEG|bmp|BMP|gif|GIF|png|PNG)$/i;
+            if(!imgFormat.test(this.files[i].name)){
+                alert('照片檔案格式不正確'); return;
+            }
+        }
+
+        alert("資料新增中...");
+
+        //上傳表單
+        $.ajax({
+            url: '/CouponServlet?method=addCouponImg',
+            type: 'POST',
+            cache: false,
+            data: new FormData($('#mainForm')[0]),
+            processData: false,
+            contentType: false,
+            success:function(result){
+                alert("新增成功！！");
+                $('#ipPic').val('');
+                //更新現有Tag資訊，並重新整理
+                updateTag();
+            },error:function(result){
+                alert("新增失敗");
+            },
+        })
+    });
+
+    //初始化新增標記圖片按鈕
+    function initUploadPicBtn () {
+        //點擊上傳圖片時，觸發上傳按鈕
+        $('#uploadPic').bind('click', function () {$('#ipPic').click();});
+    }
+
+    //向伺服器中刪除Tag，並在刪除成功後，刪除頁面上的Tag
+    function delTag(btn, id) {
+        if(confirm("確定刪除圖片？")){
+            $.ajax({
+                url: "/CouponServlet", context: btn,
+                type: "POST",
+                data: {"method": "delCouponImgById", "id": id},
+                success: function (result) {
+                    if (result == "OK"){ this.parentNode.parentNode.removeChild(this.parentNode);}
+                },
+            });
+        }
+    }
+</script>

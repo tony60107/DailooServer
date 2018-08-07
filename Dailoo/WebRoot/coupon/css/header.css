@@ -1,0 +1,42 @@
+.w {
+    background-color: #ffffff;
+}
+
+.header {
+    width: 980px;
+    margin: 0 auto;
+    padding-top: 54px;
+    padding-bottom: 54px;
+    position: relative;
+}
+
+.back {
+    width: 76px;
+    height: 76px;
+    background-image: url(../images/general/back.png);
+    position: absolute;
+    top: 46px;
+    left: 38px;
+}
+
+.username {
+    margin: auto;
+    text-align: center;
+    height: 60px;
+    font-size: 40px;
+    line-height: 60px;
+    color: #595959;
+    display: block;
+}
+
+.signout {
+    width: 100px;
+    height: 76px;
+    font-size: 40px;
+    line-height: 76px;
+    text-align: center;
+    color: #595959;
+    position: absolute;
+    top: 46px;
+    right: 38px;
+}

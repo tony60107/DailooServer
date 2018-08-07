@@ -1,0 +1,164 @@
+/*標題區塊開始*/
+.title {
+    padding: 28px;
+}
+
+.title .info {
+    width: 150px;
+}
+
+.title .info .desc {
+    margin-top: 12px;
+    font-size: 28px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.title .info img {
+    margin: 0 auto;
+    display: block;
+}
+
+.title .name {
+    width: 624px;
+    font-size: 88px;
+    line-height: 106px;
+    text-align: center;
+}
+
+.title .map {
+    width: 150px;
+    display: block;
+}
+
+.title .map img{
+    width: 90px;
+    margin: auto;
+    display: block;
+}
+/*標題區塊結束*/
+
+
+/*圖片輪播區塊開始*/
+.picshower {
+    margin-top: 62px;
+    height: 736px;
+    position: relative;
+}
+
+.picshower .prevpic {
+    width: 128px;
+    height: 128px;
+    background: url("../images/coupon/back.png") no-repeat;
+    position: absolute;
+    top: 296px;
+    left: 26px;
+}
+
+.picshower .pic {
+    width: 100%;
+    height: 736px; /*720px*/
+    margin: 0 auto;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.picshower .nextpic {
+    width: 128px;
+    height: 128px;
+    background: url("../images/coupon/next.png") no-repeat;
+    position: absolute;
+    top: 296px;
+    right: 26px;
+}
+
+.picshower .photo-count {
+    font-size: 36px;
+    line-height: 50px;
+    letter-spacing: 6px;
+    color: #ffffff;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: -48px;
+    right: 64px;
+}
+
+/*圖片輪播區塊結束*/
+
+.intro {
+    margin-top: 30px;
+    padding: 56px;
+    font-size: 38px;
+    line-height: 56px;
+}
+
+.redeem {
+    width: 780px;
+    text-align: center;
+    font-size: 60px;
+    line-height: 110px;
+    background-color: deeppink;
+    color: white;
+    border-bottom: 100px;
+    margin-left: 100px;
+    border-radius: 20px;
+    z-index: 1002;
+}
+
+
+/*如何取得優惠券開始*/
+.pop-func {
+    margin-left: 48px;
+    padding: 80px 40px;
+    position: fixed;
+    z-index: 1002;
+    width: 800px;
+    background-color: #fff;
+    opacity: 1;
+    top: 300px;
+    border: 4px solid #666;
+    border-radius: 50px;
+}
+
+.pop-func .title {
+    margin-bottom: 60px;
+    text-align: center;
+    font-size: 80px;
+    color: #007aff;
+}
+
+.pop-func .opt {
+    margin-top: 50px;
+    font-size: 52px;
+}
+
+.pop-func .hint {
+    margin-top: 80px;
+    color: red;
+}
+/*如何取得優惠券結束*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

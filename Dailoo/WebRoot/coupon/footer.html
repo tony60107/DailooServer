@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>腳部</title>
+    <link rel="stylesheet" href="css/footer.css"/>
+</head>
+<body>
+<div class="w" style="margin-top: 128px; width: 100%">
+
+    <!--帶路介紹-->
+    <div class="footer-intro">
+        <img id="dailooLogo" class="dailoo-logo" src="images/footer/dailoo_logo.png" alt="">
+        <div class="link">
+            <a href="http://pic.sopili.net/l/facebook/page/175672579574489" target="_blank" style="margin-right: 86px;">
+                <div class="fanpage">
+                    <img id="facebookIcon" src="images/footer/facebook_icon.png" alt="">
+                    <div class="desc">帶路粉絲頁</div>
+                </div>
+            </a>
+            <a href="http://dailoo.strikingly.com/" target="_blank">
+                <div class="offweb">
+                    <img id="dailooIcon" src="images/footer/dailoo_icon.png" alt="">
+                    <div class="desc">帶路官網</div>
+                </div>
+            </a>
+        </div>
+        <div class="copyright">本服務由帶路文化提供</div>
+    </div>
+
+    <!--彈出菜單-->
+    <div class="pop-mask"  style="display: none"></div>
+    <div class="pop-menu" style="display: none">
+        <div class="title">切換至其他景點</div>
+    </div>
+    <div class="pop-alert" style="display: none">
+        <div class="title">Dailoo</div>
+        <div id="popAlertMsg" class="msg"></div>
+        <div class="ok" onclick="$('.pop-alert').css('display', 'none');$('.pop-mask').css('display', 'none');">確定</div>
+    </div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    initPopMenu();
+</script>

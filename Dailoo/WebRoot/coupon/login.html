@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>登入</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <meta name="viewport" content="user-scalable=no"/>
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">熱氣球嘉年華</div>
+
+
+    <fb:login-button
+            scope="public_profile,email"
+            onlogin="checkLoginState();">
+    </fb:login-button>
+
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
+<script>
+
+    //初始化頭部與腳步
+    initHeaderFooter();
+
+
+</script>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '360589151143890',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v3.1'
+        });
+
+        FB.AppEvents.logPageView();
+
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+
+    function checkLoginState() {
+        FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);
+        });
+    }
+
+    FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+    });
+
+    function statusChangeCallback(response){
+        console.dir(response);
+        alert("登入成功");
+    }
+</script>

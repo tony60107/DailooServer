@@ -132,8 +132,14 @@ function initHeaderFooter(){
 
 
     //桌機則將頁面比例調為50％
-    if(window.screen.width > 980){$("body").css("zoom","50%");}
+    if(window.screen.width > 980){
+        $("body").css("zoom","50%");
+        $("#map").css("zoom","200%");
+        $("#map").css("width","390px");
+        $("#map").css("height","300px");
+    }
     $(window).resize(function() {if(window.screen.width > 980){$("body").css("zoom","50%");}});
+
 }
 
 
@@ -1925,9 +1931,10 @@ function initMap() {
         });
         markers.push(marker);
 
+
         //將經緯度填入表單中
-        if(!isNaN(location.lat))ipLat.val(location.lat);
-        if(!isNaN(location.lng))ipLng.val(location.lng);
+        if(!isNaN(location.lat()))ipLat.val(location.lat());
+        if(!isNaN(location.lng()))ipLng.val(location.lng());
     }
 
     //地圖上刪除所有的標記
@@ -1952,6 +1959,7 @@ function initMap() {
                 //如果有正確查到經緯度
                 if(data.results[0] != undefined) {
                     var loc = data.results[0].geometry.location;
+                    console.dir(loc)
                     //設定地圖中心點
                     map.setCenter(loc);
                     //設定地圖標記

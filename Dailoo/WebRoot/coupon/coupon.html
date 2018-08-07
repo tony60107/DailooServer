@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>優惠券</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/coupon.css">
+    <meta name="viewport" content="user-scalable=no"/>
+</head>
+<body>
+<!--header引入-->
+<div id="header"></div>
+<div class="w">
+    <!--標題區塊-->
+    <div class="title clearfix">
+        <div id="obtain" class="info fl">
+            <img src="images/coupon/question.png" alt="">
+            <div class="desc">取得優惠券</div>
+        </div>
+        <div id="name" class="name fl"></div>
+        <a id="map" href="#" class="map fl" target="_blank"><img class="" src="images/coupon/map.png" alt=""></a>
+    </div>
+
+    <!--圖片區塊-->
+    <div id="picShower" class="picshower clearfix">
+        <img id="mainPhoto" src="https://www.dailoo.com/ResourceServlet?url=/WEB-INF/upload/b/6/f/d/5/d/e/6/f0f6fed8-a495-4f61-9054-6d4e07e43727.jpg" alt="等候 漂流" class="pic" style="width: 980px; height: 735.383px; top: 0.308494px; left: 0px;">
+        <button id="prevPic" class="prevpic"></button>
+        <button id="nextPic" class="nextpic"></button>
+        <div id="photoNum" class="photo-count">1/1</div>
+    </div>
+
+    <div id="intro" class="intro">
+        台北東區抹茶專賣店、甜點店與咖啡廳聚集，突然要挑一家去不知道該選哪一家嗎？那看這篇就對了！抹茶控毛毛整理了17家台北捷運板南線東區一帶的店家，其實本來只想挑個10家給大家，但是有些好店實在很想不分享不行XD，另外有幾家還有影音食記喔。
+    </div>
+
+    <div class="pop-func" style="display: none">
+        <div class="title">如何取得優惠券</div>
+        <div id="opt1" class="opt">1.安安安安安安</div>
+        <div id="opt2" class="opt">2.安安安安安安</div>
+        <div class="hint">注：優惠券只能於下次至相同店家或至主題內其他商家做使用。</div>
+    </div>
+
+    <div id="redeem" class="redeem">
+    </div>
+</div>
+<!--Footer引入-->
+<div id="footer"></div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
+<script>
+
+    var imgs;   //優惠券照片
+    var imgNum = 0; //現在播放到第幾張照片
+
+    //初始化頭部與腳步
+    initHeaderFooter();
+
+    getCouponById();
+
+    //根據優惠券ID，取得優惠券
+    function getCouponById() {
+        $.ajax({
+            url: "/CouponServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getCouponById", "id": "a6f2dfb7-806d-4b08-9be8-716baca1582d"},
+            success: function (data) {
+                var cp = eval("(" + data + ")");
+                console.dir(cp)
+                initCouponInfo(cp);
+            },
+            error: function(){
+                setTimeout(function(){getCouponById();}, 1000);
+            }
+        });
+    }
+
+    function initCouponInfo(cp){
+        $('#name').html(cp.name);
+        $('#map').attr('href', 'http://maps.google.com/?q=' + cp.address);
+        $('#intro').html(cp.intro);
+        $('#redeem').html('使用優惠券＄' + cp.discount);
+
+        imgs = cp.imgs;
+        updateMainPhoto(0);
+
+       $('#opt1').html('1.' + cp.obtain.split(',')[0]);
+       $('#opt2').html('2.' + cp.obtain.split(',')[1]);
+
+        $('#prevPic').bind('click', function(){if(imgNum > 0) updateMainPhoto(imgNum-1)});
+        $('#nextPic').bind('click', function(){if(imgNum+1 < imgs.length) updateMainPhoto(imgNum+1)});
+
+        $('#obtain').bind('click', function(){
+            $('.pop-func').css('display', 'block');
+            $(".pop-mask").css('display', 'block');
+        })
+    }
+
+    //更新輪播圖主相片
+    function updateMainPhoto(num) {
+        var img = new Image();
+        img.src = '/ResourceServlet?url=' + imgs[num].src;
+        var imgWidth = img.width;
+        var imgHeight = img.height;
+        var aspRat = imgWidth / imgHeight; //寬高比
+        if (aspRat <= 1) { // 直式照片
+            mainPhoto.style.width = aspRat * 736 + "px";
+            mainPhoto.style.height = "736px";
+            mainPhoto.style.top = "0px";
+            mainPhoto.style.left = (980 - aspRat * 736) / 2 + "px";
+        } else { // 橫式照片
+            mainPhoto.style.width = "980px";
+            var height = 980 / aspRat > 736 ? 736 : 980 / aspRat;
+            mainPhoto.style.height = height + "px";
+            mainPhoto.style.top = (736 - height) / 2 + "px";
+            mainPhoto.style.left = "0px";
+        }
+        mainPhoto.src = img.src;
+        imgNum = num;
+//floatPhoto.src = src;
+//imgSliderClass.updatePhotoNumTxt(); //更新正在第幾張相片文字
+    }
+
+</script>

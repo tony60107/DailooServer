@@ -3,6 +3,7 @@
 /*路線圖開始*/
 .route .desc {
     width: 100%;
+    margin-bottom: 96px;
     line-height: 56px;
     font-size: 40px;
     letter-spacing: 1.3px;
@@ -13,7 +14,7 @@
 .route .cover {
     height: 120px;
     width: 420px;
-    margin: 32px auto 96px auto;
+    margin: 96px auto 32px auto;
     font-size: 48px;
     line-height: 120px;
     text-align: center;
@@ -35,7 +36,7 @@
 /*填問卷開始*/
 .question .desc {
     width: 100%;
-    margin-top: 96px;
+    margin-bottom: 96px;
     font-size: 40px;
     line-height: 56px;
     letter-spacing: 1.3px;
@@ -45,7 +46,7 @@
 
 .question .ring {
     width: 402px;
-    margin: 32px auto 96px auto;
+    margin: 96px auto 32px auto;
     line-height: 120px;
     border-radius: 72px;
     border: solid 4px #267091;
