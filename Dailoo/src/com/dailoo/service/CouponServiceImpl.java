@@ -10,6 +10,7 @@ import com.dailoo.dao.CouponDao;
 import com.dailoo.domain.Coupon;
 import com.dailoo.domain.CouponImg;
 import com.dailoo.domain.CouponTheme;
+import com.dailoo.domain.User;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.util.GoogleMapUtils;
 import com.google.gson.Gson;
@@ -92,6 +93,14 @@ public class CouponServiceImpl implements CouponService{
 		cp.setImgs(imgs);
 		
 		return gson.toJson(cp);
+	}
+
+	@Override
+	public void loginUser(User user) {
+		User temp = dao.findUserById(user.getId());
+		if(temp == null){	//如果該用戶還沒有註冊過帳號
+			dao.registUser(user);
+		}
 	}
 
 }

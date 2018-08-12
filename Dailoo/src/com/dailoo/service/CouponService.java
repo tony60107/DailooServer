@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.dailoo.domain.Coupon;
 import com.dailoo.domain.CouponTheme;
+import com.dailoo.domain.User;
 
 public interface CouponService extends Service{
 
@@ -57,5 +58,11 @@ public interface CouponService extends Service{
 	 * @return 優惠券的JSON數據
 	 */
 	String getCouponById(String id);
+
+	/**
+	 * 登入User帳號
+	 * @param user 使用者Bean
+	 */
+	void loginUser(User user);
 
 }

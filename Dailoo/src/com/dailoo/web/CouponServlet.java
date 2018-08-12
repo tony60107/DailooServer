@@ -13,6 +13,7 @@ import org.apache.logging.log4j.LogManager;
 
 import com.dailoo.domain.Coupon;
 import com.dailoo.domain.CouponTheme;
+import com.dailoo.domain.User;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.service.CouponService;
 import com.dailoo.util.FileUploadUtils;
@@ -71,6 +72,13 @@ public class CouponServlet extends HttpServlet {
 			else if("getCouponById".equals(method)) {
 				String json = service.getCouponById(request.getParameter("id"));
 				response.getWriter().write(json);
+			}
+			//登入用戶帳號
+			else if("loginUser".equals(method)) {
+				User user = new User();
+				BeanUtils.populate(user, request.getParameterMap());
+				service.loginUser(user);
+				request.getSession().setAttribute("user", user);
 			}
 		} catch (Exception e) {
 			LogManager.getLogger().error("系統出錯", e);

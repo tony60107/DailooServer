@@ -5,6 +5,7 @@ import java.util.List;
 import com.dailoo.domain.Coupon;
 import com.dailoo.domain.CouponImg;
 import com.dailoo.domain.CouponTheme;
+import com.dailoo.domain.User;
 import com.google.gson.JsonElement;
 
 public interface CouponDao extends Dao{
@@ -66,5 +67,18 @@ public interface CouponDao extends Dao{
 	 * @return 優惠券Bean
 	 */
 	Coupon getCouponById(String id);
+
+	/**
+	 * 根據用戶ID找到用戶
+	 * @param id 用戶ID
+	 * @return 用戶Bean
+	 */
+	User findUserById(String id);
+
+	/**
+	 * 註冊用戶帳號
+	 * @param user 用戶Bean
+	 */
+	void registUser(User user);
 
 }

@@ -6,20 +6,110 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/theme.css">
     <meta name="viewport" content="user-scalable=no"/>
+    <style type="text/css">
+        .login-options span {
+            position: absolute;
+            top: -9px;/*調整「Or」的上、下位置*/
+            background: #fff;
+            padding: 0 15px;
+            margin: auto;
+            left: 42%;
+        }
+        hr {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            height: 1px;
+            width: 100%;
+            background: #E3ECF7;
+        }
+        hr {
+
+            border: 0;
+            border-top: 1px solid #eee;
+        }
+        .btn.btn-facebook, .btn.btn-facebook.active, .btn.btn-facebook.active:focus, .btn.btn-facebook.active:hover, .btn.btn-facebook:active, .btn.btn-facebook:active:focus, .btn.btn-facebook:active:hover, .btn.btn-facebook:focus, .btn.btn-facebook:hover, .navbar .navbar-nav>li>a.btn.btn-facebook, .navbar .navbar-nav>li>a.btn.btn-facebook.active, .navbar .navbar-nav>li>a.btn.btn-facebook.active:focus, .navbar .navbar-nav>li>a.btn.btn-facebook.active:hover, .navbar .navbar-nav>li>a.btn.btn-facebook:active, .navbar .navbar-nav>li>a.btn.btn-facebook:active:focus, .navbar .navbar-nav>li>a.btn.btn-facebook:active:hover, .navbar .navbar-nav>li>a.btn.btn-facebook:focus, .navbar .navbar-nav>li>a.btn.btn-facebook:hover, .open>.btn.btn-facebook.dropdown-toggle, .open>.btn.btn-facebook.dropdown-toggle:focus, .open>.btn.btn-facebook.dropdown-toggle:hover, .open>.navbar .navbar-nav>li>a.btn.btn-facebook.dropdown-toggle, .open>.navbar .navbar-nav>li>a.btn.btn-facebook.dropdown-toggle:focus, .open>.navbar .navbar-nav>li>a.btn.btn-facebook.dropdown-toggle:hover {
+            background-color: #3b5998;
+            color: #FFF;
+        }
+
+
+
+        .btn {
+            width: 700px;
+            height: 150px;
+            margin: 60px auto;
+            display: block;
+            line-height: 70px;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            touch-action: manipulation;
+            cursor: pointer;
+            user-select: none;
+            background-image: none;
+            border: none;
+            border-radius: 3px;
+            position: relative;
+            padding: 12px 30px;
+            letter-spacing: 0;
+
+            transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1);
+            outline: 0;
+            font-size: 56px;
+            font-weight: 400;
+            will-change: box-shadow,transform;
+
+
+        }
+        button {
+            overflow: visible;
+        }
+        .btn svg {
+            margin-right: 24px;
+        }
+        .btn:not(.btn-fab) i {
+            vertical-align: middle;
+            font-size: 1.5em;
+            position: relative;
+            padding: 0 3px;
+        }
+
+        .btn.btn-facebook:active, .btn.btn-facebook:focus, .btn.btn-facebook:hover, .navbar .navbar-nav>li>a.btn.btn-facebook:active, .navbar .navbar-nav>li>a.btn.btn-facebook:focus, .navbar .navbar-nav>li>a.btn.btn-facebook:hover {
+            box-shadow: 0 14px 26px -12px rgba(59,89,152,.42), 0 4px 23px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(59,89,152,.2);
+        }
+        .btn.btn-google:active, .btn.btn-google:focus, .btn.btn-google:hover, .navbar .navbar-nav>li>a.btn.btn-google:active, .navbar .navbar-nav>li>a.btn.btn-google:focus, .navbar .navbar-nav>li>a.btn.btn-google:hover {
+            box-shadow: 0 14px 26px -12px rgba(221,75,57,.42), 0 4px 23px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(221,75,57,.2);
+        }
+        .btn.btn-google, .btn.btn-google.active, .btn.btn-google.active:focus, .btn.btn-google.active:hover, .btn.btn-google:active, .btn.btn-google:active:focus, .btn.btn-google:active:hover, .btn.btn-google:focus, .btn.btn-google:hover, .navbar .navbar-nav>li>a.btn.btn-google, .navbar .navbar-nav>li>a.btn.btn-google.active, .navbar .navbar-nav>li>a.btn.btn-google.active:focus, .navbar .navbar-nav>li>a.btn.btn-google.active:hover, .navbar .navbar-nav>li>a.btn.btn-google:active, .navbar .navbar-nav>li>a.btn.btn-google:active:focus, .navbar .navbar-nav>li>a.btn.btn-google:active:hover, .navbar .navbar-nav>li>a.btn.btn-google:focus, .navbar .navbar-nav>li>a.btn.btn-google:hover, .open>.btn.btn-google.dropdown-toggle, .open>.btn.btn-google.dropdown-toggle:focus, .open>.btn.btn-google.dropdown-toggle:hover, .open>.navbar .navbar-nav>li>a.btn.btn-google.dropdown-toggle, .open>.navbar .navbar-nav>li>a.btn.btn-google.dropdown-toggle:focus, .open>.navbar .navbar-nav>li>a.btn.btn-google.dropdown-toggle:hover {
+            background-color: #dd4b39;
+            color: #FFF;
+        }
+        .btn.focus, .btn:focus, .btn:hover {
+            text-decoration: none;
+        }
+
+    </style>
 </head>
 <body>
 <div class="w">
     <!--header引入-->
     <div id="header"></div>
 
-    <div class="main-title">熱氣球嘉年華</div>
+    <div class="main-title" style="margin-bottom: 110px;">Dailoo 主題優惠券</div>
 
 
-    <fb:login-button
-            scope="public_profile,email"
-            onlogin="checkLoginState();">
-    </fb:login-button>
+    <button type="button" class="btn btn-facebook" onclick="FBLogin();"><i class="fab fa-facebook-f fa-lg"></i> Facebook 登入
+    </button>
+    <button type="button" class="btn btn-google" onclick="GoogleLogin();"><i class="fab fa-google-plus-g fa-lg"></i> Google 登入
+    </button>
 
+    <!--上傳表單-->
+    <form id="mainForm" method="post" style="display: none" enctype="multipart/form-data">
+        <div>ID<input type="text" name="id"></div>
+        <div>姓名<input type="text" name="name"></div>
+        <div>Email<input type="text" name="email"></div>
+        <div>類型<input type="text" name="type"></div>
+    </form>
 
     <!--Footer引入-->
     <div id="footer"></div>
@@ -32,43 +122,144 @@
 
     //初始化頭部與腳步
     initHeaderFooter();
+    var form = $('#mainForm');
+    var ipId = form.find('input[name="id"]');
+    var ipName = form.find('input[name="name"]');
+    var ipEmail = form.find('input[name="email"]');
+    var ipType = form.find('input[name="type"]');
 
+    function login(){
+        $.ajax({
+            url: '/CouponServlet?method=loginUser',
+            type: 'POST',
+            cache: false,
+            data:form.serialize(),//將表單資料序列化
+            success: function (result) {
+                alert("登入成功");
+            }, error: function (result) {
+                alert("登入失敗");
+            },
+        })
+    }
 
 </script>
-<script>
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId      : '360589151143890',
-            cookie     : true,
-            xfbml      : true,
-            version    : 'v3.1'
-        });
 
-        FB.AppEvents.logPageView();
+<!--FB登入-->
+<script type="text/javascript">
+    //應用程式編號，進入 https://developers.facebook.com/apps/
+    //即可看到
+    let FB_appID = "360589151143890";
 
-    };
+    //FB Login 官方文件：https://developers.facebook.com/docs/facebook-login/web
 
-    (function(d, s, id){
+    // Load the Facebook Javascript SDK asynchronously
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
+        if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
         js.src = "https://connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: FB_appID,//FB appID
+            cookie: true,  // enable cookies to allow the server to access the session
 
-    function checkLoginState() {
-        FB.getLoginStatus(function(response) {
-            statusChangeCallback(response);
+            xfbml: true,  // parse social plugins on this page
+            version: 'v3.0' // use graph api version，儘量使用最新版，因為舊版淘汰很快
+        });
+
+    };
+
+
+    //使用自己客製化的按鈕來登入
+    function FBLogin() {
+
+        //FB.login會彈出登入視窗
+        FB.login(function(response){
+            if (response.status === 'connected') {
+                FB.api('/me','GET',{
+                    "fields" : "id,name,gender,email"
+                },function(user){
+                    //FB登入視窗點擊登入後，會將資訊回傳到此處。
+                    ipId.val(user.id);
+                    ipName.val(user.name);
+                    ipEmail.val(user.email);
+                    ipType.val("FB");
+
+                    //將帳號資料上傳伺服器登入
+                    login();
+                });
+            }
+        },{
+            scope : 'public_profile,email'
+        });
+
+    }
+</script>
+
+<!--Google登入-->
+<script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};HandleGoogleApiLibrary()"
+        onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
+<script type="text/javascript">
+    //進入 https://console.developers.google.com/
+    //找「憑證」頁籤(記得先選對專案)，即可找到用戶端ID
+    let Google_appId = "50555466124-n289c2j53l8d3ehgn7ni6bq0hc0a1otj.apps.googleusercontent.com";
+
+
+    //參考文章：http://usefulangle.com/post/55/google-login-javascript-api
+
+
+    // Called when Google Javascript API Javascript is loaded
+    function HandleGoogleApiLibrary() {
+        // Load "client" & "auth2" libraries
+        gapi.load('client:auth2', {
+            callback: function () {
+                // Initialize client & auth libraries
+                gapi.client.init({
+                    clientId: Google_appId,
+                    scope: 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/plus.me'
+                }).then(
+                        function (success) {
+                            // Google Libraries are initialized successfully
+                            // You can now make API calls
+                            //console.log("Google Libraries are initialized successfully");
+                        },
+                        function (error) {
+                            // Error occurred
+                            console.log(error);// to find the reason
+                        }
+                );
+            },
+            onerror: function () {
+                // Failed to load libraries
+                console.log("Failed to load libraries");
+            }
         });
     }
 
-    FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-    });
+    function GoogleLogin() {
+        // API call for Google login
+        gapi.auth2.getAuthInstance().signIn().then(
+                function (resp) {
+                    // Login API call is successful
+                    var user = resp.getBasicProfile();
+                    ipId.val(user.Eea);
+                    ipName.val(user.ig);
+                    ipEmail.val(user.U3);
+                    ipType.val("Google");
+                    //將帳號資料上傳伺服器登入
+                    login();
+                },
+                function (error) {
+                    console.log(error);
+                }
+        );
 
-    function statusChangeCallback(response){
-        console.dir(response);
-        alert("登入成功");
     }
+
 </script>
+
+<!--引用fontawesome，才能制作Facebook、Google的icon-->
+<script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>

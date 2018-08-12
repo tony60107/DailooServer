@@ -10,6 +10,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import com.dailoo.domain.Coupon;
 import com.dailoo.domain.CouponImg;
 import com.dailoo.domain.CouponTheme;
+import com.dailoo.domain.User;
 import com.dailoo.util.TransactionManager;
 
 public class CouponDaoImpl implements CouponDao{
@@ -134,6 +135,32 @@ public class CouponDaoImpl implements CouponDao{
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
+	}
+
+	@Override
+	public User findUserById(String id) {
+		String sql = "select * from coupon_users where id = ?";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanHandler<User>(User.class), id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public void registUser(User user) {
+		String sql = "insert into coupon_users (id, name, email, type, registTime) "
+				+ "values(?,?,?,?,now(3))";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, user.getId(), user.getName(), user.getEmail(), user.getType());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}		
 	}
 
 }
