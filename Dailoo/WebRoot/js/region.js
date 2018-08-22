@@ -14,6 +14,8 @@ window.onload = function () {
             changeCss("chengkung");
         } else if(regionId == "e031f31d-7f41-4380-b1fc-ed156a0bd96e"){ //如果是台東市主題
             changeCss("taitong");
+        } else if(regionId == "0371ba44-8bf4-4135-9ac2-c7aea7717ed5"){ //如果是安平區主題
+            changeCss("anping");
         }
     });
 }

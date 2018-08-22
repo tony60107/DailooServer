@@ -17,7 +17,7 @@ public class Coupon {
 	private Integer usedCount;		//使用數量
 	private String themeId;			//對應主題ID
 	
-	public final static Integer CHECKING = 1; //優惠券審核中
+	public final static Integer CHECKING = 0; //優惠券審核中
 	
 	//------------------
 	private List<CouponImg> imgs;

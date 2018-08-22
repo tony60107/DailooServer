@@ -22,3 +22,18 @@
     background-color: #ffffff;
     border: solid 2px #979797;
 }
+
+.editImgs {
+    margin: 44px auto;
+    display: block;
+    text-align: center;
+    color: #50afa0;
+}
+
+.qrc {
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    margin-top: 80px;
+    border: 1px solid #666;
+}

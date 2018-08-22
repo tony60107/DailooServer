@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <title>優惠券主題</title>
@@ -15,7 +15,7 @@
     <div class="main-title">熱氣球嘉年華</div>
 
     <div id="list" class="list clearfix">
-        <a class="cp">
+        <a class="cp" href="#">
             <div class="cp-t clearfix">
                 <div class="name fl">安安民宿</div>
                 <div class="discount fr">
@@ -55,13 +55,13 @@
         $.ajax({
             url: "/CouponServlet", context: document.body,
             type: "POST",
-            data: {"method": "getCouponsByThemeId", "themeId": "85f5d98f-eff2-42f0-9c92-4a1c28dcd9d0"},
+            data: {"method": "getCouponsByThemeId", "themeId": location.href.split('?id=')[1]},
             success: function (data) {
                 cps = eval("(" + data + ")");
-                console.dir(cps);
+                console.dir(cps[0].id);
                 var dom = '';
                 for(var i = 0; i < cps.length; i++) {
-                    dom += '<a class="cp">' +
+                    dom += '<a class="cp"href="/coupon/coupon.html?id=' + cps[i].id + '">' +
                             '<div class="cp-t clearfix">' +
                             '<div class="name fl">' + cps[i].name + '</div>' +
                             '<div class="discount fr">' +

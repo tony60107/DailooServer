@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>優惠券列表</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/manageCoupons.css">
+    <meta name="viewport" content="user-scalable=no"/>
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+    <div class="main-title">優惠券列表</div>
+    <div id="list" class="list">
+    </div>
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="../js/base.js"></script>
+<script>
+
+    //初始化頭部與腳步
+    initHeaderFooter();
+    //取得所有的優惠券
+    getCoupons();
+
+
+    //取得所有的優惠券
+    function getCoupons() {
+        var vpList = $('#vpList');
+        $.ajax({
+            url: "/CouponServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getCoupons"},
+            success: function (data) {
+                var cps = eval("(" + data + ")");
+                console.dir(cps);
+                var dom = '';
+                for(var i = 0; i < cps.length; i++) {
+                    dom += '<a class="cp" href="/coupon/admin/editCoupon.html?id=' + cps[i].id + '">' + cps[i].name + '</a>';
+                }
+                $('#list').html(dom);
+            },
+            error: function () {
+                setTimeout(function () {getCoupons();}, 1000);
+            }
+        });
+    }
+
+</script>

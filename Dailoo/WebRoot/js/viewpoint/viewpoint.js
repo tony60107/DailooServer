@@ -365,6 +365,7 @@ function initViewpointData(vpData) {
         var chenggong = "f0cbc265-6abd-4519-a176-9296b7e032a1";
         var taitong = "4d0e9b6b-d077-46ba-b807-04ef0b8b6a10,af3bf83f-5995-401a-a58c-78a3fb119a3e,fcad3305-8b5a-4f4f-b508-bcbaf5a3d723,740d61bc-5ae8-48c8-8d33-07eddf8fa5f1"
         var chengkung = "37623549-9f15-46b4-b63a-7ebf20de0c09,eefdccd5-4ff7-4f1f-a51e-f7e98696ce99"
+        var anping = "693f2517-3346-4d49-9a39-6fddc75d4887"
 
         if (jinfeng.indexOf(vpData.theme[0].id) != -1) { //如果是金峰鄉主題
             changeCss("jinfeng");
@@ -376,6 +377,8 @@ function initViewpointData(vpData) {
             changeCss("chengkung");
         } else if(vpData.theme[0].id == "a897d838-1dfd-41ce-b6e0-b7b1487328cb") { //南迴線精選
             changeCss("jinfeng");
+        } else if(anping.indexOf(vpData.theme[0].id) != -1){ //如果是安平區主題
+            changeCss("anping");
         }
     });
 }

@@ -9,6 +9,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import com.dailoo.domain.Coupon;
 import com.dailoo.domain.CouponImg;
+import com.dailoo.domain.CouponOrder;
 import com.dailoo.domain.CouponTheme;
 import com.dailoo.domain.User;
 import com.dailoo.util.TransactionManager;
@@ -138,7 +139,7 @@ public class CouponDaoImpl implements CouponDao{
 	}
 
 	@Override
-	public User findUserById(String id) {
+	public User getUserById(String id) {
 		String sql = "select * from coupon_users where id = ?";
 		
 		try {
@@ -162,5 +163,129 @@ public class CouponDaoImpl implements CouponDao{
 			throw new RuntimeException(e);
 		}		
 	}
+
+	@Override
+	public void addCouponOrder(CouponOrder order) {
+		String sql = "insert into coupon_orders (id, userId, couponThemeId, status, expire) "
+				+ "values(?,?,?,?,?)";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql,order.getId(), order.getUserId(), order.getCouponThemeId(), order.getStatus(), order.getExpire());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}		
+	}
+
+	@Override
+	public void updateCouponById(Coupon cp) {
+		String sql = "update coupons set name=?, discount=?, obtain=?, intro=?,"
+				+ " lat=?, lng=?, address=?, category=?, "
+				+ " status=?, circulation=?, usedCount=?, themeId=? where id=?";
+				
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, cp.getName(), cp.getDiscount(), cp.getObtain(), cp.getIntro(),
+					cp.getLat(), cp.getLng(), cp.getAddress(),
+					cp.getCategory(), cp.getStatus(), cp.getCirculation(), cp.getUsedCount(), cp.getThemeId(), cp.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}		
+	}
+
+	@Override
+	public List<CouponOrder> getCouponOrderByUserId(String userId) {
+		String sql = "select * from coupon_orders where userId = ? and status = 0 and CURRENT_DATE() < expire";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanListHandler<CouponOrder>(CouponOrder.class), userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public CouponTheme getCouponThemesById(String id) {
+		String sql = "select * from coupon_themes where id = ?";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanHandler<CouponTheme>(CouponTheme.class), id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public void updateCouponThemeById(CouponTheme theme) {
+		String sql = "update coupon_themes set name=?, maxDiscount=? where id=?";
+				
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, theme.getName(), theme.getMaxDiscount(), theme.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}		
+	}
+
+	@Override
+	public CouponOrder getCouponOrderById(String orderId) {
+		String sql = "select * from coupon_orders where id = ?";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanHandler<CouponOrder>(CouponOrder.class), orderId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public void updateCouponOrderById(CouponOrder order) {
+		String sql = "update coupon_orders set userId=?, couponThemeId=?, status=?, expire=? where id=?";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, order.getUserId(), order.getCouponThemeId(), order.getStatus(), 
+					order.getExpire(), order.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}		
+	}
+
+	@Override
+	public List<Coupon> getCoupons() {
+		String sql = "select * from coupons";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanListHandler<Coupon>(Coupon.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public CouponTheme getCouponThemeById(String id) {
+		String sql = "select * from coupon_themes where id=?";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanHandler<CouponTheme>(CouponTheme.class), id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+
 
 }

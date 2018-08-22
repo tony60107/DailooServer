@@ -26,12 +26,12 @@
     text-align: center;
 }
 
-.title .map {
+.title .loc {
     width: 150px;
     display: block;
 }
 
-.title .map img{
+.title .loc img{
     width: 90px;
     margin: auto;
     display: block;

@@ -1,9 +1,12 @@
 package com.dailoo.web;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +30,8 @@ public class CouponServlet extends HttpServlet {
 		
 		Gson gson = new Gson();
 		CouponService service = BasicFactory.getFactory().getService(CouponService.class);
+		User loginUser = (User) request.getSession(false).getAttribute("user");
+		
 		
 		// 取得客戶端要求
 		String method = request.getParameter("method");
@@ -79,6 +84,70 @@ public class CouponServlet extends HttpServlet {
 				BeanUtils.populate(user, request.getParameterMap());
 				service.loginUser(user);
 				request.getSession().setAttribute("user", user);
+				
+				//如果登入/註冊同時，要新增優惠券
+				String couponId = request.getParameter("couponId");
+				if(!"".equals(couponId)) {
+					service.addCouponOrder(user, couponId);
+				}
+				
+				//30天內自動登入
+				Cookie autologinC = new Cookie("autologinUser",URLEncoder.encode(user.getId()+":"+user.getEmail(),"utf-8"));
+				autologinC.setPath("/");
+				autologinC.setMaxAge(3600*24*30);
+				response.addCookie(autologinC);
+			}
+			//取得登入者資料
+			else if("getLoginUser".equals(method)) {
+				if(loginUser != null){
+					User user = service.getUserById(loginUser.getId());
+					request.getSession().setAttribute("user", user);
+					response.getWriter().write(gson.toJson(user));
+				} else {
+					response.getWriter().write("{}");
+				}
+			}
+			//取得登入者擁有的主題優惠券
+			else if("getCouponThemeByUser".equals(method)) {
+				List<CouponTheme> cps = service.getThemesByUser(service.getUserById(loginUser.getId())) ;
+				response.getWriter().write(gson.toJson(cps));
+			}
+			//更新優惠券資訊
+			else if("updateCouponById".equals(method)) {
+				Coupon coupon = new Coupon();
+				BeanUtils.populate(coupon, request.getParameterMap());
+				service.updateCouponById(coupon);
+			}
+			//使用優惠券
+			else if("useCoupon".equals(method)) {
+				String msg = service.useCoupon(request.getParameter("couponId"), loginUser);
+				System.out.println(msg);
+				response.getWriter().write(msg);
+			}
+			//取得所有的優惠券
+			else if ("getCoupons".equals(method)) { 
+				List<Coupon> cps = service.getCoupons();
+				response.getWriter().write(gson.toJson(cps));
+			}
+			//根據優惠券主題ID，取得優惠券主題
+			else if ("getCouponThemeById".equals(method)) { 
+				CouponTheme theme = service.getCouponThemeById(request.getParameter("id"));
+				response.getWriter().write(gson.toJson(theme));
+			}
+			//根據優惠券主題ID，更新優惠券主題資訊
+			else if ("updateCouponThemeById".equals(method)) { 
+				CouponTheme theme = new CouponTheme();
+				BeanUtils.populate(theme, request.getParameterMap());
+				service.updateCouponThemeById(theme);
+			}
+			//新增優惠券訂單
+			else if ("addCouponOrder".equals(method)) {
+				//如果該用戶已登入，則新增
+				if(loginUser != null){
+					service.addCouponOrder(loginUser, request.getParameter("id"));
+				} else { //如果該用戶未登入，則導向登入頁
+					response.sendRedirect("/coupon/login.html?id=" + request.getParameter("id"));
+				}
 			}
 		} catch (Exception e) {
 			LogManager.getLogger().error("系統出錯", e);

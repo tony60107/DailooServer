@@ -2,48 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>新增優惠券</title>
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/addCoupon.css">
+    <title>編輯優惠券</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/addCoupon.css">
     <meta name="viewport" content="user-scalable=no"/>
 </head>
 <body>
 <div class="w">
     <!--header引入-->
     <div id="header"></div>
+    <div class="main-title">編輯優惠券</div>
 
-    <div class="main-title">新增優惠券</div>
+    <a id="editImgs" class="editImgs" href="#">編輯優惠券圖片</a>
+    <a id="preview" class="editImgs" href="#">預覽</a>
+
+    <div id="qrc" class="qrc"></div>
 
     <div class="input">
         <input id="name" class="cont" placeholder="輸入商家名稱" value=""/>
     </div>
     <div class="selec">
         <div class="name">優惠券主題</div>
-        <div class="theme-cont cont">請選擇</div>
+        <div id="theme" class="theme-cont cont">請選擇</div>
         <div class="arrow"></div>
         <div id="themeList" class="opt-data">
             <div class="title">切換至其他主題</div>
         </div>
     </div>
     <div class="input">
+        <div class="name">折扣金額</div>
         <input id="discount" class="cont" placeholder="輸入折扣金額" value=""/>
     </div>
     <div class="input">
+        <div class="name">優惠券取得方法1</div>
         <input id="obtain1" class="cont" placeholder="輸入優惠券取得方法1" value=""/>
     </div>
     <div class="input">
+        <div class="name">優惠券取得方法2</div>
         <input id="obtain2" class="cont" placeholder="輸入優惠券取得方法2" value=""/>
     </div>
     <div class="input">
+        <div class="name">商家分類</div>
         <input id="category" class="cont" placeholder="輸入商家分類" value=""/>
     </div>
     <div class="input">
+        <div class="name">商家地址</div>
         <input id="address" class="cont" placeholder="輸入商家地址" value=""/>
     </div>
 
     <div id="map"></div>
 
-    <!--景點介紹-->
+    <div class="input">
+        <div class="name">優惠券發行數量</div>
+        <input id="circulation" class="cont" placeholder="輸入發行數量" value=""/>
+    </div>
+    <div class="input">
+        <div class="name">在此商家使用優惠券次數</div>
+        <input id="usedCount" class="cont" placeholder="輸入使用次數" value=""/>
+    </div>
+    <div class="input">
+        <div class="name">優惠券上架狀態</div>
+        <input id="status" class="cont" placeholder="輸入上架狀態" value=""/>
+    </div>
+
+    <!--商家介紹-->
     <div class="intro">
         <div class="name font-s">商家介紹</div>
         <textarea id="intro" name="intro" class="font-s"></textarea>
@@ -51,11 +73,12 @@
 
     <div class="submit-btns clearfix">
         <div class="submit-l">取消</div>
-        <div class="submit-r hint" onclick="submitForm();">新增</div>
+        <div class="submit-r hint" onclick="submitForm();">儲存</div>
     </div>
 
     <!--上傳表單-->
-    <form id="mainForm" method="post" style="display: block" enctype="multipart/form-data">
+    <form id="mainForm" method="post" style="display: none" enctype="multipart/form-data">
+        <div>優惠券ID<input type="text" name="id"></div>
         <div>商家名稱<input type="text" name="name"></div>
         <div>主題ID<input type="text" name="themeId"></div>
         <div>折扣金額<input type="text" name="discount"></div>
@@ -63,7 +86,14 @@
         <div>商家分類<input type="text" name="category"></div>
         <div>商家地址<input type="text" name="address"></div>
         <div>商家介紹<input type="text" name="intro"></div>
+        <div>發行數量<input type="text" name="circulation"></div>
+        <div>使用次數<input type="text" name="usedCount"></div>
+        <div>上架狀態<input type="text" name="status"></div>
+        <div>經度<input type="text" name="longitude"></div>
+        <div>緯度<input type="text" name="latitude"></div>
     </form>
+
+
 
     <!--Footer引入-->
     <div id="footer"></div>
@@ -71,16 +101,66 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="js/base.js"></script>
+<script type="text/javascript" src="../js/jquery.qrcode.min.js"></script>
+<script src="../js/base.js"></script>
 <script>
-
     //初始化頭部與腳步
     initHeaderFooter();
 
     //激活所有的下拉選單
     activeAllSelec();
-    //取得所有的優惠券主題
-    getCouponThemes();
+
+
+    getCouponById(getCouponThemes);
+
+
+    //將序號轉換為QRC
+    function toQRC(id) {
+        var url = "https://dailoo.com/CouponServlet?method=addCouponOrder&id=" + id;
+        console.dir(url);
+        $('#qrc').innerHTML = "";
+        $('#qrc').qrcode({width: 500,height: 500, text: url});
+    }
+
+    //根據優惠券ID，取得優惠券資訊
+    function getCouponById(callback){
+        var themeList = $('#themeList').get(0);
+        $.ajax({
+            url: "/CouponServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getCouponById", "id": location.href.split('?id=')[1]},
+            success: function (data) {
+                var cp = eval("(" + data + ")");
+                console.dir(cp);
+
+                toQRC(cp.id);
+                $('#editImgs').attr('href', '/coupon/admin/editCouponImg.html?id=' + cp.id);
+                $('#preview').attr('href', '/coupon/coupon.html?id=' + cp.id);
+
+                $('#name').val(cp.name);
+                $('#theme').attr('data-value', cp.themeId);
+                $('#discount').val(cp.discount);
+                $('#obtain1').val(cp.obtain.split(',')[0]);
+                $('#obtain2').val(cp.obtain.split(',')[1]);
+                $('#category').val(cp.category);
+                $('#address').val(cp.address);
+                $('#intro').html(cp.intro);
+                $('#circulation').val(cp.circulation);
+                $('#usedCount').val(cp.usedCount);
+                $('#status').val(cp.status);
+
+                ipLat.val(cp.lat);
+                ipLng.val(cp.lng);
+
+                ipId.val(location.href.split('?id=')[1]);
+
+                if(callback != undefined) callback();
+            },
+            error: function(){
+                setTimeout(function(){getCouponById(callback);}, 1000);
+            }
+        });
+    }
 
     //取得所有的優惠券主題
     function getCouponThemes(callback){
@@ -96,8 +176,18 @@
                 var dom = '';
                 for(var i = 0; i < themes.length; i++) {
                     dom +=  "<div class='opt' data-value='" + themes[i].id +"'>" + themes[i].name + "</div>";
+
+                    console.dir($('#theme').attr('data-value'));
+                    console.dir(themes[i].id);
+                    //變更已選擇的主題名稱
+                    if(themes[i].id == $('#theme').attr('data-value')){
+                        $('#theme').html(themes[i].name);
+                    }
                 }
                 themeList.innerHTML += dom;
+
+
+
 
                 if(callback != undefined) callback();
             },
@@ -108,6 +198,7 @@
     }
 
     var form = $('#mainForm');
+    var ipId = form.find('input[name="id"]');
     var ipName = form.find('input[name="name"]');
     var ipThemeId = form.find('input[name="themeId"]');
     var ipDiscount = form.find('input[name="discount"]');
@@ -115,6 +206,11 @@
     var ipCategory = form.find('input[name="category"]');
     var ipAddress = form.find('input[name="address"]');
     var ipIntro = form.find('input[name="intro"]');
+    var ipCirculation = form.find('input[name="circulation"]');
+    var ipUsedCount = form.find('input[name="usedCount"]');
+    var ipStatus = form.find('input[name="status"]');
+    var ipLng = form.find('input[name="longitude"]');
+    var ipLat = form.find('input[name="latitude"]');
 
     function submitForm() {
         //將資料填入不顯示的表單中
@@ -127,20 +223,24 @@
         ipAddress.val($('#address').val());
         ipIntro.val($('#intro').val());
 
+        ipCirculation.val($('#circulation').val());
+        ipUsedCount.val($('#usedCount').val());
+        ipStatus.val($('#status').val());
+
         //檢查表單資料
         if(checkFrom()) {
             alert("資料上傳中...");
             //上傳表單
             $.ajax({
-                url: '/CouponServlet?method=addCoupon',
+                url: '/CouponServlet?method=updateCouponById',
                 type: 'POST',
                 cache: false,
                 data:form.serialize(),//將表單資料序列化
                 success: function (result) {
-                    alert("新增成功");
+                    alert("儲存成功");
                     //alert("新增成功","/mobile/manageViewpoints.html");
                 }, error: function (result) {
-                    alert("新增失敗");
+                    alert("儲存失敗");
                 },
             })
         }
@@ -157,7 +257,5 @@
 
         return true;
     }
-
-
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtkHtxJhAxfxCzkdphlPoDoSuCq4FTh_c&callback=initMap"></script>

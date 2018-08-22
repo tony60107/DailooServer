@@ -18,7 +18,7 @@
             <div class="desc">取得優惠券</div>
         </div>
         <div id="name" class="name fl"></div>
-        <a id="map" href="#" class="map fl" target="_blank"><img class="" src="images/coupon/map.png" alt=""></a>
+        <a id="loc" href="#" class="loc fl" target="_blank"><img class="" src="images/coupon/map.png" alt=""></a>
     </div>
 
     <!--圖片區塊-->
@@ -42,9 +42,10 @@
 
     <div id="redeem" class="redeem">
     </div>
+
+    <!--Footer引入-->
+    <div id="footer"></div>
 </div>
-<!--Footer引入-->
-<div id="footer"></div>
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -59,12 +60,28 @@
 
     getCouponById();
 
+    $('#redeem').bind('click', function(){
+        $.ajax({
+            url: "/CouponServlet", context: document.body,
+            type: "POST",
+            data: {"method": "useCoupon", "couponId": location.href.split('?id=')[1]},
+            success: function (data) {
+                var result = eval("(" + data + ")");
+                console.dir(result.msg)
+                alert(result.msg);
+            },
+            error: function(){
+                //setTimeout(function(){getCouponById();}, 1000);
+            }
+        });
+    });
+
     //根據優惠券ID，取得優惠券
     function getCouponById() {
         $.ajax({
             url: "/CouponServlet", context: document.body,
             type: "POST",
-            data: {"method": "getCouponById", "id": "a6f2dfb7-806d-4b08-9be8-716baca1582d"},
+            data: {"method": "getCouponById", "id": location.href.split('?id=')[1]},
             success: function (data) {
                 var cp = eval("(" + data + ")");
                 console.dir(cp)
@@ -78,12 +95,13 @@
 
     function initCouponInfo(cp){
         $('#name').html(cp.name);
-        $('#map').attr('href', 'http://maps.google.com/?q=' + cp.address);
+        $('#loc').attr('href', 'http://maps.google.com/?q=' + cp.address);
         $('#intro').html(cp.intro);
         $('#redeem').html('使用優惠券＄' + cp.discount);
 
         imgs = cp.imgs;
         updateMainPhoto(0);
+        $('#photoNum').html('1/' + imgs.length);
 
        $('#opt1').html('1.' + cp.obtain.split(',')[0]);
        $('#opt2').html('2.' + cp.obtain.split(',')[1]);
@@ -95,6 +113,8 @@
             $('.pop-func').css('display', 'block');
             $(".pop-mask").css('display', 'block');
         })
+
+
     }
 
     //更新輪播圖主相片
@@ -118,6 +138,7 @@
         }
         mainPhoto.src = img.src;
         imgNum = num;
+        $('#photoNum').html(num+1 + '/' + imgs.length);
 //floatPhoto.src = src;
 //imgSliderClass.updatePhotoNumTxt(); //更新正在第幾張相片文字
     }

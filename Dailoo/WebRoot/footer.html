@@ -81,6 +81,12 @@
             $(".question").css('display', 'none');
             $("#googleMap").attr('href',"https://goo.gl/maps/pGhxn6KR66R2");
             if(window.screen.width > 980) {$(".route").css('margin-left', '300px');$(".route").css('margin-right', '200px');}
+        } else if(type== 'anping') {
+            $("#googleMap").attr('href',"https://drive.google.com/open?id=1iLamLCfOka8Bmm521CzjOYI1YAwoB0-j&usp=sharing");
+            $(".question").css('display', 'none');
+            $(".line").get(1).style.display = "none";
+            $(".route").get(0).style.display = "none";
+            if(window.screen.width > 980) {$(".route").css('margin-left', '773px');$(".route").css('margin-right', '773px');}
         }
     }
 

@@ -5,7 +5,7 @@
 //自定義Alert
 window.alert = function(msg, redirect) {
     //設定Alert方塊位置
-    $('.pop-alert').css('margin-left', ((document.body.clientWidth - 720) / 2) + 'px');
+    $('.pop-alert').css('margin-left',  '130px');
     $('.pop-alert').css('top', ((document.body.clientHeight - 480) / 2) + 'px');
     //設置內容並顯示
     $('#popAlertMsg').html(msg);
@@ -43,7 +43,7 @@ function activeSelec(selec, optCallback) {
     $popMenu.html(dom);
 
     //設定Alert方塊位置
-    $popMenu.css('margin-left', ((document.body.clientWidth - 880) / 2) + 'px');
+    $popMenu.css('margin-left', '56px');
     $popMenu.css('top', ((document.body.clientHeight - 1220) / 2) + 'px');
 
     //顯示彈出式菜單
@@ -135,6 +135,14 @@ function initHeaderFooter(){
     //桌機則將頁面比例調為50％
     if(window.screen.width > 980){$("body").css("zoom","50%");}
     $(window).resize(function() {if(window.screen.width > 980){$("body").css("zoom","50%");}});
+
+    //桌機則將頁面比例調為50％
+    if(window.screen.width > 980){
+        $("body").css("zoom","50%");
+        $("#map").css("zoom","200%");
+        $("#map").css("width","390px");
+        $("#map").css("height","300px");
+    }
 }
 
 
@@ -1941,7 +1949,6 @@ function initMap() {
 
     //地址欄失去焦點時，更新地圖中心點
     $('#address').bind('blur', function () {
-
         var url = "https://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=" + $('#address').val() + "&key=AIzaSyCJIjW2-z9cgnh9rkciGazL7h3odXo44SI";
         $.ajax({
             url: url, context: document.body,

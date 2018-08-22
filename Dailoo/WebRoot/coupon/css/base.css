@@ -453,6 +453,8 @@ s, i, em {
     text-align: center;
     line-height: 112px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    text-size-adjust: none;
+    padding: 0;
 }
 
 .pop-alert .msg {

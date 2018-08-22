@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 首頁</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <meta name="viewport" content="user-scalable=no"/>
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="funcGroup">
+        <a href="/coupon/admin/addCoupon.html" class="func">新增優惠券</a>
+        <a href="/coupon/admin/manageCoupons.html" class="func">管理優惠券</a>
+        <a href="/coupon/admin/addTheme.html" class="func">新增主題</a>
+        <a href="/coupon/admin/manageThemes.html" class="func">管理主題</a>
+    </div>
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="../js/base.js"></script>
+<script>
+    //初始化頭部與腳步
+    initHeaderFooter();
+
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('service-worker.js')
+                    .then(function(registration) {})
+                    .catch(function(err) {})
+        })
+    }
+</script>
