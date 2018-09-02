@@ -20,7 +20,8 @@ public class Coupon {
 	public final static Integer CHECKING = 0; //優惠券審核中
 	
 	//------------------
-	private List<CouponImg> imgs;
+	private List<CouponImg> imgs; //商家圖片
+	private Double distance; //用戶與商家的距離
 	
 	
 	public String getId() {
@@ -106,6 +107,12 @@ public class Coupon {
 	}
 	public void setImgs(List<CouponImg> imgs) {
 		this.imgs = imgs;
+	}
+	public Double getDistance() {
+		return distance;
+	}
+	public void setDistance(Double distance) {
+		this.distance = distance;
 	}
 	
 	

@@ -100,16 +100,24 @@ public class CouponServlet extends HttpServlet {
 			//取得登入者資料
 			else if("getLoginUser".equals(method)) {
 				if(loginUser != null){
-					User user = service.getUserById(loginUser.getId());
-					request.getSession().setAttribute("user", user);
-					response.getWriter().write(gson.toJson(user));
+					//User user = service.getUserById(loginUser.getId());
+					//request.getSession().setAttribute("user", user);
+					response.getWriter().write(gson.toJson(loginUser));
 				} else {
 					response.getWriter().write("{}");
 				}
 			}
 			//取得登入者擁有的主題優惠券
 			else if("getCouponThemeByUser".equals(method)) {
-				List<CouponTheme> cps = service.getThemesByUser(service.getUserById(loginUser.getId())) ;
+				//更新用戶當前所在的經緯度
+				User user = service.getUserById(loginUser.getId());
+				if(request.getParameter("lat") != null && request.getParameter("lng") != null){
+					user.setLat(new Double(request.getParameter("lat")));
+					user.setLng(new Double(request.getParameter("lng")));
+					request.getSession().setAttribute("user", user);
+				}
+				//取得用戶擁有的主題優惠券
+				List<CouponTheme> cps = service.getThemesByUser(user) ;
 				response.getWriter().write(gson.toJson(cps));
 			}
 			//更新優惠券資訊
@@ -121,7 +129,6 @@ public class CouponServlet extends HttpServlet {
 			//使用優惠券
 			else if("useCoupon".equals(method)) {
 				String msg = service.useCoupon(request.getParameter("couponId"), loginUser);
-				System.out.println(msg);
 				response.getWriter().write(msg);
 			}
 			//取得所有的優惠券
@@ -145,6 +152,7 @@ public class CouponServlet extends HttpServlet {
 				//如果該用戶已登入，則新增
 				if(loginUser != null){
 					service.addCouponOrder(loginUser, request.getParameter("id"));
+					response.sendRedirect("/coupon/myCoupon.html");
 				} else { //如果該用戶未登入，則導向登入頁
 					response.sendRedirect("/coupon/login.html?id=" + request.getParameter("id"));
 				}

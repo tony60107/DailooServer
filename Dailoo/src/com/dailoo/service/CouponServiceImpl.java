@@ -3,6 +3,7 @@ package com.dailoo.service;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -33,12 +34,6 @@ public class CouponServiceImpl implements CouponService{
 		coupon.setStatus(Coupon.CHECKING);
 		coupon.setCirculation(0);
 		coupon.setUsedCount(0);
-		
-		CouponTheme theme = dao.getCouponThemesById(coupon.getThemeId());
-		if(theme.getMaxDiscount() < coupon.getDiscount()) {
-			theme.setMaxDiscount(coupon.getDiscount());
-			dao.updateCouponThemeById(theme);
-		}
 		
 		//設定優惠券店家經緯度
 		double [] address = GoogleMapUtils.getAdressXY(coupon.getAddress(), 0);
@@ -165,19 +160,45 @@ public class CouponServiceImpl implements CouponService{
 			couponThemes.add(theme);
 		}
 		
+		//遍歷所有的主題，設定主題商家最近距離、最大折扣
+		for(int i = 0; i < couponThemes.size(); i++) {
+			CouponTheme theme = couponThemes.get(i);
+			
+			//將距離與折扣設定極值
+			theme.setMinDistance(Double.MAX_VALUE);
+			theme.setMaxDiscount(0);
+			
+			//找出改主題下所有的優惠券
+			List<Coupon> cps = dao.getCouponsByThemeId(theme.getId());
+			
+			//遍歷主題下所有的優惠券
+			for(int j = 0; j < cps.size(); j++) {
+				Coupon cp = cps.get(j);
+				
+				//當用戶允許取得定位時，計算用戶與主題中最近商家的距離
+				if(user.getLat() != 0 && user.getLng() != 0){
+					Double dist = GoogleMapUtils.getDistance(user.getLat(), user.getLng(), cp.getLat(), cp.getLng());
+					
+					//如果距離比當前的紀錄小，則更改紀錄
+					if(dist < theme.getMinDistance()){
+						DecimalFormat df = new DecimalFormat("##");
+						theme.setMinDistance(Double.parseDouble(df.format(dist)));
+					}
+				}
+				
+				//如果優惠券折扣比當前主題紀錄大，則更改紀錄
+				if(cp.getDiscount() > theme.getMaxDiscount()) {
+					theme.setMaxDiscount(cp.getDiscount());
+				}
+			}
+		}
+		
+		
 		return couponThemes;
-
 	}
 
 	@Override
 	public void updateCouponById(Coupon coupon) {
-		
-		//更新優惠券主題最大折扣金額
-		CouponTheme theme = dao.getCouponThemesById(coupon.getThemeId());
-		if(theme.getMaxDiscount() < coupon.getDiscount()) {
-			theme.setMaxDiscount(coupon.getDiscount());
-			dao.updateCouponThemeById(theme);
-		}
 		
 		//設定優惠券店家經緯度
 		double [] address = GoogleMapUtils.getAdressXY(coupon.getAddress(), 0);
@@ -190,16 +211,19 @@ public class CouponServiceImpl implements CouponService{
 	@Override
 	public String useCoupon(String couponId, User loginUser) {
 		
-		//優惠券被使用次數+1
+		//找出要使用的優惠券
 		Coupon coupon = dao.getCouponById(couponId);
-		coupon.setUsedCount(coupon.getUsedCount()+1);
-		dao.updateCouponById(coupon);
 		
 		//確定是否可以使用優惠券，找出登入者擁有該優惠券主題
 		List<CouponOrder> orders = dao.getCouponOrderByUserId(loginUser.getId());
 		for(int i = 0; i < orders.size(); i++){
 			//如果有優惠券訂單的主題ID，與該商家的主題ID相同，表示可以使用主題優惠券
 			if(orders.get(i).getCouponThemeId().equals(coupon.getThemeId())) {
+				
+				//優惠券被使用次數+1
+				coupon.setUsedCount(coupon.getUsedCount()+1);
+				dao.updateCouponById(coupon);
+				
 				//將優惠券訂單設為已使用
 				CouponOrder order = orders.get(i);
 				order.setStatus(CouponOrder.USED);

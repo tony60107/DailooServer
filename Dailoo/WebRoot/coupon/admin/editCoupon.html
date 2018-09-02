@@ -15,6 +15,7 @@
 
     <a id="editImgs" class="editImgs" href="#">編輯優惠券圖片</a>
     <a id="preview" class="editImgs" href="#">預覽</a>
+    <a id="use" class="editImgs" href="#">取得</a>
 
     <div id="qrc" class="qrc"></div>
 
@@ -116,10 +117,11 @@
 
     //將序號轉換為QRC
     function toQRC(id) {
-        var url = "https://dailoo.com/CouponServlet?method=addCouponOrder&id=" + id;
+        var url = "https://localhost:8443/CouponServlet?method=addCouponOrder&id=" + id;
         console.dir(url);
         $('#qrc').innerHTML = "";
         $('#qrc').qrcode({width: 500,height: 500, text: url});
+        $('#use').attr('href', url);
     }
 
     //根據優惠券ID，取得優惠券資訊

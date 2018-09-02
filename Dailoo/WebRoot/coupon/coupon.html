@@ -61,19 +61,19 @@
     getCouponById();
 
     $('#redeem').bind('click', function(){
-        $.ajax({
-            url: "/CouponServlet", context: document.body,
-            type: "POST",
-            data: {"method": "useCoupon", "couponId": location.href.split('?id=')[1]},
-            success: function (data) {
-                var result = eval("(" + data + ")");
-                console.dir(result.msg)
-                alert(result.msg);
-            },
-            error: function(){
-                //setTimeout(function(){getCouponById();}, 1000);
-            }
-        });
+        var r = confirm("按下確定後，將會直接使用優惠券，請讓店員來點擊")
+        if(r == true) {
+            $.ajax({
+                url: "/CouponServlet", context: document.body,
+                type: "POST",
+                data: {"method": "useCoupon", "couponId": location.href.split('?id=')[1]},
+                success: function (data) {
+                    var result = eval("(" + data + ")");
+                    console.dir(result.msg)
+                    alert(result.msg);
+                },
+            });
+        }
     });
 
     //根據優惠券ID，取得優惠券

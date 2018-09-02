@@ -8,7 +8,7 @@ public class Theme {
 	private String behalfPhotoUrl;
 	private String regionId;
 	private Timestamp updateTime;
-	
+
 	public String getId() {
 		return id;
 	}

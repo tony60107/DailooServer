@@ -15,7 +15,7 @@
     <div class="main-title">我的主題優惠券</div>
 
     <div id="list" class="list clearfix">
-        <a class="cp" href="#">
+        <!--<a class="cp" href="#">
             <div class="cp-t clearfix">
                 <div class="name fl">熱氣球嘉年華</div>
                 <div class="discount fr">
@@ -27,8 +27,10 @@
                 <div class="dist fl">距離最近商家：200m</div>
                 <div class="num fr">數量：2</div>
             </div>
-        </a>
+        </a>-->
     </div>
+    <!--Footer引入-->
+    <div id="footer"></div>
 </div>
 </body>
 </html>
@@ -38,15 +40,25 @@
 
     //初始化頭部與腳步
     initHeaderFooter();
-
+    //取得用戶擁有的優惠券主題
     getCoupons();
 
-    //
-    function getCoupons() {
+    //取得用戶定位
+    var startPos;
+    var geoSuccess = function(position) {
+        startPos = position;
+        getCoupons(startPos.coords.latitude, startPos.coords.longitude)
+    };
+    navigator.geolocation.getCurrentPosition(geoSuccess);
+
+
+
+    //取得用戶擁有的優惠券主題
+    function getCoupons(lat, lng) {
         $.ajax({
             url: "/CouponServlet", context: document.body,
             type: "POST",
-            data: {"method": "getCouponThemeByUser", },
+            data: {"method": "getCouponThemeByUser", "lat":lat, "lng":lng},
             success: function (data) {
                 var themes = eval("(" + data + ")");
                 console.dir(themes);
@@ -60,11 +72,24 @@
                                     '<div class="value">' + themes[i].maxDiscount + '<div class="cur">NT</div></div>' +
                                 '</div>' +
                             '</div>' +
-                            '<div class="cp-b clearfix">' +
-                                '<div class="dist fl">距離最近商家：200m</div>' +
-                                '<div class="num fr">數量：' + themes[i].having + '</div>' +
+                            '<div class="cp-b clearfix">';
+
+                            //處理距離問題
+                            var dt = themes[i].minDistance;
+                            if(lat != undefined  && dt < 1000){
+                                dom += '<div class="dist fl">距離最近商家：' + (dt - dt%10) + ' M</div>';
+                            } else if (lat != undefined  && dt >= 1000) {
+                                dt = dt / 1000;
+                                dom += '<div class="dist fl">距離最近商家：' + dt.toFixed(1) + ' KM</div>';
+                            } else {
+                                dom += '<div class="dist fl">距離：未取得用戶定位</div>';
+                            }
+
+                            dom += '<div class="num fr">數量：' + themes[i].having + '</div>' +
                             '</div>' +
                         '</a>';
+
+                    console.dir(themes[i].minDistance)
                 }
                 $('#list').html(dom);
             },

@@ -9,6 +9,10 @@ public class User {
 	private String type;
 	private Timestamp registTime;
 	
+	//-----------------
+	private double lat; //用戶當前所在的緯度
+	private double lng;	//用戶當前所在的經度
+	
 	public String getId() {
 		return id;
 	}
@@ -38,6 +42,18 @@ public class User {
 	}
 	public void setRegistTime(Timestamp registTime) {
 		this.registTime = registTime;
+	}
+	public double getLat() {
+		return lat;
+	}
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+	public double getLng() {
+		return lng;
+	}
+	public void setLng(double lng) {
+		this.lng = lng;
 	}
 	
 }

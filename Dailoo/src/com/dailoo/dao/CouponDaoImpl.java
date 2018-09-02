@@ -222,11 +222,11 @@ public class CouponDaoImpl implements CouponDao{
 
 	@Override
 	public void updateCouponThemeById(CouponTheme theme) {
-		String sql = "update coupon_themes set name=?, maxDiscount=? where id=?";
+		String sql = "update coupon_themes set name=? where id=?";
 				
 		try {
 			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
-			runner.update(sql, theme.getName(), theme.getMaxDiscount(), theme.getId());
+			runner.update(sql, theme.getName(), theme.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

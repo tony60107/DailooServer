@@ -23,44 +23,58 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="editCoupon.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/coupon/admin/editCoupon.html">
+      <file leaf-file-name="myCoupon.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coupon/myCoupon.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.54565954">
-              <caret line="119" column="25" selection-start-line="119" selection-start-column="25" selection-end-line="119" selection-end-column="25" />
+            <state vertical-scroll-proportion="-13.0">
+              <caret line="50" column="6" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
               <folding>
-                <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#5550#6639#0" expanded="false" />
+                <element signature="e#422#924#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addCoupon.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/coupon/css/addCoupon.css">
+      <file leaf-file-name="coupon.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/coupon/coupon.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-26.967741">
-              <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.69082123">
+              <caret line="76" column="7" selection-start-line="76" selection-start-column="7" selection-end-line="76" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editSN.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile/editSN.html">
+      <file leaf-file-name="theme.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coupon/theme.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.451612">
-              <caret line="136" column="63" selection-start-line="136" selection-start-column="55" selection-end-line="136" selection-end-column="63" />
-              <folding />
+            <state vertical-scroll-proportion="-9.451612">
+              <caret line="90" column="26" selection-start-line="90" selection-start-column="26" selection-end-line="90" selection-end-column="26" />
+              <folding>
+                <element signature="n#style#0;n#div#2;n#div#2;n#a#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#3983#4469#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editSN.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile/css/editSN.css">
+      <file leaf-file-name="base.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coupon/js/base.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.5161295">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="18" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="1985" column="20" selection-start-line="1985" selection-start-column="9" selection-end-line="1985" selection-end-column="20" />
+              <folding>
+                <element signature="e#4767#40223#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coupon/header.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-18.967741">
+              <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -115,9 +129,6 @@
         <option value="$PROJECT_DIR$/mobile/js/base.js" />
         <option value="$PROJECT_DIR$/coupon/css/coupon.css" />
         <option value="$PROJECT_DIR$/coupon/css/myCoupon.css" />
-        <option value="$PROJECT_DIR$/coupon/myCoupon.html" />
-        <option value="$PROJECT_DIR$/coupon/theme.html" />
-        <option value="$PROJECT_DIR$/coupon/header.html" />
         <option value="$PROJECT_DIR$/mobile/editViewpoint.html" />
         <option value="$PROJECT_DIR$/coupon/editCoupon.html" />
         <option value="$PROJECT_DIR$/viewpoint.jsp" />
@@ -128,9 +139,6 @@
         <option value="$PROJECT_DIR$/coupon/css/base.css" />
         <option value="$PROJECT_DIR$/coupon/addCoupon.html" />
         <option value="$PROJECT_DIR$/coupon/admin/addCoupon.html" />
-        <option value="$PROJECT_DIR$/coupon/admin/footer.html" />
-        <option value="$PROJECT_DIR$/coupon/js/base.js" />
-        <option value="$PROJECT_DIR$/coupon/admin/header.html" />
         <option value="$PROJECT_DIR$/coupon/css/manageThemes.css" />
         <option value="$PROJECT_DIR$/coupon/css/manageCoupons.css" />
         <option value="$PROJECT_DIR$/coupon/admin/index.html" />
@@ -140,9 +148,15 @@
         <option value="$PROJECT_DIR$/coupon/admin/manageCoupons.html" />
         <option value="$PROJECT_DIR$/coupon/login.html" />
         <option value="$PROJECT_DIR$/coupon/admin/editCouponImg.html" />
-        <option value="$PROJECT_DIR$/coupon/coupon.html" />
         <option value="$PROJECT_DIR$/coupon/css/addCoupon.css" />
         <option value="$PROJECT_DIR$/coupon/admin/editCoupon.html" />
+        <option value="$PROJECT_DIR$/coupon/admin/footer.html" />
+        <option value="$PROJECT_DIR$/coupon/admin/header.html" />
+        <option value="$PROJECT_DIR$/coupon/js/base.js" />
+        <option value="$PROJECT_DIR$/coupon/header.html" />
+        <option value="$PROJECT_DIR$/coupon/theme.html" />
+        <option value="$PROJECT_DIR$/coupon/myCoupon.html" />
+        <option value="$PROJECT_DIR$/coupon/coupon.html" />
       </list>
     </option>
   </component>
@@ -219,7 +233,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -233,11 +247,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="viewpoint" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -921,12 +935,12 @@
       <workItem from="1533807354292" duration="19000" />
       <workItem from="1533834286161" duration="608000" />
       <workItem from="1534065744864" duration="8497000" />
-      <workItem from="1534220811466" duration="33027000" />
+      <workItem from="1534220811466" duration="49779000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1875755000" />
+    <option name="totallyTimeSpent" value="1892507000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -988,27 +1002,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/coupon/css/header.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7096774">
-          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/viewpoint.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="92" column="12" selection-start-line="44" selection-start-column="0" selection-end-line="92" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/viewpoint/imgSlider.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="81" column="5" selection-start-line="59" selection-start-column="4" selection-end-line="81" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/resources/html5-schema/html5/block.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -1022,26 +1015,6 @@
         <state vertical-scroll-proportion="0.12401353">
           <caret line="5" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coupon/theme.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.032258">
-          <caret line="63" column="70" selection-start-line="63" selection-start-column="70" selection-end-line="63" selection-end-column="70" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#div#2;n#a#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coupon/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.806452">
-          <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1138,14 +1111,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/viewpoint/viewpoint.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.10239651">
-          <caret line="232" column="4" selection-start-line="232" selection-start-column="4" selection-end-line="232" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/theme.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.372549">
@@ -1188,14 +1153,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coupon/myCoupon.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.339346">
-          <caret line="54" column="55" selection-start-line="54" selection-start-column="55" selection-end-line="54" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mobile/addViewpoint.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.62560385">
@@ -1204,38 +1161,6 @@
             <element signature="e#5898#6852#0" expanded="false" />
             <element signature="e#10286#11572#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile/js/base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47930282">
-          <caret line="139" column="5" selection-start-line="133" selection-start-column="3" selection-end-line="139" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!block;n#initPopMenu#0" expanded="false" />
-            <element signature="n#!!block;n#previewUploadImg#0" expanded="false" />
-            <element signature="e#4663#40119#0" expanded="false" />
-            <element signature="n#!!block;n#initCitySelec#0" expanded="false" />
-            <element signature="n#!!block;n#updateDist#0" expanded="false" />
-            <element signature="n#!!block;n#delTheme#0" expanded="false" />
-            <element signature="n#!!block;n#getAllSpeakers#0" expanded="false" />
-            <element signature="n#!!block;n#getViewpointsByLoginUser#0" expanded="false" />
-            <element signature="n#!!block;n#getAllRegions#0" expanded="false" />
-            <element signature="n#!!block;n#fillAllRegionList#0" expanded="false" />
-            <element signature="n#!!block;n#getThemesByRegionId#0" expanded="false" />
-            <element signature="n#!!block;n#toShortUrl#0" expanded="false" />
-            <element signature="n#!!block;n#copy#0" expanded="false" />
-            <element signature="n#!!block;n#leftCompleting#0" expanded="false" />
-            <element signature="n#!!block;n#checkImgFormat#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coupon/admin/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.709678">
-          <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1348,28 +1273,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coupon/js/base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0784314">
-          <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
-          <folding>
-            <element signature="e#4716#40172#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/coupon/css/manageThemes.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="9" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coupon/admin/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39007893">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -1469,14 +1376,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coupon/coupon.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41304347">
-          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/coupon/css/addCoupon.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-26.967741">
@@ -1501,14 +1400,132 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/editRegion.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.447576">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/addTheme.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.9267193">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/js/jquery.qrcode.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/js/base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31263617">
+          <caret line="1746" column="9" selection-start-line="1746" selection-start-column="9" selection-end-line="1746" selection-end-column="9" />
+          <folding>
+            <element signature="n#!!block;n#initPopMenu#0" expanded="false" />
+            <element signature="n#!!block;n#previewUploadImg#0" expanded="false" />
+            <element signature="e#4663#40119#0" expanded="false" />
+            <element signature="n#!!block;n#initCitySelec#0" expanded="false" />
+            <element signature="n#!!block;n#updateDist#0" expanded="false" />
+            <element signature="n#!!block;n#delTheme#0" expanded="false" />
+            <element signature="n#!!block;n#getViewpointsByLoginUser#0" expanded="false" />
+            <element signature="n#!!block;n#getAllRegions#0" expanded="false" />
+            <element signature="n#!!block;n#fillAllRegionList#0" expanded="false" />
+            <element signature="n#!!block;n#getThemesByRegionId#0" expanded="false" />
+            <element signature="n#!!block;n#toShortUrl#0" expanded="false" />
+            <element signature="n#!!block;n#copy#0" expanded="false" />
+            <element signature="n#!!block;n#leftCompleting#0" expanded="false" />
+            <element signature="n#!!block;n#checkImgFormat#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/coupon/admin/editCoupon.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54565954">
-          <caret line="119" column="25" selection-start-line="119" selection-start-column="25" selection-end-line="119" selection-end-column="25" />
+        <state vertical-scroll-proportion="-10.4838705">
+          <caret line="99" column="27" selection-start-line="98" selection-start-column="3" selection-end-line="99" selection-end-column="27" />
           <folding>
             <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#5550#6639#0" expanded="false" />
+            <element signature="e#5640#6729#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coupon/admin/footer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.967741">
+          <caret line="38" column="22" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/viewpoint/viewpoint.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="232" column="4" selection-start-line="232" selection-start-column="4" selection-end-line="232" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coupon/admin/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.62795943">
+          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coupon/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.967741">
+          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coupon/js/base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1985" column="20" selection-start-line="1985" selection-start-column="9" selection-end-line="1985" selection-end-column="20" />
+          <folding>
+            <element signature="e#4767#40223#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coupon/theme.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.451612">
+          <caret line="90" column="26" selection-start-line="90" selection-start-column="26" selection-end-line="90" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#2;n#a#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#3983#4469#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coupon/myCoupon.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.0">
+          <caret line="50" column="6" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
+          <folding>
+            <element signature="e#422#924#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coupon/coupon.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69082123">
+          <caret line="76" column="7" selection-start-line="76" selection-start-column="7" selection-end-line="76" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
