@@ -121,4 +121,11 @@ public interface CouponService extends Service{
 	 */
 	void updateCouponThemeById(CouponTheme theme);
 
+	/**
+	 * 取得登入者未擁有的其他主題優惠券的主題
+	 * @param loginUser 使用者Bean
+	 * @return 優惠券主題List
+	 */
+	List<CouponTheme> getOtherThemesByUser(User loginUser);
+
 }

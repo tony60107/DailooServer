@@ -36,7 +36,7 @@
     <div class="pop-alert" style="display: none">
         <div class="title">Dailoo</div>
         <div id="popAlertMsg" class="msg"></div>
-        <div class="ok" onclick="closeAlert">確定</div>
+        <div class="ok" onclick="$('.pop-alert').css('display', 'none');$('.pop-mask').css('display', 'none');">確定</div>
     </div>
 </div>
 </body>
@@ -44,5 +44,4 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
     initPopMenu();
-    function closeAlert(){$('.pop-alert').css('display', 'none');$('.pop-mask').css('display', 'none');}
 </script>

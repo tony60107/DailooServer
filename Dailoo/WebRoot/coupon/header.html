@@ -24,7 +24,6 @@
 
     //取得登入者資料，如果未登入，則跳轉到登入頁面
     function getLoginUser() {
-        console.dir(window.location.href.search(/login.html/))
         $.ajax({
             url: "/CouponServlet", context: document.body,
             type: "POST",

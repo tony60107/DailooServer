@@ -23,7 +23,7 @@
 
     <!--圖片區塊-->
     <div id="picShower" class="picshower clearfix">
-        <img id="mainPhoto" src="https://www.dailoo.com/ResourceServlet?url=/WEB-INF/upload/b/6/f/d/5/d/e/6/f0f6fed8-a495-4f61-9054-6d4e07e43727.jpg" alt="等候 漂流" class="pic" style="width: 980px; height: 735.383px; top: 0.308494px; left: 0px;">
+        <img id="mainPhoto" src="" alt="" class="pic" style="width: 980px; height: 735.383px; top: 0.308494px; left: 0px;">
         <button id="prevPic" class="prevpic"></button>
         <button id="nextPic" class="nextpic"></button>
         <div id="photoNum" class="photo-count">1/1</div>
@@ -35,8 +35,8 @@
 
     <div class="pop-func" style="display: none">
         <div class="title">如何取得優惠券</div>
-        <div id="opt1" class="opt">1.安安安安安安</div>
-        <div id="opt2" class="opt">2.安安安安安安</div>
+        <div id="opt1" class="opt">1.</div>
+        <div id="opt2" class="opt">2.</div>
         <div class="hint">注：優惠券只能於下次至相同店家或至主題內其他商家做使用。</div>
     </div>
 
@@ -52,6 +52,7 @@
 <script src="js/base.js"></script>
 <script>
 
+    var couponId = location.href.split('?id=')[1];
     var imgs;   //優惠券照片
     var imgNum = 0; //現在播放到第幾張照片
 
@@ -59,29 +60,15 @@
     initHeaderFooter();
 
     getCouponById();
+    getCouponThemeByUser();
 
-    $('#redeem').bind('click', function(){
-        var r = confirm("按下確定後，將會直接使用優惠券，請讓店員來點擊")
-        if(r == true) {
-            $.ajax({
-                url: "/CouponServlet", context: document.body,
-                type: "POST",
-                data: {"method": "useCoupon", "couponId": location.href.split('?id=')[1]},
-                success: function (data) {
-                    var result = eval("(" + data + ")");
-                    console.dir(result.msg)
-                    alert(result.msg);
-                },
-            });
-        }
-    });
 
     //根據優惠券ID，取得優惠券
     function getCouponById() {
         $.ajax({
             url: "/CouponServlet", context: document.body,
             type: "POST",
-            data: {"method": "getCouponById", "id": location.href.split('?id=')[1]},
+            data: {"method": "getCouponById", "id": couponId},
             success: function (data) {
                 var cp = eval("(" + data + ")");
                 console.dir(cp)
@@ -93,6 +80,7 @@
         });
     }
 
+    //初始化優惠券資訊
     function initCouponInfo(cp){
         $('#name').html(cp.name);
         $('#loc').attr('href', 'http://maps.google.com/?q=' + cp.address);
@@ -114,33 +102,76 @@
             $(".pop-mask").css('display', 'block');
         })
 
+        //初始化兌換按鈕
+        initRedeemBtn();
+    }
 
+    //初始化兌換按鈕
+    function initRedeemBtn(){
+        $('#redeem').css('background-color', '#FF3F3A')
+        $('#redeem').bind('click', function(){
+            var r = confirm("按下確定後，將會直接使用優惠券，請讓店員來點擊")
+            if(r == true) {
+                $.ajax({
+                    url: "/CouponServlet", context: document.body,
+                    type: "POST",
+                    data: {"method": "useCoupon", "couponId": location.href.split('?id=')[1]},
+                    success: function (data) {
+                        var result = eval("(" + data + ")");
+                        //console.dir(result.msg)
+                        alert(result.msg);
+                    },
+                });
+            }
+        });
     }
 
     //更新輪播圖主相片
     function updateMainPhoto(num) {
         var img = new Image();
-        img.src = '/ResourceServlet?url=' + imgs[num].src;
-        var imgWidth = img.width;
-        var imgHeight = img.height;
-        var aspRat = imgWidth / imgHeight; //寬高比
-        if (aspRat <= 1) { // 直式照片
-            mainPhoto.style.width = aspRat * 736 + "px";
-            mainPhoto.style.height = "736px";
-            mainPhoto.style.top = "0px";
-            mainPhoto.style.left = (980 - aspRat * 736) / 2 + "px";
-        } else { // 橫式照片
-            mainPhoto.style.width = "980px";
-            var height = 980 / aspRat > 736 ? 736 : 980 / aspRat;
-            mainPhoto.style.height = height + "px";
-            mainPhoto.style.top = (736 - height) / 2 + "px";
-            mainPhoto.style.left = "0px";
+        if(imgs[num] != undefined){
+            img.src = '/ResourceServlet?url=' + imgs[num].src;
+            var imgWidth = img.width;
+            var imgHeight = img.height;
+            var aspRat = imgWidth / imgHeight; //寬高比
+            if (aspRat <= 1) { // 直式照片
+                mainPhoto.style.width = aspRat * 736 + "px";
+                mainPhoto.style.height = "736px";
+                mainPhoto.style.top = "0px";
+                mainPhoto.style.left = (980 - aspRat * 736) / 2 + "px";
+            } else { // 橫式照片
+                mainPhoto.style.width = "980px";
+                var height = 980 / aspRat > 736 ? 736 : 980 / aspRat;
+                mainPhoto.style.height = height + "px";
+                mainPhoto.style.top = (736 - height) / 2 + "px";
+                mainPhoto.style.left = "0px";
+            }
+            mainPhoto.src = img.src;
+            imgNum = num;
+            $('#photoNum').html(num+1 + '/' + imgs.length);
         }
-        mainPhoto.src = img.src;
-        imgNum = num;
-        $('#photoNum').html(num+1 + '/' + imgs.length);
-//floatPhoto.src = src;
-//imgSliderClass.updatePhotoNumTxt(); //更新正在第幾張相片文字
+    }
+
+    //取得用戶擁有的優惠券主題
+    function getCouponThemeByUser() {
+        $.ajax({
+            url: "/CouponServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getCouponThemeByUser"},
+            success: function (data) {
+                var themes = eval("(" + data + ")");
+                console.dir(themes);
+                for(var i = 0; i < themes.length; i++) {
+                   if(themes[i].id == couponId){
+                       //初始化兌換按鈕
+                       initRedeemBtn();
+                   }
+                }
+            },
+            error: function(){
+                // setTimeout(function(){getCoupons();}, 1000);
+            }
+        });
     }
 
 </script>

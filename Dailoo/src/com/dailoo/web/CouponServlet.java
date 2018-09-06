@@ -107,7 +107,7 @@ public class CouponServlet extends HttpServlet {
 					response.getWriter().write("{}");
 				}
 			}
-			//取得登入者擁有的主題優惠券
+			//取得登入者擁有的主題優惠券的主題
 			else if("getCouponThemeByUser".equals(method)) {
 				//更新用戶當前所在的經緯度
 				User user = service.getUserById(loginUser.getId());
@@ -116,8 +116,21 @@ public class CouponServlet extends HttpServlet {
 					user.setLng(new Double(request.getParameter("lng")));
 					request.getSession().setAttribute("user", user);
 				}
-				//取得用戶擁有的主題優惠券
+				//取得用戶擁有的主題優惠券的主題
 				List<CouponTheme> cps = service.getThemesByUser(user) ;
+				response.getWriter().write(gson.toJson(cps));
+			}
+			//取得登入者還沒擁有的主題優惠券的主題
+			else if("getOtherCouponThemeByUser".equals(method)) {
+				//更新用戶當前所在的經緯度
+				User user = service.getUserById(loginUser.getId());
+				if(request.getParameter("lat") != null && request.getParameter("lng") != null){
+					user.setLat(new Double(request.getParameter("lat")));
+					user.setLng(new Double(request.getParameter("lng")));
+					request.getSession().setAttribute("user", user);
+				}
+				//取得用戶擁有的主題優惠券的主題
+				List<CouponTheme> cps = service.getOtherThemesByUser(user) ;
 				response.getWriter().write(gson.toJson(cps));
 			}
 			//更新優惠券資訊

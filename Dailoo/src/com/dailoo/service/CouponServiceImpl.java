@@ -198,6 +198,65 @@ public class CouponServiceImpl implements CouponService{
 	}
 
 	@Override
+	public List<CouponTheme> getOtherThemesByUser(User user) {
+		
+		List<CouponOrder> orders = dao.getCouponOrderByUserId(user.getId()); //使用者擁有的優惠券
+		List<CouponTheme> allThemes = dao.getCouponThemes(); //伺服器中所有的主題
+		List<CouponTheme> couponThemes = new ArrayList<CouponTheme>(); //未擁有優惠券的主題列表
+		
+		for(int i = 0; i < allThemes.size(); i++){
+			boolean isHaving = false; //是否此用戶已擁有該主題
+			for(int j = 0; j < orders.size(); j++) {
+				//如果用戶擁有該主題的優惠券
+				if(allThemes.get(i).getId().equals(orders.get(j).getCouponThemeId()) && orders.get(j).getStatus() != CouponOrder.USED){
+					isHaving = true; //紀錄已擁有
+					break;
+				}
+			}
+			//如果該用戶還沒有該主題的優惠券，則加進列表
+			if(isHaving == false) {
+				couponThemes.add(allThemes.get(i));
+			}
+		}
+		
+		//遍歷所有的主題，設定主題商家最近距離、最大折扣
+		for(int i = 0; i < couponThemes.size(); i++) {
+			CouponTheme theme = couponThemes.get(i);
+			
+			//將距離與折扣設定極值
+			theme.setMinDistance(Double.MAX_VALUE);
+			theme.setMaxDiscount(0);
+			
+			//找出改主題下所有的優惠券
+			List<Coupon> cps = dao.getCouponsByThemeId(theme.getId());
+			
+			//遍歷主題下所有的優惠券
+			for(int j = 0; j < cps.size(); j++) {
+				Coupon cp = cps.get(j);
+				
+				//當用戶允許取得定位時，計算用戶與主題中最近商家的距離
+				if(user.getLat() != 0 && user.getLng() != 0){
+					Double dist = GoogleMapUtils.getDistance(user.getLat(), user.getLng(), cp.getLat(), cp.getLng());
+					
+					//如果距離比當前的紀錄小，則更改紀錄
+					if(dist < theme.getMinDistance()){
+						DecimalFormat df = new DecimalFormat("##");
+						theme.setMinDistance(Double.parseDouble(df.format(dist)));
+					}
+				}
+				
+				//如果優惠券折扣比當前主題紀錄大，則更改紀錄
+				if(cp.getDiscount() > theme.getMaxDiscount()) {
+					theme.setMaxDiscount(cp.getDiscount());
+				}
+			}
+		}
+		
+		
+		return couponThemes;
+	}
+
+	@Override
 	public void updateCouponById(Coupon coupon) {
 		
 		//設定優惠券店家經緯度

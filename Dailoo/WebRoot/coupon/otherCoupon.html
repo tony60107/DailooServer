@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>其他主題優惠券</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/myCoupon.css">
+    <meta name="viewport" content="user-scalable=no"/>
+</head>
+<body>
+<div class="w">
+
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">其他主題優惠券</div>
+    <a href="/coupon/myCoupon.html" class="other-link">我的主題優惠券</a>
+
+    <div id="list" class="list clearfix">
+
+    </div>
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
+<script>
+
+    //初始化頭部與腳步
+    initHeaderFooter();
+    //取得用戶未擁有的優惠券主題
+    getOtherCoupons();
+
+
+    //取得用戶定位
+    var startPos;
+    var geoSuccess = function(position) {
+        startPos = position;
+        getOtherCoupons(startPos.coords.latitude, startPos.coords.longitude)
+    };
+    navigator.geolocation.getCurrentPosition(geoSuccess);
+
+    //取得用戶未擁有的優惠券主題
+    function getOtherCoupons(lat, lng) {
+        $.ajax({
+            url: "/CouponServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getOtherCouponThemeByUser", "lat":lat, "lng":lng},
+            success: function (data) {
+                var themes = eval("(" + data + ")");
+                console.dir(themes);
+                var dom = '';
+                for(var i = 0; i < themes.length; i++) {
+                    dom += '<a class="cp" href="/coupon/theme.html?id=' + themes[i].id + '">' +
+                            '<div class="cp-t clearfix">' +
+                            '<div class="name fl">' + themes[i].name + '</div>' +
+                            '<div class="discount fr">' +
+                            '<div class="title">最高折扣</div>' +
+                            '<div class="value">' + themes[i].maxDiscount + '<div class="cur">NT</div></div>' +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="cp-b clearfix">';
+
+                    //處理距離問題
+                    var dt = themes[i].minDistance;
+                    if(lat != undefined  && dt < 1000){
+                        dom += '<div class="dist fl">距離最近商家：' + (dt - dt%10) + ' M</div>';
+                    } else if (lat != undefined  && dt >= 1000) {
+                        dt = dt / 1000;
+                        dom += '<div class="dist fl">距離最近商家：' + dt.toFixed(1) + ' KM</div>';
+                    } else {
+                        dom += '<div class="dist fl">距離：未取得用戶定位</div>';
+                    }
+
+                    dom += '<div class="num fr">數量：0</div>' +
+                            '</div>' +
+                            '</a>';
+
+                    console.dir(themes[i].minDistance)
+                }
+                $('#list').html(dom);
+            },
+            error: function(){
+                // setTimeout(function(){getCoupons();}, 1000);
+            }
+        });
+    }
+</script>
