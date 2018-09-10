@@ -2,7 +2,8 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>優惠券</title>
+    <title>優惠券 - Dailoo優惠券</title>
+    <link rel="shortcut icon" href="../images/general/dailoo.png">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/coupon.css">
     <meta name="viewport" content="user-scalable=no"/>
@@ -58,8 +59,9 @@
 
     //初始化頭部與腳步
     initHeaderFooter();
-
+    //根據優惠券ID，取得優惠券
     getCouponById();
+    //取得用戶擁有的優惠券主題，確定該用戶是否可以使用優惠券
     getCouponThemeByUser();
 
 
@@ -102,8 +104,6 @@
             $(".pop-mask").css('display', 'block');
         })
 
-        //初始化兌換按鈕
-        initRedeemBtn();
     }
 
     //初始化兌換按鈕
@@ -152,7 +152,7 @@
         }
     }
 
-    //取得用戶擁有的優惠券主題
+    //取得用戶擁有的優惠券主題，確定該用戶是否可以使用優惠券
     function getCouponThemeByUser() {
         $.ajax({
             url: "/CouponServlet", context: document.body,
@@ -169,7 +169,7 @@
                 }
             },
             error: function(){
-                // setTimeout(function(){getCoupons();}, 1000);
+                setTimeout(function(){getCouponThemeByUser();}, 1000);
             }
         });
     }

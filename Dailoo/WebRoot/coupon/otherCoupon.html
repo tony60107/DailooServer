@@ -2,7 +2,9 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>其他主題優惠券</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>其他優惠券 - Dailoo優惠券</title>
+    <link rel="shortcut icon" href="../images/general/dailoo.png">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/myCoupon.css">
     <meta name="viewport" content="user-scalable=no"/>
@@ -68,7 +70,7 @@
                     var dt = themes[i].minDistance;
                     if(lat != undefined  && dt < 1000){
                         dom += '<div class="dist fl">距離最近商家：' + (dt - dt%10) + ' M</div>';
-                    } else if (lat != undefined  && dt >= 1000) {
+                    } else if (lat != undefined  && dt >= 1000 && dt < 10000000) {
                         dt = dt / 1000;
                         dom += '<div class="dist fl">距離最近商家：' + dt.toFixed(1) + ' KM</div>';
                     } else {
