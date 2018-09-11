@@ -147,8 +147,8 @@
                           <fmt:formatNumber var="min" value="${(vp.audioLength - vp.audioLength % 60) / 60}" pattern="##" maxFractionDigits="0" type="number"/>
                           <c:if test="${min+0 >= 10}">${min}:</c:if>
                           <c:if test="${min+0 < 10}">0${min}:</c:if>
-                          <c:if test="${vp.audioLength % 60 > 9}">${vp.audioLength % 60}</c:if>
-                          <c:if test="${vp.audioLength % 60 < 9}">0${vp.audioLength % 60}</c:if>
+                          <c:if test="${vp.audioLength % 60 >= 10}">${vp.audioLength % 60}</c:if>
+                          <c:if test="${vp.audioLength % 60 < 10}">0${vp.audioLength % 60}</c:if>
                       </div>
                   </div>
               </a>

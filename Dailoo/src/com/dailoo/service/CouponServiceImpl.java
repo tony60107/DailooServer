@@ -227,8 +227,11 @@ public class CouponServiceImpl implements CouponService{
 			theme.setMinDistance(Double.MAX_VALUE);
 			theme.setMaxDiscount(0);
 			
-			//找出改主題下所有的優惠券
+			//找出該主題下所有的優惠券
 			List<Coupon> cps = dao.getCouponsByThemeId(theme.getId());
+			
+			//如果該主題下沒有優惠券，則移除
+			//if(cps.size() == 0) couponThemes.remove(theme);
 			
 			//遍歷主題下所有的優惠券
 			for(int j = 0; j < cps.size(); j++) {

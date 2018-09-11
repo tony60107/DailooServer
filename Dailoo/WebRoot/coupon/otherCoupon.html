@@ -56,7 +56,8 @@
                 console.dir(themes);
                 var dom = '';
                 for(var i = 0; i < themes.length; i++) {
-                    dom += '<a class="cp" href="/coupon/theme.html?id=' + themes[i].id + '">' +
+                    if(themes[i].maxDiscount != 0) { //如果該主題下有優惠券
+                        dom += '<a class="cp" href="/coupon/theme.html?id=' + themes[i].id + '">' +
                             '<div class="cp-t clearfix">' +
                             '<div class="name fl">' + themes[i].name + '</div>' +
                             '<div class="discount fr">' +
@@ -66,22 +67,23 @@
                             '</div>' +
                             '<div class="cp-b clearfix">';
 
-                    //處理距離問題
-                    var dt = themes[i].minDistance;
-                    if(lat != undefined  && dt < 1000){
-                        dom += '<div class="dist fl">距離最近商家：' + (dt - dt%10) + ' M</div>';
-                    } else if (lat != undefined  && dt >= 1000 && dt < 10000000) {
-                        dt = dt / 1000;
-                        dom += '<div class="dist fl">距離最近商家：' + dt.toFixed(1) + ' KM</div>';
-                    } else {
-                        dom += '<div class="dist fl">距離：未取得用戶定位</div>';
-                    }
+                        //處理距離問題
+                        var dt = themes[i].minDistance;
+                        if(lat != undefined  && dt < 1000){
+                            dom += '<div class="dist fl">距離最近商家：' + (dt - dt%10) + ' M</div>';
+                        } else if (lat != undefined  && dt >= 1000 && dt < 10000000) {
+                            dt = dt / 1000;
+                            dom += '<div class="dist fl">距離最近商家：' + dt.toFixed(1) + ' KM</div>';
+                        } else {
+                            dom += '<div class="dist fl">距離：未取得用戶定位</div>';
+                        }
 
-                    dom += '<div class="num fr">數量：0</div>' +
+                        dom += '<div class="num fr">數量：0</div>' +
                             '</div>' +
                             '</a>';
 
-                    console.dir(themes[i].minDistance)
+                        console.dir(themes[i].minDistance)
+                    }
                 }
                 $('#list').html(dom);
             },

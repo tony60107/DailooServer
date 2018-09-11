@@ -31,7 +31,6 @@
     </div>
 
     <div id="intro" class="intro">
-        台北東區抹茶專賣店、甜點店與咖啡廳聚集，突然要挑一家去不知道該選哪一家嗎？那看這篇就對了！抹茶控毛毛整理了17家台北捷運板南線東區一帶的店家，其實本來只想挑個10家給大家，但是有些好店實在很想不分享不行XD，另外有幾家還有影音食記喔。
     </div>
 
     <div class="pop-func" style="display: none">
@@ -56,25 +55,26 @@
     var couponId = location.href.split('?id=')[1];
     var imgs;   //優惠券照片
     var imgNum = 0; //現在播放到第幾張照片
+    var cp; //優惠券資料
 
     //初始化頭部與腳步
     initHeaderFooter();
     //根據優惠券ID，取得優惠券
-    getCouponById();
-    //取得用戶擁有的優惠券主題，確定該用戶是否可以使用優惠券
-    getCouponThemeByUser();
+    getCouponById(getCouponThemeByUser);
 
 
     //根據優惠券ID，取得優惠券
-    function getCouponById() {
+    function getCouponById(callback) {
         $.ajax({
             url: "/CouponServlet", context: document.body,
             type: "POST",
             data: {"method": "getCouponById", "id": couponId},
             success: function (data) {
-                var cp = eval("(" + data + ")");
-                console.dir(cp)
+                cp = eval("(" + data + ")");
+                console.dir(cp);
                 initCouponInfo(cp);
+
+                if(callback != undefined) callback();
             },
             error: function(){
                 setTimeout(function(){getCouponById();}, 1000);
@@ -87,7 +87,7 @@
         $('#name').html(cp.name);
         $('#loc').attr('href', 'http://maps.google.com/?q=' + cp.address);
         $('#intro').html(cp.intro);
-        $('#redeem').html('使用優惠券＄' + cp.discount);
+        $('#redeem').html('尚未擁有此優惠券');
 
         imgs = cp.imgs;
         updateMainPhoto(0);
@@ -107,23 +107,28 @@
     }
 
     //初始化兌換按鈕
-    function initRedeemBtn(){
-        $('#redeem').css('background-color', '#FF3F3A')
-        $('#redeem').bind('click', function(){
-            var r = confirm("按下確定後，將會直接使用優惠券，請讓店員來點擊")
-            if(r == true) {
-                $.ajax({
-                    url: "/CouponServlet", context: document.body,
-                    type: "POST",
-                    data: {"method": "useCoupon", "couponId": location.href.split('?id=')[1]},
-                    success: function (data) {
-                        var result = eval("(" + data + ")");
-                        //console.dir(result.msg)
-                        alert(result.msg);
-                    },
+    function initRedeemBtn(themes){
+        for(var i = 0; i < themes.length; i++) { //判斷該用戶是否擁有該主題優惠券
+            if(themes[i].id == cp.themeId) { //如果該用戶有該主題優惠券
+                $('#redeem').css('background-color', '#FF3F3A');
+                $('#redeem').html('使用優惠券＄' + cp.discount);
+                $('#redeem').bind('click', function () {
+                    var r = confirm("按下確定後，將會直接使用優惠券，請讓店員來點擊")
+                    if (r == true) {
+                        $.ajax({
+                            url: "/CouponServlet", context: document.body,
+                            type: "POST",
+                            data: {"method": "useCoupon", "couponId": location.href.split('?id=')[1]},
+                            success: function (data) {
+                                var result = eval("(" + data + ")");
+                                //console.dir(result.msg)
+                                alert(result.msg);
+                            },
+                        });
+                    }
                 });
             }
-        });
+        }
     }
 
     //更新輪播圖主相片
@@ -160,13 +165,9 @@
             data: {"method": "getCouponThemeByUser"},
             success: function (data) {
                 var themes = eval("(" + data + ")");
-                console.dir(themes);
-                for(var i = 0; i < themes.length; i++) {
-                   if(themes[i].id == couponId){
-                       //初始化兌換按鈕
-                       initRedeemBtn();
-                   }
-                }
+                console.dir(themes)
+               //初始化兌換按鈕
+               initRedeemBtn(themes);
             },
             error: function(){
                 setTimeout(function(){getCouponThemeByUser();}, 1000);
