@@ -31,8 +31,6 @@ public class TagServlet extends HttpServlet {
 		if("addTag".equals(method)){
 			Map<String, String> paramMap = FileUploadUtils.getParamMap(request,response, this);
 			service.addTag(paramMap);
-			
-			response.sendRedirect("/editAudio.html?id=" + paramMap.get("audioId"));
 		}
 		//如果是根據音檔ID取得所有標記
 		else if("getTagsByAudioId".equals(method)){

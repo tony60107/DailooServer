@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>行程導覽 :: Dailoo帶路行動語音導覽服務</title>
+    <meta name="viewport" content="user-scalable=no"/>
+    <link rel="shortcut icon" href="images/general/dailoo.png">
+    <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/route.css"/>
+</head>
+<body>
+<div class="w">
+    <div id="map"></div>
+    <div id="vps" class="vps">
+        <div class="vp">
+            <div class="vp-l fl">1</div>
+            <div class="vp-r fr">
+                <div class="name">部落美食</div>
+                <div class="intro">好吃好吃</div>
+            </div>
+        </div>
+    </div>
+    <!--浮動播放器-->
+    <div id="floatPlayer" class="float-player-bg">
+        <div class="float-player">
+            <a href="javascript:void(0)" onclick=""><div class="pic"><img id="floatPhoto" src="" alt=""></div></a>
+            <div id="flPreTagBtn" class="pre"></div>
+            <div id="flPlayBtn" class="play"></div>
+            <div id="flNextTagBtn" class="next"></div>
+            <div id="flNowTime" class="time">0:00</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtkHtxJhAxfxCzkdphlPoDoSuCq4FTh_c"></script>
+<script>
+    // In the following example, markers appear when the user clicks on the map.
+    // Each marker is labeled with a single alphabetical character.
+
+    //桌機則將頁面比例調為50％
+    if(window.screen.width > 980){$("body").css("zoom","50%");$("#map").css("zoom","200%");}
+    $(window).resize(function() {if(window.screen.width > 980){$("body").css("zoom","50%");}});
+
+    var directionsDisplay;
+    var directionsService = new google.maps.DirectionsService();
+    var map;
+
+
+    var vps = [
+        {name:'部落美食', intro:'好吃好吃',lat:22.9038364,lng:121.1265944},
+        {name:'鹿野地區', intro:'好玩好玩', lat:22.9315176,lng:121.1287711},
+        {name:'熱氣球',intro:'好漂亮', lat:22.9038364,lng:121.2053963},
+        {name:'風景區',intro:'好看好看', lat:22.6350723,lng:121.0006384},
+    ];
+
+    function initMap() {
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: { lat: 22.9038364, lng: 121.2053963 }
+        });
+
+        directionsDisplay = new google.maps.DirectionsRenderer({
+            'map': map,
+            'preserveViewport': true,
+            'draggable': true,
+            suppressMarkers: true //隱藏默認圖標
+        });
+
+        renderRouter(vps);
+
+    }
+
+    function renderRouter(vps) {
+        var start;  //路線起點
+        var end;    //路線終點
+        var waypts = [];    //路線陣列
+        var markers = [];   //地標陣列
+        var infowindow = new google.maps.InfoWindow(); //地標資訊初始化
+        var vpsDom = ''; //地圖下方景點列表DOMS
+
+        for(var i = 0; i < vps.length; i++){
+
+            //劃出路線
+            if(i == 0) start = {lat: vps[i].lat, lng: vps[i].lng}
+            else if(i == vps.length - 1) end = {lat: vps[i].lat, lng: vps[i].lng}
+            else {
+                waypts.push({
+                    location: {lat: vps[i].lat, lng: vps[i].lng},
+                    stopover: true
+                });
+            }
+
+            //增加標記
+            markers[i] = new google.maps.Marker({
+                position: {lat: vps[i].lat, lng: vps[i].lng},
+                map: map,
+                label: {text: i+1 + "" , color: "white", },
+                icon: "images/route/marker.png",
+                infoContent: '<div>' + vps[i].name + '</div>' + '<div>' + vps[i].intro + '</div>',
+            });
+
+            //設定WindowInfo內容
+            google.maps.event.addListener(markers[i], 'click', function() {
+                if (infowindow){ infowindow.close();}
+                infowindow.setContent(this.infoContent);
+                infowindow.open(map, this);
+            });
+
+            //設定景點列表內容
+            vpsDom += '<div class="vp clearfix" onclick="showVpInfo(this);">' +
+                '<div class="vp-l fl">' + (i+1) + '</div>' +
+                '<div class="vp-r fr">' +
+                '<div class="name">' + vps[i].name + '</div>' +
+                '<div class="intro">' + vps[i].intro + '</div>' +
+                '</div>' +
+                '</div>';
+        }
+
+        $('#vps').html(vpsDom);
+
+
+        //設定路線計算參數
+        var request = {
+            origin:start,		//起始地
+            destination:end,	//目的地
+            waypoints: waypts,
+            travelMode: google.maps.DirectionsTravelMode.DRIVING //旅行工具 WALKING | DRIVING
+        };
+
+        //Google計算路線
+        directionsService.route(request, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+            }
+        });
+
+
+    }
+
+    //點擊景點列表，顯示對應資訊
+    function showVpInfo(vpDom){
+        //console.dir(vps[$(vp).find('.vp-l').html()-1]);
+        var vp = vps[$(vpDom).find('.vp-l').html()-1]; //點擊的景點資訊
+
+        //移動地圖中心點
+        var center = new google.maps.LatLng(vp.lat, vp.lng);
+        map.panTo(center);
+    }
+    google.maps.event.addDomListener(window, 'load', initMap);
+</script>

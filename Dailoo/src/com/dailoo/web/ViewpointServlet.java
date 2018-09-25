@@ -96,7 +96,6 @@ public class ViewpointServlet extends HttpServlet {
 					}
 				}
 				
-				response.sendRedirect("/updateViewpointInfo.html?id=" + vp.getId());
 			}
 			//如果是更新景點
 			else if("updateViewpoint".equals(method)){
@@ -134,7 +133,6 @@ public class ViewpointServlet extends HttpServlet {
 				} else {
 					throw new RuntimeException("您沒有權限更改該景點資訊");
 				}
-				response.sendRedirect("/updateViewpointInfo.html?id=" + vp.getId());
 			}
 			//如果是取得景點資訊
 			else if("getViewpointInfo".equals(method)){

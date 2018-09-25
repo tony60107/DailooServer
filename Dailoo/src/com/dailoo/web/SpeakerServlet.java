@@ -92,7 +92,6 @@ public class SpeakerServlet extends HttpServlet {
 						speaker.setId(loginUser.getId());
 						service.updateSpeakerInfo(speaker, paramMap.get("imgurls"));
 					}
-					response.sendRedirect("/updateSpeakerInfo.html");
 				}
 				//如果有指定要更改講者資訊的ID
 				else if(paramMap.get("id") != null) {
@@ -104,7 +103,6 @@ public class SpeakerServlet extends HttpServlet {
 						//將新資訊進行封裝
 						BeanUtils.populate(speaker, paramMap);
 						service.updateSpeakerInfo(speaker, paramMap.get("imgurls"));
-						response.sendRedirect("/updateSpeakerInfo.html?id=" + paramMap.get("id"));
 					} else {
 						throw new RuntimeException("您沒有權限更改講者資訊");
 					} 
