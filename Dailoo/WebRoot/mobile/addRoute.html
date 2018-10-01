@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 新增路線</title>
+    <link rel="stylesheet" href="css/base.css">
+    <meta name="viewport" content="user-scalable=no"/>
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">新增路線</div>
+
+    <div class="input no-title">
+        <input id="name" class="cont" placeholder="路線名稱"/>
+    </div>
+
+    <!--上傳按鈕-->
+    <div class="submit-btns clearfix" onselectstart="return false;">
+        <div class="submit-l">取消</div>
+        <div class="submit-r hint" onclick="submitForm();">新增</div>
+    </div>
+
+
+    <!--上傳表單-->
+    <form id="mainForm" action="/RouteServlet?method=addRoute" method="post" style="display: none">
+        <div>路線名稱<input type="text" name="name"></div>
+    </form>
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
+<script>
+
+    //初始化頭部與腳步
+    initHeaderFooter();
+
+    //表單與表單中的控件
+    var form = $('#mainForm');
+    var ipName = form.find('input[name="name"]');
+
+    function checkFrom() {
+        if(ipName.val() == ''){alert('尚未填寫路線名稱'); return false;}
+        return true;
+    }
+
+    //上傳資料
+    function submitForm(){
+
+        //將資料填入不顯示的表單中
+        ipName.val($('#name').val());
+
+        //檢查表單資料
+        if(checkFrom()){
+            //上傳表單
+            $.ajax({
+                url:"/RouteServlet?method=addRoute",
+                type: "POST",
+                data:form.serialize(),//將表單資料序列化
+                success:function(result){
+                    alert("新增成功！！","/mobile/addRoute.html");
+                },
+                error:function(result){
+                    alert("新增失敗")
+                }
+            });
+        }
+
+    }
+</script>

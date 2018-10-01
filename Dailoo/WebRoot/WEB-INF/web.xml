@@ -130,7 +130,10 @@
     <servlet-name>CouponServlet</servlet-name>
     <servlet-class>com.dailoo.web.CouponServlet</servlet-class>
   </servlet>
-
+  <servlet>
+    <servlet-name>RouteServlet</servlet-name>
+    <servlet-class>com.dailoo.web.RouteServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
@@ -199,17 +202,17 @@
     <servlet-name>CouponServlet</servlet-name>
     <url-pattern>/CouponServlet</url-pattern>
   </servlet-mapping>
-  
-  
+  <servlet-mapping>
+    <servlet-name>RouteServlet</servlet-name>
+    <url-pattern>/RouteServlet</url-pattern>
+  </servlet-mapping>
   <security-constraint>
     <web-resource-collection>
-        <web-resource-name>securedapp</web-resource-name>
-        <url-pattern>/*</url-pattern>
+      <web-resource-name>securedapp</web-resource-name>
+      <url-pattern>/*</url-pattern>
     </web-resource-collection>
     <user-data-constraint>
-        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
     </user-data-constraint>
   </security-constraint>
-  
-
 </web-app>

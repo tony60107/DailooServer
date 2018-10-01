@@ -68,8 +68,8 @@ function activeSelec(selec, optCallback) {
                 selecCont.dataset.value = this.dataset.value;
             }
 
-            //呼叫回調函數
-            if(optCallback != undefined) optCallback(selec);
+            //呼叫回調函數，參數:下拉選單、點擊的選項
+            if(optCallback != undefined) optCallback(selec, this);
 
             //關閉彈出式菜單
             $popMask.css('display','none');

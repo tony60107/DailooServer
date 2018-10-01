@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dailoo - 編輯路線景點</title>
+    <link rel="stylesheet" href="css/base.css">
+    <meta name="viewport" content="user-scalable=no"/>
+    <style>
+        .vp {
+            margin: auto;
+            position: relative;
+            width: 780px;
+        }
+        .vp .del-vp {
+            position: absolute;
+            top: -20px;
+            right: -44px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="w">
+    <!--header引入-->
+    <div id="header"></div>
+
+    <div class="main-title">編輯路線景點</div>
+
+    <div id="vpGroup">
+        <div class="vp">
+            <div class="selec vp-name">
+                <div class="name">景點 1</div>
+                <div class="cont">請選擇</div>
+                <div class="arrow"></div>
+                <div class="vp-name-list opt-data">
+                    <div class="title">切換至其他景點</div>
+                </div>
+            </div>
+            <div class="selec vp-fullname no-title">
+                <div class="vp-cont cont">請選擇</div>
+                <div class="arrow"></div>
+                <div class="vp-fullname-list opt-data">
+                    <div class="title">切換至其他景點</div>
+                </div>
+            </div>
+            <img onclick="$(this.parentNode).remove()" src="images/editAudio/delete.png" class="del-vp">
+        </div>
+    </div>
+
+    <div class="add-theme clearfix">
+        <div id="addVpBtn" class="btn fl" onclick="addVpSelec();"></div>
+        <div class="desc fl">增加景點<span>［？］</span></div>
+    </div>
+
+    <div class="submit-btns clearfix">
+        <div class="submit-l">取消</div>
+        <div class="submit-r hint" onclick="submitForm();">儲存</div>
+    </div>
+
+    <!--Footer引入-->
+    <div id="footer"></div>
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/base.js"></script>
+<script>
+    var routeId = location.href.split("id=")[1];
+    var vps;    //所有的景點資料
+    var vpNames = new Map(); //景點名稱Map，用於過濾重複的景點名稱
+
+    //初始化頭部與腳步
+    initHeaderFooter();
+
+    //取得所有的簡易景點
+    getViewpointSimples(getRouteViewpointsByRouteId);
+
+
+    //激活所有的下拉選單
+    activeAllSelec(function(selec, opt){optClickEvent(selec, opt)});
+
+
+
+    //將景點資料填入景點名稱列表
+    function initVpNameList() {
+        var dom = '<div class=\"title\">切換至其他景點</div>';
+        vpNames.forEach(function (vp) {
+            dom += '<div class="opt" data-value="' + vp.id + '">' + vp.name + '</div>';
+        });
+        $('.vp-name-list').html(dom);
+    }
+
+    //點擊 POP-MENU 選項的回調函數
+    function optClickEvent(selec, opt){
+
+        //如果是點選景點名稱下拉選單
+        if($(selec).hasClass('vp-name')){
+            var vpList = $(selec.parentNode).find('.vp-fullname-list'); //景點全名下拉選單列表
+            var flag = false; //紀錄是否變更過景點全名列表的值
+            var dom = ' <div class="title">切換至其他景點</div>';
+            //根據景點名稱，將景點全名填入下拉選單列表
+            for(var i = 0; i < vps.length; i++) {
+                if(vps[i].name == $(opt).text()){
+                    dom += '<div class="opt" data-value="' + vps[i].id +'">' + vps[i].name + ' - ' + vps[i].subtitle + '</div>';
+                    //設定全名下拉選單默認值
+                    if(flag == false) {
+                        var $vpCont = $(selec.parentNode).find('.vp-cont');
+                        $vpCont.html(vps[i].name + ' - ' + vps[i].subtitle);
+                        $vpCont.get(0).dataset.value = vps[i].id;
+                    }
+                    flag = true;
+                }
+            }
+            vpList.html(dom);
+
+        }
+        //如果是景點全名下拉選單
+        else if($(selec).hasClass('vp-fullname')) {
+            //設定下拉選單的data-value
+            $(selec).find(".cont").get(0).dataset.value = opt.dataset.value;
+        }
+    }
+
+    //新增景點下拉選單
+    function addVpSelec() {
+        var dom = '<div class="vp">\n' +
+            '            <div class="selec vp-name">\n' +
+            '                <div class="name">景點 ' + ($('.vp').length+1) + '</div>\n' +
+            '                <div class="cont">請選擇</div>\n' +
+            '                <div class="arrow"></div>\n' +
+            '                <div class="vp-name-list opt-data">\n' +
+            '                    <div class="title">切換至其他景點</div>\n' +
+            '                </div>\n' +
+            '            </div>\n' +
+            '            <div class="selec vp-fullname no-title">\n' +
+            '                <div class="vp-cont cont">請選擇</div>\n' +
+            '                <div class="arrow"></div>\n' +
+            '                <div class="vp-fullname-list opt-data">\n' +
+            '                    <div class="title">切換至其他景點</div>\n' +
+            '                </div>\n' +
+            '            </div>\n' +
+            '            <img onclick="$(this.parentNode).remove()" src="images/editAudio/delete.png" class="del-vp">' +
+            '        </div>';
+        $('#vpGroup').append(dom);
+
+        //將景點資料填入景點名稱列表
+        initVpNameList();
+
+        //激活所有的下拉選單
+        activeAllSelec(function(selec, opt){optClickEvent(selec, opt)});
+    }
+
+    //取得所有的簡易景點
+    function getViewpointSimples(callback){
+        $.ajax({
+            url: "/ViewpointServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getAllViewpointSimples"},
+            success:function(data){
+                vps = eval("(" + data + ")");
+                //console.dir(vps)
+
+                //將景點資料填入Map中，過濾重複的景點名稱
+                for (var i = 0; i < vps.length; i++) {vpNames.set(vps[i].name, vps[i]);}
+
+                //將景點資料填入景點名稱列表
+                initVpNameList();
+
+                if(callback != undefined) callback();
+            },
+            error:function(result){
+                setTimeout(function() { getViewpointSimples() }, 1000);
+            }
+        });
+    }
+
+    //根據路線ID，取得路線景點
+    function getRouteViewpointsByRouteId() {
+        $.ajax({
+            url: "/RouteServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getRouteViewpointsByRouteId", "routeId": routeId},
+            success:function(data){
+                var rvps = eval("(" + data + ")");
+                //console.dir(rvps)
+                var dom = '';
+                for(var i = 0; i < rvps.length; i++) {
+                    dom += '<div class="vp">\n' +
+                        '            <div class="selec vp-name">\n' +
+                        '                <div class="name">景點 ' + (i+1) + '</div>\n' +
+                        '                <div class="cont">請選擇</div>\n' +
+                        '                <div class="arrow"></div>\n' +
+                        '                <div class="vp-name-list opt-data">\n' +
+                        '                    <div class="title">切換至其他景點</div>\n' +
+                        '                </div>\n' +
+                        '            </div>\n' +
+                        '            <div class="selec vp-fullname no-title">\n' +
+                        '                <div class="vp-cont cont" data-value="'+ rvps[i].viewpointId +'">請選擇</div>\n' +
+                        '                <div class="arrow"></div>\n' +
+                        '                <div class="vp-fullname-list opt-data">\n' +
+                        '                    <div class="title">切換至其他景點</div>\n' +
+                        '                </div>\n' +
+                        '            </div>\n' +
+                        '            <img onclick="$(this.parentNode).remove()" src="images/editAudio/delete.png" class="del-vp">' +
+                        '        </div>';
+                }
+                $('#vpGroup').html(dom);
+
+                //設定下拉選單被選中內容
+                var $vpCont = $('.vp-cont'); //所有的景點全名下拉選單
+                for(var i = 0; i < $vpCont.length; i++) {
+                    var vpId = $vpCont[i].dataset.value;  //該下拉選單對應的景點ID
+                    var $vpNameCont = $($vpCont[i].parentNode.parentNode).find('.vp-name').find('.cont'); //景點名稱下拉選單內容
+
+                    //設定下拉選單被選中內容
+                    for(var j = 0; j < vps.length; j++) {
+                        if(vpId == vps[j].id) { //如果找到對應的景點資料
+                            //設定下拉選單被選中內容
+                            $vpNameCont.html(vps[j].name);
+                            $($vpCont[i]).html(vps[j].name + " - " + vps[j].subtitle);
+                        }
+                    }
+
+                    //設定景點全名下拉選單列表內容
+                    var dom = '<div class="title">切換至其他景點</div>';
+                    for(var j = 0; j < vps.length; j++) {
+                        if(vps[j].name == $vpNameCont.text()) {
+                            dom += '<div class="opt" data-value="' + vps[j].id +'">' + vps[j].name + ' - ' + vps[j].subtitle + '</div>';
+                        }
+                    }
+                    $($vpCont[i].parentNode.parentNode).find('.vp-fullname-list').html(dom);
+                }
+
+                //將景點資料填入景點名稱列表
+                initVpNameList();
+
+                //激活所有的下拉選單
+                activeAllSelec(function(selec, opt){optClickEvent(selec, opt)});
+
+            },
+            error:function(result){
+                setTimeout(function() { getViewpointSimples() }, 1000);
+            }
+        });
+    }
+
+
+    //更新路線景點資料
+    function submitForm() {
+        var $vps = $('.vp-cont');
+        var result = ''; //紀錄路線景點結果
+        for(var i = 0; i < $vps.length; i++) {
+            var val = $vps.get(i).dataset.value;
+            if(val != undefined) {
+                result += val + ',';
+            }
+        }
+        result = result.substr(0, result.length-1)
+        $.ajax({
+            url: "/RouteServlet", context: document.body,
+            type: "POST",
+            data: {"method": "updateRouteViewpoints","id":routeId,"vps":result},
+            success:function(data){
+                alert("儲存成功！！", location.href);
+            },
+            error:function(result){
+                alert("儲存失敗");
+            }
+        });
+    }
+</script>
