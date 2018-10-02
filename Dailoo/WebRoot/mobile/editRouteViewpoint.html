@@ -26,7 +26,7 @@
 
     <div class="main-title">編輯路線景點</div>
 
-    <div id="vpGroup">
+    <ul id="vpGroup">
         <div class="vp">
             <div class="selec vp-name">
                 <div class="name">景點 1</div>
@@ -45,7 +45,7 @@
             </div>
             <img onclick="$(this.parentNode).remove()" src="images/editAudio/delete.png" class="del-vp">
         </div>
-    </div>
+    </ul>
 
     <div class="add-theme clearfix">
         <div id="addVpBtn" class="btn fl" onclick="addVpSelec();"></div>
@@ -63,6 +63,7 @@
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/Sortable.min.js"></script>
 <script src="js/base.js"></script>
 <script>
     var routeId = location.href.split("id=")[1];
@@ -185,7 +186,7 @@
                 //console.dir(rvps)
                 var dom = '';
                 for(var i = 0; i < rvps.length; i++) {
-                    dom += '<div class="vp">\n' +
+                    dom += '<li class="vp">\n' +
                         '            <div class="selec vp-name">\n' +
                         '                <div class="name">景點 ' + (i+1) + '</div>\n' +
                         '                <div class="cont">請選擇</div>\n' +
@@ -202,7 +203,7 @@
                         '                </div>\n' +
                         '            </div>\n' +
                         '            <img onclick="$(this.parentNode).remove()" src="images/editAudio/delete.png" class="del-vp">' +
-                        '        </div>';
+                        '        </li>';
                 }
                 $('#vpGroup').html(dom);
 
@@ -236,6 +237,10 @@
 
                 //激活所有的下拉選單
                 activeAllSelec(function(selec, opt){optClickEvent(selec, opt)});
+
+                //設定拖曳功能
+                var list = document.getElementById("vpGroup");
+                Sortable.create(list); // That's all.
 
             },
             error:function(result){
