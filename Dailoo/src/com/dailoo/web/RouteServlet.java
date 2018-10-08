@@ -33,9 +33,14 @@ public class RouteServlet extends HttpServlet {
 		else if("updateRouteViewpoints".equals(method)) {
 			service.updateRouteViewpoints(request.getParameter("id"), request.getParameter("vps"));
 		}
-		//根據路線ID，取得路線景點
+		//根據路線ID，取得路線景點(編輯使用)
 		else if("getRouteViewpointsByRouteId".equals(method)) {
 			List<RouteViewpoint> vps = service.getRouteViewpointsByRouteId(request.getParameter("routeId"));
+			response.getWriter().write(gson.toJson(vps));
+		}
+		//根據路線ID，取得路線景點資訊(前端使用)
+		else if("getRouteViewpointsInfoByRouteId".equals(method)) {
+			List<RouteViewpoint> vps = service.getRouteViewpointsInfoByRouteId(request.getParameter("id"));
 			response.getWriter().write(gson.toJson(vps));
 		}
 	}

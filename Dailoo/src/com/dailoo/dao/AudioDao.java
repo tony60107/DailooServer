@@ -30,7 +30,7 @@ public interface AudioDao extends Dao{
 	void updateSrcByViewpointId(Audio audio);
 
 	/**
-	 * 根據音檔ID5找到音檔
+	 * 根據音檔ID找到音檔
 	 * @param id 音檔ID
 	 * @return 音檔Bean
 	 */

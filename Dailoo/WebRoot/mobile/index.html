@@ -49,7 +49,8 @@
                 $('.profilePic').attr('href', '/mobile/editSpeaker.html?id=' + user.id);
                 if(user.role == 'admin') {
                     var dom = '<a href="/mobile/manageThemes.html" class="func">主題管理</a>' +
-                            '<a href="/mobile/manageSNs.html" class="func">序號管理</a>';
+                            '<a href="/mobile/manageSNs.html" class="func">序號管理</a>' +
+                            '<a href="/mobile/manageRoutes.html" class="func">路線管理</a>';
                     $('.funcGroup').append(dom);
                 }
             },

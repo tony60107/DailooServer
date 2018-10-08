@@ -28,4 +28,11 @@ public interface RouteService extends Service{
 	 */
 	List<RouteViewpoint> getRouteViewpointsByRouteId(String routeId);
 
+	/**
+	 * 根據路線ID，取得路線景點
+	 * @param routeId 路線ID
+	 * @return 路線景點的List資料
+	 */
+	List<RouteViewpoint> getRouteViewpointsInfoByRouteId(String routeId);
+
 }

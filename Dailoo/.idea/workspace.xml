@@ -13,52 +13,86 @@
     <session id="1349059557">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.open.time.4" value="1" />
-          <entry key="project.open.time.5" value="2" />
-          <entry key="project.open.time.6" value="4" />
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.4" value="3" />
+          <entry key="project.open.time.5" value="6" />
+          <entry key="project.open.time.6" value="7" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="3" />
-          <entry key="html" value="38" />
-          <entry key="js" value="6" />
-          <entry key="jsp" value="4" />
+          <entry key="css" value="4" />
+          <entry key="dwt" value="1" />
+          <entry key="html" value="49" />
+          <entry key="js" value="10" />
+          <entry key="jsp" value="5" />
           <entry key="png" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="3" />
-          <entry key="HTML" value="38" />
+          <entry key="CSS" value="4" />
+          <entry key="HTML" value="49" />
           <entry key="Image" value="2" />
-          <entry key="JSP" value="4" />
-          <entry key="JavaScript" value="6" />
+          <entry key="JSP" value="5" />
+          <entry key="JavaScript" value="10" />
+          <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="129" />
-          <entry key="html" value="1729" />
+          <entry key="css" value="310" />
+          <entry key="html" value="6586" />
+          <entry key="js" value="29" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="129" />
-          <entry key="HTML" value="1729" />
+          <entry key="CSS" value="310" />
+          <entry key="HTML" value="6586" />
+          <entry key="JavaScript" value="29" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebRoot/route.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="755">
-              <caret line="152" column="9" lean-forward="true" selection-start-line="152" selection-start-column="9" selection-end-line="152" selection-end-column="9" />
+            <state relative-caret-position="706">
+              <caret line="92" column="76" selection-start-line="92" selection-start-column="76" selection-end-line="92" selection-end-column="76" />
+              <folding>
+                <element signature="e#2683#3117#0" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="e#6868#7106#0" />
+                <element signature="e#7153#7719#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebRoot/mobile/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="608">
+              <caret line="52" column="88" selection-start-line="52" selection-start-column="88" selection-end-line="52" selection-end-column="88" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebRoot/mobile/editAudio.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="116" column="48" selection-start-line="116" selection-start-column="4" selection-end-line="116" selection-end-column="48" />
+              <folding>
+                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,8 +100,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebRoot/css/route.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+            <state relative-caret-position="365">
+              <caret line="69" selection-start-line="69" selection-end-line="69" />
             </state>
           </provider>
         </entry>
@@ -77,8 +111,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -86,6 +120,8 @@
     <findStrings>
       <find>initRedeemBtn</find>
       <find>map</find>
+      <find>vp-cont</find>
+      <find>del</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -112,8 +148,14 @@
         <option value="$PROJECT_DIR$/WebRoot/coupon/otherCoupon.html" />
         <option value="$PROJECT_DIR$/WebRoot/coupon/coupon.html" />
         <option value="$PROJECT_DIR$/WebRoot/navMap.html" />
+        <option value="$PROJECT_DIR$/WebRoot/mobile/addRoute.html" />
+        <option value="$PROJECT_DIR$/WebRoot/mobile/manageViewpoints.html" />
+        <option value="$PROJECT_DIR$/WebRoot/mobile/js/base.js" />
+        <option value="$PROJECT_DIR$/WebRoot/test.html" />
+        <option value="$PROJECT_DIR$/WebRoot/mobile/editRouteViewpoint.html" />
         <option value="$PROJECT_DIR$/WebRoot/css/route.css" />
         <option value="$PROJECT_DIR$/WebRoot/route.html" />
+        <option value="$PROJECT_DIR$/WebRoot/mobile/index.html" />
       </list>
     </option>
   </component>
@@ -123,9 +165,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="454" />
-    <option name="y" value="34" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="1020" />
+    <option name="y" value="46" />
     <option name="width" value="2450" />
     <option name="height" value="1750" />
   </component>
@@ -135,7 +177,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -158,15 +201,14 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537350555939" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538817818147" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -177,6 +219,7 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Resource\DailooServer\Dailoo\WebRoot\images\route" />
+      <recent name="C:\Resource\DailooServer\Dailoo\WebRoot\mobile\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -208,18 +251,27 @@
       <workItem from="1537173202912" duration="3117000" />
       <workItem from="1537344688698" duration="5774000" />
       <workItem from="1537677177922" duration="342000" />
-      <workItem from="1537859395133" duration="4893000" />
+      <workItem from="1537859395133" duration="5675000" />
+      <workItem from="1537948041640" duration="3714000" />
+      <workItem from="1538030118995" duration="8382000" />
+      <workItem from="1538118420199" duration="4011000" />
+      <workItem from="1538376693109" duration="8475000" />
+      <workItem from="1538461294404" duration="6279000" />
+      <workItem from="1538550446695" duration="647000" />
+      <workItem from="1538559989819" duration="3000" />
+      <workItem from="1538807950040" duration="8054000" />
+      <workItem from="1538981502950" duration="2554000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29391000" />
+    <option name="totallyTimeSpent" value="72292000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1933" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17333333" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16213334" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -423,13 +475,6 @@
         <state relative-caret-position="-2622" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/viewpoint.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" selection-start-line="13" selection-end-line="14" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/mobile/addViewpoint.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="831">
@@ -437,132 +482,132 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/js/base.js">
+    <entry file="file://$PROJECT_DIR$/WebRoot/navMap.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="136" column="37" lean-forward="true" selection-start-line="136" selection-start-column="8" selection-end-line="136" selection-end-column="37" />
+        <state relative-caret-position="589">
+          <caret line="31" column="1169" selection-start-line="31" selection-start-column="1169" selection-end-line="31" selection-end-column="1169" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/addSpeaker.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="35" column="10" lean-forward="true" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/addSN.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="123" column="5" lean-forward="true" selection-start-line="117" selection-start-column="4" selection-end-line="123" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/addRoute.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="679">
+          <caret line="71" column="15" lean-forward="true" selection-start-line="61" selection-start-column="12" selection-end-line="71" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/manageViewpoints.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="58" column="44" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/mobile/editViewpoint.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="161" column="18" selection-start-line="161" selection-start-column="18" selection-end-line="161" selection-end-column="18" />
+        <state relative-caret-position="329">
+          <caret line="135" column="10" selection-start-line="132" selection-end-line="135" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/navMap.html">
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/editSpeaker.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="31" column="1169" selection-start-line="31" selection-start-column="1169" selection-end-line="31" selection-end-column="1169" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#4;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#5;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#6;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#7;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#8;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#9;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#10;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#11;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#12;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#13;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#14;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#15;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#16;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#17;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#18;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#19;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#20;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#21;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#22;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#23;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#24;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#25;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#26;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#27;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#28;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#29;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#30;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#31;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#32;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#33;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#34;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#35;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#36;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#37;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#38;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#39;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#40;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#41;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#4;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#5;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#6;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#7;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#8;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#9;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#10;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#11;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#12;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#13;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#14;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#15;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#16;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#17;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#18;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#19;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#20;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#21;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#22;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#23;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#24;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#25;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#26;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#27;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#28;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#29;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#30;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#31;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#32;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#33;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#34;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#35;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#36;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#37;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#38;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#4;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#5;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#6;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#7;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#8;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#9;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#10;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="1824">
+          <caret line="96" column="45" selection-start-line="96" selection-start-column="4" selection-end-line="96" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/js/base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32946">
+          <caret line="1734" column="12" selection-start-line="1734" selection-start-column="9" selection-end-line="1734" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/test.html" />
+    <entry file="file://$PROJECT_DIR$/WebRoot/viewpoint.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1178">
+          <caret line="13" selection-start-line="13" selection-end-line="14" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../ecshop/themes/lizi/index.dwt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2396" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/editRouteViewpoint.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2636">
+          <caret line="156" column="61" lean-forward="true" selection-start-line="156" selection-start-column="61" selection-end-line="156" selection-end-column="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/css/route.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+        <state relative-caret-position="365">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/js/Sortable.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="64" selection-start-column="33" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/js/viewpoint/audio.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="152" column="9" selection-start-line="138" selection-start-column="8" selection-end-line="152" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/editAudio.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="116" column="48" selection-start-line="116" selection-start-column="4" selection-end-line="116" selection-end-column="48" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/route.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="755">
-          <caret line="152" column="9" lean-forward="true" selection-start-line="152" selection-start-column="9" selection-end-line="152" selection-end-column="9" />
+        <state relative-caret-position="706">
+          <caret line="92" column="76" selection-start-line="92" selection-start-column="76" selection-end-line="92" selection-end-column="76" />
+          <folding>
+            <element signature="e#2683#3117#0" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="e#6868#7106#0" />
+            <element signature="e#7153#7719#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="52" column="88" selection-start-line="52" selection-start-column="88" selection-end-line="52" selection-end-column="88" />
         </state>
       </provider>
     </entry>

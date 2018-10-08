@@ -12,21 +12,35 @@
 <div class="w">
     <div id="map"></div>
     <div id="vps" class="vps">
-        <div class="vp">
+        <div class="vp clearfix" onclick="showVpInfo(this);">
             <div class="vp-l fl">1</div>
             <div class="vp-r fr">
-                <div class="name">部落美食</div>
-                <div class="intro">好吃好吃</div>
+                <div class="name">龍田村</div>
+                <div class="intro">龍田村地名的由來，要追溯到日本統治台灣50
+                    年的歷史。在日本統治台灣的末期，為了把台
+                    灣人變成日本的子民－皇民，因此頒布了一個
+                    內地延長主義的移民政策，在那個年代，從日
+                    本內地移民過來的日本人在這邊定居，從哪邊
+                    移民過來，地名就用哪邊的。所以從日本龍田
+                    地區移民過來的人，這邊的地名就叫做龍田。
+                    因此龍田村過去是一個很傳統的日本移民村，
+                    從它建造成田字型的樣子就可以看出這個特
+                    徵。龍田村的光榮路正代表著日本軍國主義
+                    的光榮，不願苟且偷生，要光榮赴死的精神。
+                </div>
+                <img class="more" src="images/route/more.png"/>
+                <img class="show" src="images/route/show.png" alt="" onclick="switchIntro(this);">
             </div>
         </div>
     </div>
     <!--浮動播放器-->
     <div id="floatPlayer" class="float-player-bg">
         <div class="float-player">
-            <a href="javascript:void(0)" onclick=""><div class="pic"><img id="floatPhoto" src="" alt=""></div></a>
-            <div id="flPreTagBtn" class="pre"></div>
-            <div id="flPlayBtn" class="play"></div>
-            <div id="flNextTagBtn" class="next"></div>
+            <audio id="audio"></audio>
+            <a id="flAudioHref" class="pic fl" target="_blank"><img id="floatPhoto" src="" alt=""></a>
+            <div id="flPreTagBtn" class="pre" onclick="audio.pre()"></div>
+            <div id="flPlayBtn" class="play" onclick="audio.play();"></div>
+            <div id="flNextTagBtn" class="next" onclick="audio.next();"></div>
             <div id="flNowTime" class="time">0:00</div>
         </div>
     </div>
@@ -43,22 +57,19 @@
     if(window.screen.width > 980){$("body").css("zoom","50%");$("#map").css("zoom","200%");}
     $(window).resize(function() {if(window.screen.width > 980){$("body").css("zoom","50%");}});
 
+    var routeId = location.href.split("id=")[1]; //路線ID
     var directionsDisplay;
     var directionsService = new google.maps.DirectionsService();
-    var map;
+    var map;    //Google Map
+    var rvps;   //路線景點數據
+    var playingAudioNum = 0; //正在播放的景點音檔編號
+    var markers = [];   //地標陣列
 
-
-    var vps = [
-        {name:'部落美食', intro:'好吃好吃',lat:22.9038364,lng:121.1265944},
-        {name:'鹿野地區', intro:'好玩好玩', lat:22.9315176,lng:121.1287711},
-        {name:'熱氣球',intro:'好漂亮', lat:22.9038364,lng:121.2053963},
-        {name:'風景區',intro:'好看好看', lat:22.6350723,lng:121.0006384},
-    ];
-
+    //初始化地圖，並取得資料
     function initMap() {
 
         map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 12,
+            zoom: 15,
             center: { lat: 22.9038364, lng: 121.2053963 }
         });
 
@@ -69,16 +80,38 @@
             suppressMarkers: true //隱藏默認圖標
         });
 
-        renderRouter(vps);
+        //取得所有的路線景點
+        getRouteViewpoints();
 
     }
 
-    function renderRouter(vps) {
+    //取得所有的路線景點
+    function getRouteViewpoints(callback){
+        $.ajax({
+            url: "/RouteServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getRouteViewpointsInfoByRouteId", "id":routeId},
+            success:function(data){
+                rvps = eval("(" + data + ")");
+                console.dir(rvps)
+
+                //初始化景點資料
+                initRouteViewpointsData(rvps);
+
+                if(callback != undefined) callback();
+            },
+            error:function(result){
+                setTimeout(function() { getViewpointSimples() }, 1000);
+            }
+        });
+    }
+
+    //初始化景點資料
+    function initRouteViewpointsData(vps) {
         var start;  //路線起點
         var end;    //路線終點
         var waypts = [];    //路線陣列
-        var markers = [];   //地標陣列
-        var infowindow = new google.maps.InfoWindow(); //地標資訊初始化
+        var infowindow = new google.maps.InfoWindow({maxWidth: 350 }); //地標資訊初始化
         var vpsDom = ''; //地圖下方景點列表DOMS
 
         for(var i = 0; i < vps.length; i++){
@@ -99,7 +132,7 @@
                 map: map,
                 label: {text: i+1 + "" , color: "white", },
                 icon: "images/route/marker.png",
-                infoContent: '<div>' + vps[i].name + '</div>' + '<div>' + vps[i].intro + '</div>',
+                infoContent: '<div style="font-size: 22px; margin-bottom: 20px">' + vps[i].name + ' - ' + vps[i].subtitle + '</div>' + '<div style="font-size: 14px;">' + vps[i].intro + '</div>',
             });
 
             //設定WindowInfo內容
@@ -115,6 +148,8 @@
                 '<div class="vp-r fr">' +
                 '<div class="name">' + vps[i].name + '</div>' +
                 '<div class="intro">' + vps[i].intro + '</div>' +
+                '<img class="more" src="images/route/more.png"/>\n' +
+                '<img class="show" src="images/route/show.png" alt="" onclick="switchIntro(this);">' +
                 '</div>' +
                 '</div>';
         }
@@ -137,17 +172,106 @@
             }
         });
 
+        //移動地圖中心點
+        var center = new google.maps.LatLng(vps[0].lat, vps[0].lng);
+        map.panTo(center);
 
+        //設定撥放器內容
+        $('#flAudioHref').attr('href', '/view/' + vps[0].name + '_' + vps[0].subtitle);
+        $('#audio').attr('src', '/ResourceServlet?url=' + vps[0].audioSrc);
+        $('#floatPhoto').attr('src', '/ResourceServlet?url=' + vps[0].behalfPhotoUrl);
+        var audioLength = vps[0].audioLength;
+        $('#flNowTime').html(parseInt(audioLength/60) + " : " + (audioLength % 60 <= 9 ? "0"+audioLength % 60 : audioLength % 60));
     }
 
     //點擊景點列表，顯示對應資訊
     function showVpInfo(vpDom){
         //console.dir(vps[$(vp).find('.vp-l').html()-1]);
-        var vp = vps[$(vpDom).find('.vp-l').html()-1]; //點擊的景點資訊
+        var vp = rvps[$(vpDom).find('.vp-l').html()-1]; //點擊的景點資訊
 
         //移動地圖中心點
         var center = new google.maps.LatLng(vp.lat, vp.lng);
         map.panTo(center);
     }
+
+    //切換景點介紹顯示
+    function switchIntro(btn) {
+        var intro = $(btn.parentNode).find('.intro');
+        var more =  $(btn.parentNode).find('.more');
+        var show =  $(btn.parentNode).find('.show');
+
+        if(parseInt(intro.css('height')) < 150){ //展開
+            more.css('display', 'none');
+            show.attr('src', 'images/route/close.png');
+            intro.css('height', 'auto');
+        } else {   //收起
+            more.css('display', 'block');
+            show.attr('src', 'images/route/show.png');
+            intro.css('height', '138px');
+        }
+        event.stopPropagation();
+    }
+
+    function Audio() {
+        var audio = $('#audio').get(0);
+        this.play = function() {
+            if (audio.paused == true) { //如果為暫停狀態
+                $('#flPlayBtn').css('backgroundImage', 'url(images/viewpoint/pause.png)');
+                audio.play();
+            } else { //如果為播放狀態
+                $('#flPlayBtn').css('backgroundImage', 'url(images/viewpoint/play.png)');
+                audio.pause();
+            }
+        }
+        this.next = function() {
+            if(playingAudioNum < rvps.length - 1){
+
+                $('#flPlayBtn').css('backgroundImage', 'url(images/viewpoint/play.png)');
+
+                //設定浮動撥放器內容
+                playingAudioNum++;
+                var vp = rvps[playingAudioNum];
+                $('#flAudioHref').attr('href', '/view/' + vp.name + '_' + vp.subtitle);
+                $('#audio').attr('src', '/ResourceServlet?url=' + vp.audioSrc);
+                $('#floatPhoto').attr('src', '/ResourceServlet?url=' + vp.behalfPhotoUrl);
+                var audioLength = vp.audioLength;
+                $('#flNowTime').html(parseInt(audioLength/60) + " : " + (audioLength % 60 <= 9 ? "0"+audioLength % 60 : audioLength % 60));
+
+                //移動地圖中心點
+                var center = new google.maps.LatLng(vp.lat, vp.lng);
+                map.panTo(center);
+
+                //觸發地圖標記點擊事件
+                google.maps.event.trigger(markers[playingAudioNum], 'click');
+
+            }
+
+        }
+        this.pre = function() {
+            if(playingAudioNum >= 1) {
+
+                $('#flPlayBtn').css('backgroundImage', 'url(images/viewpoint/play.png)');
+
+                //設定浮動撥放器內容
+                playingAudioNum--;
+                var vp = rvps[playingAudioNum];
+                $('#flAudioHref').attr('href', '/view/' + vp.name + '_' + vp.subtitle);
+                $('#audio').attr('src', '/ResourceServlet?url=' + vp.audioSrc);
+                $('#floatPhoto').attr('src', '/ResourceServlet?url=' + vp.behalfPhotoUrl);
+                var audioLength = vp.audioLength;
+                $('#flNowTime').html(parseInt(audioLength/60) + " : " + (audioLength % 60 <= 9 ? "0"+audioLength % 60 : audioLength % 60));
+
+                //移動地圖中心點
+                var center = new google.maps.LatLng(vp.lat, vp.lng);
+                map.panTo(center);
+
+                //觸發地圖標記點擊事件
+                google.maps.event.trigger(markers[playingAudioNum], 'click');
+
+            }
+        }
+    }
+     var audio = new Audio();
+
     google.maps.event.addDomListener(window, 'load', initMap);
 </script>
