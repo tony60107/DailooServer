@@ -46,7 +46,6 @@ public class SpeakerServlet extends HttpServlet {
 					speaker.setOwnerId(loginUser.getId());
 					speaker.setPhotoUrl(photoUrl);
 					service.addSpeaker(speaker);
-					response.sendRedirect("/manageSpeakers.html");
 				} else {
 					response.getWriter().write("{\"error\":\"只有管理員才可以新增講者喔~\"}");
 				}
@@ -129,7 +128,6 @@ public class SpeakerServlet extends HttpServlet {
 				if(loginUser.getId().equals(speaker.getId()) || loginUser.getId().equals(speaker.getOwnerId())
 						|| "admin".equals(loginUser.getRole())){
 					service.delSpeakerById(request.getParameter("id"));
-					response.sendRedirect("/manageSpeakers.html");
 				}else {
 					throw new RuntimeException("您沒有權限更改該資料");
 				}

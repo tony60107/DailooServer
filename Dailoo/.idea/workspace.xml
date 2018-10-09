@@ -15,43 +15,43 @@
         <counts>
           <entry key="project.closed" value="2" />
           <entry key="project.open.time.4" value="3" />
-          <entry key="project.open.time.5" value="6" />
+          <entry key="project.open.time.5" value="7" />
           <entry key="project.open.time.6" value="7" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="17" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="4" />
+          <entry key="css" value="8" />
           <entry key="dwt" value="1" />
-          <entry key="html" value="49" />
-          <entry key="js" value="10" />
+          <entry key="html" value="68" />
+          <entry key="js" value="11" />
           <entry key="jsp" value="5" />
           <entry key="png" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="4" />
-          <entry key="HTML" value="49" />
+          <entry key="CSS" value="8" />
+          <entry key="HTML" value="68" />
           <entry key="Image" value="2" />
           <entry key="JSP" value="5" />
-          <entry key="JavaScript" value="10" />
+          <entry key="JavaScript" value="11" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="310" />
-          <entry key="html" value="6586" />
+          <entry key="css" value="357" />
+          <entry key="html" value="7304" />
           <entry key="js" value="29" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="310" />
-          <entry key="HTML" value="6586" />
+          <entry key="CSS" value="357" />
+          <entry key="HTML" value="7304" />
           <entry key="JavaScript" value="29" />
         </counts>
       </usages-collector>
@@ -59,49 +59,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebRoot/route.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="706">
-              <caret line="92" column="76" selection-start-line="92" selection-start-column="76" selection-end-line="92" selection-end-column="76" />
-              <folding>
-                <element signature="e#2683#3117#0" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="e#6868#7106#0" />
-                <element signature="e#7153#7719#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/WebRoot/mobile/index.html">
+        <entry file="file://$PROJECT_DIR$/WebRoot/coupon/admin/editCoupon.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="52" column="88" selection-start-line="52" selection-start-column="88" selection-end-line="52" selection-end-column="88" />
+            <state relative-caret-position="722">
+              <caret line="134" column="48" lean-forward="true" selection-start-line="134" selection-start-column="48" selection-end-line="134" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebRoot/mobile/editAudio.html">
+        <entry file="file://$PROJECT_DIR$/WebRoot/coupon/admin/header.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="116" column="48" selection-start-line="116" selection-start-column="4" selection-end-line="116" selection-end-column="48" />
-              <folding>
-                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="703">
+              <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebRoot/css/route.css">
+        <entry file="file://$PROJECT_DIR$/WebRoot/mobile/header.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="69" selection-start-line="69" selection-end-line="69" />
+            <state relative-caret-position="679">
+              <caret line="38" column="13" lean-forward="true" selection-start-line="27" selection-start-column="10" selection-end-line="38" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebRoot/coupon/admin/footer.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="717">
+              <caret line="44" column="8" lean-forward="true" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -111,8 +100,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -130,17 +119,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/WebRoot/coupon/admin/editCoupon.html" />
         <option value="$PROJECT_DIR$/WebRoot/coupon/admin/addTheme.html" />
         <option value="$PROJECT_DIR$/WebRoot/coupon/admin/editCouponImg.html" />
-        <option value="$PROJECT_DIR$/WebRoot/coupon/admin/footer.html" />
         <option value="$PROJECT_DIR$/WebRoot/coupon/admin/editTheme.html" />
-        <option value="$PROJECT_DIR$/WebRoot/coupon/admin/header.html" />
         <option value="$PROJECT_DIR$/WebRoot/coupon/admin/index.html" />
         <option value="$PROJECT_DIR$/WebRoot/coupon/admin/manageCoupons.html" />
         <option value="$PROJECT_DIR$/WebRoot/coupon/admin/manageThemes.html" />
         <option value="$PROJECT_DIR$/WebRoot/coupon/admin/addCoupon.html" />
-        <option value="$PROJECT_DIR$/WebRoot/coupon/header.html" />
         <option value="$PROJECT_DIR$/WebRoot/coupon/footer.html" />
         <option value="$PROJECT_DIR$/WebRoot/coupon/myCoupon.html" />
         <option value="$PROJECT_DIR$/WebRoot/coupon/theme.html" />
@@ -148,14 +133,21 @@
         <option value="$PROJECT_DIR$/WebRoot/coupon/otherCoupon.html" />
         <option value="$PROJECT_DIR$/WebRoot/coupon/coupon.html" />
         <option value="$PROJECT_DIR$/WebRoot/navMap.html" />
-        <option value="$PROJECT_DIR$/WebRoot/mobile/addRoute.html" />
         <option value="$PROJECT_DIR$/WebRoot/mobile/manageViewpoints.html" />
         <option value="$PROJECT_DIR$/WebRoot/mobile/js/base.js" />
         <option value="$PROJECT_DIR$/WebRoot/test.html" />
+        <option value="$PROJECT_DIR$/WebRoot/mobile/css/editRouteViewpoint.css" />
         <option value="$PROJECT_DIR$/WebRoot/mobile/editRouteViewpoint.html" />
+        <option value="$PROJECT_DIR$/WebRoot/mobile/css/manageRoutes.css" />
+        <option value="$PROJECT_DIR$/WebRoot/mobile/addRoute.html" />
+        <option value="$PROJECT_DIR$/WebRoot/mobile/manageRoutes.html" />
         <option value="$PROJECT_DIR$/WebRoot/css/route.css" />
         <option value="$PROJECT_DIR$/WebRoot/route.html" />
         <option value="$PROJECT_DIR$/WebRoot/mobile/index.html" />
+        <option value="$PROJECT_DIR$/WebRoot/coupon/header.html" />
+        <option value="$PROJECT_DIR$/WebRoot/coupon/admin/footer.html" />
+        <option value="$PROJECT_DIR$/WebRoot/coupon/admin/header.html" />
+        <option value="$PROJECT_DIR$/WebRoot/coupon/admin/editCoupon.html" />
       </list>
     </option>
   </component>
@@ -165,7 +157,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1020" />
     <option name="y" value="46" />
     <option name="width" value="2450" />
@@ -195,6 +187,19 @@
               <item name="Dailoo" type="b2602c69:ProjectViewProjectNode" />
               <item name="Dailoo" type="462c0819:PsiDirectoryNode" />
               <item name="WebRoot" type="462c0819:PsiDirectoryNode" />
+              <item name="coupon" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Dailoo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Dailoo" type="462c0819:PsiDirectoryNode" />
+              <item name="WebRoot" type="462c0819:PsiDirectoryNode" />
+              <item name="coupon" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Dailoo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Dailoo" type="462c0819:PsiDirectoryNode" />
+              <item name="WebRoot" type="462c0819:PsiDirectoryNode" />
               <item name="mobile" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -208,7 +213,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538817818147" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539066944517" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -260,18 +265,19 @@
       <workItem from="1538550446695" duration="647000" />
       <workItem from="1538559989819" duration="3000" />
       <workItem from="1538807950040" duration="8054000" />
-      <workItem from="1538981502950" duration="2554000" />
+      <workItem from="1538981502950" duration="11729000" />
+      <workItem from="1539063896805" duration="2985000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72292000" />
+    <option name="totallyTimeSpent" value="84452000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1933" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16213334" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16373333" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -307,23 +313,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WebRoot/manageAds.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/addAd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/coupon/admin/editCoupon.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/coupon/admin/addTheme.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -331,28 +320,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/coupon/admin/editCouponImg.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="69" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/coupon/admin/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="69" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/coupon/admin/editTheme.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="69" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/coupon/admin/header.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="5" column="69" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
@@ -390,24 +358,10 @@
     <entry file="file://$PROJECT_DIR$/WebRoot/images/general/dailoo.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/coupon/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="66" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/coupon/footer.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/coupon/myCoupon.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -503,24 +457,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/addRoute.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="679">
-          <caret line="71" column="15" lean-forward="true" selection-start-line="61" selection-start-column="12" selection-end-line="71" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/mobile/manageViewpoints.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
           <caret line="58" column="44" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/editViewpoint.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="135" column="10" selection-start-line="132" selection-end-line="135" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -551,20 +491,6 @@
         <state relative-caret-position="-2396" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/editRouteViewpoint.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2636">
-          <caret line="156" column="61" lean-forward="true" selection-start-line="156" selection-start-column="61" selection-end-line="156" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebRoot/css/route.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/mobile/js/Sortable.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -579,9 +505,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/editViewpoint.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="574">
+          <caret line="371" column="5" lean-forward="true" selection-start-line="355" selection-start-column="4" selection-end-line="371" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/mobile/editAudio.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
+        <state relative-caret-position="380">
           <caret line="116" column="48" selection-start-line="116" selection-start-column="4" selection-end-line="116" selection-end-column="48" />
           <folding>
             <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -590,24 +523,130 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/manageRegions.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/css/manageRoutes.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/css/editRouteViewpoint.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/editRoute.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="760">
+          <caret line="247" column="5" selection-start-line="242" selection-start-column="12" selection-end-line="247" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/addRoute.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="622">
+          <caret line="68" column="39" lean-forward="true" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/manageRoutes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/css/route.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/route.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="706">
-          <caret line="92" column="76" selection-start-line="92" selection-start-column="76" selection-end-line="92" selection-end-column="76" />
+        <state relative-caret-position="-129">
+          <caret line="123" column="65" selection-start-line="123" selection-start-column="65" selection-end-line="123" selection-end-column="65" />
           <folding>
-            <element signature="e#2683#3117#0" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="e#6868#7106#0" />
-            <element signature="e#7153#7719#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/coupon/myCoupon.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/coupon/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="53" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebRoot/mobile/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
-          <caret line="52" column="88" selection-start-line="52" selection-start-column="88" selection-end-line="52" selection-end-column="88" />
+          <caret line="53" column="62" selection-start-line="53" selection-start-column="62" selection-end-line="53" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/coupon/js/jquery.qrcode.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/coupon/admin/footer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="717">
+          <caret line="44" column="8" lean-forward="true" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/coupon/admin/editCouponImg.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1159">
+          <caret line="5" column="69" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/mobile/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="679">
+          <caret line="38" column="13" lean-forward="true" selection-start-line="27" selection-start-column="10" selection-end-line="38" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/coupon/admin/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="703">
+          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebRoot/coupon/admin/editCoupon.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="134" column="48" lean-forward="true" selection-start-line="134" selection-start-column="48" selection-end-line="134" selection-end-column="48" />
         </state>
       </provider>
     </entry>

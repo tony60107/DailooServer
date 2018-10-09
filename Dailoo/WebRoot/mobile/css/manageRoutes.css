@@ -1,0 +1,25 @@
+
+.add-route {
+    width: 232px;
+    height: 78px;
+    margin: auto;
+    margin-top: 40px;
+    font-size: 56px;
+    line-height: 78px;
+    color: #50afa0;
+    display: block;
+}
+
+.routes {
+    width: 780px;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.routes .route {
+    margin-top: 48px;
+    padding-bottom: 14px;
+    color: #000000;
+    border-bottom: solid 2px #979797;
+    display: block;
+}

@@ -43,6 +43,15 @@ public class RouteServlet extends HttpServlet {
 			List<RouteViewpoint> vps = service.getRouteViewpointsInfoByRouteId(request.getParameter("id"));
 			response.getWriter().write(gson.toJson(vps));
 		}
+		//根據路線ID，刪除路線
+		else if("delRouteById".equals(method)) {
+			service.delRouteById(request.getParameter("id"));
+		}
+		//取得所有的路線
+		else if("getRoutes".equals(method)) {
+			List<Route> routes = service.getRoutes();
+			response.getWriter().write(gson.toJson(routes));
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -72,4 +72,20 @@ public class RouteServiceImpl implements RouteService{
 		return result;
 	}
 
+	@Override
+	public void delRouteById(String id) {
+		
+		//刪除已存在的路線景點
+		dao.delRouteViewpoointByRouteId(id);
+		
+		//刪除路線紀錄
+		dao.delRouteById(id);
+		
+	}
+
+	@Override
+	public List<Route> getRoutes() {
+		return dao.getRoutes();
+	}
+
 }

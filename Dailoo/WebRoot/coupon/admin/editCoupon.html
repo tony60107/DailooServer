@@ -117,7 +117,7 @@
 
     //將序號轉換為QRC
     function toQRC(id) {
-        var url = "https://localhost:8443/CouponServlet?method=addCouponOrder&id=" + id;
+        var url = "https://www.dailoo.com/CouponServlet?method=addCouponOrder&id=" + id;
         console.dir(url);
         $('#qrc').innerHTML = "";
         $('#qrc').qrcode({width: 500,height: 500, text: url});

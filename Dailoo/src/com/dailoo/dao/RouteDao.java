@@ -32,4 +32,16 @@ public interface RouteDao extends Dao{
 	 */
 	List<RouteViewpoint> getRouteViewpointsByRouteId(String routeId);
 
+	/**
+	 * 根據路線ID，刪除路線紀錄
+	 * @param id 路線ID
+	 */
+	void delRouteById(String id);
+
+	/**
+	 * 取得所有的路線
+	 * @return 路線Bean的List集合
+	 */
+	List<Route> getRoutes();
+
 }

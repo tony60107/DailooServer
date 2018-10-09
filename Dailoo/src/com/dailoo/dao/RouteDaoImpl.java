@@ -64,4 +64,28 @@ public class RouteDaoImpl implements RouteDao{
 		}
 	}
 
+	@Override
+	public void delRouteById(String id) {
+		String sql = "delete from routes where id = ?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public List<Route> getRoutes() {
+		String sql = "select * from routes";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanListHandler<Route>(Route.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
 }

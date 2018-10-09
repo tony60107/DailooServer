@@ -35,4 +35,16 @@ public interface RouteService extends Service{
 	 */
 	List<RouteViewpoint> getRouteViewpointsInfoByRouteId(String routeId);
 
+	/**
+	 * 根據路線ID，刪除路線 
+	 * @param id 路線ID
+	 */
+	void delRouteById(String id);
+
+	/**
+	 * 取得所有的路線
+	 * @return 路線Bean的List集合
+	 */
+	List<Route> getRoutes();
+
 }

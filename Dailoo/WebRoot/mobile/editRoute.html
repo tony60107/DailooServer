@@ -4,20 +4,8 @@
     <meta charset="UTF-8">
     <title>Dailoo - 編輯路線景點</title>
     <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/editRouteViewpoint.css">
     <meta name="viewport" content="user-scalable=no"/>
-    <style>
-        .vp {
-            margin: auto;
-            position: relative;
-            width: 780px;
-        }
-        .vp .del-vp {
-            position: absolute;
-            top: -20px;
-            right: -44px;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
 <div class="w">
@@ -26,8 +14,13 @@
 
     <div class="main-title">編輯路線景點</div>
 
+    <div class="href clearfix">
+        <div class="del fl" onclick="delRoute();">刪除路線</div>
+        <a id="prevRoute" class="show fl" target="_blank">預覽路線</a>
+    </div>
+
     <ul id="vpGroup">
-        <div class="vp">
+        <!--<div class="vp">
             <div class="selec vp-name">
                 <div class="name">景點 1</div>
                 <div class="cont">請選擇</div>
@@ -44,7 +37,7 @@
                 </div>
             </div>
             <img onclick="$(this.parentNode).remove()" src="images/editAudio/delete.png" class="del-vp">
-        </div>
+        </div>-->
     </ul>
 
     <div class="add-theme clearfix">
@@ -184,6 +177,11 @@
             success:function(data){
                 var rvps = eval("(" + data + ")");
                 //console.dir(rvps)
+
+                //設定預覽連結
+                $('#prevRoute').attr('href', '/route.html?id=' + routeId);
+
+                //設定下拉選單
                 var dom = '';
                 for(var i = 0; i < rvps.length; i++) {
                     dom += '<li class="vp">\n' +
@@ -249,7 +247,6 @@
         });
     }
 
-
     //更新路線景點資料
     function submitForm() {
         var $vps = $('.vp-cont');
@@ -272,5 +269,22 @@
                 alert("儲存失敗");
             }
         });
+    }
+
+    //刪除景點
+    function delRoute() {
+        if(confirm("確定刪除?")){
+            $.ajax({
+                url: "/RouteServlet", context: document.body,
+                type: "POST",
+                data: {"method": "delRouteById", "id": routeId},
+                success: function (data) {
+                    alert("刪除成功", "/mobile/manageRoutes.html");
+                },
+                error: function(){
+                    setTimeout(function(){delViewpoint();}, 1000);
+                }
+            });
+        }
     }
 </script>

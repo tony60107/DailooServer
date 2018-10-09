@@ -1,0 +1,37 @@
+
+.href {
+    height: 78px;
+    width: 620px;
+    margin: auto;
+    margin-top: 80px;
+    font-size: 56px;
+    line-height: 78px;
+    letter-spacing: 1.9px;
+}
+
+.href .del {
+    width: 232px;
+    height: 78px;
+    margin-right: 156px;
+    display: block;
+    cursor: pointer;
+}
+
+.href .show {
+    width: 232px;
+    height: 78px;
+    color: #50afa0;
+    display: block;
+}
+
+.vp {
+    margin: auto;
+    position: relative;
+    width: 780px;
+}
+.vp .del-vp {
+    position: absolute;
+    top: -20px;
+    right: -44px;
+    cursor: pointer;
+}

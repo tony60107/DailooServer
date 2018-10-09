@@ -10,14 +10,13 @@
 <div class="w" style="width: 100%">
     <div class="header">
         <a href="javascript:history.back()" class="back"></a>
-        <a id="headerUsername" href="/coupon/admin/index.html" class="username"></a>
+        <a id="headerUsername" href="/mobile/index.html" class="username"></a>
         <a href="/LogoutServlet" class="signout">登出</a>
     </div>
 
 </div>
 </body>
 </html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 
     getLoginUser();
@@ -25,14 +24,14 @@
     //取得登入者資料，如果未登入，則跳轉到登入頁面
     function getLoginUser() {
         $.ajax({
-            url: "/CouponServlet", context: document.body,
+            url: "/SpeakerServlet", context: document.body,
             type: "POST",
             data: {"method": "getLoginUser"},
             success: function (data) {
                 var user = eval("(" + data + ")");
-                console.dir(user);
-                //if(user.name == undefined) window.location.href = '/coupon/login.html';
-                $('#headerUsername').html(user.name);
+                //console.dir(user);
+                if(user.username == undefined) window.location.href = '/mobile/login.html';
+                $('#headerUsername').html(user.username);
             },
             error: function(){
                 setTimeout(function(){getLoginUser();}, 1000);

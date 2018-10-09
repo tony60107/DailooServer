@@ -54,8 +54,8 @@
     // Each marker is labeled with a single alphabetical character.
 
     //桌機則將頁面比例調為50％
-    if(window.screen.width > 980){$("body").css("zoom","50%");$("#map").css("zoom","200%");}
-    $(window).resize(function() {if(window.screen.width > 980){$("body").css("zoom","50%");}});
+    if(window.screen.width > 980){$("body").css("zoom","50%");$("#map").css("zoom","200%"); $('#floatPlayer').css('top', 'calc(100vh*2 - 200px)')}
+    $(window).resize(function() {if(window.screen.width > 980){$("body").css("zoom","50%");$('#floatPlayer').css('top', 'calc(100vh*2 - 200px)')}});
 
     var routeId = location.href.split("id=")[1]; //路線ID
     var directionsDisplay;
@@ -69,7 +69,7 @@
     function initMap() {
 
         map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
+            zoom: 16,
             center: { lat: 22.9038364, lng: 121.2053963 }
         });
 
@@ -111,7 +111,7 @@
         var start;  //路線起點
         var end;    //路線終點
         var waypts = [];    //路線陣列
-        var infowindow = new google.maps.InfoWindow({maxWidth: 350 }); //地標資訊初始化
+        var infowindow = new google.maps.InfoWindow({maxWidth: 700 }); //地標資訊初始化
         var vpsDom = ''; //地圖下方景點列表DOMS
 
         for(var i = 0; i < vps.length; i++){
@@ -132,7 +132,7 @@
                 map: map,
                 label: {text: i+1 + "" , color: "white", },
                 icon: "images/route/marker.png",
-                infoContent: '<div style="font-size: 22px; margin-bottom: 20px">' + vps[i].name + ' - ' + vps[i].subtitle + '</div>' + '<div style="font-size: 14px;">' + vps[i].intro + '</div>',
+                infoContent: '<div style="font-size: 44px; margin-bottom: 20px">' + vps[i].name + ' - ' + vps[i].subtitle + '</div>' + '<div style="font-size: 28px;">' + vps[i].intro + '</div>',
             });
 
             //設定WindowInfo內容
@@ -192,6 +192,9 @@
         //移動地圖中心點
         var center = new google.maps.LatLng(vp.lat, vp.lng);
         map.panTo(center);
+
+        //觸發地圖標記點擊事件
+        google.maps.event.trigger(markers[$(vpDom).find('.vp-l').html()-1], 'click');
     }
 
     //切換景點介紹顯示
