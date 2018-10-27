@@ -71,10 +71,11 @@
            $$("googleMap").href = "https://goo.gl/maps/nqBpCHAqU1P2";
            $$("question").href = "https://goo.gl/forms/cccX1PWR6YW9yiI52";
         } else if(type == 'taitong') {
-            $(".route").get(0).style.display = "none";
             $(".line").get(1).style.display = "none";
-            $$("question").href = "https://goo.gl/forms/4w3KTmIKdehvr7vn1";
-            if(window.screen.width > 980) {$(".route").css('margin-left', '773px');$(".route").css('margin-right', '773px');}
+            $(".question").css('display', 'none');
+            $("#simpleMap").attr('href', "/navMap.html#taitong");
+            $("#googleMap").attr('href',"https://www.google.com/maps/d/u/1/viewer?mid=1k8iZtE1_syQQesKi371HXGcLDwU3V29T&ll=22.753387000000007%2C121.14935400000002&z=17");
+            if(window.screen.width > 980) {$(".route").css('margin-left', '300px');$(".route").css('margin-right', '200px');}
         } else if(type == 'chengkung') {
             $$("simpleMap").href = "/navMap.html#eastcoast";
             $(".line").get(1).style.display = "none";
@@ -87,6 +88,10 @@
             $(".line").get(1).style.display = "none";
             $(".route").get(0).style.display = "none";
             if(window.screen.width > 980) {$(".route").css('margin-left', '773px');$(".route").css('margin-right', '773px');}
+        } else if(type== 'taitongcounty') { //台東縣
+            $(".route").css('display', 'none');
+            $(".line").css('display', 'none');
+            $(".question").css('display', 'none');
         }
     }
 
