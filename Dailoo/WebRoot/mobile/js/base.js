@@ -1601,7 +1601,7 @@ var taiwan = [
             },
             {
                 "-zip": "963",
-                "district": "太麻裡"
+                "district": "太麻里"
             },
             {
                 "-zip": "964",

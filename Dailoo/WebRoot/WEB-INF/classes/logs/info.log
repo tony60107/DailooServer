@@ -1,0 +1,5 @@
+[13:41:34:467] [ERROR] - com.dailoo.service.ShortUrlServiceImpl.addShortUrl(ShortUrlServiceImpl.java:29) - 測試測試 [BJfMVv, jueYnu, NzUfqu, 2qiyeq]
+[13:46:36:614] [ERROR] - com.dailoo.service.ShortUrlServiceImpl.addShortUrl(ShortUrlServiceImpl.java:29) - 測試測試 [BJfMVv, jueYnu, NzUfqu, 2qiyeq]
+[13:46:56:799] [ERROR] - com.dailoo.service.ShortUrlServiceImpl.addShortUrl(ShortUrlServiceImpl.java:29) - 測試測試 [jYfMVr, BnqEbm, MF7rAb, j6fAF3]
+[13:49:35:123] [ERROR] - com.dailoo.service.ShortUrlServiceImpl.addShortUrl(ShortUrlServiceImpl.java:29) - 測試測試 [jYfMVr, BnqEbm, MF7rAb, j6fAF3]
+[13:49:44:221] [ERROR] - com.dailoo.service.ShortUrlServiceImpl.addShortUrl(ShortUrlServiceImpl.java:29) - 測試測試 [URZrE3, aEvMbe, NfMv2y, B7Rrym]

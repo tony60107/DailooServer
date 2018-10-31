@@ -502,6 +502,14 @@ public class ViewpointServiceImpl implements ViewpointService{
 		List<Viewpoint> vps = dao.findViewpointsByName(vp.getName());
 		for(Viewpoint temp : vps){
 			temp.setName(newName);
+			//建立短網址
+			String domain = BasicFactory.getFactory().getPropData("Domain");
+			String url = domain + "view/" + temp.getName() + "_" + temp.getSubtitle() 
+								+ "?utm_source=PrintAds&utm_campaign="+ temp.getName() + "_" 
+								+ temp.getSubtitle();
+			String shortUrl = "dailoo.com/" + shortUrlService.addShortUrl(url);
+			temp.setShortUrl(shortUrl);
+			
 			dao.updateViewpoint(temp);
 		}
 	}

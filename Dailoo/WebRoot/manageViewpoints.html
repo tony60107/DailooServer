@@ -187,8 +187,9 @@
     //初始化景點列表資料
     function initDataFromServer(vp) {
         $$("tbody").innerHTML = "";
+        var dom = "";
         for (var i = 0; i < vp.length; i++) {
-            var dom = '<tr>' +
+            dom += '<tr>' +
                     '<td>' + vp[i].name + '</td>' +
                     '<td>' + vp[i].subtitle + '</td>' +
                     '<td>' + (vp[i].speakerName == '' ? '未設定該講者姓名' : vp[i].speakerName) + '</td>' +
@@ -214,9 +215,10 @@
 
             dom += '<td class="del" onclick="checkDel(this);"><div link="/ViewpointServlet?method=delViewpoint&id=' + vp[i].id + '">刪除</div></td>' +
                     '</tr>';
-            $$("tbody").innerHTML = $$("tbody").innerHTML + dom;
+
             //console.dir("<url>\n\11<loc>" + "http://www.dailoo.com/viewpoint.html?utm_source=InSite&utm_campaign=" + vp[i].name + "_" + vp[i].subtitle + "&id=" + vp[i].id + "</loc>\n</url>");
         }
+        $$("tbody").innerHTML = $$("tbody").innerHTML + dom;
     }
 
     //確認刪除對話框

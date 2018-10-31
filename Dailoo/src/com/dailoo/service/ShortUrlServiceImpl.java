@@ -3,6 +3,9 @@ package com.dailoo.service;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.Arrays;
+
+import org.apache.logging.log4j.LogManager;
 
 import com.dailoo.dao.ShortUrlDao;
 import com.dailoo.dao.ThemeDao;
@@ -20,9 +23,7 @@ public class ShortUrlServiceImpl implements ShortUrlService{
 		
 		ShortUrl url = new ShortUrl();
 		
-		
 		String[] codes = UrlShorterUtils.toShortUrl(ori);
-		
 		
 		for(int i = 0; i < codes.length; i++) {
 			ShortUrl temp = getByShorten(codes[i]);

@@ -1,23 +1,42 @@
 package com.dailoo.test;
 
+import java.util.Arrays;
 import java.util.List;
 
+import com.dailoo.dao.ShortUrlDao;
 import com.dailoo.domain.Viewpoint;
 import com.dailoo.domain.ViewpointSimple;
 import com.dailoo.factory.BasicFactory;
 import com.dailoo.service.ShortUrlService;
 import com.dailoo.service.ViewpointService;
+import com.dailoo.util.UrlShorterUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 public class Test {
 
 	Gson gson = new Gson();
+	ShortUrlDao dao = BasicFactory.getFactory().getDao(ShortUrlDao.class);
+	private ShortUrlService shortUrlService = BasicFactory.getFactory().getService(ShortUrlService.class);
 	
 	@org.junit.Test
 	public void test() {
-		ShortUrlService service = BasicFactory.getFactory().getService(ShortUrlService.class);
-		service.addShortUrl("https://gist.github.com/binjoo/4084192");
+		
+		Viewpoint vp = new Viewpoint();
+		vp.setName("宜灣部落");
+		vp.setSubtitle("簡介");
+		
+		for (int i = 0; i < 20000; i++) {
+			//建立短網址
+			String domain = BasicFactory.getFactory().getPropData("Domain");
+			String url = domain + "view/" + vp.getName() + "_" + vp.getSubtitle() 
+								+ "?utm_source=PrintAds&utm_campaign="+ vp.getName() + "_" 
+								+ "簡介";
+			String shortUrl = "dailoo.com/" + shortUrlService.addShortUrl(url);
+			System.out.println(shortUrl);
+			
+		}
+		
 	}
 
 	@org.junit.Test
