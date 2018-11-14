@@ -24,7 +24,7 @@ public class ShortUrlServiceImpl implements ShortUrlService{
 		ShortUrl url = new ShortUrl();
 		
 		String[] codes = UrlShorterUtils.toShortUrl(ori);
-		
+		System.out.println(ori + "   " + Arrays.toString(codes));
 		for(int i = 0; i < codes.length; i++) {
 			ShortUrl temp = getByShorten(codes[i]);
 			if(temp == null) { //該短網址還不存在

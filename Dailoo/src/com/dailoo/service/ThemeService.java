@@ -54,5 +54,19 @@ public interface ThemeService extends Service{
 	 */
 	List<Theme> findThemesByRegionName(String name);
 
+	/**
+	 * 取得所有的主題
+	 * @return 所有主題的List集合
+	 */
+	List<Theme> findAllThemes();
+
+	/**
+	 * 根據主題ID，更改地圖連結
+	 * @param id 主題ID
+	 * @param type 地圖類型
+	 * @param url 地圖連結
+	 */
+	void updateMapUrlById(String id, String type, String url);
+
 
 }

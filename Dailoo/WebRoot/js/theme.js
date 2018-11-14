@@ -78,6 +78,9 @@ window.onload = function() {
 
     $.get("footer.html",function(data){
         $("#footer").html(data);
+        setMapUrls(location.pathname.split("/theme/")[1]);
+
+       /* $("#footer").html(data);
         //更換Footer樣式
         var jinfeng = "03326ff3-cad4-42bc-a8aa-35fca64eb2ef,8daa252d-42e6-4535-a0b6-d794d7e5029d,e6862f47-a7a3-4b22-9647-763425705f0a,10c09cb8-355c-4db9-a852-fc3d20eca556,9de8cafd-203e-4f5e-8faf-aeda29264952,4652c369-be78-460d-90e3-e0e66267069f";
         var chenggong = "f0cbc265-6abd-4519-a176-9296b7e032a1";
@@ -85,6 +88,7 @@ window.onload = function() {
         var chengkung = "37623549-9f15-46b4-b63a-7ebf20de0c09,eefdccd5-4ff7-4f1f-a51e-f7e98696ce99";
         var anping = "693f2517-3346-4d49-9a39-6fddc75d4887";
         var taitongcounty = "2566709a-0a26-4423-8da5-0d2495a8fd67";
+        var guanshan = "6e30a8ad-022c-46b5-92b5-c834d93a102d";
 
         themeId = location.pathname.split("/theme/")[1];
 
@@ -102,6 +106,8 @@ window.onload = function() {
             changeCss("anping");
         } else if(taitongcounty.indexOf(themeId) != -1){ //如果是台東縣主題
             changeCss("taitongcounty");
-        }
+        } else if(guanshan.indexOf(themeId) != -1){ //如果是關山鎮主題
+            changeCss("guanshan");
+        }*/
     });
 }

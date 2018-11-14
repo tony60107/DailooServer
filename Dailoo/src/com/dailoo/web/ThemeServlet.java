@@ -1,6 +1,7 @@
 package com.dailoo.web;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -81,6 +82,19 @@ public class ThemeServlet extends HttpServlet {
 				} else {
 					response.getWriter().write("{\"error\":\"只有管理員才可以編輯主題喔~\"}");
 				}
+			}
+			//如果是取得所有的主題
+			else if("getAllThemes".equals(method)){
+				List<Theme> themes = service.findAllThemes();
+				String json = gson.toJson(themes);
+				response.getWriter().write(json);
+			}
+			//更新主題地圖連結
+			else if("updateMapUrlById".equals(method)){
+				String id = request.getParameter("id");
+				String type = request.getParameter("type");
+				String url = request.getParameter("url");
+				service.updateMapUrlById(id, type, url);
 			}
 		} catch (Exception e) {
 			LogManager.getLogger().error("系統出錯", e);

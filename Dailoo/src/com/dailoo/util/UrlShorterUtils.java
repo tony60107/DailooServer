@@ -90,7 +90,6 @@ public class UrlShorterUtils {
 				"K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
 				"W", "X", "Y", "Z" };
 		String hex = MD5Utils.md5(key + url);// 对传入网址和混合KEY进行MD5加密
-		System.out.println(hex);
 		String[] resUrl = new String[4];
 
 		for (int i = 0; i < 4; i++) {

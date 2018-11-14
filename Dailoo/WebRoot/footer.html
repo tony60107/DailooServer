@@ -11,7 +11,7 @@
     <!-- 導覽地圖 -->
     <div>
         <div class="route">
-            <a id="simpleMap" href="/navMap.html#luye" target="_blank" rel="nofollow">
+            <a id="simpleMap" target="_blank" rel="nofollow">
                 <div id="map" class="cover">主題地圖導覽</div>
             </a>
             <div class="desc">瀏覽各導覽點並可<br/>直接點選聆聽</div>
@@ -19,7 +19,7 @@
 
         <div class="line"></div>
         <div class="route">
-            <a id="googleMap" href="https://goo.gl/ZTuKoP" target="_blank" rel="nofollow">
+            <a id="googleMap" target="_blank" rel="nofollow">
                 <div class="cover">Google地圖導航</div>
             </a>
             <div class="desc">開啟Google地圖瀏覽<br/>本區所有導覽點</div>
@@ -27,7 +27,7 @@
         <div class="line"></div>
         <!-- 填問卷 -->
         <div class="question">
-            <a id="question" href="https://goo.gl/iN64e6" target="_blank" rel="nofollow">
+            <a id="question" target="_blank" rel="nofollow">
                 <div class="ring">填問卷</div>
             </a>
             <div class="desc">您的意見可以幫助我們<br/>提供更優質的服務！</div>
@@ -59,9 +59,65 @@
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+
+    function setMapUrls(themeId) {
+        $.ajax({
+            url: "/ThemeServlet", context: document.body,
+            type: "POST",
+            data: {"method": "getThemeById", "id": themeId},
+            success: function (data) {
+                var theme = eval("(" + data + ")");
+                console.dir(theme)
+
+                var urlNum = 0; //紀錄連結數量
+
+                //手繪地圖
+                if(theme.paintedMapUrl != "" && theme.paintedMapUrl != undefined){
+                    $("#simpleMap").attr('href', theme.paintedMapUrl);
+                    urlNum++;
+                } else {
+                    $(".route").get(0).style.display = "none";
+                }
+
+                //Google地圖
+                if(theme.googleMapUrl != "" && theme.googleMapUrl != undefined){
+                    $("#googleMap").attr('href', theme.googleMapUrl);
+                    urlNum++;
+                }else {
+                    $(".route").get(1).style.display = "none";
+                }
+
+                //問卷
+                if(theme.questionUrl != "" && theme.questionUrl != undefined){
+                    $("#question").attr('href', theme.questionUrl);
+                    urlNum++;
+                } else {
+                    $(".question").css('display', 'none');
+                }
+
+                //電腦版調整按鈕置中
+                if(urlNum == 2 && window.screen.width > 980) {
+                    $(".route").css('margin-left', '300px');$(".route").css('margin-right', '200px');
+                } else if(urlNum == 1 && window.screen.width > 980) {
+                    $(".route").css('margin-left', '773px');$(".route").css('margin-right', '773px');
+                    $(".question").css('margin-left', '773px');$(".route").css('margin-right', '773px');
+                }
+
+                //手機版調整分隔線顯示
+                if(urlNum == 1) {
+                    $(".line").css("display", "none")
+                } else if(urlNum == 2 && $(".question").css('display') == "none") {
+                    $(".line").get(1).style.display = "none";
+                } else if(urlNum == 2 && $(".question").css('display') != "none") {
+                    $(".line").get(0).style.display = "none";
+                }
+            },
+        });
+    }
+
     function changeCss(type){
 
-        if(type == 'none'){
+        /*if(type == 'none'){
             $(".route").get(0).style.display = "none";
             $(".line").get(1).style.display = "none";
             $$("question").href = "https://goo.gl/forms/SmvKWVNnBOR1Quwh1";
@@ -92,7 +148,13 @@
             $(".route").css('display', 'none');
             $(".line").css('display', 'none');
             $(".question").css('display', 'none');
-        }
+        } else if(type== 'guanshan') { //關山
+            $("#googleMap").attr('href',"https://drive.google.com/open?id=1moGWhs4duFm9aQYa5g4811nzNLyrNgMe&usp=sharing");
+            $(".question").css('display', 'none');
+            $(".line").get(1).style.display = "none";
+            $(".route").get(0).style.display = "none";
+            if(window.screen.width > 980) {$(".route").css('margin-left', '773px');$(".route").css('margin-right', '773px');}
+        }*/
     }
 
 </script>

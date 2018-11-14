@@ -38,4 +38,33 @@ public interface ThemeDao extends Dao{
 	 */
 	void updateThemeById(Theme theme);
 
+	/**
+	 * 取得所有的主題
+	 * @return 所有主題的List集合
+	 */
+	List<Theme> findAllThemes();
+
+	/**
+	 * 更新手繪地圖連結 
+	 * @param id	主題ID
+	 * @param url 	地圖連結
+	 */
+	void updatePaintedMapUrlById(String id, String url);
+
+	/**
+	 * 更新Google地圖連結 
+	 * @param id	主題ID
+	 * @param url 	地圖連結
+	 */
+	void updateGoogleMapUrlById(String id, String url);
+
+	/**
+	 * 更新問卷連結 
+	 * @param id	主題ID
+	 * @param url 	問卷連結
+	 */
+	void updateQuestionUrlById(String id, String url);
+	
+	
+
 }

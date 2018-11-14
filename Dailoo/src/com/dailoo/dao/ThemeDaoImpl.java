@@ -74,4 +74,54 @@ public class ThemeDaoImpl implements ThemeDao{
 		}		
 	}
 
+	@Override
+	public List<Theme> findAllThemes() {
+		String sql = "select * from themes order by updatetime asc";
+		
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			return runner.query(sql, new BeanListHandler<Theme>(Theme.class));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+
+	@Override
+	public void updatePaintedMapUrlById(String id, String url) {
+		String sql = "update themes set paintedMapUrl=?  where id=?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, url, id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}		
+	}
+
+	@Override
+	public void updateGoogleMapUrlById(String id, String url) {
+		String sql = "update themes set googleMapUrl=?  where id=?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, url, id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}		
+	}
+
+	@Override
+	public void updateQuestionUrlById(String id, String url) {
+		String sql = "update themes set questionUrl=?  where id=?";
+		try {
+			QueryRunner runner = new QueryRunner(TransactionManager.getSource());
+			runner.update(sql, url, id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}		
+	}
+
 }

@@ -23,23 +23,23 @@ public class Test {
 	public void test() {
 		
 		Viewpoint vp = new Viewpoint();
-		vp.setName("宜灣部落");
+		vp.setName("惠豐蜂園");
 		vp.setSubtitle("簡介");
 		
-		for (int i = 0; i < 20000; i++) {
+//		for (int i = 0; i < 1; i++) {
 			//建立短網址
 			String domain = BasicFactory.getFactory().getPropData("Domain");
 			String url = domain + "view/" + vp.getName() + "_" + vp.getSubtitle() 
 								+ "?utm_source=PrintAds&utm_campaign="+ vp.getName() + "_" 
-								+ "簡介";
+								+ vp.getSubtitle();
 			String shortUrl = "dailoo.com/" + shortUrlService.addShortUrl(url);
 			System.out.println(shortUrl);
 			
-		}
+//		}
 		
 	}
 
-	@org.junit.Test
+	/*@org.junit.Test
 	public void test2() {
 		ShortUrlService service = BasicFactory.getFactory().getService(ShortUrlService.class);
 		ViewpointService vpService = BasicFactory.getFactory().getService(ViewpointService.class);
@@ -49,6 +49,6 @@ public class Test {
 			Viewpoint vp = vpService.findViewpointById(vps.get(i).getId());
 			vpService.updateViewpoint(vp);
 		}
-	}
+	}*/
 	
 }

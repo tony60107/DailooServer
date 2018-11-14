@@ -157,6 +157,7 @@ public class ViewpointServiceImpl implements ViewpointService{
 		String url = domain + "view/" + vp.getName() + "_" + vp.getSubtitle() 
 							+ "?utm_source=PrintAds&utm_campaign="+ vp.getName() + "_" 
 							+ vp.getSubtitle();
+		System.out.println("-----" + url + " " + vp.getAddress());
 		String shortUrl = "dailoo.com/" + shortUrlService.addShortUrl(url);
 		
 		vp.setShortUrl(shortUrl);

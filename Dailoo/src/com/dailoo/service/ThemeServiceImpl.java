@@ -109,4 +109,29 @@ public class ThemeServiceImpl implements ThemeService {
 		return themes;
 	}
 
+	@Override
+	public List<Theme> findAllThemes() {
+		return dao.findAllThemes();
+	}
+
+	@Override
+	public void updateMapUrlById(String id, String type, String url) {
+		if("paintedMapUrl".equals(type)) {
+			dao.updatePaintedMapUrlById(id, url);
+		} else if("googleMapUrl".equals(type)){
+		 	dao.updateGoogleMapUrlById(id, url);
+		} else if("questionUrl".equals(type)) {
+			dao.updateQuestionUrlById(id, url);
+		}
+	}
+
 }
+
+
+
+
+
+
+
+
+
