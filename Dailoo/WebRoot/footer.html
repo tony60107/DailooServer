@@ -18,6 +18,7 @@
         </div>
 
         <div class="line"></div>
+        <iframe id="googleIframe" src="https://www.google.com/maps/d/embed?mid=1k8iZtE1_syQQesKi371HXGcLDwU3V29T&ll=22.753387000000007%2C121.14935400000002&z=17" width="640" height="480" style="margin-left: 170px; margin-top: 50px;"></iframe>
         <div class="route">
             <a id="googleMap" target="_blank" rel="nofollow">
                 <div class="cover">Google地圖導航</div>
@@ -82,9 +83,11 @@
                 //Google地圖
                 if(theme.googleMapUrl != "" && theme.googleMapUrl != undefined){
                     $("#googleMap").attr('href', theme.googleMapUrl);
+                    $("#googleIframe").attr('src', "https://www.google.com/maps/d/embed?mid=" + theme.googleMapUrl.split("mid=")[1]);
                     urlNum++;
                 }else {
                     $(".route").get(1).style.display = "none";
+                    $("#googleIframe").css('display', 'none');
                 }
 
                 //問卷
@@ -98,19 +101,25 @@
                 //電腦版調整按鈕置中
                 if(urlNum == 2 && window.screen.width > 980) {
                     $(".route").css('margin-left', '300px');$(".route").css('margin-right', '200px');
+                    $("#googleIframe").css('display', 'none');
                 } else if(urlNum == 1 && window.screen.width > 980) {
                     $(".route").css('margin-left', '773px');$(".route").css('margin-right', '773px');
                     $(".question").css('margin-left', '773px');$(".route").css('margin-right', '773px');
+                    $("#googleIframe").css('margin-left', '650px');
+                } else if(urlNum == 3 && window.screen.width > 980){
+                    $("#googleIframe").css('display', 'none');
                 }
 
                 //手機版調整分隔線顯示
-                if(urlNum == 1) {
+                if(urlNum == 0 || urlNum == 1) {
                     $(".line").css("display", "none")
                 } else if(urlNum == 2 && $(".question").css('display') == "none") {
                     $(".line").get(1).style.display = "none";
                 } else if(urlNum == 2 && $(".question").css('display') != "none") {
                     $(".line").get(0).style.display = "none";
                 }
+
+
             },
         });
     }
