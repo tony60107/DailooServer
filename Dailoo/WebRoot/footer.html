@@ -7,7 +7,10 @@
     <link rel="stylesheet" media="only screen and (min-width: 1000px)" href="css/footer_pc.css" />
 </head>
 <body>
-<div class="w main clearfix" >
+<div class="w main clearfix" style="margin-top: -48px;">
+
+    <iframe id="computerGoogleIframe" src="https://www.google.com" width="1750" height="980" style="margin-left: 64px; display: none"></iframe>
+
     <!-- 導覽地圖 -->
     <div>
         <div class="route">
@@ -18,7 +21,7 @@
         </div>
 
         <div class="line"></div>
-        <iframe id="googleIframe" src="https://www.google.com/maps/d/embed?mid=1k8iZtE1_syQQesKi371HXGcLDwU3V29T&ll=22.753387000000007%2C121.14935400000002&z=17" width="640" height="480" style="margin-left: 170px; margin-top: 50px;"></iframe>
+        <iframe id="googleIframe" src="https://www.google.com" width="980" height="980" style="margin-top: 144px;"></iframe>
         <div class="route">
             <a id="googleMap" target="_blank" rel="nofollow">
                 <div class="cover">Google地圖導航</div>
@@ -84,6 +87,7 @@
                 if(theme.googleMapUrl != "" && theme.googleMapUrl != undefined){
                     $("#googleMap").attr('href', theme.googleMapUrl);
                     $("#googleIframe").attr('src', "https://www.google.com/maps/d/embed?mid=" + theme.googleMapUrl.split("mid=")[1]);
+                    $("#computerGoogleIframe").attr('src', "https://www.google.com/maps/d/embed?mid=" + theme.googleMapUrl.split("mid=")[1]);
                     urlNum++;
                 }else {
                     $(".route").get(1).style.display = "none";
@@ -101,13 +105,18 @@
                 //電腦版調整按鈕置中
                 if(urlNum == 2 && window.screen.width > 980) {
                     $(".route").css('margin-left', '300px');$(".route").css('margin-right', '200px');
-                    $("#googleIframe").css('display', 'none');
+                    $('#computerGoogleIframe').css('display', 'none');
                 } else if(urlNum == 1 && window.screen.width > 980) {
                     $(".route").css('margin-left', '773px');$(".route").css('margin-right', '773px');
                     $(".question").css('margin-left', '773px');$(".route").css('margin-right', '773px');
-                    $("#googleIframe").css('margin-left', '650px');
+                    $('#computerGoogleIframe').css('display', 'none');
                 } else if(urlNum == 3 && window.screen.width > 980){
+                    $('#computerGoogleIframe').css('display', 'none');
+                }
+                if(window.screen.width > 980) {
+                    $('.main').css('margin-top', '0px');
                     $("#googleIframe").css('display', 'none');
+                    if(theme.googleMapUrl != "" && theme.googleMapUrl != undefined) $('#computerGoogleIframe').css('display', 'block');
                 }
 
                 //手機版調整分隔線顯示
@@ -118,7 +127,7 @@
                 } else if(urlNum == 2 && $(".question").css('display') != "none") {
                     $(".line").get(0).style.display = "none";
                 }
-
+                $(".line").css("display", "none");
 
             },
         });
